@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS rules (
 
 CREATE TABLE IF NOT EXISTS events (
     event_id        TEXT PRIMARY KEY,
-    schema_version  TEXT NOT NULL DEFAULT '0.4',
+    schema_version  TEXT NOT NULL DEFAULT '0.8.3',
     idempotency_key TEXT NOT NULL,
     correlation_id  TEXT NOT NULL,
     causation_id    TEXT,
@@ -148,3 +148,42 @@ CREATE INDEX IF NOT EXISTS idx_proposals_status
 
 CREATE INDEX IF NOT EXISTS idx_proposals_target_rule
     ON proposals(target_rule_id);
+
+
+-- Session Budget Guard tables (v0.8)
+CREATE TABLE IF NOT EXISTS session_budgets (
+    session_id TEXT PRIMARY KEY,
+    max_session_cost_units INTEGER NOT NULL,
+    max_session_tasks INTEGER NOT NULL,
+    max_agent_cost_units INTEGER NOT NULL,
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS session_task_links (
+    session_id TEXT NOT NULL,
+    task_id TEXT NOT NULL,
+    actor_id TEXT NOT NULL,
+    reserved_cost_units INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL,
+    PRIMARY KEY (session_id, task_id)
+);
+
+CREATE TABLE IF NOT EXISTS session_budget_decisions (
+    decision_id TEXT PRIMARY KEY,
+    session_id TEXT NOT NULL,
+    task_id TEXT NOT NULL,
+    actor_id TEXT NOT NULL,
+    projected_cost_units INTEGER NOT NULL,
+    decision TEXT NOT NULL,
+    reason TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_session_task_links_session
+    ON session_task_links(session_id);
+
+CREATE INDEX IF NOT EXISTS idx_session_task_links_actor
+    ON session_task_links(session_id, actor_id);
+
+CREATE INDEX IF NOT EXISTS idx_session_budget_decisions_session
+    ON session_budget_decisions(session_id);
