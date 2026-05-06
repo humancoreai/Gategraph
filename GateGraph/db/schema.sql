@@ -72,6 +72,10 @@ CREATE TABLE IF NOT EXISTS capability_tokens (
     revoked      INTEGER NOT NULL DEFAULT 0,
     signature    TEXT NOT NULL DEFAULT '',
     signing_key_id TEXT NOT NULL DEFAULT 'local-dev-v1',
+    budget_scope_id TEXT,
+    budget_reservation_id TEXT,
+    max_cost_for_action INTEGER,
+    escalation_state TEXT,
     FOREIGN KEY (decision_id) REFERENCES decisions(decision_id),
     FOREIGN KEY (task_id) REFERENCES tasks(task_id)
 );
@@ -274,3 +278,41 @@ CREATE TABLE IF NOT EXISTS controlled_apply_artifacts (
 
 CREATE INDEX IF NOT EXISTS idx_controlled_apply_artifacts_proposal
     ON controlled_apply_artifacts(proposal_id);
+
+
+-- Cross-session Budget Ledger (v0.8.26 candidate)
+-- SEC: budgets are reserved by Governance and only carried to Runtime through signed tokens.
+CREATE TABLE IF NOT EXISTS budget_scopes (
+    scope_id TEXT PRIMARY KEY,
+    scope_type TEXT NOT NULL CHECK (scope_type IN ('system','actor','task','session')),
+    parent_scope_id TEXT,
+    allocated_units INTEGER NOT NULL CHECK (allocated_units >= 0),
+    consumed_units INTEGER NOT NULL DEFAULT 0 CHECK (consumed_units >= 0),
+    reserved_units INTEGER NOT NULL DEFAULT 0 CHECK (reserved_units >= 0),
+    state TEXT NOT NULL DEFAULT 'normal' CHECK (state IN ('normal','degraded','throttled','blocked')),
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    reason_code TEXT NOT NULL DEFAULT 'BUDGET_SCOPE_CREATED',
+    FOREIGN KEY (parent_scope_id) REFERENCES budget_scopes(scope_id)
+);
+
+CREATE TABLE IF NOT EXISTS budget_reservations (
+    reservation_id TEXT PRIMARY KEY,
+    scope_id TEXT NOT NULL,
+    amount_units INTEGER NOT NULL CHECK (amount_units >= 0),
+    status TEXT NOT NULL CHECK (status IN ('reserved','consumed','released','expired')),
+    idempotency_key TEXT NOT NULL UNIQUE,
+    created_at TEXT NOT NULL,
+    expires_at TEXT NOT NULL,
+    consumed_at TEXT,
+    released_at TEXT,
+    reason_code TEXT NOT NULL DEFAULT 'BUDGET_RESERVED',
+    FOREIGN KEY (scope_id) REFERENCES budget_scopes(scope_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_budget_scopes_parent
+    ON budget_scopes(parent_scope_id);
+CREATE INDEX IF NOT EXISTS idx_budget_reservations_scope
+    ON budget_reservations(scope_id, status);
+CREATE INDEX IF NOT EXISTS idx_budget_reservations_idempotency
+    ON budget_reservations(idempotency_key);
