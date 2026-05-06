@@ -265,3 +265,18 @@ Expected:
 - Stable explain codes without changing decisions.
 - Raw reasons preserved.
 - Unknown reasons safely classified as unclassified.
+
+
+## v0.8.3 Scale Safety Evidence
+
+Added tests:
+- reserved_cost_prevents_two_tasks_oversubscribe
+- actual_cost_drift_blocks_next_task
+- reason_normalizer_uses_canonical_prefix
+- event_schema_version_current
+
+Expected:
+- Projected cost is reserved immediately.
+- Actual runtime overrun blocks later session work.
+- Reason normalization uses stable canonical keys.
+- New audit events use schema version 0.8.3.

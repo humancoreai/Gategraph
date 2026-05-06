@@ -10,9 +10,9 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
-SCHEMA_VERSION = "0.4"
+SCHEMA_VERSION = "0.8.3"
 ACTOR_LAYER = "governance"
-ACTOR_VERSION = "0.4.0"
+ACTOR_VERSION = "0.8.3"
 
 
 @dataclass(frozen=True)
