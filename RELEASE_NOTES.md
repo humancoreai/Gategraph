@@ -27,3 +27,11 @@ Evidence CI passed
 - Cross-session/task-splitting budget bypass is covered by evidence.
 - Repo hygiene pass removed generated caches/logs from the stable archive.
 - Known limits remain: single-node only, no production KMS, no distributed consensus/locks, no monitoring/alerting.
+
+## v0.8.27.1_STABLE
+
+- Promoted Operational Hardening and Runner POSIX hardening to stable after full Windows Evidence CI reported `Passed: True` on 2026-04-28.
+- Added stable operational visibility scope: budget snapshots, audit replay consistency checks, anomaly/drift detection and append-only incident records.
+- Retained the Evidence Runner POSIX supervision patch: Python-owned `Popen` timeout handling with POSIX session isolation instead of the external `timeout` wrapper.
+- Repo hygiene pass removed generated caches and evidence logs from the stable archive.
+- Known limits remain: single-node only, no production KMS, no distributed consensus/locks, mock external API only, no automated incident recovery.
