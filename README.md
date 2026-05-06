@@ -57,7 +57,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.12 http-policy-allowlist
+Version: v0.8.13 security-finesse
 Core status: stable proof of concept
 Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
 ```
@@ -214,3 +214,13 @@ v0.8.9 adds Capability Token key IDs and keyring-based verification so local HMA
 ## v0.8.10 hygiene hardening
 
 This release closes review findings without changing product semantics: public keyring accessors replace private imports, enforcement loads trust material once per decision, SECURITY.md and version labels are current, Session Budget schema initialization uses `db/schema.sql` as the DDL source of truth, and test-only/default-secret boundaries are documented.
+
+
+## v0.8.13 Security Finesse
+
+Block B hardens edge-case confidence without adding new product scope:
+- secret values are verified absent from audit/evidence outputs,
+- HTTP policy denial is proven to happen before secret resolution,
+- subdomains and wildcard hosts are not implicitly allowed,
+- path-prefix matching is boundary-aware (`/v1` does not allow `/v10`),
+- combined expired+revoked tokens remain fail-closed.
