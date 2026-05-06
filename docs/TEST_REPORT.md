@@ -234,3 +234,18 @@ Added tests:
 Expected:
 - v0.7.3 drift findings now stop at session/global/agent budget boundaries.
 - Existing evidence and CI tests remain green.
+
+
+## v0.8.1 Guard Orchestration Evidence
+
+Added tests:
+- enforcement_blocks_before_budget_guards
+- session_stops_before_runtime_guard
+- runtime_stops_when_session_allows
+- both_session_and_runtime_would_stop_session_priority
+- all_guards_pass_action_ready
+
+Expected:
+- Deterministic stop priority.
+- No misleading duplicate stop reasons.
+- No runtime work after session/global exhaustion.

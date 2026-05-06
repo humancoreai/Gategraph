@@ -85,6 +85,7 @@ def main() -> int:
     commands = [
         ("runtime_stress_evidence", [sys.executable, "tests/runtime_stress_evidence.py"]),
         ("session_budget_evidence", [sys.executable, "tests/session_budget_evidence.py"]),
+        ("guard_orchestration_evidence", [sys.executable, "tests/guard_orchestration_evidence.py"]),
         ("core_loop", [sys.executable, "tests/test_loop.py"]),
         ("runtime_guard", [sys.executable, "tests/runtime_guard_tests.py"]),
         ("pattern_engine", [sys.executable, "tests/pattern_engine_tests.py"]),
