@@ -1,0 +1,28 @@
+name: GateGraph Evidence Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run evidence CI
+        run: python tests/evidence_ci.py
+
+      - name: Upload evidence logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gategraph-evidence-logs
+          path: tests/logs/*.json
+          if-no-files-found: warn

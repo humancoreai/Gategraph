@@ -172,3 +172,36 @@ tests/logs/runtime_evidence_<timestamp>.json
 ### Notes
 
 Runtime Guard evidence is stored in runtime-specific tables, not in the normal `events` table. The evidence runner intentionally merges both views into one JSON proof log without changing core behavior.
+
+## v0.7.2 CI Evidence Update
+
+Added CI-ready evidence execution via:
+
+```bash
+python tests/evidence_ci.py
+```
+
+The runner executes:
+
+- `tests/runtime_stress_evidence.py`
+- `tests/test_loop.py`
+- `tests/runtime_guard_tests.py`
+- `tests/pattern_engine_tests.py`
+- `tests/usage_simulation.py`
+- `tests/unusual_inputs.py`
+- `tests/agent_scenarios.py`
+
+It writes a machine-readable summary to:
+
+```text
+tests/logs/ci_evidence_<timestamp>.json
+```
+
+Additional runtime evidence scenarios now cover:
+
+- alternating multi-agent delegation stopped by task-level `max_steps`
+- fail-closed behavior when no runtime budget exists
+- exact cost-boundary behavior
+- current limitation: cost budget is per-task, not session-global
+
+The last point is intentionally logged as a medium-severity known gap, not as a failing test, because implementing a session/global budget would change production scope.
