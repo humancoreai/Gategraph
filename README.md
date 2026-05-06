@@ -71,8 +71,8 @@ This candidate adds `GOVERNANCE.md` as the repository-level SSOT for GateGraph g
 
 
 ```text
-Version: v0.8.28_CANDIDATE
-Core status: stable proof of concept; documentation candidate
+Version: v0.8.28_STABLE
+Core status: stable proof of concept; governance documentation stable
 Production status: not production-ready; Single-Node Governance-Core and operational-hardening evidence are mature, distributed production layers remain out of scope
 ```
 
