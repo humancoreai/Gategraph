@@ -143,3 +143,11 @@ This candidate adds a descriptive integrity layer for archived governance record
 
 - Stable after Windows Full Evidence CI passed.
 - Archive integrity and replay consistency accepted as v0.8.46 stable baseline.
+
+
+## v0.8.47_CANDIDATE - Operator Export / Evidence Bundle
+
+- Adds deterministic, read-only evidence bundle creation for operator handoff.
+- Adds bundle manifest hashing and source file observations.
+- Adds operator_export_evidence to Evidence CI.
+- No governance re-evaluation, policy tuning, prioritization or recommendation behavior.
