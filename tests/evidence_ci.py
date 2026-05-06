@@ -113,6 +113,7 @@ def main() -> int:
         ("key_rotation_evidence", "key_rotation_evidence.py", "main"),
         ("secret_api_integration_evidence", "secret_api_integration_evidence.py", "main"),
         ("http_policy_evidence", "http_policy_evidence.py", "main"),
+        ("security_finesse_evidence", "security_finesse_evidence.py", "main"),
         ("core_loop", "test_loop.py", "main"),
         ("runtime_guard", "runtime_guard_tests.py", "main"),
         ("pattern_engine", "pattern_engine_tests.py", "main"),
