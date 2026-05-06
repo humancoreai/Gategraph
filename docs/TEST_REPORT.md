@@ -219,3 +219,18 @@ Outcome classification:
 - Finding severity: medium/high depending on scenario.
 - Type: documented design boundary.
 - Not a production core regression.
+
+
+## v0.8.0 Session Budget Guard Evidence
+
+Added tests:
+- cross_task_cascade_stopped_by_session_budget
+- parallel_multi_agent_stopped_by_session_budget
+- session_reset_continuity_stopped
+- micro_task_flood_stopped_by_session_budget
+- agent_budget_stops_single_agent_drift
+- missing_session_budget_fail_closed
+
+Expected:
+- v0.7.3 drift findings now stop at session/global/agent budget boundaries.
+- Existing evidence and CI tests remain green.
