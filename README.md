@@ -1,6 +1,6 @@
 # GateGraph
 
-Current stable: **v0.8.34_STABLE**
+Current stable: **v0.8.35_CANDIDATE**
 
 **GateGraph** is a deterministic governance, enforcement, runtime-control and audit proof of concept for agent-like systems.
 
@@ -13,7 +13,7 @@ GateGraph is intentionally small. It is not an autonomous agent, not a distribut
 
 ## v0.8.34 stable scope
 
-v0.8.34_STABLE promotes the server hardening phase after Full Windows Evidence CI passed.
+v0.8.35_CANDIDATE promotes the server hardening phase after Full Windows Evidence CI passed.
 
 The server remains a thin adapter over `src/service_adapter.py`; it validates malformed or unsafe requests at the service boundary and returns deterministic JSON errors without changing governance behavior.
 
