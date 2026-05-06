@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "name": "pass_script",
+      "ok": true,
+      "status": "passed"
+    },
+    {
+      "name": "fail_script",
+      "ok": true,
+      "status": "failed"
+    },
+    {
+      "name": "timeout_script",
+      "ok": true,
+      "status": "timeout",
+      "killed_process_group": true
+    }
+  ]
+}
+Summary: {'passed': 3, 'failed': 0}
