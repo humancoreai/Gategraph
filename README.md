@@ -194,3 +194,8 @@ GateGraph does **not** implement the GLP protocol.
 ## v0.8.5 API Enforcement Binding
 
 External API Adapter now calls Enforcement internally with the provided Capability Token. Callers cannot spoof `enforcement_allowed`. The adapter remains mock-only and performs no real network calls.
+
+
+## v0.8.6 Runaway / Cost Control Hardening
+
+Non-positive projected/runtime costs now fail closed. See `docs/RUNAWAY_COST_CONTROL.md`.
