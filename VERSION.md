@@ -1,9 +1,9 @@
 # GateGraph Version
 
-Current candidate: v0.8.38_CANDIDATE
+Current candidate: v0.8.39_STABLE
 
-Base: v0.8.36_STABLE
+Base: v0.8.38_STABLE
 
-Phase: Runtime Cost Governance / Kill Conditions
+Phase: Observability / Explainability
 
-Promotion evidence: Pending full Windows Evidence CI.
+Promotion evidence: Full evidence CI passed in packaged workspace.
