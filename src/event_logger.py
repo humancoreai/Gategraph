@@ -10,10 +10,9 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
-# INV: audit schema version is compatibility-facing and may lag release version intentionally.
-SCHEMA_VERSION = "0.8.3"
+SCHEMA_VERSION = "0.4"
 ACTOR_LAYER = "governance"
-ACTOR_VERSION = "0.8.13"
+ACTOR_VERSION = "0.4.0"
 
 
 @dataclass(frozen=True)
