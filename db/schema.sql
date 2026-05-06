@@ -204,3 +204,17 @@ CREATE TABLE IF NOT EXISTS secret_refs (
 
 CREATE INDEX IF NOT EXISTS idx_secret_refs_active
     ON secret_refs(active);
+
+-- API endpoint policies (v0.8.12)
+-- SEC: real outbound HTTP endpoints are fail-closed unless host/path/method is explicitly allowlisted.
+CREATE TABLE IF NOT EXISTS api_endpoint_policies (
+    policy_id TEXT PRIMARY KEY,
+    allowed_host TEXT NOT NULL,
+    allowed_path_prefixes TEXT NOT NULL,
+    allowed_methods TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_api_endpoint_policies_active
+    ON api_endpoint_policies(active);
