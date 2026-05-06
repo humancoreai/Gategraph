@@ -53,3 +53,6 @@ Thumbs.db
 # Env / secrets
 .env
 .env.*
+
+# Operator workflow runtime documentation
+operator_logs/*.jsonl
