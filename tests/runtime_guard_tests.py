@@ -2,6 +2,7 @@
 WHY: Runtime Guard tests verify loop/cost/time boundaries before Governance work happens.
 INV: stop decisions must fail closed and must not require Governance evaluation.
 """
+import os
 import os, sys
 from datetime import datetime, timezone, timedelta
 
