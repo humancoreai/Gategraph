@@ -352,7 +352,7 @@ def main():
     exit_code = 1 if (isolated.failed or accumulated.failed or isolated.invariant_violations or accumulated.invariant_violations) else 0
     sys.stdout.flush()
     sys.stderr.flush()
-    os._exit(exit_code)
+    raise SystemExit(exit_code)
 
 
 if __name__ == "__main__":
