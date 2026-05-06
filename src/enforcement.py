@@ -1,0 +1,64 @@
+"""
+SEC: this is the only gate between a decision and an actual action — it must never be bypassed.
+INV: no action executes without a valid, non-expired, non-revoked, task-bound token.
+WHY: separating decision logic from enforcement prevents accidental permission escalation.
+"""
+
+import sqlite3
+import uuid
+from dataclasses import dataclass
+from typing import Optional
+
+from src.capability_token import CapabilityToken
+from src import event_logger
+
+
+@dataclass(frozen=True)
+class EnforcementResult:
+    allowed: bool
+    reason: str
+    rejection_event_id: Optional[str]
+
+
+def enforce(conn: sqlite3.Connection, token: Optional[CapabilityToken], requested_capability: str, task_id: str, correlation_id: str) -> EnforcementResult:
+    if token is None:
+        return _reject(conn, task_id, correlation_id, "no capability token provided", requested_capability)
+
+    # SEC: cross-task token reuse is capability leakage.
+    if token.task_id != task_id:
+        return _reject(conn, task_id, correlation_id, f"token {token.token_id} is bound to task {token.task_id}, not {task_id}", requested_capability)
+
+    if token.is_expired():
+        return _reject(conn, task_id, correlation_id, f"token {token.token_id} expired at {token.expires_at.isoformat()}", requested_capability)
+
+    # SEC: revocation can occur after issuance, so enforcement must re-check DB state.
+    row = conn.execute("SELECT revoked FROM capability_tokens WHERE token_id = ?", (token.token_id,)).fetchone()
+    if row is None:
+        return _reject(conn, task_id, correlation_id, f"token {token.token_id} not found", requested_capability)
+    if int(row["revoked"]):
+        return _reject(conn, task_id, correlation_id, f"token {token.token_id} is revoked", requested_capability)
+
+    if not token.allows(requested_capability):
+        return _reject(conn, task_id, correlation_id, f"capability '{requested_capability}' not granted in token {token.token_id}", requested_capability)
+
+    return EnforcementResult(True, "capability granted", None)
+
+
+def _reject(conn: sqlite3.Connection, task_id: str, correlation_id: str, reason: str, cap: str) -> EnforcementResult:
+    rejection_event_id = f"EVT-REJ-{uuid.uuid4().hex[:10].upper()}"
+    idempotency_key = f"reject:{task_id}:{cap}:{reason[:40]}"
+    with conn:
+        record = event_logger.log_event(
+            conn,
+            event_id=rejection_event_id,
+            idempotency_key=idempotency_key,
+            correlation_id=correlation_id,
+            causation_id=None,
+            event_type="enforcement_rejection",
+            task_id=task_id,
+            actor_component="enforcement_layer",
+            input_data={"requested_capability": cap},
+            evaluation={"check": "capability_token_validation"},
+            decision={"status": "block", "reason": reason},
+        )
+    return EnforcementResult(False, reason, record.event_id)
