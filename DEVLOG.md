@@ -555,3 +555,12 @@ Make GateGraph usable in single-node mode without changing core governance behav
 ### Notes
 
 The CLI is an adapter only. It does not duplicate or bypass Governance, Enforcement, Budget, Runtime, or Operational logic.
+
+## v0.8.36_CANDIDATE - API Robustness / Real-World Stability
+
+- Preserved the v0.8.35 API contract without adding fields or changing response shape.
+- Added server socket timeout for malformed/truncated reads.
+- Added defensive broken-pipe/client-abort handling at the HTTP boundary.
+- Added adapter-level serialization for `/evaluate` to protect the single-node SQLite path under parallel requests.
+- Added `tests/api_robustness_evidence.py` and registered it in the evidence manifest.
+- Local checks: `api_contract_evidence`, `api_robustness_evidence`, and `repo_push_hygiene_evidence` passed. Full aggregate CI remains to be rerun before STABLE.
