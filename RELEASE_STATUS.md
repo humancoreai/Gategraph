@@ -17,3 +17,16 @@ Promotion notes:
 ## v0.8.40_CANDIDATE
 
 Status: Candidate. Operator Control / Debug Interface added as read-only layer on top of v0.8.39_STABLE.
+
+## v0.8.42_STABLE
+
+Status: STABLE. Promoted after Full Windows Evidence CI passed on 2026-05-06.
+Base: v0.8.41_STABLE
+Phase: Operator Workflows / Playbooks
+
+Promotion notes:
+- Operator Workflow Layer added as read-only documentation/reference layer.
+- Static playbooks and descriptive matching added.
+- No governance, enforcement, runtime, or rule-update authority added.
+- Full Windows Evidence CI: Passed=True.
+
