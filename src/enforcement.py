@@ -9,7 +9,7 @@ import uuid
 from dataclasses import dataclass
 from typing import Optional
 
-from src.capability_token import CapabilityToken, verify_signature, _load_keyring
+from src.capability_token import CapabilityToken, verify_signature, load_trusted_keyring, is_trusted_signing_key
 from src import event_logger
 
 
@@ -43,7 +43,10 @@ def enforce(conn: sqlite3.Connection, token: Optional[CapabilityToken], requeste
         return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
     if row["signing_key_id"] != token.signing_key_id:
         return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
-    if token.signing_key_id not in _load_keyring():
+
+    # SEC: load trust material once per enforcement decision to avoid split-brain keyring reads.
+    keyring = load_trusted_keyring()
+    if not is_trusted_signing_key(token.signing_key_id, keyring):
         return _reject(conn, task_id, correlation_id, f"capability token unknown signing key: {token.signing_key_id}", requested_capability)
 
     # SEC: signature binds immutable claims; a forged/mutated in-memory token must fail closed.
@@ -51,7 +54,7 @@ def enforce(conn: sqlite3.Connection, token: Optional[CapabilityToken], requeste
         import json
         if json.dumps(token.capabilities, sort_keys=True) != json.dumps(json.loads(persisted_caps), sort_keys=True):
             return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
-        if not verify_signature(token, row["signature"]):
+        if not verify_signature(token, row["signature"], keyring=keyring):
             return _reject(conn, task_id, correlation_id, f"capability token invalid signature: {token.token_id}", requested_capability)
     except Exception:
         return _reject(conn, task_id, correlation_id, f"capability token invalid signature: {token.token_id}", requested_capability)
