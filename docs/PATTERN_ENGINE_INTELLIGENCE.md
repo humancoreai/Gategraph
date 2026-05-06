@@ -81,3 +81,8 @@ The proposal explicitly says not to auto-grant capabilities.
 This is not adaptive governance yet.
 
 It is only an advisory pattern layer that prepares human-reviewable proposals from repeated audit evidence.
+
+
+## v0.8.19 update
+
+Pattern proposals now include advisory priority/score metadata for human triage. This does not change proposal-only behavior.
