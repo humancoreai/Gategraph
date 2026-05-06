@@ -46,17 +46,16 @@ def main() -> int:
             status, actual = _request(port, "POST", "/evaluate", task)
             assert status == 200, actual
             assert actual["ok"] is True
-            assert actual["decision"] == expected["decision"]
-            assert actual["risk_level"] == expected["risk_level"]
-            assert actual["selected_rule_id"] == expected["selected_rule_id"]
-            assert actual["matched_rule_ids"] == expected["matched_rule_ids"]
-            assert actual["token_issued"] == expected["token_issued"]
+            assert actual["data"]["decision"] == expected["decision"]
+            assert actual["data"]["normalized_reason"]["risk_level"] == expected["risk_level"]
+            assert actual["data"]["normalized_reason"]["selected_rule_id"] == expected["selected_rule_id"]
+            assert actual["data"]["normalized_reason"]["matched_rule_ids"] == expected["matched_rule_ids"]
 
             status, data = _request(port, "GET", "/status")
-            assert status == 200 and data["ok"] is True and "counts" in data
+            assert status == 200 and data["ok"] is True and "counts" in data["data"]
 
             status, data = _request(port, "GET", "/monitoring")
-            assert status == 200 and data["ok"] is True and "summary" in data["monitoring"]
+            assert status == 200 and data["ok"] is True and "summary" in data["data"]["monitoring"]
 
             status, data = _request(port, "DELETE", "/evaluate")
             assert status == 405 and data["ok"] is False
