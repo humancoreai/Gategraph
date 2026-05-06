@@ -185,3 +185,27 @@ Core invariant status:
 - Enforcement remains the only action gatekeeper.
 - Guards stop only; they do not grant capabilities.
 - Pattern Engine remains proposal-only.
+
+
+## v0.8.2-reason-normalization
+
+Added reason normalization:
+
+- `src/reason_normalizer.py`
+- `tests/reason_normalization_evidence.py`
+- `docs/REASON_NORMALIZATION.md`
+
+Reason fields:
+- code
+- category
+- severity
+- stage
+- message
+- raw_reason
+- priority
+
+Invariant status:
+- Raw reasons are preserved.
+- Normalization never changes decisions.
+- Unknown reasons fall back to unclassified codes.
+- Guard Orchestrator now emits normalized_reason as additive metadata.

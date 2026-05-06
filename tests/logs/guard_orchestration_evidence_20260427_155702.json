@@ -1,0 +1,423 @@
+{
+  "run_id": "guard_orchestration_evidence_20260427_155702",
+  "started_at": "2026-04-27T15:57:02.228974+00:00",
+  "finished_at": "2026-04-27T15:57:02.330376+00:00",
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "findings": 0
+  },
+  "tests": [
+    {
+      "test_name": "enforcement_blocks_before_budget_guards",
+      "description": "If Enforcement blocks, Session/Runtime guards must not spend or create misleading stop reasons.",
+      "expected": {
+        "stage": "enforcement",
+        "session_decisions": 0,
+        "runtime_decisions": 0
+      },
+      "actual": {
+        "decision": "stop",
+        "stage": "enforcement",
+        "reason": "no capability token provided",
+        "session_decisions": 0,
+        "runtime_decisions": 0
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session": {
+          "session_id": "ORCH-ENFORCEMENT-FIRST",
+          "session_budgets": [
+            {
+              "session_id": "ORCH-ENFORCEMENT-FIRST",
+              "max_session_cost_units": 100,
+              "max_session_tasks": 10,
+              "max_agent_cost_units": 100,
+              "created_at": "2026-04-27T15:57:02.244095+00:00"
+            }
+          ],
+          "session_task_links": [],
+          "session_budget_decisions": [],
+          "audit_refs": {
+            "session_budget_decision_ids": [],
+            "linked_task_ids": []
+          }
+        },
+        "task": {
+          "task_id": "ORCH-ENFORCEMENT-BLOCK",
+          "events": [],
+          "runtime_decisions": [],
+          "runtime_steps": [],
+          "governance_decisions": [],
+          "capability_tokens": [],
+          "audit_refs": {
+            "event_ids": [],
+            "runtime_decision_ids": [],
+            "runtime_step_ids": [],
+            "governance_decision_ids": [],
+            "token_ids": []
+          }
+        }
+      }
+    },
+    {
+      "test_name": "session_stops_before_runtime_guard",
+      "description": "Exhausted session budget must stop before per-task Runtime Guard is evaluated.",
+      "expected": {
+        "stage": "session_budget",
+        "runtime_decisions_for_stopped_task": 0
+      },
+      "actual": {
+        "decision": "stop",
+        "stage": "session_budget",
+        "reason": "max_session_cost_units exceeded: 6 > 5",
+        "runtime_decisions_for_stopped_task": 0
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session": {
+          "session_id": "ORCH-SESSION-FIRST",
+          "session_budgets": [
+            {
+              "session_id": "ORCH-SESSION-FIRST",
+              "max_session_cost_units": 5,
+              "max_session_tasks": 10,
+              "max_agent_cost_units": 100,
+              "created_at": "2026-04-27T15:57:02.266387+00:00"
+            }
+          ],
+          "session_task_links": [
+            {
+              "session_id": "ORCH-SESSION-FIRST",
+              "task_id": "ORCH-SESSION-PRIOR",
+              "actor_id": "agent-a",
+              "created_at": "2026-04-27T15:57:02.267966+00:00"
+            }
+          ],
+          "session_budget_decisions": [
+            {
+              "decision_id": "SBD-A64C52362B9C",
+              "session_id": "ORCH-SESSION-FIRST",
+              "task_id": "ORCH-SESSION-PRIOR",
+              "actor_id": "agent-a",
+              "projected_cost_units": 5,
+              "decision": "continue",
+              "reason": "within session budget",
+              "created_at": "2026-04-27T15:57:02.268489+00:00"
+            },
+            {
+              "decision_id": "SBD-C7C6A3B96E25",
+              "session_id": "ORCH-SESSION-FIRST",
+              "task_id": "ORCH-SESSION-STOP",
+              "actor_id": "agent-a",
+              "projected_cost_units": 1,
+              "decision": "stop",
+              "reason": "max_session_cost_units exceeded: 6 > 5",
+              "created_at": "2026-04-27T15:57:02.273087+00:00"
+            }
+          ],
+          "audit_refs": {
+            "session_budget_decision_ids": [
+              "SBD-A64C52362B9C",
+              "SBD-C7C6A3B96E25"
+            ],
+            "linked_task_ids": [
+              "ORCH-SESSION-PRIOR"
+            ]
+          }
+        },
+        "task": {
+          "task_id": "ORCH-SESSION-STOP",
+          "events": [],
+          "runtime_decisions": [],
+          "runtime_steps": [],
+          "governance_decisions": [],
+          "capability_tokens": [],
+          "audit_refs": {
+            "event_ids": [],
+            "runtime_decision_ids": [],
+            "runtime_step_ids": [],
+            "governance_decision_ids": [],
+            "token_ids": []
+          }
+        }
+      }
+    },
+    {
+      "test_name": "runtime_stops_when_session_allows",
+      "description": "Runtime Guard must stop when session budget allows but per-task budget is exhausted.",
+      "expected": {
+        "stage": "runtime_guard",
+        "session_link_created": true,
+        "runtime_decisions": 1
+      },
+      "actual": {
+        "decision": "stop",
+        "stage": "runtime_guard",
+        "reason": "max_steps exceeded: 0 >= 0",
+        "session_links": 1,
+        "runtime_decisions": 1
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session": {
+          "session_id": "ORCH-RUNTIME-STOP",
+          "session_budgets": [
+            {
+              "session_id": "ORCH-RUNTIME-STOP",
+              "max_session_cost_units": 100,
+              "max_session_tasks": 10,
+              "max_agent_cost_units": 100,
+              "created_at": "2026-04-27T15:57:02.290686+00:00"
+            }
+          ],
+          "session_task_links": [
+            {
+              "session_id": "ORCH-RUNTIME-STOP",
+              "task_id": "ORCH-RUNTIME-STOP-TASK",
+              "actor_id": "agent-a",
+              "created_at": "2026-04-27T15:57:02.292290+00:00"
+            }
+          ],
+          "session_budget_decisions": [
+            {
+              "decision_id": "SBD-A7163FAFE27B",
+              "session_id": "ORCH-RUNTIME-STOP",
+              "task_id": "ORCH-RUNTIME-STOP-TASK",
+              "actor_id": "agent-a",
+              "projected_cost_units": 1,
+              "decision": "continue",
+              "reason": "within session budget",
+              "created_at": "2026-04-27T15:57:02.292739+00:00"
+            }
+          ],
+          "audit_refs": {
+            "session_budget_decision_ids": [
+              "SBD-A7163FAFE27B"
+            ],
+            "linked_task_ids": [
+              "ORCH-RUNTIME-STOP-TASK"
+            ]
+          }
+        },
+        "task": {
+          "task_id": "ORCH-RUNTIME-STOP-TASK",
+          "events": [],
+          "runtime_decisions": [
+            {
+              "decision_id": "RTD-A09234633D2D",
+              "task_id": "ORCH-RUNTIME-STOP-TASK",
+              "step_id": null,
+              "decision": "stop",
+              "reason": "max_steps exceeded: 0 >= 0",
+              "created_at": "2026-04-27T15:57:02.293612+00:00"
+            }
+          ],
+          "runtime_steps": [],
+          "governance_decisions": [],
+          "capability_tokens": [],
+          "audit_refs": {
+            "event_ids": [],
+            "runtime_decision_ids": [
+              "RTD-A09234633D2D"
+            ],
+            "runtime_step_ids": [],
+            "governance_decision_ids": [],
+            "token_ids": []
+          }
+        }
+      }
+    },
+    {
+      "test_name": "both_session_and_runtime_would_stop_session_priority",
+      "description": "When both would stop, Session Budget has deterministic priority and Runtime Guard is not evaluated.",
+      "expected": {
+        "stage": "session_budget",
+        "runtime_decisions_for_new_task": 0
+      },
+      "actual": {
+        "decision": "stop",
+        "stage": "session_budget",
+        "reason": "max_session_cost_units exceeded: 2 > 1",
+        "runtime_decisions_for_new_task": 0
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session": {
+          "session_id": "ORCH-BOTH-STOP",
+          "session_budgets": [
+            {
+              "session_id": "ORCH-BOTH-STOP",
+              "max_session_cost_units": 1,
+              "max_session_tasks": 10,
+              "max_agent_cost_units": 100,
+              "created_at": "2026-04-27T15:57:02.308210+00:00"
+            }
+          ],
+          "session_task_links": [
+            {
+              "session_id": "ORCH-BOTH-STOP",
+              "task_id": "ORCH-BOTH-PRIOR",
+              "actor_id": "agent-a",
+              "created_at": "2026-04-27T15:57:02.309658+00:00"
+            }
+          ],
+          "session_budget_decisions": [
+            {
+              "decision_id": "SBD-BCEB2384DA39",
+              "session_id": "ORCH-BOTH-STOP",
+              "task_id": "ORCH-BOTH-PRIOR",
+              "actor_id": "agent-a",
+              "projected_cost_units": 1,
+              "decision": "continue",
+              "reason": "within session budget",
+              "created_at": "2026-04-27T15:57:02.310019+00:00"
+            },
+            {
+              "decision_id": "SBD-ED46D98CEF37",
+              "session_id": "ORCH-BOTH-STOP",
+              "task_id": "ORCH-BOTH-NEW",
+              "actor_id": "agent-a",
+              "projected_cost_units": 1,
+              "decision": "stop",
+              "reason": "max_session_cost_units exceeded: 2 > 1",
+              "created_at": "2026-04-27T15:57:02.312592+00:00"
+            }
+          ],
+          "audit_refs": {
+            "session_budget_decision_ids": [
+              "SBD-BCEB2384DA39",
+              "SBD-ED46D98CEF37"
+            ],
+            "linked_task_ids": [
+              "ORCH-BOTH-PRIOR"
+            ]
+          }
+        },
+        "task": {
+          "task_id": "ORCH-BOTH-NEW",
+          "events": [],
+          "runtime_decisions": [],
+          "runtime_steps": [],
+          "governance_decisions": [],
+          "capability_tokens": [],
+          "audit_refs": {
+            "event_ids": [],
+            "runtime_decision_ids": [],
+            "runtime_step_ids": [],
+            "governance_decision_ids": [],
+            "token_ids": []
+          }
+        }
+      }
+    },
+    {
+      "test_name": "all_guards_pass_action_ready",
+      "description": "Only if Enforcement, Session Budget and Runtime Guard all pass may action become ready.",
+      "expected": {
+        "decision": "continue",
+        "stage": "action_ready"
+      },
+      "actual": {
+        "decision": "continue",
+        "stage": "action_ready",
+        "reason": "all guards passed",
+        "session_links": 1,
+        "runtime_decisions": 1
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session": {
+          "session_id": "ORCH-ALL-PASS",
+          "session_budgets": [
+            {
+              "session_id": "ORCH-ALL-PASS",
+              "max_session_cost_units": 100,
+              "max_session_tasks": 10,
+              "max_agent_cost_units": 100,
+              "created_at": "2026-04-27T15:57:02.326041+00:00"
+            }
+          ],
+          "session_task_links": [
+            {
+              "session_id": "ORCH-ALL-PASS",
+              "task_id": "ORCH-ALL-PASS-TASK",
+              "actor_id": "agent-a",
+              "created_at": "2026-04-27T15:57:02.327408+00:00"
+            }
+          ],
+          "session_budget_decisions": [
+            {
+              "decision_id": "SBD-48ECD6E39D0F",
+              "session_id": "ORCH-ALL-PASS",
+              "task_id": "ORCH-ALL-PASS-TASK",
+              "actor_id": "agent-a",
+              "projected_cost_units": 3,
+              "decision": "continue",
+              "reason": "within session budget",
+              "created_at": "2026-04-27T15:57:02.327852+00:00"
+            }
+          ],
+          "audit_refs": {
+            "session_budget_decision_ids": [
+              "SBD-48ECD6E39D0F"
+            ],
+            "linked_task_ids": [
+              "ORCH-ALL-PASS-TASK"
+            ]
+          }
+        },
+        "task": {
+          "task_id": "ORCH-ALL-PASS-TASK",
+          "events": [],
+          "runtime_decisions": [
+            {
+              "decision_id": "RTD-1C9C60E7BB7F",
+              "task_id": "ORCH-ALL-PASS-TASK",
+              "step_id": "STEP-C45FE3970178",
+              "decision": "continue",
+              "reason": "within budget",
+              "created_at": "2026-04-27T15:57:02.328964+00:00"
+            }
+          ],
+          "runtime_steps": [
+            {
+              "step_id": "STEP-C45FE3970178",
+              "task_id": "ORCH-ALL-PASS-TASK",
+              "step_index": 1,
+              "actor_id": "agent-a",
+              "action_type": "model_call",
+              "action_signature": "agent-a:model_call:x",
+              "cost_units": 3,
+              "timestamp": "2026-04-27T15:57:02.328575+00:00"
+            }
+          ],
+          "governance_decisions": [],
+          "capability_tokens": [],
+          "audit_refs": {
+            "event_ids": [],
+            "runtime_decision_ids": [
+              "RTD-1C9C60E7BB7F"
+            ],
+            "runtime_step_ids": [
+              "STEP-C45FE3970178"
+            ],
+            "governance_decision_ids": [],
+            "token_ids": []
+          }
+        }
+      }
+    }
+  ]
+}
