@@ -1,8 +1,8 @@
 # GateGraph Version
 
-Current: v0.8.8-capability-token-hardening
+Current: v0.8.9-token-key-management
 
-Previous: v0.8.7-ci-runner-stabilization
+Previous: v0.8.8-capability-token-hardening
 
 Notes:
 - External API Adapter now invokes Enforcement internally.
@@ -28,3 +28,8 @@ Release hygiene stabilization. Evidence execution was moved toward bounded runne
 ## v0.8.8-capability-token-hardening
 
 Security hardening release. Capability Tokens now carry HMAC signatures over immutable claims and Enforcement validates persisted claims plus signature before granting capabilities. Audit schema version remains `0.8.3`; token storage schema is extended with token-level signature metadata.
+
+
+## v0.8.9-token-key-management
+
+Security hardening release. Capability Token signing now supports explicit active key IDs and trusted keyrings for bounded HMAC key rotation. Unknown signing keys fail closed. No distributed trust or asymmetric signing yet.
