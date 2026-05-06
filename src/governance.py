@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
-from src import risk_engine, rule_engine, event_logger, capability_token as cap_module, budget_ledger
+from src import risk_engine, rule_engine, event_logger, capability_token as cap_module
 from src.capability_token import CapabilityToken
 
 ALL_KNOWN_CAPABILITIES = ["read_files", "write_files", "delete_files", "api_call"]
@@ -28,9 +28,6 @@ class GovernanceResult:
     matched_rule_ids: List[str]
     conflict_resolved: bool
     token: Optional[CapabilityToken]
-    budget_scope_id: Optional[str]
-    budget_reservation_id: Optional[str]
-    escalation_state: Optional[str]
     event_id: str
     decision_id: str
     was_duplicate: bool
@@ -49,10 +46,6 @@ def evaluate_task(
     correlation_id: Optional[str] = None,
     causation_id: Optional[str] = None,
     token_ttl: int = 300,
-    actor_id: str = "default_actor",
-    projected_cost_units: int = 1,
-    system_budget_units: int = 100,
-    actor_budget_units: int = 1000000,
 ) -> GovernanceResult:
     correlation_id = correlation_id or f"COR-{uuid.uuid4().hex[:12].upper()}"
     idempotency_key = idempotency_key or f"task:{task_id}:eval"
@@ -74,17 +67,10 @@ def evaluate_task(
     risk = risk_engine.classify(requested_capabilities, input_source, data_sensitivity, secrets_involved)
     rule_result = rule_engine.evaluate(conn, caps_for_storage, risk.risk_level)
 
-    # SEC: require_review is analysis-only; it may allow reads but never side effects.
+    # SEC: only allow/warn may issue a token; all other decisions deny requested capabilities.
     final_caps: Dict[str, bool] = {}
     for cap in ALL_KNOWN_CAPABILITIES:
-        if cap not in requested_capabilities:
-            final_caps[cap] = False
-        elif rule_result.final_decision in ("allow", "warn"):
-            final_caps[cap] = True
-        elif rule_result.final_decision == "require_review":
-            final_caps[cap] = cap == "read_files"
-        else:
-            final_caps[cap] = False
+        final_caps[cap] = cap in requested_capabilities and rule_result.final_decision in ("allow", "warn")
 
     matched_rule_ids = [r.rule_id for r in rule_result.matched_rules]
     selected_rationale = next((r.rationale for r in rule_result.matched_rules if r.rule_id == rule_result.selected_rule_id), None)
@@ -138,44 +124,12 @@ def evaluate_task(
         event_logger.log_relation(conn, event_record.event_id, "event", "produced", decision_id, "decision")
 
     token: Optional[CapabilityToken] = None
-    budget_scope_id: Optional[str] = None
-    budget_reservation_id: Optional[str] = None
-    escalation_state: Optional[str] = None
-    if any(final_caps.values()):
+    if rule_result.final_decision in ("allow", "warn"):
         with conn:
-            # INV: budget authority sits in Governance; downstream layers only receive signed constraints.
-            budget_ledger.ensure_budget_schema(conn)
-            system_scope = budget_ledger.ensure_scope(
-                conn, scope_id="system:default", scope_type="system", allocated_units=system_budget_units
-            )
-            actor_scope = budget_ledger.ensure_scope(
-                conn, scope_id=f"actor:{actor_id}", scope_type="actor", allocated_units=actor_budget_units, parent_scope_id=system_scope.scope_id
-            )
-            reservation = budget_ledger.reserve_budget(
-                conn,
-                scope_id=actor_scope.scope_id,
-                amount_units=projected_cost_units,
-                idempotency_key=f"budget:{idempotency_key}",
-                ttl_seconds=token_ttl,
-            )
-            refreshed_scope = budget_ledger.get_scope(conn, actor_scope.scope_id)
-            budget_scope_id = actor_scope.scope_id
-            budget_reservation_id = reservation.reservation_id
-            escalation_state = refreshed_scope.state if refreshed_scope else "blocked"
-            token = cap_module.issue_token(
-                conn,
-                decision_id,
-                task_id,
-                final_caps,
-                token_ttl,
-                budget_scope_id=budget_scope_id,
-                budget_reservation_id=budget_reservation_id,
-                max_cost_for_action=projected_cost_units,
-                escalation_state=escalation_state,
-            )
+            token = cap_module.issue_token(conn, decision_id, task_id, final_caps, token_ttl)
 
     return GovernanceResult(
         task_id, correlation_id, risk.risk_level, risk.reason, rule_result.final_decision,
         rule_result.selected_rule_id, matched_rule_ids, rule_result.conflict_resolved,
-        token, budget_scope_id, budget_reservation_id, escalation_state, event_record.event_id, decision_id, event_record.was_duplicate,
+        token, event_record.event_id, decision_id, event_record.was_duplicate,
     )
