@@ -1,8 +1,8 @@
 # GateGraph Version
 
-Current: v0.8.17-block-e-documentation-reality-check
+Current: v0.8.18-pattern-engine-intelligence
 
-## v0.8.17-block-e-documentation-reality-check
+## v0.8.18-pattern-engine-intelligence
 - Aligns README, SECURITY.md, docs/SECURITY.md, VERSION.md, and RELEASE_STATUS.md with the actual v0.8.16 system state.
 - Adds explicit current-limitations / not-production-ready framing.
 - Removes obsolete documentation claims that token signing, runtime/cost controls, or API integration are entirely absent.

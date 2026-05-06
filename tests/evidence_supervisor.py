@@ -38,6 +38,7 @@ MANIFEST: List[Tuple[str, str, str, int]] = [
     ("core_loop", "test_loop", "main", 30),
     ("runtime_guard", "runtime_guard_tests", "main", 20),
     ("pattern_engine", "pattern_engine_tests", "main", 20),
+    ("pattern_intelligence", "pattern_intelligence_evidence", "main", 20),
     ("usage_simulation", "usage_simulation", "run", 20),
     ("unusual_inputs", "unusual_inputs", "run", 20),
     ("agent_scenarios", "agent_scenarios", "run", 20),
