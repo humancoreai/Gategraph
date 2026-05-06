@@ -305,3 +305,22 @@ Scope remains mock-only: no real network calls.
 - Hardened HTTP path-prefix matching to avoid neighboring-path allows.
 - Rejected wildcard hosts explicitly in API endpoint policies.
 - Confirmed secret values stay out of audit/evidence while still reaching the transport seam after all gates pass.
+## v0.8.22-controlled-apply
+
+### Added
+- Implemented `src/controlled_apply.py` as a separate, narrow Human-Gate path after manual review.
+- Added Controlled Apply schema tables for reviews and signed artifacts.
+- Added strict rule-hardening validation: no loosening of risk, severity, decision, or priority.
+- Added TTL, signature/hash validation, single-use execution, and target-state drift protection.
+- Added audit events for request/approval/execution.
+- Added docs and evidence script.
+
+### Preserved invariants
+- Pattern Engine does not decide.
+- Review Workflow does not apply.
+- Enforcement runtime path is not bypassed or modified.
+- Unsupported apply types fail closed.
+
+### Boundary
+- This is not autonomous rule learning. It is a human-authorized deterministic apply seam with minimal scope.
+
