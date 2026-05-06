@@ -118,6 +118,11 @@ def evaluate_before_step(
     INV: runtime decision is evaluated before the step is allowed to continue.
     SEC: if no budget exists, stop instead of allowing unbounded execution.
     """
+    if cost_units <= 0:
+        return _record_decision(
+            conn, task_id, None, "stop", "invalid cost_units: must be positive", 0, 0
+        )
+
     budget = get_budget(conn, task_id)
     if budget is None:
         return _record_decision(

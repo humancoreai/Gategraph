@@ -7,6 +7,7 @@ from __future__ import annotations
 import json
 import os
 import subprocess
+import tempfile
 import sys
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
@@ -46,29 +47,29 @@ def tail(text: str, max_chars: int = 4000) -> str:
 
 
 def run_command(name: str, args: List[str]) -> CommandResult:
-    try:
-        proc = subprocess.run(
-            args,
-            cwd=PROJECT_ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-            timeout=45,
-        )
+    # WHY: some Python environments hang during interpreter shutdown when stdout/stderr are piped.
+    # SEC: command timeout is enforced explicitly and failures are reported as evidence, not hidden.
+    with tempfile.NamedTemporaryFile(prefix=f"gategraph_{name}_stdout_", mode="w+", encoding="utf-8", delete=True) as out, \
+         tempfile.NamedTemporaryFile(prefix=f"gategraph_{name}_stderr_", mode="w+", encoding="utf-8", delete=True) as err:
+        try:
+            proc = subprocess.Popen(args, cwd=PROJECT_ROOT, text=True, stdout=out, stderr=err)
+            try:
+                returncode = proc.wait(timeout=60)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                returncode = 124
+                err.write("\ntimeout\n")
+        except Exception as exc:
+            return CommandResult(name=name, command=args, returncode=125, stdout_tail="", stderr_tail=tail(str(exc)))
+
+        out.flush(); err.flush()
+        out.seek(0); err.seek(0)
         return CommandResult(
             name=name,
             command=args,
-            returncode=proc.returncode,
-            stdout_tail=tail(proc.stdout),
-            stderr_tail=tail(proc.stderr),
-        )
-    except subprocess.TimeoutExpired as exc:
-        return CommandResult(
-            name=name,
-            command=args,
-            returncode=124,
-            stdout_tail=tail(exc.stdout or ""),
-            stderr_tail=tail(exc.stderr or "timeout"),
+            returncode=returncode,
+            stdout_tail=tail(out.read()),
+            stderr_tail=tail(err.read()),
         )
 
 def latest_logs_since(start_marker: float) -> List[str]:
@@ -101,6 +102,7 @@ def main() -> int:
         ("reason_normalization_evidence", [*py, "tests/reason_normalization_evidence.py"]),
         ("scale_safety_evidence", [*py, "tests/scale_safety_evidence.py"]),
         ("external_api_evidence", [*py, "tests/external_api_evidence.py"]),
+        ("runaway_cost_evidence", [*py, "tests/runaway_cost_evidence.py"]),
         ("core_loop", [*py, "tests/test_loop.py"]),
         ("runtime_guard", [*py, "tests/runtime_guard_tests.py"]),
         ("pattern_engine", [*py, "tests/pattern_engine_tests.py"]),
