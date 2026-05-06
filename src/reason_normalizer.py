@@ -42,6 +42,11 @@ _REASON_BY_STAGE_AND_KEY: Dict[Tuple[str, str], Tuple[str, str, str, int, str]] 
     ("runtime_guard", "repeated_action_limit exceeded"): ("RT_REPEATED_ACTION", "loop_control", "medium", 60, "Repeated action limit was exceeded."),
     ("runtime_guard", "invalid cost_units"): ("RT_INVALID_COST", "runtime_budget", "critical", 66, "Runtime cost must be a positive integer; execution fails closed."),
     ("pattern_engine", "pending_review"): ("PAT_PROPOSAL_ONLY", "pattern_safety", "info", 30, "Pattern Engine produced proposal-only output pending review."),
+    ("controlled_apply", "artifact expired"): ("CA_TTL_EXPIRED", "controlled_apply", "critical", 95, "Controlled Apply blocked because the authorization artifact expired."),
+    ("controlled_apply", "artifact signature invalid"): ("CA_SIGNATURE_INVALID", "controlled_apply", "critical", 100, "Controlled Apply blocked because the authorization signature is invalid."),
+    ("controlled_apply", "artifact hash mismatch"): ("CA_HASH_MISMATCH", "controlled_apply", "critical", 100, "Controlled Apply blocked because the authorization hash does not match."),
+    ("controlled_apply", "two distinct controlled apply approvals are required"): ("CA_DOUBLE_REVIEW_FAILED", "controlled_apply", "critical", 95, "Controlled Apply blocked because the separate Human-Gate is incomplete."),
+    ("controlled_apply", "target state changed since artifact creation"): ("CA_TARGET_DRIFT", "controlled_apply", "critical", 92, "Controlled Apply blocked because the target changed after artifact creation."),
     ("action_ready", "all guards passed"): ("OK_ACTION_READY", "ok", "info", 0, "All guards passed; action may proceed."),
 }
 
