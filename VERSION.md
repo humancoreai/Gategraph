@@ -1,6 +1,14 @@
 # GateGraph Version
 
-Current: v0.8.22-controlled-apply
+Current: v0.8.23-evidence-runner-stabilization
+
+
+## v0.8.23-evidence-runner-stabilization
+- Stabilizes aggregate evidence execution without changing Governance, Enforcement, Runtime, HTTP, Secret, Pattern, Review, or Controlled Apply semantics.
+- Routes aggregate runs through `tests/_run_isolated.py`, which calls evidence entrypoints normally and hard-exits after completion to avoid interpreter shutdown hangs.
+- Adds Controlled Apply evidence to the aggregate manifest.
+- Replaces the legacy multiprocessing supervisor with a compatibility wrapper around the isolated, file-backed CI runner.
+- Evidence aggregation now completes with `Passed: True` on the current test set.
 
 ## v0.8.22-controlled-apply
 - Adds strictly limited Controlled Apply path behind separate two-person Human-Gate.
