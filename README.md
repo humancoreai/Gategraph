@@ -65,15 +65,16 @@ GateGraph governance principles are documented in [GOVERNANCE.md](./GOVERNANCE.m
 
 ## Project status
 
-Current candidate release: **v0.8.28_CANDIDATE**
+Current candidate release: **v0.8.29_CANDIDATE**
 
-This candidate adds `GOVERNANCE.md` as the repository-level SSOT for GateGraph governance principles. It makes no functional code changes on top of `v0.8.27.1_STABLE`. The validation baseline remains the full Windows Evidence CI run from `v0.8.27.1_STABLE`, which reported `Passed: True` on 2026-04-28.
+This candidate adds read-only Operational Alerting on top of existing append-only operational incidents. Alerts are signals only; they do not repair, unblock, acknowledge, resolve, or mutate governance state.
 
 
 ```text
-Version: v0.8.28_STABLE
-Core status: stable proof of concept; governance documentation stable
-Production status: not production-ready; Single-Node Governance-Core and operational-hardening evidence are mature, distributed production layers remain out of scope
+Version: v0.8.29_CANDIDATE
+Base: v0.8.28_STABLE
+Core status: stable proof of concept; operational alerting candidate
+Production status: not production-ready; monitoring transport, recovery, and distributed layers remain out of scope
 ```
 
 Current validation summary:
@@ -87,6 +88,7 @@ Reason Normalization:         passed
 Scale Safety Evidence:        passed
 Cross-Session Budget Evidence:  passed
 Operational Hardening:         passed
+Operational Alerting:          targeted evidence passed
 Evidence Runner Selftest:      passed
 External API Mock Evidence:    passed
 Secret/API Integration:        passed
@@ -124,6 +126,7 @@ python tests/reason_normalization_evidence.py
 python tests/scale_safety_evidence.py
 python tests/external_api_evidence.py
 python tests/operational_hardening_evidence.py
+python tests/operational_alerting_evidence.py
 ```
 
 Depending on your environment, use `python3` instead of `python`.
@@ -143,6 +146,7 @@ GateGraph/
 │   ├── RUNTIME_GUARD.md
 │   ├── PATTERN_ENGINE.md
 │   ├── SESSION_BUDGET_GUARD.md
+│   ├── OPERATIONAL_ALERTING.md
 │   ├── CROSS_SESSION_BUDGET_CONTROL.md
 │   ├── GUARD_ORCHESTRATION.md
 │   └── REASON_NORMALIZATION.md
@@ -155,6 +159,7 @@ GateGraph/
 │   ├── external_api_adapter.py
 │   ├── governance.py
 │   ├── guard_orchestrator.py
+│   ├── operational_hardening.py
 │   ├── pattern_engine.py
 │   ├── reason_normalizer.py
 │   ├── risk_engine.py
@@ -165,6 +170,7 @@ GateGraph/
 │   ├── agent_scenarios.py
 │   ├── evidence_ci.py
 │   ├── guard_orchestration_evidence.py
+│   ├── operational_alerting_evidence.py
 │   ├── pattern_engine_tests.py
 │   ├── reason_normalization_evidence.py
 │   ├── runtime_guard_tests.py
@@ -202,7 +208,7 @@ GateGraph is currently a Single-Node PoC. It does **not** yet provide:
 - production-grade secret management (no KMS, no OS-keychain lifecycle, no automated rotation)
 - distributed trust, asymmetric signatures, or cross-node token verification
 - real unrestricted HTTP/API execution; only a controlled transport seam with allowlisted endpoint policies
-- production billing integration, customer-level quota enforcement, or operational alerting
+- production billing integration, customer-level quota enforcement, or alert delivery
 - multi-node/distributed budget coordination
 - sandboxed tool runtime or operating-system isolation
 - human approval workflow / reviewer trust model
@@ -216,6 +222,7 @@ Implemented at PoC level:
 - HTTP allowlist policy for scheme/host/path/method
 - env-backed secret references with no raw secret values in SQLite or audit traces
 - append-only audit evidence and read-only explain trace reconstruction
+- read-only operational alert signals from append-only incident records
 
 ---
 

@@ -494,3 +494,22 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 ### Validation baseline
 - Inherits `v0.8.27.1_STABLE` full Windows Evidence CI baseline: `Passed: True`, unexpected allows `0`, invariant violations `0`.
 
+
+## v0.8.29_CANDIDATE - Operational Alerting
+
+### Scope
+- Added read-only operational alert evaluation on top of append-only incident records.
+- Added `OperationalAlert` signal model.
+- Added deterministic severity sorting for operational alerts.
+- Added `tests/operational_alerting_evidence.py`.
+- Added `docs/OPERATIONAL_ALERTING.md` and candidate release document.
+
+### Boundary
+- Alerts are signals only.
+- No automatic recovery.
+- No notification transport.
+- No changes to Enforcement/Governance/Runtime allow-path semantics.
+
+### Validation
+- Targeted operational alerting evidence passed: 4/4.
+- Full Evidence CI remains the Windows promotion gate.
