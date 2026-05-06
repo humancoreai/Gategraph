@@ -224,3 +224,18 @@ CREATE TABLE IF NOT EXISTS api_endpoint_policies (
 
 CREATE INDEX IF NOT EXISTS idx_api_endpoint_policies_active
     ON api_endpoint_policies(active);
+
+-- Review workflow (v0.8.21)
+-- INV: review decisions are human/process gates; they do not apply proposals automatically.
+CREATE TABLE IF NOT EXISTS proposal_review_decisions (
+    review_id TEXT PRIMARY KEY,
+    proposal_id TEXT NOT NULL,
+    reviewer_id TEXT NOT NULL,
+    decision TEXT NOT NULL CHECK (decision IN ('approved_for_manual_action','rejected')),
+    rationale TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY (proposal_id) REFERENCES proposals(proposal_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_proposal_review_decisions_proposal
+    ON proposal_review_decisions(proposal_id);
