@@ -349,8 +349,10 @@ def main():
     print(f"Unexpected allows: isolated {isolated.unexpected_allows} | accumulated {accumulated.unexpected_allows}")
     print(f"Invariant violations: isolated {isolated.invariant_violations} | accumulated {accumulated.invariant_violations}")
     print(f"DB events accumulated: {getattr(accumulated, 'db_events', '—')}")
-    if isolated.failed or accumulated.failed or isolated.invariant_violations or accumulated.invariant_violations:
-        sys.exit(1)
+    exit_code = 1 if (isolated.failed or accumulated.failed or isolated.invariant_violations or accumulated.invariant_violations) else 0
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(exit_code)
 
 
 if __name__ == "__main__":

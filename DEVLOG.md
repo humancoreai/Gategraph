@@ -258,3 +258,12 @@ Fixed external API adapter trust boundary:
 - External API Evidence remains 7/7 passing.
 
 Scope remains mock-only: no real network calls.
+
+## v0.8.6 - Runaway / Cost Control Hardening
+
+- Added fail-closed validation for non-positive projected session costs.
+- Added fail-closed validation for non-positive runtime step costs.
+- Added stable reason codes: `SES_INVALID_COST`, `RT_INVALID_COST`.
+- Added `tests/runaway_cost_evidence.py` with negative/zero-cost scenarios.
+- Verified External API negative-cost path stops at Session Budget before Runtime/Action.
+- No change to Governance/Enforcement authority model.
