@@ -1,5 +1,7 @@
 # GateGraph
 
+Current stable: **v0.8.33_STABLE**
+
 **GateGraph** is a deterministic governance, enforcement, runtime-control and audit proof of concept for agent-like systems.
 
 It evaluates requested actions, applies deterministic rules, issues capability tokens, enforces permissions, applies runtime/session budgets, records decisions in an append-only audit graph, and produces machine-readable evidence logs.
