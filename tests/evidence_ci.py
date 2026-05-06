@@ -276,25 +276,17 @@ def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, s
     # WHY: binary file-backed output avoids pipe deadlocks and all Windows codepage decode paths.
     with out_path.open("wb") as out, err_path.open("wb") as err:
         if os.name == "posix":
-            # SEC: GNU timeout owns the watchdog outside Python, avoiding interpreter-level
-            # wait/signal edge cases while preserving fail-closed timeout semantics.
-            timeout_cmd = [
-                "timeout",
-                "--kill-after=2s",
-                f"{int(timeout_seconds)}s",
-                *cmd,
-            ]
-            completed = subprocess.run(
-                timeout_cmd,
+            # SEC: Python owns the watchdog and starts an isolated session. Avoid GNU
+            # timeout as a second supervisor because subprocess.run() can wait forever
+            # if the wrapped child never reports exit in hostile kernel/IO states.
+            proc = subprocess.Popen(
+                cmd,
                 cwd=PROJECT_ROOT,
                 env=env,
                 stdout=out,
                 stderr=err,
-                check=False,
+                start_new_session=True,
             )
-            rc = int(completed.returncode)
-            timed_out = rc == 124 or rc == 137
-            killed_group = timed_out
         else:
             creationflags = subprocess.CREATE_NEW_PROCESS_GROUP
             proc = subprocess.Popen(
@@ -305,12 +297,12 @@ def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, s
                 stderr=err,
                 creationflags=creationflags,
             )
-            try:
-                rc = proc.wait(timeout=timeout_seconds)
-            except subprocess.TimeoutExpired:
-                timed_out = True
-                killed_group = _kill_process_group(proc)
-                rc = _bounded_wait_after_kill(proc, 2.0)
+        try:
+            rc = proc.wait(timeout=timeout_seconds)
+        except subprocess.TimeoutExpired:
+            timed_out = True
+            killed_group = _kill_process_group(proc)
+            rc = _bounded_wait_after_kill(proc, 2.0)
 
     duration = time.monotonic() - started
     stdout = out_path.read_text(encoding="utf-8", errors="replace") if out_path.exists() else ""
