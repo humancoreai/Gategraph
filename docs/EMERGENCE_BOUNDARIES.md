@@ -1,4 +1,4 @@
-# Emergence Boundaries — v0.9.2_CANDIDATE
+# Emergence Boundaries — v0.9.2_STABLE
 
 ## Purpose
 
