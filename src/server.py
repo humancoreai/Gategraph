@@ -17,7 +17,7 @@ from src import response_normalizer, service_adapter
 from src.config_loader import AppConfig, load_config
 
 MAX_BODY_BYTES = 64 * 1024
-REQUIRED_EVALUATE_FIELDS = {"task_id", "task_type", "requested_capabilities", "input_source", "data_sensitivity"}
+REQUIRED_EVALUATE_FIELDS = {"task_id", "task_type", "requested_capabilities", "input_source", "data_sensitivity", "secrets_involved"}
 
 
 class RequestValidationError(ValueError):

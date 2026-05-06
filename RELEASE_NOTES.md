@@ -1,30 +1,28 @@
-# Release Notes – v0.9.0_CANDIDATE
+# GateGraph v0.9.1_CANDIDATE Release Notes
+
+Base: v0.9.0_STABLE
 
 ## Purpose
 
-v0.9.0_CANDIDATE is a milestone release candidate for external review. It consolidates the v0.8.x governance/enforcement line into a reproducible, reviewable baseline.
+v0.9.1 closes boundary and release-integrity gaps identified after the v0.9.0 external review baseline.
 
 ## Added
 
-- External review bundle (`EXTERNAL_REVIEW.md`, `ARCHITECTURE.md`, `INVARIANTS.md`, `NON_SCOPE.md`).
-- Deterministic release content rules (`RELEASE_CONTENT_RULES.md`).
-- Release metadata and manifest files.
-- Deterministic packaging and verification tools.
-- `milestone_release_evidence` for package and documentation consistency checks.
+- Explicit `TRUST_MODEL.md`.
+- Caller boundary evidence.
+- Release integrity evidence.
+- Minimal external review documents: `CONTRIBUTING.md`, `CHANGELOG.md`, `RELEASE_PROCESS.md`, `LICENSE`.
 
-## Unchanged
+## Changed
 
-- Governance decision logic.
-- Enforcement ordering.
-- Runtime/session budget guard semantics.
-- Audit append-only model.
-- Replay and drift-detection semantics.
+- Adapter requests now require explicit `input_source`, `data_sensitivity`, and `secrets_involved` fields.
+- Release builder and verifier now reject empty manifests, undeclared files, forbidden local artifacts, and non-deterministic ZIP metadata.
 
-## Explicitly out of scope
+## Not Changed
 
-- New risk models.
-- Adaptive or autonomous policy updates.
-- Machine-learning prediction.
-- Self-healing governance.
-- Dashboard/UI expansion.
-- Multi-node/distributed operation.
+- No new governance decision logic.
+- No new runtime model.
+- No new risk model.
+- No automatic reclassification.
+- No semantic inspection.
+- No multi-node behavior.

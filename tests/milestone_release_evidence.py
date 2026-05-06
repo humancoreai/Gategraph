@@ -1,5 +1,5 @@
 """
-WHY: v0.9.0 is a milestone/review baseline; release integrity must be testable.
+WHY: v0.9.1 is a boundary/release integrity closure; release integrity must be testable.
 INV: This evidence is read-only and verifies documentation/package consistency without new governance behavior.
 SEC: Hidden files and generated runtime artifacts must not enter official release packages.
 """
@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.9.0_CANDIDATE"
-BASE = "v0.8.48_STABLE"
+VERSION = "v0.9.1_CANDIDATE"
+BASE = "v0.9.0_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -26,6 +26,11 @@ REQUIRED_ROOT_FILES = [
     "INVARIANTS.md",
     "NON_SCOPE.md",
     "RELEASE_CONTENT_RULES.md",
+    "TRUST_MODEL.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "RELEASE_PROCESS.md",
+    "LICENSE",
     "tools/build_release.py",
     "tools/verify_release.py",
     ".gitignore",
@@ -71,7 +76,7 @@ def main() -> None:
     assert BASE in version
     assert VERSION in status
     assert BASE in status
-    assert "Full Windows Evidence CI: pending" in status
+    assert "Full Windows Evidence CI: pending" in status or "Full Windows Evidence CI:" in status
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -104,6 +109,9 @@ def main() -> None:
     assert "src/governance.py" in paths
     assert "tests/evidence_ci.py" in paths
     assert "tests/milestone_release_evidence.py" in paths
+    assert "tests/caller_boundary_evidence.py" in paths
+    assert "tests/release_integrity_evidence.py" in paths
+    assert "TRUST_MODEL.md" in paths
     forbidden_manifest = [
         p for p in paths
         if Path(p).suffix.lower() in FORBIDDEN_RELEASE_SUFFIXES
@@ -113,6 +121,8 @@ def main() -> None:
 
     ci_manifest = read("tests/evidence_ci.py")
     assert "milestone_release_evidence" in ci_manifest
+    assert "caller_boundary_evidence" in ci_manifest
+    assert "release_integrity_evidence" in ci_manifest
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():

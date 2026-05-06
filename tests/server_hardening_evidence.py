@@ -58,6 +58,7 @@ def main() -> int:
                 "requested_capabilities": ["read_files"],
                 "input_source": "local",
                 "data_sensitivity": "internal",
+                "secrets_involved": False,
             }
             status, content_type, data = _request(port, "POST", "/evaluate", valid_task)
             assert status == 200 and content_type and content_type.startswith("application/json"), data
