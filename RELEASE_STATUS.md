@@ -1,11 +1,11 @@
-# GateGraph v0.9.1_CANDIDATE Release Status
+# GateGraph v0.9.1_STABLE Release Status
 
 Base: v0.9.0_STABLE  
 Phase: Boundary Hardening / Release Integrity Closure
 
 ## Status
 
-Candidate build prepared.
+Stable build prepared from tested candidate.
 
 ## Evidence Status
 
