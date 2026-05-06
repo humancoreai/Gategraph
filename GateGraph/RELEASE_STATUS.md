@@ -30,3 +30,11 @@ Unchanged:
 ## Validation note
 
 The code-level runner fix is implemented. In this execution sandbox, timeout primitives showed unstable behavior during validation; therefore the final aggregate run should be repeated in a clean local/CI environment before treating v0.8.24 as release-final.
+## v0.8.25_RUNTIME_GOVERNANCE_CANDIDATE
+
+- Added `src/runtime_governance.py` with deterministic normal/degraded/throttled/blocked escalation states.
+- Runtime Guard now applies stricter `max_cost_for_action` constraints before recording a new step.
+- Loop signals can only escalate constraints; they cannot allow continuation.
+- Extended runaway cost evidence with near-budget and loop-signal constraint cases.
+- No change to Enforcement authority, Pattern decision rights, Secret handling or Human-Gate invariants.
+
