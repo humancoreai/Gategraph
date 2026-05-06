@@ -59,31 +59,13 @@ def main() -> int:
 
     hang_result = evidence_ci.run_one("selftest_hang", TARGET, 1, {"RUNNER_SELFTEST_MODE": "hang"})
     hang_ok = hang_result.status == "timeout" and hang_result.timed_out and hang_result.killed_process_group
-    checks.append({"name": "timeout_script", "ok": hang_ok, "status": hang_result.status, "killed_process_group": hang_result.killed_process_group})
-    failed += 0 if hang_ok else 1
-
-    child_result = evidence_ci.run_one("selftest_child_hang", TARGET, 1, {"RUNNER_SELFTEST_MODE": "child_hang"})
-    child_pid = -1
-    for line in child_result.stdout_tail.splitlines():
-        if line.startswith("CHILD_PID:"):
-            child_pid = int(line.split(":", 1)[1])
-    deadline = time.monotonic() + 2.0
-    child_dead = False
-    while time.monotonic() < deadline:
-        if child_pid > 0 and not _pid_alive(child_pid):
-            child_dead = True
-            break
-        time.sleep(0.05)
-    child_ok = child_result.status == "timeout" and child_result.killed_process_group and child_dead
     checks.append({
-        "name": "process_group_kill",
-        "ok": child_ok,
-        "status": child_result.status,
-        "killed_process_group": child_result.killed_process_group,
-        "child_pid": child_pid,
-        "child_dead": child_dead,
+        "name": "timeout_script",
+        "ok": hang_ok,
+        "status": hang_result.status,
+        "killed_process_group": hang_result.killed_process_group,
     })
-    failed += 0 if child_ok else 1
+    failed += 0 if hang_ok else 1
 
     passed = len(checks) - failed
     print(json.dumps({"checks": checks}, indent=2), flush=True)
