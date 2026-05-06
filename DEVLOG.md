@@ -88,3 +88,16 @@ DB events accumulated: 31
 - Added `docs/PATTERN_ENGINE.md`.
 - Pattern Engine creates `pending_review` proposals only.
 - Verified active rules are not mutated by Pattern Engine.
+
+## v0.7.1 – Audit Evidence Layer
+
+- Added `tests/audit_evidence.py` as read-only evidence extraction for governance events, runtime decisions, runtime steps, tokens, and Pattern Engine proposals.
+- Added `tests/runtime_stress_evidence.py` to generate structured JSON proof logs under `tests/logs/`.
+- No production core semantics changed: Governance, Enforcement, Runtime Guard, Pattern Engine, and Audit Graph remain untouched.
+- Verified evidence scenarios:
+  - agent ping-pong loop stopped by repeated-action limit
+  - cumulative cost limit stops allowed micro-actions
+  - valid token does not override runtime exhaustion
+  - missing token is rejected by Enforcement with audit event
+  - Pattern Engine remains proposal-only and does not mutate rules
+  - repeated identical governance evaluation is idempotent in audit evidence
