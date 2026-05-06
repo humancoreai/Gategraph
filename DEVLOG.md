@@ -42,3 +42,9 @@ DB events accumulated: 31
 - Rewrote `src/risk_engine.py` explicitly instead of patching conditionally.
 - Confirmed `api_call` + `input_source="external"` classifies as `medium`.
 - Preserved prior fixes: `secret` sensitivity is `critical`; `require_review` remains analysis-only.
+
+## v0.4.5 — Enum validation for unusual inputs
+
+- Risk Engine now validates `input_source` and `data_sensitivity` against explicit allowed sets.
+- Unknown enum values classify as `medium` instead of silently falling through to `low`.
+- Unusual input simulation confirms zero unsafe allows and zero invariant violations.
