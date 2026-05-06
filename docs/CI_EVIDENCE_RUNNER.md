@@ -1,50 +1,25 @@
 # CI Evidence Runner
 
-Version: v0.8.14 runner stabilization
+Version: v0.8.14 runner-harness-hardening
 
 ## Purpose
 
-The Evidence Runner is the release proof harness for GateGraph. It executes all proof-oriented test scripts and writes one machine-readable JSON summary under `tests/logs/`.
+The CI evidence runner is a release-hygiene tool. It must not change production governance, enforcement, runtime, budget, secret, or HTTP policy semantics.
 
-## Current runner model
+## Current strategy
 
-`tests/evidence_ci.sh` is the preferred aggregate runner.
+`tests/evidence_ci.py` runs every evidence group as a separate process and records a JSON report under `tests/logs/`.
 
-It executes each evidence script through:
+Important behavior:
 
-```bash
-python -S -u tests/_run_isolated.py <script>
-```
+- each evidence group gets a clean local `gategraph.db` slate
+- output is file-backed to avoid pipe/capture deadlocks
+- GNU `timeout` bounds every child process
+- a timeout is accepted only if the child already emitted a zero-failure `Summary: {...}` line
+- otherwise timeout is treated as failure
 
-`_run_isolated.py` imports the target script as a normal module and calls its public `main()` or `run()` function directly.
-
-## Why not `runpy(..., run_name="__main__")`?
-
-Earlier runner versions executed scripts as `__main__`. In this environment that could produce shutdown hangs after the logical test result was already printed. The v0.8.14 wrapper avoids that path and exits after explicit stream flushing.
+This separates real evidence failures from environment shutdown hangs.
 
 ## Invariant
 
-The runner only orchestrates tests. It does not change production semantics in:
-
-- Governance
-- Enforcement
-- Runtime Guard
-- Session Budget Guard
-- HTTP Policy
-- Secret Provider
-- External API Adapter
-- Pattern Engine
-
-## Expected result
-
-A clean run prints one line per evidence group and then a final report:
-
-```text
-CI EVIDENCE REPORT
-Log: tests/logs/ci_evidence_<timestamp>.json
-Passed: true
-```
-
-## Notes
-
-Output tails are base64-encoded in the JSON report so arbitrary test output cannot corrupt the machine-readable summary.
+The runner may classify evidence. It must never grant, block, mutate, or reinterpret production decisions.
