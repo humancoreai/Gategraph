@@ -1,3 +1,11 @@
+# v0.8.23 - Evidence Runner Stabilization
+
+- Stabilized aggregate evidence execution by routing scripts through `tests/_run_isolated.py`.
+- Added `controlled_apply_evidence.py` to the aggregate manifest.
+- Replaced the legacy multiprocessing supervisor with a compatibility wrapper around the isolated CI runner.
+- Confirmed aggregate evidence completion with `Passed: True`.
+- No production governance/enforcement/runtime/controlled-apply semantics changed.
+
 # DEVLOG
 
 ## v0.4.2
