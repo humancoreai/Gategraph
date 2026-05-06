@@ -478,3 +478,19 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 - No distributed budget consensus or lock manager.
 - Mock external API only.
 - No automated incident recovery.
+
+## v0.8.28_CANDIDATE - Governance SSOT Integration
+
+### Scope
+- Added `GOVERNANCE.md` at repository root.
+- Linked governance document from README.
+- Updated release/version metadata for candidate boundary.
+
+### Boundary
+- Documentation/governance consolidation only.
+- No functional code changes.
+- Operational extensions remain deferred.
+
+### Validation baseline
+- Inherits `v0.8.27.1_STABLE` full Windows Evidence CI baseline: `Passed: True`, unexpected allows `0`, invariant violations `0`.
+
