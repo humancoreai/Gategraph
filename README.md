@@ -75,6 +75,7 @@ python tests/test_loop.py
 python tests/usage_simulation.py
 python tests/unusual_inputs.py
 python tests/agent_scenarios.py
+python tests/runtime_guard_tests.py
 ```
 
 Depending on your environment, use:
@@ -149,3 +150,16 @@ Recommended next work after v0.5:
 3. Token signing / stronger token integrity
 4. Concurrency and race-condition handling
 5. Query layer for graph traversal
+
+
+---
+
+## Runtime Guard planning
+
+The next planned layer is documented in:
+
+```text
+docs/RUNTIME_GUARD.md
+```
+
+Runtime Guard is intentionally separate from GateGraph Core. It handles runtime limits, cost budgets, and loop prevention.
