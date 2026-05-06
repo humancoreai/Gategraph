@@ -173,16 +173,20 @@ def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, s
     killed_group = False
     rc: int | None = None
 
-    # WHY: file-backed output avoids pipe deadlocks. Python owns the timeout; process-session isolation lets us kill descendants too.
-    with out_path.open("w", encoding="utf-8") as out, err_path.open("w", encoding="utf-8") as err:
+    # WHY: binary file-backed output avoids pipe deadlocks and all Windows codepage decode paths.
+    with out_path.open("wb") as out, err_path.open("wb") as err:
+        creationflags = 0
+        if os.name == "nt":
+            creationflags = subprocess.CREATE_NEW_PROCESS_GROUP
+
         proc = subprocess.Popen(
             cmd,
             cwd=PROJECT_ROOT,
             env=env,
-            text=True,
             stdout=out,
             stderr=err,
             start_new_session=(os.name == "posix"),
+            creationflags=creationflags,
         )
         try:
             rc = proc.wait(timeout=timeout_seconds)
