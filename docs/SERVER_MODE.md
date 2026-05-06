@@ -99,3 +99,38 @@ Der Evidence-Test prüft:
 - `/monitoring` liefert read-only Export
 - nicht erlaubte Methoden werden abgelehnt
 - malformed evaluate requests fail-closed
+
+## v0.8.34 Server Boundary Hardening
+
+Server mode remains an adapter over `src/service_adapter.py`.
+
+Safe defaults and boundary rules:
+
+- default bind host is `127.0.0.1`
+- `0.0.0.0` / `::` are not defaults and print an explicit warning when selected
+- `/evaluate` requires `application/json`
+- request body size is bounded
+- invalid JSON fails closed
+- missing required evaluation fields fail closed
+- unsupported methods and unknown endpoints return structured JSON errors
+- stack traces are never returned to clients
+
+Error schema:
+
+```json
+{
+  "ok": false,
+  "error": {
+    "code": "example_code",
+    "message": "safe operator-facing message"
+  },
+  "stage": "request_validation"
+}
+```
+
+Read-only endpoints:
+
+- `GET /status`
+- `GET /monitoring`
+
+These endpoints are observation endpoints and must not perform governance decisions or mutate monitoring state.
