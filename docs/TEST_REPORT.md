@@ -323,3 +323,8 @@ No governance, enforcement, runtime, session-budget, pattern-engine, or adapter 
 ## v0.8.6 Runaway Cost Evidence
 
 Added `tests/runaway_cost_evidence.py` covering negative projected costs, zero runtime costs, and negative-cost External API requests. Targeted run: 3/3 passed. Individual evidence scripts passed; aggregate runner instability is documented in `RELEASE_STATUS.md`.
+
+
+## v0.8.9 Key Rotation Evidence
+
+Added tests for active-key issuance, legacy-key verification while trusted, legacy-key retirement fail-closed behavior, and signing-key-ID tamper rejection.
