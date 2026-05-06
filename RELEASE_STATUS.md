@@ -1,50 +1,26 @@
-# Release Status — GateGraph v0.8.27.1_STABLE
+# Release Status — GateGraph v0.8.28_CANDIDATE
 
 ## Status
 
-Stable recovery point.
+Candidate release.
 
-`v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` has been promoted after the full Windows Evidence CI run reported `Passed: True` on 2026-04-28.
+`v0.8.28_CANDIDATE` adds `GOVERNANCE.md` as the repository-level SSOT for GateGraph governance principles.
 
-## Stable scope
+## Candidate scope
 
-- Deterministic Governance Layer
-- Enforcement as sole Gatekeeper
-- Signed Capability Tokens with key rotation evidence
-- Runtime Guard and Session Budget Guard
-- Runtime Governance escalation states
-- Cross-Session Budget Control via single-node Budget Ledger
-- Budget Ledger reservation lifecycle
-- Operational Hardening:
-  - Budget snapshots
-  - Audit replay consistency checks
-  - Budget drift/anomaly detection
-  - append-only incident records
-- HTTP Policy Layer
-- Secret references and delayed resolution
-- External API Adapter controlled seam
-- Audit / Explain reconstruction
-- Pattern Engine proposal-only behavior
-- Review Workflow and Controlled Apply Human-Gate
-- Evidence Runner with POSIX timeout supervision patch and Windows selftest evidence
+- Root-level `GOVERNANCE.md` added.
+- README references governance document.
+- Version/release metadata updated.
+- No functional code changes.
 
-## Validation
+## Validation baseline
 
-Full Evidence CI reported:
+Baseline inherited from `v0.8.27.1_STABLE`:
 
 ```text
 Passed: True
 Unexpected Allows: 0
 Invariant Violations: 0
-```
-
-Additional release-gate detail from `operational_hardening_evidence`:
-
-```text
-passed: 6
-failed: 0
-unexpected_allows: 0
-invariant_violations: 0
 ```
 
 ## Production boundary
@@ -58,6 +34,6 @@ Still not production-ready for open distributed use. Remaining boundaries:
 - No production monitoring/alerting stack
 - No automated incident recovery
 
-## Stable release document
+## Candidate release document
 
-See `docs/RELEASE_v0.8.27.1_STABLE.md`.
+See `docs/RELEASE_v0.8.28_CANDIDATE.md`.
