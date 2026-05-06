@@ -35,6 +35,8 @@ Task
 → Enforcement
 → Session Budget Guard
 → Runtime Guard
+→ HTTP Policy
+→ Secret Resolution
 → Action-ready / Stop
 → Audit / Evidence
 ```
@@ -47,8 +49,9 @@ GateGraph currently does **not** provide:
 
 - autonomous rule changes
 - production-grade distributed orchestration
-- production-grade token signing across IPC/RPC boundaries
-- unrestricted external tool/API integration; v0.8.12 only provides a controlled transport seam
+- production-grade token signing across IPC/RPC/distributed trust boundaries
+- unrestricted external tool/API integration; current releases only provide a controlled policy-gated transport seam
+- production secret management / KMS / OS-keychain lifecycle
 - adaptive budget policy
 - full GLP protocol compliance
 
@@ -57,9 +60,9 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.16 block-d-audit-explain-evidence
+Version: v0.8.17 block-e-documentation-reality-check
 Core status: stable proof of concept
-Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
+Production status: not production-ready; Single-Node PoC evidence is mature, operational production layers remain out of scope
 ```
 
 Current validation summary:
@@ -172,12 +175,27 @@ GateGraph/
 
 ---
 
-## Known gaps
+## Known gaps / what GateGraph cannot do yet
 
-- Token signing is not implemented; DB-backed token integrity is suitable only for in-process PoC use.
-- External tool/API integration is not implemented.
-- Budget policy is static, not adaptive.
-- SQLite concurrency handling is improved for session-budget evaluation, but this is still not a distributed transaction system.
+GateGraph is currently a Single-Node PoC. It does **not** yet provide:
+
+- production-grade secret management (no KMS, no OS-keychain lifecycle, no automated rotation)
+- distributed trust, asymmetric signatures, or cross-node token verification
+- real unrestricted HTTP/API execution; only a controlled transport seam with allowlisted endpoint policies
+- production billing integration, customer-level quota enforcement, or operational alerting
+- multi-node/distributed budget coordination
+- sandboxed tool runtime or operating-system isolation
+- human approval workflow / reviewer trust model
+- adaptive budget strategy or autonomous rule updates
+- final public trace API contract; `explain_trace.py` is reviewer-facing PoC evidence
+
+Implemented at PoC level:
+
+- HMAC-signed, task-bound Capability Tokens with key IDs and local keyring verification
+- runtime/session/agent budget guards for loop, step, and cost controls
+- HTTP allowlist policy for scheme/host/path/method
+- env-backed secret references with no raw secret values in SQLite or audit traces
+- append-only audit evidence and read-only explain trace reconstruction
 
 ---
 
@@ -229,3 +247,8 @@ Block B hardens edge-case confidence without adding new product scope:
 ## v0.8.16 Audit/Explain Reconstruction Evidence
 
 Block D adds a read-only reviewer trace builder and evidence scenarios proving that completed, blocked, HTTP-policy, and secret-backed flows can be reconstructed from persisted audit evidence. Production governance/enforcement/runtime semantics are unchanged.
+
+
+## v0.8.17 Block E documentation reality check
+
+This release aligns README, SECURITY notes, release status, and current limitations with the actual v0.8.16 system state. It makes no production logic changes.
