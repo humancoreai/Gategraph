@@ -1,26 +1,27 @@
-# Release Status — GateGraph v0.8.28_CANDIDATE
+# Release Status — GateGraph v0.8.28_STABLE
 
 ## Status
 
-Candidate release.
+Stable release.
 
-`v0.8.28_CANDIDATE` adds `GOVERNANCE.md` as the repository-level SSOT for GateGraph governance principles.
+`v0.8.28_STABLE` promotes the governance-documentation candidate after full Windows Evidence CI passed.
 
-## Candidate scope
+## Stable scope
 
-- Root-level `GOVERNANCE.md` added.
+- Root-level `GOVERNANCE.md` added as repository-level governance SSOT.
 - README references governance document.
 - Version/release metadata updated.
-- No functional code changes.
+- No functional code changes from `v0.8.27.1_STABLE` / `v0.8.28_CANDIDATE`.
 
-## Validation baseline
+## Validation
 
-Baseline inherited from `v0.8.27.1_STABLE`:
+Full Windows Evidence CI on `v0.8.28_CANDIDATE`:
 
 ```text
 Passed: True
 Unexpected Allows: 0
 Invariant Violations: 0
+Date: 2026-04-28
 ```
 
 ## Production boundary
@@ -34,6 +35,6 @@ Still not production-ready for open distributed use. Remaining boundaries:
 - No production monitoring/alerting stack
 - No automated incident recovery
 
-## Candidate release document
+## Stable release document
 
-See `docs/RELEASE_v0.8.28_CANDIDATE.md`.
+See `docs/RELEASE_v0.8.28_STABLE.md`.
