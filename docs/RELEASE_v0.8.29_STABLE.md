@@ -1,0 +1,55 @@
+# Release v0.8.29_STABLE
+
+## Scope
+
+Stable operational visibility extension after `v0.8.28_STABLE`.
+
+## Added
+
+- `OperationalAlert` dataclass.
+- `evaluate_operational_alerts(incidents)` pure read-only alert evaluation.
+- `evaluate_open_operational_alerts(conn)` for open incident inspection.
+- Deterministic severity ordering.
+- `tests/operational_alerting_evidence.py`.
+- `docs/OPERATIONAL_ALERTING.md`.
+
+## Unchanged
+
+- Enforcement remains the only gatekeeper.
+- Governance remains the only decision authority.
+- Runtime remains non-decisional.
+- Pattern Engine remains proposal-only.
+- Review Workflow still applies nothing automatically.
+- Budget Ledger authority is unchanged.
+- Operational Alerting does not mutate, repair, unblock, acknowledge, or resolve incidents/scopes.
+
+## Validation
+
+Full Windows Evidence CI:
+
+```text
+CI EVIDENCE REPORT
+Passed: True
+```
+
+Operational alerting evidence:
+
+```text
+OPERATIONAL ALERTING EVIDENCE REPORT
+Summary: {'total': 4, 'passed': 4, 'failed': 0, 'findings': 0}
+```
+
+No unexpected allows and no invariant violations were reported in the full evidence run.
+
+## Boundary
+
+This stable release does not implement:
+
+- automated recovery
+- external monitoring transport
+- alert delivery
+- UI
+- new agent logic
+- new external API integration
+- distributed budget consensus
+- production KMS
