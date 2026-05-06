@@ -1,17 +1,13 @@
 # Release Status
 
-Current candidate: v0.8.47_CANDIDATE
-Base: v0.8.45_STABLE
-Phase: Archive Integrity / Replay Consistency
+Current stable: v0.8.47_STABLE
+Base: v0.8.46_STABLE
+Phase: Operator Export / Evidence Bundle
 
 Evidence:
-- archive_integrity_replay_consistency_evidence: passed locally
-- governance_archive_replay_evidence: passed locally after schema bump
-- drift_detection_evidence: passed locally after schema bump
-- Full Windows Evidence CI: pending
+- Full Windows Evidence CI: passed on 2026-05-06
+- operator_export_evidence: included in Evidence CI
 
-Candidate notes:
-- Archive envelopes are checked for payload hash, record id and contiguous sequence observations.
-- Replay consistency is checked from different input orderings.
-- Integrity reports are descriptive and do not re-run governance decisions.
-- No policy, guard, runtime, queue or workflow mutation introduced.
+Stable notes:
+- Operator export/evidence bundle accepted as stable baseline.
+- Export remains read-only and does not re-run governance decisions.
