@@ -1,9 +1,13 @@
 # GateGraph Version
 
-Current version: **v0.7.1-audit-evidence**
+Current: v0.7.2-ci-evidence
 
-## Summary
+## v0.7.2-ci-evidence
 
-v0.7.1 adds a test-only Audit Evidence Layer that turns Runtime Guard, Enforcement, Governance, and Pattern Engine records into structured JSON proof logs.
+Adds CI-compatible evidence reporting and additional runtime/cost/loop proof scenarios.
+Production core semantics unchanged.
 
-No core governance/enforcement/runtime/pattern semantics were changed.
+## v0.7.1-audit-evidence
+
+Adds structured JSON evidence logs for runtime/cost/loop/pattern-safety tests.
+Production core semantics unchanged.
