@@ -101,3 +101,14 @@ DB events accumulated: 31
   - missing token is rejected by Enforcement with audit event
   - Pattern Engine remains proposal-only and does not mutate rules
   - repeated identical governance evaluation is idempotent in audit evidence
+
+## v0.7.2-ci-evidence
+
+- Added `tests/evidence_ci.py` to run the proof-oriented test suite and write one CI summary JSON.
+- Added GitHub Actions workflow `.github/workflows/evidence.yml` for automated evidence-log generation.
+- Extended `tests/runtime_stress_evidence.py` with additional stress evidence:
+  - alternating multi-agent loop stopped by `max_steps`
+  - missing runtime budget fails closed
+  - exact cost boundary allowed, next step stopped
+  - documented current per-task cost scope / no session-global budget
+- No production core modules changed.
