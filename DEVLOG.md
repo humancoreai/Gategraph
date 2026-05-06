@@ -48,3 +48,9 @@ DB events accumulated: 31
 - Risk Engine now validates `input_source` and `data_sensitivity` against explicit allowed sets.
 - Unknown enum values classify as `medium` instead of silently falling through to `low`.
 - Unusual input simulation confirms zero unsafe allows and zero invariant violations.
+
+## v0.4.6 — require_review analysis-only token fix
+
+- Governance now issues a token for `require_review` only when the permitted capability is `read_files`.
+- Side-effect capabilities remain denied under `require_review`.
+- Agent scenarios validate that untrusted read analysis is allowed while write/delete/api actions remain blocked.
