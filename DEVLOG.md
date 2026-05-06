@@ -228,3 +228,22 @@ Added:
 
 Known boundary:
 - This is still SQLite PoC-level concurrency, not distributed transaction safety.
+
+
+## v0.8.4-external-api-mock-adapter
+
+Added:
+- `src/external_api_adapter.py`
+- `tests/external_api_evidence.py`
+- `docs/EXTERNAL_API_ADAPTER.md`
+
+Purpose:
+- Prove controlled outbound API behavior without real network calls.
+- Ensure external calls pass through Enforcement → Session Budget → Runtime Guard.
+- Audit API success/failure/blocked outcomes.
+
+Invariant status:
+- No real APIs.
+- No secrets.
+- No raw payload logging.
+- Untrusted API responses remain data-only.
