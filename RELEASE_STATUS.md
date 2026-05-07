@@ -1,8 +1,8 @@
-# Release Status - GateGraph v0.8.9-token-key-management
+# Release Status - GateGraph v0.8.10-hygiene-hardening
 
 ## Status
 
-Security hardening release on top of v0.8.8.
+Release hygiene hardening on top of v0.8.9.
 
 ## Scope
 
@@ -29,3 +29,8 @@ This release hardens Capability Tokens against simple in-memory mutation and per
 ## v0.8.9 addition
 
 Capability Token signing now has explicit key IDs and a trusted keyring. New tokens use the active key; legacy tokens verify only while their key remains trusted. Unknown key IDs fail closed.
+
+
+## v0.8.10 addition
+
+Closes review findings without changing core behavior: keyring API encapsulation, deterministic single keyring load per enforcement decision, docs/version consistency, schema DDL single-source alignment for Session Budget, explicit transaction precondition, test-only marker, and dev-key warning.

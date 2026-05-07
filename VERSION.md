@@ -1,8 +1,8 @@
 # GateGraph Version
 
-Current: v0.8.9-token-key-management
+Current: v0.8.10-hygiene-hardening
 
-Previous: v0.8.8-capability-token-hardening
+Previous: v0.8.9-token-key-management
 
 Notes:
 - External API Adapter now invokes Enforcement internally.
@@ -33,3 +33,8 @@ Security hardening release. Capability Tokens now carry HMAC signatures over imm
 ## v0.8.9-token-key-management
 
 Security hardening release. Capability Token signing now supports explicit active key IDs and trusted keyrings for bounded HMAC key rotation. Unknown signing keys fail closed. No distributed trust or asymmetric signing yet.
+
+
+## v0.8.10-hygiene-hardening
+
+Release hygiene hardening. No governance semantics changed. Fixes: public keyring API, single keyring load per enforcement decision, SECURITY.md/version drift, Session Budget DDL single-source alignment, explicit transaction precondition documentation, test-only expired token marker, and development-key warning.
