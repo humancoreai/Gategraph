@@ -70,6 +70,8 @@ CREATE TABLE IF NOT EXISTS capability_tokens (
     issued_at    TEXT NOT NULL,
     expires_at   TEXT NOT NULL,
     revoked      INTEGER NOT NULL DEFAULT 0,
+    signature    TEXT NOT NULL DEFAULT '',
+    signing_key_id TEXT NOT NULL DEFAULT 'local-dev-v1',
     FOREIGN KEY (decision_id) REFERENCES decisions(decision_id),
     FOREIGN KEY (task_id) REFERENCES tasks(task_id)
 );

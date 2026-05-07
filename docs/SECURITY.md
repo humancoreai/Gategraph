@@ -147,3 +147,9 @@ Before production use, add:
 4. runtime/cost-control layer
 5. tool sandboxing
 6. formal revocation cache or low-latency revocation check
+
+## Capability Token integrity (v0.8.8)
+
+Capability Tokens now include HMAC signatures over immutable claims. Enforcement validates persisted claims and signature before it grants a capability. Any mismatch fails closed.
+
+Boundary: the current signing model is local/symmetric. Production-style distributed trust, key rotation, and asymmetric verification remain out of scope for this release.
