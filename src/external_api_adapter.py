@@ -1,6 +1,7 @@
 """
-WHY: External API calls are side effects and must pass GateGraph's guard pipeline first.
-INV: this adapter never calls real networks; v0.8.4 uses deterministic mock responses only.
+WHY: External API calls are side effects and must pass Enforcement plus GateGraph's guard pipeline first.
+INV: this adapter never calls real networks; v0.8.5 uses deterministic mock responses only.
+SEC: caller cannot spoof enforcement_allowed; adapter invokes Enforcement internally with the provided token.
 SEC: no secrets are logged; request payloads are summarized, not persisted verbatim.
 """
 
@@ -10,9 +11,11 @@ import sqlite3
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Any, Dict, Optional
+from typing import Optional
 
 from src import event_logger
+from src.capability_token import CapabilityToken
+from src.enforcement import enforce
 from src.guard_orchestrator import GuardPipelineDecision, evaluate_guard_pipeline
 
 
@@ -28,6 +31,7 @@ class ExternalAPIRequest:
     projected_cost_units: int = 1
     timeout_ms: int = 1000
     mock_behavior: str = "success"  # success | timeout | rate_limit | server_error | untrusted_response
+    requested_capability: str = "api_call"
 
 
 @dataclass(frozen=True)
@@ -47,17 +51,25 @@ def call_mock_external_api(
     conn: sqlite3.Connection,
     *,
     request: ExternalAPIRequest,
-    enforcement_allowed: bool,
-    enforcement_reason: str,
+    token: Optional[CapabilityToken],
 ) -> ExternalAPIResult:
     """
-    INV: external side effect is simulated only after Guard Orchestrator reaches action_ready.
-    SEC: failed/blocked calls are audited without making any external call.
+    INV: external side effect is simulated only after Enforcement and Guard Orchestrator reach action_ready.
+    SEC: Enforcement is called inside this adapter, so callers cannot bypass it with a forged boolean.
     """
+    _ensure_task_exists(conn, request.task_id)
+    enforcement = enforce(
+        conn,
+        token,
+        requested_capability=request.requested_capability,
+        task_id=request.task_id,
+        correlation_id=request.request_id,
+    )
+
     pipeline = evaluate_guard_pipeline(
         conn,
-        enforcement_allowed=enforcement_allowed,
-        enforcement_reason=enforcement_reason,
+        enforcement_allowed=enforcement.allowed,
+        enforcement_reason=enforcement.reason,
         session_id=request.session_id,
         task_id=request.task_id,
         actor_id=request.actor_id,
@@ -79,7 +91,7 @@ def call_mock_external_api(
     status_code, response_summary, failed_reason = _mock_response(request.mock_behavior)
 
     if failed_reason:
-        # WHY: external API failure is an execution failure, not a guard authorization failure.
+        # WHY: external API failure is an execution failure, not an authorization failure.
         return _audit_result(
             conn,
             request=request,
@@ -125,7 +137,6 @@ def _audit_result(
 ) -> ExternalAPIResult:
     event_id = f"EVT-API-{uuid.uuid4().hex[:12].upper()}"
     with conn:
-        _ensure_task_exists(conn, request.task_id)
         event_logger.log_event(
             conn,
             event_id=event_id,
@@ -143,6 +154,7 @@ def _audit_result(
                 "projected_cost_units": request.projected_cost_units,
                 "timeout_ms": request.timeout_ms,
                 "mock_behavior": request.mock_behavior,
+                "requested_capability": request.requested_capability,
             },
             evaluation={
                 "pipeline_stage": pipeline.stage,

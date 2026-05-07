@@ -297,3 +297,12 @@ Expected:
 - External mock calls only execute after guard pipeline action-ready.
 - Blocked calls are audited without simulated execution.
 - API failures are audited as execution failures.
+
+## v0.8.5 API Enforcement Binding
+
+Updated external API evidence to prove the adapter calls Enforcement internally.
+
+Result:
+- External API Evidence: 7/7 passed
+- No-token path stops at Enforcement before Session/Runtime guards
+- Allowed paths require a real valid API capability token
