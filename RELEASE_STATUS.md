@@ -1,6 +1,6 @@
-# Release Status – v0.10.3_CANDIDATE
+# Release Status – v0.10.3_STABLE
 
-Status: candidate
+Status: stable
 
 Base: v0.10.2_STABLE
 
@@ -8,7 +8,7 @@ Phase: Release Process Guard
 
 Scope:
 - validate release truth consistency
-- validate Candidate/Stable metadata surfaces
+- validate pre-release/stable metadata surfaces
 - validate structured manifest consistency
 - validate manifest hash/size consistency
 - detect dead local markdown references

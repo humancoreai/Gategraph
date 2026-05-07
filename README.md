@@ -1,66 +1,257 @@
-<!-- v0.9.1_STABLE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
-
 # GateGraph
 
-Current candidate: **v0.9.0_CANDIDATE**
+**Deterministic governance layer for AI-assisted task execution.**
 
-GateGraph is a deterministic governance, enforcement, runtime-control and audit proof-of-concept for agent-like systems. It evaluates requested actions, applies deterministic rules, issues capability tokens, enforces permissions, applies runtime/session budgets, records decisions in an append-only audit trail, and produces evidence logs for review.
+GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
-GateGraph is intentionally bounded. It is not an autonomous agent, not a self-governing system, not an adaptive AI safety layer, not a predictive risk model, and not a full GLP implementation.
+Current stable baseline: **v0.10.3_STABLE**  
+License: Apache 2.0
 
-## v0.9.0 milestone purpose
+---
 
-v0.9.0_CANDIDATE is a release and external-review baseline. It consolidates the v0.8.x line by adding review documents, scope-freeze documents, deterministic release packaging and milestone consistency evidence. It does not add new governance decision logic.
+## What it does
 
-## Core flow
+An agent or service submits a task evaluation request. GateGraph evaluates it deterministically through a fixed chain:
 
-```text
-Task
-→ Risk Engine
-→ Rule Engine
-→ Governance Decision
-→ Capability Token
-→ Enforcement
-→ Session Budget Guard
-→ Runtime Guard
-→ HTTP Policy
-→ Secret Resolution
-→ Action-ready / Stop
-→ Audit / Evidence
+```
+Task Request
+→ Caller Boundary Validation   (required fields enforced at adapter)
+→ Risk Engine                  (deterministic risk scoring)
+→ Rule Engine                  (policy match, conflict resolution)
+→ Governance Decision          (allow / warn / require_review / block)
+→ Capability Token             (HMAC-signed, task-bound, TTL-limited)
+→ Enforcement Gate             (token verification before any execution)
+→ Flood Guard                  (rate / cost window limits)
+→ Session Budget Guard         (per-session cost and task caps)
+→ Runtime Guard                (step / time / cost limits during execution)
+→ Audit Log                    (append-only, replay-consistent)
 ```
 
-## What GateGraph provides
+Every stage is ordered. Skipping stages fails closed. The chain order is an executable invariant — `runtime_chain_assertions.py` verifies it, not just documents it.
 
-- deterministic risk/rule evaluation
-- fail-closed decisions
-- capability-token-based enforcement
-- runtime and session budget controls
-- deterministic guard orchestration
-- reason normalization for stable explain codes
-- append-only audit/evidence orientation
-- replay, archive, drift and operator export evidence
-- local/protected server adapter for evaluate/status/monitoring integration
-- deterministic release packaging for external review
+---
 
-## What GateGraph does not provide
+## Core principles
 
-See [`NON_SCOPE.md`](./NON_SCOPE.md). In short: no autonomous rule changes, no self-governance, no automatic optimization, no ML/prediction layer, no multi-node governance, no production enterprise deployment claim.
+| Principle | Meaning |
+|---|---|
+| **Fail-closed** | Unknown, missing, or ambiguous inputs deny by default |
+| **Deterministic** | Same input + same policy = same decision, always |
+| **No autonomy** | GateGraph enforces rules; it does not write them |
+| **Append-only audit** | Decision history is never modified after the fact |
+| **Enforcement is mandatory** | No execution without a valid capability token |
+| **Human authority is final** | `require_review` and `require_approval` block without a human gate |
 
-## Review documents
+---
 
-- [`EXTERNAL_REVIEW.md`](./EXTERNAL_REVIEW.md)
-- [`ARCHITECTURE.md`](./ARCHITECTURE.md)
-- [`INVARIANTS.md`](./INVARIANTS.md)
-- [`NON_SCOPE.md`](./NON_SCOPE.md)
-- [`RELEASE_CONTENT_RULES.md`](./RELEASE_CONTENT_RULES.md)
+## Architecture
 
-## Packaging
+```
+CLI / HTTP Server
+      ↓
+  service_adapter          ← caller boundary validation (required fields enforced here)
+      ↓
+  governance.evaluate_task ← single entry point; TrustedEntryContext required
+      ↓
+  Risk Engine + Rule Engine + Event Logger + Budget Ledger + Token
+      ↓
+  Enforcement Gate
+      ↓
+  Runtime Chain (Flood / Session Budget / Runtime Guard)
+      ↓
+  Action-ready or Stop
+      ↓
+  Audit / Operator Layer
+```
 
-Use:
+**CLI and HTTP server both use the same `service_adapter` path.** There is no separate code path for server-mode evaluation. Governance logic is never duplicated or bypassed.
+
+---
+
+## Quick start
+
+### Requirements
+
+- Python 3.11+
+- No external dependencies beyond the standard library
+
+### Setup
 
 ```bash
-python tools/build_release.py
-python tools/verify_release.py dist/GateGraph_v0.9.0_CANDIDATE.zip
+git clone https://github.com/humancoreai/Gategraph.git
+cd Gategraph
+cp config.example.yaml config.yaml
 ```
 
-The release ZIP is built with sorted entries, fixed ZIP timestamps, hidden-file exclusion and SHA256 verification data.
+### CLI evaluation
+
+```bash
+python -m src.cli evaluate \
+  --task-id "task-001" \
+  --task-type "agent_file_operations" \
+  --capabilities "read_files" \
+  --input-source "local" \
+  --data-sensitivity "internal"
+```
+
+### HTTP server (local/protected only)
+
+```bash
+python -m src.server --host 127.0.0.1 --port 8787
+```
+
+```bash
+curl -s -X POST http://127.0.0.1:8787/evaluate \
+  -H "content-type: application/json" \
+  -d '{
+    "task_id": "task-001",
+    "task_type": "agent_file_operations",
+    "requested_capabilities": ["read_files"],
+    "input_source": "local",
+    "data_sensitivity": "internal"
+  }'
+```
+
+Available endpoints: `POST /evaluate`, `GET /status`, `GET /monitoring`
+
+---
+
+## Configuration
+
+`config.example.yaml` documents all available settings:
+
+```yaml
+mode: single_node
+db_path: gategraph.db
+actor_id: local-actor
+system_budget_units: 100
+session_budget:
+  max_session_cost_units: 50
+  max_session_tasks: 20
+flood_guard:
+  window_seconds: 60
+  max_tasks_per_window: 20
+runtime_budget:
+  max_steps: 20
+  max_runtime_seconds: 300
+```
+
+---
+
+## Running evidence
+
+```bash
+# Full evidence suite
+python tests/evidence_ci.py
+
+# Individual evidence modules
+python tests/caller_boundary_evidence.py
+python tests/runtime_chain_order_evidence.py
+python tests/release_process_guard_evidence.py
+python tests/governance_freeze_evidence.py
+```
+
+---
+
+## Caller boundary
+
+The public evaluation entry point requires three explicit fields. Omitting or using invalid values fails closed:
+
+| Field | Required values |
+|---|---|
+| `input_source` | `"local"`, `"trusted"`, `"untrusted"`, `"external"` |
+| `data_sensitivity` | `"public"`, `"internal"`, `"confidential"`, `"secret"` |
+| `secrets_involved` | `true` / `false` |
+
+Direct calls to `governance.evaluate_task()` without a `TrustedEntryContext` are denied by default since v0.10.0.
+
+---
+
+## Production scope
+
+GateGraph is **production-ready for single-node, local/protected deployment**.
+
+**In scope:**
+- CLI evaluation
+- Local HTTP adapter (`127.0.0.1` default bind)
+- Deterministic governance and enforcement
+- Runtime, session, flood, and budget guards
+- Read-only monitoring export
+- Append-only audit with replay consistency
+
+**Explicitly out of scope (current version):**
+- Public internet exposure
+- Authentication / TLS (reverse proxy required for any external access)
+- Multi-node or distributed governance
+- KMS-backed secret management
+- Asymmetric capability token signing
+- External agent framework integration
+- UI / dashboard
+- Automated alert routing
+
+---
+
+## Security model
+
+- HTTP server binds to `127.0.0.1` by default; `0.0.0.0` emits an explicit warning
+- Request body bounded at 64 KiB
+- Stack traces are never returned to clients
+- Capability tokens are HMAC-signed and task-bound with TTL
+- Token signing key is env-backed (not hardcoded); missing key fails closed
+- Audit log is append-only; no DELETE or UPDATE on event history
+- See `SECURITY.md` and `docs/THREAT_MODEL.md` for full threat model
+
+---
+
+## Key documents
+
+| Document | Purpose |
+|---|---|
+| `INVARIANTS.md` | Decision, authority, audit, and release invariants |
+| `TRUST_MODEL.md` | What GateGraph trusts and what it does not |
+| `docs/THREAT_MODEL.md` | Threat classes and expected controls |
+| `docs/KNOWN_GAPS_ROADMAP.md` | Open gaps and planned phases |
+| `PRODUCTION.md` | Explicit production scope and responsibility model |
+| `docs/INVARIANT_REGISTRY.md` | Stable invariant IDs (INV-001–INV-015) with evidence mapping |
+| `GOVERNANCE.md` | Rule structure and decision logic |
+| `docs/ARCHITECTURE.md` | Layer separation and data flow |
+| `docs/SERVER_MODE.md` | HTTP adapter invariants and endpoints |
+| `RELEASE_PROCESS.md` | How releases are built, verified, and promoted |
+
+---
+
+## Release integrity
+
+Releases are built deterministically via `tools/build_release.py`. Every release includes:
+
+- `RELEASE_MANIFEST.json` with SHA256 per file
+- `tools/verify_release.py` for independent verification
+- `tools/release_process_guard.py` to prevent pre-release/stable metadata drift
+- `.db` files excluded from release artifacts by default
+
+```bash
+python tools/verify_release.py dist/GateGraph_v0.10.3_STABLE.zip
+```
+
+---
+
+## What GateGraph is not
+
+- Not an agent framework
+- Not a policy authoring system
+- Not a distributed consensus system
+- Not an internet-facing API without additional hardening
+- Not a replacement for human judgment on `require_review` decisions
+
+---
+
+## Contributing
+
+See `CONTRIBUTING.md` and `RELEASE_PROCESS.md`.  
+Security issues: see `SECURITY.md`.
+
+---
+
+## License
+
+Apache 2.0 — see `LICENSE`.
