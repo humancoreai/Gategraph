@@ -86,6 +86,7 @@ def main() -> int:
         ("runtime_stress_evidence", [sys.executable, "tests/runtime_stress_evidence.py"]),
         ("session_budget_evidence", [sys.executable, "tests/session_budget_evidence.py"]),
         ("guard_orchestration_evidence", [sys.executable, "tests/guard_orchestration_evidence.py"]),
+        ("reason_normalization_evidence", [sys.executable, "tests/reason_normalization_evidence.py"]),
         ("core_loop", [sys.executable, "tests/test_loop.py"]),
         ("runtime_guard", [sys.executable, "tests/runtime_guard_tests.py"]),
         ("pattern_engine", [sys.executable, "tests/pattern_engine_tests.py"]),
