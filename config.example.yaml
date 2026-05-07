@@ -1,0 +1,19 @@
+mode: single_node
+db_path: gategraph.db
+actor_id: local-actor
+session_id: local-session
+system_budget_units: 100
+actor_budget_units: 100
+session_budget:
+  max_session_cost_units: 50
+  max_session_tasks: 20
+  max_agent_cost_units: 30
+runtime_budget:
+  max_steps: 20
+  max_runtime_seconds: 300
+  max_cost_units: 50
+  repeated_action_limit: 3
+flood_guard:
+  window_seconds: 60
+  max_tasks_per_window: 20
+  max_cost_units_per_window: 50
