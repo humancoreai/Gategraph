@@ -1,4 +1,4 @@
-# Release Status - GateGraph v0.8.13-security-finesse
+# Release Status - GateGraph v0.8.14-security-finesse
 
 Status: Single-node PoC / security-finesse hardening.
 
@@ -28,3 +28,10 @@ Status: Single-node PoC / security-finesse hardening.
 - No real HTTP client policy stack beyond allowlist semantics.
 - No distributed trust/budgeting.
 - Aggregate runner remains environment-sensitive; individual evidence paths are preferred for local proof.
+
+## v0.8.14 Runner Stabilization
+
+- Stabilized isolated evidence wrapper.
+- Replaced `runpy(..., run_name="__main__")` execution with module import + public `main()`/`run()` entrypoint calls.
+- Preserved hard timeboxing in the shell aggregate runner.
+- Production governance/enforcement/runtime logic unchanged.
