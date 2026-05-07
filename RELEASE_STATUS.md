@@ -1,12 +1,15 @@
 # RELEASE_STATUS
 
-Version: v0.8.32_CANDIDATE
-Status: CANDIDATE
+Version: v0.8.32_STABLE
+Status: STABLE
 Scope: Single-node usability + read-only monitoring export
 
 Evidence:
-- Targeted single-node CLI evidence: passed
-- Targeted single-node monitoring export evidence: passed
-- Full CI: pending external Windows verification
+- Full Windows Evidence CI: passed
+- Single-node CLI evidence: passed
+- Single-node monitoring export evidence: passed
+- No invariant violations
+- No unexpected allows
 
-No functional governance-core changes.
+No functional Governance-core changes.
+No Enforcement, Runtime Guard, Budget Ledger, HTTP Policy, Secret Handling or Operational decision logic changes.
