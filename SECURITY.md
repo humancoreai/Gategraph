@@ -28,11 +28,11 @@ Implemented at PoC level:
 
 Not yet production-grade:
 
-- no managed secret storage or KMS integration
+- no managed KMS/OS-keychain integration; only env-backed reference secrets at PoC level
 - no asymmetric signatures or distributed trust boundary
 - no multi-node/distributed budget coordination
 - no role-based human approval model
-- no real external API execution; adapter remains mock-only
+- no unrestricted real external API execution; controlled transport seam only
 
 ## Deferred production topics
 
@@ -42,3 +42,7 @@ Runaway agent loops and cost control are covered at PoC level by Runtime Guard a
 ## Capability Token Key Management
 
 As of v0.8.9, tokens are signed with an active HMAC key ID and verified against a trusted keyring. This supports bounded rotation in the Single-Node model. It is not yet distributed trust, asymmetric signing, or managed secret storage.
+
+## Secret Management PoC
+
+As of v0.8.11, GateGraph supports scoped secret references for API integrations. Raw values are not stored in SQLite and are resolved only after Enforcement and Guards pass. The current provider is env-backed and intended for local PoC/evidence use, not production secret management. Missing, disabled, or out-of-scope secrets fail closed.
