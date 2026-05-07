@@ -586,3 +586,13 @@ Promoted `v0.8.44_CANDIDATE` to `v0.8.44_STABLE` after the full Windows Evidence
 - Confirmed Governance Drift Detection remains descriptive-only.
 - Confirmed no governance decision, policy, guard, queue, escalation, recommendation or automatic reaction path was added.
 
+
+
+## v0.8.45_STABLE - Stable Promotion
+
+Promoted `v0.8.45_CANDIDATE` to `v0.8.45_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-05-06.
+
+- Confirmed `governance_archive_replay_evidence` is included in the evidence manifest.
+- Confirmed historical replay reconstructs archived payloads without re-running governance logic.
+- Confirmed archived governance records remain append-only.
+- Confirmed no policy, guard, runtime, queue, workflow, escalation, recommendation or automatic reaction path was added.
