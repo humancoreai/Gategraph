@@ -1,4 +1,4 @@
-# Release Notes — v0.9.2_CANDIDATE
+# Release Notes — v0.9.2_STABLE
 
 ## Phase
 
@@ -6,7 +6,7 @@ Multi-Agent / Multi-Mode Architecture Definition.
 
 ## Summary
 
-This candidate adds architectural SSOT documents for future multi-agent and multi-mode work. It does not add autonomous agents, self-orchestration, distributed governance, new runtime execution behavior, or new risk logic.
+This stable release preserves architectural SSOT documents for future multi-agent and multi-mode work. It does not add autonomous agents, self-orchestration, distributed governance, new runtime execution behavior, or new risk logic.
 
 ## Core Boundary
 
@@ -19,4 +19,4 @@ This candidate adds architectural SSOT documents for future multi-agent and mult
 
 ## CI Status
 
-Full Windows Evidence CI: pending user run.
+Full Windows Evidence CI: pending final user TXT confirmation after stabilization patch.
