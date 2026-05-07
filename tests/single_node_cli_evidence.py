@@ -73,6 +73,7 @@ flood_guard:
                 "requested_capabilities": ["read_files"],
                 "input_source": "local",
                 "data_sensitivity": "internal",
+                "secrets_involved": False,
                 "projected_cost_units": 1,
             },
             indent=2,
