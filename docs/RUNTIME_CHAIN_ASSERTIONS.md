@@ -1,8 +1,8 @@
-# Runtime Chain Assertions – v0.10.2_CANDIDATE
+# Runtime Chain Assertions – v0.10.3_CANDIDATE
 
 ## Scope
 
-This document defines the executable guard-chain invariant introduced in v0.10.2_CANDIDATE.
+This document defines the executable guard-chain invariant introduced in v0.10.3_CANDIDATE.
 
 It is a hardening step only. It does not introduce new runtime capability, new adapters, new agent behavior, packaging, deployment, UI, or orchestration.
 
