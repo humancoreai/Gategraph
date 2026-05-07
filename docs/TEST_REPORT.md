@@ -342,3 +342,14 @@ Coverage:
 - no-token path blocks at Enforcement before secret resolution
 
 Result during local validation: 4/4 passed.
+
+
+## v0.8.13 Security Finesse Evidence
+
+- Secret leak check: passed. Raw secret value is not written to audit/evidence.
+- HTTP policy before secret resolution: passed. Denied endpoints keep secret status `not_resolved`.
+- Subdomain edge: passed. Parent host allowlist does not cover subdomains.
+- Wildcard policy registration: passed. Wildcard hosts are rejected.
+- Path prefix boundary: passed. `/v1` does not allow `/v10`.
+- Method normalization: passed. Lowercase method input is normalized.
+- Expired+revoked token: passed. Combined state stays fail-closed.
