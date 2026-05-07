@@ -57,7 +57,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.3 scale-safety fix
+Version: v0.8.4 external-api-mock-adapter
 Core status: stable proof of concept
 Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
 ```
@@ -71,6 +71,7 @@ Session Budget Guard:         passed
 Guard Orchestration:          passed
 Reason Normalization:         passed
 Scale Safety Evidence:        passed
+External API Mock Evidence:    passed
 Pattern Engine:               passed
 Normal usage simulation:      passed
 Unusual input simulation:     passed
@@ -101,6 +102,7 @@ python tests/session_budget_evidence.py
 python tests/guard_orchestration_evidence.py
 python tests/reason_normalization_evidence.py
 python tests/scale_safety_evidence.py
+python tests/external_api_evidence.py
 ```
 
 Depending on your environment, use `python3` instead of `python`.
@@ -127,6 +129,7 @@ GateGraph/
 │   ├── database.py
 │   ├── enforcement.py
 │   ├── event_logger.py
+│   ├── external_api_adapter.py
 │   ├── governance.py
 │   ├── guard_orchestrator.py
 │   ├── pattern_engine.py
