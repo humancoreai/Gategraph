@@ -1,4 +1,4 @@
-Current stable: v0.8.45_STABLE
+Current candidate: v0.8.46_CANDIDATE
 
-Base: v0.8.44_STABLE
-Phase: Governance Archive / Historical Replay
+Base: v0.8.45_STABLE
+Phase: Archive Integrity / Replay Consistency

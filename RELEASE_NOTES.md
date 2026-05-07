@@ -132,3 +132,8 @@ Stable promotion from `v0.8.45_CANDIDATE` after Full Windows Evidence CI passed 
 - Added payload hash verification for replayed records.
 - Added `governance_archive_replay_evidence` to Evidence CI.
 - Preserved replay-only behavior: no re-evaluation, no policy changes, no guard mutation, no queue mutation and no runtime decision changes.
+
+
+## v0.8.46_CANDIDATE - Archive Integrity / Replay Consistency
+
+This candidate adds a descriptive integrity layer for archived governance records and historical replay. It verifies archive envelope consistency, payload hash observations, record id observations and deterministic replay reconstruction without changing governance decisions.

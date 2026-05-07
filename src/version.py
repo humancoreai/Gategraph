@@ -8,7 +8,7 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
-_FALLBACK_SCHEMA_VERSION = "0.8.45"
+_FALLBACK_SCHEMA_VERSION = "0.8.46"
 
 
 @lru_cache(maxsize=1)
