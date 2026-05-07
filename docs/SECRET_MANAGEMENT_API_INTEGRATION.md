@@ -1,4 +1,4 @@
-# Secret Management + Controlled API Integration (v0.8.11)
+# Secret Management + Controlled API Integration (v0.8.12)
 
 ## Purpose
 

@@ -329,7 +329,7 @@ Added `tests/runaway_cost_evidence.py` covering negative projected costs, zero r
 
 Added tests for active-key issuance, legacy-key verification while trusted, legacy-key retirement fail-closed behavior, and signing-key-ID tamper rejection.
 
-## v0.8.11 Secret/API Integration Evidence
+## v0.8.12 Secret/API Integration Evidence
 
 Added `tests/secret_api_integration_evidence.py`.
 
