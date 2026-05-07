@@ -1,22 +1,26 @@
-# Release Notes — v0.9.2_STABLE
-
-## Phase
-
-Multi-Agent / Multi-Mode Architecture Definition.
+# Release Notes – v0.9.3_CANDIDATE
 
 ## Summary
 
-This stable release preserves architectural SSOT documents for future multi-agent and multi-mode work. It does not add autonomous agents, self-orchestration, distributed governance, new runtime execution behavior, or new risk logic.
+v0.9.3_CANDIDATE is a documentation and audit-baseline release. It turns the v0.9.2_STABLE architecture boundary into a referencable governance freeze snapshot.
 
-## Core Boundary
+## Added
 
-- Agents are governed runtime identities, not policy authorities.
-- Modes are narrowing constraint profiles, not privilege expansion.
-- Delegation is audited parent-child task lineage, not autonomous orchestration.
-- Budget authority remains central.
-- Replay must reconstruct causal lineage from audit-visible state only.
-- Emergence paths are explicitly forbidden.
+- `docs/GOVERNANCE_FREEZE_SNAPSHOT_v0_9_3.md`
+- `docs/INVARIANT_REGISTRY.md`
+- `docs/BOUNDARY_REFERENCES.md`
+- `docs/RELEASE_REPRODUCIBILITY.md`
+- `tests/governance_freeze_evidence.py`
 
-## CI Status
+## Unchanged
 
-Full Windows Evidence CI: pending final user TXT confirmation after stabilization patch.
+- governance logic
+- enforcement logic
+- runtime logic
+- risk model
+- budget model
+- agent boundary model
+
+## Release intent
+
+Make the governance baseline reviewable without increasing system capability or autonomy.

@@ -25,6 +25,7 @@ REQUIRED_EVIDENCE = [
     "governance_archive_replay_evidence",
     "archive_integrity_replay_consistency_evidence",
     "operator_export_evidence",
+    "governance_freeze_evidence",
 ]
 
 FORBIDDEN_RELEASE_FIELDS = [
@@ -41,8 +42,8 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
-    assert "v0.9.1_STABLE" in version
     assert "v0.9.2_STABLE" in version
+    assert "v0.9.3_CANDIDATE" in version
     assert "Full Windows Evidence CI:" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
