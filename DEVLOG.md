@@ -447,3 +447,34 @@ create platform-specific hangs and make POSIX behavior diverge from Windows.
 ### Validation
 
 Targeted evidence runner selftest passed locally. Full CI remains the release gate.
+
+## v0.8.27.1_STABLE - Stable Consolidation + Repo Hygiene
+
+Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-04-28.
+
+### Consolidated
+- Operational Hardening is now part of the stable recovery point.
+- Budget snapshots expose system/actor/task/session ledger state for operational inspection.
+- Audit replay consistency checks detect budget overspend and state drift.
+- Operational incidents remain append-only records.
+- Evidence Runner POSIX path uses Python-owned process supervision and session isolation.
+
+### Evidence basis
+- Full Evidence CI reported `Passed: True`.
+- Operational Hardening evidence passed: 6/6.
+- Unexpected allows: 0.
+- Invariant violations: 0.
+- Evidence runner selftest passed on Windows.
+
+### Repo hygiene
+- Removed generated `__pycache__` and compiled Python files.
+- Removed generated evidence JSON/tmp logs from the stable archive.
+- Kept `tests/logs/.gitkeep` so the evidence log directory exists without committing generated logs.
+- Updated version, release status, release notes and stable release document.
+
+### Stable boundary
+- Single-node only.
+- No production KMS.
+- No distributed budget consensus or lock manager.
+- Mock external API only.
+- No automated incident recovery.
