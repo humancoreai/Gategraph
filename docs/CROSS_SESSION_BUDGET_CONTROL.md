@@ -72,3 +72,8 @@ Covered cases:
 ## Limits
 
 This is still single-node local ledger logic. It is not a distributed consensus or multi-node budget system.
+
+
+## Stable evidence
+
+Promoted in `v0.8.26_STABLE` after full Windows Evidence CI reported `Passed: True` on 2026-04-28.
