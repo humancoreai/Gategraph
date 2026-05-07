@@ -25,3 +25,10 @@ build/
 *.zip
 
 !tests/logs/.gitkeep
+
+# Root runtime files that must never be committed
+/gategraph.db
+/*.db
+/*.sqlite
+/*.sqlite3
+/six_run_simulation_results*.csv
