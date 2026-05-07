@@ -1,10 +1,11 @@
 # GateGraph Version
 
-Current: v0.8.0-session-budget-guard
+Current: v0.8.1-guard-orchestration
 
-Previous: v0.7.3-cross-task-drift-evidence
+Previous: v0.8.0-session-budget-guard
 
 Notes:
-- Added additive Session Budget Guard.
-- Added session/global/agent budget evidence tests.
-- Existing Governance/Enforcement/Runtime/Pattern core semantics preserved.
+- Added deterministic Guard Orchestrator.
+- Added Guard Orchestration evidence tests.
+- Fixed stop priority: Enforcement → Session Budget → Runtime Guard → Action.
+- Existing Governance/Enforcement/Runtime/Pattern semantics preserved.
