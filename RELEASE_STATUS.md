@@ -1,8 +1,8 @@
-# Release Status - GateGraph v0.8.8-capability-token-hardening
+# Release Status - GateGraph v0.8.9-token-key-management
 
 ## Status
 
-Security hardening release on top of v0.8.7.
+Security hardening release on top of v0.8.8.
 
 ## Scope
 
@@ -11,7 +11,7 @@ Changed:
 - Enforcement verifies token claim integrity before capability use.
 - Token DB schema now stores `signature` and `signing_key_id`.
 - Reason Normalizer includes token signature/claim mismatch reasons.
-- New token-hardening evidence tests added.
+- New token-hardening and key-rotation evidence tests added.
 
 Unchanged:
 - Governance decision semantics
@@ -24,3 +24,8 @@ Unchanged:
 ## Release note
 
 This release hardens Capability Tokens against simple in-memory mutation and persisted-signature tampering in the current Single-Node model. It prepares the architecture for later stronger token boundaries, but does not yet implement distributed trust or key rotation.
+
+
+## v0.8.9 addition
+
+Capability Token signing now has explicit key IDs and a trusted keyring. New tokens use the active key; legacy tokens verify only while their key remains trusted. Unknown key IDs fail closed.
