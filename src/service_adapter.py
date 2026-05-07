@@ -10,7 +10,7 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
-from src import alert_aggregator, database, governance, monitoring_export, operational_hardening, runtime_guard, session_budget_guard
+from src import alert_aggregator, database, governance, monitoring_export, operational_hardening, runtime_guard, session_budget_guard, observability
 from src.config_loader import AppConfig
 
 
@@ -139,11 +139,13 @@ def monitoring(config: AppConfig) -> dict[str, Any]:
         incidents = operational_hardening.list_open_incidents(conn)
         alerts = operational_hardening.evaluate_operational_alerts(incidents)
         aggregated = alert_aggregator.aggregate_alerts(alerts)
+        observability_summary = observability.build_observability_aggregation(conn)
         return monitoring_export.build_monitoring_export(
             budget_snapshot=snapshot,
             incidents=incidents,
             alerts=alerts,
             aggregated_alerts=aggregated,
+            observability=observability_summary,
         )
     finally:
         conn.close()
