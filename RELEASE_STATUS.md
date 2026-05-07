@@ -1,21 +1,20 @@
-# Release Status – v0.11.1_STABLE
+# Release Status – v0.11.2_CANDIDATE
 
-Status: stable
+Status: candidate
 
-Base: v0.11.0_STABLE
+Base: v0.11.1_STABLE
 
-Phase: Operational Start Surface / Minimal Deployment Consistency
+Phase: Operational Consistency / Runtime Surface Tightening
 
 Scope:
-- document canonical CLI/server startup paths
-- document config and ENV expectations
-- verify startup entry points remain importable
-- verify package metadata stays aligned
-- verify deterministic health/status surface expectations
-- add startup/config evidence
+- verify deterministic startup/shutdown semantics
+- detect config/runtime mismatch conditions
+- couple manifest, startup surface, packaging surface, runtime surface and release metadata
+- document unsupported runtime mutations, startup overrides, operational shortcuts and config bypasses
+- harden repo/release hygiene against runtime artifacts and metadata drift
 
 Out of scope:
-- no runtime changes
+- no runtime capability changes
 - no governance changes
 - no enforcement changes
 - no adapter changes
