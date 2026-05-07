@@ -1,7 +1,7 @@
 # GateGraph Version
 
-Current candidate: v0.8.35_CANDIDATE
+Current candidate: v0.8.36_CANDIDATE
 
-Base: v0.8.34_STABLE
+Base: v0.8.35_STABLE
 
-Phase: Deterministic API Surface / Contract Stabilization
+Phase: API Robustness / Real-World Stability
