@@ -1,66 +1,87 @@
-<!-- v0.9.1_STABLE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
-
 # GateGraph
 
-Current candidate: **v0.9.0_CANDIDATE**
+GateGraph is a minimal Proof of Concept for a deterministic governance and enforcement layer with an append-only audit graph.
 
-GateGraph is a deterministic governance, enforcement, runtime-control and audit proof-of-concept for agent-like systems. It evaluates requested actions, applies deterministic rules, issues capability tokens, enforces permissions, applies runtime/session budgets, records decisions in an append-only audit trail, and produces evidence logs for review.
+It is designed to answer one practical question:
 
-GateGraph is intentionally bounded. It is not an autonomous agent, not a self-governing system, not an adaptive AI safety layer, not a predictive risk model, and not a full GLP implementation.
+> Before an agent or tool performs an action, who decided it was allowed, under which rule, with which capability, and where is that decision recorded?
 
-## v0.9.0 milestone purpose
+## What GateGraph does
 
-v0.9.0_CANDIDATE is a release and external-review baseline. It consolidates the v0.8.x line by adding review documents, scope-freeze documents, deterministic release packaging and milestone consistency evidence. It does not add new governance decision logic.
+GateGraph implements:
 
-## Core flow
+- deterministic risk classification
+- deterministic rule evaluation
+- append-only event logging
+- idempotent event writes
+- capability-token based enforcement
+- rejection event logging
+- a small validation test loop
+
+## What GateGraph is not
+
+GateGraph is not:
+
+- an AGI system
+- an autonomous self-learning system
+- a full GLP implementation
+- a distributed ledger
+- a multi-agent runtime
+
+## Architecture
 
 ```text
 Task
-→ Risk Engine
-→ Rule Engine
-→ Governance Decision
-→ Capability Token
-→ Enforcement
-→ Session Budget Guard
-→ Runtime Guard
-→ HTTP Policy
-→ Secret Resolution
-→ Action-ready / Stop
-→ Audit / Evidence
+  -> Risk Engine
+  -> Rule Engine
+  -> Decision
+  -> Capability Token
+  -> Enforcement Layer
+  -> Audit Graph Store
 ```
 
-## What GateGraph provides
+The key invariant is simple:
 
-- deterministic risk/rule evaluation
-- fail-closed decisions
-- capability-token-based enforcement
-- runtime and session budget controls
-- deterministic guard orchestration
-- reason normalization for stable explain codes
-- append-only audit/evidence orientation
-- replay, archive, drift and operator export evidence
-- local/protected server adapter for evaluate/status/monitoring integration
-- deterministic release packaging for external review
+```text
+No tool action executes without a valid, non-expired, non-revoked, task-bound capability token.
+```
 
-## What GateGraph does not provide
+## Related Concepts
 
-See [`NON_SCOPE.md`](./NON_SCOPE.md). In short: no autonomous rule changes, no self-governance, no automatic optimization, no ML/prediction layer, no multi-node governance, no production enterprise deployment claim.
+GateGraph is inspired by graph-based and append-only data models similar to:
 
-## Review documents
+- https://github.com/humancoreai/GLP-Graph-Ledger-Protocol
 
-- [`EXTERNAL_REVIEW.md`](./EXTERNAL_REVIEW.md)
-- [`ARCHITECTURE.md`](./ARCHITECTURE.md)
-- [`INVARIANTS.md`](./INVARIANTS.md)
-- [`NON_SCOPE.md`](./NON_SCOPE.md)
-- [`RELEASE_CONTENT_RULES.md`](./RELEASE_CONTENT_RULES.md)
+Clear separation:
 
-## Packaging
+- GLP focuses on a distributed, content-addressed ledger for assertions and relations.
+- GateGraph is a deterministic governance and enforcement layer with an audit graph.
 
-Use:
+GateGraph can conceptually sit on top of or alongside GLP-like systems, but it does not implement the GLP protocol.
+
+## Run tests
 
 ```bash
-python tools/build_release.py
-python tools/verify_release.py dist/GateGraph_v0.9.0_CANDIDATE.zip
+python -S tests/test_loop.py
 ```
 
-The release ZIP is built with sorted entries, fixed ZIP timestamps, hidden-file exclusion and SHA256 verification data.
+Expected current result:
+
+```text
+Passed: isolated 20/20 | accumulated 20/20
+Failed: 0
+Unexpected allows: 0
+Invariant violations: 0
+```
+
+## Current status
+
+PoC-ready. Not production-ready.
+
+Known production blockers:
+
+- parallel execution / race conditions
+- reviewer trust model
+- token signing or stronger token integrity
+- formal graph query layer
+- runtime / cost control layer (intentionally deferred)
