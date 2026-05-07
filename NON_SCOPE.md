@@ -1,4 +1,4 @@
-<!-- v0.9.1_CANDIDATE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
+<!-- v0.9.1_STABLE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
 
 # Non-Scope – v0.9.0_CANDIDATE
 
