@@ -424,3 +424,26 @@ Promoted `v0.8.26_CROSS_SESSION_BUDGET_CANDIDATE` to `v0.8.26_STABLE` after the 
 - Added `tests/operational_hardening_evidence.py`.
 - Added documentation in `docs/OPERATIONAL_HARDENING.md`.
 - No changes to Enforcement/Governance allow-path semantics.
+
+
+## v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE
+
+### Scope
+
+Evidence Runner patch only.
+
+### Change
+
+- Replaced POSIX external `timeout` wrapper with Python-owned `Popen` supervision.
+- Added POSIX `start_new_session=True` for process-session isolation.
+- Preserved file-backed stdout/stderr.
+- Preserved fail-closed timeout reporting.
+
+### Rationale
+
+The evidence runner must own timeout semantics directly. Shell timeout wrappers can
+create platform-specific hangs and make POSIX behavior diverge from Windows.
+
+### Validation
+
+Targeted evidence runner selftest passed locally. Full CI remains the release gate.
