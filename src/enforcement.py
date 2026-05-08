@@ -9,7 +9,7 @@ import uuid
 from dataclasses import dataclass
 from typing import Optional
 
-from src.capability_token import CapabilityToken, verify_signature, load_trusted_keyring, is_trusted_signing_key
+from src.capability_token import CapabilityToken, verify_signature, load_trusted_keyring, is_trusted_signing_key, token_audit_ref
 from src import event_logger
 
 
@@ -69,6 +69,20 @@ def enforce(conn: sqlite3.Connection, token: Optional[CapabilityToken], requeste
     if not token.allows(requested_capability):
         return _reject(conn, task_id, correlation_id, f"capability '{requested_capability}' not granted in token {token.token_id}", requested_capability)
 
+    with conn:
+        event_logger.log_event(
+            conn,
+            event_id=f"EVT-ENF-{uuid.uuid4().hex[:12].upper()}",
+            idempotency_key=f"enforcement-allowed:{correlation_id}:{task_id}:{requested_capability}:{token.token_id}",
+            correlation_id=correlation_id,
+            causation_id=None,
+            event_type="enforcement_allowed",
+            task_id=task_id,
+            actor_component="enforcement",
+            input_data={"requested_capability": requested_capability, "token_ref": token_audit_ref(token)},
+            evaluation={"token_audit_redaction": "raw_token_signature_and_authorization_material_excluded"},
+            decision={"status": "allow", "reason": "capability granted", "token_id": token.token_id},
+        )
     return EnforcementResult(True, "capability granted", None)
 
 
