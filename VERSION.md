@@ -1,4 +1,4 @@
-Current stable: v0.8.47_STABLE
+Current candidate: v0.8.48_CANDIDATE
 
-Base: v0.8.46_STABLE
-Phase: Operator Export / Evidence Bundle
+Base: v0.8.47_STABLE
+Phase: Final Consolidation / v0.9 Readiness Gate
