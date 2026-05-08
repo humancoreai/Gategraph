@@ -136,32 +136,119 @@ def _reset_db_files() -> list[str]:
     return warnings
 
 
-def _kill_process_group(proc: subprocess.Popen[object]) -> bool:
-    if proc.poll() is not None:
+def _posix_descendant_pids(root_pid: int) -> list[int]:
+    """Return descendants using /proc PPid links; empty on non-/proc systems."""
+    if os.name != "posix":
+        return []
+    children: dict[int, list[int]] = {}
+    proc_root = Path("/proc")
+    try:
+        entries = list(proc_root.iterdir())
+    except OSError:
+        return []
+    for entry in entries:
+        if not entry.name.isdigit():
+            continue
+        try:
+            status = entry.joinpath("status").read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
+        ppid = None
+        for line in status.splitlines():
+            if line.startswith("PPid:"):
+                try:
+                    ppid = int(line.split()[1])
+                except (IndexError, ValueError):
+                    ppid = None
+                break
+        if ppid is not None:
+            children.setdefault(ppid, []).append(int(entry.name))
+
+    result: list[int] = []
+    seen: set[int] = set()
+    stack = list(children.get(root_pid, []))
+    while stack:
+        pid = stack.pop()
+        if pid in seen:
+            continue
+        seen.add(pid)
+        result.append(pid)
+        stack.extend(children.get(pid, []))
+    return result
+
+
+def _pid_alive(pid: int) -> bool:
+    if pid <= 0:
         return False
     try:
+        os.kill(pid, 0)
+        return True
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+
+
+def _kill_process_group(proc: subprocess.Popen[object]) -> bool:
+    """Best-effort hard kill of the whole subprocess tree.
+
+    INV: Timeout is final and fail-closed. The runner must never leave a child tree
+    running just because the direct child or its process group behaves differently
+    across platforms.
+    """
+    killed = False
+    root_pid = int(proc.pid)
+    try:
         if os.name == "posix":
-            os.killpg(proc.pid, signal.SIGKILL)
+            # SEC: kill the isolated process group first; fallback tree kill covers
+            # child processes that escaped or inherited descriptors unexpectedly.
+            descendant_pids = _posix_descendant_pids(root_pid)
+            try:
+                pgid = os.getpgid(root_pid)
+                os.killpg(pgid, signal.SIGKILL)
+                killed = True
+            except (ProcessLookupError, PermissionError, OSError):
+                pass
+            for pid in sorted(descendant_pids, reverse=True):
+                try:
+                    os.kill(pid, signal.SIGKILL)
+                    killed = True
+                except (ProcessLookupError, PermissionError, OSError):
+                    pass
+            if _pid_alive(root_pid):
+                try:
+                    os.kill(root_pid, signal.SIGKILL)
+                    killed = True
+                except (ProcessLookupError, PermissionError, OSError):
+                    pass
         else:
             # WHY: proc.kill() only kills the direct child on Windows. taskkill /T /F
             # terminates the child tree so inherited log-file handles are released.
             subprocess.run(
-                ["taskkill", "/PID", str(proc.pid), "/T", "/F"],
+                ["taskkill", "/PID", str(root_pid), "/T", "/F"],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 timeout=5,
                 check=False,
             )
-        return True
-    except (ProcessLookupError, subprocess.SubprocessError, OSError):
-        return False
+            killed = True
+            if proc.poll() is None:
+                try:
+                    proc.kill()
+                    killed = True
+                except OSError:
+                    pass
+    except subprocess.SubprocessError:
+        pass
+    return killed
 
 
-def _bounded_reap(proc: subprocess.Popen[object], seconds: float = 2.0) -> int | None:
+def _bounded_wait_after_kill(proc: subprocess.Popen[object], seconds: float = 2.0) -> int:
     try:
-        return proc.wait(timeout=seconds)
+        return int(proc.wait(timeout=seconds))
     except subprocess.TimeoutExpired:
-        return proc.returncode
+        _kill_process_group(proc)
+        return 124
 
 
 def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, str] | None = None) -> EvidenceCommand:
@@ -186,28 +273,42 @@ def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, s
 
     # WHY: binary file-backed output avoids pipe deadlocks and all Windows codepage decode paths.
     with out_path.open("wb") as out, err_path.open("wb") as err:
-        creationflags = 0
-        if os.name == "nt":
+        if os.name == "posix":
+            # SEC: GNU timeout owns the watchdog outside Python, avoiding interpreter-level
+            # wait/signal edge cases while preserving fail-closed timeout semantics.
+            timeout_cmd = [
+                "timeout",
+                "--kill-after=2s",
+                f"{int(timeout_seconds)}s",
+                *cmd,
+            ]
+            completed = subprocess.run(
+                timeout_cmd,
+                cwd=PROJECT_ROOT,
+                env=env,
+                stdout=out,
+                stderr=err,
+                check=False,
+            )
+            rc = int(completed.returncode)
+            timed_out = rc == 124 or rc == 137
+            killed_group = timed_out
+        else:
             creationflags = subprocess.CREATE_NEW_PROCESS_GROUP
-
-        proc = subprocess.Popen(
-            cmd,
-            cwd=PROJECT_ROOT,
-            env=env,
-            stdout=out,
-            stderr=err,
-            start_new_session=(os.name == "posix"),
-            creationflags=creationflags,
-        )
-        try:
-            rc = proc.wait(timeout=timeout_seconds)
-        except subprocess.TimeoutExpired:
-            timed_out = True
-            killed_group = _kill_process_group(proc)
+            proc = subprocess.Popen(
+                cmd,
+                cwd=PROJECT_ROOT,
+                env=env,
+                stdout=out,
+                stderr=err,
+                creationflags=creationflags,
+            )
             try:
-                rc = proc.wait(timeout=2.0)
+                rc = proc.wait(timeout=timeout_seconds)
             except subprocess.TimeoutExpired:
-                rc = 124
+                timed_out = True
+                killed_group = _kill_process_group(proc)
+                rc = _bounded_wait_after_kill(proc, 2.0)
 
     duration = time.monotonic() - started
     stdout = out_path.read_text(encoding="utf-8", errors="replace") if out_path.exists() else ""
