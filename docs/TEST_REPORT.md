@@ -318,3 +318,8 @@ Non-semantic cleanup after external API enforcement binding:
 - CI/evidence runner uses `python -S -u` for deterministic subprocess execution in local and CI environments.
 
 No governance, enforcement, runtime, session-budget, pattern-engine, or adapter semantics changed.
+
+
+## v0.8.6 Runaway Cost Evidence
+
+Added `tests/runaway_cost_evidence.py` covering negative projected costs, zero runtime costs, and negative-cost External API requests. Targeted run: 3/3 passed. Individual evidence scripts passed; aggregate runner instability is documented in `RELEASE_STATUS.md`.
