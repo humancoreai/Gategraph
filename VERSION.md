@@ -1,9 +1,9 @@
 # GateGraph Version
 
-Current stable: v0.8.36_STABLE
+Current candidate: v0.8.38_CANDIDATE
 
-Base: v0.8.35_STABLE
+Base: v0.8.36_STABLE
 
-Phase: API Robustness / Real-World Stability
+Phase: Runtime Cost Governance / Kill Conditions
 
-Promotion evidence: Full Windows Evidence CI passed on 2026-04-29.
+Promotion evidence: Pending full Windows Evidence CI.

@@ -81,11 +81,11 @@ def scenario_cost_limit() -> EvidenceScenarioResult:
         d1 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="analysis-a", cost_units=2)
         d2 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="analysis-b", cost_units=2)
         evidence = collect_task_evidence(conn, task_id)
-        passed = d1.decision == "continue" and d2.decision == "stop" and has_runtime_stop(evidence, ["max_cost_units"])
+        passed = d1.decision == "continue" and d2.decision == "stop" and (has_runtime_stop(evidence, ["max_cost_units", "projected_cost_violation"]) or "projected_cost_violation" in d2.reason)
         return EvidenceScenarioResult(
             test_name="many_allowed_micro_actions_cost_limit",
             description="Individually plausible model/tool steps must stop once cumulative budget is exceeded.",
-            expected={"final_runtime_decision": "stop", "stop_reason_contains": "max_cost_units", "audit_required": True},
+            expected={"final_runtime_decision": "stop", "stop_reason_contains": "max_cost_units|projected_cost_violation", "audit_required": True},
             actual={"decisions": [d1.decision, d2.decision], "final_reason": d2.reason},
             passed=passed,
             severity="info" if passed else "high",
@@ -330,11 +330,11 @@ def scenario_budget_boundary_exact_cost_allowed_then_stop() -> EvidenceScenarioR
         d2 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="b", cost_units=2)
         d3 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="c", cost_units=1)
         evidence = collect_task_evidence(conn, task_id)
-        passed = [d1.decision, d2.decision, d3.decision] == ["continue", "continue", "stop"] and has_runtime_stop(evidence, ["max_cost_units"])
+        passed = [d1.decision, d2.decision, d3.decision] == ["continue", "continue", "stop"] and (has_runtime_stop(evidence, ["max_cost_units", "projected_cost_violation"]) or "projected_cost_violation" in d3.reason)
         return EvidenceScenarioResult(
             test_name="budget_boundary_exact_cost_allowed_then_stop",
             description="Exact budget consumption is allowed; the first step beyond budget must stop with evidence.",
-            expected={"decisions": ["continue", "continue", "stop"], "stop_reason_contains": "max_cost_units"},
+            expected={"decisions": ["continue", "continue", "stop"], "stop_reason_contains": "max_cost_units|projected_cost_violation"},
             actual={"decisions": [d1.decision, d2.decision, d3.decision], "final_reason": d3.reason},
             passed=passed,
             severity="info" if passed else "medium",
@@ -357,7 +357,7 @@ def scenario_cross_task_cost_is_not_session_budget() -> EvidenceScenarioResult:
             d2 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target=f"{task_id}-2", cost_units=2)
             finals.append(d2)
             evidences[task_id] = collect_task_evidence(conn, task_id)
-        passed = all(d.decision == "stop" and "max_cost_units" in d.reason for d in finals)
+        passed = all(d.decision == "stop" and ("max_cost_units" in d.reason or "projected_cost_violation" in d.reason) for d in finals)
         return EvidenceScenarioResult(
             test_name="cross_task_cost_is_per_task_not_session_budget",
             description="Documents current scope: cost budget is enforced per task; no global/session budget is implemented in core runtime.",

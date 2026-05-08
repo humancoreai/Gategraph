@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Optional
 
-from src.runtime_governance import compute_runtime_state
+from src.runtime_cost_guard import evaluate_runtime_cost_guard
 
 
 DEFAULT_MAX_STEPS = 20
@@ -158,37 +158,25 @@ def evaluate_before_step(
             remaining_steps, remaining_cost
         )
 
-    if used_cost + cost_units > budget.max_cost_units:
-        return _record_decision(
-            conn, task_id, None, "stop",
-            f"max_cost_units exceeded: {used_cost + cost_units} > {budget.max_cost_units}",
-            remaining_steps, remaining_cost
-        )
-
-    if repeated_count >= budget.repeated_action_limit:
-        return _record_decision(
-            conn, task_id, None, "stop",
-            f"repeated_action_limit exceeded for signature {signature!r}",
-            remaining_steps, remaining_cost, "blocked", 0
-        )
-
-    governance_state = compute_runtime_state(
+    cost_guard_decision = evaluate_runtime_cost_guard(
         max_steps=budget.max_steps,
         prior_steps=prior_steps,
         max_cost_units=budget.max_cost_units,
         used_cost_units=used_cost,
         repeated_action_limit=budget.repeated_action_limit,
         repeated_count=repeated_count,
+        projected_cost_units=cost_units,
         loop_signal=loop_signal,
     )
-    if governance_state.state == "blocked" or cost_units > governance_state.max_cost_for_action:
+    if cost_guard_decision.decision != "continue":
         return _record_decision(
-            conn, task_id, None, "stop",
-            f"runtime governance {governance_state.state}: {governance_state.reason}; "
-            f"cost_units {cost_units} > max_cost_for_action {governance_state.max_cost_for_action}",
-            governance_state.remaining_steps, governance_state.remaining_cost_units,
-            governance_state.state, governance_state.max_cost_for_action
+            conn, task_id, None, "stop", cost_guard_decision.reason,
+            cost_guard_decision.remaining_steps, cost_guard_decision.remaining_cost_units,
+            cost_guard_decision.escalation_state, cost_guard_decision.max_cost_for_action
         )
+
+    governance_state = cost_guard_decision
+
 
     step_id = _record_step(
         conn,
@@ -208,7 +196,7 @@ def evaluate_before_step(
         "within budget",
         max(budget.max_steps - (prior_steps + 1), 0),
         max(budget.max_cost_units - (used_cost + cost_units), 0),
-        governance_state.state,
+        governance_state.escalation_state,
         governance_state.max_cost_for_action,
     )
 
