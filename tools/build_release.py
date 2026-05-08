@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.10.0_CANDIDATE"
-BASE = "v0.9.3_STABLE"
+VERSION = "v0.10.1_CANDIDATE"
+BASE = "v0.10.0_CANDIDATE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -48,6 +48,8 @@ REQUIRED_RELEASE_FILES = {
     "tests/caller_boundary_evidence.py",
     "tests/release_integrity_evidence.py",
     "tests/runtime_boundary_hardening_evidence.py",
+    "tests/freeze_runtime_invariant_evidence.py",
+    "tests/api_boundary_split_evidence.py",
     "tests/multi_agent_architecture_evidence.py",
     "docs/MULTI_AGENT_SSOT.md",
     "docs/MULTI_MODE_SSOT.md",
@@ -61,6 +63,7 @@ REQUIRED_RELEASE_FILES = {
     "docs/RELEASE_REPRODUCIBILITY.md",
     "docs/RUNTIME_BOUNDARY_HARDENING.md",
     "src/runtime_path_assertions.py",
+    "src/api_boundary.py",
     "tests/governance_freeze_evidence.py",
 }
 
@@ -146,7 +149,7 @@ def build_manifest(files: Iterable[Path]) -> dict:
         "release": VERSION,
         "base": BASE,
         "kind": "candidate_release",
-        "scope": "runtime_boundary_hardening",
+        "scope": "runtime_boundary_hardening_api_boundary_split",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -195,7 +198,7 @@ def main() -> int:
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "trusted entry enforcement and explicit runtime path assertions; no new runtime capability or adapter expansion",
+        "claim_boundary": "internal/public API split and freeze-aware runtime invariant assertions; no new runtime capability or adapter expansion",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
