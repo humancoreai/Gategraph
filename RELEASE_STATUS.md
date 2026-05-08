@@ -1,7 +1,14 @@
 # Release Status
 
-Current candidate: v0.8.36_CANDIDATE
+Current stable: v0.8.36_STABLE
 Base: v0.8.35_STABLE
 Phase: API Robustness / Real-World Stability
 
-Status: Candidate created. Key API robustness evidence passes locally; full aggregate CI must be rerun before STABLE promotion.
+Status: STABLE. Promoted after Full Windows Evidence CI passed, including api_contract_evidence and api_robustness_evidence.
+
+Promotion notes:
+- API contract unchanged.
+- API robustness evidence passed.
+- Server hardening evidence passed.
+- Repo push hygiene evidence passed.
+- Full aggregate CI passed.
