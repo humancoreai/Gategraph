@@ -1,18 +1,18 @@
-# Release Status – v0.10.3_STABLE
+# Release Status – v0.11.0_CANDIDATE
 
-Status: stable
+Status: candidate
 
-Base: v0.10.2_STABLE
+Base: v0.10.3_STABLE
 
-Phase: Release Process Guard
+Phase: Deployment / Packaging Baseline
 
 Scope:
-- validate release truth consistency
-- validate pre-release/stable metadata surfaces
-- validate structured manifest consistency
-- validate manifest hash/size consistency
-- detect dead local markdown references
-- prevent promotion drift before Stable release
+- add pyproject.toml packaging baseline
+- add reproducible local editable-install surface
+- add console entry points for existing CLI/server modules
+- document supported/unsupported/unsafe deployment boundary
+- add packaging integrity evidence
+- add install surface evidence
 
 Out of scope:
 - no runtime changes
@@ -20,5 +20,7 @@ Out of scope:
 - no enforcement changes
 - no adapter changes
 - no agentic behavior
-- no packaging/deployment work
+- no multi-node/distributed governance
+- no cloud orchestration
+- no Kubernetes/Helm/service mesh
 - no UI
