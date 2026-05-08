@@ -11,7 +11,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.1_CANDIDATE"
+VERSION = "v0.11.1_STABLE"
 BASE = "v0.11.0_STABLE"
 
 REQUIRED_ROOT_FILES = [
