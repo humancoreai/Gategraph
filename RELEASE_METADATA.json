@@ -14,7 +14,7 @@
   "new_runtime_model": false,
   "packaging_scope": true,
   "phase": "Operational Consistency / Runtime Surface Tightening",
-  "release": "v0.11.2_CANDIDATE",
+  "release": "v0.11.2_STABLE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "runtime_surface_scope": true,
@@ -22,6 +22,6 @@
   "self_orchestration": false,
   "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "candidate",
+  "status": "stable",
   "surface_freeze_coupling_scope": true
 }
