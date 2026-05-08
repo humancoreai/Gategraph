@@ -1,5 +1,14 @@
 # Release Notes
 
+## v0.8.36_STABLE
+
+Stable release for API Robustness / Real-World Stability.
+
+Promotion basis: Full Windows Evidence CI passed, including api_contract_evidence, api_robustness_evidence, server_hardening_evidence, and repo_push_hygiene_evidence.
+
+Invariants preserved: API contract unchanged, no new response fields, no core governance changes, server remains adapter-only.
+
+
 ## v0.8.34_STABLE
 
 Server Hardening / Safe Service Boundary release.
