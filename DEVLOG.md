@@ -382,3 +382,35 @@ Invariant preserved:
 
 Known limit:
 - single-node ledger only; no distributed lock/consensus/KMS.
+
+
+## v0.8.26_STABLE - Stable Consolidation + Repo Hygiene
+
+Promoted `v0.8.26_CROSS_SESSION_BUDGET_CANDIDATE` to `v0.8.26_STABLE` after the Windows full Evidence CI run reported `Passed: True`.
+
+### Consolidated
+- Cross-Session Budget Control is now part of the stable recovery point.
+- Budget Ledger remains single-node and deterministic.
+- Governance reserves budget before token issuance.
+- Enforcement verifies budget claims against persisted token state.
+- Runtime remains non-authoritative and only reads signed constraints.
+
+### Evidence basis
+- Cross-session split attack evidence passed.
+- Reservation idempotency evidence passed.
+- Reservation expiry/release evidence passed.
+- Token budget-claim enforcement evidence passed.
+- Missing budget scope fails closed.
+- Full Evidence CI reported no unexpected allows and no invariant violations.
+
+### Repo hygiene
+- Removed generated `__pycache__` and compiled Python files.
+- Removed generated evidence JSON/tmp logs from the stable archive.
+- Kept `tests/logs/.gitkeep` so the evidence log directory exists without committing generated logs.
+- Updated version, release status, release notes, and stable release document.
+
+### Stable boundary
+- Single-node only.
+- No production KMS.
+- No distributed budget consensus or lock manager.
+- No monitoring/alerting/incident layer.
