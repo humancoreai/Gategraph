@@ -1,7 +1,7 @@
-Current candidate: v0.9.1_STABLE
+Current candidate: v0.9.2_CANDIDATE
 
-Base: v0.9.0_STABLE
-Phase: Boundary Hardening / Release Integrity Closure
-Scope: caller trust boundary clarification, deterministic release integrity, review readiness
+Base: v0.9.1_STABLE
+Phase: Multi-Agent / Multi-Mode Architecture Definition
+Scope: architecture, scope, boundaries, invariants, security model, explainability/replay consistency
 
-Invariant: v0.9.1_STABLE introduces no new governance decision logic, no new runtime model, no new risk model, and no autonomous classification.
+Invariant: v0.9.2_CANDIDATE introduces no autonomous agents, no distributed governance, no new runtime execution model, no new risk model, no governance write authority, and no self-orchestration.
