@@ -1,10 +1,10 @@
-# Release Notes – v0.11.2_CANDIDATE
+# Release Notes – v0.11.2_STABLE
 
-Status: candidate
+Status: stable
 Base: v0.11.1_STABLE
 Phase: Operational Consistency / Runtime Surface Tightening
 
-v0.11.2_CANDIDATE continues Phase B by making the operational runtime surface more explicit and more tightly coupled to release evidence.
+v0.11.2_STABLE continues Phase B by making the operational runtime surface more explicit and more tightly coupled to release evidence.
 
 Added:
 - `docs/RUNTIME_SURFACE_FREEZE.md`
