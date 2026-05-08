@@ -1,6 +1,6 @@
 # GateGraph
 
-Current stable: **v0.8.33_STABLE**
+Current stable: **v0.8.34_STABLE**
 
 **GateGraph** is a deterministic governance, enforcement, runtime-control and audit proof of concept for agent-like systems.
 
@@ -9,6 +9,25 @@ It evaluates requested actions, applies deterministic rules, issues capability t
 GateGraph is intentionally small. It is not an autonomous agent, not a distributed ledger, and not a full GLP implementation.
 
 ---
+
+
+## v0.8.34 stable scope
+
+v0.8.34_STABLE promotes the server hardening phase after Full Windows Evidence CI passed.
+
+The server remains a thin adapter over `src/service_adapter.py`; it validates malformed or unsafe requests at the service boundary and returns deterministic JSON errors without changing governance behavior.
+
+Server hardening includes:
+
+- default bind host `127.0.0.1`
+- explicit warning for public bind requests
+- `application/json` requirement for `POST /evaluate`
+- bounded request bodies
+- fail-closed invalid JSON / missing fields / invalid request shapes
+- JSON errors for unsupported methods and unknown endpoints
+- read-only `/status` and `/monitoring` endpoints
+
+Out of scope remains: authentication, TLS, reverse proxy setup, webhooks, background jobs, multi-node operation and public internet exposure.
 
 ## What GateGraph does
 
@@ -25,7 +44,7 @@ GateGraph provides:
 - append-only event logging
 - evidence-oriented JSON test reports
 - Pattern Engine proposals from repeated audit patterns with advisory priority/score metadata and without automatic rule changes
-- minimal server adapter for evaluate/status/monitoring integration
+- hardened local/protected server adapter for evaluate/status/monitoring integration
 
 The current control flow:
 
