@@ -85,4 +85,4 @@ This threat model does not claim:
 v0.9.3_STABLE treats this threat model as a release-boundary reference. Future changes that alter authority, enforcement order, replay semantics, audit semantics, adapter authority, secret resolution, or multi-agent boundaries must be reviewed against this document and the invariant registry.
 
 
-See also `docs/DEPLOYMENT_BOUNDARY.md` for the supported/unsupported/unsafe deployment surface introduced in v0.11.4_CANDIDATE.
+See also `docs/DEPLOYMENT_BOUNDARY.md` for the supported/unsupported/unsafe deployment surface introduced in v0.11.4_STABLE.
