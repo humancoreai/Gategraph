@@ -1,24 +1,9 @@
-# Release Notes — GateGraph v0.8.30_STABLE
+# RELEASE_NOTES
 
-## Summary
+## v0.8.31_CANDIDATE
 
-v0.8.30_STABLE completes the Operational Stability Gate.
-
-## Added
-
-- Alert Aggregator for deterministic alert deduplication.
-- Incident State Manager with manual forward-only lifecycle.
-- Monitoring Export for read-only operational state reports.
-- Actor-scoped deterministic Flood Guard.
-
-## Fixed
-
-- Updated runaway-cost evidence expectation for v0.8.30 guard order:
-  invalid projected cost may fail closed at `flood_guard` before session reservation.
-
-## Invariants
-
-- Operational layer remains read-only.
-- Flood Guard is a Governance guard, not an Operational decision.
-- Blocked Flood Guard attempts do not reserve session budget.
-- No autonomous recovery, no UI, no external monitoring integration.
+- Added single-node CLI adapter (`python -m src.cli`).
+- Added dependency-free config loader for YAML/JSON config.
+- Added example config and task files.
+- Added single-node CLI evidence.
+- No changes to Governance, Enforcement, Runtime Guard, Budget Ledger, HTTP Policy, Secret Handling, or Operational logic.
