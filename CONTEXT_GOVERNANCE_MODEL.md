@@ -1,4 +1,4 @@
-# Context Governance Model — v0.11.7_CANDIDATE
+# Context Governance Model — v0.11.7_STABLE
 
 ## Scope
 
