@@ -1,4 +1,4 @@
-# Mode Boundary Surface – GateGraph v0.11.4_CANDIDATE
+# Mode Boundary Surface – GateGraph v0.11.4_STABLE
 
 Status: stable
 Base: v0.11.3_STABLE
