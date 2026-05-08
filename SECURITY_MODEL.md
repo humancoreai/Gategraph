@@ -1,4 +1,4 @@
-# GateGraph Security Model – v0.11.7_STABLE
+# GateGraph Security Model – v0.11.8_CANDIDATE
 
 GateGraph is a deterministic governance and enforcement boundary for agentic task execution. It is not an agent, not a sandbox, and not a distributed security platform.
 
@@ -32,7 +32,7 @@ Capability tokens are signed, scoped, expiring, revocable, and task-bound. Revie
 Raw tokens, signatures, signing input, Authorization headers, bearer payloads, and base64-encoded token material are not audit-safe.
 
 ### Explain and audit boundary
-Audit, explain, monitoring, and operator-facing exports are descriptive. They must not become a covert channel for sensitive material. v0.11.7 adds centralized redaction and evidence for token, Authorization header, and secret exposure boundaries.
+Audit, explain, monitoring, and operator-facing exports are descriptive. They must not become a covert channel for sensitive material. v0.11.8 adds centralized redaction and evidence for token, Authorization header, and secret exposure boundaries.
 
 ## Trust boundaries
 
@@ -46,4 +46,4 @@ Audit, explain, monitoring, and operator-facing exports are descriptive. They mu
 
 ## Non-claims
 
-GateGraph v0.11.7 does not provide kernel isolation, full runtime sandboxing, distributed Byzantine tolerance, autonomous threat hunting, complete memory governance, or guaranteed protection against unknown future agent strategies.
+GateGraph v0.11.8 does not provide kernel isolation, full runtime sandboxing, distributed Byzantine tolerance, autonomous threat hunting, complete memory governance, or guaranteed protection against unknown future agent strategies.
