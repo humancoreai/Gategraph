@@ -60,8 +60,8 @@ def register_api_endpoint_policy(
 ) -> HTTPPolicy:
     ensure_http_policy_schema(conn)
     host = (allowed_host or "").strip().lower()
-    if not host or "/" in host or ":" in host:
-        raise ValueError("allowed_host must be a bare lowercase host, without scheme, path, or port")
+    if not host or "/" in host or ":" in host or "*" in host:
+        raise ValueError("allowed_host must be a bare lowercase host, without scheme, path, port, or wildcard")
     prefixes = [p.strip() for p in allowed_path_prefixes if isinstance(p, str) and p.strip().startswith("/")]
     if not prefixes:
         raise ValueError("at least one path prefix starting with '/' is required")
@@ -109,6 +109,22 @@ def evaluate_http_policy(conn: sqlite3.Connection, *, endpoint: str, method: str
     for row in rows:
         prefixes = list(json.loads(row["allowed_path_prefixes"]))
         methods = list(json.loads(row["allowed_methods"]))
-        if meth in methods and any(path.startswith(prefix) for prefix in prefixes):
+        if meth in methods and any(_path_matches_prefix(path, prefix) for prefix in prefixes):
             return HTTPPolicyDecision(True, "http policy allowed", policy_id=row["policy_id"])
     return HTTPPolicyDecision(False, f"http endpoint not allowlisted: {host}{path}")
+
+
+def _path_matches_prefix(path: str, prefix: str) -> bool:
+    """
+    SEC: boundary-aware prefix matching prevents /v1 from allowing /v10 or /v1evil.
+    A policy prefix /v1 allows /v1 and /v1/...; /v1/ allows only that subtree.
+    """
+    clean_path = path or "/"
+    clean_prefix = prefix or "/"
+    if clean_prefix == "/":
+        return clean_path.startswith("/")
+    if clean_path == clean_prefix:
+        return True
+    if clean_prefix.endswith("/"):
+        return clean_path.startswith(clean_prefix)
+    return clean_path.startswith(clean_prefix + "/")
