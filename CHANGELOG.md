@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.11.5_CANDIDATE
+## v0.11.5_STABLE
 
 - Added explicit security model, OWASP-style agentic risk mapping, and known limitations.
 - Added centralized token/Authorization/sensitive-field redaction utilities.
@@ -74,7 +74,7 @@ All notable changes to GateGraph are documented here.
 
 - Public adapter boundary now requires explicit `input_source`, `data_sensitivity`, and `secrets_involved` fields.
 - Release build and verification scripts now fail closed on empty manifests, forbidden artifacts, undeclared files, and manifest/ZIP mismatch.
-- Version metadata updated for v0.9.1 candidate scope.
+- Version metadata updated for v0.9.1 stable scope.
 
 ### Not Changed
 
