@@ -1,3 +1,35 @@
+# Release Notes
+
+## v0.8.34_STABLE
+
+Server Hardening / Safe Service Boundary release.
+
+Stable promotion from `v0.8.34_CANDIDATE` after Full Windows Evidence CI passed.
+
+### Added / hardened
+
+- `tests/server_hardening_evidence.py` added to aggregate evidence CI.
+- Server request boundary validates content type, JSON parsing, body size and required fields before calling `service_adapter`.
+- Deterministic JSON error schema for server boundary failures.
+- Unsupported methods and unknown endpoints fail closed with JSON responses.
+- Default server bind remains `127.0.0.1`; explicit public bind emits an operator warning.
+- `/status` and `/monitoring` remain read-only observation endpoints.
+
+### Invariants preserved
+
+- Server remains an adapter.
+- CLI and Server continue to use `src/service_adapter.py`.
+- No new governance rules.
+- No new runtime policy.
+- No background actions.
+- No external actions added.
+
+### Evidence
+
+- Full Windows Evidence CI: passed.
+- `server_mode_evidence`: passed.
+- `server_hardening_evidence`: passed.
+
 # RELEASE_NOTES
 
 ## v0.8.33_STABLE
