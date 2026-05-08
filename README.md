@@ -75,7 +75,6 @@ python tests/test_loop.py
 python tests/usage_simulation.py
 python tests/unusual_inputs.py
 python tests/agent_scenarios.py
-python tests/runtime_guard_tests.py
 ```
 
 Depending on your environment, use:

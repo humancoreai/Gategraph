@@ -1,6 +1,6 @@
 # GateGraph Runtime Guard — Spec v0.6
 
-**Status:** Implemented MVP / v0.6-core  
+**Status:** Draft / design-only  
 **Scope:** runtime and cost-control layer for agent-like executions  
 **Relationship to GateGraph Core:** separate layer; does not replace Governance, Enforcement, or Audit Graph.
 
@@ -497,16 +497,3 @@ Governance protects permissions.
 Enforcement protects actions.
 Runtime Guard protects time, cost, and loop behavior.
 ```
-
-
-## v0.6-core implementation note
-
-The MVP implementation adds `src/runtime_guard.py` and `tests/runtime_guard_tests.py`.
-
-Implemented controls:
-
-- max steps
-- max runtime seconds
-- max cost units
-- repeated action limit
-- stop before Governance call
