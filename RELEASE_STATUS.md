@@ -1,4 +1,4 @@
-# Release Status – v0.11.4_CANDIDATE
+# Release Status – v0.11.4_STABLE
 
 Status: stable
 
