@@ -1,7 +1,7 @@
 # Release Status
 
-Release: v0.11.8_CANDIDATE
-Status: candidate
+Release: v0.11.8_STABLE
+Status: stable
 Base: v0.11.7_STABLE
 
 Gate: Candidate requires Windows Evidence CI before promotion.
