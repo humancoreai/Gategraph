@@ -1,4 +1,4 @@
-# Context Governance Model — v0.11.7_STABLE
+# Context Governance Model — v0.11.8_CANDIDATE
 
 ## Scope
 
@@ -78,4 +78,4 @@ GateGraph fails closed when:
 
 ## System limits
 
-v0.11.7 does not claim to detect all prompt injection, context poisoning, fake authority claims, or semantic manipulation. It only establishes deterministic structural boundaries so that such text cannot become authority by being included as context.
+v0.11.8 does not claim to detect all prompt injection, context poisoning, fake authority claims, or semantic manipulation. It only establishes deterministic structural boundaries so that such text cannot become authority by being included as context.
