@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.10.1_CANDIDATE"
-BASE = "v0.10.0_CANDIDATE"
+VERSION = "v0.10.2_CANDIDATE"
+BASE = "v0.10.1_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -50,6 +50,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/runtime_boundary_hardening_evidence.py",
     "tests/freeze_runtime_invariant_evidence.py",
     "tests/api_boundary_split_evidence.py",
+    "tests/runtime_chain_order_evidence.py",
     "tests/multi_agent_architecture_evidence.py",
     "docs/MULTI_AGENT_SSOT.md",
     "docs/MULTI_MODE_SSOT.md",
@@ -62,7 +63,9 @@ REQUIRED_RELEASE_FILES = {
     "docs/BOUNDARY_REFERENCES.md",
     "docs/RELEASE_REPRODUCIBILITY.md",
     "docs/RUNTIME_BOUNDARY_HARDENING.md",
+    "docs/RUNTIME_CHAIN_ASSERTIONS.md",
     "src/runtime_path_assertions.py",
+    "src/runtime_chain_assertions.py",
     "src/api_boundary.py",
     "tests/governance_freeze_evidence.py",
 }
@@ -149,7 +152,7 @@ def build_manifest(files: Iterable[Path]) -> dict:
         "release": VERSION,
         "base": BASE,
         "kind": "candidate_release",
-        "scope": "runtime_boundary_hardening_api_boundary_split",
+        "scope": "runtime_boundary_chain_order_assertions",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -198,7 +201,7 @@ def main() -> int:
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "internal/public API split and freeze-aware runtime invariant assertions; no new runtime capability or adapter expansion",
+        "claim_boundary": "runtime chain/order assertions and skipped-stage detection; no new runtime capability or adapter expansion",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 

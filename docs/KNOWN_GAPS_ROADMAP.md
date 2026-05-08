@@ -52,3 +52,19 @@ Still open:
 - Packaging and deployment baseline.
 - Real external framework integration.
 
+
+
+## v0.10.2_CANDIDATE – Runtime Chain/Order Assertions
+
+Closed / hardened:
+- guard-chain order is now executable via `src/runtime_chain_assertions.py`
+- skipped-stage detection is covered by evidence
+- invalid downstream execution after Enforcement denial fails closed
+- freeze-aware runtime invariant evidence now covers chain/order behavior
+
+Still open:
+- no Auth/TLS deployment boundary
+- no asymmetric token signing
+- no KMS
+- no packaging/deployment baseline
+- no external framework integration
