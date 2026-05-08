@@ -4,7 +4,7 @@ Focus: Cross-Session Budget Control.
 
 ## Summary
 
-This candidate extends `v0.8.25.1_STABLE` with a Governance-owned budget ledger to prevent budget bypass by splitting work across multiple tasks/sessions.
+This stable release extends `v0.8.25.1_STABLE` with a Governance-owned budget ledger to prevent budget bypass by splitting work across multiple tasks/sessions.
 
 ## Added
 

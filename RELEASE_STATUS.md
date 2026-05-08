@@ -1,8 +1,8 @@
 # Release Status
 
-Release: v0.11.9_CANDIDATE
-Status: candidate
+Release: v0.11.9_STABLE
+Status: stable
 Base: v0.11.8_STABLE
 Phase: Context Lifecycle / Freeze Coupling Baseline
 
-This candidate stabilizes governance semantics, runtime/reference object boundaries, and root surface hygiene without adding runtime authority.
+This stable release stabilizes governance semantics, runtime/reference object boundaries, and root surface hygiene without adding runtime authority.

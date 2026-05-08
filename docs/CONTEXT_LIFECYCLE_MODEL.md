@@ -1,4 +1,4 @@
-# Context Lifecycle Model — GateGraph v0.11.9_CANDIDATE
+# Context Lifecycle Model — GateGraph v0.11.9_STABLE
 
 ## Purpose
 
