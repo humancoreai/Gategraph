@@ -247,3 +247,14 @@ Invariant status:
 - No secrets.
 - No raw payload logging.
 - Untrusted API responses remain data-only.
+
+## v0.8.5-api-enforcement-binding
+
+Fixed external API adapter trust boundary:
+
+- Removed caller-provided `enforcement_allowed` / `enforcement_reason` from the adapter API.
+- Adapter now calls `enforce()` internally using the supplied token.
+- Tests use valid API tokens for allowed flows and `None` for blocked no-token flow.
+- External API Evidence remains 7/7 passing.
+
+Scope remains mock-only: no real network calls.
