@@ -29,3 +29,8 @@ Not yet production-grade:
 ## Deferred topic
 
 Runaway agent loops and cost control are intentionally out of current scope. They should become a separate Runtime Control Layer later.
+
+
+## Capability Token Key Management
+
+As of v0.8.9, tokens are signed with an active HMAC key ID and verified against a trusted keyring. This supports bounded rotation in the Single-Node model. It is not yet distributed trust, asymmetric signing, or managed secret storage.
