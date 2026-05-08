@@ -1,58 +1,37 @@
-# Python/runtime artifacts
+# Python cache/build artifacts
 __pycache__/
 *.py[cod]
 *.pyo
-.Python
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# Local databases and generated evidence
+# Local virtual environments
+.venv/
+venv/
+env/
+
+# Local runtime databases and SQLite sidecars
 *.db
-*.sqlite
-*.sqlite3
-tests/logs/*.json
-
-# Local/editor files
-.env
-.env.*
-!.env.example
-.DS_Store
-.vscode/
-.idea/
-
-# Build/package artifacts
-dist/
-build/
-*.zip
-
-!tests/logs/.gitkeep
-
-# Root runtime files that must never be committed
 /gategraph.db
-/*.db
-/*.sqlite
-/*.sqlite3
+/gategraph.db-journal
+/gategraph.db-wal
+/gategraph.db-shm
+
+# Generated evidence/log artifacts
+/tests/logs/
+*.log
+
+# Generated simulation outputs
 /six_run_simulation_results*.csv
 
-# Repo hygiene added for v0.8.40_STABLE
-# Runtime DB
-*.db
-gategraph.db
+# Release build outputs
+dist/
+*.zip
+ARTIFACTS.sha256
 
-# Test logs / evidence artifacts
-tests/logs/
-
-# Python cache
-__pycache__/
-*.pyc
-.pytest_cache/
-
-# OS
+# OS/editor noise
 .DS_Store
 Thumbs.db
-
-# Env / secrets
-.env
-.env.*
-
-# Operator workflow runtime documentation
-operator_logs/*.jsonl
+.vscode/
+.idea/
