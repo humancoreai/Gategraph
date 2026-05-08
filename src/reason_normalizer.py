@@ -27,6 +27,7 @@ _REASON_BY_STAGE_AND_KEY: Dict[Tuple[str, str], Tuple[str, str, str, int, str]] 
     ("enforcement", "capability token revoked"): ("ENF_TOKEN_REVOKED", "authorization", "critical", 100, "Action blocked because the capability token was revoked."),
     ("enforcement", "capability token expired"): ("ENF_TOKEN_EXPIRED", "authorization", "high", 90, "Action blocked because the capability token expired."),
     ("enforcement", "capability token invalid signature"): ("ENF_INVALID_SIGNATURE", "authorization", "critical", 100, "Action blocked because the capability token signature is invalid."),
+    ("enforcement", "capability token unknown signing key"): ("ENF_UNKNOWN_SIGNING_KEY", "authorization", "critical", 100, "Action blocked because the token signing key is not trusted by this node."),
     ("enforcement", "capability token claim mismatch"): ("ENF_CLAIM_MISMATCH", "authorization", "critical", 100, "Action blocked because persisted and presented token claims differ."),
     ("enforcement", "capability token not found"): ("ENF_TOKEN_NOT_FOUND", "authorization", "critical", 100, "Action blocked because the capability token was not found."),
     ("session_budget", "no session budget exists"): ("SES_NO_BUDGET", "session_budget", "critical", 80, "Session budget is missing; execution fails closed."),
