@@ -131,6 +131,50 @@ def collect_global_evidence(conn) -> Dict[str, Any]:
     return {"proposals": proposals}
 
 
+
+def collect_session_evidence(conn, session_id: str) -> Dict[str, Any]:
+    budgets = _rows(
+        conn,
+        """
+        SELECT session_id, max_session_cost_units, max_session_tasks,
+               max_agent_cost_units, created_at
+        FROM session_budgets
+        WHERE session_id = ?
+        """,
+        (session_id,),
+    )
+    links = _rows(
+        conn,
+        """
+        SELECT session_id, task_id, actor_id, created_at
+        FROM session_task_links
+        WHERE session_id = ?
+        ORDER BY created_at, task_id
+        """,
+        (session_id,),
+    )
+    decisions = _rows(
+        conn,
+        """
+        SELECT decision_id, session_id, task_id, actor_id, projected_cost_units,
+               decision, reason, created_at
+        FROM session_budget_decisions
+        WHERE session_id = ?
+        ORDER BY created_at, decision_id
+        """,
+        (session_id,),
+    )
+    return {
+        "session_id": session_id,
+        "session_budgets": budgets,
+        "session_task_links": links,
+        "session_budget_decisions": decisions,
+        "audit_refs": {
+            "session_budget_decision_ids": [d["decision_id"] for d in decisions],
+            "linked_task_ids": [l["task_id"] for l in links],
+        },
+    }
+
 @dataclass
 class EvidenceScenarioResult:
     test_name: str
