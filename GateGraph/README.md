@@ -59,6 +59,11 @@ GateGraph currently does **not** provide:
 
 ## Project status
 
+Current stable release: **v0.8.25.1_STABLE**
+
+This stable point consolidates Runtime Governance / Runaway Cost Control and Evidence Runner hardening. The Windows full evidence run reported `Passed: True` on 2026-04-28. See `docs/RELEASE_v0.8.25.1_STABLE.md` for the release evidence summary and known limits.
+
+
 ```text
 Version: v0.8.19 pattern-priority-scoring
 Core status: stable proof of concept
