@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.10.2_STABLE"
-BASE = "v0.10.1_STABLE"
+VERSION = "v0.10.3_CANDIDATE"
+BASE = "v0.10.2_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -45,8 +45,10 @@ REQUIRED_RELEASE_FILES = {
     "LICENSE",
     "tools/build_release.py",
     "tools/verify_release.py",
+    "tools/release_process_guard.py",
     "tests/caller_boundary_evidence.py",
     "tests/release_integrity_evidence.py",
+    "tests/release_process_guard_evidence.py",
     "tests/runtime_boundary_hardening_evidence.py",
     "tests/freeze_runtime_invariant_evidence.py",
     "tests/api_boundary_split_evidence.py",
@@ -150,10 +152,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
         "kind": "candidate_release",
-        "scope": "runtime_boundary_chain_order_assertions",
+        "scope": "release_process_guard",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -192,18 +194,25 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Runtime / Boundary Hardening",
+        "phase": "Release Process Guard",
         "governance_logic_changed": False,
+        "runtime_logic_changed": False,
+        "enforcement_logic_changed": False,
         "new_governance_features": False,
+        "new_runtime_capability": False,
         "new_runtime_model": False,
         "new_risk_model": False,
+        "new_agentic_behavior": False,
+        "new_adapter": False,
+        "packaging_scope": False,
+        "release_process_guard": True,
         "autonomous_classification": False,
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "runtime chain/order assertions and skipped-stage detection; no new runtime capability or adapter expansion",
+        "claim_boundary": "release metadata consistency, structured manifest validation, dead-reference detection, and promotion drift prevention; no runtime capability, governance behavior, adapter expansion, packaging/deployment layer, or UI",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
