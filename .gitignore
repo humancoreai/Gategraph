@@ -32,3 +32,24 @@ build/
 /*.sqlite
 /*.sqlite3
 /six_run_simulation_results*.csv
+
+# Repo hygiene added for v0.8.40_STABLE
+# Runtime DB
+*.db
+gategraph.db
+
+# Test logs / evidence artifacts
+tests/logs/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
