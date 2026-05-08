@@ -513,3 +513,21 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 ### Validation
 - Targeted operational alerting evidence passed: 4/4.
 - Full Evidence CI remains the Windows promotion gate.
+
+
+## v0.8.29_STABLE - Operational Alerting Stable
+
+### Scope
+- Promoted `v0.8.29_CANDIDATE` to stable after full Windows Evidence CI.
+- Operational Alerting remains read-only and observational.
+- No automated recovery, notification transport, or enforcement-path changes added.
+
+### Validation
+- Full Windows Evidence CI passed: True.
+- Operational alerting evidence passed: 4/4.
+- Unexpected allows: 0.
+- Invariant violations: 0.
+
+### Boundary
+- Stable within current single-node proof-of-concept scope.
+- Production KMS, distributed budget consensus, monitoring transport, and incident recovery remain out of scope.
