@@ -2,14 +2,15 @@
 
 All notable changes to GateGraph are documented here.
 
+## v0.11.4_CANDIDATE
+
+- Added capability-token audit redaction invariant.
+- Added audit-safe token references with `token_id` and `token_hash`.
+- Added `capability_token_redaction_evidence.py` to block raw token/signature/auth material in audit events.
+- Added `docs/CAPABILITY_TOKEN_AUDIT_REDACTION.md`.
+- No Governance decision model, Runtime Guard behavior, Enforcement rule, budget policy, secret resolution, HTTP policy, adapter authority, agentic behavior, distributed governance, deployment, or UI capability change.
+
 ## v0.11.3_STABLE
-
-- Added mode-boundary surface documentation.
-- Added mode-boundary evidence to keep `observer`, `worker`, `reviewer`, and `blocked` descriptive only.
-- Coupled mode claims to release metadata, manifest and Evidence CI.
-- No runtime/governance/enforcement/adapter/token/budget/secret/tool/agentic capability change.
-
-## v0.11.2_STABLE
 
 - Stabilized v0.11.1 packaging baseline after Windows Evidence CI PASS.
 - Preserved install surface, startup surface, config consistency and deterministic packaging claims.

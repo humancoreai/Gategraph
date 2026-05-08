@@ -1,10 +1,10 @@
-# Release Status – v0.11.3_STABLE
+# Release Status – v0.11.4_CANDIDATE
 
 Status: stable
 
-Base: v0.11.2_STABLE
+Base: v0.11.3_STABLE
 
-Phase: Mode Boundary Surface Control
+Phase: Capability Token Audit Redaction
 
 Scope:
 - freeze mode labels as descriptive governance-surface concepts
