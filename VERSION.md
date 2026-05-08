@@ -1,17 +1,21 @@
 # GateGraph Version
 
-Current stable release: v0.8.28_STABLE
+Current candidate release: v0.8.29_CANDIDATE
 
-Base: v0.8.28_CANDIDATE
+Base: v0.8.28_STABLE
 
-Stable scope:
+Candidate scope:
 
-- Add `GOVERNANCE.md` as repository-level governance SSOT.
-- Reference governance document from `README.md`.
-- No functional code changes.
+- Add read-only Operational Alert evaluation on top of append-only incidents.
+- Add `OperationalAlert` model and alert sorting by severity.
+- Add `evaluate_operational_alerts(...)` and `evaluate_open_operational_alerts(...)`.
+- Add evidence proving alerts do not repair, unblock, acknowledge, resolve, or mutate budget scopes.
 
-Validation: `v0.8.28_CANDIDATE` full Windows Evidence CI reported `Passed: True` on 2026-04-28.
+Validation:
+
+- Targeted `operational_alerting_evidence` passed: 4/4.
+- Full Evidence CI was not completed in this Linux container because the existing runner selftest hangs here; Windows remains the release gate.
 
 ### Boundary
 
-This stable release is a documentation/governance consolidation. Operational extensions such as monitoring, alerting and incident recovery remain out of scope.
+This candidate adds operational visibility only. It does not add automated incident recovery, monitoring transport, notification delivery, or new enforcement behavior.
