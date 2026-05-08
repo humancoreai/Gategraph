@@ -1,5 +1,5 @@
 # Known Gaps Roadmap – v0.12.0_STABLE
-Current release context: v0.12.1_CANDIDATE.
+Current release context: v0.12.1_STABLE.
 
 
 ## Closed before / at v0.9.3

@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-EXPECTED_RELEASE = "v0.12.1_CANDIDATE"
+EXPECTED_RELEASE = "v0.12.1_STABLE"
 EXPECTED_BASE = "v0.12.0_STABLE"
 
 
@@ -51,7 +51,7 @@ def main() -> int:
     metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
     assert metadata["release"] == EXPECTED_RELEASE
     assert metadata["base"] == EXPECTED_BASE
-    assert metadata["status"] == "candidate"
+    assert metadata["status"] == "stable"
     assert metadata["runtime_surface_scope"] is True
     for key in ["governance_logic_changed", "runtime_logic_changed", "enforcement_logic_changed", "new_runtime_capability", "new_agentic_behavior", "new_adapter", "distributed_governance"]:
         assert metadata[key] is False, key
