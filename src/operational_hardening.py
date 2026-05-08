@@ -70,6 +70,8 @@ class IncidentRecord:
     reason_code: str
     details: dict[str, Any]
     created_at: str
+    acknowledged_at: str | None = None
+    resolved_at: str | None = None
 
 
 
@@ -133,7 +135,9 @@ def ensure_operational_schema(conn: sqlite3.Connection) -> None:
             state TEXT NOT NULL CHECK (state IN ('open','acknowledged','resolved')),
             reason_code TEXT NOT NULL,
             details_json TEXT NOT NULL,
-            created_at TEXT NOT NULL
+            created_at TEXT NOT NULL,
+            acknowledged_at TEXT,
+            resolved_at TEXT
         );
 
         CREATE UNIQUE INDEX IF NOT EXISTS idx_operational_incidents_trigger
@@ -142,6 +146,11 @@ def ensure_operational_schema(conn: sqlite3.Connection) -> None:
             ON operational_incidents(state, severity);
         """
     )
+    columns = {row["name"] if isinstance(row, sqlite3.Row) else row[1] for row in conn.execute("PRAGMA table_info(operational_incidents)").fetchall()}
+    if "acknowledged_at" not in columns:
+        conn.execute("ALTER TABLE operational_incidents ADD COLUMN acknowledged_at TEXT")
+    if "resolved_at" not in columns:
+        conn.execute("ALTER TABLE operational_incidents ADD COLUMN resolved_at TEXT")
 
 
 def _rows(conn: sqlite3.Connection, query: str, params: tuple[Any, ...] = ()) -> list[sqlite3.Row]:
@@ -245,6 +254,21 @@ def replay_audit_consistency(conn: sqlite3.Connection) -> AuditReplayReport:
     )
 
 
+def incident_from_row(row: sqlite3.Row) -> IncidentRecord:
+    return IncidentRecord(
+        incident_id=row["incident_id"],
+        severity=row["severity"],
+        trigger_type=row["trigger_type"],
+        trigger_ref=row["trigger_ref"],
+        state=row["state"],
+        reason_code=row["reason_code"],
+        details=json.loads(row["details_json"]),
+        created_at=row["created_at"],
+        acknowledged_at=row["acknowledged_at"],
+        resolved_at=row["resolved_at"],
+    )
+
+
 def _insert_incident(conn: sqlite3.Connection, *, severity: str, trigger_type: str, trigger_ref: str, reason_code: str, details: dict[str, Any]) -> IncidentRecord:
     if severity not in INCIDENT_SEVERITIES:
         severity = "critical"
@@ -264,11 +288,7 @@ def _insert_incident(conn: sqlite3.Connection, *, severity: str, trigger_type: s
            ORDER BY created_at ASC LIMIT 1""",
         (trigger_type, trigger_ref, reason_code),
     ).fetchone()
-    return IncidentRecord(
-        incident_id=row["incident_id"], severity=row["severity"], trigger_type=row["trigger_type"],
-        trigger_ref=row["trigger_ref"], state=row["state"], reason_code=row["reason_code"],
-        details=json.loads(row["details_json"]), created_at=row["created_at"]
-    )
+    return incident_from_row(row)
 
 
 def detect_operational_incidents(conn: sqlite3.Connection) -> list[IncidentRecord]:
@@ -302,7 +322,4 @@ def detect_operational_incidents(conn: sqlite3.Connection) -> list[IncidentRecor
 def list_open_incidents(conn: sqlite3.Connection) -> list[IncidentRecord]:
     ensure_operational_schema(conn)
     rows = _rows(conn, "SELECT * FROM operational_incidents WHERE state = 'open' ORDER BY severity DESC, created_at ASC")
-    return [IncidentRecord(
-        incident_id=r["incident_id"], severity=r["severity"], trigger_type=r["trigger_type"], trigger_ref=r["trigger_ref"],
-        state=r["state"], reason_code=r["reason_code"], details=json.loads(r["details_json"]), created_at=r["created_at"]
-    ) for r in rows]
+    return [incident_from_row(r) for r in rows]
