@@ -1,4 +1,4 @@
-# Operational Hardening – v0.8.27 Candidate
+# Operational Hardening – v0.8.27.1 Stable
 
 ## Scope
 
