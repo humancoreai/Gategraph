@@ -146,7 +146,7 @@ def collect_session_evidence(conn, session_id: str) -> Dict[str, Any]:
     links = _rows(
         conn,
         """
-        SELECT session_id, task_id, actor_id, created_at
+        SELECT session_id, task_id, actor_id, reserved_cost_units, created_at
         FROM session_task_links
         WHERE session_id = ?
         ORDER BY created_at, task_id
