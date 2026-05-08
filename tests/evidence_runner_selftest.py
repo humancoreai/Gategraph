@@ -24,12 +24,13 @@ def _pid_alive(pid: int) -> bool:
         try:
             result = subprocess.run(
                 ["tasklist", "/FI", f"PID eq {pid}"],
-                capture_output=True,
-                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL,
                 timeout=3,
                 check=False,
             )
-            return str(pid) in result.stdout
+            output = result.stdout.decode("utf-8", errors="replace")
+            return str(pid) in output
         except Exception:
             return True
     try:
@@ -91,4 +92,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    os._exit(main())
