@@ -2,7 +2,7 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.11.4_CANDIDATE
+## v0.11.4_STABLE
 
 - Added capability-token audit redaction invariant.
 - Added audit-safe token references with `token_id` and `token_hash`.
