@@ -1,0 +1,599 @@
+{
+  "run_id": "runtime_evidence_20260427_145308",
+  "started_at": "2026-04-27T14:53:08.146266+00:00",
+  "finished_at": "2026-04-27T14:53:08.322691+00:00",
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "findings": 0
+  },
+  "tests": [
+    {
+      "test_name": "agent_pingpong_loop",
+      "description": "Repeated agent delegation with identical signature must be stopped by Runtime Guard.",
+      "expected": {
+        "final_runtime_decision": "stop",
+        "stop_reason_contains": "repeated_action_limit",
+        "audit_required": true
+      },
+      "actual": {
+        "decisions": [
+          "continue",
+          "continue",
+          "stop"
+        ],
+        "final_reason": "repeated_action_limit exceeded for signature 'agent-a:delegate:agent-b'"
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "STRESS-PINGPONG",
+        "events": [],
+        "runtime_decisions": [
+          {
+            "decision_id": "RTD-29844C91DD44",
+            "task_id": "STRESS-PINGPONG",
+            "step_id": "STEP-264806FCB55B",
+            "decision": "continue",
+            "reason": "within budget",
+            "created_at": "2026-04-27T14:53:08.187045+00:00"
+          },
+          {
+            "decision_id": "RTD-B4AD18801019",
+            "task_id": "STRESS-PINGPONG",
+            "step_id": "STEP-F1E81E1246CA",
+            "decision": "continue",
+            "reason": "within budget",
+            "created_at": "2026-04-27T14:53:08.188714+00:00"
+          },
+          {
+            "decision_id": "RTD-A46D4A9C0DAC",
+            "task_id": "STRESS-PINGPONG",
+            "step_id": null,
+            "decision": "stop",
+            "reason": "repeated_action_limit exceeded for signature 'agent-a:delegate:agent-b'",
+            "created_at": "2026-04-27T14:53:08.189867+00:00"
+          }
+        ],
+        "runtime_steps": [
+          {
+            "step_id": "STEP-264806FCB55B",
+            "task_id": "STRESS-PINGPONG",
+            "step_index": 1,
+            "actor_id": "agent-a",
+            "action_type": "delegate",
+            "action_signature": "agent-a:delegate:agent-b",
+            "cost_units": 1,
+            "timestamp": "2026-04-27T14:53:08.186399+00:00"
+          },
+          {
+            "step_id": "STEP-F1E81E1246CA",
+            "task_id": "STRESS-PINGPONG",
+            "step_index": 2,
+            "actor_id": "agent-a",
+            "action_type": "delegate",
+            "action_signature": "agent-a:delegate:agent-b",
+            "cost_units": 1,
+            "timestamp": "2026-04-27T14:53:08.188053+00:00"
+          }
+        ],
+        "governance_decisions": [],
+        "capability_tokens": [],
+        "audit_refs": {
+          "event_ids": [],
+          "runtime_decision_ids": [
+            "RTD-29844C91DD44",
+            "RTD-B4AD18801019",
+            "RTD-A46D4A9C0DAC"
+          ],
+          "runtime_step_ids": [
+            "STEP-264806FCB55B",
+            "STEP-F1E81E1246CA"
+          ],
+          "governance_decision_ids": [],
+          "token_ids": []
+        }
+      }
+    },
+    {
+      "test_name": "many_allowed_micro_actions_cost_limit",
+      "description": "Individually plausible model/tool steps must stop once cumulative budget is exceeded.",
+      "expected": {
+        "final_runtime_decision": "stop",
+        "stop_reason_contains": "max_cost_units",
+        "audit_required": true
+      },
+      "actual": {
+        "decisions": [
+          "continue",
+          "stop"
+        ],
+        "final_reason": "max_cost_units exceeded: 4 > 3"
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "STRESS-COST",
+        "events": [],
+        "runtime_decisions": [
+          {
+            "decision_id": "RTD-6838128A8336",
+            "task_id": "STRESS-COST",
+            "step_id": "STEP-BE983694232A",
+            "decision": "continue",
+            "reason": "within budget",
+            "created_at": "2026-04-27T14:53:08.235076+00:00"
+          },
+          {
+            "decision_id": "RTD-B9BB2E86E2AF",
+            "task_id": "STRESS-COST",
+            "step_id": null,
+            "decision": "stop",
+            "reason": "max_cost_units exceeded: 4 > 3",
+            "created_at": "2026-04-27T14:53:08.235825+00:00"
+          }
+        ],
+        "runtime_steps": [
+          {
+            "step_id": "STEP-BE983694232A",
+            "task_id": "STRESS-COST",
+            "step_index": 1,
+            "actor_id": "agent-a",
+            "action_type": "model_call",
+            "action_signature": "agent-a:model_call:analysis-a",
+            "cost_units": 2,
+            "timestamp": "2026-04-27T14:53:08.234431+00:00"
+          }
+        ],
+        "governance_decisions": [],
+        "capability_tokens": [],
+        "audit_refs": {
+          "event_ids": [],
+          "runtime_decision_ids": [
+            "RTD-6838128A8336",
+            "RTD-B9BB2E86E2AF"
+          ],
+          "runtime_step_ids": [
+            "STEP-BE983694232A"
+          ],
+          "governance_decision_ids": [],
+          "token_ids": []
+        }
+      }
+    },
+    {
+      "test_name": "valid_token_but_runtime_exceeded",
+      "description": "A valid capability token must not override an exhausted Runtime Guard budget.",
+      "expected": {
+        "token_present": true,
+        "runtime_decision": "stop",
+        "action_after_stop": false,
+        "audit_required": true
+      },
+      "actual": {
+        "token_present": true,
+        "runtime_decision": "stop",
+        "runtime_reason": "max_runtime_seconds exceeded: 10.00s > 1s",
+        "action_after_stop": false
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "STRESS-TOKEN-RUNTIME",
+        "events": [
+          {
+            "event_id": "EVT-C434A81A0E59",
+            "type": "governance_decision",
+            "timestamp": "2026-04-27T14:53:08.250717+00:00",
+            "task_id": "STRESS-TOKEN-RUNTIME",
+            "actor_layer": "governance",
+            "actor_component": "rule_engine",
+            "input": {
+              "task_type": "agent_operation",
+              "requested_capabilities": [
+                "read_files"
+              ],
+              "input_source": "local",
+              "data_sensitivity": "internal",
+              "secrets_involved": false
+            },
+            "evaluation": {
+              "risk_level": "low",
+              "risk_reason": "no elevated risk factors detected",
+              "matched_rules": [
+                "RULE-001"
+              ],
+              "selected_rule": "RULE-001",
+              "conflict_resolved": false
+            },
+            "decision": {
+              "status": "allow",
+              "reason": "Read-only local file analysis is allowed when no higher risk applies.",
+              "final_capabilities": {
+                "read_files": true,
+                "write_files": false,
+                "delete_files": false,
+                "api_call": false
+              }
+            }
+          }
+        ],
+        "runtime_decisions": [
+          {
+            "decision_id": "RTD-C78089999864",
+            "task_id": "STRESS-TOKEN-RUNTIME",
+            "step_id": null,
+            "decision": "stop",
+            "reason": "max_runtime_seconds exceeded: 10.00s > 1s",
+            "created_at": "2026-04-27T14:53:08.253926+00:00"
+          }
+        ],
+        "runtime_steps": [],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-7FA3E9677963",
+            "task_id": "STRESS-TOKEN-RUNTIME",
+            "event_id": "EVT-C434A81A0E59",
+            "status": "allow",
+            "reason": "Read-only local file analysis is allowed when no higher risk applies.",
+            "created_at": "2026-04-27T14:53:08.249928+00:00",
+            "final_caps": {
+              "read_files": true,
+              "write_files": false,
+              "delete_files": false,
+              "api_call": false
+            },
+            "matched_rules": [
+              "RULE-001"
+            ]
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-A0E19E8D9850",
+            "decision_id": "DEC-7FA3E9677963",
+            "task_id": "STRESS-TOKEN-RUNTIME",
+            "capabilities": {
+              "read_files": true,
+              "write_files": false,
+              "delete_files": false,
+              "api_call": false
+            },
+            "issued_at": "2026-04-27T14:53:08.252087+00:00",
+            "expires_at": "2026-04-27T14:58:08.252087+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-C434A81A0E59"
+          ],
+          "runtime_decision_ids": [
+            "RTD-C78089999864"
+          ],
+          "runtime_step_ids": [],
+          "governance_decision_ids": [
+            "DEC-7FA3E9677963"
+          ],
+          "token_ids": [
+            "TOK-A0E19E8D9850"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "no_action_without_token",
+      "description": "Enforcement must reject actions without a capability token and write audit evidence.",
+      "expected": {
+        "allowed": false,
+        "event_type": "enforcement_rejection",
+        "audit_required": true
+      },
+      "actual": {
+        "allowed": false,
+        "reason": "no capability token provided",
+        "rejection_event_id": "EVT-REJ-5B389989BB"
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "STRESS-NO-TOKEN",
+        "events": [
+          {
+            "event_id": "EVT-ACB2C4D83C65",
+            "type": "governance_decision",
+            "timestamp": "2026-04-27T14:53:08.278945+00:00",
+            "task_id": "STRESS-NO-TOKEN",
+            "actor_layer": "governance",
+            "actor_component": "rule_engine",
+            "input": {
+              "task_type": "agent_operation",
+              "requested_capabilities": [
+                "read_files"
+              ],
+              "input_source": "local",
+              "data_sensitivity": "internal",
+              "secrets_involved": false
+            },
+            "evaluation": {
+              "risk_level": "low",
+              "risk_reason": "no elevated risk factors detected",
+              "matched_rules": [
+                "RULE-001"
+              ],
+              "selected_rule": "RULE-001",
+              "conflict_resolved": false
+            },
+            "decision": {
+              "status": "allow",
+              "reason": "Read-only local file analysis is allowed when no higher risk applies.",
+              "final_capabilities": {
+                "read_files": true,
+                "write_files": false,
+                "delete_files": false,
+                "api_call": false
+              }
+            }
+          },
+          {
+            "event_id": "EVT-REJ-5B389989BB",
+            "type": "enforcement_rejection",
+            "timestamp": "2026-04-27T14:53:08.281416+00:00",
+            "task_id": "STRESS-NO-TOKEN",
+            "actor_layer": "governance",
+            "actor_component": "enforcement_layer",
+            "input": {
+              "requested_capability": "read_files"
+            },
+            "evaluation": {
+              "check": "capability_token_validation"
+            },
+            "decision": {
+              "status": "block",
+              "reason": "no capability token provided"
+            }
+          }
+        ],
+        "runtime_decisions": [],
+        "runtime_steps": [],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-F2D4677BF9B7",
+            "task_id": "STRESS-NO-TOKEN",
+            "event_id": "EVT-ACB2C4D83C65",
+            "status": "allow",
+            "reason": "Read-only local file analysis is allowed when no higher risk applies.",
+            "created_at": "2026-04-27T14:53:08.278044+00:00",
+            "final_caps": {
+              "read_files": true,
+              "write_files": false,
+              "delete_files": false,
+              "api_call": false
+            },
+            "matched_rules": [
+              "RULE-001"
+            ]
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-CF84992D0A21",
+            "decision_id": "DEC-F2D4677BF9B7",
+            "task_id": "STRESS-NO-TOKEN",
+            "capabilities": {
+              "read_files": true,
+              "write_files": false,
+              "delete_files": false,
+              "api_call": false
+            },
+            "issued_at": "2026-04-27T14:53:08.280785+00:00",
+            "expires_at": "2026-04-27T14:58:08.280785+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-ACB2C4D83C65",
+            "EVT-REJ-5B389989BB"
+          ],
+          "runtime_decision_ids": [],
+          "runtime_step_ids": [],
+          "governance_decision_ids": [
+            "DEC-F2D4677BF9B7"
+          ],
+          "token_ids": [
+            "TOK-CF84992D0A21"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "pattern_engine_proposal_only",
+      "description": "Pattern Engine may create proposals from repeated rejections but must not mutate rules.",
+      "expected": {
+        "proposal_created": true,
+        "rules_changed": false,
+        "proposal_status": "pending_review"
+      },
+      "actual": {
+        "proposals_created": 1,
+        "rules_before": 6,
+        "rules_after": 6,
+        "proposal_statuses": [
+          "pending_review"
+        ]
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "proposals": [
+          {
+            "proposal_id": "RUP-AD2C11775E99",
+            "proposal_type": "repeated_enforcement_rejection",
+            "target_rule_id": null,
+            "reason": "Repeated enforcement rejections for capability='write_files', bucket='missing_token'.",
+            "proposed_change": "Review whether task prompts, capability requests, or rules should be clarified. Do not auto-change rules.",
+            "supporting_events": [
+              "STRESS-PAT-EVT-1",
+              "STRESS-PAT-EVT-2",
+              "STRESS-PAT-EVT-3",
+              "STRESS-PAT-EVT-4"
+            ],
+            "confidence": 1.0,
+            "confidence_basis": "4/4 matching rejection events",
+            "status": "pending_review",
+            "created_at": "2026-04-27T14:53:08.302680+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "test_name": "repeated_same_decision_evidence",
+      "description": "Repeated identical governance evaluation must not corrupt audit evidence.",
+      "expected": {
+        "second_was_duplicate": true,
+        "governance_event_count": 1
+      },
+      "actual": {
+        "first_was_duplicate": false,
+        "second_was_duplicate": true,
+        "governance_event_count": 1
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [
+        "Current behavior deduplicates governance audit events; it does not implement semantic no-progress stopping."
+      ],
+      "evidence": {
+        "task_id": "STRESS-SAME-DECISION",
+        "events": [
+          {
+            "event_id": "EVT-B19508F79B2C",
+            "type": "governance_decision",
+            "timestamp": "2026-04-27T14:53:08.318402+00:00",
+            "task_id": "STRESS-SAME-DECISION",
+            "actor_layer": "governance",
+            "actor_component": "rule_engine",
+            "input": {
+              "task_type": "agent_operation",
+              "requested_capabilities": [
+                "read_files"
+              ],
+              "input_source": "local",
+              "data_sensitivity": "internal",
+              "secrets_involved": false
+            },
+            "evaluation": {
+              "risk_level": "low",
+              "risk_reason": "no elevated risk factors detected",
+              "matched_rules": [
+                "RULE-001"
+              ],
+              "selected_rule": "RULE-001",
+              "conflict_resolved": false
+            },
+            "decision": {
+              "status": "allow",
+              "reason": "Read-only local file analysis is allowed when no higher risk applies.",
+              "final_capabilities": {
+                "read_files": true,
+                "write_files": false,
+                "delete_files": false,
+                "api_call": false
+              }
+            }
+          }
+        ],
+        "runtime_decisions": [],
+        "runtime_steps": [],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-09B033998C7A",
+            "task_id": "STRESS-SAME-DECISION",
+            "event_id": "EVT-B19508F79B2C",
+            "status": "allow",
+            "reason": "Read-only local file analysis is allowed when no higher risk applies.",
+            "created_at": "2026-04-27T14:53:08.317600+00:00",
+            "final_caps": {
+              "read_files": true,
+              "write_files": false,
+              "delete_files": false,
+              "api_call": false
+            },
+            "matched_rules": [
+              "RULE-001"
+            ]
+          },
+          {
+            "decision_id": "DEC-CFA5E7CC571D",
+            "task_id": "STRESS-SAME-DECISION",
+            "event_id": "EVT-B19508F79B2C",
+            "status": "allow",
+            "reason": "Read-only local file analysis is allowed when no higher risk applies.",
+            "created_at": "2026-04-27T14:53:08.320231+00:00",
+            "final_caps": {
+              "read_files": true,
+              "write_files": false,
+              "delete_files": false,
+              "api_call": false
+            },
+            "matched_rules": [
+              "RULE-001"
+            ]
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-5813357AB2CE",
+            "decision_id": "DEC-09B033998C7A",
+            "task_id": "STRESS-SAME-DECISION",
+            "capabilities": {
+              "read_files": true,
+              "write_files": false,
+              "delete_files": false,
+              "api_call": false
+            },
+            "issued_at": "2026-04-27T14:53:08.319652+00:00",
+            "expires_at": "2026-04-27T14:58:08.319652+00:00",
+            "revoked": false
+          },
+          {
+            "token_id": "TOK-5774E2F4E3BB",
+            "decision_id": "DEC-CFA5E7CC571D",
+            "task_id": "STRESS-SAME-DECISION",
+            "capabilities": {
+              "read_files": true,
+              "write_files": false,
+              "delete_files": false,
+              "api_call": false
+            },
+            "issued_at": "2026-04-27T14:53:08.321305+00:00",
+            "expires_at": "2026-04-27T14:58:08.321305+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-B19508F79B2C"
+          ],
+          "runtime_decision_ids": [],
+          "runtime_step_ids": [],
+          "governance_decision_ids": [
+            "DEC-09B033998C7A",
+            "DEC-CFA5E7CC571D"
+          ],
+          "token_ids": [
+            "TOK-5813357AB2CE",
+            "TOK-5774E2F4E3BB"
+          ]
+        }
+      }
+    }
+  ]
+}
