@@ -43,3 +43,10 @@ Evidence CI passed
 - Updated version/release metadata for the candidate.
 - No functional code changes; validation baseline remains `v0.8.27.1_STABLE`.
 
+
+## v0.8.28_STABLE
+
+- Promoted `v0.8.28_CANDIDATE` to stable after full Windows Evidence CI reported `Passed: True` on 2026-04-28.
+- Added root-level `GOVERNANCE.md` as repository-level governance SSOT.
+- README now references `GOVERNANCE.md`.
+- No functional code changes; this release is the stable pre-operational governance baseline.
