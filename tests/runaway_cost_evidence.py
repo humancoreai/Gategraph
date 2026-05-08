@@ -151,21 +151,27 @@ def scenario_external_api_negative_cost_blocked_before_runtime() -> EvidenceScen
         )
         task_ev = collect_task_evidence(conn, task_id)
         session_ev = collect_session_evidence(conn, session_id)
+        # WHY: v0.8.30 adds Flood Guard before session reservation. Negative cost may now
+        # fail closed at the earliest cost-aware guard, as long as it never reaches runtime/action
+        # and does not create a session reservation side effect.
+        expected_fail_closed = (
+            (result.stage == "session_budget" and result.normalized_reason["code"] == "SES_INVALID_COST")
+            or (result.stage == "flood_guard" and result.normalized_reason["code"] == "FLOOD_INVALID_PROJECTED_COST")
+        )
         passed = (
             result.decision == "blocked"
-            and result.stage == "session_budget"
-            and result.normalized_reason["code"] == "SES_INVALID_COST"
+            and expected_fail_closed
             and len(task_ev["runtime_steps"]) == 0
             and len(session_ev["session_task_links"]) == 0
         )
         return EvidenceScenarioResult(
             "external_api_negative_cost_blocked_before_runtime",
-            "External API request with negative projected cost must stop at Session Budget and never spend Runtime work.",
-            {"decision": "blocked", "stage": "session_budget", "code": "SES_INVALID_COST", "runtime_steps": 0, "linked_tasks": 0},
+            "External API request with negative projected cost must fail closed before Runtime work and before Session reservation side effects.",
+            {"decision": "blocked", "stage": "session_budget|flood_guard", "code": "SES_INVALID_COST|FLOOD_INVALID_PROJECTED_COST", "runtime_steps": 0, "linked_tasks": 0},
             {"decision": result.decision, "stage": result.stage, "code": result.normalized_reason["code"], "runtime_steps": len(task_ev["runtime_steps"]), "linked_tasks": len(session_ev["session_task_links"])},
             passed,
             "info" if passed else "critical",
-            [] if passed else ["Negative-cost API call reached runtime/action path."],
+            [] if passed else ["Negative-cost API call reached runtime/action path or created budget side effects."],
             {"task": task_ev, "session": session_ev},
         )
     finally:
