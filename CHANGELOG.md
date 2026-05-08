@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.11.5_STABLE
+## v0.11.6_CANDIDATE
 
 - Added explicit security model, OWASP-style agentic risk mapping, and known limitations.
 - Added centralized token/Authorization/sensitive-field redaction utilities.
