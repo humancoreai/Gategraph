@@ -109,3 +109,15 @@ Stable promotion from `v0.8.42_CANDIDATE` after Full Windows Evidence CI passed 
 - Added queue/reason co-occurrence view and workflow distribution snapshot.
 - Added `drift_detection_evidence`.
 - No governance decision, policy, guard or queue mutation introduced.
+
+## v0.8.44_STABLE — Governance Drift Detection
+
+Stable promotion from `v0.8.44_CANDIDATE` after Full Windows Evidence CI passed on 2026-05-06.
+
+- Added descriptive governance baseline snapshots.
+- Added descriptive snapshot comparison across reason, guard, queue and workflow distributions.
+- Added append-only drift event records.
+- Added queue/reason co-occurrence view and workflow distribution snapshot.
+- Added `drift_detection_evidence` to Evidence CI.
+- Preserved read-only/descriptive behavior: no severity, risk level, recommendations, escalation, policy changes, queue mutation or governance decision changes.
+

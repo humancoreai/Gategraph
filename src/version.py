@@ -8,7 +8,7 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
-_FALLBACK_SCHEMA_VERSION = "0.8.38"
+_FALLBACK_SCHEMA_VERSION = "0.8.45"
 
 
 @lru_cache(maxsize=1)
@@ -18,5 +18,5 @@ def current_schema_version() -> str:
         text = version_file.read_text(encoding="utf-8")
     except OSError:
         return _FALLBACK_SCHEMA_VERSION
-    match = re.search(r"Current candidate:\s*v?(\d+\.\d+\.\d+)", text)
+    match = re.search(r"Current (?:candidate|stable):\s*v?(\d+\.\d+\.\d+)", text)
     return match.group(1) if match else _FALLBACK_SCHEMA_VERSION
