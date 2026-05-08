@@ -30,11 +30,13 @@ _REASON_BY_STAGE_AND_KEY: Dict[Tuple[str, str], Tuple[str, str, str, int, str]] 
     ("session_budget", "max_session_cost_units exceeded"): ("SES_COST_LIMIT", "session_budget", "high", 75, "Session cost budget was exceeded."),
     ("session_budget", "max_session_tasks exceeded"): ("SES_TASK_LIMIT", "session_budget", "high", 74, "Session task budget was exceeded."),
     ("session_budget", "max_agent_cost_units exceeded"): ("SES_AGENT_COST_LIMIT", "session_budget", "high", 73, "Agent-level session cost budget was exceeded."),
+    ("session_budget", "invalid projected_cost_units"): ("SES_INVALID_COST", "session_budget", "critical", 76, "Projected cost must be a positive integer; execution fails closed."),
     ("runtime_guard", "no runtime budget exists"): ("RT_NO_BUDGET", "runtime_budget", "critical", 70, "Runtime budget is missing; execution fails closed."),
     ("runtime_guard", "max_runtime_seconds exceeded"): ("RT_RUNTIME_LIMIT", "runtime_budget", "high", 65, "Per-task runtime limit was exceeded."),
     ("runtime_guard", "max_steps exceeded"): ("RT_STEP_LIMIT", "runtime_budget", "high", 64, "Per-task step limit was exceeded."),
     ("runtime_guard", "max_cost_units exceeded"): ("RT_COST_LIMIT", "runtime_budget", "high", 63, "Per-task cost budget was exceeded."),
     ("runtime_guard", "repeated_action_limit exceeded"): ("RT_REPEATED_ACTION", "loop_control", "medium", 60, "Repeated action limit was exceeded."),
+    ("runtime_guard", "invalid cost_units"): ("RT_INVALID_COST", "runtime_budget", "critical", 66, "Runtime cost must be a positive integer; execution fails closed."),
     ("pattern_engine", "pending_review"): ("PAT_PROPOSAL_ONLY", "pattern_safety", "info", 30, "Pattern Engine produced proposal-only output pending review."),
     ("action_ready", "all guards passed"): ("OK_ACTION_READY", "ok", "info", 0, "All guards passed; action may proceed."),
 }
