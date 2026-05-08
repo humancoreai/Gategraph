@@ -18,17 +18,25 @@ Security-critical invariants:
 
 This PoC is intentionally local and minimal.
 
+Implemented at PoC level:
+
+- HMAC-signed capability tokens with explicit signing key IDs
+- trusted keyring verification for bounded local key rotation
+- DB-backed revocation checks per enforcement call
+- Runtime Guard for per-task loops/steps/cost
+- Session Budget Guard for global and agent-level cost limits
+
 Not yet production-grade:
 
-- token IDs are random DB references, not cryptographically signed tokens
-- revocation is checked via DB read per enforcement call
-- no concurrency control beyond SQLite constraints
+- no managed secret storage or KMS integration
+- no asymmetric signatures or distributed trust boundary
+- no multi-node/distributed budget coordination
 - no role-based human approval model
-- no runtime cost/loop governor yet
+- no real external API execution; adapter remains mock-only
 
-## Deferred topic
+## Deferred production topics
 
-Runaway agent loops and cost control are intentionally out of current scope. They should become a separate Runtime Control Layer later.
+Runaway agent loops and cost control are covered at PoC level by Runtime Guard and Session Budget Guard. Remaining work is production hardening: real billing integration, distributed budget state, and operational alerting.
 
 
 ## Capability Token Key Management
