@@ -1,4 +1,4 @@
-# OWASP Agentic AI Risk Mapping – v0.11.9_STABLE
+# OWASP Agentic AI Risk Mapping – v0.12.0_STABLE
 
 This mapping is an internal review aid. It is not a certification claim and does not assert complete coverage of any external standard.
 
