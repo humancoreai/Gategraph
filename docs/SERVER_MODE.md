@@ -138,4 +138,4 @@ Read-only endpoints:
 These endpoints are observation endpoints and must not perform governance decisions or mutate monitoring state.
 
 
-Current release surface: `v0.12.0_CANDIDATE`.
+Current release surface: `v0.12.0_STABLE`.

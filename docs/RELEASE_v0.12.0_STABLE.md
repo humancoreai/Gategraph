@@ -1,4 +1,4 @@
-# GateGraph v0.12.0_CANDIDATE
+# GateGraph v0.12.0_STABLE
 
 ## Phase
 
@@ -10,7 +10,7 @@ Governance Surface Freeze.
 
 ## Scope
 
-This candidate adds a minimal, deterministic contract registry for core governance surfaces and evidence tests that make schema/version drift visible.
+This stable release preserves a minimal, deterministic contract registry for core governance surfaces and evidence tests that make schema/version drift visible.
 
 ## Added evidence
 

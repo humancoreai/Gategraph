@@ -45,4 +45,4 @@ No telemetry stack, dashboard, remote alert router, or cloud monitoring layer is
 v0.11.9_STABLE preserves this boundary while adding security mapping and token exposure hardening.
 
 
-Current release surface: `v0.12.0_CANDIDATE`.
+Current release surface: `v0.12.0_STABLE`.
