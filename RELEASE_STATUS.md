@@ -1,13 +1,16 @@
 # Release Status
 
-Current candidate: v0.8.44_CANDIDATE
-Base: v0.8.43_STABLE
-Phase: Governance Drift Detection
+Current candidate: v0.8.45_CANDIDATE
+Base: v0.8.44_STABLE
+Phase: Governance Archive / Historical Replay
 
-Local evidence:
-- drift_detection_evidence: passed
+Evidence:
+- governance_archive_replay_evidence: passed locally
+- drift_detection_evidence: passed locally after schema bump
+- Full Windows Evidence CI: pending
 
-Stable promotion requires:
-- Full Windows Evidence CI green
-- No normative drift schema fields
-- No governance decision changes
+Candidate notes:
+- Historical archive records are append-only.
+- Replay reconstructs stored records only.
+- Replay does not re-evaluate governance decisions.
+- No policy, guard, runtime, queue or workflow mutation introduced.
