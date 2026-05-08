@@ -12,7 +12,7 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
-from src import database, governance, runtime_guard, session_budget_guard
+from src import alert_aggregator, database, governance, monitoring_export, operational_hardening, runtime_guard, session_budget_guard
 from src.config_loader import AppConfig, load_config
 
 
@@ -31,6 +31,9 @@ def main(argv: list[str] | None = None) -> int:
     status_p = sub.add_parser("status", help="Emit a minimal DB/status summary")
     status_p.add_argument("--json", action="store_true", help="Emit JSON (default behavior retained for scripts)")
 
+    export_p = sub.add_parser("export-monitoring", help="Write a read-only monitoring export JSON")
+    export_p.add_argument("--out", required=True, help="Output path for monitoring JSON")
+
     args = parser.parse_args(argv)
     try:
         config = load_config(args.config)
@@ -40,6 +43,8 @@ def main(argv: list[str] | None = None) -> int:
             return _cmd_evaluate(config, task_path=Path(args.task), token_out=Path(args.token_out) if args.token_out else None)
         if args.command == "status":
             return _cmd_status(config)
+        if args.command == "export-monitoring":
+            return _cmd_export_monitoring(config, out_path=Path(args.out))
         raise ValueError(f"unknown command: {args.command}")
     except Exception as exc:
         print(json.dumps({"ok": False, "error": str(exc)}, indent=2), file=sys.stderr)
@@ -157,6 +162,31 @@ def _cmd_status(config: AppConfig) -> int:
         counts[table] = int(conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0])
     conn.close()
     print(json.dumps({"ok": True, "db_path": str(_db_path(config)), "counts": counts}, indent=2))
+    return 0
+
+
+def _cmd_export_monitoring(config: AppConfig, *, out_path: Path) -> int:
+    """Export current operational state without repairing or deciding.
+
+    INV: This command reads existing state and writes only the requested export file.
+    """
+    conn = _connect_initialized(config)
+    operational_hardening.ensure_operational_schema(conn)
+    snapshot = operational_hardening.collect_budget_snapshot(conn)
+    incidents = operational_hardening.list_open_incidents(conn)
+    alerts = operational_hardening.evaluate_operational_alerts(incidents)
+    aggregated = alert_aggregator.aggregate_alerts(alerts)
+    report = monitoring_export.build_monitoring_export(
+        budget_snapshot=snapshot,
+        incidents=incidents,
+        alerts=alerts,
+        aggregated_alerts=aggregated,
+    )
+    conn.close()
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    print(json.dumps({"ok": True, "out_path": str(out_path), "summary": report["summary"]}, indent=2))
     return 0
 
 

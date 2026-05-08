@@ -300,7 +300,7 @@ This stable release adds a single-node Budget Ledger and token-bound budget rese
 
 This stable release adds operational visibility and consistency checks without changing the authority model. Budget snapshots, deterministic audit replay checks and append-only incident records are now part of the stable scope. The POSIX Evidence Runner timeout path was hardened by replacing the external `timeout` wrapper with Python-owned process supervision. Full Windows Evidence CI reported `Passed: True` on 2026-04-28.
 
-## Single-Node CLI (v0.8.31_CANDIDATE)
+## Single-Node CLI (v0.8.32_CANDIDATE)
 
 GateGraph can be operated locally through a minimal CLI adapter.
 
@@ -314,6 +314,12 @@ Evaluate a task:
 
 ```bash
 python -m src.cli --config config.example.yaml evaluate --task task.example.json --token-out token.out.json
+```
+
+Export monitoring state:
+
+```bash
+python -m src.cli --config config.example.yaml export-monitoring --out monitoring.json
 ```
 
 Show local status:
