@@ -26,6 +26,7 @@ VALID_TASK = {
     "requested_capabilities": ["read_files"],
     "input_source": "local",
     "data_sensitivity": "internal",
+    "secrets_involved": False,
 }
 
 
