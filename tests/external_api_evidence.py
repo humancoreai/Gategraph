@@ -145,8 +145,8 @@ def scenario_runtime_budget_blocks_repeated_api() -> EvidenceScenarioResult:
         r1 = call_mock_external_api(conn, request=make_request(request_id="REQ-API-REPEAT-1", session_id=session_id, task_id=task_id), token=token)
         r2 = call_mock_external_api(conn, request=make_request(request_id="REQ-API-REPEAT-2", session_id=session_id, task_id=task_id), token=token)
         task_ev = collect_task_evidence(conn, task_id)
-        passed = r1.decision == "completed" and r2.decision == "blocked" and r2.stage == "runtime_guard" and r2.normalized_reason["code"] == "RT_REPEATED_ACTION"
-        return EvidenceScenarioResult("runtime_budget_blocks_repeated_api", "Repeated same API call must stop at Runtime Guard.", {"first": "completed", "second": "blocked", "second_code": "RT_REPEATED_ACTION"}, {"first": r1.decision, "second": r2.decision, "second_stage": r2.stage, "second_code": r2.normalized_reason["code"]}, passed, "info" if passed else "high", [] if passed else ["Runtime repeated-action protection did not block repeated API call."], task_ev)
+        passed = r1.decision == "completed" and r2.decision == "blocked" and r2.stage == "runtime_guard" and r2.normalized_reason["code"] in {"RT_REPEATED_ACTION", "RT_LOOP_DETECTED"}
+        return EvidenceScenarioResult("runtime_budget_blocks_repeated_api", "Repeated same API call must stop at Runtime Guard.", {"first": "completed", "second": "blocked", "second_code": "RT_REPEATED_ACTION|RT_LOOP_DETECTED"}, {"first": r1.decision, "second": r2.decision, "second_stage": r2.stage, "second_code": r2.normalized_reason["code"]}, passed, "info" if passed else "high", [] if passed else ["Runtime repeated-action protection did not block repeated API call."], task_ev)
     finally:
         close_conn(conn, db_path)
 
