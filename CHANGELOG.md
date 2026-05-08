@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.10.3_STABLE
+
+- Added release-process guard for Candidate/Stable metadata consistency.
+- Added structured manifest validation and stale/missing manifest detection.
+- Added dead local markdown reference checks.
+- No runtime, governance, enforcement, adapter, packaging, or UI behavior changed.
+
+## v0.10.2_STABLE
+
+- Added runtime chain/order assertions.
+- Added skipped-stage and invalid enforcement-chain detection evidence.
+- Tied freeze-aware invariant evidence further to executable runtime behavior.
+
+## v0.10.1_STABLE
+
+- Added explicit public/internal/forbidden API boundary classification.
+- Added runtime path assertion coverage for forbidden governance entry paths.
+
+## v0.10.0_STABLE
+
+- Added TrustedEntryContext enforcement for direct governance entry.
+- Direct `governance.evaluate_task()` calls without trusted context fail closed by default.
+
+
 All notable changes to GateGraph are documented here.
 
 ## [v0.9.1_STABLE] - 2026-05-06
