@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.9.1_STABLE"
-BASE = "v0.9.0_STABLE"
+VERSION = "v0.9.2_CANDIDATE"
+BASE = "v0.9.1_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -47,6 +47,13 @@ REQUIRED_RELEASE_FILES = {
     "tools/verify_release.py",
     "tests/caller_boundary_evidence.py",
     "tests/release_integrity_evidence.py",
+    "tests/multi_agent_architecture_evidence.py",
+    "docs/MULTI_AGENT_SSOT.md",
+    "docs/MULTI_MODE_SSOT.md",
+    "docs/DELEGATION_BOUNDARY.md",
+    "docs/MULTI_AGENT_BUDGET_AUTHORITY.md",
+    "docs/MULTI_AGENT_REPLAY_AUDIT.md",
+    "docs/EMERGENCE_BOUNDARIES.md",
 }
 
 
@@ -131,7 +138,7 @@ def build_manifest(files: Iterable[Path]) -> dict:
         "release": VERSION,
         "base": BASE,
         "kind": "release_candidate",
-        "scope": "boundary_hardening_release_integrity_closure",
+        "scope": "multi_agent_multi_mode_architecture_definition",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -171,14 +178,16 @@ def main() -> int:
     metadata = {
         "release": VERSION,
         "base": BASE,
-        "phase": "Boundary Hardening / Release Integrity Closure",
+        "phase": "Multi-Agent / Multi-Mode Architecture Definition",
         "governance_logic_changed": False,
         "new_governance_features": False,
         "new_runtime_model": False,
         "new_risk_model": False,
         "autonomous_classification": False,
+        "distributed_governance": False,
+        "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "deterministic governance/enforcement with explicit caller trust boundary and reproducible release integrity",
+        "claim_boundary": "deterministic governance/enforcement with explicit multi-agent and multi-mode boundaries; no new autonomy",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
