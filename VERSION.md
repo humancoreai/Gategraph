@@ -1,7 +1,7 @@
-Current stable: v0.10.3_STABLE
+Current candidate: v0.11.0_CANDIDATE
 
-Base: v0.10.2_STABLE
-Phase: Release Process Guard
-Scope: release metadata consistency, structured manifest validation, dead-reference detection, promotion drift prevention.
+Base: v0.10.3_STABLE
+Phase: Deployment / Packaging Baseline
+Scope: pyproject packaging baseline, editable install surface, CLI/server entry points, deployment-boundary documentation, packaging evidence.
 
-Invariant: v0.10.3_STABLE introduces no runtime capability, no governance behavior, no enforcement behavior, no adapter behavior, no agentic behavior, no packaging/deployment surface, and no UI.
+Invariant: v0.11.0_CANDIDATE introduces no runtime capability, no governance behavior, no enforcement behavior, no adapter behavior, no agentic behavior, no distributed governance, and no UI.

@@ -1,32 +1,33 @@
-# Release Notes – v0.10.3_STABLE
+# Release Notes – v0.11.0_CANDIDATE
 
 ## Summary
 
-v0.10.3_STABLE finalizes the v0.10.x Runtime / Boundary Hardening line with a release-process guard.
+v0.11.0_CANDIDATE starts Phase B: Deployment / Packaging Baseline.
 
-The release adds automated checks to prevent pre-release/stable metadata drift, structured manifest regressions, stale manifest entries, and dead local documentation references.
+This release makes GateGraph locally installable and standardizes the supported single-node deployment surface. It does not change governance, enforcement, runtime, adapter, token, budget, audit, or chain-order behavior.
 
 ## Added
 
-- `tools/release_process_guard.py`
-- `tests/release_process_guard_evidence.py`
+- `pyproject.toml`
+- `docs/DEPLOYMENT_BOUNDARY.md`
+- `tests/packaging_integrity_evidence.py`
+- `tests/install_surface_evidence.py`
 
-## Guard coverage
+## Packaging scope
 
-- release metadata truth
-- expected release/status consistency
-- expected base consistency
-- structured manifest validation
-- manifest hash/size consistency
-- stale/missing manifest entries
-- local markdown dead-reference checks
+- editable local install with `pip install -e .`
+- console scripts mapped to existing modules
+- package metadata aligned with release metadata
+- source package excludes runtime artifacts through release hygiene
 
 ## Unchanged
 
 - governance logic
 - enforcement logic
 - runtime logic
-- adapter behavior
-- agent behavior
-- packaging/deployment scope
+- service adapter behavior
+- capability-token model
+- risk/rule engines
+- session/runtime/flood guards
+- audit/replay model
 - UI scope
