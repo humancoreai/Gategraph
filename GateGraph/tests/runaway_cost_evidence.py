@@ -172,6 +172,70 @@ def scenario_external_api_negative_cost_blocked_before_runtime() -> EvidenceScen
         close_conn(conn, db_path)
 
 
+def scenario_runtime_throttles_near_budget_high_cost() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn(); task_id = "RUNAWAY-THROTTLE-HIGH-COST"
+    try:
+        runtime_guard.create_budget(conn, task_id=task_id, max_steps=20, max_cost_units=10, repeated_action_limit=10)
+        d1 = runtime_guard.evaluate_before_step(
+            conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="near-budget-a", cost_units=8
+        )
+        d2 = runtime_guard.evaluate_before_step(
+            conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="near-budget-b", cost_units=2
+        )
+        evidence = collect_task_evidence(conn, task_id)
+        passed = (
+            d1.decision == "continue"
+            and d2.decision == "stop"
+            and d2.escalation_state == "degraded"
+            and "max_cost_for_action" in d2.reason
+            and len(evidence["runtime_steps"]) == 1
+        )
+        return EvidenceScenarioResult(
+            "runtime_throttles_near_budget_high_cost",
+            "Near-budget runtime state must reject high-cost follow-up actions before another step is recorded.",
+            {"first": "continue", "second": "stop", "state": "degraded", "runtime_steps": 1},
+            {"decisions": [d1.decision, d2.decision], "state": d2.escalation_state, "reason": d2.reason, "runtime_steps": len(evidence["runtime_steps"])},
+            passed,
+            "info" if passed else "critical",
+            [] if passed else ["High-cost action was not blocked by runtime governance throttling."],
+            evidence,
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
+def scenario_loop_signal_escalates_constraints() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn(); task_id = "RUNAWAY-LOOP-SIGNAL"
+    try:
+        runtime_guard.create_budget(conn, task_id=task_id, max_steps=10, max_cost_units=10, repeated_action_limit=10)
+        d1 = runtime_guard.evaluate_before_step(
+            conn, task_id=task_id, actor_id="agent-a", action_type="delegate", target="agent-b", cost_units=1
+        )
+        d2 = runtime_guard.evaluate_before_step(
+            conn, task_id=task_id, actor_id="agent-a", action_type="delegate", target="agent-c", cost_units=6, loop_signal=True
+        )
+        evidence = collect_task_evidence(conn, task_id)
+        passed = (
+            d1.decision == "continue"
+            and d2.decision == "stop"
+            and d2.escalation_state == "degraded"
+            and d2.max_cost_for_action == 4
+            and len(evidence["runtime_steps"]) == 1
+        )
+        return EvidenceScenarioResult(
+            "loop_signal_escalates_constraints",
+            "A loop signal may only make Runtime Governance stricter; it must not grant continuation.",
+            {"first": "continue", "second": "stop", "state": "degraded", "max_cost_for_action": 4, "runtime_steps": 1},
+            {"decisions": [d1.decision, d2.decision], "state": d2.escalation_state, "max_cost_for_action": d2.max_cost_for_action, "runtime_steps": len(evidence["runtime_steps"])},
+            passed,
+            "info" if passed else "critical",
+            [] if passed else ["Loop signal did not tighten constraints fail-closed."],
+            evidence,
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
 def main() -> int:
     run_id = datetime.now(timezone.utc).strftime("runaway_cost_evidence_%Y%m%d_%H%M%S")
     log = EvidenceRunLog(run_id=run_id, started_at=datetime.now(timezone.utc).isoformat())
@@ -179,6 +243,8 @@ def main() -> int:
         scenario_session_negative_projected_cost_fails_closed,
         scenario_runtime_zero_cost_fails_closed_without_step,
         scenario_external_api_negative_cost_blocked_before_runtime,
+        scenario_runtime_throttles_near_budget_high_cost,
+        scenario_loop_signal_escalates_constraints,
     ]
     for scenario in scenarios:
         result = scenario()
