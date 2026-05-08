@@ -1,5 +1,21 @@
 # RELEASE_NOTES
 
+## v0.8.33_STABLE
+
+- Promoted v0.8.33_CANDIDATE to Stable after target-environment Windows Evidence CI passed.
+- Added minimal Server Mode / Integration Layer:
+  - `POST /evaluate`
+  - `GET /status`
+  - `GET /monitoring`
+- Added shared `src/service_adapter.py` so CLI and Server use the same Core/Governance path.
+- Added `src/server.py` as adapter-only HTTP entry point.
+- Added server mode documentation and evidence coverage.
+- Hardened CLI mode boundary:
+  - CLI supports only `mode: single_node`
+  - unsupported modes fail closed with structured JSON error and non-zero exit code
+- No new autonomy, background actions, rule mutation, or Governance-Core bypass introduced.
+
+
 ## v0.8.32_STABLE
 
 - Added `export-monitoring` CLI command.
