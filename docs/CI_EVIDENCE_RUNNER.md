@@ -1,42 +1,50 @@
-# CI Evidence Runner (v0.8.7)
+# CI Evidence Runner
+
+Version: v0.8.14 runner stabilization
 
 ## Purpose
 
-The CI evidence runner is a release-hygiene layer. It does not change governance, enforcement, budget, runtime, audit, explain, or pattern-engine semantics.
+The Evidence Runner is the release proof harness for GateGraph. It executes all proof-oriented test scripts and writes one machine-readable JSON summary under `tests/logs/`.
 
-## Stabilization change
+## Current runner model
 
-Earlier aggregate runs could hang in constrained Python environments after individual evidence scripts had already completed. The runner has therefore been hardened around two principles:
+`tests/evidence_ci.sh` is the preferred aggregate runner.
 
-1. Each evidence script remains independently executable.
-2. Aggregate CI treats runner failures/timeouts as explicit failed evidence, never as success.
-
-## Runner options
-
-- `tests/evidence_ci.py` keeps a machine-readable JSON summary format for evidence aggregation.
-- `tests/evidence_ci.sh` provides a shell-isolated aggregate runner for CI environments where Python subprocess shutdown/pipe handling is unreliable.
-
-## Invariants
-
-- The runner may only orchestrate evidence.
-- The runner may not weaken fail-closed behavior.
-- The runner may not alter production code paths.
-- A timeout or runner error is a failed release signal.
-
-## Recommended CI command
+It executes each evidence script through:
 
 ```bash
-./tests/evidence_ci.sh
+python -S -u tests/_run_isolated.py <script>
 ```
 
-The shell runner executes each test script with:
+`_run_isolated.py` imports the target script as a normal module and calls its public `main()` or `run()` function directly.
 
-```bash
-timeout 60 python -S -u <script>
+## Why not `runpy(..., run_name="__main__")`?
+
+Earlier runner versions executed scripts as `__main__`. In this environment that could produce shutdown hangs after the logical test result was already printed. The v0.8.14 wrapper avoids that path and exits after explicit stream flushing.
+
+## Invariant
+
+The runner only orchestrates tests. It does not change production semantics in:
+
+- Governance
+- Enforcement
+- Runtime Guard
+- Session Budget Guard
+- HTTP Policy
+- Secret Provider
+- External API Adapter
+- Pattern Engine
+
+## Expected result
+
+A clean run prints one line per evidence group and then a final report:
+
+```text
+CI EVIDENCE REPORT
+Log: tests/logs/ci_evidence_<timestamp>.json
+Passed: true
 ```
 
-This keeps the evidence process bounded and makes hangs visible as non-zero exit codes.
+## Notes
 
-## v0.8.10 runner boundary note
-
-`tests/_run_isolated.py` still uses `os._exit()` deliberately, but only after the target evidence script has returned and stdout/stderr have been flushed. This is a containment workaround for environment-specific Python shutdown hangs observed after completed evidence runs. Evidence scripts remain responsible for closing their own SQLite connections before returning; the wrapper is not a DB lifecycle owner and must not be used around production code.
+Output tails are base64-encoded in the JSON report so arbitrary test output cannot corrupt the machine-readable summary.
