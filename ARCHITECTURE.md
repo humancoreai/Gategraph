@@ -1,6 +1,6 @@
 <!-- v0.9.1_STABLE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
 
-# Architecture – v0.11.1_STABLE
+# Architecture – v0.11.2_CANDIDATE
 
 ## System role
 
@@ -47,4 +47,4 @@ Makes recorded state inspectable and exportable. It must remain observational an
 
 ## Release layer
 
-v0.11.1_STABLE adds a release-integrity layer around packaging and review artifacts. This layer verifies structure, hashes and documentation consistency; it does not participate in runtime governance.
+v0.11.2_CANDIDATE adds a release-integrity layer around packaging and review artifacts. This layer verifies structure, hashes and documentation consistency; it does not participate in runtime governance.
