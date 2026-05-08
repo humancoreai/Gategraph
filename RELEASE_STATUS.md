@@ -1,22 +1,21 @@
-# Release Status – v0.10.0_CANDIDATE
+# Release Status – v0.10.1_CANDIDATE
 
 Status: candidate
 
-Base: v0.9.3_STABLE
+Base: v0.10.0_CANDIDATE
 
 Phase: Runtime / Boundary Hardening
 
 Scope:
-- require trusted entry context before Governance evaluation
-- assert public entry path through service_adapter
-- keep direct Governance calls fail-closed by default
-- keep historical direct evidence scripts behind explicit test-only compatibility flag
-- add runtime boundary hardening evidence
+- internal/public API boundary split
+- forbidden governance entry assertions
+- freeze-aware runtime invariant evidence
+- release metadata consistency
 
 Out of scope:
-- no new runtime capability
-- no new agentic behavior
-- no new adapter
+- no new runtime model
+- no adapter expansion
+- no autonomous agent behavior
 - no distributed governance
-- no framework integration
-- no packaging/deployment work
+- no orchestration logic
+- no risk model expansion
