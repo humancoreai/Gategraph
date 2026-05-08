@@ -1,4 +1,4 @@
-# Known Gaps Roadmap – v0.11.5_STABLE
+# Known Gaps Roadmap – v0.11.6_CANDIDATE
 
 ## Closed before / at v0.9.3
 
@@ -37,7 +37,7 @@
 - Console entry points are declared: `gategraph` and `gategraph-server`.
 - Packaging, install surface, startup surface and config consistency evidence are present.
 
-## Closed / hardened in v0.11.5_STABLE
+## Closed / hardened in v0.11.6_CANDIDATE
 
 - Security mapping baseline documented in `SECURITY_MODEL.md`, `OWASP_AGENTIC_AI_MAPPING.md`, and `KNOWN_LIMITATIONS.md`.
 - Token/Authorization/secret exposure boundaries hardened with `src/security/token_redaction.py` and `tests/token_exposure_evidence.py`.
@@ -63,7 +63,7 @@
 - No audit-log retention management.
 - No security-disclosure process.
 
-## Non-scope for v0.11.5_STABLE
+## Non-scope for v0.11.6_CANDIDATE
 
 - no new agents
 - no new adapters
