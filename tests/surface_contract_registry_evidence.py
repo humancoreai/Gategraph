@@ -22,8 +22,8 @@ EXPECTED_CONTRACTS = {
 
 def main() -> int:
     metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
-    assert metadata["release"] == "v0.12.0_CANDIDATE"
-    assert metadata["status"] == "candidate"
+    assert metadata["release"] == "v0.12.0_STABLE"
+    assert metadata["status"] == "stable"
     assert metadata["base"] == "v0.11.9_STABLE"
     assert metadata["surface_contract_registry_scope"] is True
     assert metadata["surface_contract_version"] == EXPECTED_VERSION
@@ -37,7 +37,7 @@ def main() -> int:
         contract = json.loads(path.read_text(encoding="utf-8"))
         assert contract.get("schema_version") == EXPECTED_VERSION, filename
         assert contract.get("surface") == expected["surface"], filename
-        assert contract.get("status") == "frozen_candidate", filename
+        assert contract.get("status") == "frozen_stable", filename
         assert contract.get("required_fields") == expected["required_fields"], filename
         assert contract.get("description"), filename
         checked.append(contract["surface"])
