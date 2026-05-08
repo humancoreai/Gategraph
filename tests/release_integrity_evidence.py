@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-VERSION = "v0.10.1_STABLE"
+VERSION = "v0.10.2_CANDIDATE"
 
 
 def load_module(name: str, path: Path):
@@ -75,10 +75,13 @@ def main() -> None:
     assert "tests/release_integrity_evidence.py" in paths
     assert "tests/runtime_boundary_hardening_evidence.py" in paths
     assert "tests/freeze_runtime_invariant_evidence.py" in paths
+    assert "tests/runtime_chain_order_evidence.py" in paths
     assert "tests/api_boundary_split_evidence.py" in paths
     assert "src/runtime_path_assertions.py" in paths
+    assert "src/runtime_chain_assertions.py" in paths
     assert "src/api_boundary.py" in paths
     assert "docs/RUNTIME_BOUNDARY_HARDENING.md" in paths
+    assert "docs/RUNTIME_CHAIN_ASSERTIONS.md" in paths
     assert "docs/GOVERNANCE_FREEZE_SNAPSHOT_v0_9_3.md" in paths
     assert "tests/governance_freeze_evidence.py" in paths
 
