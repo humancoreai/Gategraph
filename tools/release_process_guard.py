@@ -84,12 +84,15 @@ def check_release_truth(expected_release: str, expected_status: str, expected_ba
             if not path.exists():
                 continue
             text = path.read_text(encoding="utf-8")
+            forbidden_status_label = "Status: " + "candidate"
+            forbidden_current_label = "Current " + "candidate:"
+            forbidden_current_baseline = "Current " + "candidate baseline:"
             if (
                 f'"release": "{forbidden}"' in text
                 or f'VERSION = "{forbidden}"' in text
-                or "Status: candidate" in text
-                or "Current candidate:" in text
-                or "Current candidate baseline:" in text
+                or forbidden_status_label in text
+                or forbidden_current_label in text
+                or forbidden_current_baseline in text
             ):
                 problems.append(f"{rel} contains forbidden current candidate claim")
 
@@ -231,8 +234,8 @@ def run(expected_release: str, expected_status: str, expected_base: str | None) 
 
 
 def main(argv: list[str]) -> int:
-    expected_release = argv[1] if len(argv) > 1 else "v0.11.8_CANDIDATE"
-    expected_status = argv[2] if len(argv) > 2 else "candidate"
+    expected_release = argv[1] if len(argv) > 1 else "v0.11.8_STABLE"
+    expected_status = argv[2] if len(argv) > 2 else "stable"
     expected_base = argv[3] if len(argv) > 3 else None
     result = run(expected_release, expected_status, expected_base)
     print(json.dumps(result, indent=2, sort_keys=True))
