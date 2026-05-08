@@ -1,4 +1,4 @@
-# GateGraph v0.11.9_CANDIDATE
+# GateGraph v0.11.9_STABLE
 
 ## Purpose
 

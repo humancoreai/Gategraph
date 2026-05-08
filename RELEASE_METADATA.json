@@ -29,7 +29,7 @@
   "new_runtime_model": false,
   "packaging_scope": true,
   "phase": "Context Lifecycle / Freeze Coupling Baseline",
-  "release": "v0.11.9_CANDIDATE",
+  "release": "v0.11.9_STABLE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "runtime_surface_scope": true,
@@ -39,7 +39,7 @@
   "semantic_context_scoring": false,
   "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "candidate",
+  "status": "stable",
   "surface_freeze_coupling_scope": true,
   "token_exposure_hardening_scope": true,
   "transitive_authority_blocked": true
