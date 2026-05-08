@@ -91,12 +91,27 @@ def test_runtime_allows_only_declared_public_entry() -> None:
         tmp.cleanup()
 
 
+
+def test_freeze_runtime_chain_assertions_are_executable() -> None:
+    chain_doc = (ROOT / "docs" / "RUNTIME_CHAIN_ASSERTIONS.md").read_text(encoding="utf-8")
+    assert "Enforcement" in chain_doc
+    assert "action_ready" in chain_doc
+    from src.runtime_chain_assertions import RUNTIME_CHAIN_ORDER, assert_runtime_chain
+    result = assert_runtime_chain(
+        evaluated_stages=RUNTIME_CHAIN_ORDER,
+        terminal_stage="action_ready",
+        enforcement_allowed=True,
+    )
+    assert result.action_ready is True
+
+
 def main() -> int:
     tests = [
         test_freeze_registry_contains_boundary_invariants,
         test_freeze_snapshot_references_runtime_boundary_hardening,
         test_runtime_blocks_naked_governance_entry_by_default,
         test_runtime_allows_only_declared_public_entry,
+        test_freeze_runtime_chain_assertions_are_executable,
     ]
     failed = 0
     for test in tests:
