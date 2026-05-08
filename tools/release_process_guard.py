@@ -21,6 +21,8 @@ RELEASE_FILES = [
     "RELEASE_METADATA.json",
     "RELEASE_NOTES.md",
     "VERSION.md",
+    "docs/DEPLOYMENT_BOUNDARY.md",
+    "pyproject.toml",
     "README.md",
     "CHANGELOG.md",
     "docs/SERVER_MODE.md",
@@ -182,7 +184,7 @@ def run(expected_release: str, expected_status: str, expected_base: str | None) 
 
 
 def main(argv: list[str]) -> int:
-    expected_release = argv[1] if len(argv) > 1 else "v0.10.3_STABLE"
+    expected_release = argv[1] if len(argv) > 1 else "v0.11.0_CANDIDATE"
     expected_status = argv[2] if len(argv) > 2 else "candidate"
     expected_base = argv[3] if len(argv) > 3 else None
     result = run(expected_release, expected_status, expected_base)
