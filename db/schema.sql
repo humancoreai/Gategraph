@@ -87,3 +87,64 @@ CREATE TABLE IF NOT EXISTS relations (
 
 CREATE INDEX IF NOT EXISTS idx_relations_subject ON relations(subject_id, subject_type);
 CREATE INDEX IF NOT EXISTS idx_relations_object  ON relations(object_id, object_type);
+
+-- Runtime Guard tables (v0.6)
+CREATE TABLE IF NOT EXISTS runtime_budgets (
+    budget_id TEXT PRIMARY KEY,
+    task_id TEXT NOT NULL,
+    max_steps INTEGER NOT NULL,
+    max_runtime_seconds INTEGER NOT NULL,
+    max_cost_units INTEGER NOT NULL,
+    repeated_action_limit INTEGER NOT NULL,
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS runtime_steps (
+    step_id TEXT PRIMARY KEY,
+    task_id TEXT NOT NULL,
+    step_index INTEGER NOT NULL,
+    actor_id TEXT NOT NULL,
+    action_type TEXT NOT NULL,
+    action_signature TEXT NOT NULL,
+    cost_units INTEGER NOT NULL,
+    timestamp TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS runtime_decisions (
+    decision_id TEXT PRIMARY KEY,
+    task_id TEXT NOT NULL,
+    step_id TEXT,
+    decision TEXT NOT NULL,
+    reason TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_runtime_steps_task
+    ON runtime_steps(task_id);
+
+CREATE INDEX IF NOT EXISTS idx_runtime_steps_signature
+    ON runtime_steps(task_id, action_signature);
+
+CREATE INDEX IF NOT EXISTS idx_runtime_decisions_task
+    ON runtime_decisions(task_id);
+
+-- Pattern Engine proposals (v0.7)
+CREATE TABLE IF NOT EXISTS proposals (
+    proposal_id TEXT PRIMARY KEY,
+    schema_version TEXT NOT NULL DEFAULT '0.7',
+    proposal_type TEXT NOT NULL,
+    target_rule_id TEXT,
+    reason TEXT NOT NULL,
+    proposed_change TEXT NOT NULL,
+    supporting_events TEXT NOT NULL,
+    confidence REAL NOT NULL,
+    confidence_basis TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'pending_review',
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_proposals_status
+    ON proposals(status);
+
+CREATE INDEX IF NOT EXISTS idx_proposals_target_rule
+    ON proposals(target_rule_id);
