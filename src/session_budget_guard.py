@@ -13,6 +13,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Optional
 
+from src.database import SCHEMA_PATH
+
 
 DEFAULT_MAX_SESSION_COST_UNITS = 100
 DEFAULT_MAX_SESSION_TASKS = 50
@@ -40,46 +42,10 @@ class SessionDecision:
 
 def ensure_session_budget_schema(conn: sqlite3.Connection) -> None:
     """
-    INV: additive schema only; does not modify existing runtime or governance tables.
+    INV: schema.sql is the single DDL source of truth; this helper only applies it and keeps old DBs compatible.
+    WHY: tests may initialize modules in isolation, but table definitions must not drift across files.
     """
-    conn.executescript("""
-    CREATE TABLE IF NOT EXISTS session_budgets (
-        session_id TEXT PRIMARY KEY,
-        max_session_cost_units INTEGER NOT NULL,
-        max_session_tasks INTEGER NOT NULL,
-        max_agent_cost_units INTEGER NOT NULL,
-        created_at TEXT NOT NULL
-    );
-
-    CREATE TABLE IF NOT EXISTS session_task_links (
-        session_id TEXT NOT NULL,
-        task_id TEXT NOT NULL,
-        actor_id TEXT NOT NULL,
-        reserved_cost_units INTEGER NOT NULL DEFAULT 0,
-        created_at TEXT NOT NULL,
-        PRIMARY KEY (session_id, task_id)
-    );
-
-    CREATE TABLE IF NOT EXISTS session_budget_decisions (
-        decision_id TEXT PRIMARY KEY,
-        session_id TEXT NOT NULL,
-        task_id TEXT NOT NULL,
-        actor_id TEXT NOT NULL,
-        projected_cost_units INTEGER NOT NULL,
-        decision TEXT NOT NULL,
-        reason TEXT NOT NULL,
-        created_at TEXT NOT NULL
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_session_task_links_session
-        ON session_task_links(session_id);
-
-    CREATE INDEX IF NOT EXISTS idx_session_task_links_actor
-        ON session_task_links(session_id, actor_id);
-
-    CREATE INDEX IF NOT EXISTS idx_session_budget_decisions_session
-        ON session_budget_decisions(session_id);
-    """)
+    conn.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
 
     # WHY: v0.8.3 keeps old DBs compatible if they were created before reserved_cost_units existed.
     columns = {
@@ -90,7 +56,6 @@ def ensure_session_budget_schema(conn: sqlite3.Connection) -> None:
         conn.execute(
             "ALTER TABLE session_task_links ADD COLUMN reserved_cost_units INTEGER NOT NULL DEFAULT 0"
         )
-
 
 def create_session_budget(
     conn: sqlite3.Connection,
@@ -134,6 +99,8 @@ def evaluate_before_task(
     INV: evaluates cumulative session/agent cost before a task receives fresh runtime work.
     SEC: BEGIN IMMEDIATE serializes read-budget/write-link so parallel callers cannot oversubscribe budget.
     SEC: projected cost is reserved on the session link so the next task sees committed reservations immediately.
+    PRE: call outside an already-open deferred transaction when concurrency guarantees are required.
+    EDGE: if caller already owns a transaction, SQLite cannot upgrade this helper to BEGIN IMMEDIATE.
     """
     ensure_session_budget_schema(conn)
     _begin_immediate(conn)

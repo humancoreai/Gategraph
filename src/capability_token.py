@@ -14,7 +14,7 @@ import sqlite3
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
-from typing import Dict, Optional
+from typing import Dict, Optional, Mapping
 
 DEFAULT_TTL_SECONDS = 300
 DEFAULT_SIGNING_KEY_ID = "local-dev-v2"
@@ -22,6 +22,8 @@ _ENV_SECRET = "GATEGRAPH_TOKEN_SIGNING_SECRET"
 _ENV_ACTIVE_KEY_ID = "GATEGRAPH_TOKEN_ACTIVE_KEY_ID"
 _ENV_KEYRING_JSON = "GATEGRAPH_TOKEN_KEYRING_JSON"
 _DEV_KEYRING = {
+    # SEC: development-only deterministic secrets for local evidence tests.
+    # Never use these defaults with real data, CI secrets, or production workloads.
     "local-dev-v2": "gategraph-local-dev-token-signing-secret-v2",
     "local-dev-v1": "gategraph-local-dev-token-signing-secret",
 }
@@ -54,9 +56,9 @@ def _ensure_token_schema(conn: sqlite3.Connection) -> None:
         conn.execute("ALTER TABLE capability_tokens ADD COLUMN signing_key_id TEXT NOT NULL DEFAULT 'local-dev-v1'")
 
 
-def _load_keyring() -> Dict[str, bytes]:
+def load_trusted_keyring() -> Dict[str, bytes]:
     """
-    SEC: signing accepts an explicit keyring so old tokens can be verified after rotation.
+    SEC: public keyring loader; callers that need deterministic per-decision behavior load once and pass it through.
     Format: GATEGRAPH_TOKEN_KEYRING_JSON='{"kid-a":"secret-a","kid-b":"secret-b"}'
     """
     raw = os.environ.get(_ENV_KEYRING_JSON)
@@ -82,8 +84,13 @@ def active_signing_key_id() -> str:
     return os.environ.get(_ENV_ACTIVE_KEY_ID, DEFAULT_SIGNING_KEY_ID)
 
 
-def _signing_secret(signing_key_id: str) -> Optional[bytes]:
-    return _load_keyring().get(signing_key_id)
+def _signing_secret(signing_key_id: str, keyring: Optional[Mapping[str, bytes]] = None) -> Optional[bytes]:
+    return (keyring or load_trusted_keyring()).get(signing_key_id)
+
+
+def is_trusted_signing_key(signing_key_id: str, keyring: Optional[Mapping[str, bytes]] = None) -> bool:
+    """SEC: public trust check so enforcement does not depend on private keyring internals."""
+    return signing_key_id in (keyring or load_trusted_keyring())
 
 
 def _canonical_claims(*, token_id: str, decision_id: str, task_id: str, capabilities: Dict[str, bool], issued_at: datetime, expires_at: datetime, signing_key_id: str) -> str:
@@ -99,8 +106,8 @@ def _canonical_claims(*, token_id: str, decision_id: str, task_id: str, capabili
     return json.dumps(payload, sort_keys=True, separators=(",", ":"))
 
 
-def sign_claims(*, token_id: str, decision_id: str, task_id: str, capabilities: Dict[str, bool], issued_at: datetime, expires_at: datetime, signing_key_id: str = DEFAULT_SIGNING_KEY_ID) -> str:
-    secret = _signing_secret(signing_key_id)
+def sign_claims(*, token_id: str, decision_id: str, task_id: str, capabilities: Dict[str, bool], issued_at: datetime, expires_at: datetime, signing_key_id: str = DEFAULT_SIGNING_KEY_ID, keyring: Optional[Mapping[str, bytes]] = None) -> str:
+    secret = _signing_secret(signing_key_id, keyring)
     if secret is None:
         raise ValueError(f"unknown signing key id: {signing_key_id}")
     canonical = _canonical_claims(
@@ -115,7 +122,7 @@ def sign_claims(*, token_id: str, decision_id: str, task_id: str, capabilities: 
     return hmac.new(secret, canonical.encode("utf-8"), hashlib.sha256).hexdigest()
 
 
-def verify_signature(token: CapabilityToken, persisted_signature: Optional[str] = None) -> bool:
+def verify_signature(token: CapabilityToken, persisted_signature: Optional[str] = None, keyring: Optional[Mapping[str, bytes]] = None) -> bool:
     try:
         expected = sign_claims(
             token_id=token.token_id,
@@ -125,6 +132,7 @@ def verify_signature(token: CapabilityToken, persisted_signature: Optional[str] 
             issued_at=token.issued_at,
             expires_at=token.expires_at,
             signing_key_id=token.signing_key_id,
+            keyring=keyring,
         )
     except Exception:
         return False
@@ -181,3 +189,6 @@ def issue_expired_token(conn: sqlite3.Connection, decision_id: str, task_id: str
     signature = sign_claims(token_id=token_id, decision_id=decision_id, task_id=task_id, capabilities=final_capabilities, issued_at=issued_at, expires_at=expires_at, signing_key_id=signing_key_id)
     token = CapabilityToken(token_id, decision_id, task_id, dict(final_capabilities), issued_at, expires_at, signature, signing_key_id)
     return _insert_token(conn, token)
+
+
+issue_expired_token.__test_only__ = True
