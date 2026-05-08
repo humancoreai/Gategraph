@@ -189,3 +189,18 @@ CREATE INDEX IF NOT EXISTS idx_session_task_links_actor
 
 CREATE INDEX IF NOT EXISTS idx_session_budget_decisions_session
     ON session_budget_decisions(session_id);
+
+-- Secret references (v0.8.11)
+-- SEC: raw secret values are never stored here; only provider references and scopes.
+CREATE TABLE IF NOT EXISTS secret_refs (
+    secret_ref_id TEXT PRIMARY KEY,
+    provider TEXT NOT NULL,
+    secret_name TEXT NOT NULL,
+    allowed_endpoint_prefixes TEXT NOT NULL,
+    allowed_capabilities TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_secret_refs_active
+    ON secret_refs(active);

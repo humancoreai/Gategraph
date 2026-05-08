@@ -328,3 +328,17 @@ Added `tests/runaway_cost_evidence.py` covering negative projected costs, zero r
 ## v0.8.9 Key Rotation Evidence
 
 Added tests for active-key issuance, legacy-key verification while trusted, legacy-key retirement fail-closed behavior, and signing-key-ID tamper rejection.
+
+## v0.8.11 Secret/API Integration Evidence
+
+Added `tests/secret_api_integration_evidence.py`.
+
+Coverage:
+
+- scoped env secret reaches transport only after Enforcement + Session Budget + Runtime Guard pass
+- raw secret value is not written to audit evidence
+- missing secret blocks before transport
+- endpoint scope mismatch blocks before transport
+- no-token path blocks at Enforcement before secret resolution
+
+Result during local validation: 4/4 passed.
