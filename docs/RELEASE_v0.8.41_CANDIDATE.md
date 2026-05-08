@@ -89,3 +89,7 @@ None known inside the v0.8.41 scope.
 - Cluster is not cause.
 - Timeline correlation is not causation.
 - Output labels must not imply ranking or recommendations.
+
+## Stable Status
+
+Superseded by v0.8.41_STABLE after Windows Evidence CI passed.
