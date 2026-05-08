@@ -17,13 +17,13 @@ def main() -> int:
         return 1
     if mode == "hang":
         print("hang entered", flush=True)
-        while True:
-            time.sleep(1)
+        time.sleep(60)
+        return 0
     if mode == "child_hang":
-        child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
+        child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, close_fds=True)
         print(f"CHILD_PID:{child.pid}", flush=True)
-        while True:
-            time.sleep(1)
+        time.sleep(60)
+        return 0
     print(f"unknown mode: {mode}", flush=True)
     return 2
 
