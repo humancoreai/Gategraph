@@ -99,3 +99,13 @@ Stable promotion from `v0.8.42_CANDIDATE` after Full Windows Evidence CI passed 
 - Kept implementation read-only and descriptive.
 - Preserved existing governance, enforcement, runtime, and audit behavior.
 
+
+
+## v0.8.44_CANDIDATE — Governance Drift Detection
+
+- Added descriptive governance baseline snapshots.
+- Added descriptive snapshot comparison across reason, guard, queue and workflow distributions.
+- Added append-only drift event records.
+- Added queue/reason co-occurrence view and workflow distribution snapshot.
+- Added `drift_detection_evidence`.
+- No governance decision, policy, guard or queue mutation introduced.
