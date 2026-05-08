@@ -81,3 +81,13 @@ Stable promotion from `v0.8.34_CANDIDATE` after Full Windows Evidence CI passed.
 - Added read-only operator control layer.
 - Added operator evidence test.
 - No core behavior changes.
+## v0.8.42_CANDIDATE
+
+- Added static Operator Workflow / Playbook layer.
+- Added descriptive playbook matching by reason code and guard.
+- Added operator workflow JSONL documentation events.
+- Added Incident/Pattern to Playbook reference linking.
+- Added reproducible workflow snapshot helper.
+- Added operator_workflow_evidence to Evidence CI manifest.
+- No Governance, Enforcement, Runtime, Budget or Audit logic changed.
+
