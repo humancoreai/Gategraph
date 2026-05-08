@@ -306,3 +306,15 @@ Result:
 - External API Evidence: 7/7 passed
 - No-token path stops at Enforcement before Session/Runtime guards
 - Allowed paths require a real valid API capability token
+
+
+## v0.8.5 Hygiene Fix
+
+Non-semantic cleanup after external API enforcement binding:
+
+- Updated legacy simulation headers from v0.4.x to v0.8.5.
+- Kept audit `schema_version = 0.8.3` intentionally; no audit schema migration occurred in v0.8.4/v0.8.5.
+- Updated `actor_version` to 0.8.5 for newly logged events.
+- CI/evidence runner uses `python -S -u` for deterministic subprocess execution in local and CI environments.
+
+No governance, enforcement, runtime, session-budget, pattern-engine, or adapter semantics changed.
