@@ -5,6 +5,7 @@
 GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
 Current stable baseline: **v0.10.3_STABLE**  
+Current candidate: **v0.11.0_CANDIDATE**  
 License: Apache 2.0
 
 ---
@@ -81,6 +82,7 @@ CLI / HTTP Server
 git clone https://github.com/humancoreai/Gategraph.git
 cd Gategraph
 cp config.example.yaml config.yaml
+python -m pip install -e .
 ```
 
 ### CLI evaluation
@@ -212,6 +214,7 @@ GateGraph is **production-ready for single-node, local/protected deployment**.
 | `docs/THREAT_MODEL.md` | Threat classes and expected controls |
 | `docs/KNOWN_GAPS_ROADMAP.md` | Open gaps and planned phases |
 | `PRODUCTION.md` | Explicit production scope and responsibility model |
+| `docs/DEPLOYMENT_BOUNDARY.md` | Supported/unsupported/unsafe deployment boundary |
 | `docs/INVARIANT_REGISTRY.md` | Stable invariant IDs (INV-001–INV-015) with evidence mapping |
 | `GOVERNANCE.md` | Rule structure and decision logic |
 | `docs/ARCHITECTURE.md` | Layer separation and data flow |
@@ -230,7 +233,7 @@ Releases are built deterministically via `tools/build_release.py`. Every release
 - `.db` files excluded from release artifacts by default
 
 ```bash
-python tools/verify_release.py dist/GateGraph_v0.10.3_STABLE.zip
+python tools/verify_release.py dist/GateGraph_v0.11.0_CANDIDATE.zip
 ```
 
 ---
