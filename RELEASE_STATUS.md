@@ -29,4 +29,10 @@ Promotion notes:
 - Static playbooks and descriptive matching added.
 - No governance, enforcement, runtime, or rule-update authority added.
 - Full Windows Evidence CI: Passed=True.
+## v0.8.43_CANDIDATE
+
+Status: Candidate
+Phase: Human Review Queue
+Evidence: human_review_queue_evidence passed locally; Full Windows Evidence CI pending.
+Boundary: read-only operator review references; no prioritization or decision semantics.
 
