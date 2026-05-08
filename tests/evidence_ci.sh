@@ -8,13 +8,13 @@ REPORT="tests/logs/${RUN_ID}.json"
 TMPDIR="$(mktemp -d)"
 trap 'rm -rf "$TMPDIR"' EXIT
 
-names=(runtime_stress_evidence session_budget_evidence guard_orchestration_evidence reason_normalization_evidence scale_safety_evidence external_api_evidence runaway_cost_evidence core_loop runtime_guard pattern_engine usage_simulation unusual_inputs agent_scenarios)
-scripts=(tests/runtime_stress_evidence.py tests/session_budget_evidence.py tests/guard_orchestration_evidence.py tests/reason_normalization_evidence.py tests/scale_safety_evidence.py tests/external_api_evidence.py tests/runaway_cost_evidence.py tests/test_loop.py tests/runtime_guard_tests.py tests/pattern_engine_tests.py tests/usage_simulation.py tests/unusual_inputs.py tests/agent_scenarios.py)
+names=(runtime_stress_evidence session_budget_evidence guard_orchestration_evidence reason_normalization_evidence scale_safety_evidence external_api_evidence runaway_cost_evidence capability_token_hardening_evidence core_loop runtime_guard pattern_engine usage_simulation unusual_inputs agent_scenarios)
+scripts=(tests/runtime_stress_evidence.py tests/session_budget_evidence.py tests/guard_orchestration_evidence.py tests/reason_normalization_evidence.py tests/scale_safety_evidence.py tests/external_api_evidence.py tests/runaway_cost_evidence.py tests/capability_token_hardening_evidence.py tests/test_loop.py tests/runtime_guard_tests.py tests/pattern_engine_tests.py tests/usage_simulation.py tests/unusual_inputs.py tests/agent_scenarios.py)
 started="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 passed=true
 commands_json=""
 
-json_escape() { python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'; }
+json_escape() { python -S -c 'import json,sys; print(json.dumps(sys.stdin.read()))'; }
 
 for i in "${!names[@]}"; do
   name="${names[$i]}"; script="${scripts[$i]}"
@@ -29,7 +29,7 @@ for i in "${!names[@]}"; do
 done
 
 finished="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-logs_json="$(python - <<'PY'
+logs_json="$(python -S - <<'PY'
 import json
 from pathlib import Path
 print(json.dumps(sorted(str(p) for p in Path('tests/logs').glob('*.json'))))
