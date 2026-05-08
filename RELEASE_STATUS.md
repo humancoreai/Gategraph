@@ -1,8 +1,8 @@
-# Release Status – v0.10.1_CANDIDATE
+# Release Status – v0.10.1_STABLE
 
-Status: candidate
+Status: stable
 
-Base: v0.10.0_CANDIDATE
+Base: v0.10.0_STABLE
 
 Phase: Runtime / Boundary Hardening
 

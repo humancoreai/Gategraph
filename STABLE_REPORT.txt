@@ -1,36 +1,51 @@
-GateGraph v0.9.3 STABLE REPORT
+GateGraph v0.10.1 STABLE REPORT
+
+Generated: 2026-05-06T19:42:18.690798Z
 
 SUMMARY
-- Stable promotion correction completed.
-- Current release metadata now claims v0.9.3_STABLE consistently.
-- Governance freeze snapshot version metadata corrected.
-- Missing docs/THREAT_MODEL.md added as documentation-only reference target.
-- Release integrity evidence target corrected to v0.9.3_STABLE.
-- Deterministic release manifest regenerated.
-- Stable archive repacked.
+- v0.10.1_CANDIDATE promoted to v0.10.1_STABLE.
+- Windows Evidence CI was reported by user as PASS.
+- Stable metadata promotion completed.
+- Candidate release claims checked on current release metadata surfaces.
+- Release manifest regenerated.
+- Deterministic stable archive created.
 
-PATCHED FILES
+PHASE
+Runtime / Boundary Hardening
+
+CONFIRMED SCOPE
+- trusted entry enforcement retained
+- internal/public/forbidden boundary classification retained
+- runtime path assertions retained
+- freeze-aware runtime invariant evidence retained
+
+GOVERNANCE IMPACT
+- no new runtime capability
+- no new agentic behavior
+- no new adapter
+- no new orchestration
+- no expansion of governance authority
+
+PATCHED RELEASE SURFACES
 - RELEASE_STATUS.md
 - RELEASE_METADATA.json
 - RELEASE_NOTES.md
-- tests/release_integrity_evidence.py
 - VERSION.md
-- docs/GOVERNANCE_FREEZE_SNAPSHOT_v0_9_3.md
-- docs/THREAT_MODEL.md
+- tests/release_integrity_evidence.py
 
-GOVERNANCE IMPACT
-- No governance logic changed.
-- No enforcement logic changed.
-- No runtime path changed.
-- No adapter behavior changed.
-- No new agentic capability introduced.
+CI STATUS
+- Windows Evidence CI: PASS according to supplied report
+- Log: C:\Users\User\Desktop\Gategraph\GateGraph_v0.10.1_CANDIDATE\tests\logs\ci_evidence_20260506_193953.json
 
 OPEN RESTPOINTS
 P0:
-- none detected after promotion correction
+- none detected for stable promotion
 
 P1:
-- run final Windows CI directly from this fixed stable archive
+- continue Phase A with runtime chain/order assertions before moving to Packaging/Deployment
 
 P2:
-- optional future manifest signing
+- optional promotion script to avoid manual metadata drift in later releases
+
+STABLE RECOMMENDATION
+YES
