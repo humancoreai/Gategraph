@@ -1,9 +1,0 @@
-{
-  "task_id": "TASK-LOCAL-READ-001",
-  "task_type": "single_node_task",
-  "requested_capabilities": ["read_files"],
-  "input_source": "local",
-  "data_sensitivity": "internal",
-  "secrets_involved": false,
-  "projected_cost_units": 1
-}
