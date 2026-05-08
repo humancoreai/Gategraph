@@ -1,0 +1,36 @@
+GateGraph v0.9.3 STABLE REPORT
+
+SUMMARY
+- Stable promotion correction completed.
+- Current release metadata now claims v0.9.3_STABLE consistently.
+- Governance freeze snapshot version metadata corrected.
+- Missing docs/THREAT_MODEL.md added as documentation-only reference target.
+- Release integrity evidence target corrected to v0.9.3_STABLE.
+- Deterministic release manifest regenerated.
+- Stable archive repacked.
+
+PATCHED FILES
+- RELEASE_STATUS.md
+- RELEASE_METADATA.json
+- RELEASE_NOTES.md
+- tests/release_integrity_evidence.py
+- VERSION.md
+- docs/GOVERNANCE_FREEZE_SNAPSHOT_v0_9_3.md
+- docs/THREAT_MODEL.md
+
+GOVERNANCE IMPACT
+- No governance logic changed.
+- No enforcement logic changed.
+- No runtime path changed.
+- No adapter behavior changed.
+- No new agentic capability introduced.
+
+OPEN RESTPOINTS
+P0:
+- none detected after promotion correction
+
+P1:
+- run final Windows CI directly from this fixed stable archive
+
+P2:
+- optional future manifest signing
