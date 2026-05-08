@@ -257,6 +257,124 @@ def scenario_repeated_same_decision_evidence() -> EvidenceScenarioResult:
         close_conn(conn, db_path)
 
 
+
+def scenario_multi_agent_alternating_loop_max_steps() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn()
+    task_id = "STRESS-MULTI-AGENT-ALT"
+    try:
+        runtime_guard.create_budget(conn, task_id=task_id, max_steps=4, max_cost_units=20, repeated_action_limit=10)
+        decisions = []
+        for idx in range(6):
+            actor = "agent-a" if idx % 2 == 0 else "agent-b"
+            target = "agent-b" if actor == "agent-a" else "agent-a"
+            decision = runtime_guard.evaluate_before_step(
+                conn,
+                task_id=task_id,
+                actor_id=actor,
+                action_type="delegate",
+                target=target,
+            )
+            decisions.append(decision)
+            if decision.decision == "stop":
+                break
+        evidence = collect_task_evidence(conn, task_id)
+        final = decisions[-1]
+        passed = final.decision == "stop" and has_runtime_stop(evidence, ["max_steps"])
+        return EvidenceScenarioResult(
+            test_name="multi_agent_alternating_loop_max_steps",
+            description="Alternating multi-agent delegation with changing signatures must still stop at the task step budget.",
+            expected={"final_runtime_decision": "stop", "stop_reason_contains": "max_steps", "audit_required": True},
+            actual={"decisions": [d.decision for d in decisions], "final_reason": final.reason, "steps_recorded": len(evidence["runtime_steps"])},
+            passed=passed,
+            severity="info" if passed else "high",
+            notes=[] if passed else ["Alternating multi-agent loop was not stopped by max_steps evidence."],
+            evidence=evidence,
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
+def scenario_missing_runtime_budget_fail_closed() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn()
+    task_id = "STRESS-NO-RUNTIME-BUDGET"
+    try:
+        decision = runtime_guard.evaluate_before_step(
+            conn,
+            task_id=task_id,
+            actor_id="agent-a",
+            action_type="model_call",
+            target="analysis",
+        )
+        evidence = collect_task_evidence(conn, task_id)
+        passed = decision.decision == "stop" and has_runtime_stop(evidence, ["no runtime budget"])
+        return EvidenceScenarioResult(
+            test_name="missing_runtime_budget_fail_closed",
+            description="Runtime Guard must fail closed when no runtime budget exists for a task.",
+            expected={"runtime_decision": "stop", "stop_reason_contains": "no runtime budget", "audit_required": True},
+            actual={"runtime_decision": decision.decision, "runtime_reason": decision.reason},
+            passed=passed,
+            severity="info" if passed else "critical",
+            notes=[] if passed else ["Missing runtime budget did not produce auditable fail-closed evidence."],
+            evidence=evidence,
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
+def scenario_budget_boundary_exact_cost_allowed_then_stop() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn()
+    task_id = "STRESS-BUDGET-BOUNDARY"
+    try:
+        runtime_guard.create_budget(conn, task_id=task_id, max_steps=5, max_cost_units=4)
+        d1 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="a", cost_units=2)
+        d2 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="b", cost_units=2)
+        d3 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target="c", cost_units=1)
+        evidence = collect_task_evidence(conn, task_id)
+        passed = [d1.decision, d2.decision, d3.decision] == ["continue", "continue", "stop"] and has_runtime_stop(evidence, ["max_cost_units"])
+        return EvidenceScenarioResult(
+            test_name="budget_boundary_exact_cost_allowed_then_stop",
+            description="Exact budget consumption is allowed; the first step beyond budget must stop with evidence.",
+            expected={"decisions": ["continue", "continue", "stop"], "stop_reason_contains": "max_cost_units"},
+            actual={"decisions": [d1.decision, d2.decision, d3.decision], "final_reason": d3.reason},
+            passed=passed,
+            severity="info" if passed else "medium",
+            notes=[] if passed else ["Cost boundary behavior is not proven cleanly."],
+            evidence=evidence,
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
+def scenario_cross_task_cost_is_not_session_budget() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn()
+    try:
+        task_ids = ["STRESS-CROSS-TASK-A", "STRESS-CROSS-TASK-B"]
+        finals = []
+        evidences = {}
+        for task_id in task_ids:
+            runtime_guard.create_budget(conn, task_id=task_id, max_steps=5, max_cost_units=3)
+            d1 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target=f"{task_id}-1", cost_units=2)
+            d2 = runtime_guard.evaluate_before_step(conn, task_id=task_id, actor_id="agent-a", action_type="model_call", target=f"{task_id}-2", cost_units=2)
+            finals.append(d2)
+            evidences[task_id] = collect_task_evidence(conn, task_id)
+        passed = all(d.decision == "stop" and "max_cost_units" in d.reason for d in finals)
+        return EvidenceScenarioResult(
+            test_name="cross_task_cost_is_per_task_not_session_budget",
+            description="Documents current scope: cost budget is enforced per task; no global/session budget is implemented in core runtime.",
+            expected={"per_task_cost_stop": True, "session_budget_present": False},
+            actual={"final_decisions": [d.decision for d in finals], "final_reasons": [d.reason for d in finals], "session_budget_present": False},
+            passed=passed,
+            severity="medium",
+            notes=[
+                "Evidence confirms per-task cost control.",
+                "Known remaining gap: there is no cumulative session/global budget across multiple tasks in current core scope.",
+            ],
+            evidence={"tasks": evidences},
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
 def main() -> int:
     run_id = datetime.now(timezone.utc).strftime("runtime_evidence_%Y%m%d_%H%M%S")
     log = EvidenceRunLog(run_id=run_id, started_at=datetime.now(timezone.utc).isoformat())
@@ -267,6 +385,10 @@ def main() -> int:
         scenario_no_token_enforcement_rejection,
         scenario_pattern_engine_proposal_only,
         scenario_repeated_same_decision_evidence,
+        scenario_multi_agent_alternating_loop_max_steps,
+        scenario_missing_runtime_budget_fail_closed,
+        scenario_budget_boundary_exact_cost_allowed_then_stop,
+        scenario_cross_task_cost_is_not_session_budget,
     ]
 
     for scenario in scenarios:
