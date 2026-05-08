@@ -32,6 +32,7 @@ REQUIRED_EVIDENCE = [
     "runtime_chain_order_evidence",
     "startup_surface_evidence",
     "config_consistency_evidence",
+    "mode_boundary_surface_evidence",
 ]
 
 FORBIDDEN_RELEASE_FIELDS = [
@@ -48,9 +49,9 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
+    assert "v0.11.3_CANDIDATE" in version
     assert "v0.11.2_STABLE" in version
-    assert "v0.11.1_STABLE" in version
-    assert "Operational Consistency / Runtime Surface Tightening" in status
+    assert "Mode Boundary Surface Control" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
     missing_evidence = [name for name in REQUIRED_EVIDENCE if name not in manifest]
