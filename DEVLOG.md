@@ -596,3 +596,11 @@ Promoted `v0.8.45_CANDIDATE` to `v0.8.45_STABLE` after the full Windows Evidence
 - Confirmed historical replay reconstructs archived payloads without re-running governance logic.
 - Confirmed archived governance records remain append-only.
 - Confirmed no policy, guard, runtime, queue, workflow, escalation, recommendation or automatic reaction path was added.
+
+
+## v0.8.46_CANDIDATE
+
+- Added descriptive archive integrity checks.
+- Added replay consistency evidence.
+- Added payload hash, record id and archive sequence observations.
+- No governance re-evaluation or automatic response added.
