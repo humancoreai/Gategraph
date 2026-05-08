@@ -12,6 +12,7 @@ from typing import Any
 
 from src import alert_aggregator, database, governance, monitoring_export, operational_hardening, runtime_guard, session_budget_guard, observability
 from src.config_loader import AppConfig
+from src.runtime_path_assertions import service_adapter_context
 
 
 def db_path(config: AppConfig) -> Path:
@@ -110,6 +111,7 @@ def evaluate_request(config: AppConfig, task: dict[str, Any]) -> dict[str, Any]:
             projected_cost_units=projected_cost,
             system_budget_units=config.system_budget_units,
             actor_budget_units=config.actor_budget_units,
+            trusted_entry_context=service_adapter_context(),
         )
 
         runtime_budget = None
