@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.9.2_STABLE"
-BASE = "v0.9.1_STABLE"
+VERSION = "v0.9.3_CANDIDATE"
+BASE = "v0.9.2_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
