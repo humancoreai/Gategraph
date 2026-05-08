@@ -1,33 +1,31 @@
-# Release Status - GateGraph v0.8.22-controlled-apply
+# Release Status - GateGraph v0.8.23-evidence-runner-stabilization
 
-Status: Single-node PoC with advisory intelligence, manual review workflow, and strictly limited Controlled Apply prototype.
+Status: Single-node PoC with advisory intelligence, manual review workflow, strictly limited Controlled Apply prototype, and stabilized aggregate evidence runner.
 
-## Added
-- `src/controlled_apply.py` for a separate Human-Gate apply path.
-- Two distinct reviewer approvals for `approved_for_controlled_apply`.
-- Signed Apply Artifacts with TTL, hash validation, and single-use status.
-- Initial allowlist: `rule_update` only, and only stricter rule changes.
-- Target-state drift detection before execution.
-- Controlled Apply audit events.
-- `tests/controlled_apply_evidence.py`.
-- `docs/CONTROLLED_APPLY.md`.
+## Changed
+- `tests/evidence_ci.py` now executes evidence scripts through `tests/_run_isolated.py`.
+- `tests/evidence_supervisor.py` is now a compatibility entrypoint delegating to the same isolated CI runner.
+- Controlled Apply evidence is included in the aggregate manifest.
 
 ## Unchanged
-- Pattern Engine remains proposal-only.
-- Review Workflow still does not apply changes.
+- Governance, Enforcement, Runtime Guard, Session Budget Guard, HTTP Policy, Secret Provider, External API Adapter, Pattern Engine, Review Workflow, and Controlled Apply behavior are unchanged.
 - Enforcement remains the only runtime action gatekeeper.
-- Guards still stop only; they do not allow.
+- Guards remain stop-only.
+- Pattern Engine remains proposal-only.
+- Review/Controlled Apply still require explicit human gates.
 - Audit remains append-only.
-- Secret values remain outside DB persistence.
 
 ## Evidence
-- Controlled Apply evidence cases were run individually due local runner/process instability.
-- Confirmed: manual review required, two distinct Human-Gates required, same-reviewer double approval blocked, unsupported/looser changes blocked, strict rule hardening executes and audits, replay blocked.
-- Target-drift test exists; local aggregate execution was environment-sensitive during packaging.
+- Aggregate runner completed with `Passed: True`.
+- Controlled Apply evidence: 7/7 passed.
+- Usage simulation: no invariant violations.
+- Unusual input simulation: no invariant violations.
+- Agent scenario simulation: no invariant violations.
+- Core loop and security evidence remain included in the aggregate evidence set.
 
 ## Known Limits
 - Single-node only.
-- Local HMAC apply-key model; no production KMS.
+- Local signing/HMAC model; no production KMS.
 - Controlled Apply currently supports rule hardening only.
-- No API production integration.
-- No distributed review identity model.
+- No production external API integration.
+- Runner is an evidence tool, not a production runtime component.
