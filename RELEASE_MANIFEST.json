@@ -1,5 +1,6 @@
 {
   "base": "v0.10.1_STABLE",
+  "created_at": "2026-05-07T09:00:00Z",
   "deterministic_packaging": true,
   "file_count": 232,
   "files": [
@@ -80,13 +81,13 @@
     },
     {
       "path": "RELEASE_METADATA.json",
-      "sha256": "ce7699a312385e6ea2a614b46eb45e5e483493710f65087981d6a01b7b841e07",
-      "size": 496
+      "sha256": "350842f098606a9b28ed4226ab9fd15b798b45826c9ae5601dceb062b68804a3",
+      "size": 515
     },
     {
       "path": "RELEASE_NOTES.md",
-      "sha256": "31aba42ef1581a8e1698f81826717a615f9e19fd89ae67e1042adf6aedafa075",
-      "size": 980
+      "sha256": "9504fda7edfe8dfbaa0c2ed41189b9aa6bf3106d79426f8e35d828875956f54d",
+      "size": 971
     },
     {
       "path": "RELEASE_PROCESS.md",
@@ -95,8 +96,8 @@
     },
     {
       "path": "RELEASE_STATUS.md",
-      "sha256": "9b4407c16e7d08e7377b140f86d0ed473fccefaad48c0aad3708b7b85952509e",
-      "size": 419
+      "sha256": "171dce24dca9ecf20ae621b7f14e6ea5d5231e0e006ea7325553b764fedeb3c9",
+      "size": 413
     },
     {
       "path": "REPO_HYGIENE.md",
@@ -110,8 +111,8 @@
     },
     {
       "path": "STABLE_REPORT.txt",
-      "sha256": "8abbcdaf1d98e044240ec72c64b8c5c8945de6239b6d50b2fcf8ebbc5b7a1c0f",
-      "size": 1338
+      "sha256": "78f9b132706991fd8d64f6d2af727dd93912f78acdcfcb0e9cc7483e36caf8bd",
+      "size": 457
     },
     {
       "path": "TRUST_MODEL.md",
@@ -120,8 +121,8 @@
     },
     {
       "path": "VERSION.md",
-      "sha256": "881b6b0faa362a7f40e4e500342f55e2bcc8e59eb297d66b03a7f4b2a77acd9e",
-      "size": 456
+      "sha256": "58126b55bb991ef44014703cd3a4a9602075583241b14e9b72528d20ca2022c3",
+      "size": 447
     },
     {
       "path": "config.example.yaml",
@@ -940,8 +941,8 @@
     },
     {
       "path": "tests/final_consolidation_evidence.py",
-      "sha256": "7fd3da26b08fe2981ce19f8bdf5943e131f5cec7d8e1363ae02fb41b08d7fe9a",
-      "size": 1958
+      "sha256": "32abb562eed024bf1cc4aea9c4b418bcee483466a1b8c620741059cf8f0227ca",
+      "size": 1955
     },
     {
       "path": "tests/freeze_runtime_invariant_evidence.py",
@@ -980,8 +981,8 @@
     },
     {
       "path": "tests/milestone_release_evidence.py",
-      "sha256": "7c082c512954227c66bb57e6d8e22da43424ee4117d17c341e3aa6653baacc2f",
-      "size": 5863
+      "sha256": "f02815b27ac7a95a9c7eb376df246c4ae1b9e6e662562f5cea1675547df28b07",
+      "size": 5860
     },
     {
       "path": "tests/multi_agent_architecture_evidence.py",
@@ -1050,8 +1051,8 @@
     },
     {
       "path": "tests/release_integrity_evidence.py",
-      "sha256": "284b3de4cbc73afa1f2042cff1265b3493d44ed08e147d43fa26c863562a0368",
-      "size": 4714
+      "sha256": "47a00af3024bef53d4dd1a58977d22774a9941d4be9f3b52c07d08526e6472b8",
+      "size": 4711
     },
     {
       "path": "tests/repo_push_hygiene_evidence.py",
@@ -1155,16 +1156,16 @@
     },
     {
       "path": "tools/build_release.py",
-      "sha256": "afc0d5c0cb59ff82fbc9994329c2f6ad3a24bd7e7cccc354dc2ee468bed24bdd",
-      "size": 7742
+      "sha256": "b92b5aaddb497694dda6de60381eb3df722a2fe24eac31de4ed1cc7bfd18d3ee",
+      "size": 7795
     },
     {
       "path": "tools/verify_release.py",
-      "sha256": "428f82e461cbeaa0400d76cb1cac2290bbaa97489d2067f2dd7eb980179ec365",
-      "size": 6674
+      "sha256": "af77aeda42c16c12cd8b9d5e12a3a4b007d1a1442dae4e78ef97820492637fe8",
+      "size": 6671
     }
   ],
-  "kind": "candidate_release",
-  "release": "v0.10.2_CANDIDATE",
+  "kind": "stable_release",
+  "release": "v0.10.2_STABLE",
   "scope": "runtime_boundary_chain_order_assertions"
 }
