@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-VERSION = "v0.10.3_STABLE"
+VERSION = "v0.11.0_CANDIDATE"
 
 
 def load_module(name: str, path: Path):

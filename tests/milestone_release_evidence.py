@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.10.3_STABLE"
-BASE = "v0.10.2_STABLE"
+VERSION = "v0.11.0_CANDIDATE"
+BASE = "v0.10.3_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -76,7 +76,7 @@ def main() -> None:
     assert BASE in version
     assert VERSION in status
     assert BASE in status
-    assert "Release Process Guard" in status
+    assert "Deployment / Packaging Baseline" in status
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -115,6 +115,10 @@ def main() -> None:
     assert "tests/release_integrity_evidence.py" in paths
     assert "tests/runtime_boundary_hardening_evidence.py" in paths
     assert "tests/runtime_chain_order_evidence.py" in paths
+    assert "pyproject.toml" in paths
+    assert "docs/DEPLOYMENT_BOUNDARY.md" in paths
+    assert "tests/packaging_integrity_evidence.py" in paths
+    assert "tests/install_surface_evidence.py" in paths
     assert "tests/multi_agent_architecture_evidence.py" in paths
     assert "docs/MULTI_AGENT_SSOT.md" in paths
     assert "docs/MULTI_MODE_SSOT.md" in paths
