@@ -11,14 +11,14 @@ from typing import Optional
 
 import sqlite3
 
-from src import runtime_guard, session_budget_guard
+from src import flood_guard, runtime_guard, session_budget_guard
 from src.reason_normalizer import normalize_as_dict
 
 
 @dataclass(frozen=True)
 class GuardPipelineDecision:
     decision: str  # continue | stop
-    stage: str     # enforcement | session_budget | runtime_guard | action_ready
+    stage: str     # enforcement | flood_guard | session_budget | runtime_guard | action_ready
     reason: str
     enforcement_allowed: bool
     session_decision_id: Optional[str] = None
@@ -57,14 +57,17 @@ def evaluate_guard_pipeline(
     action_type: str,
     target: str = "",
     projected_cost_units: int = 1,
+    flood_config: flood_guard.FloodGuardConfig | None = None,
 ) -> GuardPipelineDecision:
     """
     Order:
     1. Enforcement result must already be allow.
-    2. Session Budget Guard checks aggregate limits.
-    3. Runtime Guard checks per-task limits.
-    4. Action may proceed only if all prior gates continue.
+    2. Flood Guard checks actor-scoped global window limits.
+    3. Session Budget Guard checks aggregate limits.
+    4. Runtime Guard checks per-task limits.
+    5. Action may proceed only if all prior gates continue.
 
+    INV: Flood Guard runs before session reservation to avoid reserving budget for a blocked flood attempt.
     INV: Session Guard is evaluated before Runtime Guard to avoid spending per-task runtime work after global exhaustion.
     """
     if not enforcement_allowed:
@@ -73,6 +76,20 @@ def evaluate_guard_pipeline(
             stage="enforcement",
             reason=enforcement_reason or "enforcement blocked",
             enforcement_allowed=False,
+        )
+
+    flood_decision = flood_guard.evaluate_flood_guard(
+        conn,
+        actor_id=actor_id,
+        projected_cost_units=projected_cost_units,
+        config=flood_config,
+    )
+    if flood_decision.decision != "continue":
+        return _decision(
+            decision="stop",
+            stage="flood_guard",
+            reason=flood_decision.reason,
+            enforcement_allowed=True,
         )
 
     session_decision = session_budget_guard.evaluate_before_task(
