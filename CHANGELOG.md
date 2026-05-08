@@ -2,7 +2,7 @@
 
 All notable changes to GateGraph are documented here.
 
-## [v0.9.1_CANDIDATE] - 2026-05-06
+## [v0.9.1_STABLE] - 2026-05-06
 
 ### Added
 
