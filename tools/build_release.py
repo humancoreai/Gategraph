@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.9.2_STABLE"
-BASE = "v0.9.1_STABLE"
+VERSION = "v0.9.3_CANDIDATE"
+BASE = "v0.9.2_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -54,6 +54,11 @@ REQUIRED_RELEASE_FILES = {
     "docs/MULTI_AGENT_BUDGET_AUTHORITY.md",
     "docs/MULTI_AGENT_REPLAY_AUDIT.md",
     "docs/EMERGENCE_BOUNDARIES.md",
+    "docs/GOVERNANCE_FREEZE_SNAPSHOT_v0_9_3.md",
+    "docs/INVARIANT_REGISTRY.md",
+    "docs/BOUNDARY_REFERENCES.md",
+    "docs/RELEASE_REPRODUCIBILITY.md",
+    "tests/governance_freeze_evidence.py",
 }
 
 
@@ -137,8 +142,8 @@ def build_manifest(files: Iterable[Path]) -> dict:
     return {
         "release": VERSION,
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "multi_agent_multi_mode_architecture_definition",
+        "kind": "candidate_release",
+        "scope": "governance_freeze_snapshot_audit_baseline",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -178,7 +183,7 @@ def main() -> int:
     metadata = {
         "release": VERSION,
         "base": BASE,
-        "phase": "Multi-Agent / Multi-Mode Architecture Definition",
+        "phase": "Governance Freeze Snapshot / Audit Baseline",
         "governance_logic_changed": False,
         "new_governance_features": False,
         "new_runtime_model": False,
@@ -187,7 +192,7 @@ def main() -> int:
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "deterministic governance/enforcement with explicit multi-agent and multi-mode boundaries; no new autonomy",
+        "claim_boundary": "documentation-level governance freeze snapshot and invariant traceability; no new autonomy or runtime behavior",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
