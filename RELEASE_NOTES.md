@@ -1,28 +1,22 @@
-# GateGraph v0.9.1_STABLE Release Notes
+# Release Notes — v0.9.2_CANDIDATE
 
-Base: v0.9.0_STABLE
+## Phase
 
-## Purpose
+Multi-Agent / Multi-Mode Architecture Definition.
 
-v0.9.1 closes boundary and release-integrity gaps identified after the v0.9.0 external review baseline.
+## Summary
 
-## Added
+This candidate adds architectural SSOT documents for future multi-agent and multi-mode work. It does not add autonomous agents, self-orchestration, distributed governance, new runtime execution behavior, or new risk logic.
 
-- Explicit `TRUST_MODEL.md`.
-- Caller boundary evidence.
-- Release integrity evidence.
-- Minimal external review documents: `CONTRIBUTING.md`, `CHANGELOG.md`, `RELEASE_PROCESS.md`, `LICENSE`.
+## Core Boundary
 
-## Changed
+- Agents are governed runtime identities, not policy authorities.
+- Modes are narrowing constraint profiles, not privilege expansion.
+- Delegation is audited parent-child task lineage, not autonomous orchestration.
+- Budget authority remains central.
+- Replay must reconstruct causal lineage from audit-visible state only.
+- Emergence paths are explicitly forbidden.
 
-- Adapter requests now require explicit `input_source`, `data_sensitivity`, and `secrets_involved` fields.
-- Release builder and verifier now reject empty manifests, undeclared files, forbidden local artifacts, and non-deterministic ZIP metadata.
+## CI Status
 
-## Not Changed
-
-- No new governance decision logic.
-- No new runtime model.
-- No new risk model.
-- No automatic reclassification.
-- No semantic inspection.
-- No multi-node behavior.
+Full Windows Evidence CI: pending user run.
