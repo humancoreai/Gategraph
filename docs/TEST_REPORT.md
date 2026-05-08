@@ -249,3 +249,19 @@ Expected:
 - Deterministic stop priority.
 - No misleading duplicate stop reasons.
 - No runtime work after session/global exhaustion.
+
+
+## v0.8.2 Reason Normalization Evidence
+
+Added tests:
+- normalizes_known_reasons
+- unknown_reason_falls_back_safely
+- orchestrator_outputs_normalized_enforcement_stop
+- orchestrator_outputs_normalized_session_stop
+- orchestrator_outputs_normalized_runtime_stop
+- orchestrator_outputs_normalized_action_ready
+
+Expected:
+- Stable explain codes without changing decisions.
+- Raw reasons preserved.
+- Unknown reasons safely classified as unclassified.
