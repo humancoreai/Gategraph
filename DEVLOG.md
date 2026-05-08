@@ -54,3 +54,11 @@ DB events accumulated: 31
 - Governance now issues a token for `require_review` only when the permitted capability is `read_files`.
 - Side-effect capabilities remain denied under `require_review`.
 - Agent scenarios validate that untrusted read analysis is allowed while write/delete/api actions remain blocked.
+
+## v0.5 — PoC consolidation
+
+- Consolidated GateGraph naming and repository documentation.
+- Added README, ARCHITECTURE, SECURITY, TEST_REPORT, and VERSION files.
+- Documented GLP as inspiration only, not as implemented protocol.
+- Froze v0.4.6 core as v0.5 PoC-ready baseline.
+- No runtime feature expansion in this step.

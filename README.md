@@ -1,87 +1,151 @@
 # GateGraph
 
-GateGraph is a minimal Proof of Concept for a deterministic governance and enforcement layer with an append-only audit graph.
+**GateGraph** is a minimal governance and enforcement proof of concept for agent-like systems.
 
-It is designed to answer one practical question:
+It evaluates requested actions, applies deterministic rules, issues capability tokens, enforces permissions, and records decisions in an append-only audit graph.
 
-> Before an agent or tool performs an action, who decided it was allowed, under which rule, with which capability, and where is that decision recorded?
+GateGraph is intentionally small. It is not an autonomous agent, not a platform, not a distributed ledger, and not a full GLP implementation.
+
+---
 
 ## What GateGraph does
 
-GateGraph implements:
+GateGraph provides:
 
 - deterministic risk classification
 - deterministic rule evaluation
+- fail-closed decisions
+- capability-token-based enforcement
 - append-only event logging
-- idempotent event writes
-- capability-token based enforcement
-- rejection event logging
-- a small validation test loop
+- simple graph relations for auditability
+- validation simulations for normal use, unusual inputs, and agent scenarios
 
-## What GateGraph is not
-
-GateGraph is not:
-
-- an AGI system
-- an autonomous self-learning system
-- a full GLP implementation
-- a distributed ledger
-- a multi-agent runtime
-
-## Architecture
+The core idea:
 
 ```text
 Task
-  -> Risk Engine
-  -> Rule Engine
-  -> Decision
-  -> Capability Token
-  -> Enforcement Layer
-  -> Audit Graph Store
+→ Risk Engine
+→ Rule Engine
+→ Decision
+→ Capability Token
+→ Enforcement
+→ Audit Event
 ```
 
-The key invariant is simple:
+---
+
+## What GateGraph does not do
+
+GateGraph currently does **not** provide:
+
+- autonomous rule changes
+- multi-agent orchestration
+- runtime/cost control
+- production-grade concurrency handling
+- token signing
+- a distributed ledger
+- full GLP protocol compliance
+
+---
+
+## Project status
 
 ```text
-No tool action executes without a valid, non-expired, non-revoked, task-bound capability token.
+Version: v0.5 PoC
+Core status: stable proof of concept
+Production status: not production-ready
 ```
 
-## Related Concepts
+Current validation summary:
 
-GateGraph is inspired by graph-based and append-only data models similar to:
+```text
+Normal usage simulation:      passed
+Unusual input simulation:     passed
+Agent scenario simulation:    passed
+Unsafe allows:                0
+Invariant violations:         0
+```
+
+---
+
+## Quickstart
+
+```bash
+python tests/test_loop.py
+python tests/usage_simulation.py
+python tests/unusual_inputs.py
+python tests/agent_scenarios.py
+```
+
+Depending on your environment, use:
+
+```bash
+python3 tests/test_loop.py
+```
+
+---
+
+## Repository structure
+
+```text
+GateGraph/
+├── db/
+│   └── schema.sql
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── SECURITY.md
+│   └── TEST_REPORT.md
+├── src/
+│   ├── capability_token.py
+│   ├── database.py
+│   ├── enforcement.py
+│   ├── event_logger.py
+│   ├── governance.py
+│   ├── risk_engine.py
+│   └── rule_engine.py
+├── tests/
+│   ├── agent_scenarios.py
+│   ├── test_loop.py
+│   ├── unusual_inputs.py
+│   └── usage_simulation.py
+└── DEVLOG.md
+```
+
+---
+
+## Related concepts
+
+GateGraph is inspired by graph-based and append-only audit models, including:
 
 - https://github.com/humancoreai/GLP-Graph-Ledger-Protocol
 
-Clear separation:
+Important distinction:
 
-- GLP focuses on a distributed, content-addressed ledger for assertions and relations.
-- GateGraph is a deterministic governance and enforcement layer with an audit graph.
+- **GLP** focuses on distributed, content-addressed assertion and relation storage.
+- **GateGraph** is a deterministic governance and enforcement layer with an audit graph.
 
-GateGraph can conceptually sit on top of or alongside GLP-like systems, but it does not implement the GLP protocol.
+GateGraph does **not** implement the GLP protocol. It uses a GLP-inspired local audit graph pattern.
 
-## Run tests
+---
 
-```bash
-python -S tests/test_loop.py
-```
+## Design principles
 
-Expected current result:
+- read-only default
+- fail closed
+- no direct execution without capability token
+- untrusted input is data, never instruction
+- decisions are deterministic
+- events are append-only
+- rules are versioned, not silently overwritten
 
-```text
-Passed: isolated 20/20 | accumulated 20/20
-Failed: 0
-Unexpected allows: 0
-Invariant violations: 0
-```
+---
 
-## Current status
+## Current next steps
 
-PoC-ready. Not production-ready.
+Recommended next work after v0.5:
 
-Known production blockers:
-
-- parallel execution / race conditions
-- reviewer trust model
-- token signing or stronger token integrity
-- formal graph query layer
-- runtime / cost control layer (intentionally deferred)
+1. Runtime / cost-control layer for agent loops
+2. Pattern Engine for RuleUpdateProposals
+3. Token signing / stronger token integrity
+4. Concurrency and race-condition handling
+5. Query layer for graph traversal
