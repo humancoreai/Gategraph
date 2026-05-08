@@ -1,23 +1,19 @@
-# GateGraph v0.9.1_STABLE Release Status
+# Release Status — v0.9.2_CANDIDATE
 
-Base: v0.9.0_STABLE  
-Phase: Boundary Hardening / Release Integrity Closure
+Base: v0.9.1_STABLE
+Phase: Multi-Agent / Multi-Mode Architecture Definition
+Kind: architecture candidate
 
-## Status
+Full Windows Evidence CI: pending user run
+Local Evidence CI: generated candidate should be run before stable promotion
+Governance logic changed: no
+Runtime execution model changed: no
+Autonomous agent behavior added: no
+Distributed governance added: no
 
-Stable build prepared from tested candidate.
-
-## Evidence Status
-
-- Full Windows Evidence CI: pending external Windows run
-- Caller Boundary Evidence: included
-- Release Integrity Evidence: included
-- Milestone Release Evidence: included
-
-## Scope Freeze
-
-v0.9.1 does not introduce new governance decision logic, runtime models, risk models, adaptive behavior, autonomous classification, multi-node behavior, or priority systems.
-
-## Release Boundary
-
-This release clarifies caller-trust metadata assumptions and hardens deterministic release verification. It does not claim semantic truth verification of caller-supplied boundary fields.
+Candidate acceptance condition:
+- Multi-agent and multi-mode boundaries are explicit.
+- Delegation is modelled as governed task lineage, not autonomous orchestration.
+- Budget authority remains central.
+- Replay and audit remain deterministic.
+- Forbidden emergence paths are documented and testable.

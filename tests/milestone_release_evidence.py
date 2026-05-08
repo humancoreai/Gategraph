@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.9.1_STABLE"
-BASE = "v0.9.0_STABLE"
+VERSION = "v0.9.2_CANDIDATE"
+BASE = "v0.9.1_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -84,6 +84,8 @@ def main() -> None:
     assert metadata["governance_logic_changed"] is False
     assert metadata["new_governance_features"] is False
     assert metadata["scope_freeze"] is True
+    assert metadata["distributed_governance"] is False
+    assert metadata["self_orchestration"] is False
 
     non_scope = read("NON_SCOPE.md").lower()
     missing_terms = [term for term in REQUIRED_SCOPE_FREEZE_TERMS if term not in non_scope]
@@ -111,6 +113,13 @@ def main() -> None:
     assert "tests/milestone_release_evidence.py" in paths
     assert "tests/caller_boundary_evidence.py" in paths
     assert "tests/release_integrity_evidence.py" in paths
+    assert "tests/multi_agent_architecture_evidence.py" in paths
+    assert "docs/MULTI_AGENT_SSOT.md" in paths
+    assert "docs/MULTI_MODE_SSOT.md" in paths
+    assert "docs/DELEGATION_BOUNDARY.md" in paths
+    assert "docs/MULTI_AGENT_BUDGET_AUTHORITY.md" in paths
+    assert "docs/MULTI_AGENT_REPLAY_AUDIT.md" in paths
+    assert "docs/EMERGENCE_BOUNDARIES.md" in paths
     assert "TRUST_MODEL.md" in paths
     forbidden_manifest = [
         p for p in paths
@@ -123,6 +132,7 @@ def main() -> None:
     assert "milestone_release_evidence" in ci_manifest
     assert "caller_boundary_evidence" in ci_manifest
     assert "release_integrity_evidence" in ci_manifest
+    assert "multi_agent_architecture_evidence" in ci_manifest
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():
