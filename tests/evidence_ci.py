@@ -45,21 +45,30 @@ def tail(text: str, max_chars: int = 4000) -> str:
 
 
 def run_command(name: str, args: List[str]) -> CommandResult:
-    proc = subprocess.run(
-        args,
-        cwd=PROJECT_ROOT,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    return CommandResult(
-        name=name,
-        command=args,
-        returncode=proc.returncode,
-        stdout_tail=tail(proc.stdout),
-        stderr_tail=tail(proc.stderr),
-    )
-
+    try:
+        proc = subprocess.run(
+            args,
+            cwd=PROJECT_ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+            timeout=45,
+        )
+        return CommandResult(
+            name=name,
+            command=args,
+            returncode=proc.returncode,
+            stdout_tail=tail(proc.stdout),
+            stderr_tail=tail(proc.stderr),
+        )
+    except subprocess.TimeoutExpired as exc:
+        return CommandResult(
+            name=name,
+            command=args,
+            returncode=124,
+            stdout_tail=tail(exc.stdout or ""),
+            stderr_tail=tail(exc.stderr or "timeout"),
+        )
 
 def latest_logs_since(start_marker: float) -> List[str]:
     if not LOG_DIR.exists():
@@ -82,18 +91,21 @@ def main() -> int:
         started_at=started.isoformat(),
     )
 
+    py = [sys.executable, "-S", "-u"]
+
     commands = [
-        ("runtime_stress_evidence", [sys.executable, "tests/runtime_stress_evidence.py"]),
-        ("session_budget_evidence", [sys.executable, "tests/session_budget_evidence.py"]),
-        ("guard_orchestration_evidence", [sys.executable, "tests/guard_orchestration_evidence.py"]),
-        ("reason_normalization_evidence", [sys.executable, "tests/reason_normalization_evidence.py"]),
-        ("scale_safety_evidence", [sys.executable, "tests/scale_safety_evidence.py"]),
-        ("core_loop", [sys.executable, "tests/test_loop.py"]),
-        ("runtime_guard", [sys.executable, "tests/runtime_guard_tests.py"]),
-        ("pattern_engine", [sys.executable, "tests/pattern_engine_tests.py"]),
-        ("usage_simulation", [sys.executable, "tests/usage_simulation.py"]),
-        ("unusual_inputs", [sys.executable, "tests/unusual_inputs.py"]),
-        ("agent_scenarios", [sys.executable, "tests/agent_scenarios.py"]),
+        ("runtime_stress_evidence", [*py, "tests/runtime_stress_evidence.py"]),
+        ("session_budget_evidence", [*py, "tests/session_budget_evidence.py"]),
+        ("guard_orchestration_evidence", [*py, "tests/guard_orchestration_evidence.py"]),
+        ("reason_normalization_evidence", [*py, "tests/reason_normalization_evidence.py"]),
+        ("scale_safety_evidence", [*py, "tests/scale_safety_evidence.py"]),
+        ("external_api_evidence", [*py, "tests/external_api_evidence.py"]),
+        ("core_loop", [*py, "tests/test_loop.py"]),
+        ("runtime_guard", [*py, "tests/runtime_guard_tests.py"]),
+        ("pattern_engine", [*py, "tests/pattern_engine_tests.py"]),
+        ("usage_simulation", [*py, "tests/usage_simulation.py"]),
+        ("unusual_inputs", [*py, "tests/unusual_inputs.py"]),
+        ("agent_scenarios", [*py, "tests/agent_scenarios.py"]),
     ]
 
     for name, args in commands:
