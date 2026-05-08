@@ -34,7 +34,7 @@ All notable changes to GateGraph are documented here.
 - Deterministic release packaging tooling.
 - Scope freeze and non-scope documentation.
 
-## v0.9.2_CANDIDATE
+## v0.9.2_STABLE
 
 - Added Multi-Agent SSOT, Multi-Mode SSOT, Delegation Boundary, Budget Authority, Replay/Audit, and Emergence Boundaries documents.
 - Added multi_agent_architecture_evidence to verify boundary claims.
