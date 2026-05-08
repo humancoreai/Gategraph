@@ -133,3 +133,42 @@ The following are not test failures but future work:
 - production concurrency
 - real approval workflow
 - graph query API
+
+## Runtime / Audit Evidence Report – v0.7.1
+
+Added a dedicated evidence runner:
+
+```bash
+python tests/runtime_stress_evidence.py
+```
+
+Output path:
+
+```text
+tests/logs/runtime_evidence_<timestamp>.json
+```
+
+### Evidence scenarios
+
+| Scenario | Result | Evidence source |
+|---|---:|---|
+| agent_pingpong_loop | PASS | runtime_decisions + runtime_steps |
+| many_allowed_micro_actions_cost_limit | PASS | runtime_decisions + runtime_steps |
+| valid_token_but_runtime_exceeded | PASS | governance event + token + runtime_decision |
+| no_action_without_token | PASS | enforcement_rejection event |
+| pattern_engine_proposal_only | PASS | proposals table + active rule count |
+| repeated_same_decision_evidence | PASS | idempotent governance event evidence |
+
+### Latest local verification
+
+- Core loop tests: 20/20 passed in isolated and accumulated mode.
+- Runtime Guard tests: 6/6 passed.
+- Pattern Engine tests: 3/3 passed.
+- Agent scenario simulation: 12 runs, 0 invariant violations.
+- Usage simulation: 10 runs, 0 invariant violations.
+- Unusual input simulation: 12 runs, 0 invariant violations.
+- Runtime/Audit evidence runner: 6/6 passed.
+
+### Notes
+
+Runtime Guard evidence is stored in runtime-specific tables, not in the normal `events` table. The evidence runner intentionally merges both views into one JSON proof log without changing core behavior.
