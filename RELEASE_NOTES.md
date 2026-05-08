@@ -1,15 +1,28 @@
-# Release Notes – v0.11.4_STABLE
+# Release Notes – v0.11.5_CANDIDATE
 
-Status: stable
-Base: v0.11.3_STABLE
-Phase: Capability Token Audit Redaction
+## Summary
 
-v0.11.4_STABLE adds a narrow security hardening layer for capability-token audit references. Audit events may correlate token issuance and enforcement through `token_id` and `token_hash`, but must not persist raw token objects, HMAC signatures, signing input, Authorization headers, bearer values, or signing secret material.
+v0.11.5_CANDIDATE is a security boundary hardening release. It makes GateGraph's security posture more reviewable and adds explicit evidence that token, Authorization header, base64 token, and secret material do not leak through audit, explain, or monitoring surfaces.
 
-Added:
-- `docs/CAPABILITY_TOKEN_AUDIT_REDACTION.md`
-- `tests/capability_token_redaction_evidence.py`
-- audit-safe token reference helpers for `token_id` and `token_hash`
-- redacted `capability_token_issued` and `enforcement_allowed` audit events
+## Added
 
-No Governance decision model, Runtime Guard behavior, Enforcement rule, budget policy, secret resolution, HTTP policy, adapter authority, agentic behavior, distributed governance, cloud/Docker/Kubernetes layer, or UI behavior is introduced.
+- `SECURITY_MODEL.md`
+- `OWASP_AGENTIC_AI_MAPPING.md`
+- `KNOWN_LIMITATIONS.md`
+- `docs/RELEASE_v0.11.5_CANDIDATE.md`
+- `src/security/token_redaction.py`
+- `tests/token_exposure_evidence.py`
+
+## Changed
+
+- Audit event logging now applies centralized sensitive-field redaction before persistence.
+- Monitoring export now applies sensitive-field redaction before returning reviewer-facing data.
+- Capability token audit references expose `token_id`, `token_hash`, and key identifiers, not signatures or raw token material.
+
+## Not changed
+
+- No governance rule change.
+- No enforcement authority change.
+- No runtime surface expansion.
+- No adapter authority expansion.
+- No distributed/cloud/runtime sandbox claim.
