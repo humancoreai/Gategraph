@@ -84,6 +84,6 @@ Packaging must not create an alternative governance path. All evaluation still f
 See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operational start-surface expectations.
 
 
-## v0.11.6_CANDIDATE Note
+## v0.11.6_STABLE Note
 
-v0.11.6_CANDIDATE preserves this boundary while adding security mapping and token exposure hardening.
+v0.11.6_STABLE preserves this boundary while adding security mapping and token exposure hardening.
