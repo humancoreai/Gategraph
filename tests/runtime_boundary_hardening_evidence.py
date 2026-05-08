@@ -4,6 +4,11 @@ from __future__ import annotations
 import os
 import tempfile
 from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from src import database, governance
 from src.config_loader import AppConfig
@@ -91,7 +96,7 @@ def test_untrusted_context_fails_closed() -> None:
                 },
             )
         except PermissionError as exc:
-            assert "untrusted source_component" in str(exc)
+            assert "forbidden governance entry component" in str(exc)
         else:
             raise AssertionError("untrusted context unexpectedly succeeded")
     finally:
