@@ -79,7 +79,10 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as tmp:
         db_path = os.path.join(tmp, "operator_fixture.db")
         _make_fixture_db(db_path)
-        with _readonly_conn(db_path) as conn:
+        # WHY: sqlite3.Connection as a context manager does not close the handle.
+        # EDGE: Windows keeps the DB file locked until conn.close(), so TemporaryDirectory cleanup can fail.
+        conn = _readonly_conn(db_path)
+        try:
             inspected = inspect_decision(conn, "task-cost")
             checks.append(("inspect_has_trace_snapshot_timeline", all(k in inspected for k in ("decision_trace", "explain_snapshot", "cost_timeline"))))
 
@@ -104,6 +107,8 @@ def main() -> int:
             except sqlite3.OperationalError:
                 read_only_blocked = True
             checks.append(("sqlite_readonly_boundary_blocks_write", read_only_blocked))
+        finally:
+            conn.close()
 
     failed = [name for name, ok in checks if not ok]
     for name, ok in checks:
