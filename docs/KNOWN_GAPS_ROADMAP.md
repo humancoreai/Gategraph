@@ -1,74 +1,39 @@
-# Known Gaps / Roadmap
+# Known Gaps Roadmap – v0.10.0_CANDIDATE
 
-This document tracks open gaps from the v0.8.40 system review and distributes them across controlled future phases.
+## Closed before / at v0.9.3
 
-## v0.8.42 — Operator Workflows / Playbooks
+- LICENSE present
+- CHANGELOG present
+- CONTRIBUTING present
+- RELEASE_MANIFEST populated
+- Caller-boundary metadata required at service adapter boundary
+- Governance freeze snapshot and invariant registry present
+- Missing `docs/THREAT_MODEL.md` reference fixed in v0.9.3_STABLE_FIXED
 
-Goal:
-- Manual operator workflows after patterns are visible.
+## Closed / hardened in v0.10.0_CANDIDATE
 
-Closes / reduces:
-- standard responses without automation
-- playbook structure
-- no auto-fix, no policy tuning
+- Naked `governance.evaluate_task()` invocation fails closed by default unless a trusted entry context is supplied.
+- Service adapter supplies the trusted production entry context after caller-boundary validation.
+- Runtime boundary hardening evidence verifies direct default denial and adapter-mediated success.
 
-## v0.8.43 — Human Review Queue
+## Still open – product/deployment
 
-Goal:
-- Close `require_review` / `require_approval` phantom workflow gap.
+- HTTP adapter has no built-in Auth/TLS; reverse-proxy/auth reference architecture remains future work.
+- No KMS-backed secret management.
+- Capability-token signing remains symmetric HMAC.
+- SQLite remains single-node storage.
+- No pip package / `pyproject.toml` packaging baseline.
+- No Docker/Systemd deployment baseline.
+- No external framework integration examples.
+- No UI/dashboard.
+- No operator alert routing integration.
+- No audit-log retention management.
+- No security-disclosure process.
 
-Closes:
-- review queue
-- reviewer assignment
-- review status lifecycle
-- audit trail for review decisions
-- explicit distinct reviewer enforcement verification
+## Non-scope for v0.10.0
 
-## v0.8.44 — Security Boundary Hardening
-
-Goal:
-- Harden boundary trust and signing assumptions.
-
-Closes:
-- Caller-Trust-Gap
-- strict boundary schema for `input_source`, `secrets_involved`, `data_sensitivity`
-- fail-closed on missing/invalid boundary flags
-- remove `_DEV_KEYRING` silent fallback
-- token/signing threat model in `SECURITY.md`
-
-## v0.8.45 — Concurrency / Idempotency Evidence
-
-Goal:
-- Test and document realistic parallel behavior.
-
-Closes:
-- SQLite concurrency evidence
-- simultaneous `idempotency_key` submission
-- lock/timeout behavior
-- explicit single-node limitations under parallel load
-
-## v0.8.46 — Proposal Lifecycle / Flood Protection
-
-Goal:
-- Prevent unbounded proposal growth.
-
-Closes:
-- proposal expiry
-- proposal archive/cleanup
-- proposal flood protection
-- lifecycle documentation
-
-## v0.8.47 — Integration Boundary
-
-Goal:
-- Make local integration safer and clearer.
-
-Closes:
-- Explain API contract stability
-- local auth/reverse-proxy operating model documentation
-- minimal integration adapter example
-
-## Non-goal
-
-These gaps must not be closed opportunistically inside unrelated phases.
-GateGraph remains gate-based: stabilize before extending.
+- no new agents
+- no new adapters
+- no distributed governance
+- no new runtime execution model
+- no product UI

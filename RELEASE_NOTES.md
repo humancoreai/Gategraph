@@ -1,34 +1,27 @@
-# Release Notes – v0.9.3_STABLE
+# Release Notes – v0.10.0_CANDIDATE
 
 ## Summary
 
-v0.9.3_STABLE is a stable documentation and audit-baseline release. It turns the v0.9.2_STABLE architecture boundary into a referencable governance freeze snapshot.
+v0.10.0_CANDIDATE is a runtime/boundary hardening candidate. It does not add features. It makes the existing trusted-entry assumption executable before Governance can classify risk, evaluate rules, reserve budget, write audit events, or issue capability tokens.
 
-## Added / preserved
+## Added
 
-- `docs/GOVERNANCE_FREEZE_SNAPSHOT_v0_9_3.md`
-- `docs/INVARIANT_REGISTRY.md`
-- `docs/BOUNDARY_REFERENCES.md`
-- `docs/RELEASE_REPRODUCIBILITY.md`
-- `docs/THREAT_MODEL.md`
-- `tests/governance_freeze_evidence.py`
+- `src/runtime_path_assertions.py`
+- `docs/RUNTIME_BOUNDARY_HARDENING.md`
+- `tests/runtime_boundary_hardening_evidence.py`
 
-## Stable promotion fix
+## Changed
 
-- Release status metadata now claims `stable`, not `candidate`.
-- Release metadata now identifies `v0.9.3_STABLE`.
-- Release integrity evidence now targets `v0.9.3_STABLE`.
-- Governance freeze snapshot no longer references a missing threat-model file.
+- `src/governance.py` now requires a trusted entry context before evaluation proceeds.
+- `src/service_adapter.py` supplies the trusted production context after caller-boundary validation.
+- `tests/evidence_ci.py` includes runtime boundary hardening evidence and marks legacy direct Governance evidence with an explicit test-only compatibility path.
 
 ## Unchanged
 
-- governance logic
-- enforcement logic
-- runtime logic
+- governance decision logic
 - risk model
-- budget model
-- agent boundary model
-
-## Release intent
-
-Make the governance baseline reviewable without increasing system capability or autonomy.
+- rule model
+- runtime execution model
+- token semantics
+- adapter surface
+- agent behavior

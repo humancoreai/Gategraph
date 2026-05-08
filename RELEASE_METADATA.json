@@ -1,16 +1,14 @@
 {
   "autonomous_classification": false,
-  "base": "v0.9.2_STABLE",
-  "claim_boundary": "documentation-level governance freeze snapshot and invariant traceability; no new autonomy or runtime behavior",
+  "base": "v0.9.3_STABLE",
+  "claim_boundary": "trusted entry enforcement and explicit runtime path assertions; no new runtime capability or adapter expansion",
   "distributed_governance": false,
   "governance_logic_changed": false,
   "new_governance_features": false,
   "new_risk_model": false,
   "new_runtime_model": false,
-  "phase": "Governance Freeze Snapshot / Audit Baseline",
-  "release": "v0.9.3_STABLE",
+  "phase": "Runtime / Boundary Hardening",
+  "release": "v0.10.0_CANDIDATE",
   "scope_freeze": true,
-  "self_orchestration": false,
-  "stable_promotion": true,
-  "status": "stable"
+  "self_orchestration": false
 }
