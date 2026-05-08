@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.6_STABLE"
-BASE = "v0.11.5_STABLE"
+VERSION = "v0.11.7_CANDIDATE"
+BASE = "v0.11.6_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -93,14 +93,22 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.11.6_STABLE.md",
+    "docs/RELEASE_v0.11.7_CANDIDATE.md",
+    "CONTEXT_GOVERNANCE_MODEL.md",
+    "gategraph/__init__.py",
+    "gategraph/context/__init__.py",
+    "gategraph/context/context_classifier.py",
+    "gategraph/context/context_boundary.py",
+    "tests/context_poisoning_evidence.py",
+    "tests/instruction_data_separation_evidence.py",
+    "tests/context_provenance_evidence.py",
     "src/security/__init__.py",
     "src/security/token_redaction.py",
     "tests/token_exposure_evidence.py",
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.11.6_STABLE.md",
+    "docs/RELEASE_v0.11.7_CANDIDATE.md",
 }
 
 
@@ -183,10 +191,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "multi_agent_delegation_boundary_hardening",
+        "kind": "candidate_release",
+        "scope": "context_governance_boundary",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -225,9 +233,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Multi-Agent Delegation Boundary Hardening",
+        "phase": "Context / Memory Governance Baseline",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -248,6 +256,12 @@ def main() -> int:
         "security_mapping_scope": True,
         "token_exposure_hardening_scope": True,
         "multi_agent_delegation_boundary_scope": True,
+        "context_governance_boundary_scope": True,
+        "context_provenance_required": True,
+        "instruction_data_separation_scope": True,
+        "explain_replay_context_non_executable": True,
+        "semantic_context_scoring": False,
+        "memory_system": False,
         "delegation_boundary_detection_only": True,
         "transitive_authority_blocked": True,
         "capability_amplification_blocked": True,
@@ -257,7 +271,7 @@ def main() -> int:
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "security mapping and token exposure hardening only; audit/explain/monitoring may record token_id, token_hash and key id but never raw token objects, signatures, signing input, Authorization headers, secret material, bearer values, or base64 token material",
+        "claim_boundary": "context is classified as a governance boundary; provenance is required; instruction-like text in untrusted/replay/proposal context remains data; suspicious markers are visibility-only; no semantic scoring, memory system, autonomous filtering or AI content moderation is introduced",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
