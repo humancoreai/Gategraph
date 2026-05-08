@@ -1,6 +1,6 @@
 # GateGraph
 
-Current stable: **v0.8.36_STABLE**
+Current stable: **v0.8.44_STABLE**
 
 **GateGraph** is a deterministic governance, enforcement, runtime-control and audit proof of concept for agent-like systems.
 
@@ -88,7 +88,7 @@ Production criteria are documented in [PRODUCTION.md](./PRODUCTION.md) and [PROD
 
 ## Project status
 
-Current stable release: **v0.8.36_STABLE**
+Current stable release: **v0.8.44_STABLE**
 
 Base stable release: **v0.8.32_STABLE**
 
