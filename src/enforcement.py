@@ -9,7 +9,7 @@ import uuid
 from dataclasses import dataclass
 from typing import Optional
 
-from src.capability_token import CapabilityToken
+from src.capability_token import CapabilityToken, verify_signature
 from src import event_logger
 
 
@@ -32,11 +32,25 @@ def enforce(conn: sqlite3.Connection, token: Optional[CapabilityToken], requeste
         return _reject(conn, task_id, correlation_id, f"token {token.token_id} expired at {token.expires_at.isoformat()}", requested_capability)
 
     # SEC: revocation can occur after issuance, so enforcement must re-check DB state.
-    row = conn.execute("SELECT revoked FROM capability_tokens WHERE token_id = ?", (token.token_id,)).fetchone()
+    row = conn.execute("SELECT * FROM capability_tokens WHERE token_id = ?", (token.token_id,)).fetchone()
     if row is None:
-        return _reject(conn, task_id, correlation_id, f"token {token.token_id} not found", requested_capability)
+        return _reject(conn, task_id, correlation_id, f"capability token not found: {token.token_id}", requested_capability)
     if int(row["revoked"]):
-        return _reject(conn, task_id, correlation_id, f"token {token.token_id} is revoked", requested_capability)
+        return _reject(conn, task_id, correlation_id, f"capability token revoked: {token.token_id}", requested_capability)
+
+    persisted_caps = row["capabilities"]
+    if row["decision_id"] != token.decision_id or row["task_id"] != token.task_id or row["expires_at"] != token.expires_at.isoformat():
+        return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
+
+    # SEC: signature binds immutable claims; a forged/mutated in-memory token must fail closed.
+    try:
+        import json
+        if json.dumps(token.capabilities, sort_keys=True) != json.dumps(json.loads(persisted_caps), sort_keys=True):
+            return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
+        if not verify_signature(token, row["signature"]):
+            return _reject(conn, task_id, correlation_id, f"capability token invalid signature: {token.token_id}", requested_capability)
+    except Exception:
+        return _reject(conn, task_id, correlation_id, f"capability token invalid signature: {token.token_id}", requested_capability)
 
     if not token.allows(requested_capability):
         return _reject(conn, task_id, correlation_id, f"capability '{requested_capability}' not granted in token {token.token_id}", requested_capability)

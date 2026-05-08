@@ -1,8 +1,8 @@
 # GateGraph Version
 
-Current: v0.8.5-api-enforcement-binding
+Current: v0.8.8-capability-token-hardening
 
-Previous: v0.8.4-external-api-mock-adapter
+Previous: v0.8.7-ci-runner-stabilization
 
 Notes:
 - External API Adapter now invokes Enforcement internally.
@@ -20,3 +20,11 @@ Versioning hygiene:
 ## v0.8.6-runaway-cost-control
 
 Security hardening release. Runtime and Session Budget guards now reject non-positive cost values fail-closed. Schema version remains 0.8.3 because no audit table shape changed.
+
+## v0.8.7-ci-runner-stabilization
+
+Release hygiene stabilization. Evidence execution was moved toward bounded runner behavior. Production governance/enforcement/runtime semantics unchanged.
+
+## v0.8.8-capability-token-hardening
+
+Security hardening release. Capability Tokens now carry HMAC signatures over immutable claims and Enforcement validates persisted claims plus signature before granting capabilities. Audit schema version remains `0.8.3`; token storage schema is extended with token-level signature metadata.
