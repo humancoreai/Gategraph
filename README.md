@@ -57,7 +57,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.14 security-finesse
+Version: v0.8.16 block-d-audit-explain-evidence
 Core status: stable proof of concept
 Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
 ```
@@ -224,3 +224,8 @@ Block B hardens edge-case confidence without adding new product scope:
 - subdomains and wildcard hosts are not implicitly allowed,
 - path-prefix matching is boundary-aware (`/v1` does not allow `/v10`),
 - combined expired+revoked tokens remain fail-closed.
+
+
+## v0.8.16 Audit/Explain Reconstruction Evidence
+
+Block D adds a read-only reviewer trace builder and evidence scenarios proving that completed, blocked, HTTP-policy, and secret-backed flows can be reconstructed from persisted audit evidence. Production governance/enforcement/runtime semantics are unchanged.

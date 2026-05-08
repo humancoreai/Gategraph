@@ -1,6 +1,12 @@
 # GateGraph Version
 
-Current: v0.8.15-block-c-stress-evidence
+Current: v0.8.16-block-d-audit-explain-evidence
+
+## v0.8.16-block-d-audit-explain-evidence
+- Adds read-only audit/explain trace reconstruction via `src/explain_trace.py`.
+- Adds Block D evidence for completed, Enforcement-blocked, HTTP Policy-blocked, and secret-backed flows.
+- Confirms that raw secret values do not appear in reviewer-facing trace output.
+- Production governance/enforcement/runtime semantics unchanged.
 
 ## v0.8.15-block-c-stress-evidence
 - Adds Block C stress evidence for runaway/cost behavior under API-shaped flows.
