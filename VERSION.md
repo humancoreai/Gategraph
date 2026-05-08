@@ -1,7 +1,7 @@
-Current candidate: v0.9.0_CANDIDATE
+Current candidate: v0.9.1_CANDIDATE
 
-Base: v0.8.48_STABLE
-Phase: Milestone Release / External Review Baseline
-Scope: consolidation, reproducibility, external review readiness, release integrity
+Base: v0.9.0_STABLE
+Phase: Boundary Hardening / Release Integrity Closure
+Scope: caller trust boundary clarification, deterministic release integrity, review readiness
 
-Invariant: v0.9.0_CANDIDATE introduces no new governance decision logic.
+Invariant: v0.9.1_CANDIDATE introduces no new governance decision logic, no new runtime model, no new risk model, and no autonomous classification.
