@@ -1,13 +1,16 @@
 # Changelog
 
-## v0.11.6_STABLE
+## v0.11.7_CANDIDATE
 
-- Added explicit security model, OWASP-style agentic risk mapping, and known limitations.
-- Added centralized token/Authorization/sensitive-field redaction utilities.
-- Added token exposure evidence for audit, explain, monitoring, base64 token, Authorization header, and secret exposure boundaries.
-- No governance rule, enforcement authority, runtime mode, adapter authority, distributed, cloud, Docker/Kubernetes, or UI scope expansion.
+- Added deterministic context classification and required provenance boundaries.
+- Added instruction/data separation for untrusted, replay and proposal context.
+- Added replay/explain hardening markers: descriptive-only, non-executable and reference-context.
+- Added visibility-only suspicious context markers for hidden instructions, fake operator claims, recursive delegation phrases and embedded authority patterns.
+- Added context governance evidence suites and `CONTEXT_GOVERNANCE_MODEL.md`.
+- No memory system, vector database, semantic scoring, autonomous filtering, AI moderation, governance rule, enforcement authority, runtime mode, adapter authority, distributed, cloud, Docker/Kubernetes, or UI scope expansion.
 
 All notable changes to GateGraph are documented here.
+
 
 ## v0.11.4_STABLE
 

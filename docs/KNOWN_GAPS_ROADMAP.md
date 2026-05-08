@@ -1,4 +1,4 @@
-# Known Gaps Roadmap – v0.11.6_STABLE
+# Known Gaps Roadmap – v0.11.7_CANDIDATE
 
 ## Closed before / at v0.9.3
 
@@ -37,10 +37,13 @@
 - Console entry points are declared: `gategraph` and `gategraph-server`.
 - Packaging, install surface, startup surface and config consistency evidence are present.
 
-## Closed / hardened in v0.11.6_STABLE
+## Closed / hardened in v0.11.7_CANDIDATE
 
-- Security mapping baseline documented in `SECURITY_MODEL.md`, `OWASP_AGENTIC_AI_MAPPING.md`, and `KNOWN_LIMITATIONS.md`.
-- Token/Authorization/secret exposure boundaries hardened with `src/security/token_redaction.py` and `tests/token_exposure_evidence.py`.
+- Context is explicitly classified as a governance boundary.
+- Context provenance is required and inconsistent provenance fails closed.
+- Instruction-like text in untrusted/replay/proposal context remains data.
+- Replay/explain context is descriptive-only, non-executable reference context.
+- Suspicious context patterns are visibility-only markers, not autonomous filtering.
 
 ## Closed / hardened in v0.11.4_STABLE
 
@@ -63,7 +66,7 @@
 - No audit-log retention management.
 - No security-disclosure process.
 
-## Non-scope for v0.11.6_STABLE
+## Non-scope for v0.11.7_CANDIDATE
 
 - no new agents
 - no new adapters
@@ -72,3 +75,9 @@
 - no new governance decision path
 - no product UI
 - no Docker/Kubernetes/Helm/service mesh
+- no memory system
+- no vector database
+- no embeddings
+- no semantic scoring
+- no autonomous context filtering
+- no AI content moderation

@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.6_STABLE"
-BASE = "v0.11.5_STABLE"
+VERSION = "v0.11.7_CANDIDATE"
+BASE = "v0.11.6_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -84,7 +84,7 @@ def main() -> None:
     assert BASE in version, "VERSION.md missing base identifier"
     assert VERSION in status, "RELEASE_STATUS.md missing release identifier"
     assert BASE in status, "RELEASE_STATUS.md missing base identifier"
-    assert "Multi-Agent Delegation Boundary Hardening" in status, "RELEASE_STATUS.md missing phase label"
+    assert "Context / Memory Governance Baseline" in status, "RELEASE_STATUS.md missing phase label"
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -141,6 +141,9 @@ def main() -> None:
     assert "src/runtime_path_assertions.py" in paths
     assert "src/runtime_chain_assertions.py" in paths
     assert "TRUST_MODEL.md" in paths
+    assert "CONTEXT_GOVERNANCE_MODEL.md" in paths
+    assert "gategraph/context/context_classifier.py" in paths
+    assert "gategraph/context/context_boundary.py" in paths
     forbidden_manifest = [
         p for p in paths
         if Path(p).suffix.lower() in FORBIDDEN_RELEASE_SUFFIXES
@@ -156,6 +159,9 @@ def main() -> None:
     assert "runtime_boundary_hardening_evidence" in ci_manifest
     assert "runtime_chain_order_evidence" in ci_manifest
     assert "mode_boundary_surface_evidence" in ci_manifest
+    assert "context_poisoning_evidence" in ci_manifest
+    assert "instruction_data_separation_evidence" in ci_manifest
+    assert "context_provenance_evidence" in ci_manifest
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():
