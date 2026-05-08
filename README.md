@@ -75,6 +75,8 @@ python tests/test_loop.py
 python tests/usage_simulation.py
 python tests/unusual_inputs.py
 python tests/agent_scenarios.py
+python tests/runtime_guard_tests.py
+python tests/pattern_engine_tests.py
 ```
 
 Depending on your environment, use:
@@ -162,3 +164,10 @@ docs/RUNTIME_GUARD.md
 ```
 
 Runtime Guard is intentionally separate from GateGraph Core. It handles runtime limits, cost budgets, and loop prevention.
+
+
+## Pattern Engine
+
+See `docs/PATTERN_ENGINE.md`.
+
+Pattern Engine creates pending proposals only and never changes rules automatically.
