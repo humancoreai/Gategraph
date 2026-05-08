@@ -57,9 +57,38 @@ def initialize(config: AppConfig, *, reset: bool = False) -> dict[str, Any]:
     return {"ok": True, "db_path": str(path), "mode": config.mode}
 
 
+BOUNDARY_REQUIRED_FIELDS = ("input_source", "data_sensitivity", "secrets_involved")
+BOUNDARY_STRING_FIELDS = ("input_source", "data_sensitivity")
+
+
+def validate_caller_boundary(task: dict[str, Any]) -> dict[str, Any]:
+    """Validate explicit caller-trust boundary metadata without reclassifying it.
+
+    INV: This only checks presence/type. It must not infer, downgrade, upgrade or repair
+    caller-supplied security metadata. Truthfulness remains a caller-boundary assumption.
+    """
+    missing = [field for field in BOUNDARY_REQUIRED_FIELDS if field not in task]
+    if missing:
+        raise ValueError(f"missing required caller boundary field(s): {', '.join(missing)}")
+    for field in BOUNDARY_STRING_FIELDS:
+        if not isinstance(task[field], str) or not task[field].strip():
+            raise ValueError(f"task.{field} must be a non-empty string supplied by the caller")
+    if not isinstance(task["secrets_involved"], bool):
+        raise ValueError("task.secrets_involved must be a boolean supplied by the caller")
+    return {
+        "input_source": task["input_source"],
+        "data_sensitivity": task["data_sensitivity"],
+        "secrets_involved": task["secrets_involved"],
+        "trust_boundary": "caller_supplied_metadata",
+        "semantic_truthfulness_verified": False,
+        "automatic_reclassification": False,
+    }
+
+
 def evaluate_request(config: AppConfig, task: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(task, dict):
         raise ValueError("request body must be a JSON object")
+    boundary = validate_caller_boundary(task)
     task_id = str(task.get("task_id") or "server-task")
     requested = task.get("requested_capabilities", [])
     if not isinstance(requested, list):
@@ -74,9 +103,9 @@ def evaluate_request(config: AppConfig, task: dict[str, Any]) -> dict[str, Any]:
             task_id=task_id,
             task_type=str(task.get("task_type", "single_node_task")),
             requested_capabilities=[str(item) for item in requested],
-            input_source=str(task.get("input_source", "local")),
-            data_sensitivity=str(task.get("data_sensitivity", "internal")),
-            secrets_involved=bool(task.get("secrets_involved", False)),
+            input_source=boundary["input_source"],
+            data_sensitivity=boundary["data_sensitivity"],
+            secrets_involved=boundary["secrets_involved"],
             actor_id=str(task.get("actor_id", config.actor_id)),
             projected_cost_units=projected_cost,
             system_budget_units=config.system_budget_units,
@@ -112,6 +141,7 @@ def evaluate_request(config: AppConfig, task: dict[str, Any]) -> dict[str, Any]:
             "escalation_state": result.escalation_state,
             "event_id": result.event_id,
             "decision_id": result.decision_id,
+            "caller_boundary": boundary,
         }
     finally:
         conn.close()

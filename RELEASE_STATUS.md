@@ -1,15 +1,23 @@
-# Release Status
+# GateGraph v0.9.1_CANDIDATE Release Status
 
-Current candidate: v0.9.0_CANDIDATE
-Base: v0.8.48_STABLE
-Phase: Milestone Release / External Review Baseline
+Base: v0.9.0_STABLE  
+Phase: Boundary Hardening / Release Integrity Closure
 
-Evidence:
-- milestone_release_evidence: added for release/package consistency checks
-- Full Windows Evidence CI: pending
+## Status
 
-Candidate notes:
-- Milestone release baseline only.
-- No new governance features introduced.
-- Adds external review documents and deterministic release packaging tools.
-- Scope freeze is explicit: no autonomous policy changes, no self-governance, no automatic optimization, no prediction layer.
+Candidate build prepared.
+
+## Evidence Status
+
+- Full Windows Evidence CI: pending external Windows run
+- Caller Boundary Evidence: included
+- Release Integrity Evidence: included
+- Milestone Release Evidence: included
+
+## Scope Freeze
+
+v0.9.1 does not introduce new governance decision logic, runtime models, risk models, adaptive behavior, autonomous classification, multi-node behavior, or priority systems.
+
+## Release Boundary
+
+This release clarifies caller-trust metadata assumptions and hardens deterministic release verification. It does not claim semantic truth verification of caller-supplied boundary fields.
