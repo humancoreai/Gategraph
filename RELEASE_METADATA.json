@@ -16,7 +16,7 @@
   "new_runtime_model": false,
   "packaging_scope": true,
   "phase": "Security Mapping + Token Exposure Hardening",
-  "release": "v0.11.5_CANDIDATE",
+  "release": "v0.11.5_STABLE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "runtime_surface_scope": true,
@@ -25,7 +25,7 @@
   "self_orchestration": false,
   "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "candidate",
+  "status": "stable",
   "surface_freeze_coupling_scope": true,
   "token_exposure_hardening_scope": true
 }
