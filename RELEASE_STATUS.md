@@ -1,13 +1,14 @@
 # Release Status
 
-Current stable: v0.8.47_STABLE
-Base: v0.8.46_STABLE
-Phase: Operator Export / Evidence Bundle
+Current candidate: v0.8.48_CANDIDATE
+Base: v0.8.47_STABLE
+Phase: Final Consolidation / v0.9 Readiness Gate
 
 Evidence:
-- Full Windows Evidence CI: passed on 2026-05-06
-- operator_export_evidence: included in Evidence CI
+- final_consolidation_evidence: passed locally
+- Full Windows Evidence CI: pending
 
-Stable notes:
-- Operator export/evidence bundle accepted as stable baseline.
-- Export remains read-only and does not re-run governance decisions.
+Candidate notes:
+- Final consolidation/readiness gate only.
+- No new governance features introduced.
+- Checks release metadata, repository entry points, evidence manifest presence and artifact-shape expectations.
