@@ -87,6 +87,10 @@ class GateGraphHandler(BaseHTTPRequestHandler):
         if length <= 0:
             raise RequestValidationError("INVALID_JSON", "request body must not be empty")
         if length > MAX_BODY_BYTES:
+            # SEC: Drain the declared body for deterministic client/server teardown,
+            # then close the connection after the normalized 413 response.
+            self.rfile.read(length)
+            self.close_connection = True
             raise RequestValidationError("PAYLOAD_TOO_LARGE", "request body too large", HTTPStatus.REQUEST_ENTITY_TOO_LARGE)
         if "application/json" not in self.headers.get("content-type", "").lower():
             raise RequestValidationError("INVALID_CONTENT_TYPE", "content-type must be application/json", HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
@@ -121,12 +125,21 @@ class GateGraphHandler(BaseHTTPRequestHandler):
         self.send_response(int(status))
         self.send_header("content-type", "application/json; charset=utf-8")
         self.send_header("content-length", str(len(data)))
+        self.send_header("connection", "close")
         self.end_headers()
         self.wfile.write(data)
+        self.wfile.flush()
+        self.close_connection = True
+
+
+class GateGraphHTTPServer(ThreadingHTTPServer):
+    # SEC: Local adapter hardening only; this is not an internet-facing connection limiter.
+    daemon_threads = True
+    request_queue_size = 16
 
 
 def build_server(host: str, port: int, config: AppConfig) -> ThreadingHTTPServer:
-    server = ThreadingHTTPServer((host, port), GateGraphHandler)
+    server = GateGraphHTTPServer((host, port), GateGraphHandler)
     server.gategraph_config = config  # type: ignore[attr-defined]
     return server
 

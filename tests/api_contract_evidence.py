@@ -34,7 +34,7 @@ def _assert_base_contract(payload: dict) -> None:
     response_normalizer.assert_contract(payload)
     assert set(payload) == EXPECTED_TOP_KEYS, payload
     assert set(payload["meta"]) == EXPECTED_META_KEYS, payload
-    assert payload["meta"]["schema_version"] == "0.8.35", payload
+    assert payload["meta"]["schema_version"] == response_normalizer.SCHEMA_VERSION, payload
     assert isinstance(payload["meta"]["request_id"], str) and payload["meta"]["request_id"], payload
     assert isinstance(payload["meta"]["timestamp"], str) and payload["meta"]["timestamp"], payload
 
