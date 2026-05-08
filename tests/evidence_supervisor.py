@@ -34,6 +34,7 @@ MANIFEST: List[Tuple[str, str, str, int]] = [
     ("http_policy_evidence", "http_policy_evidence", "main", 20),
     ("security_finesse_evidence", "security_finesse_evidence", "main", 20),
     ("block_c_stress_evidence", "block_c_stress_evidence", "main", 30),
+    ("block_d_audit_explain_evidence", "block_d_audit_explain_evidence", "main", 30),
     ("core_loop", "test_loop", "main", 30),
     ("runtime_guard", "runtime_guard_tests", "main", 20),
     ("pattern_engine", "pattern_engine_tests", "main", 20),
