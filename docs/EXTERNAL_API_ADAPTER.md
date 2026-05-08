@@ -52,3 +52,15 @@ ExternalAPIRequest
 - timeout is audited
 - rate limit is audited
 - untrusted response stays data-only
+
+## v0.8.5 Enforcement Binding
+
+The adapter now accepts a `CapabilityToken` and calls `enforce()` internally.
+
+This closes the previous PoC-level caller-discipline gap where a caller supplied `enforcement_allowed: bool`.
+
+Invariant:
+
+```text
+No external API adapter execution path can skip Enforcement by passing a forged boolean.
+```
