@@ -1,6 +1,6 @@
 # Runner POSIX Hardening
 
-Version: v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE
+Version: v0.8.27.1_STABLE
 
 ## Scope
 
