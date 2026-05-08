@@ -1,6 +1,6 @@
 # PRODUCTION.md
 
-GateGraph v0.8.34_STABLE is production-ready for the defined single-node and local/protected server-adapter scope.
+GateGraph v0.10.3_STABLE is production-ready for the defined single-node and local/protected server-adapter scope.
 
 ## Scope
 
