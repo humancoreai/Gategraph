@@ -14,10 +14,10 @@
   "new_runtime_model": false,
   "packaging_scope": true,
   "phase": "Deployment / Packaging Baseline",
-  "release": "v0.11.0_CANDIDATE",
+  "release": "v0.11.0_STABLE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "scope_freeze": true,
   "self_orchestration": false,
-  "status": "candidate"
+  "status": "stable"
 }
