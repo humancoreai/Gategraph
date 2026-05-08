@@ -1,4 +1,4 @@
-# Multi-Mode SSOT — v0.9.2_CANDIDATE
+# Multi-Mode SSOT — v0.9.2_STABLE
 
 ## Status
 
@@ -39,4 +39,4 @@ A mode must not imply:
 - reviewer: proposes findings, no enforcement authority
 - blocked: explicit fail-closed state
 
-These classes are architectural labels only in v0.9.2_CANDIDATE.
+These classes are architectural labels only in v0.9.2_STABLE.
