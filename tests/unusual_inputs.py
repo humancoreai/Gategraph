@@ -72,7 +72,7 @@ def run():
             blocked += 1
             rows.append((name, "exception", "blocked", "blocked", "-", type(e).__name__))
 
-    print("UNUSUAL INPUT SIMULATION v0.4.5")
+    print("UNUSUAL INPUT SIMULATION v0.8.5")
     print(f"Runs: {len(scenarios)}")
     print(f"Events: {event_logger.count_events(conn)}")
     print(f"Allowed: {allowed}")

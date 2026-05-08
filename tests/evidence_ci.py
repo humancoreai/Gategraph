@@ -5,6 +5,7 @@ INV: this file only orchestrates tests; it does not change production governance
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from dataclasses import asdict, dataclass, field
@@ -131,4 +132,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    rc = main()
+    sys.stdout.flush()
+    sys.stderr.flush()
+    # WHY: some local Python environments hang during interpreter shutdown; CI result is already written.
+    os._exit(rc)
