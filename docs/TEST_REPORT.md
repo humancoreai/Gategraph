@@ -205,3 +205,17 @@ Additional runtime evidence scenarios now cover:
 - current limitation: cost budget is per-task, not session-global
 
 The last point is intentionally logged as a medium-severity known gap, not as a failing test, because implementing a session/global budget would change production scope.
+
+
+## v0.7.3 Phase 3B / Cross-Task Drift Evidence
+
+Added evidence tests for real-world cost/resource drift that can occur even when every individual task remains valid.
+
+Expected result:
+- The system should not violate core invariants.
+- Evidence should reveal that cumulative costs are not currently blocked across task/session/agent boundaries.
+
+Outcome classification:
+- Finding severity: medium/high depending on scenario.
+- Type: documented design boundary.
+- Not a production core regression.
