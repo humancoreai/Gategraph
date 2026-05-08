@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.4_STABLE"
-BASE = "v0.11.3_STABLE"
+VERSION = "v0.11.5_CANDIDATE"
+BASE = "v0.11.4_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -66,17 +66,25 @@ def load_verify_module():
     return module
 
 
+def load_build_module():
+    spec = importlib.util.spec_from_file_location("build_release", ROOT / "tools" / "build_release.py")
+    assert spec and spec.loader, "could not load build_release.py"
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def main() -> None:
     missing = [name for name in REQUIRED_ROOT_FILES if not (ROOT / name).exists()]
     assert not missing, f"missing required milestone files: {missing}"
 
     version = read("VERSION.md")
     status = read("RELEASE_STATUS.md")
-    assert VERSION in version
-    assert BASE in version
-    assert VERSION in status
-    assert BASE in status
-    assert "Capability Token Audit Redaction" in status
+    assert VERSION in version, "VERSION.md missing release identifier"
+    assert BASE in version, "VERSION.md missing base identifier"
+    assert VERSION in status, "RELEASE_STATUS.md missing release identifier"
+    assert BASE in status, "RELEASE_STATUS.md missing base identifier"
+    assert "Security Mapping + Token Exposure Hardening" in status, "RELEASE_STATUS.md missing phase label"
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -151,13 +159,19 @@ def main() -> None:
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():
+        # WHY: Evidence CI may start from a downloaded candidate with a stale or user-modified
+        # dist ZIP. Rebuild before verifying so milestone evidence checks the current tree,
+        # while release_integrity_evidence remains the canonical packaging gate.
+        builder = load_build_module()
+        build_rc = builder.main()
+        assert build_rc == 0, "build_release did not complete before milestone zip verification"
         verifier = load_verify_module()
         result = verifier.verify(zip_path)
         assert result["passed"], result["errors"]
         with zipfile.ZipFile(zip_path, "r") as zf:
             names = zf.namelist()
         assert names == sorted(names), "zip entries are not sorted"
-        assert all(name.startswith(f"GateGraph_{VERSION}/") for name in names)
+        assert all(name.startswith(f"GateGraph_{VERSION}/") for name in names), "zip entry outside release root prefix"
 
     print("PASS milestone_release_evidence")
 
