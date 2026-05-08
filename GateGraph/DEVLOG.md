@@ -361,3 +361,24 @@ Scope remains mock-only: no real network calls.
 - Stable for current local evidence scope.
 - Still single-node.
 - No production KMS, distributed budget or monitoring/alerting.
+
+## v0.8.26_CANDIDATE - Cross-Session Budget Control
+
+Implemented candidate extension for system/actor budget control across task boundaries.
+
+Added:
+- `src/budget_ledger.py`
+- `budget_scopes` and `budget_reservations` schema
+- budget reservation claims in capability tokens
+- enforcement checks for persisted budget token claims
+- governance-side budget reservation before token issuance
+- `tests/cross_session_budget_evidence.py`
+- CI manifest entry for cross-session budget evidence
+
+Invariant preserved:
+- Runtime does not decide or expand budget.
+- Pattern Engine remains advisory.
+- Enforcement remains token verifier/gatekeeper.
+
+Known limit:
+- single-node ledger only; no distributed lock/consensus/KMS.
