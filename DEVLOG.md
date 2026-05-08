@@ -267,3 +267,11 @@ Scope remains mock-only: no real network calls.
 - Added `tests/runaway_cost_evidence.py` with negative/zero-cost scenarios.
 - Verified External API negative-cost path stops at Session Budget before Runtime/Action.
 - No change to Governance/Enforcement authority model.
+
+## v0.8.7 - CI Evidence Runner Stabilization
+
+- Added bounded shell evidence runner (`tests/evidence_ci.sh`).
+- Kept JSON aggregate evidence output.
+- Replaced `os._exit` in `tests/test_loop.py` with `SystemExit` for normal runner composition.
+- Added `docs/CI_EVIDENCE_RUNNER.md`.
+- No production governance/enforcement/runtime semantics changed.
