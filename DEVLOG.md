@@ -577,3 +577,12 @@ The CLI is an adapter only. It does not duplicate or bypass Governance, Enforcem
 ## v0.8.40_CANDIDATE — Operator Control / Debug Interface
 
 Added a passive operator layer for inspecting decisions, compact explanations, exact trace queries, stop-reason drilldowns, and lightweight incident/alert navigation. Core governance logic remains unchanged.
+
+## v0.8.44_STABLE - Stable Promotion
+
+Promoted `v0.8.44_CANDIDATE` to `v0.8.44_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-05-06.
+
+- Confirmed `drift_detection_evidence` is included in the evidence manifest.
+- Confirmed Governance Drift Detection remains descriptive-only.
+- Confirmed no governance decision, policy, guard, queue, escalation, recommendation or automatic reaction path was added.
+
