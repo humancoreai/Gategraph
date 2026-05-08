@@ -5,7 +5,7 @@ INV: this module only reads existing DB records and writes JSON evidence files u
 from __future__ import annotations
 
 import json
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -208,8 +208,33 @@ class EvidenceRunLog:
     def finish(self) -> None:
         self.finished_at = utc_now_iso()
 
+    def to_json_dict(self) -> Dict[str, Any]:
+        """
+        WHY: dataclasses.asdict performs a deep recursive copy; large evidence graphs made the runner sluggish.
+        INV: keep the same JSON shape while serializing explicitly and predictably.
+        """
+        return {
+            "run_id": self.run_id,
+            "started_at": self.started_at,
+            "finished_at": self.finished_at,
+            "summary": dict(self.summary),
+            "tests": [
+                {
+                    "test_name": r.test_name,
+                    "description": r.description,
+                    "expected": r.expected,
+                    "actual": r.actual,
+                    "passed": r.passed,
+                    "severity": r.severity,
+                    "notes": list(r.notes),
+                    "evidence": r.evidence,
+                }
+                for r in self.tests
+            ],
+        }
+
     def write(self, output_dir: Path) -> Path:
         output_dir.mkdir(parents=True, exist_ok=True)
         path = output_dir / f"{self.run_id}.json"
-        path.write_text(json.dumps(asdict(self), indent=2, ensure_ascii=False), encoding="utf-8")
+        path.write_text(json.dumps(self.to_json_dict(), indent=2, ensure_ascii=False), encoding="utf-8")
         return path
