@@ -275,3 +275,25 @@ Scope remains mock-only: no real network calls.
 - Replaced `os._exit` in `tests/test_loop.py` with `SystemExit` for normal runner composition.
 - Added `docs/CI_EVIDENCE_RUNNER.md`.
 - No production governance/enforcement/runtime semantics changed.
+
+## v0.8.8-capability-token-hardening
+
+### Changed
+- Added HMAC-signed Capability Tokens.
+- Added token signature and signing key metadata to token storage.
+- Enforcement now validates persisted token claims and signature before capability checks.
+- Added normalized reasons for invalid signatures, claim mismatch, and missing tokens.
+- Added `tests/capability_token_hardening_evidence.py`.
+- Added `docs/CAPABILITY_TOKEN_HARDENING.md`.
+
+### Invariants preserved
+- Enforcement remains the only action gatekeeper.
+- Guards still only stop; they do not allow.
+- Pattern Engine remains proposal-only.
+- Audit remains append-only.
+- Fail-closed behavior strengthened for token uncertainty.
+
+### Known boundaries
+- Uses local HMAC secret model, not distributed key management.
+- No key rotation yet.
+- No asymmetric signatures yet.

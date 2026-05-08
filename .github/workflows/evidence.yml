@@ -17,7 +17,7 @@ jobs:
           python-version: '3.11'
 
       - name: Run evidence CI
-        run: python tests/evidence_ci.py
+        run: bash tests/evidence_ci.sh
 
       - name: Upload evidence logs
         if: always()
