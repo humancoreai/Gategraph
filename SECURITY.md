@@ -1,32 +1,31 @@
-# Security Policy
+# Security Notes
 
-## Supported Versions
+## Core security model
 
-| Version | Supported |
-|---|---:|
-| v0.9.x candidates/stable | yes |
-| older v0.8.x snapshots | best-effort review only |
+GateGraph follows fail-closed governance.
 
-## Scope of Security Claims
+Security-critical invariants:
 
-GateGraph provides deterministic governance/enforcement checks for explicit task metadata. It does not verify semantic truthfulness of caller-provided fields and does not provide autonomous security classification.
+- no action without token
+- no expired token
+- no revoked token
+- no cross-task token reuse
+- no capability not explicitly granted
+- no automatic allow for critical risk
+- no direct execution of agent output
 
-Security claims are limited to behavior covered by evidence suites and documented invariants.
+## Current PoC limitations
 
-## Reporting a Vulnerability
+This PoC is intentionally local and minimal.
 
-Report issues privately to the project maintainer before public disclosure. If no dedicated security email has been published for the repository yet, use the repository owner contact channel.
+Not yet production-grade:
 
-A useful report should include:
+- token IDs are random DB references, not cryptographically signed tokens
+- revocation is checked via DB read per enforcement call
+- no concurrency control beyond SQLite constraints
+- no role-based human approval model
+- no runtime cost/loop governor yet
 
-- affected version
-- reproduction steps
-- expected vs. observed behavior
-- whether the issue affects governance, enforcement, audit, release integrity, or documentation claims
+## Deferred topic
 
-## Out of Scope
-
-- requests for autonomous risk classification
-- feature requests unrelated to a security defect
-- attacks requiring a caller to intentionally provide false trusted metadata without an upstream trust failure
-- multi-node or distributed consensus concerns in single-node releases
+Runaway agent loops and cost control are intentionally out of current scope. They should become a separate Runtime Control Layer later.
