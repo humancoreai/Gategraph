@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.9.2_CANDIDATE"
+VERSION = "v0.9.2_STABLE"
 BASE = "v0.9.1_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
@@ -137,7 +137,7 @@ def build_manifest(files: Iterable[Path]) -> dict:
     return {
         "release": VERSION,
         "base": BASE,
-        "kind": "release_candidate",
+        "kind": "stable_release",
         "scope": "multi_agent_multi_mode_architecture_definition",
         "deterministic_packaging": True,
         "file_count": len(entries),
