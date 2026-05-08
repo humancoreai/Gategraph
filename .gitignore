@@ -1,0 +1,25 @@
+# Python/runtime artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.pytest_cache/
+
+# Local databases and generated evidence
+*.db
+*.sqlite
+*.sqlite3
+tests/logs/*.json
+
+# Local/editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+.vscode/
+.idea/
+
+# Build/package artifacts
+dist/
+build/
+*.zip
