@@ -1,4 +1,7 @@
-Current candidate: v0.8.48_CANDIDATE
+Current candidate: v0.9.0_CANDIDATE
 
-Base: v0.8.47_STABLE
-Phase: Final Consolidation / v0.9 Readiness Gate
+Base: v0.8.48_STABLE
+Phase: Milestone Release / External Review Baseline
+Scope: consolidation, reproducibility, external review readiness, release integrity
+
+Invariant: v0.9.0_CANDIDATE introduces no new governance decision logic.

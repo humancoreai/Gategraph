@@ -1,0 +1,9 @@
+{
+  "base": "v0.8.48_STABLE",
+  "claim_boundary": "deterministic governance/enforcement milestone with auditable evidence and reproducible release packaging",
+  "governance_logic_changed": false,
+  "new_governance_features": false,
+  "phase": "Milestone Release / External Review Baseline",
+  "release": "v0.9.0_CANDIDATE",
+  "scope_freeze": true
+}
