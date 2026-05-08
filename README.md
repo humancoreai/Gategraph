@@ -47,8 +47,8 @@ GateGraph currently does **not** provide:
 
 - autonomous rule changes
 - production-grade distributed orchestration
-- token signing across IPC/RPC boundaries
-- external tool/API integration
+- production-grade token signing across IPC/RPC boundaries
+- real external tool/API integration (mock adapter only today)
 - adaptive budget policy
 - full GLP protocol compliance
 
@@ -57,7 +57,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.8 capability-token-hardening
+Version: v0.8.10 hygiene-hardening
 Core status: stable proof of concept
 Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
 ```
@@ -208,3 +208,8 @@ Capability Tokens are now HMAC-signed over immutable claims and checked by Enfor
 ## Current security hardening note
 
 v0.8.9 adds Capability Token key IDs and keyring-based verification so local HMAC key rotation can be tested deterministically. Unknown signing keys fail closed.
+
+
+## v0.8.10 hygiene hardening
+
+This release closes review findings without changing product semantics: public keyring accessors replace private imports, enforcement loads trust material once per decision, SECURITY.md and version labels are current, Session Budget schema initialization uses `db/schema.sql` as the DDL source of truth, and test-only/default-secret boundaries are documented.
