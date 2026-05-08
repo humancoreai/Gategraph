@@ -2,7 +2,7 @@
 
 ## Scope
 
-`v0.12.1_STABLE` introduces descriptive surface contracts for core GateGraph outputs and review surfaces.
+`v0.12.2_CANDIDATE` maintains descriptive surface contracts for core GateGraph outputs and review surfaces.
 
 The contracts define stable field shapes for:
 
@@ -30,4 +30,4 @@ Surface contracts may be used by evidence tests and reviewers to detect drift. T
 
 ## Promotion requirement
 
-Candidate promotion requires surface contract evidence, semantic boundary evidence, version consistency evidence, release process guard evidence and full Evidence CI to pass.
+Candidate promotion requires surface contract evidence, semantic boundary evidence, version consistency evidence, recovery/replay surface evidence, release process guard evidence and full Evidence CI to pass.

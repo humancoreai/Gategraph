@@ -46,3 +46,6 @@ v0.12.0_STABLE preserves this boundary while adding security mapping and token e
 
 
 Current release surface: `v0.12.1_STABLE`.
+
+
+Current release surface: v0.12.2_CANDIDATE.
