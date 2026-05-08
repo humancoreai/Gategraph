@@ -1,4 +1,4 @@
-GateGraph v0.11.1 STABLE REPORT
+GateGraph v0.11.2 STABLE REPORT
 
 Generated: 2026-05-07T06:24:28.449610Z
 
