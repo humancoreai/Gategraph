@@ -1,9 +1,9 @@
 # Changelog
 
-## v0.11.8_STABLE
+## v0.11.9_CANDIDATE
 
 ### Review hygiene fix
-- Align README base-stable claim with `v0.11.7_STABLE`.
+- Align README base-stable claim with `v0.11.9_STABLE`.
 - Document canonical namespace boundary for `src/` versus `gategraph/context/`.
 - Exclude development STARTPROMPT artifacts from release packaging.
 - Surface `OWASP_AGENTIC_AI_MAPPING.md` in README.

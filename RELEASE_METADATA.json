@@ -1,6 +1,6 @@
 {
   "actor_chain_attribution_required": true,
-  "base": "v0.11.7_STABLE",
+  "base": "v0.11.8_STABLE",
   "capability_amplification_blocked": true,
   "capability_token_audit_redaction_scope": true,
   "claim_boundary": "context lifecycle is descriptive only; provenance is immutable; replay/explain/proposal context cannot be rehydrated into trusted or runtime authority; no memory system, semantic scoring, autonomous filtering or AI content moderation is introduced",
@@ -29,7 +29,7 @@
   "new_runtime_model": false,
   "packaging_scope": true,
   "phase": "Context Lifecycle / Freeze Coupling Baseline",
-  "release": "v0.11.8_STABLE",
+  "release": "v0.11.9_CANDIDATE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "runtime_surface_scope": true,
@@ -39,7 +39,7 @@
   "semantic_context_scoring": false,
   "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "stable",
+  "status": "candidate",
   "surface_freeze_coupling_scope": true,
   "token_exposure_hardening_scope": true,
   "transitive_authority_blocked": true
