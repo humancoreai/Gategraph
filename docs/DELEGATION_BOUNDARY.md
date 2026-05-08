@@ -1,4 +1,4 @@
-# Delegation Boundary — v0.9.2_CANDIDATE
+# Delegation Boundary — v0.9.2_STABLE
 
 ## Status
 

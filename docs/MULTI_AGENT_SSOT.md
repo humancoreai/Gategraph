@@ -1,4 +1,4 @@
-# Multi-Agent SSOT — v0.9.2_CANDIDATE
+# Multi-Agent SSOT — v0.9.2_STABLE
 
 ## Status
 
