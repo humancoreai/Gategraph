@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.12.2_STABLE"
-EXPECTED_BASE = "v0.12.1_STABLE"
+EXPECTED_RELEASE = "v0.12.3_CANDIDATE"
+EXPECTED_BASE = "v0.12.2_STABLE"
 
 
 def read(path: str) -> str:
@@ -18,9 +18,9 @@ def main() -> int:
     paths = [entry["path"] for entry in manifest["files"]]
 
     readme = read("README.md")
-    assert f"Current stable: **{EXPECTED_RELEASE}**" in readme
+    assert f"Current release: **{EXPECTED_RELEASE}**" in readme
     assert f"Base stable: **{EXPECTED_BASE}**" in readme
-    assert "Current stable baseline: **v0.12.2_STABLE**" not in readme
+    assert "Current stable baseline: **v0.12.3_CANDIDATE**" not in readme
     assert "Base stable: **v0.11.4_STABLE**" not in readme
 
     assert "Canonical runtime namespace" in readme

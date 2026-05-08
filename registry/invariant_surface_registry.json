@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.12.3",
+  "release": "v0.12.3_CANDIDATE",
+  "invariant": "surface, evidence and semantic registries are checked deterministically and do not mutate governance policy",
+  "invariants": {
+    "INV-SEM-001": {
+      "description": "Reference-class semantic objects remain non-authoritative and non-executable.",
+      "semantic_object_types": ["replay_object", "explain_object", "monitoring_object", "proposal_object", "archive_object", "recovery_snapshot", "context_reference"],
+      "surfaces": ["replay", "explain", "monitoring", "review", "archive", "recovery", "context"],
+      "evidence": ["semantic_registry_evidence.py", "semantic_drift_detection_evidence.py"]
+    },
+    "INV-SEM-002": {
+      "description": "Replay and recovery references are non-executable and cannot enter runtime paths.",
+      "semantic_object_types": ["replay_object", "recovery_snapshot", "archive_object"],
+      "surfaces": ["replay", "recovery", "archive"],
+      "evidence": ["semantic_registry_evidence.py", "replay_reference_integrity_evidence.py"]
+    },
+    "INV-SURF-001": {
+      "description": "Semantic evidence files must be surfaced by deterministic release evidence mapping.",
+      "semantic_object_types": [],
+      "surfaces": ["release", "evidence", "manifest"],
+      "evidence": ["invariant_surface_mapping_evidence.py", "evidence_surface_consistency_evidence.py"]
+    },
+    "INV-INC-001": {
+      "description": "Incident lifecycle state transitions are forward-only and append-only.",
+      "semantic_object_types": [],
+      "surfaces": ["incident", "audit"],
+      "evidence": ["incident_lifecycle_consistency_evidence.py"]
+    }
+  }
+}
