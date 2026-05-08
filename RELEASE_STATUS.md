@@ -1,20 +1,24 @@
-# Release Status – v0.10.2_STABLE
+# Release Status – v0.10.3_CANDIDATE
 
-Status: stable
+Status: candidate
 
-Base: v0.10.1_STABLE
+Base: v0.10.2_STABLE
 
-Phase: Runtime / Boundary Hardening
+Phase: Release Process Guard
 
 Scope:
-- runtime chain/order assertions
-- skipped-stage detection
-- invalid enforcement chain detection
-- freeze-aware runtime invariant evidence tied further to runtime behavior
+- validate release truth consistency
+- validate Candidate/Stable metadata surfaces
+- validate structured manifest consistency
+- validate manifest hash/size consistency
+- detect dead local markdown references
+- prevent promotion drift before Stable release
 
 Out of scope:
-- no new adapters
-- no new agents
+- no runtime changes
+- no governance changes
+- no enforcement changes
+- no adapter changes
+- no agentic behavior
 - no packaging/deployment work
 - no UI
-- no runtime capability expansion
