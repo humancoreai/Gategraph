@@ -12,6 +12,7 @@ from typing import Optional
 import sqlite3
 
 from src import runtime_guard, session_budget_guard
+from src.reason_normalizer import normalize_as_dict
 
 
 @dataclass(frozen=True)
@@ -22,6 +23,27 @@ class GuardPipelineDecision:
     enforcement_allowed: bool
     session_decision_id: Optional[str] = None
     runtime_step_id: Optional[str] = None
+    normalized_reason: Optional[dict] = None
+
+
+def _decision(
+    *,
+    decision: str,
+    stage: str,
+    reason: str,
+    enforcement_allowed: bool,
+    session_decision_id: Optional[str] = None,
+    runtime_step_id: Optional[str] = None,
+) -> GuardPipelineDecision:
+    return GuardPipelineDecision(
+        decision=decision,
+        stage=stage,
+        reason=reason,
+        enforcement_allowed=enforcement_allowed,
+        session_decision_id=session_decision_id,
+        runtime_step_id=runtime_step_id,
+        normalized_reason=normalize_as_dict(stage, reason),
+    )
 
 
 def evaluate_guard_pipeline(
@@ -46,7 +68,7 @@ def evaluate_guard_pipeline(
     INV: Session Guard is evaluated before Runtime Guard to avoid spending per-task runtime work after global exhaustion.
     """
     if not enforcement_allowed:
-        return GuardPipelineDecision(
+        return _decision(
             decision="stop",
             stage="enforcement",
             reason=enforcement_reason or "enforcement blocked",
@@ -61,7 +83,7 @@ def evaluate_guard_pipeline(
         projected_cost_units=projected_cost_units,
     )
     if session_decision.decision != "continue":
-        return GuardPipelineDecision(
+        return _decision(
             decision="stop",
             stage="session_budget",
             reason=session_decision.reason,
@@ -78,7 +100,7 @@ def evaluate_guard_pipeline(
         cost_units=projected_cost_units,
     )
     if runtime_decision.decision != "continue":
-        return GuardPipelineDecision(
+        return _decision(
             decision="stop",
             stage="runtime_guard",
             reason=runtime_decision.reason,
@@ -87,7 +109,7 @@ def evaluate_guard_pipeline(
             runtime_step_id=runtime_decision.step_id,
         )
 
-    return GuardPipelineDecision(
+    return _decision(
         decision="continue",
         stage="action_ready",
         reason="all guards passed",

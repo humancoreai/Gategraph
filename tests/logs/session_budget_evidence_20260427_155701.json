@@ -1,0 +1,1094 @@
+{
+  "run_id": "session_budget_evidence_20260427_155701",
+  "started_at": "2026-04-27T15:57:01.704932+00:00",
+  "finished_at": "2026-04-27T15:57:02.018330+00:00",
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "findings": 0
+  },
+  "tests": [
+    {
+      "test_name": "cross_task_cascade_stopped_by_session_budget",
+      "description": "Cross-task cost cascade must stop once cumulative session budget is exceeded.",
+      "expected": {
+        "final_decision": "stop",
+        "reason_contains": "max_session_cost_units",
+        "linked_tasks_before_stop": 7
+      },
+      "actual": {
+        "final_decision": "stop",
+        "final_reason": "max_session_cost_units exceeded: 32 > 30",
+        "linked_tasks": 7
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session_id": "SES-CASCADE",
+        "session_budgets": [
+          {
+            "session_id": "SES-CASCADE",
+            "max_session_cost_units": 30,
+            "max_session_tasks": 20,
+            "max_agent_cost_units": 100,
+            "created_at": "2026-04-27T15:57:01.724296+00:00"
+          }
+        ],
+        "session_task_links": [
+          {
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-01",
+            "actor_id": "agent-cascade",
+            "created_at": "2026-04-27T15:57:01.725552+00:00"
+          },
+          {
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-02",
+            "actor_id": "agent-cascade",
+            "created_at": "2026-04-27T15:57:01.729852+00:00"
+          },
+          {
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-03",
+            "actor_id": "agent-cascade",
+            "created_at": "2026-04-27T15:57:01.733029+00:00"
+          },
+          {
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-04",
+            "actor_id": "agent-cascade",
+            "created_at": "2026-04-27T15:57:01.743552+00:00"
+          },
+          {
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-05",
+            "actor_id": "agent-cascade",
+            "created_at": "2026-04-27T15:57:01.746573+00:00"
+          },
+          {
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-06",
+            "actor_id": "agent-cascade",
+            "created_at": "2026-04-27T15:57:01.749942+00:00"
+          },
+          {
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-07",
+            "actor_id": "agent-cascade",
+            "created_at": "2026-04-27T15:57:01.753475+00:00"
+          }
+        ],
+        "session_budget_decisions": [
+          {
+            "decision_id": "SBD-EAD933AEA4D4",
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-01",
+            "actor_id": "agent-cascade",
+            "projected_cost_units": 4,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.725956+00:00"
+          },
+          {
+            "decision_id": "SBD-4376E513E9A4",
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-02",
+            "actor_id": "agent-cascade",
+            "projected_cost_units": 4,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.730368+00:00"
+          },
+          {
+            "decision_id": "SBD-F6B84C2FE497",
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-03",
+            "actor_id": "agent-cascade",
+            "projected_cost_units": 4,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.733478+00:00"
+          },
+          {
+            "decision_id": "SBD-D3296452BF32",
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-04",
+            "actor_id": "agent-cascade",
+            "projected_cost_units": 4,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.743861+00:00"
+          },
+          {
+            "decision_id": "SBD-6D2671718C76",
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-05",
+            "actor_id": "agent-cascade",
+            "projected_cost_units": 4,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.747035+00:00"
+          },
+          {
+            "decision_id": "SBD-EBB30147254C",
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-06",
+            "actor_id": "agent-cascade",
+            "projected_cost_units": 4,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.750374+00:00"
+          },
+          {
+            "decision_id": "SBD-B056E4FED701",
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-07",
+            "actor_id": "agent-cascade",
+            "projected_cost_units": 4,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.753999+00:00"
+          },
+          {
+            "decision_id": "SBD-4D02FCDCF776",
+            "session_id": "SES-CASCADE",
+            "task_id": "V08-CASCADE-08",
+            "actor_id": "agent-cascade",
+            "projected_cost_units": 4,
+            "decision": "stop",
+            "reason": "max_session_cost_units exceeded: 32 > 30",
+            "created_at": "2026-04-27T15:57:01.756198+00:00"
+          }
+        ],
+        "audit_refs": {
+          "session_budget_decision_ids": [
+            "SBD-EAD933AEA4D4",
+            "SBD-4376E513E9A4",
+            "SBD-F6B84C2FE497",
+            "SBD-D3296452BF32",
+            "SBD-6D2671718C76",
+            "SBD-EBB30147254C",
+            "SBD-B056E4FED701",
+            "SBD-4D02FCDCF776"
+          ],
+          "linked_task_ids": [
+            "V08-CASCADE-01",
+            "V08-CASCADE-02",
+            "V08-CASCADE-03",
+            "V08-CASCADE-04",
+            "V08-CASCADE-05",
+            "V08-CASCADE-06",
+            "V08-CASCADE-07"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "parallel_multi_agent_stopped_by_session_budget",
+      "description": "Multi-agent aggregate cost must stop at the session budget.",
+      "expected": {
+        "final_decision": "stop",
+        "reason_contains": "max_session_cost_units",
+        "linked_tasks_before_stop": 8
+      },
+      "actual": {
+        "final_decision": "stop",
+        "final_reason": "max_session_cost_units exceeded: 27 > 24",
+        "linked_tasks": 8
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session_id": "SES-PARALLEL",
+        "session_budgets": [
+          {
+            "session_id": "SES-PARALLEL",
+            "max_session_cost_units": 24,
+            "max_session_tasks": 50,
+            "max_agent_cost_units": 100,
+            "created_at": "2026-04-27T15:57:01.774497+00:00"
+          }
+        ],
+        "session_task_links": [
+          {
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T1",
+            "actor_id": "agent-1",
+            "created_at": "2026-04-27T15:57:01.775908+00:00"
+          },
+          {
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T2",
+            "actor_id": "agent-1",
+            "created_at": "2026-04-27T15:57:01.796063+00:00"
+          },
+          {
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T3",
+            "actor_id": "agent-1",
+            "created_at": "2026-04-27T15:57:01.798468+00:00"
+          },
+          {
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T4",
+            "actor_id": "agent-1",
+            "created_at": "2026-04-27T15:57:01.801063+00:00"
+          },
+          {
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T5",
+            "actor_id": "agent-1",
+            "created_at": "2026-04-27T15:57:01.804049+00:00"
+          },
+          {
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A2-T1",
+            "actor_id": "agent-2",
+            "created_at": "2026-04-27T15:57:01.806902+00:00"
+          },
+          {
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A2-T2",
+            "actor_id": "agent-2",
+            "created_at": "2026-04-27T15:57:01.810355+00:00"
+          },
+          {
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A2-T3",
+            "actor_id": "agent-2",
+            "created_at": "2026-04-27T15:57:01.815290+00:00"
+          }
+        ],
+        "session_budget_decisions": [
+          {
+            "decision_id": "SBD-F42D8017ECC2",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T1",
+            "actor_id": "agent-1",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.793137+00:00"
+          },
+          {
+            "decision_id": "SBD-738F810DC164",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T2",
+            "actor_id": "agent-1",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.796434+00:00"
+          },
+          {
+            "decision_id": "SBD-ACF2917AADF6",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T3",
+            "actor_id": "agent-1",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.798828+00:00"
+          },
+          {
+            "decision_id": "SBD-F169A013909D",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T4",
+            "actor_id": "agent-1",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.801532+00:00"
+          },
+          {
+            "decision_id": "SBD-ACD5B9F9CA9E",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A1-T5",
+            "actor_id": "agent-1",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.804457+00:00"
+          },
+          {
+            "decision_id": "SBD-F3517761CF32",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A2-T1",
+            "actor_id": "agent-2",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.807316+00:00"
+          },
+          {
+            "decision_id": "SBD-318ED055233D",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A2-T2",
+            "actor_id": "agent-2",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.810757+00:00"
+          },
+          {
+            "decision_id": "SBD-87650D71C387",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A2-T3",
+            "actor_id": "agent-2",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.815639+00:00"
+          },
+          {
+            "decision_id": "SBD-A0105BFECB15",
+            "session_id": "SES-PARALLEL",
+            "task_id": "V08-PAR-A2-T4",
+            "actor_id": "agent-2",
+            "projected_cost_units": 3,
+            "decision": "stop",
+            "reason": "max_session_cost_units exceeded: 27 > 24",
+            "created_at": "2026-04-27T15:57:01.818305+00:00"
+          }
+        ],
+        "audit_refs": {
+          "session_budget_decision_ids": [
+            "SBD-F42D8017ECC2",
+            "SBD-738F810DC164",
+            "SBD-ACF2917AADF6",
+            "SBD-F169A013909D",
+            "SBD-ACD5B9F9CA9E",
+            "SBD-F3517761CF32",
+            "SBD-318ED055233D",
+            "SBD-87650D71C387",
+            "SBD-A0105BFECB15"
+          ],
+          "linked_task_ids": [
+            "V08-PAR-A1-T1",
+            "V08-PAR-A1-T2",
+            "V08-PAR-A1-T3",
+            "V08-PAR-A1-T4",
+            "V08-PAR-A1-T5",
+            "V08-PAR-A2-T1",
+            "V08-PAR-A2-T2",
+            "V08-PAR-A2-T3"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "session_reset_continuity_stopped",
+      "description": "Fresh task/runtime budget must not bypass cumulative session budget continuity.",
+      "expected": {
+        "first_decision": "continue",
+        "second_decision": "stop",
+        "reason_contains": "max_session_cost_units"
+      },
+      "actual": {
+        "first_decision": "continue",
+        "second_decision": "stop",
+        "second_reason": "max_session_cost_units exceeded: 18 > 10",
+        "linked_tasks": 1
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session_id": "SES-RESET-CONTINUITY",
+        "session_budgets": [
+          {
+            "session_id": "SES-RESET-CONTINUITY",
+            "max_session_cost_units": 10,
+            "max_session_tasks": 10,
+            "max_agent_cost_units": 100,
+            "created_at": "2026-04-27T15:57:01.849010+00:00"
+          }
+        ],
+        "session_task_links": [
+          {
+            "session_id": "SES-RESET-CONTINUITY",
+            "task_id": "V08-RESET-1",
+            "actor_id": "agent-reset",
+            "created_at": "2026-04-27T15:57:01.849962+00:00"
+          }
+        ],
+        "session_budget_decisions": [
+          {
+            "decision_id": "SBD-68DD4DFD8B02",
+            "session_id": "SES-RESET-CONTINUITY",
+            "task_id": "V08-RESET-1",
+            "actor_id": "agent-reset",
+            "projected_cost_units": 9,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.850339+00:00"
+          },
+          {
+            "decision_id": "SBD-6C78EA60EA4C",
+            "session_id": "SES-RESET-CONTINUITY",
+            "task_id": "V08-RESET-2",
+            "actor_id": "agent-reset",
+            "projected_cost_units": 9,
+            "decision": "stop",
+            "reason": "max_session_cost_units exceeded: 18 > 10",
+            "created_at": "2026-04-27T15:57:01.852848+00:00"
+          }
+        ],
+        "audit_refs": {
+          "session_budget_decision_ids": [
+            "SBD-68DD4DFD8B02",
+            "SBD-6C78EA60EA4C"
+          ],
+          "linked_task_ids": [
+            "V08-RESET-1"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "micro_task_flood_stopped_by_session_budget",
+      "description": "Micro-task flood must stop once cumulative session budget is exceeded.",
+      "expected": {
+        "final_decision": "stop",
+        "reason_contains": "max_session_cost_units",
+        "linked_tasks_before_stop": 25
+      },
+      "actual": {
+        "final_decision": "stop",
+        "final_reason": "max_session_cost_units exceeded: 26 > 25",
+        "linked_tasks": 25
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session_id": "SES-MICRO-FLOOD",
+        "session_budgets": [
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "max_session_cost_units": 25,
+            "max_session_tasks": 200,
+            "max_agent_cost_units": 100,
+            "created_at": "2026-04-27T15:57:01.865942+00:00"
+          }
+        ],
+        "session_task_links": [
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-001",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.866773+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-002",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.874268+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-003",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.878980+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-004",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.882561+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-005",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.885688+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-006",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.888321+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-007",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.891152+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-008",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.894334+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-009",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.896807+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-010",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.899477+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-011",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.902265+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-012",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.923092+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-013",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.926055+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-014",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.929005+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-015",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.932404+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-016",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.937995+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-017",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.940996+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-018",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.943552+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-019",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.946312+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-020",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.948877+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-021",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.951848+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-022",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.954500+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-023",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.956957+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-024",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.959440+00:00"
+          },
+          {
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-025",
+            "actor_id": "agent-flood",
+            "created_at": "2026-04-27T15:57:01.970366+00:00"
+          }
+        ],
+        "session_budget_decisions": [
+          {
+            "decision_id": "SBD-472231EB5193",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-001",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.867564+00:00"
+          },
+          {
+            "decision_id": "SBD-620B44CDB571",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-002",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.874854+00:00"
+          },
+          {
+            "decision_id": "SBD-BC112B6AE825",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-003",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.879447+00:00"
+          },
+          {
+            "decision_id": "SBD-D3A45A0B428E",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-004",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.883209+00:00"
+          },
+          {
+            "decision_id": "SBD-C829B8841EAD",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-005",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.885993+00:00"
+          },
+          {
+            "decision_id": "SBD-FE2672287CF1",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-006",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.888705+00:00"
+          },
+          {
+            "decision_id": "SBD-2AB4CD6C8A49",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-007",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.891504+00:00"
+          },
+          {
+            "decision_id": "SBD-28056D016701",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-008",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.894665+00:00"
+          },
+          {
+            "decision_id": "SBD-6A4809FE8E73",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-009",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.897197+00:00"
+          },
+          {
+            "decision_id": "SBD-58D6F99E65D8",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-010",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.899895+00:00"
+          },
+          {
+            "decision_id": "SBD-53D9807668A5",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-011",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.902697+00:00"
+          },
+          {
+            "decision_id": "SBD-E1F768C70A7F",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-012",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.923532+00:00"
+          },
+          {
+            "decision_id": "SBD-DD83980ADB77",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-013",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.926412+00:00"
+          },
+          {
+            "decision_id": "SBD-DFF3C429FCA4",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-014",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.929398+00:00"
+          },
+          {
+            "decision_id": "SBD-361B9BF74679",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-015",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.934041+00:00"
+          },
+          {
+            "decision_id": "SBD-37B5AB52466D",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-016",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.938463+00:00"
+          },
+          {
+            "decision_id": "SBD-32E39BBB48F7",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-017",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.941320+00:00"
+          },
+          {
+            "decision_id": "SBD-589C7700FAE9",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-018",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.943903+00:00"
+          },
+          {
+            "decision_id": "SBD-B9D148192BF6",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-019",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.946707+00:00"
+          },
+          {
+            "decision_id": "SBD-B538E11F0CB4",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-020",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.949222+00:00"
+          },
+          {
+            "decision_id": "SBD-2E923EF28286",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-021",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.952188+00:00"
+          },
+          {
+            "decision_id": "SBD-8712359FB0BE",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-022",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.954905+00:00"
+          },
+          {
+            "decision_id": "SBD-4E622ECF2E8D",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-023",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.957247+00:00"
+          },
+          {
+            "decision_id": "SBD-DFE751068E4B",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-024",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.967456+00:00"
+          },
+          {
+            "decision_id": "SBD-B35C6EDFDFE8",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-025",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.971124+00:00"
+          },
+          {
+            "decision_id": "SBD-524B45BB63EC",
+            "session_id": "SES-MICRO-FLOOD",
+            "task_id": "V08-MICRO-026",
+            "actor_id": "agent-flood",
+            "projected_cost_units": 1,
+            "decision": "stop",
+            "reason": "max_session_cost_units exceeded: 26 > 25",
+            "created_at": "2026-04-27T15:57:01.974708+00:00"
+          }
+        ],
+        "audit_refs": {
+          "session_budget_decision_ids": [
+            "SBD-472231EB5193",
+            "SBD-620B44CDB571",
+            "SBD-BC112B6AE825",
+            "SBD-D3A45A0B428E",
+            "SBD-C829B8841EAD",
+            "SBD-FE2672287CF1",
+            "SBD-2AB4CD6C8A49",
+            "SBD-28056D016701",
+            "SBD-6A4809FE8E73",
+            "SBD-58D6F99E65D8",
+            "SBD-53D9807668A5",
+            "SBD-E1F768C70A7F",
+            "SBD-DD83980ADB77",
+            "SBD-DFF3C429FCA4",
+            "SBD-361B9BF74679",
+            "SBD-37B5AB52466D",
+            "SBD-32E39BBB48F7",
+            "SBD-589C7700FAE9",
+            "SBD-B9D148192BF6",
+            "SBD-B538E11F0CB4",
+            "SBD-2E923EF28286",
+            "SBD-8712359FB0BE",
+            "SBD-4E622ECF2E8D",
+            "SBD-DFE751068E4B",
+            "SBD-B35C6EDFDFE8",
+            "SBD-524B45BB63EC"
+          ],
+          "linked_task_ids": [
+            "V08-MICRO-001",
+            "V08-MICRO-002",
+            "V08-MICRO-003",
+            "V08-MICRO-004",
+            "V08-MICRO-005",
+            "V08-MICRO-006",
+            "V08-MICRO-007",
+            "V08-MICRO-008",
+            "V08-MICRO-009",
+            "V08-MICRO-010",
+            "V08-MICRO-011",
+            "V08-MICRO-012",
+            "V08-MICRO-013",
+            "V08-MICRO-014",
+            "V08-MICRO-015",
+            "V08-MICRO-016",
+            "V08-MICRO-017",
+            "V08-MICRO-018",
+            "V08-MICRO-019",
+            "V08-MICRO-020",
+            "V08-MICRO-021",
+            "V08-MICRO-022",
+            "V08-MICRO-023",
+            "V08-MICRO-024",
+            "V08-MICRO-025"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "agent_budget_stops_single_agent_drift",
+      "description": "Agent-level cumulative budget must stop one expensive actor even if session budget remains available.",
+      "expected": {
+        "final_decision": "stop",
+        "reason_contains": "max_agent_cost_units",
+        "linked_tasks_before_stop": 3
+      },
+      "actual": {
+        "final_decision": "stop",
+        "final_reason": "max_agent_cost_units exceeded: 12 > 10",
+        "linked_tasks": 3
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session_id": "SES-AGENT-LIMIT",
+        "session_budgets": [
+          {
+            "session_id": "SES-AGENT-LIMIT",
+            "max_session_cost_units": 100,
+            "max_session_tasks": 50,
+            "max_agent_cost_units": 10,
+            "created_at": "2026-04-27T15:57:01.992555+00:00"
+          }
+        ],
+        "session_task_links": [
+          {
+            "session_id": "SES-AGENT-LIMIT",
+            "task_id": "V08-AGENT-LIMIT-1",
+            "actor_id": "agent-heavy",
+            "created_at": "2026-04-27T15:57:01.993468+00:00"
+          },
+          {
+            "session_id": "SES-AGENT-LIMIT",
+            "task_id": "V08-AGENT-LIMIT-2",
+            "actor_id": "agent-heavy",
+            "created_at": "2026-04-27T15:57:01.996418+00:00"
+          },
+          {
+            "session_id": "SES-AGENT-LIMIT",
+            "task_id": "V08-AGENT-LIMIT-3",
+            "actor_id": "agent-heavy",
+            "created_at": "2026-04-27T15:57:01.999015+00:00"
+          }
+        ],
+        "session_budget_decisions": [
+          {
+            "decision_id": "SBD-7AF093F293E2",
+            "session_id": "SES-AGENT-LIMIT",
+            "task_id": "V08-AGENT-LIMIT-1",
+            "actor_id": "agent-heavy",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.993824+00:00"
+          },
+          {
+            "decision_id": "SBD-CC16AA3E0176",
+            "session_id": "SES-AGENT-LIMIT",
+            "task_id": "V08-AGENT-LIMIT-2",
+            "actor_id": "agent-heavy",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.996771+00:00"
+          },
+          {
+            "decision_id": "SBD-B5B99C5DB2D3",
+            "session_id": "SES-AGENT-LIMIT",
+            "task_id": "V08-AGENT-LIMIT-3",
+            "actor_id": "agent-heavy",
+            "projected_cost_units": 3,
+            "decision": "continue",
+            "reason": "within session budget",
+            "created_at": "2026-04-27T15:57:01.999369+00:00"
+          },
+          {
+            "decision_id": "SBD-04CD0E44666A",
+            "session_id": "SES-AGENT-LIMIT",
+            "task_id": "V08-AGENT-LIMIT-4",
+            "actor_id": "agent-heavy",
+            "projected_cost_units": 3,
+            "decision": "stop",
+            "reason": "max_agent_cost_units exceeded: 12 > 10",
+            "created_at": "2026-04-27T15:57:02.001662+00:00"
+          }
+        ],
+        "audit_refs": {
+          "session_budget_decision_ids": [
+            "SBD-7AF093F293E2",
+            "SBD-CC16AA3E0176",
+            "SBD-B5B99C5DB2D3",
+            "SBD-04CD0E44666A"
+          ],
+          "linked_task_ids": [
+            "V08-AGENT-LIMIT-1",
+            "V08-AGENT-LIMIT-2",
+            "V08-AGENT-LIMIT-3"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "missing_session_budget_fail_closed",
+      "description": "Explicit session-budget evaluation must fail closed if no session budget exists.",
+      "expected": {
+        "decision": "stop",
+        "reason_contains": "no session budget"
+      },
+      "actual": {
+        "decision": "stop",
+        "reason": "no session budget exists"
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "session_id": "SES-MISSING",
+        "session_budgets": [],
+        "session_task_links": [],
+        "session_budget_decisions": [
+          {
+            "decision_id": "SBD-8FFB68B5570E",
+            "session_id": "SES-MISSING",
+            "task_id": "V08-MISSING-BUDGET",
+            "actor_id": "agent-a",
+            "projected_cost_units": 1,
+            "decision": "stop",
+            "reason": "no session budget exists",
+            "created_at": "2026-04-27T15:57:02.017125+00:00"
+          }
+        ],
+        "audit_refs": {
+          "session_budget_decision_ids": [
+            "SBD-8FFB68B5570E"
+          ],
+          "linked_task_ids": []
+        }
+      }
+    }
+  ]
+}
