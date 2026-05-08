@@ -1,35 +1,9 @@
-# VERSION
+# GateGraph Version
 
-```text
-Name: GateGraph
-Version: v0.5 PoC
-Status: Stable proof-of-concept core
-Date: 2026-04-27
-```
+Current version: **v0.7.1-audit-evidence**
 
 ## Summary
 
-GateGraph v0.5 consolidates the working governance core after:
+v0.7.1 adds a test-only Audit Evidence Layer that turns Runtime Guard, Enforcement, Governance, and Pattern Engine records into structured JSON proof logs.
 
-- normal usage simulation
-- unusual input simulation
-- agent scenario simulation
-
-All known P0 correctness and enforcement issues from the v0.4.x cycle were resolved.
-
-
-## v0.6-spec
-
-Runtime Guard design added as documentation-only layer.
-
-No runtime code added in this step.
-
-
-## v0.6-core
-
-Runtime Guard MVP implemented with budget, step, cost, runtime, and repeated-action checks.
-
-
-## v0.7
-
-Pattern Engine MVP implemented. It analyzes repeated enforcement rejections and creates pending proposals without changing rules.
+No core governance/enforcement/runtime/pattern semantics were changed.
