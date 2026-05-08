@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
 from src import risk_engine, rule_engine, event_logger, capability_token as cap_module, budget_ledger
+from src.runtime_path_assertions import TrustedEntryContext, assert_trusted_entry_context
 from src.capability_token import CapabilityToken
 
 ALL_KNOWN_CAPABILITIES = ["read_files", "write_files", "delete_files", "api_call"]
@@ -53,7 +54,9 @@ def evaluate_task(
     projected_cost_units: int = 1,
     system_budget_units: int = 100,
     actor_budget_units: int = 1000000,
+    trusted_entry_context: TrustedEntryContext | dict | None = None,
 ) -> GovernanceResult:
+    entry_context = assert_trusted_entry_context(trusted_entry_context)
     correlation_id = correlation_id or f"COR-{uuid.uuid4().hex[:12].upper()}"
     idempotency_key = idempotency_key or f"task:{task_id}:eval"
     event_id = f"EVT-{uuid.uuid4().hex[:12].upper()}"
@@ -105,6 +108,7 @@ def evaluate_task(
                 "input_source": input_source,
                 "data_sensitivity": data_sensitivity,
                 "secrets_involved": secrets_involved,
+                "trusted_entry_context": entry_context.as_audit_dict(),
             },
             evaluation={
                 "risk_level": risk.risk_level,
