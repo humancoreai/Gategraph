@@ -1,7 +1,7 @@
-Current stable: v0.10.2_STABLE
+Current candidate: v0.10.3_CANDIDATE
 
-Base: v0.10.1_STABLE
-Phase: Runtime / Boundary Hardening
-Scope: runtime chain/order assertions, skipped-stage detection, invalid enforcement chain detection, freeze-aware runtime invariants
+Base: v0.10.2_STABLE
+Phase: Release Process Guard
+Scope: release metadata consistency, structured manifest validation, dead-reference detection, promotion drift prevention.
 
-Invariant: v0.10.2_STABLE introduces no autonomous agents, no distributed governance, no new runtime execution model, no new risk model, no adapter expansion, no packaging/deployment layer, no UI, and no self-orchestration.
+Invariant: v0.10.3_CANDIDATE introduces no runtime capability, no governance behavior, no enforcement behavior, no adapter behavior, no agentic behavior, no packaging/deployment surface, and no UI.

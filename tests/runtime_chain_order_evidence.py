@@ -1,5 +1,5 @@
 """
-WHY: v0.10.2 proves the guard chain/order invariant with executable skipped-stage checks.
+WHY: v0.10.3 proves the guard chain/order invariant with executable skipped-stage checks.
 INV: action_ready requires Enforcement -> Flood Guard -> Session Budget -> Runtime Guard -> action_ready.
 SEC: invalid enforcement chains fail closed before later guards can be treated as valid.
 """

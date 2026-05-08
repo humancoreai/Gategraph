@@ -53,6 +53,6 @@ This phase does not introduce:
 - new runtime execution model
 
 
-## Runtime Chain Assertions – v0.10.2
+## Runtime Chain Assertions – v0.10.3
 
 `src/runtime_chain_assertions.py` makes guard order executable. The accepted order is Enforcement → Flood Guard → Session Budget → Runtime Guard → Action Ready. Skipped stages, duplicate stages, unknown stages, terminal-stage mismatch and downstream execution after enforcement denial fail closed.
