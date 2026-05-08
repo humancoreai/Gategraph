@@ -65,40 +65,41 @@ GateGraph governance principles are documented in [GOVERNANCE.md](./GOVERNANCE.m
 
 ## Project status
 
-Current candidate release: **v0.8.29_CANDIDATE**
+Current stable release: **v0.8.29_STABLE**
 
-This candidate adds read-only Operational Alerting on top of existing append-only operational incidents. Alerts are signals only; they do not repair, unblock, acknowledge, resolve, or mutate governance state.
+This stable release adds read-only Operational Alerting on top of existing append-only operational incidents. Alerts are signals only; they do not repair, unblock, acknowledge, resolve, or mutate governance state.
 
 
 ```text
-Version: v0.8.29_CANDIDATE
+Version: v0.8.29_STABLE
 Base: v0.8.28_STABLE
-Core status: stable proof of concept; operational alerting candidate
+Core status: stable proof of concept; operational alerting stable
 Production status: not production-ready; monitoring transport, recovery, and distributed layers remain out of scope
 ```
 
 Current validation summary:
 
 ```text
-Core loop:                    passed
-Runtime Guard:                passed
-Session Budget Guard:         passed
-Guard Orchestration:          passed
-Reason Normalization:         passed
-Scale Safety Evidence:        passed
+Full Windows Evidence CI:       passed
+Core loop:                      passed
+Runtime Guard:                  passed
+Session Budget Guard:           passed
+Guard Orchestration:            passed
+Reason Normalization:           passed
+Scale Safety Evidence:          passed
 Cross-Session Budget Evidence:  passed
-Operational Hardening:         passed
-Operational Alerting:          targeted evidence passed
-Evidence Runner Selftest:      passed
-External API Mock Evidence:    passed
-Secret/API Integration:        passed
-Pattern Engine:               passed
-Pattern Intelligence:         passed
-Normal usage simulation:      passed
-Unusual input simulation:     passed
-Agent scenario simulation:    passed
-Unsafe allows:                0
-Invariant violations:         0
+Operational Hardening:          passed
+Operational Alerting:           passed
+Evidence Runner Selftest:       passed
+External API Mock Evidence:     passed
+Secret/API Integration:         passed
+Pattern Engine:                 passed
+Pattern Intelligence:           passed
+Normal usage simulation:        passed
+Unusual input simulation:       passed
+Agent scenario simulation:      passed
+Unsafe allows:                  0
+Invariant violations:           0
 ```
 
 ---
