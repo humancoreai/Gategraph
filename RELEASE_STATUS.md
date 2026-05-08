@@ -1,46 +1,19 @@
-# Release Status — GateGraph v0.8.29_STABLE
+# Release Status — GateGraph v0.8.30_CANDIDATE
 
 ## Status
 
-Stable release.
+Candidate release.
 
-`v0.8.29_STABLE` promotes `v0.8.29_CANDIDATE` after successful full Windows Evidence CI.
+## Scope
 
-## Stable scope
+Operational Stability Gate A-D:
 
-- Adds read-only operational alert evaluation.
-- Converts open operational incidents into sorted alert signals.
-- Keeps Operational Layer observational only.
-- Adds targeted evidence for alert generation and non-mutation.
+- A: Alert Aggregator
+- B: Incident State Manager
+- C: Monitoring Export
+- D: Minimal deterministic Flood Guard
 
 ## Validation
 
-Full Windows Evidence CI:
-
-```text
-CI EVIDENCE REPORT
-Passed: True
-```
-
-Targeted evidence:
-
-```text
-operational_alerting_evidence: 4/4 passed
-```
-
-No unexpected allows and no invariant violations were reported in the full evidence run.
-
-## Production boundary
-
-Still not production-ready for open distributed use. Remaining boundaries:
-
-- Single-node only
-- No production KMS
-- No distributed budget lock/consensus
-- Mock external API integration only
-- No production monitoring transport
-- No automated incident recovery
-
-## Stable release document
-
-See `docs/RELEASE_v0.8.29_STABLE.md`.
+Targeted evidence: `operational_stability_evidence`.
+Full CI required before promotion to stable.
