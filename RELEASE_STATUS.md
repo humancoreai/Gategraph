@@ -2,7 +2,7 @@
 
 ## Current
 
-GateGraph v0.8.34_STABLE
+GateGraph v0.8.35_CANDIDATE
 
 ## Classification
 
@@ -22,3 +22,8 @@ Satisfied for v0.8.34: aggregate Windows evidence run passed unchanged.
 ## Scope note
 
 Stable means production-ready only within the documented local/protected single-node and server-adapter scope. It does not imply public internet exposure, authentication, TLS, reverse proxy support, multi-node operation, webhooks or background jobs.
+
+
+## v0.8.35_CANDIDATE
+
+Status: Candidate. API contract normalization implemented; Phase-4 evidence added.
