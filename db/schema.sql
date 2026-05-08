@@ -239,3 +239,38 @@ CREATE TABLE IF NOT EXISTS proposal_review_decisions (
 
 CREATE INDEX IF NOT EXISTS idx_proposal_review_decisions_proposal
     ON proposal_review_decisions(proposal_id);
+
+-- Controlled Apply (v0.8.22)
+-- INV: apply requires separate two-person Human-Gate; artifacts are signed, TTL-bound, and single-use.
+CREATE TABLE IF NOT EXISTS controlled_apply_reviews (
+    review_id TEXT PRIMARY KEY,
+    proposal_id TEXT NOT NULL,
+    reviewer_id TEXT NOT NULL,
+    decision TEXT NOT NULL CHECK (decision IN ('approved_for_controlled_apply','rejected')),
+    rationale TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY (proposal_id) REFERENCES proposals(proposal_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_controlled_apply_reviews_proposal
+    ON controlled_apply_reviews(proposal_id);
+
+CREATE TABLE IF NOT EXISTS controlled_apply_artifacts (
+    artifact_id TEXT PRIMARY KEY,
+    proposal_id TEXT NOT NULL,
+    schema_version TEXT NOT NULL,
+    change_type TEXT NOT NULL,
+    change_json TEXT NOT NULL,
+    before_json TEXT NOT NULL,
+    artifact_hash TEXT NOT NULL UNIQUE,
+    signing_key_id TEXT NOT NULL,
+    signature TEXT NOT NULL,
+    expires_at TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    status TEXT NOT NULL CHECK (status IN ('active','executed','expired','rejected')),
+    executed_at TEXT,
+    FOREIGN KEY (proposal_id) REFERENCES proposals(proposal_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_controlled_apply_artifacts_proposal
+    ON controlled_apply_artifacts(proposal_id);
