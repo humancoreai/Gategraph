@@ -1,4 +1,4 @@
-# Architecture – GateGraph v0.11.4_STABLE
+# Architecture – GateGraph v0.11.5_CANDIDATE
 
 # GateGraph Architecture
 
@@ -203,3 +203,8 @@ No action token is issued.
 - no autonomous rule updates
 
 These are intentionally outside the v0.5 PoC scope.
+
+
+## v0.11.5_CANDIDATE Security Mapping Boundary
+
+v0.11.5_CANDIDATE adds security mapping and token exposure hardening only. It does not participate in runtime governance and does not expand authority.

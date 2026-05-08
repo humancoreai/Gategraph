@@ -1,7 +1,7 @@
 {
-  "base": "v0.11.3_STABLE",
+  "base": "v0.11.4_STABLE",
   "capability_token_audit_redaction_scope": true,
-  "claim_boundary": "capability-token audit redaction only; audit may record token_id and token_hash but never raw token objects, signatures, signing input, Authorization headers, secret material, or bearer values",
+  "claim_boundary": "security mapping and token exposure hardening only; audit/explain/monitoring may record token_id, token_hash and key id but never raw token objects, signatures, signing input, Authorization headers, secret material, bearer values, or base64 token material",
   "config_consistency_scope": true,
   "deployment_scope": "single_node_local_protected",
   "distributed_governance": false,
@@ -15,15 +15,17 @@
   "new_runtime_capability": false,
   "new_runtime_model": false,
   "packaging_scope": true,
-  "phase": "Capability Token Audit Redaction",
-  "release": "v0.11.4_STABLE",
+  "phase": "Security Mapping + Token Exposure Hardening",
+  "release": "v0.11.5_CANDIDATE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "runtime_surface_scope": true,
   "scope_freeze": true,
+  "security_mapping_scope": true,
   "self_orchestration": false,
   "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "stable",
-  "surface_freeze_coupling_scope": true
+  "status": "candidate",
+  "surface_freeze_coupling_scope": true,
+  "token_exposure_hardening_scope": true
 }
