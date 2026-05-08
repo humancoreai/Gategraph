@@ -57,16 +57,22 @@ GateGraph currently does **not** provide:
 
 ---
 
+## Governance
+
+GateGraph governance principles are documented in [GOVERNANCE.md](./GOVERNANCE.md).
+
+---
+
 ## Project status
 
-Current stable release: **v0.8.27.1_STABLE**
+Current candidate release: **v0.8.28_CANDIDATE**
 
-This stable point consolidates Operational Hardening on top of Cross-Session Budget Control, Runtime Governance / Runaway Cost Control and Evidence Runner hardening. The full Windows Evidence CI run reported `Passed: True` on 2026-04-28. See `docs/RELEASE_v0.8.27.1_STABLE.md` for the release evidence summary and known limits.
+This candidate adds `GOVERNANCE.md` as the repository-level SSOT for GateGraph governance principles. It makes no functional code changes on top of `v0.8.27.1_STABLE`. The validation baseline remains the full Windows Evidence CI run from `v0.8.27.1_STABLE`, which reported `Passed: True` on 2026-04-28.
 
 
 ```text
-Version: v0.8.27.1_STABLE
-Core status: stable proof of concept
+Version: v0.8.28_CANDIDATE
+Core status: stable proof of concept; documentation candidate
 Production status: not production-ready; Single-Node Governance-Core and operational-hardening evidence are mature, distributed production layers remain out of scope
 ```
 
