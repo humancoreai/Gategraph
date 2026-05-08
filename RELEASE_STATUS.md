@@ -1,18 +1,19 @@
-# Release Status – v0.9.3_CANDIDATE
+# Release Status – v0.9.3_STABLE
 
-Status: candidate
+Status: stable
 
 Base: v0.9.2_STABLE
 
 Phase: Governance Freeze Snapshot / Audit Baseline
 
-Full Windows Evidence CI: pending user run
+Full Windows Evidence CI: passed according to supplied evidence before stable promotion
 
 Scope:
-- add governance freeze snapshot documentation
-- add invariant registry with stable IDs
-- add boundary references
-- add minimal governance freeze evidence
+- consolidate governance freeze snapshot documentation
+- preserve invariant registry with stable IDs
+- preserve boundary references
+- preserve governance freeze evidence
+- promote verified pre-stable metadata to stable metadata
 
 Out of scope:
 - no new runtime model
