@@ -209,3 +209,22 @@ Invariant status:
 - Normalization never changes decisions.
 - Unknown reasons fall back to unclassified codes.
 - Guard Orchestrator now emits normalized_reason as additive metadata.
+
+
+## v0.8.3-scale-safety-fix
+
+Fixed review findings relevant for scaling:
+
+- Session Budget Guard now wraps budget evaluation/link insertion in `BEGIN IMMEDIATE`.
+- Allowed tasks reserve projected cost via `session_task_links.reserved_cost_units`.
+- Session budget aggregation uses `max(reserved_cost_units, actual_runtime_cost)`.
+- Reason Normalizer now uses explicit canonical reason keys instead of broad substring matching.
+- Event schema version updated from `0.4` to `0.8.3`.
+- README updated from stale v0.5 status to v0.8.3 architecture.
+
+Added:
+- `tests/scale_safety_evidence.py`
+- `docs/SCALE_SAFETY.md`
+
+Known boundary:
+- This is still SQLite PoC-level concurrency, not distributed transaction safety.
