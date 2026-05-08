@@ -1,28 +1,27 @@
-# Release Status - GateGraph v0.8.6-runaway-cost-control
+# Release Status - GateGraph v0.8.7-ci-runner-stabilization
 
 ## Status
 
-Evidence build: PASS on targeted and individual evidence runs.
+Release hygiene stabilization on top of v0.8.6.
 
-## Change type
+## Scope
 
-Security / control-plane hardening.
+Changed:
+- CI/evidence runner behavior
+- test-loop exit behavior
+- CI runner documentation
 
-## Core changes
+Unchanged:
+- Governance Layer
+- Enforcement Layer
+- Session Budget Guard
+- Runtime Guard
+- Guard Orchestrator
+- Audit Layer
+- Explain Layer
+- Pattern Engine
+- External API Adapter semantics
 
-- Non-positive projected session costs fail closed.
-- Non-positive runtime costs fail closed.
-- Invalid cost stops receive normalized reason codes.
-- New runaway-cost evidence scenarios added.
+## Release note
 
-## Invariants preserved
-
-- Enforcement remains the only capability gatekeeper.
-- Guards can only stop; they never grant capability.
-- External API calls remain mock-only and pass through Enforcement + Guard Pipeline.
-- Pattern Engine remains proposal-only.
-- Audit remains append-only.
-
-## Known limitation
-
-The aggregate CI runner still shows environment-level shutdown/runner instability in this container. Individual evidence scripts were executed successfully. Production semantics were not weakened to accommodate the runner.
+This release does not add new product capability. It makes aggregate evidence execution more bounded and release-suitable.
