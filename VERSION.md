@@ -1,15 +1,11 @@
-# GateGraph Version
+# VERSION
 
-Current stable release: v0.8.30_STABLE
+Current version: v0.8.31_CANDIDATE
 
-Base: v0.8.29_STABLE
+Basis: v0.8.30_STABLE
 
-Stable scope:
+Change type: Usability / Single-Node Runtime Interface
 
-- Alert aggregation for operational noise reduction.
-- Manual incident lifecycle: open → acknowledged → resolved.
-- Read-only monitoring export.
-- Deterministic actor-scoped Flood Guard before session reservation.
-- Evidence expectation updated: negative projected cost may fail closed at Flood Guard before Session reservation.
-
-No UI, no autonomous recovery, no external monitoring integration.
+Functional core changes: none
+Governance changes: none
+Runtime adapter changes: added single-node CLI and external config loading
