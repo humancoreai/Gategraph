@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.7_CANDIDATE"
+VERSION = "v0.11.7_STABLE"
 BASE = "v0.11.6_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
@@ -93,7 +93,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.11.7_CANDIDATE.md",
+    "docs/RELEASE_v0.11.7_STABLE.md",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
     "gategraph/context/__init__.py",
@@ -108,7 +108,7 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.11.7_CANDIDATE.md",
+    "docs/RELEASE_v0.11.7_STABLE.md",
 }
 
 
@@ -191,9 +191,9 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "candidate",
+        "status": "stable",
         "base": BASE,
-        "kind": "candidate_release",
+        "kind": "stable_release",
         "scope": "context_governance_boundary",
         "deterministic_packaging": True,
         "file_count": len(entries),
@@ -233,7 +233,7 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "candidate",
+        "status": "stable",
         "base": BASE,
         "phase": "Context / Memory Governance Baseline",
         "governance_logic_changed": False,
