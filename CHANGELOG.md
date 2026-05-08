@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.11.8_CANDIDATE
+## v0.11.8_STABLE
 
 ### Review hygiene fix
 - Align README base-stable claim with `v0.11.7_STABLE`.
