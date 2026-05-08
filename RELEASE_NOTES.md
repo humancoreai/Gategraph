@@ -158,3 +158,10 @@ This candidate adds a descriptive integrity layer for archived governance record
 - Stable after Windows Full Evidence CI passed.
 - Operator export/evidence bundle accepted as v0.8.47 stable baseline.
 - No governance re-evaluation, policy tuning, prioritization or recommendation behavior.
+
+
+## v0.8.48_CANDIDATE - Final Consolidation / v0.9 Readiness Gate
+
+- Adds final_consolidation_evidence for release metadata, entrypoint, evidence manifest and artifact-shape checks.
+- Intended as v0.9 readiness gate, not a feature phase.
+- No governance decision logic, policy, queue, runtime or operator behavior changes.
