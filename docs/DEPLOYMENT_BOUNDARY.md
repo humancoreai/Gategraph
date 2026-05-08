@@ -1,10 +1,10 @@
-# Deployment Boundary – GateGraph v0.11.0_STABLE
+# Deployment Boundary – GateGraph v0.11.1_CANDIDATE
 
 ## Purpose
 
 This document defines the supported deployment surface for the Phase B packaging baseline.
 
-v0.11.0_STABLE does not introduce new runtime behavior. It makes the existing single-node system installable and easier to start reproducibly.
+v0.11.1_CANDIDATE does not introduce new runtime behavior. It makes the existing single-node system installable and easier to start reproducibly.
 
 ## Supported
 
@@ -79,3 +79,6 @@ python -m src.server --host 127.0.0.1 --port 8787
 ## Invariant
 
 Packaging must not create an alternative governance path. All evaluation still flows through the existing service adapter and TrustedEntryContext enforcement.
+
+
+See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operational start-surface expectations.

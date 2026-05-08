@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.0_STABLE"
-BASE = "v0.10.3_STABLE"
+VERSION = "v0.11.1_CANDIDATE"
+BASE = "v0.11.0_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -45,6 +45,9 @@ REQUIRED_RELEASE_FILES = {
     "tests/install_surface_evidence.py",
     "tests/packaging_integrity_evidence.py",
     "docs/DEPLOYMENT_BOUNDARY.md",
+    "tests/config_consistency_evidence.py",
+    "tests/startup_surface_evidence.py",
+    "docs/STARTUP_SURFACE.md",
     "pyproject.toml",
     "docs/THREAT_MODEL.md",
     "README.md",
@@ -159,9 +162,9 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
+        "kind": "candidate_release",
         "scope": "deployment_packaging_baseline",
         "deterministic_packaging": True,
         "file_count": len(entries),
@@ -201,9 +204,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Deployment / Packaging Baseline",
+        "phase": "Operational Start Surface / Minimal Deployment Consistency",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -215,12 +218,13 @@ def main() -> int:
         "new_adapter": False,
         "packaging_scope": True,
         "deployment_scope": "single_node_local_protected",
+        "startup_surface_scope": True,
+        "config_consistency_scope": True,
         "release_process_guard": True,
-        "autonomous_classification": False,
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "packaging and installability baseline only; no runtime, governance, enforcement, adapter, agentic, distributed, or UI behavior changes",
+        "claim_boundary": "startup/config/health consistency only; no runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker, Kubernetes, or UI behavior changes",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 

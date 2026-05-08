@@ -22,6 +22,9 @@ RELEASE_FILES = [
     "RELEASE_NOTES.md",
     "VERSION.md",
     "docs/DEPLOYMENT_BOUNDARY.md",
+    "tests/config_consistency_evidence.py",
+    "tests/startup_surface_evidence.py",
+    "docs/STARTUP_SURFACE.md",
     "pyproject.toml",
     "README.md",
     "CHANGELOG.md",
@@ -184,7 +187,7 @@ def run(expected_release: str, expected_status: str, expected_base: str | None) 
 
 
 def main(argv: list[str]) -> int:
-    expected_release = argv[1] if len(argv) > 1 else "v0.11.0_STABLE"
+    expected_release = argv[1] if len(argv) > 1 else "v0.11.1_CANDIDATE"
     expected_status = argv[2] if len(argv) > 2 else "candidate"
     expected_base = argv[3] if len(argv) > 3 else None
     result = run(expected_release, expected_status, expected_base)

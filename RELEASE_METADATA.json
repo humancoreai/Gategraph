@@ -1,7 +1,6 @@
 {
-  "autonomous_classification": false,
-  "base": "v0.10.3_STABLE",
-  "claim_boundary": "packaging and installability baseline only; no runtime, governance, enforcement, adapter, agentic, distributed, or UI behavior changes",
+  "base": "v0.11.0_STABLE",
+  "config_consistency_scope": true,
   "deployment_scope": "single_node_local_protected",
   "distributed_governance": false,
   "enforcement_logic_changed": false,
@@ -13,11 +12,12 @@
   "new_runtime_capability": false,
   "new_runtime_model": false,
   "packaging_scope": true,
-  "phase": "Deployment / Packaging Baseline",
-  "release": "v0.11.0_STABLE",
+  "phase": "Operational Start Surface / Minimal Deployment Consistency",
+  "release": "v0.11.1_CANDIDATE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "scope_freeze": true,
   "self_orchestration": false,
-  "status": "stable"
+  "startup_surface_scope": true,
+  "status": "candidate"
 }
