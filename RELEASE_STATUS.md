@@ -1,15 +1,20 @@
-# RELEASE_STATUS
+# Release Status
 
-Version: v0.8.32_STABLE
-Status: STABLE
-Scope: Single-node usability + read-only monitoring export
+Current candidate: **v0.8.33_CANDIDATE**
 
-Evidence:
-- Full Windows Evidence CI: passed
-- Single-node CLI evidence: passed
-- Single-node monitoring export evidence: passed
-- No invariant violations
-- No unexpected allows
+Base stable: **v0.8.32_STABLE**
 
-No functional Governance-core changes.
-No Enforcement, Runtime Guard, Budget Ledger, HTTP Policy, Secret Handling or Operational decision logic changes.
+## Candidate scope
+
+Phase 2 server/integration layer:
+
+- minimal HTTP adapter
+- shared CLI/server service adapter
+- `POST /evaluate`
+- `GET /status`
+- `GET /monitoring`
+- server evidence test
+
+## Stable gate
+
+Not yet stable. Requires target-environment Full Windows CI before promotion.
