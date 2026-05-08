@@ -1,6 +1,7 @@
 """
 WHY: Reviewers need a local, deterministic way to verify a release ZIP.
 INV: Verification is read-only and never repairs packages silently.
+SEC: Manifest, archive content, hashes and deterministic ZIP metadata are checked fail-closed.
 """
 from __future__ import annotations
 
@@ -10,67 +11,123 @@ import sys
 import zipfile
 from pathlib import Path
 
-VERSION = "v0.9.0_CANDIDATE"
+VERSION = "v0.9.1_CANDIDATE"
 EXPECTED_PREFIX = f"GateGraph_{VERSION}/"
 FIXED_ZIP_DT = (2026, 1, 1, 0, 0, 0)
-FORBIDDEN_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", "dist"}
-FORBIDDEN_SUFFIXES = {".pyc", ".pyo", ".db", ".csv", ".zip"}
+FORBIDDEN_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea", ".vscode", "dist"}
+FORBIDDEN_SUFFIXES = {".pyc", ".pyo", ".db", ".csv", ".zip", ".tmp", ".temp", ".log"}
+FORBIDDEN_NAMES = {"gategraph.db", "gategraph.db-journal", "gategraph.db-wal", "gategraph.db-shm", ".DS_Store", "Thumbs.db"}
+REQUIRED = {
+    "VERSION.md",
+    "RELEASE_METADATA.json",
+    "RELEASE_MANIFEST.json",
+    "TRUST_MODEL.md",
+    "SECURITY.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "RELEASE_PROCESS.md",
+    "LICENSE",
+    "tools/build_release.py",
+    "tools/verify_release.py",
+    "tests/caller_boundary_evidence.py",
+    "tests/release_integrity_evidence.py",
+}
 
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _relative_name(full_name: str) -> str:
+    return full_name.removeprefix(EXPECTED_PREFIX)
+
+
+def _entry_errors(name: str, date_time: tuple[int, int, int, int, int, int]) -> list[str]:
+    errors: list[str] = []
+    rel = _relative_name(name)
+    path = Path(rel)
+    parts = path.parts
+    if not name.startswith(EXPECTED_PREFIX):
+        errors.append(f"entry outside expected prefix: {name}")
+    if not rel or rel.endswith("/"):
+        errors.append(f"directory/empty entry found: {name}")
+    if any(part.startswith(".") for part in parts) and rel != ".gitignore":
+        errors.append(f"hidden entry found: {name}")
+    if set(parts) & FORBIDDEN_PARTS:
+        errors.append(f"forbidden path part found: {name}")
+    if path.name in FORBIDDEN_NAMES:
+        errors.append(f"forbidden file name found: {name}")
+    if path.suffix.lower() in FORBIDDEN_SUFFIXES:
+        errors.append(f"forbidden suffix found: {name}")
+    if rel.startswith("tests/logs/") and path.name != ".gitkeep":
+        errors.append(f"test log artifact found: {name}")
+    if date_time != FIXED_ZIP_DT:
+        errors.append(f"non-deterministic timestamp: {name}")
+    return errors
+
+
 def verify(zip_path: Path) -> dict:
+    errors: list[str] = []
     with zipfile.ZipFile(zip_path, "r") as zf:
         infos = zf.infolist()
         names = [i.filename for i in infos]
-        errors: list[str] = []
+        if not names:
+            errors.append("zip is empty")
+        if len(names) != len(set(names)):
+            errors.append("zip contains duplicate entries")
         if names != sorted(names):
             errors.append("zip entries are not lexicographically sorted")
-        if any(not name.startswith(EXPECTED_PREFIX) for name in names):
-            errors.append("zip contains entries outside expected release root")
         for info in infos:
-            rel = info.filename.removeprefix(EXPECTED_PREFIX)
-            parts = Path(rel).parts
-            if any(part.startswith(".") for part in parts) and rel != ".gitignore":
-                errors.append(f"hidden entry found: {info.filename}")
-            if set(parts) & FORBIDDEN_PARTS:
-                errors.append(f"forbidden path part found: {info.filename}")
-            if Path(rel).suffix.lower() in FORBIDDEN_SUFFIXES:
-                errors.append(f"forbidden suffix found: {info.filename}")
-            if info.date_time != FIXED_ZIP_DT:
-                errors.append(f"non-deterministic timestamp: {info.filename}")
-        required = [
-            f"{EXPECTED_PREFIX}VERSION.md",
-            f"{EXPECTED_PREFIX}RELEASE_METADATA.json",
-            f"{EXPECTED_PREFIX}RELEASE_MANIFEST.json",
-            f"{EXPECTED_PREFIX}EXTERNAL_REVIEW.md",
-            f"{EXPECTED_PREFIX}INVARIANTS.md",
-            f"{EXPECTED_PREFIX}NON_SCOPE.md",
-            f"{EXPECTED_PREFIX}tools/build_release.py",
-            f"{EXPECTED_PREFIX}tools/verify_release.py",
-            f"{EXPECTED_PREFIX}tests/milestone_release_evidence.py",
-        ]
-        missing = [name for name in required if name not in names]
-        if missing:
-            errors.append(f"missing required entries: {missing}")
+            errors.extend(_entry_errors(info.filename, info.date_time))
+
+        rel_names = [_relative_name(name) for name in names if name.startswith(EXPECTED_PREFIX)]
+        missing_required = sorted(REQUIRED - set(rel_names))
+        if missing_required:
+            errors.append(f"missing required entries: {missing_required}")
+
         manifest_name = f"{EXPECTED_PREFIX}RELEASE_MANIFEST.json"
-        if manifest_name in names:
+        if manifest_name not in names:
+            errors.append("missing release manifest")
+            manifest = None
+        else:
             manifest = json.loads(zf.read(manifest_name).decode("utf-8"))
+
+        if manifest is not None:
             if manifest.get("release") != VERSION:
                 errors.append("manifest release mismatch")
-            manifest_paths = [entry["path"] for entry in manifest.get("files", [])]
-            for entry in manifest.get("files", []):
-                full = f"{EXPECTED_PREFIX}{entry['path']}"
-                if full in names:
-                    digest = sha256_bytes(zf.read(full))
-                    if digest != entry.get("sha256"):
-                        errors.append(f"hash mismatch: {entry['path']}")
-            missing_manifest_paths = [p for p in manifest_paths if f"{EXPECTED_PREFIX}{p}" not in names]
-            if missing_manifest_paths:
-                errors.append(f"manifest paths missing in zip: {missing_manifest_paths}")
-        return {"passed": not errors, "errors": errors, "entry_count": len(names)}
+            entries = manifest.get("files", [])
+            if not isinstance(entries, list) or not entries:
+                errors.append("manifest file list is empty or invalid")
+                entries = []
+            manifest_paths = [entry.get("path") for entry in entries if isinstance(entry, dict)]
+            if len(manifest_paths) != len(set(manifest_paths)):
+                errors.append("manifest contains duplicate paths")
+            if manifest.get("file_count") != len(entries):
+                errors.append("manifest file_count mismatch")
+
+            zip_declared_paths = set(rel_names) - {"RELEASE_MANIFEST.json"}
+            manifest_path_set = set(p for p in manifest_paths if isinstance(p, str))
+            missing_in_zip = sorted(manifest_path_set - zip_declared_paths)
+            undeclared_in_manifest = sorted(zip_declared_paths - manifest_path_set)
+            if missing_in_zip:
+                errors.append(f"manifest paths missing in zip: {missing_in_zip}")
+            if undeclared_in_manifest:
+                errors.append(f"zip contains undeclared files: {undeclared_in_manifest}")
+
+            for entry in entries:
+                if not isinstance(entry, dict):
+                    errors.append("manifest contains non-object entry")
+                    continue
+                p = entry.get("path")
+                full = f"{EXPECTED_PREFIX}{p}"
+                if not isinstance(p, str) or full not in names:
+                    continue
+                data = zf.read(full)
+                if len(data) != entry.get("size"):
+                    errors.append(f"size mismatch: {p}")
+                if sha256_bytes(data) != entry.get("sha256"):
+                    errors.append(f"hash mismatch: {p}")
+    return {"passed": not errors, "errors": errors, "entry_count": len(names) if 'names' in locals() else 0}
 
 
 def main(argv: list[str]) -> int:
