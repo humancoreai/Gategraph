@@ -1,6 +1,6 @@
 # Runaway / Cost Control — Runtime Governance v1
 
-Status: v0.8.25 candidate  
+Status: v0.8.25.1 stable  
 Scope: deterministic runtime hardening for cost, loop and step escalation.
 
 ## Purpose
