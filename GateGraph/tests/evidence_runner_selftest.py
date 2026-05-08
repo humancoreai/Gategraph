@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import time
 from pathlib import Path
 
@@ -17,6 +18,20 @@ TARGET = "tests/evidence_runner_case.py"
 
 
 def _pid_alive(pid: int) -> bool:
+    if pid <= 0:
+        return False
+    if os.name == "nt":
+        try:
+            result = subprocess.run(
+                ["tasklist", "/FI", f"PID eq {pid}"],
+                capture_output=True,
+                text=True,
+                timeout=3,
+                check=False,
+            )
+            return str(pid) in result.stdout
+        except Exception:
+            return True
     try:
         os.kill(pid, 0)
         return True
