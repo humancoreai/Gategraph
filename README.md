@@ -171,3 +171,14 @@ Runtime Guard is intentionally separate from GateGraph Core. It handles runtime 
 See `docs/PATTERN_ENGINE.md`.
 
 Pattern Engine creates pending proposals only and never changes rules automatically.
+
+## Evidence / CI proof runner
+
+Run the audit evidence suite locally:
+
+```bash
+python tests/evidence_ci.py
+```
+
+This executes the core loop, runtime guard, pattern engine and stress evidence scenarios, then writes JSON reports under `tests/logs/`.
+The GitHub Actions workflow `.github/workflows/evidence.yml` runs the same command and uploads evidence logs as artifacts.
