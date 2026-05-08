@@ -35,3 +35,11 @@ Evidence CI passed
 - Retained the Evidence Runner POSIX supervision patch: Python-owned `Popen` timeout handling with POSIX session isolation instead of the external `timeout` wrapper.
 - Repo hygiene pass removed generated caches and evidence logs from the stable archive.
 - Known limits remain: single-node only, no production KMS, no distributed consensus/locks, mock external API only, no automated incident recovery.
+
+## v0.8.28_CANDIDATE
+
+- Added root-level `GOVERNANCE.md` as the repository-level governance SSOT.
+- Added README reference to `GOVERNANCE.md`.
+- Updated version/release metadata for the candidate.
+- No functional code changes; validation baseline remains `v0.8.27.1_STABLE`.
+
