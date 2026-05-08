@@ -1,7 +1,7 @@
 """
-WHY: Aggregate evidence runner must distinguish core test failures from environment-specific Python shutdown hangs.
+WHY: Aggregate evidence runner must prove evidence results without relying on shell timeout wrappers.
 INV: This runner only executes evidence scripts and records results; production code is untouched.
-SEC: A timed-out script is accepted only if it already emitted a zero-failure Summary line.
+SEC: Each evidence script runs in an isolated subprocess with bounded lifetime and fail-closed reporting.
 """
 from __future__ import annotations
 
@@ -9,8 +9,12 @@ import ast
 import json
 import os
 import re
+import signal
+import select
 import subprocess
 import sys
+import time
+import threading
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,6 +24,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 LOG_DIR = PROJECT_ROOT / "tests" / "logs"
 
 MANIFEST: List[Tuple[str, str, int]] = [
+    ("evidence_runner_selftest", "tests/evidence_runner_selftest.py", 10),
     ("runtime_stress_evidence", "tests/runtime_stress_evidence.py", 40),
     ("session_budget_evidence", "tests/session_budget_evidence.py", 40),
     ("guard_orchestration_evidence", "tests/guard_orchestration_evidence.py", 30),
@@ -44,16 +49,29 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("controlled_apply", "tests/controlled_apply_evidence.py", 20),
 ]
 
+DB_FILES = ("gategraph.db", "gategraph.db-journal", "gategraph.db-wal", "gategraph.db-shm")
+
+class _RunnerTimeout(Exception):
+    pass
+
+
+def _raise_runner_timeout(signum, frame):
+    raise _RunnerTimeout()
+
 @dataclass
 class EvidenceCommand:
     name: str
     script: str
     timeout_seconds: int
     returncode: int
-    status: str  # passed | failed | passed_after_summary_timeout | timeout
+    status: str  # passed | failed | timeout
     stdout_tail: str = ""
     stderr_tail: str = ""
     parsed_summary: dict | None = None
+    timed_out: bool = False
+    killed_process_group: bool = False
+    reset_warnings: list[str] = field(default_factory=list)
+    duration_seconds: float = 0.0
 
 @dataclass
 class EvidenceCIReport:
@@ -66,7 +84,7 @@ class EvidenceCIReport:
 
     def finish(self) -> None:
         self.finished_at = datetime.now(timezone.utc).isoformat()
-        self.passed = all(c.status in {"passed", "passed_after_summary_timeout"} for c in self.commands)
+        self.passed = all(c.status == "passed" for c in self.commands)
 
 
 def _tail(text: str, chars: int = 5000) -> str:
@@ -89,61 +107,115 @@ def _summary_passed(summary: dict | None) -> bool:
         return False
     if "failed" in summary:
         return int(summary.get("failed") or 0) == 0
-    # Some simple scripts may not emit failed but return clean output; timeout still requires explicit summary.
     return False
 
 
-def _reset_db_files() -> None:
-    for name in ("gategraph.db", "gategraph.db-journal", "gategraph.db-wal", "gategraph.db-shm"):
+def _reset_db_files() -> list[str]:
+    warnings: list[str] = []
+    for name in DB_FILES:
+        path = PROJECT_ROOT / name
         try:
-            (PROJECT_ROOT / name).unlink()
+            path.unlink()
         except FileNotFoundError:
             pass
+        except OSError as exc:
+            warnings.append(f"could not unlink {name}: {type(exc).__name__}: {exc}")
+        if path.exists():
+            warnings.append(f"db reset verification failed: {name} still exists")
+    return warnings
 
 
-def run_one(name: str, script: str, timeout_seconds: int) -> EvidenceCommand:
-    _reset_db_files()
+def _kill_process_group(proc: subprocess.Popen[object]) -> bool:
+    if proc.poll() is not None:
+        return False
+    try:
+        if os.name == "posix":
+            os.killpg(proc.pid, signal.SIGKILL)
+        else:
+            proc.kill()
+        return True
+    except ProcessLookupError:
+        return False
+
+
+def _bounded_reap(proc: subprocess.Popen[object], seconds: float = 2.0) -> int | None:
+    try:
+        return proc.wait(timeout=seconds)
+    except subprocess.TimeoutExpired:
+        return proc.returncode
+
+
+def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, str] | None = None) -> EvidenceCommand:
+    reset_warnings = _reset_db_files()
     env = os.environ.copy()
     env["PYTHONDONTWRITEBYTECODE"] = "1"
+    if extra_env:
+        env.update(extra_env)
     cmd = [sys.executable, "-S", "-u", "tests/_run_isolated.py", script]
     out_path = LOG_DIR / f"_{name}.stdout.tmp"
     err_path = LOG_DIR / f"_{name}.stderr.tmp"
     LOG_DIR.mkdir(parents=True, exist_ok=True)
 
-    # WHY: file-backed output avoids pipe/capture deadlocks; the isolated wrapper hard-exits after the evidence entrypoint to avoid interpreter shutdown hangs.
+    started = time.monotonic()
+    timed_out = False
+    killed_group = False
+    rc: int | None = None
+
+    # WHY: file-backed output avoids pipe deadlocks. Python owns the timeout; process-session isolation lets us kill descendants too.
     with out_path.open("w", encoding="utf-8") as out, err_path.open("w", encoding="utf-8") as err:
-        completed = subprocess.run(
-            ["timeout", "-k", "2s", f"{timeout_seconds}s", *cmd],
+        proc = subprocess.Popen(
+            cmd,
             cwd=PROJECT_ROOT,
             env=env,
             text=True,
             stdout=out,
             stderr=err,
+            start_new_session=(os.name == "posix"),
         )
+        try:
+            rc = proc.wait(timeout=timeout_seconds)
+        except subprocess.TimeoutExpired:
+            timed_out = True
+            killed_group = _kill_process_group(proc)
+            try:
+                rc = proc.wait(timeout=2.0)
+            except subprocess.TimeoutExpired:
+                rc = 124
 
+    duration = time.monotonic() - started
     stdout = out_path.read_text(encoding="utf-8", errors="replace") if out_path.exists() else ""
     stderr = err_path.read_text(encoding="utf-8", errors="replace") if err_path.exists() else ""
-    try:
-        out_path.unlink()
-        err_path.unlink()
-    except FileNotFoundError:
-        pass
+    for path in (out_path, err_path):
+        try:
+            path.unlink()
+        except FileNotFoundError:
+            pass
 
     summary = _parse_summary(stdout)
-    if completed.returncode == 0:
-        status = "passed"
-        rc = 0
-    elif completed.returncode == 124 and _summary_passed(summary):
-        status = "passed_after_summary_timeout"
-        rc = 0
-    elif completed.returncode == 124:
+    if timed_out:
         status = "timeout"
-        rc = 124
+        returncode = 124
+    elif rc == 0:
+        status = "passed"
+        returncode = 0
     else:
         status = "failed"
-        rc = completed.returncode
-    return EvidenceCommand(name, script, timeout_seconds, rc, status, _tail(stdout), _tail(stderr), summary)
+        returncode = int(rc if rc is not None else 1)
 
+    return EvidenceCommand(
+        name=name,
+        script=script,
+        timeout_seconds=timeout_seconds,
+        returncode=returncode,
+        status=status,
+        stdout_tail=_tail(stdout),
+        stderr_tail=_tail(stderr),
+        parsed_summary=summary,
+        timed_out=timed_out,
+        killed_process_group=killed_group,
+        reset_warnings=reset_warnings,
+        duration_seconds=round(duration, 3),
+    )
 
 def main() -> int:
     started = datetime.now(timezone.utc)
@@ -152,19 +224,26 @@ def main() -> int:
         run_id=started.strftime("ci_evidence_%Y%m%d_%H%M%S"),
         started_at=started.isoformat(),
         notes=[
-            "Subprocess runner: accepts timeout only after a zero-failure Summary line, isolating shutdown hangs from evidence failures."
+            "Subprocess runner uses Python-owned timeout, file-backed I/O, process-session isolation and hard process-group kill on timeout.",
+            "Timeout is fail-closed: an evidence script that exceeds its budget fails even if it emitted a passing Summary before hanging.",
+            "Production governance/enforcement/runtime code is not executed differently by this runner."
         ],
     )
     for name, script, timeout_seconds in MANIFEST:
         print(f"--- {name} ---", flush=True)
         result = run_one(name, script, timeout_seconds)
         report.commands.append(result)
-        mark = "✓" if result.status in {"passed", "passed_after_summary_timeout"} else "✗"
-        suffix = " (summary passed; killed shutdown hang)" if result.status == "passed_after_summary_timeout" else ""
+        mark = "✓" if result.status == "passed" else "✗"
         print(result.stdout_tail, end="" if result.stdout_tail.endswith("\n") else "\n")
         if result.stderr_tail:
             print(result.stderr_tail, end="" if result.stderr_tail.endswith("\n") else "\n", file=sys.stderr)
-        print(f"{mark} {name} rc={result.returncode} status={result.status}{suffix}", flush=True)
+        if result.reset_warnings:
+            for warning in result.reset_warnings:
+                print(f"runner warning: {warning}", file=sys.stderr, flush=True)
+        print(
+            f"{mark} {name} rc={result.returncode} status={result.status} duration={result.duration_seconds}s",
+            flush=True,
+        )
 
     report.finish()
     out = LOG_DIR / f"{report.run_id}.json"
