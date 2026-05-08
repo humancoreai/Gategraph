@@ -36,6 +36,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("operational_hardening_evidence", "tests/operational_hardening_evidence.py", 20),
     ("operational_alerting_evidence", "tests/operational_alerting_evidence.py", 20),
     ("operational_stability_evidence", "tests/operational_stability_evidence.py", 20),
+    ("single_node_cli_evidence", "tests/single_node_cli_evidence.py", 20),
     ("capability_token_hardening_evidence", "tests/capability_token_hardening_evidence.py", 30),
     ("key_rotation_evidence", "tests/key_rotation_evidence.py", 20),
     ("secret_api_integration_evidence", "tests/secret_api_integration_evidence.py", 20),
