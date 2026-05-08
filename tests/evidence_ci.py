@@ -41,6 +41,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("usage_simulation", "tests/usage_simulation.py", 20),
     ("unusual_inputs", "tests/unusual_inputs.py", 20),
     ("agent_scenarios", "tests/agent_scenarios.py", 20),
+    ("controlled_apply", "tests/controlled_apply_evidence.py", 20),
 ]
 
 @dataclass
@@ -104,12 +105,12 @@ def run_one(name: str, script: str, timeout_seconds: int) -> EvidenceCommand:
     _reset_db_files()
     env = os.environ.copy()
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    cmd = [sys.executable, "-S", "-u", script]
+    cmd = [sys.executable, "-S", "-u", "tests/_run_isolated.py", script]
     out_path = LOG_DIR / f"_{name}.stdout.tmp"
     err_path = LOG_DIR / f"_{name}.stderr.tmp"
     LOG_DIR.mkdir(parents=True, exist_ok=True)
 
-    # WHY: file-backed output avoids pipe/capture deadlocks; GNU timeout handles stuck children.
+    # WHY: file-backed output avoids pipe/capture deadlocks; the isolated wrapper hard-exits after the evidence entrypoint to avoid interpreter shutdown hangs.
     with out_path.open("w", encoding="utf-8") as out, err_path.open("w", encoding="utf-8") as err:
         completed = subprocess.run(
             ["timeout", "-k", "2s", f"{timeout_seconds}s", *cmd],
