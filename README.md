@@ -23,6 +23,7 @@ GateGraph provides:
 - append-only event logging
 - evidence-oriented JSON test reports
 - Pattern Engine proposals from repeated audit patterns with advisory priority/score metadata and without automatic rule changes
+- minimal server adapter for evaluate/status/monitoring integration
 
 The current control flow:
 
@@ -66,7 +67,9 @@ Production criteria are documented in [PRODUCTION.md](./PRODUCTION.md) and [PROD
 
 ## Project status
 
-Current stable release: **v0.8.32_STABLE**
+Current candidate release: **v0.8.33_CANDIDATE**
+
+Base stable release: **v0.8.32_STABLE**
 
 This stable release makes GateGraph usable as a single-node tool. It adds a minimal CLI adapter, configuration loading and read-only monitoring export while leaving Governance, Enforcement, Budget, Runtime and Operational decision logic unchanged.
 
@@ -75,7 +78,7 @@ Version: v0.8.32_STABLE
 Base: v0.8.31_CANDIDATE
 Core status: stable deterministic governance layer
 Single-node status: usable via CLI
-Production status: production-ready for defined single-node scope; server mode and external deployment integrations remain out of scope
+Production status: server-mode candidate added; single-node stable base remains v0.8.32_STABLE
 ```
 
 Current validation summary:

@@ -104,8 +104,8 @@ def _parse_scalar(value: str) -> Any:
 
 def _config_from_dict(data: dict[str, Any]) -> AppConfig:
     mode = str(data.get("mode", "single_node"))
-    if mode != "single_node":
-        raise ValueError("only mode='single_node' is supported in v0.8.32")
+    if mode not in {"single_node", "server"}:
+        raise ValueError("only mode='single_node' or mode='server' is supported in v0.8.33")
     return AppConfig(
         mode=mode,
         db_path=str(data.get("db_path", "gategraph.db")),
