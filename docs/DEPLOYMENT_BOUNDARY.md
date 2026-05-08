@@ -1,10 +1,10 @@
-# Deployment Boundary – GateGraph v0.11.3_STABLE
+# Deployment Boundary – GateGraph v0.11.4_CANDIDATE
 
 ## Purpose
 
 This document defines the supported deployment surface for the Phase B packaging baseline.
 
-v0.11.3_STABLE does not introduce new runtime behavior. It makes the existing single-node system installable and easier to start reproducibly.
+v0.11.4_CANDIDATE does not introduce new runtime behavior. It makes the existing single-node system installable and easier to start reproducibly.
 
 ## Supported
 
