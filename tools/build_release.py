@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.7_STABLE"
-BASE = "v0.11.6_STABLE"
+VERSION = "v0.11.8_CANDIDATE"
+BASE = "v0.11.7_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -93,7 +93,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.11.7_STABLE.md",
+    "docs/RELEASE_v0.11.8_CANDIDATE.md",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
     "gategraph/context/__init__.py",
@@ -102,13 +102,20 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_poisoning_evidence.py",
     "tests/instruction_data_separation_evidence.py",
     "tests/context_provenance_evidence.py",
+    "gategraph/context/context_lifecycle.py",
+    "docs/CONTEXT_LIFECYCLE_MODEL.md",
+    "docs/RELEASE_v0.11.8_CANDIDATE.md",
+    "tests/context_lifecycle_evidence.py",
+    "tests/context_replay_explain_boundary_evidence.py",
+    "tests/context_freeze_coupling_evidence.py",
+    "tests/release_content_hygiene_evidence.py",
     "src/security/__init__.py",
     "src/security/token_redaction.py",
     "tests/token_exposure_evidence.py",
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.11.7_STABLE.md",
+    "docs/RELEASE_v0.11.8_CANDIDATE.md",
 }
 
 
@@ -129,6 +136,8 @@ def forbidden_reason(path: Path) -> str | None:
         return None
     if path.name in FORBIDDEN_NAMES:
         return "forbidden generated/local file"
+    if path.name.upper().startswith("STARTPROMPT"):
+        return "development prompt artifact"
     if path.suffix.lower() in FORBIDDEN_SUFFIXES:
         return "forbidden suffix"
     if is_hidden_part(Path(r)) and r != ".gitignore":
@@ -191,10 +200,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "context_governance_boundary",
+        "kind": "candidate_release",
+        "scope": "context_lifecycle_freeze_coupling",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -233,9 +242,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Context / Memory Governance Baseline",
+        "phase": "Context Lifecycle / Freeze Coupling Baseline",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -257,6 +266,10 @@ def main() -> int:
         "token_exposure_hardening_scope": True,
         "multi_agent_delegation_boundary_scope": True,
         "context_governance_boundary_scope": True,
+        "context_lifecycle_scope": True,
+        "context_lifecycle_descriptive_only": True,
+        "context_rehydration_forbidden": True,
+        "context_provenance_mutation_forbidden": True,
         "context_provenance_required": True,
         "instruction_data_separation_scope": True,
         "explain_replay_context_non_executable": True,
@@ -271,7 +284,7 @@ def main() -> int:
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "context is classified as a governance boundary; provenance is required; instruction-like text in untrusted/replay/proposal context remains data; suspicious markers are visibility-only; no semantic scoring, memory system, autonomous filtering or AI content moderation is introduced",
+        "claim_boundary": "context lifecycle is descriptive only; provenance is immutable; replay/explain/proposal context cannot be rehydrated into trusted or runtime authority; no memory system, semantic scoring, autonomous filtering or AI content moderation is introduced",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 

@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.7_STABLE"
-BASE = "v0.11.6_STABLE"
+VERSION = "v0.11.8_CANDIDATE"
+BASE = "v0.11.7_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -84,7 +84,7 @@ def main() -> None:
     assert BASE in version, "VERSION.md missing base identifier"
     assert VERSION in status, "RELEASE_STATUS.md missing release identifier"
     assert BASE in status, "RELEASE_STATUS.md missing base identifier"
-    assert "Context / Memory Governance Baseline" in status, "RELEASE_STATUS.md missing phase label"
+    assert "Context Lifecycle / Freeze Coupling Baseline" in status, "RELEASE_STATUS.md missing phase label"
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -144,6 +144,8 @@ def main() -> None:
     assert "CONTEXT_GOVERNANCE_MODEL.md" in paths
     assert "gategraph/context/context_classifier.py" in paths
     assert "gategraph/context/context_boundary.py" in paths
+    assert "gategraph/context/context_lifecycle.py" in paths
+    assert "docs/CONTEXT_LIFECYCLE_MODEL.md" in paths
     forbidden_manifest = [
         p for p in paths
         if Path(p).suffix.lower() in FORBIDDEN_RELEASE_SUFFIXES
@@ -162,6 +164,9 @@ def main() -> None:
     assert "context_poisoning_evidence" in ci_manifest
     assert "instruction_data_separation_evidence" in ci_manifest
     assert "context_provenance_evidence" in ci_manifest
+    assert "context_lifecycle_evidence" in ci_manifest
+    assert "context_replay_explain_boundary_evidence" in ci_manifest
+    assert "context_freeze_coupling_evidence" in ci_manifest
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():
