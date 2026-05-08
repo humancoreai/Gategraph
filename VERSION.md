@@ -1,4 +1,4 @@
-Current candidate: v0.8.47_CANDIDATE
+Current stable: v0.8.47_STABLE
 
-Base: v0.8.45_STABLE
-Phase: Archive Integrity / Replay Consistency
+Base: v0.8.46_STABLE
+Phase: Operator Export / Evidence Bundle
