@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.2_STABLE"
-BASE = "v0.11.1_STABLE"
+VERSION = "v0.11.3_CANDIDATE"
+BASE = "v0.11.2_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -76,7 +76,7 @@ def main() -> None:
     assert BASE in version
     assert VERSION in status
     assert BASE in status
-    assert "Operational Consistency / Runtime Surface Tightening" in status
+    assert "Mode Boundary Surface Control" in status
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -122,6 +122,8 @@ def main() -> None:
     assert "tests/multi_agent_architecture_evidence.py" in paths
     assert "docs/MULTI_AGENT_SSOT.md" in paths
     assert "docs/MULTI_MODE_SSOT.md" in paths
+    assert "docs/MODE_BOUNDARY_SURFACE.md" in paths
+    assert "tests/mode_boundary_surface_evidence.py" in paths
     assert "docs/DELEGATION_BOUNDARY.md" in paths
     assert "docs/MULTI_AGENT_BUDGET_AUTHORITY.md" in paths
     assert "docs/MULTI_AGENT_REPLAY_AUDIT.md" in paths
@@ -145,6 +147,7 @@ def main() -> None:
     assert "multi_agent_architecture_evidence" in ci_manifest
     assert "runtime_boundary_hardening_evidence" in ci_manifest
     assert "runtime_chain_order_evidence" in ci_manifest
+    assert "mode_boundary_surface_evidence" in ci_manifest
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():
