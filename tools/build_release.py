@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.9_STABLE"
-BASE = "v0.11.8_STABLE"
+VERSION = "v0.12.0_CANDIDATE"
+BASE = "v0.11.9_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -93,7 +93,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.11.9_STABLE.md",
+    "docs/RELEASE_v0.12.0_CANDIDATE.md",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
     "gategraph/context/__init__.py",
@@ -104,7 +104,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_provenance_evidence.py",
     "gategraph/context/context_lifecycle.py",
     "docs/CONTEXT_LIFECYCLE_MODEL.md",
-    "docs/RELEASE_v0.11.9_STABLE.md",
+    "docs/RELEASE_v0.12.0_CANDIDATE.md",
     "tests/context_lifecycle_evidence.py",
     "tests/context_replay_explain_boundary_evidence.py",
     "tests/context_freeze_coupling_evidence.py",
@@ -122,7 +122,15 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.11.9_STABLE.md",
+    "docs/RELEASE_v0.12.0_CANDIDATE.md",
+    "docs/RELEASE_v0.12.0_CANDIDATE.md",
+    "docs/GOVERNANCE_SURFACE_FREEZE.md",
+    "contracts/governance_decision.schema.json",
+    "contracts/normalized_reason.schema.json",
+    "contracts/monitoring_export.schema.json",
+    "contracts/capability_token_claims.schema.json",
+    "tests/surface_contract_registry_evidence.py",
+    "tests/semantic_boundary_evidence.py",
 }
 
 
@@ -207,10 +215,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "context_lifecycle_freeze_coupling",
+        "kind": "candidate_release",
+        "scope": "governance_surface_freeze",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -249,9 +257,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Context Lifecycle / Freeze Coupling Baseline",
+        "phase": "Governance Surface Freeze",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -291,7 +299,11 @@ def main() -> int:
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "context lifecycle is descriptive only; provenance is immutable; replay/explain/proposal context cannot be rehydrated into trusted or runtime authority; no memory system, semantic scoring, autonomous filtering or AI content moderation is introduced",
+        "surface_contract_registry_scope": True,
+        "surface_contract_version": "0.12.0",
+        "semantic_boundary_evidence_scope": True,
+        "release_manifest_ssot_scope": True,
+        "claim_boundary": "surface contracts are descriptive/review surfaces only; they do not add runtime authority, policy learning, automatic governance mutation, semantic scoring, or enforcement behavior",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 

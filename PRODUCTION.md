@@ -57,3 +57,6 @@ See also `docs/DEPLOYMENT_BOUNDARY.md` for the supported/unsupported/unsafe depl
 
 
 See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operational start-surface expectations.
+
+
+Current release surface: `v0.12.0_CANDIDATE`.
