@@ -1,6 +1,6 @@
 # GateGraph Version
 
-Current candidate: v0.8.40_CANDIDATE
+Current candidate: v0.8.40_STABLE
 
 Base: v0.8.39_STABLE
 
