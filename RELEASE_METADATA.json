@@ -1,15 +1,22 @@
 {
   "autonomous_classification": false,
-  "base": "v0.10.1_STABLE",
-  "claim_boundary": "runtime chain/order assertions and skipped-stage detection; no new runtime capability or adapter expansion",
+  "base": "v0.10.2_STABLE",
+  "claim_boundary": "release metadata consistency, structured manifest validation, dead-reference detection, and promotion drift prevention; no runtime capability, governance behavior, adapter expansion, packaging/deployment layer, or UI",
   "distributed_governance": false,
+  "enforcement_logic_changed": false,
   "governance_logic_changed": false,
+  "new_adapter": false,
+  "new_agentic_behavior": false,
   "new_governance_features": false,
   "new_risk_model": false,
+  "new_runtime_capability": false,
   "new_runtime_model": false,
-  "phase": "Runtime / Boundary Hardening",
-  "release": "v0.10.2_STABLE",
+  "packaging_scope": false,
+  "phase": "Release Process Guard",
+  "release": "v0.10.3_CANDIDATE",
+  "release_process_guard": true,
+  "runtime_logic_changed": false,
   "scope_freeze": true,
   "self_orchestration": false,
-  "status": "stable"
+  "status": "candidate"
 }
