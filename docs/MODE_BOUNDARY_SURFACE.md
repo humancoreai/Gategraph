@@ -1,8 +1,8 @@
-# Mode Boundary Surface – GateGraph v0.11.3_STABLE
+# Mode Boundary Surface – GateGraph v0.11.4_CANDIDATE
 
 Status: stable
-Base: v0.11.2_STABLE
-Phase: Mode Boundary Surface Control
+Base: v0.11.3_STABLE
+Phase: Capability Token Audit Redaction
 
 ## Purpose
 
