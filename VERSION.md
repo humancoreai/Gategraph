@@ -1,5 +1,4 @@
-Current candidate: v0.8.44
+Current candidate: v0.8.45_CANDIDATE
 
-Base: v0.8.43_STABLE
-Phase: Governance Drift Detection
-Evidence: drift_detection_evidence passed locally; Full Windows Evidence CI required for stable promotion
+Base: v0.8.44_STABLE
+Phase: Governance Archive / Historical Replay
