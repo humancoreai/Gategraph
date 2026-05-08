@@ -344,7 +344,7 @@ Coverage:
 Result during local validation: 4/4 passed.
 
 
-## v0.8.13 Security Finesse Evidence
+## v0.8.14 Security Finesse Evidence
 
 - Secret leak check: passed. Raw secret value is not written to audit/evidence.
 - HTTP policy before secret resolution: passed. Denied endpoints keep secret status `not_resolved`.
