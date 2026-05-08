@@ -1,0 +1,82 @@
+{
+  "run_id": "ci_evidence_20260427_150249",
+  "started_at": "2026-04-27T15:02:49.215161+00:00",
+  "finished_at": "2026-04-27T15:02:51.078568+00:00",
+  "passed": true,
+  "commands": [
+    {
+      "name": "runtime_stress_evidence",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/runtime_stress_evidence.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "✓ agent_pingpong_loop: {'decisions': ['continue', 'continue', 'stop'], 'final_reason': \"repeated_action_limit exceeded for signature 'agent-a:delegate:agent-b'\"}\n✓ many_allowed_micro_actions_cost_limit: {'decisions': ['continue', 'stop'], 'final_reason': 'max_cost_units exceeded: 4 > 3'}\n✓ valid_token_but_runtime_exceeded: {'token_present': True, 'runtime_decision': 'stop', 'runtime_reason': 'max_runtime_seconds exceeded: 10.00s > 1s', 'action_after_stop': False}\n✓ no_action_without_token: {'allowed': False, 'reason': 'no capability token provided', 'rejection_event_id': 'EVT-REJ-3CF34F3F51'}\n✓ pattern_engine_proposal_only: {'proposals_created': 1, 'rules_before': 6, 'rules_after': 6, 'proposal_statuses': ['pending_review']}\n✓ repeated_same_decision_evidence: {'first_was_duplicate': False, 'second_was_duplicate': True, 'governance_event_count': 1}\n✓ multi_agent_alternating_loop_max_steps: {'decisions': ['continue', 'continue', 'continue', 'continue', 'stop'], 'final_reason': 'max_steps exceeded: 4 >= 4', 'steps_recorded': 4}\n✓ missing_runtime_budget_fail_closed: {'runtime_decision': 'stop', 'runtime_reason': 'no runtime budget exists'}\n✓ budget_boundary_exact_cost_allowed_then_stop: {'decisions': ['continue', 'continue', 'stop'], 'final_reason': 'max_cost_units exceeded: 5 > 4'}\n✓ cross_task_cost_is_per_task_not_session_budget: {'final_decisions': ['stop', 'stop'], 'final_reasons': ['max_cost_units exceeded: 4 > 3', 'max_cost_units exceeded: 4 > 3'], 'session_budget_present': False}\n\nRUNTIME / AUDIT EVIDENCE REPORT\nLog: /mnt/data/ggwork/GateGraph/tests/logs/runtime_evidence_20260427_150249.json\nSummary: {'total': 10, 'passed': 10, 'failed': 0, 'findings': 1}\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "core_loop",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_loop.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "\n== ISOLATED ==\nPASS 01 allowed read: all checks passed\nPASS 02 write requires approval: all checks passed\nPASS 03 delete requires approval: all checks passed\nPASS 04 secrets critical gated: all checks passed\nPASS 05 secret sensitivity critical gated: all checks passed\nPASS 06 untrusted read review: all checks passed\nPASS 07 idempotency: all checks passed\nPASS 08 unknown capability blocks: all checks passed\nPASS 09 empty capabilities block: all checks passed\nPASS 10 expired token blocks: all checks passed\nPASS 11 conflict priority: all checks passed\nPASS 12 rule_id tiebreak: all checks passed\nPASS 13 inactive rule ignored: all checks passed\nPASS 14 cross-task token reuse blocks: all checks passed\nPASS 15 wrong capability blocks: all checks passed\nPASS 16 missing token blocks: all checks passed\nPASS 17 revoked token blocks: all checks passed\nPASS 18 rejection idempotency: all checks passed\nPASS 19 secret write critical precedence: all checks passed\nPASS 20 untrusted content is data: all checks passed\nPassed: 20/20\nFailed: 0\nUnexpected allows: 0\nInvariant violations: 0\nIdempotency hits: 2\nBlocked enforcements: 11\nDB events: —\n\n== ACCUMULATED ==\nPASS 01 allowed read: all checks passed\nPASS 02 write requires approval: all checks passed\nPASS 03 delete requires approval: all checks passed\nPASS 04 secrets critical gated: all checks passed\nPASS 05 secret sensitivity critical gated: all checks passed\nPASS 06 untrusted read review: all checks passed\nPASS 07 idempotency: all checks passed\nPASS 08 unknown capability blocks: all checks passed\nPASS 09 empty capabilities block: all checks passed\nPASS 10 expired token blocks: all checks passed\nPASS 11 conflict priority: all checks passed\nPASS 12 rule_id tiebreak: all checks passed\nPASS 13 inactive rule ignored: all checks passed\nPASS 14 cross-task token reuse blocks: all checks passed\nPASS 15 wrong capability blocks: all checks passed\nPASS 16 missing token blocks: all checks passed\nPASS 17 revoked token blocks: all checks passed\nPASS 18 rejection idempotency: all checks passed\nPASS 19 secret write critical precedence: all checks passed\nPASS 20 untrusted content is data: all checks passed\nPassed: 20/20\nFailed: 0\nUnexpected allows: 0\nInvariant violations: 0\nIdempotency hits: 2\nBlocked enforcements: 11\nDB events: 31\n\nCOMPARATIVE SUMMARY\nPassed: isolated 20/20 | accumulated 20/20\nFailed: isolated 0 | accumulated 0\nUnexpected allows: isolated 0 | accumulated 0\nInvariant violations: isolated 0 | accumulated 0\nDB events accumulated: 31\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "runtime_guard",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/runtime_guard_tests.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "✓ A within budget\n✓ B max steps exceeded\n✓ C max runtime exceeded\n✓ D max cost exceeded\n✓ E repeated action loop\n✓ F stop prevents governance call\n\nRUNTIME GUARD TEST REPORT\nPassed: 6/6\nFailed: 0/6\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "pattern_engine",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/pattern_engine_tests.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "✓ A no proposal with little data\n✓ B proposal for repeated rejections\n✓ C no proposal when confidence low\n\nPATTERN ENGINE TEST REPORT\nPassed: 3/3\nFailed: 0/3\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "usage_simulation",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/usage_simulation.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "USAGE SIMULATION v0.4.4\nRuns: 10\nEvents: 19\nAllowed: 4\nBlocked/Gated: 6\nUnexpected allows: 0\nInvariant violations: 0\n\nlocal README read | low | allow | allowed | RULE-001\nlocal source read | low | allow | allowed | RULE-001\nwrite patch | high | require_approval | blocked | RULE-004\ndelete request | high | require_approval | blocked | RULE-002\nuntrusted doc read | medium | require_review | allowed | RULE-003\nsecret config read | critical | require_approval | blocked | RULE-005\nexternal api call | medium | require_review | blocked | RULE-003\npublic local read | low | allow | allowed | RULE-001\nsecrets involved read | critical | require_approval | blocked | RULE-005\nunknown action | low | block | blocked | RULE-SYNTH-UNKNOWN\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "unusual_inputs",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/unusual_inputs.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "UNUSUAL INPUT SIMULATION v0.4.5\nRuns: 12\nEvents: 39\nAllowed: 4\nBlocked/Gated/Errored: 8\nUnsafe allows: 0\nInvariant violations: 0\n\nempty capabilities | low | block | blocked | RULE-006 | ok\nunknown capability | low | block | blocked | RULE-SYNTH-UNKNOWN | ok\nmixed read+write | high | require_approval | blocked | RULE-004 | ok\nduplicate capabilities | low | allow | allowed | RULE-001 | ok\ncase mismatch capability | low | block | blocked | RULE-SYNTH-UNKNOWN | ok\nnone-like source string | medium | require_review | allowed | RULE-003 | ok\nstrange input source | medium | require_review | allowed | RULE-003 | ok\nunknown sensitivity | medium | require_review | allowed | RULE-003 | ok\nsecret + untrusted read | critical | require_approval | blocked | RULE-005 | ok\nsecrets + unknown cap | critical | block | blocked | RULE-SYNTH-UNKNOWN | ok\napi external uppercase | medium | require_review | blocked | RULE-003 | ok\nlong capability name | low | block | blocked | RULE-SYNTH-UNKNOWN | ok\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "agent_scenarios",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/agent_scenarios.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "AGENT SCENARIO SIMULATION v0.4.6\nRuns: 12\nEvents: 59\nAllowed: 4\nBlocked/Gated: 8\nUnexpected allows: 0\nInvariant violations: 0\n\nAgent reads repo files | low | allow | allowed | RULE-001 | ok\nAgent proposes patch only | low | allow | allowed | RULE-001 | ok\nAgent attempts direct write | high | require_approval | blocked | RULE-004 | ok\nAgent attempts delete | high | require_approval | blocked | RULE-002 | ok\nAgent reads untrusted doc | medium | require_review | allowed | RULE-003 | ok\nAgent follows untrusted instruction to write | high | require_approval | blocked | RULE-004 | ok\nAgent handles secret config | critical | require_approval | blocked | RULE-005 | ok\nAgent handles explicit secret | critical | require_approval | blocked | RULE-005 | ok\nAgent external API call | medium | require_review | blocked | RULE-003 | ok\nAgent unknown tool request | low | block | blocked | RULE-SYNTH-UNKNOWN | ok\nAgent mixed read and write | high | require_approval | blocked | RULE-004 | ok\nAgent prompt injection string as untrusted read | medium | require_review | allowed | RULE-003 | ok\n",
+      "stderr_tail": ""
+    }
+  ],
+  "produced_logs": [
+    "tests/logs/runtime_evidence_20260427_150249.json"
+  ],
+  "notes": []
+}
