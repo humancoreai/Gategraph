@@ -62,3 +62,20 @@ DB events accumulated: 31
 - Documented GLP as inspiration only, not as implemented protocol.
 - Froze v0.4.6 core as v0.5 PoC-ready baseline.
 - No runtime feature expansion in this step.
+
+## v0.6-spec — Runtime Guard design
+
+- Added `docs/RUNTIME_GUARD.md`.
+- Defined runtime/cost-control layer as separate from GateGraph Core.
+- Added RuntimeBudget, RuntimeStep, RuntimeDecision, RuntimeEvent concepts.
+- Defined initial limits: max steps, max runtime, max cost units, repeated action limit.
+- No implementation changes to Core in this step.
+
+## v0.6-core — Runtime Guard MVP
+
+- Added Runtime Guard schema tables.
+- Added `src/runtime_guard.py`.
+- Added runtime budget creation and pre-step evaluation.
+- Implemented max steps, max runtime, max cost units, and repeated-action stop checks.
+- Added runtime guard tests A–F.
+- Runtime stop occurs before Governance evaluation.
