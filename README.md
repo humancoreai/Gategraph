@@ -22,7 +22,7 @@ GateGraph provides:
 - reason normalization for stable explain codes
 - append-only event logging
 - evidence-oriented JSON test reports
-- Pattern Engine proposals from repeated audit patterns without automatic rule changes
+- Pattern Engine proposals from repeated audit patterns with advisory priority/score metadata and without automatic rule changes
 
 The current control flow:
 
@@ -60,7 +60,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.18 pattern-engine-intelligence
+Version: v0.8.19 pattern-priority-scoring
 Core status: stable proof of concept
 Production status: not production-ready; Single-Node PoC evidence is mature, operational production layers remain out of scope
 ```
@@ -254,3 +254,8 @@ Block D adds a read-only reviewer trace builder and evidence scenarios proving t
 ## v0.8.17 Block E documentation reality check
 
 This release aligns README, SECURITY notes, release status, and current limitations with the actual v0.8.16 system state. It makes no production logic changes.
+
+
+## v0.8.19 Pattern priority scoring
+
+Pattern proposals now include advisory priority and score metadata for human triage. The Pattern Engine remains strictly proposal-only and cannot change rules, policies, budgets, tokens, secrets, or actions.

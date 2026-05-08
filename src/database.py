@@ -148,6 +148,9 @@ def ensure_pattern_schema(conn):
         supporting_events TEXT NOT NULL,
         confidence REAL NOT NULL,
         confidence_basis TEXT NOT NULL,
+        priority TEXT NOT NULL DEFAULT 'P3',
+        score REAL NOT NULL DEFAULT 0,
+        score_basis TEXT NOT NULL DEFAULT '',
         status TEXT NOT NULL DEFAULT 'pending_review',
         created_at TEXT NOT NULL
     );
@@ -157,4 +160,17 @@ def ensure_pattern_schema(conn):
 
     CREATE INDEX IF NOT EXISTS idx_proposals_target_rule
         ON proposals(target_rule_id);
+
+    CREATE INDEX IF NOT EXISTS idx_proposals_priority
+        ON proposals(priority, score);
     """)
+
+    existing_columns = {row[1] for row in conn.execute("PRAGMA table_info(proposals)").fetchall()}
+    additive_columns = {
+        "priority": "TEXT NOT NULL DEFAULT 'P3'",
+        "score": "REAL NOT NULL DEFAULT 0",
+        "score_basis": "TEXT NOT NULL DEFAULT ''",
+    }
+    for column_name, column_def in additive_columns.items():
+        if column_name not in existing_columns:
+            conn.execute(f"ALTER TABLE proposals ADD COLUMN {column_name} {column_def}")
