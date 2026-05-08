@@ -158,3 +158,30 @@ Invariant status:
 - Runtime Guard remains per-task.
 - Pattern Engine remains proposal-only.
 - Missing explicit session budget fails closed.
+
+
+## v0.8.1-guard-orchestration
+
+Added deterministic Guard Orchestrator:
+
+- `src/guard_orchestrator.py`
+- `tests/guard_orchestration_evidence.py`
+- `docs/GUARD_ORCHESTRATION.md`
+
+Pipeline:
+1. Enforcement
+2. Session Budget Guard
+3. Runtime Guard
+4. Action-ready
+
+Evidence:
+- Enforcement blocks before budget guards.
+- Session Budget stops before Runtime Guard.
+- Runtime Guard stops when Session Budget allows.
+- Session stop has priority when both would stop.
+- All guards passing reaches action_ready.
+
+Core invariant status:
+- Enforcement remains the only action gatekeeper.
+- Guards stop only; they do not grant capabilities.
+- Pattern Engine remains proposal-only.
