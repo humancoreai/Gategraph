@@ -1,6 +1,6 @@
 # Server Mode / Integration Layer
 
-Version: v0.8.33_CANDIDATE
+Version: v0.8.33_STABLE
 
 ## Zweck
 
@@ -84,7 +84,7 @@ Damit bleibt die Regel erhalten:
 - Fehlerhafte Requests liefern `ok=false`
 - `GET /monitoring` ist read-only
 - Server startet keine Hintergrundaktionen außer dem HTTP-Listener selbst
-- Keine Authentifizierung in v0.8.33_CANDIDATE; daher nur lokal/geschützt betreiben
+- Keine Authentifizierung in v0.8.33_STABLE; daher nur lokal/geschützt betreiben
 
 ## Testnachweis
 
