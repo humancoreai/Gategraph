@@ -2,6 +2,7 @@
 WHY: agent scenarios validate realistic orchestration behavior without adding multi-agent runtime.
 INV: require_review permits analysis-only reads but never side effects.
 """
+import os
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
