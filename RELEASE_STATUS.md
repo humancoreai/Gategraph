@@ -1,30 +1,37 @@
-# Release Status - GateGraph v0.8.18-pattern-engine-intelligence
+# Release Status - GateGraph v0.8.19-pattern-priority-scoring
 
-Status: Single-node PoC / advisory Pattern Engine intelligence.
+Status: Single-node PoC / advisory Pattern Engine triage intelligence.
 
 ## Added
-- `src.pattern_engine.analyze_audit_patterns()` for multi-stage audit pattern analysis.
-- `PatternObservation` extraction for repeated blocked conditions.
-- `tests/pattern_intelligence_evidence.py`.
-- `docs/PATTERN_ENGINE_INTELLIGENCE.md`.
+- Advisory proposal triage metadata:
+  - `priority` (`P0`, `P1`, `P2`, `P3`)
+  - `score`
+  - `score_basis`
+- Proposal schema columns for priority/score metadata.
+- `tests/pattern_priority_scoring_evidence.py`.
+- `docs/PATTERN_ENGINE_PRIORITY_SCORING.md`.
 
 ## Changed
-- Pattern Engine can now propose review items for repeated HTTP Policy, Secret Provider, Enforcement, and guard-stage blocks.
-- `analyze_rejections()` remains as backward-compatible enforcement-only entry point.
+- Pattern proposals are now easier to review in risk order.
+- Repeated critical token/signature abuse can surface as P0 advisory proposal.
+- Repeated high-severity HTTP/secret problems surface as review-priority proposals.
+- Support count can raise score within the same pattern class.
 
 ## Unchanged
 - Pattern Engine remains proposal-only.
 - Enforcement remains the only authorization gatekeeper.
 - Guards still only stop, never allow.
-- No rules, HTTP policies, budgets, tokens, secrets, or actions are mutated by Pattern Engine analysis.
+- No rules, HTTP policies, budgets, tokens, secrets, or actions are mutated by Pattern Engine scoring.
 - Production governance/enforcement/runtime semantics unchanged.
 
 ## Evidence
+- Pattern Priority Scoring Evidence: 4/4 passed.
 - Pattern Intelligence Evidence: 4/4 passed.
 - Pattern Engine regression tests: 3/3 passed.
+- Block D Audit/Explain regression: 4/4 passed.
 
 ## Known Limits
-- Pattern confidence is still frequency-based, not causal proof.
+- Score is reviewer triage metadata, not causal proof.
 - No automatic rule updates or adaptive policy changes.
 - No distributed pattern correlation.
 - Aggregate runner remains environment-sensitive in local runs.
