@@ -11,7 +11,7 @@ from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 
-from src import service_adapter
+from src import response_normalizer, service_adapter
 from src.config_loader import AppConfig, load_config
 
 MAX_BODY_BYTES = 64 * 1024
@@ -28,30 +28,30 @@ class RequestValidationError(ValueError):
 
 
 class GateGraphHandler(BaseHTTPRequestHandler):
-    server_version = "GateGraphHTTP/0.8.34"
+    server_version = "GateGraphHTTP/0.8.35"
 
     def do_GET(self) -> None:
         if self.path == "/status":
-            self._send_json(HTTPStatus.OK, service_adapter.status(self._config()))
+            self._send_json(HTTPStatus.OK, response_normalizer.wrap_data(service_adapter.status(self._config()), stage="server"))
             return
         if self.path == "/monitoring":
-            self._send_json(HTTPStatus.OK, {"ok": True, "monitoring": service_adapter.monitoring(self._config())})
+            self._send_json(HTTPStatus.OK, response_normalizer.wrap_data({"monitoring": service_adapter.monitoring(self._config())}, stage="server"))
             return
-        self._send_error(HTTPStatus.NOT_FOUND, "unknown_endpoint", "unknown endpoint", "routing")
+        self._send_error(HTTPStatus.NOT_FOUND, "UNKNOWN_ENDPOINT", "routing")
 
     def do_POST(self) -> None:
         if self.path != "/evaluate":
-            self._send_error(HTTPStatus.NOT_FOUND, "unknown_endpoint", "unknown endpoint", "routing")
+            self._send_error(HTTPStatus.NOT_FOUND, "UNKNOWN_ENDPOINT", "routing")
             return
         try:
             body = self._read_json_body()
             self._validate_evaluate_body(body)
-            self._send_json(HTTPStatus.OK, service_adapter.evaluate_request(self._config(), body))
+            self._send_json(HTTPStatus.OK, response_normalizer.success(service_adapter.evaluate_request(self._config(), body), stage="core"))
         except RequestValidationError as exc:
-            self._send_error(exc.status, exc.code, exc.message, exc.stage)
+            self._send_error(exc.status, exc.code, exc.stage)
         except Exception:
             # SEC: Do not expose stack traces or internal exception details across the service boundary.
-            self._send_error(HTTPStatus.BAD_REQUEST, "evaluation_failed", "request could not be evaluated", "service_adapter")
+            self._send_error(HTTPStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "server")
 
     def do_PUT(self) -> None:
         self._method_not_allowed()
@@ -67,7 +67,7 @@ class GateGraphHandler(BaseHTTPRequestHandler):
 
     def send_error(self, code: int, message: str | None = None, explain: str | None = None) -> None:  # type: ignore[override]
         # SEC: BaseHTTPRequestHandler would emit HTML. Keep every failure JSON and fail-closed.
-        self._send_error(HTTPStatus(code), "unsupported_method", "method not allowed", "routing")
+        self._send_error(HTTPStatus(code), "METHOD_NOT_ALLOWED", "routing")
 
     def log_message(self, format: str, *args: Any) -> None:
         return
@@ -76,45 +76,45 @@ class GateGraphHandler(BaseHTTPRequestHandler):
         return self.server.gategraph_config  # type: ignore[attr-defined]
 
     def _method_not_allowed(self) -> None:
-        self._send_error(HTTPStatus.METHOD_NOT_ALLOWED, "method_not_allowed", "method not allowed", "routing")
+        self._send_error(HTTPStatus.METHOD_NOT_ALLOWED, "METHOD_NOT_ALLOWED", "routing")
 
     def _read_json_body(self) -> dict[str, Any]:
         raw_length = self.headers.get("content-length")
         try:
             length = int(raw_length or "0")
         except ValueError:
-            raise RequestValidationError("invalid_content_length", "content-length must be an integer") from None
+            raise RequestValidationError("INVALID_JSON", "content-length must be an integer") from None
         if length <= 0:
-            raise RequestValidationError("empty_body", "request body must not be empty")
+            raise RequestValidationError("INVALID_JSON", "request body must not be empty")
         if length > MAX_BODY_BYTES:
-            raise RequestValidationError("body_too_large", "request body too large", HTTPStatus.REQUEST_ENTITY_TOO_LARGE)
+            raise RequestValidationError("PAYLOAD_TOO_LARGE", "request body too large", HTTPStatus.REQUEST_ENTITY_TOO_LARGE)
         if "application/json" not in self.headers.get("content-type", "").lower():
-            raise RequestValidationError("invalid_content_type", "content-type must be application/json", HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
+            raise RequestValidationError("INVALID_CONTENT_TYPE", "content-type must be application/json", HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
         raw = self.rfile.read(length)
         try:
             data = json.loads(raw.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError):
-            raise RequestValidationError("invalid_json", "request body must be valid JSON") from None
+            raise RequestValidationError("INVALID_JSON", "request body must be valid JSON") from None
         if not isinstance(data, dict):
-            raise RequestValidationError("invalid_json_root", "request body must be a JSON object")
+            raise RequestValidationError("INVALID_JSON", "request body must be a JSON object")
         return data
 
     def _validate_evaluate_body(self, body: dict[str, Any]) -> None:
         missing = sorted(REQUIRED_EVALUATE_FIELDS - set(body))
         if missing:
-            raise RequestValidationError("missing_required_fields", f"missing required fields: {missing}")
+            raise RequestValidationError("MISSING_FIELD", f"missing required fields: {missing}")
         if not isinstance(body.get("requested_capabilities"), list):
-            raise RequestValidationError("invalid_requested_capabilities", "requested_capabilities must be a list")
+            raise RequestValidationError("INVALID_JSON", "requested_capabilities must be a list")
         if "projected_cost_units" in body:
             try:
                 projected = int(body["projected_cost_units"])
             except (TypeError, ValueError):
-                raise RequestValidationError("invalid_projected_cost", "projected_cost_units must be an integer") from None
+                raise RequestValidationError("INVALID_JSON", "projected_cost_units must be an integer") from None
             if projected <= 0:
-                raise RequestValidationError("invalid_projected_cost", "projected_cost_units must be positive")
+                raise RequestValidationError("INVALID_JSON", "projected_cost_units must be positive")
 
-    def _send_error(self, status: HTTPStatus, code: str, message: str, stage: str) -> None:
-        self._send_json(status, {"ok": False, "error": {"code": code, "message": message}, "stage": stage})
+    def _send_error(self, status: HTTPStatus, code: str, stage: str) -> None:
+        self._send_json(status, response_normalizer.error(code, stage=stage))
 
     def _send_json(self, status: HTTPStatus, payload: dict[str, Any]) -> None:
         data = json.dumps(payload, indent=2, sort_keys=True).encode("utf-8")
