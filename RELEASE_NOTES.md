@@ -121,3 +121,14 @@ Stable promotion from `v0.8.44_CANDIDATE` after Full Windows Evidence CI passed 
 - Added `drift_detection_evidence` to Evidence CI.
 - Preserved read-only/descriptive behavior: no severity, risk level, recommendations, escalation, policy changes, queue mutation or governance decision changes.
 
+
+
+## v0.8.45_STABLE — Governance Archive / Historical Replay
+
+Stable promotion from `v0.8.45_CANDIDATE` after Full Windows Evidence CI passed on 2026-05-06.
+
+- Added append-only governance archive records.
+- Added historical replay by archived record ID.
+- Added payload hash verification for replayed records.
+- Added `governance_archive_replay_evidence` to Evidence CI.
+- Preserved replay-only behavior: no re-evaluation, no policy changes, no guard mutation, no queue mutation and no runtime decision changes.
