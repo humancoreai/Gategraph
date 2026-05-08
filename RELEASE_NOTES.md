@@ -1,8 +1,8 @@
-# Release Notes – v0.11.0_CANDIDATE
+# Release Notes – v0.11.0_STABLE
 
 ## Summary
 
-v0.11.0_CANDIDATE starts Phase B: Deployment / Packaging Baseline.
+v0.11.0_STABLE finalizes Phase B's initial Deployment / Packaging Baseline.
 
 This release makes GateGraph locally installable and standardizes the supported single-node deployment surface. It does not change governance, enforcement, runtime, adapter, token, budget, audit, or chain-order behavior.
 
