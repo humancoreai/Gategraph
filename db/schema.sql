@@ -141,6 +141,9 @@ CREATE TABLE IF NOT EXISTS proposals (
     supporting_events TEXT NOT NULL,
     confidence REAL NOT NULL,
     confidence_basis TEXT NOT NULL,
+    priority TEXT NOT NULL DEFAULT 'P3',
+    score REAL NOT NULL DEFAULT 0,
+    score_basis TEXT NOT NULL DEFAULT '',
     status TEXT NOT NULL DEFAULT 'pending_review',
     created_at TEXT NOT NULL
 );
@@ -150,6 +153,9 @@ CREATE INDEX IF NOT EXISTS idx_proposals_status
 
 CREATE INDEX IF NOT EXISTS idx_proposals_target_rule
     ON proposals(target_rule_id);
+
+CREATE INDEX IF NOT EXISTS idx_proposals_priority
+    ON proposals(priority, score);
 
 
 -- Session Budget Guard tables (v0.8)

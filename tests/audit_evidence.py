@@ -120,7 +120,7 @@ def collect_global_evidence(conn) -> Dict[str, Any]:
         conn,
         """
         SELECT proposal_id, proposal_type, target_rule_id, reason, proposed_change,
-               supporting_events, confidence, confidence_basis, status, created_at
+               supporting_events, confidence, confidence_basis, priority, score, score_basis, status, created_at
         FROM proposals
         ORDER BY created_at, proposal_id
         """,
