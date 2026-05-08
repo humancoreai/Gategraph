@@ -1,4 +1,4 @@
-# Multi-Agent Replay / Audit Model — v0.9.2_CANDIDATE
+# Multi-Agent Replay / Audit Model — v0.9.2_STABLE
 
 ## Status
 
