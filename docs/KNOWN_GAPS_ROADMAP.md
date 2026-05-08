@@ -54,7 +54,7 @@ Still open:
 
 
 
-## v0.11.0_CANDIDATE – Runtime Chain/Order Assertions
+## v0.11.0_STABLE – Runtime Chain/Order Assertions
 
 Closed / hardened:
 - guard-chain order is now executable via `src/runtime_chain_assertions.py`
