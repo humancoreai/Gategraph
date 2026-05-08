@@ -1,27 +1,26 @@
-# Release Status - GateGraph v0.8.7-ci-runner-stabilization
+# Release Status - GateGraph v0.8.8-capability-token-hardening
 
 ## Status
 
-Release hygiene stabilization on top of v0.8.6.
+Security hardening release on top of v0.8.7.
 
 ## Scope
 
 Changed:
-- CI/evidence runner behavior
-- test-loop exit behavior
-- CI runner documentation
+- Capability Tokens now include HMAC signature metadata.
+- Enforcement verifies token claim integrity before capability use.
+- Token DB schema now stores `signature` and `signing_key_id`.
+- Reason Normalizer includes token signature/claim mismatch reasons.
+- New token-hardening evidence tests added.
 
 Unchanged:
-- Governance Layer
-- Enforcement Layer
-- Session Budget Guard
-- Runtime Guard
-- Guard Orchestrator
-- Audit Layer
-- Explain Layer
-- Pattern Engine
-- External API Adapter semantics
+- Governance decision semantics
+- Guard Orchestrator order
+- Session Budget Guard semantics
+- Runtime Guard semantics
+- Pattern Engine proposal-only behavior
+- External API mock-only scope
 
 ## Release note
 
-This release does not add new product capability. It makes aggregate evidence execution more bounded and release-suitable.
+This release hardens Capability Tokens against simple in-memory mutation and persisted-signature tampering in the current Single-Node model. It prepares the architecture for later stronger token boundaries, but does not yet implement distributed trust or key rotation.
