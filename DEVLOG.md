@@ -564,3 +564,11 @@ The CLI is an adapter only. It does not duplicate or bypass Governance, Enforcem
 - Added adapter-level serialization for `/evaluate` to protect the single-node SQLite path under parallel requests.
 - Added `tests/api_robustness_evidence.py` and registered it in the evidence manifest.
 - Local checks: `api_contract_evidence`, `api_robustness_evidence`, and `repo_push_hygiene_evidence` passed. Full aggregate CI remains to be rerun before STABLE.
+
+## v0.8.36_STABLE - Stable Promotion
+
+- Promoted v0.8.36_CANDIDATE to STABLE after Full Windows Evidence CI passed.
+- Confirmed api_contract_evidence remains green.
+- Confirmed api_robustness_evidence passes.
+- Confirmed server hardening and repo push hygiene remain green.
+- No API schema changes, no new response fields, no core governance changes.
