@@ -60,21 +60,22 @@ GateGraph currently does **not** provide:
 ## Governance
 
 GateGraph governance principles are documented in [GOVERNANCE.md](./GOVERNANCE.md).
+Production criteria are documented in [PRODUCTION.md](./PRODUCTION.md) and [PRODUCTION_CHECKLIST.md](./PRODUCTION_CHECKLIST.md).
 
 ---
 
 ## Project status
 
-Current stable release: **v0.8.29_STABLE**
+Current stable release: **v0.8.32_STABLE**
 
-This stable release adds read-only Operational Alerting on top of existing append-only operational incidents. Alerts are signals only; they do not repair, unblock, acknowledge, resolve, or mutate governance state.
-
+This stable release makes GateGraph usable as a single-node tool. It adds a minimal CLI adapter, configuration loading and read-only monitoring export while leaving Governance, Enforcement, Budget, Runtime and Operational decision logic unchanged.
 
 ```text
-Version: v0.8.29_STABLE
-Base: v0.8.28_STABLE
-Core status: stable proof of concept; operational alerting stable
-Production status: not production-ready; monitoring transport, recovery, and distributed layers remain out of scope
+Version: v0.8.32_STABLE
+Base: v0.8.31_CANDIDATE
+Core status: stable deterministic governance layer
+Single-node status: usable via CLI
+Production status: production-ready for defined single-node scope; server mode and external deployment integrations remain out of scope
 ```
 
 Current validation summary:
@@ -300,7 +301,7 @@ This stable release adds a single-node Budget Ledger and token-bound budget rese
 
 This stable release adds operational visibility and consistency checks without changing the authority model. Budget snapshots, deterministic audit replay checks and append-only incident records are now part of the stable scope. The POSIX Evidence Runner timeout path was hardened by replacing the external `timeout` wrapper with Python-owned process supervision. Full Windows Evidence CI reported `Passed: True` on 2026-04-28.
 
-## Single-Node CLI (v0.8.32_CANDIDATE)
+## Single-Node CLI (v0.8.32_STABLE)
 
 GateGraph can be operated locally through a minimal CLI adapter.
 
