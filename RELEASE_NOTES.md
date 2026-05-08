@@ -137,3 +137,9 @@ Stable promotion from `v0.8.45_CANDIDATE` after Full Windows Evidence CI passed 
 ## v0.8.46_CANDIDATE - Archive Integrity / Replay Consistency
 
 This candidate adds a descriptive integrity layer for archived governance records and historical replay. It verifies archive envelope consistency, payload hash observations, record id observations and deterministic replay reconstruction without changing governance decisions.
+
+
+## v0.8.46_STABLE - Archive Integrity / Replay Consistency
+
+- Stable after Windows Full Evidence CI passed.
+- Archive integrity and replay consistency accepted as v0.8.46 stable baseline.
