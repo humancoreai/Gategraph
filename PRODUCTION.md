@@ -38,3 +38,16 @@ GateGraph v0.8.34_STABLE is production-ready for the defined single-node and loc
 ## Stable basis
 
 Stable promotion is based on a passed Full Windows Evidence CI run for v0.8.34, including the new server hardening evidence.
+
+## HTTP server exposure boundary
+
+The built-in HTTP server is a local/protected adapter, not an internet-facing production server. It uses Python ThreadingHTTPServer and intentionally does not implement authentication, TLS, rate limiting, connection quotas, reverse-proxy hardening, or distributed DoS protection.
+
+Production rule:
+
+- bind to 127.0.0.1 by default;
+- do not expose the server directly to the public internet;
+- only place it behind an explicitly controlled boundary if external access is required;
+- keep authentication, TLS termination, request throttling, and connection limits outside this adapter until those controls become a dedicated GateGraph scope.
+
+This is not a governance limitation. It is a deployment boundary: the server remains an adapter.
