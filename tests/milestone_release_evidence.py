@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.9.3_CANDIDATE"
-BASE = "v0.9.2_STABLE"
+VERSION = "v0.10.0_CANDIDATE"
+BASE = "v0.9.3_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -76,7 +76,7 @@ def main() -> None:
     assert BASE in version
     assert VERSION in status
     assert BASE in status
-    assert "Full Windows Evidence CI: pending" in status or "Full Windows Evidence CI:" in status
+    assert "Runtime / Boundary Hardening" in status
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -113,6 +113,7 @@ def main() -> None:
     assert "tests/milestone_release_evidence.py" in paths
     assert "tests/caller_boundary_evidence.py" in paths
     assert "tests/release_integrity_evidence.py" in paths
+    assert "tests/runtime_boundary_hardening_evidence.py" in paths
     assert "tests/multi_agent_architecture_evidence.py" in paths
     assert "docs/MULTI_AGENT_SSOT.md" in paths
     assert "docs/MULTI_MODE_SSOT.md" in paths
@@ -120,6 +121,8 @@ def main() -> None:
     assert "docs/MULTI_AGENT_BUDGET_AUTHORITY.md" in paths
     assert "docs/MULTI_AGENT_REPLAY_AUDIT.md" in paths
     assert "docs/EMERGENCE_BOUNDARIES.md" in paths
+    assert "docs/RUNTIME_BOUNDARY_HARDENING.md" in paths
+    assert "src/runtime_path_assertions.py" in paths
     assert "TRUST_MODEL.md" in paths
     forbidden_manifest = [
         p for p in paths
@@ -133,6 +136,7 @@ def main() -> None:
     assert "caller_boundary_evidence" in ci_manifest
     assert "release_integrity_evidence" in ci_manifest
     assert "multi_agent_architecture_evidence" in ci_manifest
+    assert "runtime_boundary_hardening_evidence" in ci_manifest
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():
