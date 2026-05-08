@@ -72,6 +72,54 @@ class IncidentRecord:
     created_at: str
 
 
+
+@dataclass(frozen=True)
+class OperationalAlert:
+    alert_id: str
+    severity: str
+    reason_code: str
+    trigger_type: str
+    trigger_ref: str
+    message: str
+    created_at: str
+
+
+ALERT_PRIORITY = {"critical": 4, "high": 3, "medium": 2, "low": 1}
+
+
+def evaluate_operational_alerts(incidents: list[IncidentRecord]) -> list[OperationalAlert]:
+    """WHY: alerts make operational findings visible without becoming an action path.
+    INV: alert evaluation is pure/read-only; it never acknowledges, resolves, or repairs incidents.
+    """
+    alerts: list[OperationalAlert] = []
+    for incident in incidents:
+        severity = incident.severity if incident.severity in INCIDENT_SEVERITIES else "critical"
+        alerts.append(OperationalAlert(
+            alert_id=f"ALERT-{incident.incident_id}",
+            severity=severity,
+            reason_code=incident.reason_code,
+            trigger_type=incident.trigger_type,
+            trigger_ref=incident.trigger_ref,
+            message=_alert_message(incident),
+            created_at=utc_now(),
+        ))
+    return sorted(alerts, key=lambda a: (-ALERT_PRIORITY.get(a.severity, 4), a.created_at, a.reason_code, a.trigger_ref))
+
+
+def evaluate_open_operational_alerts(conn: sqlite3.Connection) -> list[OperationalAlert]:
+    """WHY: callers can inspect open operational risk without mutating core governance state."""
+    return evaluate_operational_alerts(list_open_incidents(conn))
+
+
+def _alert_message(incident: IncidentRecord) -> str:
+    if incident.reason_code == "OPERATIONAL_AUDIT_INCONSISTENCY":
+        return "Audit replay detected an operational consistency violation."
+    if incident.reason_code == "OPERATIONAL_BUDGET_ANOMALY":
+        return "Budget snapshot detected a ledger anomaly."
+    if incident.reason_code == "OPERATIONAL_SCOPE_BLOCKED":
+        return "Budget scope is blocked and requires human review."
+    return "Operational incident requires human review."
+
 def ensure_operational_schema(conn: sqlite3.Connection) -> None:
     """INV: Incident records are append-only operational evidence, not recovery commands."""
     conn.executescript(
