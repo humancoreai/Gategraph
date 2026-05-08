@@ -91,3 +91,11 @@ Stable promotion from `v0.8.34_CANDIDATE` after Full Windows Evidence CI passed.
 - Added operator_workflow_evidence to Evidence CI manifest.
 - No Governance, Enforcement, Runtime, Budget or Audit logic changed.
 
+## v0.8.42_STABLE
+
+Stable promotion from `v0.8.42_CANDIDATE` after Full Windows Evidence CI passed on 2026-05-06.
+
+- Added Operator Workflow / Playbook layer.
+- Kept implementation read-only and descriptive.
+- Preserved existing governance, enforcement, runtime, and audit behavior.
+
