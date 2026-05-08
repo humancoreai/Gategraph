@@ -12,3 +12,8 @@ Promotion notes:
 - Server hardening evidence passed.
 - Repo push hygiene evidence passed.
 - Full aggregate CI passed.
+
+
+## v0.8.40_CANDIDATE
+
+Status: Candidate. Operator Control / Debug Interface added as read-only layer on top of v0.8.39_STABLE.
