@@ -1,10 +1,10 @@
-# Release Notes – v0.11.3_CANDIDATE
+# Release Notes – v0.11.3_STABLE
 
-Status: candidate
+Status: stable
 Base: v0.11.2_STABLE
 Phase: Mode Boundary Surface Control
 
-v0.11.3_CANDIDATE tightens the existing multi-mode documentation boundary. It keeps mode classes descriptive only and adds evidence that mode labels do not imply authority expansion.
+v0.11.3_STABLE tightens the existing multi-mode documentation boundary. It keeps mode classes descriptive only and adds evidence that mode labels do not imply authority expansion.
 
 Added:
 - `docs/MODE_BOUNDARY_SURFACE.md`

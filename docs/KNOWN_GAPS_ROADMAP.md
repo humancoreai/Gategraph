@@ -1,4 +1,4 @@
-# Known Gaps Roadmap – v0.11.3_CANDIDATE
+# Known Gaps Roadmap – v0.11.3_STABLE
 
 ## Closed before / at v0.9.3
 
@@ -37,7 +37,7 @@
 - Console entry points are declared: `gategraph` and `gategraph-server`.
 - Packaging, install surface, startup surface and config consistency evidence are present.
 
-## Closed / hardened in v0.11.3_CANDIDATE
+## Closed / hardened in v0.11.3_STABLE
 
 - Startup/shutdown semantics are explicitly covered by evidence.
 - Config/runtime mismatch detection is explicitly covered by evidence.
