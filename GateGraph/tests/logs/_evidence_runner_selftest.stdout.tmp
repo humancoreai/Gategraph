@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "name": "pass_script",
+      "ok": true,
+      "status": "passed"
+    },
+    {
+      "name": "fail_script",
+      "ok": true,
+      "status": "failed"
+    },
+    {
+      "name": "timeout_script",
+      "ok": true,
+      "status": "timeout",
+      "killed_process_group": true
+    },
+    {
+      "name": "process_group_kill",
+      "ok": true,
+      "status": "timeout",
+      "killed_process_group": true,
+      "child_pid": 2376,
+      "child_dead": true
+    }
+  ]
+}
+Summary: {'passed': 4, 'failed': 0}
