@@ -1,10 +1,10 @@
 # Release Status
 
-Release: v0.12.1_CANDIDATE
+Release: v0.12.1_STABLE
 
 Base: v0.12.0_STABLE
 
-Status: candidate
+Status: stable
 
 Phase: Consistency / Recovery Foundation
 

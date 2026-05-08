@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.12.1_CANDIDATE"
+VERSION = "v0.12.1_STABLE"
 BASE = "v0.12.0_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
@@ -93,7 +93,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.12.1_CANDIDATE.md",
+    "docs/RELEASE_v0.12.1_STABLE.md",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
     "gategraph/context/__init__.py",
@@ -104,7 +104,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_provenance_evidence.py",
     "gategraph/context/context_lifecycle.py",
     "docs/CONTEXT_LIFECYCLE_MODEL.md",
-    "docs/RELEASE_v0.12.1_CANDIDATE.md",
+    "docs/RELEASE_v0.12.1_STABLE.md",
     "tests/context_lifecycle_evidence.py",
     "tests/context_replay_explain_boundary_evidence.py",
     "tests/context_freeze_coupling_evidence.py",
@@ -122,8 +122,8 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.12.1_CANDIDATE.md",
-    "docs/RELEASE_v0.12.1_CANDIDATE.md",
+    "docs/RELEASE_v0.12.1_STABLE.md",
+    "docs/RELEASE_v0.12.1_STABLE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -136,7 +136,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/replay_recovery_consistency_evidence.py",
     "tests/surface_recovery_consistency_evidence.py",
     "docs/RECOVERY_FOUNDATION.md",
-    "docs/RELEASE_v0.12.1_CANDIDATE.md",
+    "docs/RELEASE_v0.12.1_STABLE.md",
 }
 
 
@@ -221,7 +221,7 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "candidate",
+        "status": "stable",
         "base": BASE,
         "kind": "candidate_release",
         "scope": "governance_surface_freeze",
@@ -263,7 +263,7 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "candidate",
+        "status": "stable",
         "base": BASE,
         "phase": "Consistency / Recovery Foundation",
         "governance_logic_changed": False,
