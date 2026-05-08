@@ -1,8 +1,8 @@
-# Release Notes – v0.10.2_CANDIDATE
+# Release Notes – v0.10.2_STABLE
 
 ## Summary
 
-v0.10.2_CANDIDATE continues Phase A: Runtime / Boundary Hardening.
+v0.10.2_STABLE continues Phase A: Runtime / Boundary Hardening.
 
 It makes the guard-chain order executable and explicitly fails closed for skipped stages, invalid enforcement chains, duplicate stages, unknown stages, and action-ready claims without the complete guard sequence.
 
@@ -17,7 +17,7 @@ It makes the guard-chain order executable and explicitly fails closed for skippe
 - `src/guard_orchestrator.py` records evaluated guard stages and chain assertion evidence.
 - `tests/freeze_runtime_invariant_evidence.py` now verifies runtime chain assertions as executable freeze-aware behavior.
 - `tests/evidence_ci.py` includes runtime chain/order evidence.
-- release metadata and release integrity evidence target v0.10.2_CANDIDATE.
+- release metadata and release integrity evidence target v0.10.2_STABLE.
 
 ## Unchanged
 
