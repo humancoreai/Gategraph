@@ -57,7 +57,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.4 external-api-mock-adapter
+Version: v0.8.5 api-enforcement-binding
 Core status: stable proof of concept
 Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
 ```
@@ -190,3 +190,7 @@ Important distinction:
 - **GateGraph** is a deterministic governance and enforcement layer with an audit graph.
 
 GateGraph does **not** implement the GLP protocol.
+
+## v0.8.5 API Enforcement Binding
+
+External API Adapter now calls Enforcement internally with the provided Capability Token. Callers cannot spoof `enforcement_allowed`. The adapter remains mock-only and performs no real network calls.
