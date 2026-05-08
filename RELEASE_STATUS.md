@@ -1,37 +1,33 @@
-# Release Status - GateGraph v0.8.19-pattern-priority-scoring
+# Release Status - GateGraph v0.8.22-controlled-apply
 
-Status: Single-node PoC / advisory Pattern Engine triage intelligence.
+Status: Single-node PoC with advisory intelligence, manual review workflow, and strictly limited Controlled Apply prototype.
 
 ## Added
-- Advisory proposal triage metadata:
-  - `priority` (`P0`, `P1`, `P2`, `P3`)
-  - `score`
-  - `score_basis`
-- Proposal schema columns for priority/score metadata.
-- `tests/pattern_priority_scoring_evidence.py`.
-- `docs/PATTERN_ENGINE_PRIORITY_SCORING.md`.
-
-## Changed
-- Pattern proposals are now easier to review in risk order.
-- Repeated critical token/signature abuse can surface as P0 advisory proposal.
-- Repeated high-severity HTTP/secret problems surface as review-priority proposals.
-- Support count can raise score within the same pattern class.
+- `src/controlled_apply.py` for a separate Human-Gate apply path.
+- Two distinct reviewer approvals for `approved_for_controlled_apply`.
+- Signed Apply Artifacts with TTL, hash validation, and single-use status.
+- Initial allowlist: `rule_update` only, and only stricter rule changes.
+- Target-state drift detection before execution.
+- Controlled Apply audit events.
+- `tests/controlled_apply_evidence.py`.
+- `docs/CONTROLLED_APPLY.md`.
 
 ## Unchanged
 - Pattern Engine remains proposal-only.
-- Enforcement remains the only authorization gatekeeper.
-- Guards still only stop, never allow.
-- No rules, HTTP policies, budgets, tokens, secrets, or actions are mutated by Pattern Engine scoring.
-- Production governance/enforcement/runtime semantics unchanged.
+- Review Workflow still does not apply changes.
+- Enforcement remains the only runtime action gatekeeper.
+- Guards still stop only; they do not allow.
+- Audit remains append-only.
+- Secret values remain outside DB persistence.
 
 ## Evidence
-- Pattern Priority Scoring Evidence: 4/4 passed.
-- Pattern Intelligence Evidence: 4/4 passed.
-- Pattern Engine regression tests: 3/3 passed.
-- Block D Audit/Explain regression: 4/4 passed.
+- Controlled Apply evidence cases were run individually due local runner/process instability.
+- Confirmed: manual review required, two distinct Human-Gates required, same-reviewer double approval blocked, unsupported/looser changes blocked, strict rule hardening executes and audits, replay blocked.
+- Target-drift test exists; local aggregate execution was environment-sensitive during packaging.
 
 ## Known Limits
-- Score is reviewer triage metadata, not causal proof.
-- No automatic rule updates or adaptive policy changes.
-- No distributed pattern correlation.
-- Aggregate runner remains environment-sensitive in local runs.
+- Single-node only.
+- Local HMAC apply-key model; no production KMS.
+- Controlled Apply currently supports rule hardening only.
+- No API production integration.
+- No distributed review identity model.
