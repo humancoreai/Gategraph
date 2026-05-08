@@ -124,32 +124,50 @@ enforcement queries token revocation state before allowing
 
 ---
 
-## 4. Known security limits
+## 4. Current PoC security controls
 
-These are acceptable for the PoC but must be addressed before production use:
+Implemented at Single-Node PoC level:
 
-- tokens are not cryptographically signed
-- no external identity model
-- no reviewer trust model
-- no concurrency/race-condition hardening
-- no runtime/cost-control layer
-- no sandboxed tool runtime
+- HMAC-signed Capability Tokens over immutable claims
+- explicit signing key IDs and local keyring verification
+- task-bound token enforcement and cross-task replay blocking
+- revocation and expiry checks during enforcement
+- Runtime Guard for per-task loops, steps, and runtime cost
+- Session Budget Guard for global and agent-level cost limits
+- HTTP Policy allowlist for scheme, host, path boundary, and method
+- scoped secret references resolved only after Enforcement, Budget, Runtime, and HTTP Policy pass
+- append-only audit events and read-only explain trace reconstruction
 
 ---
 
-## 5. Security recommendation before production
+## 5. Known security limits
+
+These are acceptable for the PoC but must be addressed before production use:
+
+- no external identity model
+- no reviewer trust / human approval model
+- no KMS or OS-keychain integration; current secret resolution is env-backed
+- no asymmetric signatures or distributed trust boundary
+- no multi-node/distributed budget coordination
+- no sandboxed tool runtime
+- no production billing integration, alerting, or incident workflow
+- aggregate evidence runner remains environment-sensitive in local runs
+
+---
+
+## 6. Security recommendation before production
 
 Before production use, add:
 
-1. HMAC or signed capability tokens
-2. dedicated approval workflow
-3. concurrency controls
-4. runtime/cost-control layer
-5. tool sandboxing
-6. formal revocation cache or low-latency revocation check
+1. managed secret storage (OS keychain/KMS) and rotation lifecycle
+2. dedicated approval workflow and reviewer trust model
+3. distributed concurrency / budget coordination if crossing process or node boundaries
+4. sandboxed tool runtime
+5. formal revocation cache or low-latency revocation check
+6. operational monitoring, billing integration, and alerting
 
 ## Capability Token integrity (v0.8.8)
 
 Capability Tokens now include HMAC signatures over immutable claims. Enforcement validates persisted claims and signature before it grants a capability. Any mismatch fails closed.
 
-Boundary: the current signing model is local/symmetric. Production-style distributed trust, key rotation, and asymmetric verification remain out of scope for this release.
+Boundary: the current signing model is local/symmetric. Key ID based local rotation is implemented at PoC level; production-style distributed trust and asymmetric verification remain out of scope.
