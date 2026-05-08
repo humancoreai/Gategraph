@@ -1,10 +1,10 @@
-# Release Notes – v0.10.3_CANDIDATE
+# Release Notes – v0.10.3_STABLE
 
 ## Summary
 
-v0.10.3_CANDIDATE is a release-process hardening phase based on the Windows-CI-confirmed v0.10.2_STABLE baseline.
+v0.10.3_STABLE finalizes the v0.10.x Runtime / Boundary Hardening line with a release-process guard.
 
-It adds an explicit release-process guard to prevent Candidate/Stable metadata drift, manifest-shape regressions, stale manifest entries, and missing local documentation references.
+The release adds automated checks to prevent pre-release/stable metadata drift, structured manifest regressions, stale manifest entries, and dead local documentation references.
 
 ## Added
 
