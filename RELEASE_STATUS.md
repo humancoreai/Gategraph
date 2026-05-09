@@ -1,14 +1,15 @@
 # Release Status
 
-Current candidate: v0.8.48_CANDIDATE
-Base: v0.8.47_STABLE
-Phase: Final Consolidation / v0.9 Readiness Gate
+Current candidate: v0.9.0_CANDIDATE
+Base: v0.8.48_STABLE
+Phase: Milestone Release / External Review Baseline
 
 Evidence:
-- final_consolidation_evidence: passed locally
+- milestone_release_evidence: added for release/package consistency checks
 - Full Windows Evidence CI: pending
 
 Candidate notes:
-- Final consolidation/readiness gate only.
+- Milestone release baseline only.
 - No new governance features introduced.
-- Checks release metadata, repository entry points, evidence manifest presence and artifact-shape expectations.
+- Adds external review documents and deterministic release packaging tools.
+- Scope freeze is explicit: no autonomous policy changes, no self-governance, no automatic optimization, no prediction layer.
