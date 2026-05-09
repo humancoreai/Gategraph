@@ -1,5 +1,6 @@
 {
-  "base": "v0.11.0_STABLE",
+  "base": "v0.11.1_STABLE",
+  "claim_boundary": "startup/config/runtime-surface consistency only; no runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker, Kubernetes, or UI behavior changes",
   "config_consistency_scope": true,
   "deployment_scope": "single_node_local_protected",
   "distributed_governance": false,
@@ -12,13 +13,15 @@
   "new_runtime_capability": false,
   "new_runtime_model": false,
   "packaging_scope": true,
-  "phase": "Operational Start Surface / Minimal Deployment Consistency",
-  "release": "v0.11.1_STABLE",
+  "phase": "Operational Consistency / Runtime Surface Tightening",
+  "release": "v0.11.2_CANDIDATE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
+  "runtime_surface_scope": true,
   "scope_freeze": true,
   "self_orchestration": false,
-  "stable_promotion": true,
+  "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "stable"
+  "status": "candidate",
+  "surface_freeze_coupling_scope": true
 }

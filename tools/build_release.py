@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.1_STABLE"
-BASE = "v0.11.0_STABLE"
+VERSION = "v0.11.2_CANDIDATE"
+BASE = "v0.11.1_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -41,6 +41,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY.md",
     "CONTRIBUTING.md",
     "CHANGELOG.md",
+    "docs/KNOWN_GAPS_ROADMAP.md",
     "RELEASE_PROCESS.md",
     "tests/install_surface_evidence.py",
     "tests/packaging_integrity_evidence.py",
@@ -48,6 +49,11 @@ REQUIRED_RELEASE_FILES = {
     "tests/config_consistency_evidence.py",
     "tests/startup_surface_evidence.py",
     "docs/STARTUP_SURFACE.md",
+    "docs/RUNTIME_SURFACE_FREEZE.md",
+    "docs/OPERATIONAL_BOUNDARY_TIGHTENING.md",
+    "tests/startup_shutdown_semantics_evidence.py",
+    "tests/runtime_surface_consistency_evidence.py",
+    "tests/surface_freeze_coupling_evidence.py",
     "pyproject.toml",
     "docs/THREAT_MODEL.md",
     "README.md",
@@ -162,10 +168,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "deployment_packaging_baseline",
+        "kind": "candidate_release",
+        "scope": "runtime_surface_tightening",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -204,9 +210,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Operational Start Surface / Minimal Deployment Consistency",
+        "phase": "Operational Consistency / Runtime Surface Tightening",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -220,11 +226,14 @@ def main() -> int:
         "deployment_scope": "single_node_local_protected",
         "startup_surface_scope": True,
         "config_consistency_scope": True,
+        "runtime_surface_scope": True,
+        "surface_freeze_coupling_scope": True,
+        "startup_shutdown_semantics_scope": True,
         "release_process_guard": True,
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "startup/config/health consistency only; no runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker, Kubernetes, or UI behavior changes",
+        "claim_boundary": "startup/config/runtime-surface consistency only; no runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker, Kubernetes, or UI behavior changes",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
