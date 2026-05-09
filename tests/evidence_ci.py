@@ -84,6 +84,8 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("incident_lifecycle_consistency_evidence", "tests/incident_lifecycle_consistency_evidence.py", 20),
     ("semantic_drift_detection_evidence", "tests/semantic_drift_detection_evidence.py", 20),
     ("evidence_surface_consistency_evidence", "tests/evidence_surface_consistency_evidence.py", 20),
+    ("semantic_registry_lock_evidence", "tests/semantic_registry_lock_evidence.py", 20),
+    ("release_manifest_coverage_evidence", "tests/release_manifest_coverage_evidence.py", 20),
     ("root_surface_hygiene_evidence", "tests/root_surface_hygiene_evidence.py", 20),
     ("governance_semantics_evidence", "tests/governance_semantics_evidence.py", 20),
     ("operator_evidence", "tests/operator_evidence.py", 20),
