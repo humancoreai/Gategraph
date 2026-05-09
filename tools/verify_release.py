@@ -11,7 +11,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-VERSION = "v0.11.4_STABLE"
+VERSION = "v0.11.5_CANDIDATE"
 EXPECTED_PREFIX = f"GateGraph_{VERSION}/"
 FIXED_ZIP_DT = (2026, 1, 1, 0, 0, 0)
 FORBIDDEN_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea", ".vscode", "dist"}
@@ -57,6 +57,13 @@ REQUIRED = {
     "src/runtime_chain_assertions.py",
     "src/api_boundary.py",
     "tests/governance_freeze_evidence.py",
+    "SECURITY_MODEL.md",
+    "OWASP_AGENTIC_AI_MAPPING.md",
+    "KNOWN_LIMITATIONS.md",
+    "docs/RELEASE_v0.11.5_CANDIDATE.md",
+    "src/security/__init__.py",
+    "src/security/token_redaction.py",
+    "tests/token_exposure_evidence.py",
 }
 
 
