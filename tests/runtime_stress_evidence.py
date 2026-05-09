@@ -375,6 +375,173 @@ def scenario_cross_task_cost_is_not_session_budget() -> EvidenceScenarioResult:
         close_conn(conn, db_path)
 
 
+
+
+def _sum_runtime_cost(evidence: dict) -> int:
+    return sum(int(step.get("cost_units") or 0) for step in evidence.get("runtime_steps", []))
+
+
+def scenario_cross_task_cascade_drift_visible() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn()
+    try:
+        task_evidence = {}
+        total_cost = 0
+        stop_count = 0
+
+        for idx in range(1, 21):
+            task_id = f"STRESS-CASCADE-{idx:02d}"
+            runtime_guard.create_budget(conn, task_id=task_id, max_steps=5, max_cost_units=10, repeated_action_limit=10)
+            decision = runtime_guard.evaluate_before_step(
+                conn,
+                task_id=task_id,
+                actor_id="agent-cascade",
+                action_type="model_call",
+                target=f"analysis-{idx}",
+                cost_units=4,
+            )
+            ev = collect_task_evidence(conn, task_id)
+            task_evidence[task_id] = ev
+            total_cost += _sum_runtime_cost(ev)
+            if decision.decision == "stop":
+                stop_count += 1
+
+        passed = stop_count == 0 and total_cost == 80
+        return EvidenceScenarioResult(
+            test_name="cross_task_cascade_drift_visible",
+            description="Twenty individually allowed tasks accumulate cost without a session/global budget stop.",
+            expected={"tasks": 20, "per_task_stops": 0, "total_cost_units": 80, "session_budget_present": False},
+            actual={"tasks": len(task_evidence), "per_task_stops": stop_count, "total_cost_units": total_cost, "session_budget_present": False},
+            passed=passed,
+            severity="medium",
+            notes=[
+                "This is an evidence finding, not a core bug: per-task budgets work, but cumulative cross-task drift is not blocked.",
+                "Use this as the proof basis before adding session/global budgets.",
+            ],
+            evidence={"tasks": task_evidence, "aggregate": {"total_cost_units": total_cost, "per_task_stops": stop_count}},
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
+def scenario_parallel_multi_agent_drift_visible() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn()
+    try:
+        task_evidence = {}
+        total_cost = 0
+        stop_count = 0
+
+        for agent_idx in range(1, 4):
+            for task_idx in range(1, 6):
+                task_id = f"STRESS-PARALLEL-A{agent_idx}-T{task_idx}"
+                runtime_guard.create_budget(conn, task_id=task_id, max_steps=5, max_cost_units=9, repeated_action_limit=10)
+                decision = runtime_guard.evaluate_before_step(
+                    conn,
+                    task_id=task_id,
+                    actor_id=f"agent-{agent_idx}",
+                    action_type="model_call",
+                    target=f"parallel-analysis-{task_idx}",
+                    cost_units=3,
+                )
+                ev = collect_task_evidence(conn, task_id)
+                task_evidence[task_id] = ev
+                total_cost += _sum_runtime_cost(ev)
+                if decision.decision == "stop":
+                    stop_count += 1
+
+        passed = stop_count == 0 and total_cost == 45
+        return EvidenceScenarioResult(
+            test_name="parallel_multi_agent_drift_visible",
+            description="Three agents can each stay under per-task budgets while aggregate session cost rises.",
+            expected={"agents": 3, "tasks": 15, "per_task_stops": 0, "total_cost_units": 45, "agent_global_budget_present": False},
+            actual={"agents": 3, "tasks": len(task_evidence), "per_task_stops": stop_count, "total_cost_units": total_cost, "agent_global_budget_present": False},
+            passed=passed,
+            severity="medium",
+            notes=[
+                "Evidence confirms missing aggregate budget across agents.",
+                "Core invariants remain intact; the gap is economic/runtime aggregation, not token enforcement.",
+            ],
+            evidence={"tasks": task_evidence, "aggregate": {"total_cost_units": total_cost, "per_task_stops": stop_count}},
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
+def scenario_session_reset_budget_bypass_visible() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn()
+    try:
+        first_task = "STRESS-SESSION-RESET-1"
+        second_task = "STRESS-SESSION-RESET-2"
+        evidences = {}
+
+        runtime_guard.create_budget(conn, task_id=first_task, max_steps=5, max_cost_units=10, repeated_action_limit=10)
+        d1 = runtime_guard.evaluate_before_step(conn, task_id=first_task, actor_id="agent-reset", action_type="model_call", target="part-1", cost_units=9)
+        evidences[first_task] = collect_task_evidence(conn, first_task)
+
+        # Simulates a new task/session continuing the same logical work with a fresh per-task budget.
+        runtime_guard.create_budget(conn, task_id=second_task, max_steps=5, max_cost_units=10, repeated_action_limit=10)
+        d2 = runtime_guard.evaluate_before_step(conn, task_id=second_task, actor_id="agent-reset", action_type="model_call", target="part-2", cost_units=9)
+        evidences[second_task] = collect_task_evidence(conn, second_task)
+
+        total_cost = sum(_sum_runtime_cost(ev) for ev in evidences.values())
+        passed = d1.decision == "continue" and d2.decision == "continue" and total_cost == 18
+        return EvidenceScenarioResult(
+            test_name="session_reset_budget_bypass_visible",
+            description="A logical continuation can receive a fresh per-task budget after task/session reset.",
+            expected={"first_decision": "continue", "second_decision": "continue", "total_cost_units": 18, "session_continuity_budget_present": False},
+            actual={"first_decision": d1.decision, "second_decision": d2.decision, "total_cost_units": total_cost, "session_continuity_budget_present": False},
+            passed=passed,
+            severity="high",
+            notes=[
+                "This documents the strongest current cost-control gap: per-task reset can bypass cumulative intent/session cost limits.",
+                "No core invariant is violated; missing concept is logical session/global budget continuity.",
+            ],
+            evidence={"tasks": evidences, "aggregate": {"total_cost_units": total_cost}},
+        )
+    finally:
+        close_conn(conn, db_path)
+
+
+def scenario_micro_task_flood_drift_visible() -> EvidenceScenarioResult:
+    conn, db_path = fresh_conn()
+    try:
+        task_evidence = {}
+        total_cost = 0
+        stop_count = 0
+
+        for idx in range(1, 101):
+            task_id = f"STRESS-MICRO-FLOOD-{idx:03d}"
+            runtime_guard.create_budget(conn, task_id=task_id, max_steps=2, max_cost_units=2, repeated_action_limit=10)
+            decision = runtime_guard.evaluate_before_step(
+                conn,
+                task_id=task_id,
+                actor_id="agent-flood",
+                action_type="micro_model_call",
+                target=f"redundant-check-{idx}",
+                cost_units=1,
+            )
+            ev = collect_task_evidence(conn, task_id)
+            task_evidence[task_id] = ev
+            total_cost += _sum_runtime_cost(ev)
+            if decision.decision == "stop":
+                stop_count += 1
+
+        passed = stop_count == 0 and total_cost == 100
+        return EvidenceScenarioResult(
+            test_name="micro_task_flood_drift_visible",
+            description="One hundred individually valid micro-tasks create aggregate cost without a global stop.",
+            expected={"tasks": 100, "per_task_stops": 0, "total_cost_units": 100, "global_flood_guard_present": False},
+            actual={"tasks": len(task_evidence), "per_task_stops": stop_count, "total_cost_units": total_cost, "global_flood_guard_present": False},
+            passed=passed,
+            severity="high",
+            notes=[
+                "Evidence confirms that micro-task flooding is visible in logs but not blocked by current per-task runtime budgets.",
+                "This finding should drive the next controlled design step: session/global budget policy, not Pattern Engine automation.",
+            ],
+            evidence={"tasks": task_evidence, "aggregate": {"total_cost_units": total_cost, "per_task_stops": stop_count}},
+        )
+    finally:
+        close_conn(conn, db_path)
+
 def main() -> int:
     run_id = datetime.now(timezone.utc).strftime("runtime_evidence_%Y%m%d_%H%M%S")
     log = EvidenceRunLog(run_id=run_id, started_at=datetime.now(timezone.utc).isoformat())
@@ -389,6 +556,10 @@ def main() -> int:
         scenario_missing_runtime_budget_fail_closed,
         scenario_budget_boundary_exact_cost_allowed_then_stop,
         scenario_cross_task_cost_is_not_session_budget,
+        scenario_cross_task_cascade_drift_visible,
+        scenario_parallel_multi_agent_drift_visible,
+        scenario_session_reset_budget_bypass_visible,
+        scenario_micro_task_flood_drift_visible,
     ]
 
     for scenario in scenarios:

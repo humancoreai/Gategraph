@@ -112,3 +112,24 @@ DB events accumulated: 31
   - exact cost boundary allowed, next step stopped
   - documented current per-task cost scope / no session-global budget
 - No production core modules changed.
+
+
+## v0.7.3-cross-task-drift-evidence
+
+Added Phase 3B evidence scenarios without changing production core modules:
+
+- cross_task_cascade_drift_visible
+- parallel_multi_agent_drift_visible
+- session_reset_budget_bypass_visible
+- micro_task_flood_drift_visible
+
+Finding:
+- Runtime cost control is proven per-task.
+- Cross-task, multi-agent, session-reset, and micro-task flood costs are visible in evidence logs but not blocked by a session/global budget.
+- This is a documented scope boundary, not an Enforcement/Governance invariant break.
+
+Invariant status:
+- Enforcement remains the only action gatekeeper.
+- Runtime Guard still never grants capabilities.
+- Pattern Engine remains proposal-only.
+- Audit evidence remains append-only/read-only from the test perspective.
