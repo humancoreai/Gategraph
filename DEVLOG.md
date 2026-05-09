@@ -70,3 +70,21 @@ DB events accumulated: 31
 - Added RuntimeBudget, RuntimeStep, RuntimeDecision, RuntimeEvent concepts.
 - Defined initial limits: max steps, max runtime, max cost units, repeated action limit.
 - No implementation changes to Core in this step.
+
+## v0.6-core — Runtime Guard MVP
+
+- Added Runtime Guard schema tables.
+- Added `src/runtime_guard.py`.
+- Added runtime budget creation and pre-step evaluation.
+- Implemented max steps, max runtime, max cost units, and repeated-action stop checks.
+- Added runtime guard tests A–F.
+- Runtime stop occurs before Governance evaluation.
+
+## v0.7 — Pattern Engine MVP
+
+- Added `src/pattern_engine.py`.
+- Added `proposals` table schema/helper.
+- Added `tests/pattern_engine_tests.py`.
+- Added `docs/PATTERN_ENGINE.md`.
+- Pattern Engine creates `pending_review` proposals only.
+- Verified active rules are not mutated by Pattern Engine.

@@ -23,3 +23,13 @@ All known P0 correctness and enforcement issues from the v0.4.x cycle were resol
 Runtime Guard design added as documentation-only layer.
 
 No runtime code added in this step.
+
+
+## v0.6-core
+
+Runtime Guard MVP implemented with budget, step, cost, runtime, and repeated-action checks.
+
+
+## v0.7
+
+Pattern Engine MVP implemented. It analyzes repeated enforcement rejections and creates pending proposals without changing rules.
