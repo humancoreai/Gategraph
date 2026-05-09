@@ -109,6 +109,7 @@ def main() -> int:
         ("scale_safety_evidence", "scale_safety_evidence.py", "main"),
         ("external_api_evidence", "external_api_evidence.py", "main"),
         ("runaway_cost_evidence", "runaway_cost_evidence.py", "main"),
+        ("capability_token_hardening_evidence", "capability_token_hardening_evidence.py", "main"),
         ("core_loop", "test_loop.py", "main"),
         ("runtime_guard", "runtime_guard_tests.py", "main"),
         ("pattern_engine", "pattern_engine_tests.py", "main"),

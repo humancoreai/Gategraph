@@ -57,7 +57,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.5 api-enforcement-binding
+Version: v0.8.8 capability-token-hardening
 Core status: stable proof of concept
 Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
 ```
@@ -199,3 +199,7 @@ External API Adapter now calls Enforcement internally with the provided Capabili
 ## v0.8.6 Runaway / Cost Control Hardening
 
 Non-positive projected/runtime costs now fail closed. See `docs/RUNAWAY_COST_CONTROL.md`.
+
+## v0.8.8 note: Capability Token hardening
+
+Capability Tokens are now HMAC-signed over immutable claims and checked by Enforcement against persisted token state. This protects the current Single-Node model against simple token mutation, forged capability expansion, and persisted signature tampering. See `docs/CAPABILITY_TOKEN_HARDENING.md`.
