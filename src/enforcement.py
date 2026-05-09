@@ -9,7 +9,7 @@ import uuid
 from dataclasses import dataclass
 from typing import Optional
 
-from src.capability_token import CapabilityToken, verify_signature
+from src.capability_token import CapabilityToken, verify_signature, _load_keyring
 from src import event_logger
 
 
@@ -41,6 +41,10 @@ def enforce(conn: sqlite3.Connection, token: Optional[CapabilityToken], requeste
     persisted_caps = row["capabilities"]
     if row["decision_id"] != token.decision_id or row["task_id"] != token.task_id or row["expires_at"] != token.expires_at.isoformat():
         return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
+    if row["signing_key_id"] != token.signing_key_id:
+        return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
+    if token.signing_key_id not in _load_keyring():
+        return _reject(conn, task_id, correlation_id, f"capability token unknown signing key: {token.signing_key_id}", requested_capability)
 
     # SEC: signature binds immutable claims; a forged/mutated in-memory token must fail closed.
     try:
