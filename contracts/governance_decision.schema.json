@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.1",
+  "schema_version": "0.12.2",
   "surface": "governance_decision",
   "status": "frozen_stable",
   "description": "Descriptive contract for governance decision records; not executable policy.",
