@@ -30,6 +30,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         config = load_config(args.config)
+
+        # INV: CLI supports only single_node mode → fail closed otherwise
+        if getattr(config, "mode", None) != "single_node":
+            raise ValueError("only mode='single_node' is supported by the CLI")
+
         if args.command == "init":
             return _cmd_init(config, reset=args.reset)
         if args.command == "evaluate":
