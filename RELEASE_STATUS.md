@@ -1,24 +1,11 @@
-# Release Status — GateGraph v0.8.30_STABLE
+# RELEASE_STATUS
 
-## Status
+Version: v0.8.31_CANDIDATE
+Status: CANDIDATE
+Scope: Single-node usability adapter
 
-Stable release.
+Evidence:
+- Targeted single-node CLI evidence: passed
+- Full CI: pending external Windows verification
 
-## Scope
-
-Operational Stability Gate A-D:
-
-- A: Alert Aggregator
-- B: Incident State Manager
-- C: Monitoring Export
-- D: Minimal deterministic Flood Guard
-
-## Validation
-
-- `operational_stability_evidence`: passed.
-- `runaway_cost_evidence`: patched expectation and passed.
-- Full Windows CI before patch showed one expected-order mismatch only; all other evidence passed.
-
-## Notes
-
-Flood Guard intentionally runs before session reservation so blocked flood attempts do not create budget side effects.
+No functional governance-core changes.
