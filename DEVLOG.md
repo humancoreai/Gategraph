@@ -133,3 +133,28 @@ Invariant status:
 - Runtime Guard still never grants capabilities.
 - Pattern Engine remains proposal-only.
 - Audit evidence remains append-only/read-only from the test perspective.
+
+
+## v0.8.0-session-budget-guard
+
+Added additive Session Budget Guard:
+
+- `src/session_budget_guard.py`
+- `tests/session_budget_evidence.py`
+- `docs/SESSION_BUDGET_GUARD.md`
+
+Purpose:
+- Close v0.7.3 cross-task/session/multi-agent/micro-task cost drift findings.
+- Preserve existing core semantics.
+
+Controls:
+- max_session_cost_units
+- max_session_tasks
+- max_agent_cost_units
+
+Invariant status:
+- Session Budget Guard never grants capabilities.
+- Enforcement remains the only action gatekeeper.
+- Runtime Guard remains per-task.
+- Pattern Engine remains proposal-only.
+- Missing explicit session budget fails closed.
