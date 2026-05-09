@@ -62,7 +62,7 @@ def run():
 
         rows.append((name, result.risk_level, result.final_decision, "allowed" if enf.allowed else "blocked", result.selected_rule_id))
 
-    print("USAGE SIMULATION v0.8.10")
+    print("USAGE SIMULATION v0.8.11")
     print(f"Runs: {len(scenarios)}")
     print(f"Events: {event_logger.count_events(conn)}")
     print(f"Allowed: {allowed}")
