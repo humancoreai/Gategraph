@@ -41,6 +41,7 @@ def main() -> int:
                 "requested_capabilities": ["read_files"],
                 "input_source": "local",
                 "data_sensitivity": "internal",
+                "secrets_involved": False,
             }
             expected = service_adapter.evaluate_request(config, dict(task, task_id="direct-eval-read"))
             status, actual = _request(port, "POST", "/evaluate", task)

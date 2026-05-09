@@ -1,3 +1,5 @@
+<!-- v0.9.1_CANDIDATE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
+
 # External Review Baseline
 
 ## What GateGraph is
