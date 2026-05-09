@@ -7,8 +7,8 @@ import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.11.0_STABLE"
-EXPECTED_BASE = "v0.10.3_STABLE"
+EXPECTED_RELEASE = "v0.11.1_CANDIDATE"
+EXPECTED_BASE = "v0.11.0_STABLE"
 
 
 def read(path: str) -> str:
@@ -23,7 +23,7 @@ def main() -> int:
     project = pyproject["project"]
 
     assert project["name"] == "gategraph"
-    assert project["version"] == "0.11.0"
+    assert project["version"] == "0.11.1"
     assert project["requires-python"] == ">=3.11"
     assert project.get("dependencies", []) == []
 
