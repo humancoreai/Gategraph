@@ -16,6 +16,7 @@ from src import event_logger
 from src.capability_token import CapabilityToken
 from src.enforcement import enforce
 from src.guard_orchestrator import GuardPipelineDecision, evaluate_guard_pipeline
+from src.http_policy import HTTPPolicyDecision, evaluate_http_policy
 from src.secret_provider import SecretResolution, resolve_secret_for_api
 
 
@@ -111,6 +112,18 @@ def call_controlled_external_api(
             response_summary="external call blocked before execution",
         )
 
+    http_policy = evaluate_http_policy(conn, endpoint=request.endpoint, method=request.method)
+    if not http_policy.allowed:
+        return _audit_result(
+            conn,
+            request=request,
+            pipeline=pipeline,
+            decision="blocked",
+            status_code=None,
+            response_summary=http_policy.reason,
+            http_policy=http_policy,
+        )
+
     secret = resolve_secret_for_api(
         conn,
         secret_ref_id=request.secret_ref_id,
@@ -126,6 +139,7 @@ def call_controlled_external_api(
             status_code=None,
             response_summary=secret.reason,
             secret_resolution=secret,
+            http_policy=http_policy,
         )
 
     headers = _build_auth_headers(secret)
@@ -140,6 +154,7 @@ def call_controlled_external_api(
             status_code=response.status_code,
             response_summary=response.failure_reason,
             secret_resolution=secret,
+            http_policy=http_policy,
         )
 
     return _audit_result(
@@ -150,6 +165,7 @@ def call_controlled_external_api(
         status_code=response.status_code,
         response_summary=response.response_summary,
         secret_resolution=secret,
+        http_policy=http_policy,
     )
 
 
@@ -189,9 +205,11 @@ def _audit_result(
     status_code: Optional[int],
     response_summary: str,
     secret_resolution: Optional[SecretResolution] = None,
+    http_policy: Optional[HTTPPolicyDecision] = None,
 ) -> ExternalAPIResult:
     event_id = f"EVT-API-{uuid.uuid4().hex[:12].upper()}"
     secret_meta = _secret_audit_meta(request, secret_resolution)
+    http_policy_meta = _http_policy_audit_meta(http_policy)
     with conn:
         event_logger.log_event(
             conn,
@@ -218,6 +236,7 @@ def _audit_result(
                 "pipeline_decision": pipeline.decision,
                 "pipeline_reason": pipeline.reason,
                 "normalized_reason": pipeline.normalized_reason,
+                "http_policy": http_policy_meta,
                 "secret_resolution": secret_meta,
             },
             decision={
@@ -231,13 +250,29 @@ def _audit_result(
         request_id=request.request_id,
         task_id=request.task_id,
         decision=decision,
-        stage=pipeline.stage if decision != "blocked" or pipeline.decision != "continue" else "secret_provider",
+        stage=_result_stage(decision, pipeline, http_policy, secret_resolution),
         reason=response_summary if decision == "blocked" and pipeline.decision == "continue" else pipeline.reason,
         status_code=status_code,
         response_summary=response_summary,
         normalized_reason=pipeline.normalized_reason,
         audit_event_id=event_id,
     )
+
+
+def _result_stage(decision: str, pipeline: GuardPipelineDecision, http_policy: Optional[HTTPPolicyDecision], secret_resolution: Optional[SecretResolution]) -> str:
+    if decision != "blocked" or pipeline.decision != "continue":
+        return pipeline.stage
+    if http_policy is not None and not http_policy.allowed:
+        return "http_policy"
+    if secret_resolution is not None and not secret_resolution.allowed:
+        return "secret_provider"
+    return pipeline.stage
+
+
+def _http_policy_audit_meta(http_policy: Optional[HTTPPolicyDecision]) -> dict:
+    if http_policy is None:
+        return {"status": "not_evaluated"}
+    return {"status": "allowed" if http_policy.allowed else "blocked", "reason": http_policy.reason, "policy_id": http_policy.policy_id}
 
 
 def _secret_audit_meta(request: ExternalAPIRequest, secret_resolution: Optional[SecretResolution]) -> dict:

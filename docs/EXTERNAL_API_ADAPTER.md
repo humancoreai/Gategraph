@@ -1,4 +1,4 @@
-# External API Adapter (v0.8.11)
+# External API Adapter (v0.8.12)
 
 ## Purpose
 
