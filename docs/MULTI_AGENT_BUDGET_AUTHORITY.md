@@ -1,4 +1,4 @@
-# Multi-Agent Budget Authority — v0.9.2_CANDIDATE
+# Multi-Agent Budget Authority — v0.9.2_STABLE
 
 ## Status
 
