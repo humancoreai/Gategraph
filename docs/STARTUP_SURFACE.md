@@ -38,3 +38,8 @@ python -m src.server --host 127.0.0.1 --port 8787
 The supported status surface remains intentionally minimal: release/version metadata, local/protected server status, existing `/status`, and existing `/monitoring`.
 
 No telemetry stack, dashboard, remote alert router, or cloud monitoring layer is introduced in this phase.
+
+
+## v0.11.5_CANDIDATE Note
+
+v0.11.5_CANDIDATE preserves this boundary while adding security mapping and token exposure hardening.
