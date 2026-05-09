@@ -1,4 +1,4 @@
-# GateGraph v0.11.8_CANDIDATE
+# GateGraph v0.11.8_STABLE
 
 ## Phase
 
@@ -6,7 +6,7 @@ Context / Memory Governance Baseline.
 
 ## Summary
 
-v0.11.8_CANDIDATE adds a detection-only delegation boundary model and evidence for multi-agent delegation abuse cases. It does not add new agent powers, runtime modes, adapters, policy mutation, or distributed orchestration.
+v0.11.8_STABLE adds a detection-only delegation boundary model and evidence for multi-agent delegation abuse cases. It does not add new agent powers, runtime modes, adapters, policy mutation, or distributed orchestration.
 
 ## Changes
 
