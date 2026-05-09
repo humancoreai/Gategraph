@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.12.7_CANDIDATE"
+EXPECTED_RELEASE = "v0.12.7_STABLE"
 EXPECTED_BASE = "v0.12.6_STABLE"
 
 
@@ -17,7 +17,7 @@ def main() -> int:
     registry = json.loads((ROOT / "registry" / "release_state_transition_registry.json").read_text(encoding="utf-8"))
     metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
     checks = []
-    checks.append(check("registry_release_candidate", registry.get("release") == EXPECTED_RELEASE, {"release": registry.get("release")}))
+    checks.append(check("registry_release_stable", registry.get("release") == EXPECTED_RELEASE, {"release": registry.get("release")}))
     checks.append(check("registry_base_stable", registry.get("base") == EXPECTED_BASE, {"base": registry.get("base")}))
     checks.append(check("metadata_transition_scope", metadata.get("release_state_transition_scope") is True, {"scope": metadata.get("release_state_transition_scope")}))
     checks.append(check("no_runtime_authority", registry.get("runtime_authority") is False and metadata.get("release_state_runtime_authority") is False, {"registry": registry.get("runtime_authority"), "metadata": metadata.get("release_state_runtime_authority")}))
