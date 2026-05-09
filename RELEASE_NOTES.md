@@ -1,30 +1,29 @@
-# Release Notes – v0.10.1_STABLE
+# Release Notes – v0.10.2_CANDIDATE
 
 ## Summary
 
-v0.10.1_STABLE continues Phase A: Runtime / Boundary Hardening. It makes the internal/public API boundary explicit and adds executable evidence for forbidden runtime entry paths and freeze-aware runtime invariants.
+v0.10.2_CANDIDATE continues Phase A: Runtime / Boundary Hardening.
+
+It makes the guard-chain order executable and explicitly fails closed for skipped stages, invalid enforcement chains, duplicate stages, unknown stages, and action-ready claims without the complete guard sequence.
 
 ## Added
 
-- `src/api_boundary.py`
-- `tests/api_boundary_split_evidence.py`
-- `tests/freeze_runtime_invariant_evidence.py`
+- `src/runtime_chain_assertions.py`
+- `tests/runtime_chain_order_evidence.py`
+- `docs/RUNTIME_CHAIN_ASSERTIONS.md`
 
-## Changed
+## Updated
 
-- `runtime_path_assertions` now delegates component classification to the explicit API boundary classifier.
-- Trusted entry audit data now records the boundary class.
-- Release metadata and release build tooling now target `v0.10.1_STABLE`.
+- `src/guard_orchestrator.py` records evaluated guard stages and chain assertion evidence.
+- `tests/freeze_runtime_invariant_evidence.py` now verifies runtime chain assertions as executable freeze-aware behavior.
+- `tests/evidence_ci.py` includes runtime chain/order evidence.
+- release metadata and release integrity evidence target v0.10.2_CANDIDATE.
 
 ## Unchanged
 
-- governance decisions
-- enforcement rules
-- risk model
-- budget model
-- adapter surface
-- agent boundary model
-
-## Release intent
-
-Make forbidden governance entry paths executable and testable without adding runtime capability or new integrations.
+- no new runtime capability
+- no new governance authority
+- no new adapter
+- no new agentic behavior
+- no packaging/deployment layer
+- no UI

@@ -13,6 +13,7 @@ import sqlite3
 
 from src import flood_guard, runtime_guard, session_budget_guard
 from src.reason_normalizer import normalize_as_dict
+from src.runtime_chain_assertions import assert_runtime_chain
 
 
 @dataclass(frozen=True)
@@ -24,6 +25,8 @@ class GuardPipelineDecision:
     session_decision_id: Optional[str] = None
     runtime_step_id: Optional[str] = None
     normalized_reason: Optional[dict] = None
+    evaluated_stages: tuple[str, ...] = ()
+    runtime_chain_assertion: Optional[dict] = None
 
 
 def _decision(
@@ -34,7 +37,13 @@ def _decision(
     enforcement_allowed: bool,
     session_decision_id: Optional[str] = None,
     runtime_step_id: Optional[str] = None,
+    evaluated_stages: tuple[str, ...] = (),
 ) -> GuardPipelineDecision:
+    chain = assert_runtime_chain(
+        evaluated_stages=evaluated_stages or (stage,),
+        terminal_stage=stage,
+        enforcement_allowed=enforcement_allowed,
+    )
     return GuardPipelineDecision(
         decision=decision,
         stage=stage,
@@ -43,6 +52,8 @@ def _decision(
         session_decision_id=session_decision_id,
         runtime_step_id=runtime_step_id,
         normalized_reason=normalize_as_dict(stage, reason),
+        evaluated_stages=chain.evaluated_stages,
+        runtime_chain_assertion=chain.as_dict(),
     )
 
 
@@ -76,6 +87,7 @@ def evaluate_guard_pipeline(
             stage="enforcement",
             reason=enforcement_reason or "enforcement blocked",
             enforcement_allowed=False,
+            evaluated_stages=("enforcement",),
         )
 
     flood_decision = flood_guard.evaluate_flood_guard(
@@ -90,6 +102,7 @@ def evaluate_guard_pipeline(
             stage="flood_guard",
             reason=flood_decision.reason,
             enforcement_allowed=True,
+            evaluated_stages=("enforcement", "flood_guard"),
         )
 
     session_decision = session_budget_guard.evaluate_before_task(
@@ -106,6 +119,7 @@ def evaluate_guard_pipeline(
             reason=session_decision.reason,
             enforcement_allowed=True,
             session_decision_id=session_decision.decision_id,
+            evaluated_stages=("enforcement", "flood_guard", "session_budget"),
         )
 
     runtime_decision = runtime_guard.evaluate_before_step(
@@ -124,6 +138,7 @@ def evaluate_guard_pipeline(
             enforcement_allowed=True,
             session_decision_id=session_decision.decision_id,
             runtime_step_id=runtime_decision.step_id,
+            evaluated_stages=("enforcement", "flood_guard", "session_budget", "runtime_guard"),
         )
 
     return _decision(
@@ -133,4 +148,5 @@ def evaluate_guard_pipeline(
         enforcement_allowed=True,
         session_decision_id=session_decision.decision_id,
         runtime_step_id=runtime_decision.step_id,
+        evaluated_stages=("enforcement", "flood_guard", "session_budget", "runtime_guard", "action_ready"),
     )

@@ -1,17 +1,14 @@
 {
   "autonomous_classification": false,
-  "base": "v0.10.0_STABLE",
-  "claim_boundary": "internal/public API split and freeze-aware runtime invariant assertions; no new runtime capability or adapter expansion",
+  "base": "v0.10.1_STABLE",
+  "claim_boundary": "runtime chain/order assertions and skipped-stage detection; no new runtime capability or adapter expansion",
   "distributed_governance": false,
   "governance_logic_changed": false,
   "new_governance_features": false,
   "new_risk_model": false,
   "new_runtime_model": false,
   "phase": "Runtime / Boundary Hardening",
-  "promotion_source": "v0.10.1_CANDIDATE",
-  "release": "v0.10.1_STABLE",
+  "release": "v0.10.2_CANDIDATE",
   "scope_freeze": true,
-  "self_orchestration": false,
-  "stable_promotion": true,
-  "status": "stable"
+  "self_orchestration": false
 }
