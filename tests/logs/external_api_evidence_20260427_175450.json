@@ -1,0 +1,1031 @@
+{
+  "run_id": "external_api_evidence_20260427_175450",
+  "started_at": "2026-04-27T17:54:50.850882+00:00",
+  "finished_at": "2026-04-27T17:54:50.976239+00:00",
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "findings": 0
+  },
+  "tests": [
+    {
+      "test_name": "allowed_mock_call_completed",
+      "description": "Allowed mock API call must pass Enforcement + guards and produce one audit event.",
+      "expected": {
+        "decision": "completed",
+        "stage": "action_ready",
+        "status_code": 200,
+        "api_events": 1
+      },
+      "actual": {
+        "decision": "completed",
+        "stage": "action_ready",
+        "status_code": 200,
+        "api_events": 1
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "API-SUCCESS-TASK",
+        "events": [
+          {
+            "event_id": "EVT-TOKEN-API-SUCCESS-TASK",
+            "type": "test_token_fixture",
+            "timestamp": "2026-04-27T17:54:50.864627+00:00",
+            "task_id": "API-SUCCESS-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_test_fixture",
+            "input": {
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "fixture": true
+            },
+            "decision": {
+              "status": "allow",
+              "final_capabilities": {
+                "api_call": true
+              }
+            }
+          },
+          {
+            "event_id": "EVT-API-F7EDAB960D44",
+            "type": "external_api_call",
+            "timestamp": "2026-04-27T17:54:50.868696+00:00",
+            "task_id": "API-SUCCESS-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_adapter",
+            "input": {
+              "request_id": "REQ-API-SUCCESS",
+              "endpoint": "/mock/search",
+              "method": "POST",
+              "payload_summary": "redacted test payload",
+              "projected_cost_units": 1,
+              "timeout_ms": 100,
+              "mock_behavior": "success",
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "pipeline_stage": "action_ready",
+              "pipeline_decision": "continue",
+              "pipeline_reason": "all guards passed",
+              "normalized_reason": {
+                "code": "OK_ACTION_READY",
+                "category": "ok",
+                "severity": "info",
+                "stage": "action_ready",
+                "message": "All guards passed; action may proceed.",
+                "raw_reason": "all guards passed",
+                "priority": 0
+              }
+            },
+            "decision": {
+              "status": "completed",
+              "status_code": 200,
+              "response_summary": "mock external API success"
+            }
+          }
+        ],
+        "runtime_decisions": [
+          {
+            "decision_id": "RTD-D68FB279401E",
+            "task_id": "API-SUCCESS-TASK",
+            "step_id": "STEP-F35166C22FA3",
+            "decision": "continue",
+            "reason": "within budget",
+            "created_at": "2026-04-27T17:54:50.868136+00:00"
+          }
+        ],
+        "runtime_steps": [
+          {
+            "step_id": "STEP-F35166C22FA3",
+            "task_id": "API-SUCCESS-TASK",
+            "step_index": 1,
+            "actor_id": "agent-api",
+            "action_type": "external_api_call",
+            "action_signature": "agent-api:external_api_call:post:/mock/search",
+            "cost_units": 1,
+            "timestamp": "2026-04-27T17:54:50.867609+00:00"
+          }
+        ],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-TOKEN-API-SUCCESS-TASK",
+            "task_id": "API-SUCCESS-TASK",
+            "event_id": "EVT-TOKEN-API-SUCCESS-TASK",
+            "status": "allow",
+            "reason": "test fixture api token",
+            "created_at": "2026-04-27 17:54:50",
+            "final_caps": {
+              "api_call": true
+            },
+            "matched_rules": []
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-B8CC1CE32975",
+            "decision_id": "DEC-TOKEN-API-SUCCESS-TASK",
+            "task_id": "API-SUCCESS-TASK",
+            "capabilities": {
+              "api_call": true
+            },
+            "issued_at": "2026-04-27T17:54:50.864966+00:00",
+            "expires_at": "2026-04-27T17:59:50.864966+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-TOKEN-API-SUCCESS-TASK",
+            "EVT-API-F7EDAB960D44"
+          ],
+          "runtime_decision_ids": [
+            "RTD-D68FB279401E"
+          ],
+          "runtime_step_ids": [
+            "STEP-F35166C22FA3"
+          ],
+          "governance_decision_ids": [
+            "DEC-TOKEN-API-SUCCESS-TASK"
+          ],
+          "token_ids": [
+            "TOK-B8CC1CE32975"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "no_token_blocks_before_api",
+      "description": "API call without token must stop at Enforcement before budget/runtime work.",
+      "expected": {
+        "decision": "blocked",
+        "stage": "enforcement",
+        "session_decisions": 0,
+        "runtime_decisions": 0
+      },
+      "actual": {
+        "decision": "blocked",
+        "stage": "enforcement",
+        "code": "ENF_NO_TOKEN",
+        "session_decisions": 0,
+        "runtime_decisions": 0
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task": {
+          "task_id": "API-NO-TOKEN-TASK",
+          "events": [
+            {
+              "event_id": "EVT-REJ-F004345B75",
+              "type": "enforcement_rejection",
+              "timestamp": "2026-04-27T17:54:50.883666+00:00",
+              "task_id": "API-NO-TOKEN-TASK",
+              "actor_layer": "governance",
+              "actor_component": "enforcement_layer",
+              "input": {
+                "requested_capability": "api_call"
+              },
+              "evaluation": {
+                "check": "capability_token_validation"
+              },
+              "decision": {
+                "status": "block",
+                "reason": "no capability token provided"
+              }
+            },
+            {
+              "event_id": "EVT-API-431FF6E6BEB2",
+              "type": "external_api_call",
+              "timestamp": "2026-04-27T17:54:50.884125+00:00",
+              "task_id": "API-NO-TOKEN-TASK",
+              "actor_layer": "governance",
+              "actor_component": "external_api_adapter",
+              "input": {
+                "request_id": "REQ-API-NO-TOKEN",
+                "endpoint": "/mock/search",
+                "method": "POST",
+                "payload_summary": "redacted test payload",
+                "projected_cost_units": 1,
+                "timeout_ms": 100,
+                "mock_behavior": "success",
+                "requested_capability": "api_call"
+              },
+              "evaluation": {
+                "pipeline_stage": "enforcement",
+                "pipeline_decision": "stop",
+                "pipeline_reason": "no capability token provided",
+                "normalized_reason": {
+                  "code": "ENF_NO_TOKEN",
+                  "category": "authorization",
+                  "severity": "critical",
+                  "stage": "enforcement",
+                  "message": "Action blocked because no valid capability token was provided.",
+                  "raw_reason": "no capability token provided",
+                  "priority": 100
+                }
+              },
+              "decision": {
+                "status": "blocked",
+                "status_code": null,
+                "response_summary": "external call blocked before execution"
+              }
+            }
+          ],
+          "runtime_decisions": [],
+          "runtime_steps": [],
+          "governance_decisions": [],
+          "capability_tokens": [],
+          "audit_refs": {
+            "event_ids": [
+              "EVT-REJ-F004345B75",
+              "EVT-API-431FF6E6BEB2"
+            ],
+            "runtime_decision_ids": [],
+            "runtime_step_ids": [],
+            "governance_decision_ids": [],
+            "token_ids": []
+          }
+        },
+        "session": {
+          "session_id": "API-NO-TOKEN",
+          "session_budgets": [
+            {
+              "session_id": "API-NO-TOKEN",
+              "max_session_cost_units": 100,
+              "max_session_tasks": 20,
+              "max_agent_cost_units": 100,
+              "created_at": "2026-04-27T17:54:50.882687+00:00"
+            }
+          ],
+          "session_task_links": [],
+          "session_budget_decisions": [],
+          "audit_refs": {
+            "session_budget_decision_ids": [],
+            "linked_task_ids": []
+          }
+        }
+      }
+    },
+    {
+      "test_name": "session_budget_blocks_expensive_api",
+      "description": "Expensive API call must stop at Session Budget before Runtime Guard.",
+      "expected": {
+        "decision": "blocked",
+        "stage": "session_budget",
+        "code": "SES_COST_LIMIT",
+        "runtime_decisions": 0
+      },
+      "actual": {
+        "decision": "blocked",
+        "stage": "session_budget",
+        "code": "SES_COST_LIMIT",
+        "runtime_decisions": 0
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "API-SESSION-STOP-TASK",
+        "events": [
+          {
+            "event_id": "EVT-TOKEN-API-SESSION-STOP-TASK",
+            "type": "test_token_fixture",
+            "timestamp": "2026-04-27T17:54:50.896434+00:00",
+            "task_id": "API-SESSION-STOP-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_test_fixture",
+            "input": {
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "fixture": true
+            },
+            "decision": {
+              "status": "allow",
+              "final_capabilities": {
+                "api_call": true
+              }
+            }
+          },
+          {
+            "event_id": "EVT-API-443F9E4D93DB",
+            "type": "external_api_call",
+            "timestamp": "2026-04-27T17:54:50.898101+00:00",
+            "task_id": "API-SESSION-STOP-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_adapter",
+            "input": {
+              "request_id": "REQ-API-SESSION-STOP",
+              "endpoint": "/mock/search",
+              "method": "POST",
+              "payload_summary": "redacted test payload",
+              "projected_cost_units": 6,
+              "timeout_ms": 100,
+              "mock_behavior": "success",
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "pipeline_stage": "session_budget",
+              "pipeline_decision": "stop",
+              "pipeline_reason": "max_session_cost_units exceeded: 6 > 5",
+              "normalized_reason": {
+                "code": "SES_COST_LIMIT",
+                "category": "session_budget",
+                "severity": "high",
+                "stage": "session_budget",
+                "message": "Session cost budget was exceeded.",
+                "raw_reason": "max_session_cost_units exceeded: 6 > 5",
+                "priority": 75
+              }
+            },
+            "decision": {
+              "status": "blocked",
+              "status_code": null,
+              "response_summary": "external call blocked before execution"
+            }
+          }
+        ],
+        "runtime_decisions": [],
+        "runtime_steps": [],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-TOKEN-API-SESSION-STOP-TASK",
+            "task_id": "API-SESSION-STOP-TASK",
+            "event_id": "EVT-TOKEN-API-SESSION-STOP-TASK",
+            "status": "allow",
+            "reason": "test fixture api token",
+            "created_at": "2026-04-27 17:54:50",
+            "final_caps": {
+              "api_call": true
+            },
+            "matched_rules": []
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-53218627641B",
+            "decision_id": "DEC-TOKEN-API-SESSION-STOP-TASK",
+            "task_id": "API-SESSION-STOP-TASK",
+            "capabilities": {
+              "api_call": true
+            },
+            "issued_at": "2026-04-27T17:54:50.896707+00:00",
+            "expires_at": "2026-04-27T17:59:50.896707+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-TOKEN-API-SESSION-STOP-TASK",
+            "EVT-API-443F9E4D93DB"
+          ],
+          "runtime_decision_ids": [],
+          "runtime_step_ids": [],
+          "governance_decision_ids": [
+            "DEC-TOKEN-API-SESSION-STOP-TASK"
+          ],
+          "token_ids": [
+            "TOK-53218627641B"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "runtime_budget_blocks_repeated_api",
+      "description": "Repeated same API call must stop at Runtime Guard.",
+      "expected": {
+        "first": "completed",
+        "second": "blocked",
+        "second_code": "RT_REPEATED_ACTION"
+      },
+      "actual": {
+        "first": "completed",
+        "second": "blocked",
+        "second_stage": "runtime_guard",
+        "second_code": "RT_REPEATED_ACTION"
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "API-RUNTIME-REPEAT-TASK",
+        "events": [
+          {
+            "event_id": "EVT-TOKEN-API-RUNTIME-REPEAT-TASK",
+            "type": "test_token_fixture",
+            "timestamp": "2026-04-27T17:54:50.909713+00:00",
+            "task_id": "API-RUNTIME-REPEAT-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_test_fixture",
+            "input": {
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "fixture": true
+            },
+            "decision": {
+              "status": "allow",
+              "final_capabilities": {
+                "api_call": true
+              }
+            }
+          },
+          {
+            "event_id": "EVT-API-4C202FCCB32A",
+            "type": "external_api_call",
+            "timestamp": "2026-04-27T17:54:50.912859+00:00",
+            "task_id": "API-RUNTIME-REPEAT-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_adapter",
+            "input": {
+              "request_id": "REQ-API-REPEAT-1",
+              "endpoint": "/mock/search",
+              "method": "POST",
+              "payload_summary": "redacted test payload",
+              "projected_cost_units": 1,
+              "timeout_ms": 100,
+              "mock_behavior": "success",
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "pipeline_stage": "action_ready",
+              "pipeline_decision": "continue",
+              "pipeline_reason": "all guards passed",
+              "normalized_reason": {
+                "code": "OK_ACTION_READY",
+                "category": "ok",
+                "severity": "info",
+                "stage": "action_ready",
+                "message": "All guards passed; action may proceed.",
+                "raw_reason": "all guards passed",
+                "priority": 0
+              }
+            },
+            "decision": {
+              "status": "completed",
+              "status_code": 200,
+              "response_summary": "mock external API success"
+            }
+          },
+          {
+            "event_id": "EVT-API-C37C34B5F0A6",
+            "type": "external_api_call",
+            "timestamp": "2026-04-27T17:54:50.914697+00:00",
+            "task_id": "API-RUNTIME-REPEAT-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_adapter",
+            "input": {
+              "request_id": "REQ-API-REPEAT-2",
+              "endpoint": "/mock/search",
+              "method": "POST",
+              "payload_summary": "redacted test payload",
+              "projected_cost_units": 1,
+              "timeout_ms": 100,
+              "mock_behavior": "success",
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "pipeline_stage": "runtime_guard",
+              "pipeline_decision": "stop",
+              "pipeline_reason": "repeated_action_limit exceeded for signature 'agent-api:external_api_call:post:/mock/search'",
+              "normalized_reason": {
+                "code": "RT_REPEATED_ACTION",
+                "category": "loop_control",
+                "severity": "medium",
+                "stage": "runtime_guard",
+                "message": "Repeated action limit was exceeded.",
+                "raw_reason": "repeated_action_limit exceeded for signature 'agent-api:external_api_call:post:/mock/search'",
+                "priority": 60
+              }
+            },
+            "decision": {
+              "status": "blocked",
+              "status_code": null,
+              "response_summary": "external call blocked before execution"
+            }
+          }
+        ],
+        "runtime_decisions": [
+          {
+            "decision_id": "RTD-447487AA4305",
+            "task_id": "API-RUNTIME-REPEAT-TASK",
+            "step_id": "STEP-4BABAB17D95D",
+            "decision": "continue",
+            "reason": "within budget",
+            "created_at": "2026-04-27T17:54:50.912374+00:00"
+          },
+          {
+            "decision_id": "RTD-5B261DC7C489",
+            "task_id": "API-RUNTIME-REPEAT-TASK",
+            "step_id": null,
+            "decision": "stop",
+            "reason": "repeated_action_limit exceeded for signature 'agent-api:external_api_call:post:/mock/search'",
+            "created_at": "2026-04-27T17:54:50.914242+00:00"
+          }
+        ],
+        "runtime_steps": [
+          {
+            "step_id": "STEP-4BABAB17D95D",
+            "task_id": "API-RUNTIME-REPEAT-TASK",
+            "step_index": 1,
+            "actor_id": "agent-api",
+            "action_type": "external_api_call",
+            "action_signature": "agent-api:external_api_call:post:/mock/search",
+            "cost_units": 1,
+            "timestamp": "2026-04-27T17:54:50.911930+00:00"
+          }
+        ],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-TOKEN-API-RUNTIME-REPEAT-TASK",
+            "task_id": "API-RUNTIME-REPEAT-TASK",
+            "event_id": "EVT-TOKEN-API-RUNTIME-REPEAT-TASK",
+            "status": "allow",
+            "reason": "test fixture api token",
+            "created_at": "2026-04-27 17:54:50",
+            "final_caps": {
+              "api_call": true
+            },
+            "matched_rules": []
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-6347E9324A7B",
+            "decision_id": "DEC-TOKEN-API-RUNTIME-REPEAT-TASK",
+            "task_id": "API-RUNTIME-REPEAT-TASK",
+            "capabilities": {
+              "api_call": true
+            },
+            "issued_at": "2026-04-27T17:54:50.909957+00:00",
+            "expires_at": "2026-04-27T17:59:50.909957+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-TOKEN-API-RUNTIME-REPEAT-TASK",
+            "EVT-API-4C202FCCB32A",
+            "EVT-API-C37C34B5F0A6"
+          ],
+          "runtime_decision_ids": [
+            "RTD-447487AA4305",
+            "RTD-5B261DC7C489"
+          ],
+          "runtime_step_ids": [
+            "STEP-4BABAB17D95D"
+          ],
+          "governance_decision_ids": [
+            "DEC-TOKEN-API-RUNTIME-REPEAT-TASK"
+          ],
+          "token_ids": [
+            "TOK-6347E9324A7B"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "api_timeout_audited_as_failure",
+      "description": "Mock API failure must be audited as execution failure, not authorization failure.",
+      "expected": {
+        "decision": "failed",
+        "status_code": null,
+        "response_contains": "timeout"
+      },
+      "actual": {
+        "decision": "failed",
+        "status_code": null,
+        "response_summary": "mock external API timeout",
+        "api_events": 1
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "API-TIMEOUT-TASK",
+        "events": [
+          {
+            "event_id": "EVT-TOKEN-API-TIMEOUT-TASK",
+            "type": "test_token_fixture",
+            "timestamp": "2026-04-27T17:54:50.936684+00:00",
+            "task_id": "API-TIMEOUT-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_test_fixture",
+            "input": {
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "fixture": true
+            },
+            "decision": {
+              "status": "allow",
+              "final_capabilities": {
+                "api_call": true
+              }
+            }
+          },
+          {
+            "event_id": "EVT-API-36B6E1466E8A",
+            "type": "external_api_call",
+            "timestamp": "2026-04-27T17:54:50.941031+00:00",
+            "task_id": "API-TIMEOUT-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_adapter",
+            "input": {
+              "request_id": "REQ-API-TIMEOUT",
+              "endpoint": "/mock/search",
+              "method": "POST",
+              "payload_summary": "redacted test payload",
+              "projected_cost_units": 1,
+              "timeout_ms": 100,
+              "mock_behavior": "timeout",
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "pipeline_stage": "action_ready",
+              "pipeline_decision": "continue",
+              "pipeline_reason": "all guards passed",
+              "normalized_reason": {
+                "code": "OK_ACTION_READY",
+                "category": "ok",
+                "severity": "info",
+                "stage": "action_ready",
+                "message": "All guards passed; action may proceed.",
+                "raw_reason": "all guards passed",
+                "priority": 0
+              }
+            },
+            "decision": {
+              "status": "failed",
+              "status_code": null,
+              "response_summary": "mock external API timeout"
+            }
+          }
+        ],
+        "runtime_decisions": [
+          {
+            "decision_id": "RTD-43FACBFE53B4",
+            "task_id": "API-TIMEOUT-TASK",
+            "step_id": "STEP-4FCC0E5F7C6A",
+            "decision": "continue",
+            "reason": "within budget",
+            "created_at": "2026-04-27T17:54:50.940300+00:00"
+          }
+        ],
+        "runtime_steps": [
+          {
+            "step_id": "STEP-4FCC0E5F7C6A",
+            "task_id": "API-TIMEOUT-TASK",
+            "step_index": 1,
+            "actor_id": "agent-api",
+            "action_type": "external_api_call",
+            "action_signature": "agent-api:external_api_call:post:/mock/search",
+            "cost_units": 1,
+            "timestamp": "2026-04-27T17:54:50.939859+00:00"
+          }
+        ],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-TOKEN-API-TIMEOUT-TASK",
+            "task_id": "API-TIMEOUT-TASK",
+            "event_id": "EVT-TOKEN-API-TIMEOUT-TASK",
+            "status": "allow",
+            "reason": "test fixture api token",
+            "created_at": "2026-04-27 17:54:50",
+            "final_caps": {
+              "api_call": true
+            },
+            "matched_rules": []
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-158D2134DADA",
+            "decision_id": "DEC-TOKEN-API-TIMEOUT-TASK",
+            "task_id": "API-TIMEOUT-TASK",
+            "capabilities": {
+              "api_call": true
+            },
+            "issued_at": "2026-04-27T17:54:50.937222+00:00",
+            "expires_at": "2026-04-27T17:59:50.937222+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-TOKEN-API-TIMEOUT-TASK",
+            "EVT-API-36B6E1466E8A"
+          ],
+          "runtime_decision_ids": [
+            "RTD-43FACBFE53B4"
+          ],
+          "runtime_step_ids": [
+            "STEP-4FCC0E5F7C6A"
+          ],
+          "governance_decision_ids": [
+            "DEC-TOKEN-API-TIMEOUT-TASK"
+          ],
+          "token_ids": [
+            "TOK-158D2134DADA"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "api_rate_limit_audited_as_failure",
+      "description": "Mock API failure must be audited as execution failure, not authorization failure.",
+      "expected": {
+        "decision": "failed",
+        "status_code": 429,
+        "response_contains": "rate limit"
+      },
+      "actual": {
+        "decision": "failed",
+        "status_code": 429,
+        "response_summary": "mock external API rate limit",
+        "api_events": 1
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "API-RATE-TASK",
+        "events": [
+          {
+            "event_id": "EVT-TOKEN-API-RATE-TASK",
+            "type": "test_token_fixture",
+            "timestamp": "2026-04-27T17:54:50.954744+00:00",
+            "task_id": "API-RATE-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_test_fixture",
+            "input": {
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "fixture": true
+            },
+            "decision": {
+              "status": "allow",
+              "final_capabilities": {
+                "api_call": true
+              }
+            }
+          },
+          {
+            "event_id": "EVT-API-BE889607D48D",
+            "type": "external_api_call",
+            "timestamp": "2026-04-27T17:54:50.957559+00:00",
+            "task_id": "API-RATE-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_adapter",
+            "input": {
+              "request_id": "REQ-API-RATE",
+              "endpoint": "/mock/search",
+              "method": "POST",
+              "payload_summary": "redacted test payload",
+              "projected_cost_units": 1,
+              "timeout_ms": 100,
+              "mock_behavior": "rate_limit",
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "pipeline_stage": "action_ready",
+              "pipeline_decision": "continue",
+              "pipeline_reason": "all guards passed",
+              "normalized_reason": {
+                "code": "OK_ACTION_READY",
+                "category": "ok",
+                "severity": "info",
+                "stage": "action_ready",
+                "message": "All guards passed; action may proceed.",
+                "raw_reason": "all guards passed",
+                "priority": 0
+              }
+            },
+            "decision": {
+              "status": "failed",
+              "status_code": 429,
+              "response_summary": "mock external API rate limit"
+            }
+          }
+        ],
+        "runtime_decisions": [
+          {
+            "decision_id": "RTD-5173840448C1",
+            "task_id": "API-RATE-TASK",
+            "step_id": "STEP-01FA96597205",
+            "decision": "continue",
+            "reason": "within budget",
+            "created_at": "2026-04-27T17:54:50.957115+00:00"
+          }
+        ],
+        "runtime_steps": [
+          {
+            "step_id": "STEP-01FA96597205",
+            "task_id": "API-RATE-TASK",
+            "step_index": 1,
+            "actor_id": "agent-api",
+            "action_type": "external_api_call",
+            "action_signature": "agent-api:external_api_call:post:/mock/search",
+            "cost_units": 1,
+            "timestamp": "2026-04-27T17:54:50.956698+00:00"
+          }
+        ],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-TOKEN-API-RATE-TASK",
+            "task_id": "API-RATE-TASK",
+            "event_id": "EVT-TOKEN-API-RATE-TASK",
+            "status": "allow",
+            "reason": "test fixture api token",
+            "created_at": "2026-04-27 17:54:50",
+            "final_caps": {
+              "api_call": true
+            },
+            "matched_rules": []
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-C1F00C341F8B",
+            "decision_id": "DEC-TOKEN-API-RATE-TASK",
+            "task_id": "API-RATE-TASK",
+            "capabilities": {
+              "api_call": true
+            },
+            "issued_at": "2026-04-27T17:54:50.954994+00:00",
+            "expires_at": "2026-04-27T17:59:50.954994+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-TOKEN-API-RATE-TASK",
+            "EVT-API-BE889607D48D"
+          ],
+          "runtime_decision_ids": [
+            "RTD-5173840448C1"
+          ],
+          "runtime_step_ids": [
+            "STEP-01FA96597205"
+          ],
+          "governance_decision_ids": [
+            "DEC-TOKEN-API-RATE-TASK"
+          ],
+          "token_ids": [
+            "TOK-C1F00C341F8B"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "untrusted_api_response_is_data",
+      "description": "Untrusted API response must be captured as data only, not interpreted as instruction.",
+      "expected": {
+        "decision": "completed",
+        "response_contains": "data, not instructions"
+      },
+      "actual": {
+        "decision": "completed",
+        "response_summary": "mock untrusted response captured as data, not instructions"
+      },
+      "passed": true,
+      "severity": "info",
+      "notes": [],
+      "evidence": {
+        "task_id": "API-UNTRUSTED-TASK",
+        "events": [
+          {
+            "event_id": "EVT-TOKEN-API-UNTRUSTED-TASK",
+            "type": "test_token_fixture",
+            "timestamp": "2026-04-27T17:54:50.971839+00:00",
+            "task_id": "API-UNTRUSTED-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_test_fixture",
+            "input": {
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "fixture": true
+            },
+            "decision": {
+              "status": "allow",
+              "final_capabilities": {
+                "api_call": true
+              }
+            }
+          },
+          {
+            "event_id": "EVT-API-7D3F34E1CBC2",
+            "type": "external_api_call",
+            "timestamp": "2026-04-27T17:54:50.974998+00:00",
+            "task_id": "API-UNTRUSTED-TASK",
+            "actor_layer": "governance",
+            "actor_component": "external_api_adapter",
+            "input": {
+              "request_id": "REQ-API-UNTRUSTED",
+              "endpoint": "/mock/search",
+              "method": "POST",
+              "payload_summary": "redacted test payload",
+              "projected_cost_units": 1,
+              "timeout_ms": 100,
+              "mock_behavior": "untrusted_response",
+              "requested_capability": "api_call"
+            },
+            "evaluation": {
+              "pipeline_stage": "action_ready",
+              "pipeline_decision": "continue",
+              "pipeline_reason": "all guards passed",
+              "normalized_reason": {
+                "code": "OK_ACTION_READY",
+                "category": "ok",
+                "severity": "info",
+                "stage": "action_ready",
+                "message": "All guards passed; action may proceed.",
+                "raw_reason": "all guards passed",
+                "priority": 0
+              }
+            },
+            "decision": {
+              "status": "completed",
+              "status_code": 200,
+              "response_summary": "mock untrusted response captured as data, not instructions"
+            }
+          }
+        ],
+        "runtime_decisions": [
+          {
+            "decision_id": "RTD-CE4F678604C8",
+            "task_id": "API-UNTRUSTED-TASK",
+            "step_id": "STEP-E2E0AD6FFB8F",
+            "decision": "continue",
+            "reason": "within budget",
+            "created_at": "2026-04-27T17:54:50.974442+00:00"
+          }
+        ],
+        "runtime_steps": [
+          {
+            "step_id": "STEP-E2E0AD6FFB8F",
+            "task_id": "API-UNTRUSTED-TASK",
+            "step_index": 1,
+            "actor_id": "agent-api",
+            "action_type": "external_api_call",
+            "action_signature": "agent-api:external_api_call:post:/mock/search",
+            "cost_units": 1,
+            "timestamp": "2026-04-27T17:54:50.974030+00:00"
+          }
+        ],
+        "governance_decisions": [
+          {
+            "decision_id": "DEC-TOKEN-API-UNTRUSTED-TASK",
+            "task_id": "API-UNTRUSTED-TASK",
+            "event_id": "EVT-TOKEN-API-UNTRUSTED-TASK",
+            "status": "allow",
+            "reason": "test fixture api token",
+            "created_at": "2026-04-27 17:54:50",
+            "final_caps": {
+              "api_call": true
+            },
+            "matched_rules": []
+          }
+        ],
+        "capability_tokens": [
+          {
+            "token_id": "TOK-035C91B9224A",
+            "decision_id": "DEC-TOKEN-API-UNTRUSTED-TASK",
+            "task_id": "API-UNTRUSTED-TASK",
+            "capabilities": {
+              "api_call": true
+            },
+            "issued_at": "2026-04-27T17:54:50.972079+00:00",
+            "expires_at": "2026-04-27T17:59:50.972079+00:00",
+            "revoked": false
+          }
+        ],
+        "audit_refs": {
+          "event_ids": [
+            "EVT-TOKEN-API-UNTRUSTED-TASK",
+            "EVT-API-7D3F34E1CBC2"
+          ],
+          "runtime_decision_ids": [
+            "RTD-CE4F678604C8"
+          ],
+          "runtime_step_ids": [
+            "STEP-E2E0AD6FFB8F"
+          ],
+          "governance_decision_ids": [
+            "DEC-TOKEN-API-UNTRUSTED-TASK"
+          ],
+          "token_ids": [
+            "TOK-035C91B9224A"
+          ]
+        }
+      }
+    }
+  ]
+}
