@@ -1,8 +1,11 @@
 # Release Status
 
-Release: v0.11.9_STABLE
-Status: stable
-Base: v0.11.8_STABLE
-Phase: Context Lifecycle / Freeze Coupling Baseline
+Release: v0.12.0_CANDIDATE
 
-This stable release stabilizes governance semantics, runtime/reference object boundaries, and root surface hygiene without adding runtime authority.
+Base: v0.11.9_STABLE
+
+Status: candidate
+
+Scope: Governance Surface Freeze.
+
+Promotion rule: candidate may become stable only after full Windows Evidence CI passes and release/version surfaces remain consistent.

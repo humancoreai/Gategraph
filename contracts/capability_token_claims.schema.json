@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.12.0",
+  "surface": "capability_token_claims",
+  "status": "frozen_candidate",
+  "description": "Descriptive claim contract for signed capability tokens; token verification logic remains in src/capability_token.py.",
+  "required_fields": {
+    "token_id": "string",
+    "task_id": "string",
+    "actor_id": "string",
+    "capabilities": "object",
+    "budget_scope_id": "string_or_null",
+    "expires_at": "string",
+    "kid": "string",
+    "signature": "string"
+  },
+  "security": {
+    "audit_logging": "log token_id/token_hash only; never log full token values",
+    "replay_boundary": "token must remain bound to task/scope claims"
+  },
+  "non_scope": ["secret resolution", "runtime execution", "capability amplification"]
+}

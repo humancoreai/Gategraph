@@ -57,9 +57,9 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
+    assert "v0.12.0_CANDIDATE" in version
     assert "v0.11.9_STABLE" in version
-    assert "v0.11.8_STABLE" in version
-    assert "Context Lifecycle / Freeze Coupling Baseline" in status
+    assert "Governance Surface Freeze" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
     missing_evidence = [name for name in REQUIRED_EVIDENCE if name not in manifest]
@@ -74,3 +74,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# Current release surface: v0.12.0_CANDIDATE
