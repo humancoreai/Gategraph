@@ -1,6 +1,6 @@
 {
   "schema_version": "0.12.5",
-  "release": "v0.12.5_CANDIDATE",
+  "release": "v0.12.5_STABLE",
   "base": "v0.12.4_STABLE",
   "registry_mode": "declarative_only",
   "dynamic_loading": false,
@@ -73,7 +73,7 @@
   "lineage": [
     {
       "from": "v0.12.4_STABLE",
-      "to": "v0.12.5_CANDIDATE",
+      "to": "v0.12.5_STABLE",
       "mode": "declarative_schema_governance_only",
       "automatic_migration": false
     }
