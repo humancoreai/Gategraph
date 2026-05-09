@@ -1,48 +1,53 @@
-# Runtime Boundary Hardening – v0.10.0_CANDIDATE
+# Runtime Boundary Hardening – v0.10.1_CANDIDATE
 
-## Scope
+## Purpose
 
-v0.10.0_CANDIDATE hardens existing runtime entry assumptions without adding new runtime capabilities, adapters, agent behavior, or orchestration paths.
+Runtime boundary hardening turns entry-path assumptions into executable checks. It does not add new runtime capability, adapter behavior, agent behavior, or orchestration logic.
 
-## Boundary rule
+## Public entry
 
-Governance evaluation requires an explicit `trusted_entry_context`.
+The only supported public evaluation entry is:
 
-Allowed production path:
+`public_api -> service_adapter -> governance`
 
-```text
-public request -> service_adapter -> governance
-```
+The service adapter validates caller boundary metadata and constructs the trusted entry context before Governance is called.
 
-Forbidden production path:
+## Internal components
 
-```text
-external caller -> governance.evaluate_task()
-```
+Governance, runtime guards, session budget guards, and enforcement are internal implementation components. They are not public entry points and must not be exposed directly by future integrations.
 
-## Enforcement
+## Forbidden entry paths
 
-`src/runtime_path_assertions.py` defines the trusted entry context and fail-closed validation.
+The following components/classes of callers are forbidden from direct Governance entry:
 
-`src/governance.py` calls `assert_trusted_entry_context()` before risk classification, rule evaluation, audit logging, budget reservation, or token issuance.
+- external plugins
+- framework adapters
+- agent runtimes
+- operator UI surfaces
+- unknown components
 
-`src/service_adapter.py` creates the production trusted context only after caller boundary metadata has been validated.
+They must pass through a declared public boundary that performs caller-boundary validation.
 
-## Test compatibility
+## Test-only path
 
-Historical evidence scripts that call Governance directly use a test-only compatibility path through `GATEGRAPH_ALLOW_TEST_DIRECT_GOVERNANCE=1` set by the evidence runner.
+A direct test-harness path exists only for isolated legacy evidence scripts and is environment-gated. It is not a production or public API path.
 
-This is not a production path and is verified separately by `tests/runtime_boundary_hardening_evidence.py`, which removes the compatibility flag and proves naked direct Governance invocation fails closed.
+## Freeze-aware runtime evidence
 
-## Non-scope
+Selected freeze assumptions are now tied to executable checks:
 
-This phase does not add:
+- naked Governance calls fail closed by default
+- only the service adapter can act as public evaluation entry
+- forbidden components fail closed
+- trusted entry audit data records the boundary class
 
-- new agents
-- new adapters
-- new orchestration
+## Non-goals
+
+This phase does not introduce:
+
+- new adapter implementation
+- framework integration
+- distributed governance
+- autonomous orchestration
 - new risk model
 - new runtime execution model
-- framework integration
-- HTTP auth/TLS
-- packaging/deployment changes

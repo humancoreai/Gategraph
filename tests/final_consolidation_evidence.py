@@ -27,6 +27,8 @@ REQUIRED_EVIDENCE = [
     "operator_export_evidence",
     "governance_freeze_evidence",
     "runtime_boundary_hardening_evidence",
+    "api_boundary_split_evidence",
+    "freeze_runtime_invariant_evidence",
 ]
 
 FORBIDDEN_RELEASE_FIELDS = [
@@ -43,8 +45,8 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
-    assert "v0.9.3_STABLE" in version
     assert "v0.10.0_CANDIDATE" in version
+    assert "v0.10.1_CANDIDATE" in version
     assert "Runtime / Boundary Hardening" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
