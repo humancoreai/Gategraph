@@ -1,4 +1,4 @@
-# Known Limitations – v0.11.8_STABLE
+# Known Limitations – v0.11.9_CANDIDATE
 
 GateGraph intentionally states its limits. This file is part of the security model, not a marketing document.
 
