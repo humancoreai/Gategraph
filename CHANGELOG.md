@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.11.7_CANDIDATE
+## v0.11.7_STABLE
 
 - Added deterministic context classification and required provenance boundaries.
 - Added instruction/data separation for untrusted, replay and proposal context.

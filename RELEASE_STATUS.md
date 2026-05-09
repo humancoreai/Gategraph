@@ -1,9 +1,9 @@
 # Release Status
 
-Release: v0.11.7_CANDIDATE
-Status: candidate
+Release: v0.11.7_STABLE
+Status: stable
 Base: v0.11.6_STABLE
 
-Gate: Candidate prepared for Windows Evidence CI.
+Gate: Stable promoted after passing Windows Evidence CI.
 
 Phase: Context / Memory Governance Baseline
