@@ -1,24 +1,16 @@
-# Release Notes – v0.11.0_STABLE
+# Release Notes – v0.11.1_CANDIDATE
 
 ## Summary
 
-v0.11.0_STABLE finalizes Phase B's initial Deployment / Packaging Baseline.
+v0.11.1_CANDIDATE continues Phase B with a minimal operational start-surface baseline.
 
-This release makes GateGraph locally installable and standardizes the supported single-node deployment surface. It does not change governance, enforcement, runtime, adapter, token, budget, audit, or chain-order behavior.
+It standardizes startup expectations and verifies the install/start/config surface without changing governance, enforcement, runtime, adapter, token, budget, audit, or chain-order behavior.
 
 ## Added
 
-- `pyproject.toml`
-- `docs/DEPLOYMENT_BOUNDARY.md`
-- `tests/packaging_integrity_evidence.py`
-- `tests/install_surface_evidence.py`
-
-## Packaging scope
-
-- editable local install with `pip install -e .`
-- console scripts mapped to existing modules
-- package metadata aligned with release metadata
-- source package excludes runtime artifacts through release hygiene
+- `docs/STARTUP_SURFACE.md`
+- `tests/startup_surface_evidence.py`
+- `tests/config_consistency_evidence.py`
 
 ## Unchanged
 
@@ -30,4 +22,5 @@ This release makes GateGraph locally installable and standardizes the supported 
 - risk/rule engines
 - session/runtime/flood guards
 - audit/replay model
+- packaging entry points from v0.11.0
 - UI scope
