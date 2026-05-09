@@ -531,3 +531,27 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 ### Boundary
 - Stable within current single-node proof-of-concept scope.
 - Production KMS, distributed budget consensus, monitoring transport, and incident recovery remain out of scope.
+
+## v0.8.31_CANDIDATE
+
+### Goal
+
+Make GateGraph usable in single-node mode without changing core governance behavior.
+
+### Changes
+
+- Added CLI adapter:
+  - `init`
+  - `evaluate`
+  - `status`
+- Added dependency-free config loader.
+- Added example config/task files.
+- Added evidence for single-node CLI behavior.
+
+### Evidence
+
+- `single_node_cli_evidence`: passed
+
+### Notes
+
+The CLI is an adapter only. It does not duplicate or bypass Governance, Enforcement, Budget, Runtime, or Operational logic.
