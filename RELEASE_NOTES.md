@@ -1,24 +1,23 @@
-# Release Notes — GateGraph v0.8.29_STABLE
+# Release Notes — GateGraph v0.8.30_CANDIDATE
 
 ## Summary
 
-`v0.8.29_STABLE` adds read-only Operational Alerting on top of existing append-only operational incidents and promotes the candidate after a full passing Windows Evidence CI run.
+`v0.8.30_CANDIDATE` adds the Operational Stability layer on top of `v0.8.29_STABLE`.
 
-## Changes
+## Added
 
-- Added `OperationalAlert` signal model.
-- Added deterministic alert evaluation for open incidents.
-- Added severity-based alert ordering.
-- Added targeted evidence that alerting does not mutate budget state or repair drift.
-- Added operational alerting documentation and stable release document.
+- Deterministic alert aggregation.
+- Manual forward-only incident state transitions.
+- Read-only monitoring export object.
+- Actor-scoped Flood Guard with hard task/cost window limits.
 
-## Validation
+## Changed
 
-- Full Windows Evidence CI: passed.
-- `operational_alerting_evidence`: 4/4 passed.
-- Unexpected allows: 0.
-- Invariant violations: 0.
+- Guard pipeline now evaluates Flood Guard before session budget reservation.
 
-## Boundary
+## Not included
 
-No enforcement behavior changed. No automatic recovery or monitoring transport was added.
+- No autonomous recovery.
+- No self-healing.
+- No external alert routing.
+- No UI.
