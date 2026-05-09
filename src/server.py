@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import socket
+import threading
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
@@ -28,7 +30,13 @@ class RequestValidationError(ValueError):
 
 
 class GateGraphHandler(BaseHTTPRequestHandler):
-    server_version = "GateGraphHTTP/0.8.35"
+    server_version = "GateGraphHTTP/0.8.36"
+
+    def setup(self) -> None:
+        super().setup()
+        # SEC: Bound malformed or truncated reads so worker threads do not linger.
+        self.request.settimeout(2.0)
+
 
     def do_GET(self) -> None:
         if self.path == "/status":
@@ -46,7 +54,7 @@ class GateGraphHandler(BaseHTTPRequestHandler):
         try:
             body = self._read_json_body()
             self._validate_evaluate_body(body)
-            self._send_json(HTTPStatus.OK, response_normalizer.success(service_adapter.evaluate_request(self._config(), body), stage="core"))
+            self._send_json(HTTPStatus.OK, response_normalizer.success(self._evaluate_serialized(body), stage="core"))
         except RequestValidationError as exc:
             self._send_error(exc.status, exc.code, exc.stage)
         except Exception:
@@ -87,14 +95,19 @@ class GateGraphHandler(BaseHTTPRequestHandler):
         if length <= 0:
             raise RequestValidationError("INVALID_JSON", "request body must not be empty")
         if length > MAX_BODY_BYTES:
-            # SEC: Drain the declared body for deterministic client/server teardown,
-            # then close the connection after the normalized 413 response.
-            self.rfile.read(length)
+            # SEC: Reject oversize bodies before parsing; close makes teardown deterministic.
             self.close_connection = True
             raise RequestValidationError("PAYLOAD_TOO_LARGE", "request body too large", HTTPStatus.REQUEST_ENTITY_TOO_LARGE)
         if "application/json" not in self.headers.get("content-type", "").lower():
             raise RequestValidationError("INVALID_CONTENT_TYPE", "content-type must be application/json", HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
-        raw = self.rfile.read(length)
+        try:
+            raw = self.rfile.read(length)
+        except (TimeoutError, socket.timeout, OSError):
+            self.close_connection = True
+            raise RequestValidationError("INVALID_JSON", "request body was not fully received") from None
+        if len(raw) != length:
+            self.close_connection = True
+            raise RequestValidationError("INVALID_JSON", "request body was not fully received")
         try:
             data = json.loads(raw.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError):
@@ -102,6 +115,11 @@ class GateGraphHandler(BaseHTTPRequestHandler):
         if not isinstance(data, dict):
             raise RequestValidationError("INVALID_JSON", "request body must be a JSON object")
         return data
+
+    def _evaluate_serialized(self, body: dict[str, Any]) -> dict[str, Any]:
+        # INV: Adapter-level serialization protects the single SQLite node without changing governance.
+        with self.server.evaluate_lock:  # type: ignore[attr-defined]
+            return service_adapter.evaluate_request(self._config(), body)
 
     def _validate_evaluate_body(self, body: dict[str, Any]) -> None:
         missing = sorted(REQUIRED_EVALUATE_FIELDS - set(body))
@@ -126,9 +144,14 @@ class GateGraphHandler(BaseHTTPRequestHandler):
         self.send_header("content-type", "application/json; charset=utf-8")
         self.send_header("content-length", str(len(data)))
         self.send_header("connection", "close")
-        self.end_headers()
-        self.wfile.write(data)
-        self.wfile.flush()
+        try:
+            self.end_headers()
+            self.wfile.write(data)
+            self.wfile.flush()
+        except (BrokenPipeError, ConnectionResetError, TimeoutError, socket.timeout, OSError):
+            # EDGE: Client aborts are transport failures, not governance failures.
+            self.close_connection = True
+            return
         self.close_connection = True
 
 
@@ -141,6 +164,7 @@ class GateGraphHTTPServer(ThreadingHTTPServer):
 def build_server(host: str, port: int, config: AppConfig) -> ThreadingHTTPServer:
     server = GateGraphHTTPServer((host, port), GateGraphHandler)
     server.gategraph_config = config  # type: ignore[attr-defined]
+    server.evaluate_lock = threading.Lock()  # type: ignore[attr-defined]
     return server
 
 
