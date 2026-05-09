@@ -1,33 +1,32 @@
-# Release Notes — GateGraph v0.12.3_STABLE
+# Release Notes — GateGraph v0.12.4_CANDIDATE
 
-## v0.12.3_STABLE — Semantic & Registry Consolidation
+## v0.12.4_CANDIDATE — Semantic Registry Lock & Coverage Freeze
 
-Base: v0.12.2_STABLE  
-Status: stable
+Base: v0.12.3_STABLE  
+Status: candidate
 
 ### Added
-- Declarative semantic object registry for replay, explain, monitoring, proposal, archive, recovery snapshot and context reference objects.
-- Invariant/surface/evidence mapping registry for semantic, incident and release-surface coupling.
-- Forward-only incident lifecycle formalization including `archived` as terminal state.
-- Deterministic semantic drift checks for authority, execution, runtime access, policy mutation and semantic promotion regressions.
-- Evidence/surface consistency checks so new semantic evidence files are surfaced in CI, release notes and invariant mapping.
+- Deterministic semantic registry lock for `semantic_object_types.json` and `invariant_surface_registry.json`.
+- Registry hash validation that detects silent semantic/surface registry mutation.
+- Release manifest coverage evidence for registry-lock files and related evidence surfaces.
+- Explicit lock boundary flags: non-authoritative, non-executable, no runtime access, no policy mutation, no dynamic loading and no auto-repair.
 
 ### Evidence gates
-- `semantic_registry_evidence`
-- `invariant_surface_mapping_evidence`
-- `incident_lifecycle_consistency_evidence`
-- `semantic_drift_detection_evidence`
-- `evidence_surface_consistency_evidence`
+- `semantic_registry_lock_evidence`
+- `release_manifest_coverage_evidence`
+- Existing semantic registry, invariant surface, incident lifecycle, drift and evidence surface checks remain active:
+  - `semantic_registry_evidence`
+  - `invariant_surface_mapping_evidence`
+  - `incident_lifecycle_consistency_evidence`
+  - `semantic_drift_detection_evidence`
+  - `evidence_surface_consistency_evidence`
 
 ### Boundary invariants
-- Reference objects remain non-authoritative.
-- Replay remains non-executable.
-- Explain remains referential.
-- Monitoring remains read-only.
-- Proposal objects remain proposal-only.
-- Semantic promotion remains blocked.
-- Registry and surface mapping remain deterministic.
-- Incident lifecycle is forward-only.
+- Registry locks are release evidence only.
+- Registry locks do not grant runtime authority.
+- Registry locks do not dynamically load files or plugins.
+- Registry locks do not auto-repair semantic drift.
+- Registry hash mismatch is visible and fail-closed in evidence.
 
 ### Non-scope
 - No governance logic change.

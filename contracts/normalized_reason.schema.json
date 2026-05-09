@@ -23,7 +23,7 @@
     "severity": "string",
     "stage": "string"
   },
-  "schema_version": "0.12.3",
+  "schema_version": "0.12.4",
   "status": "frozen_stable",
   "surface": "normalized_reason"
 }
