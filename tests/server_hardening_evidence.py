@@ -36,8 +36,9 @@ def _assert_error(status: int, data: dict, expected_status: int, expected_code: 
     assert status == expected_status, data
     assert data["ok"] is False, data
     assert data["error"]["code"] == expected_code, data
-    assert "message" in data["error"], data
-    assert "stage" in data, data
+    assert set(data) == {"ok", "data", "error", "meta"}, data
+    assert data["data"] is None, data
+    assert set(data["meta"]) == {"schema_version", "request_id", "timestamp", "stage"}, data
     assert "Traceback" not in json.dumps(data), data
 
 
@@ -60,24 +61,24 @@ def main() -> int:
             }
             status, content_type, data = _request(port, "POST", "/evaluate", valid_task)
             assert status == 200 and content_type and content_type.startswith("application/json"), data
-            assert data["ok"] is True and "decision" in data, data
+            assert data["ok"] is True and "decision" in data["data"], data
 
             status_before, _, before = _request(port, "GET", "/status")
             assert status_before == 200 and before["ok"] is True, before
             _request(port, "GET", "/monitoring")
             _request(port, "GET", "/status")
             status_after, _, after = _request(port, "GET", "/status")
-            assert status_after == 200 and after["counts"] == before["counts"], (before, after)
+            assert status_after == 200 and after["data"]["counts"] == before["data"]["counts"], (before, after)
 
             error_cases = [
-                ("POST", "/evaluate", None, {"content-type": "text/plain"}, b"{}", 415, "invalid_content_type"),
-                ("POST", "/evaluate", None, {"content-type": "application/json"}, b"{bad", 400, "invalid_json"),
-                ("POST", "/evaluate", {"task_id": "missing"}, None, None, 400, "missing_required_fields"),
-                ("POST", "/evaluate", dict(valid_task, requested_capabilities="read_files"), None, None, 400, "invalid_requested_capabilities"),
-                ("POST", "/evaluate", None, {"content-type": "application/json"}, b"{" + (b" " * (MAX_BODY_BYTES + 1)), 413, "body_too_large"),
-                ("POST", "/unknown", valid_task, None, None, 404, "unknown_endpoint"),
-                ("DELETE", "/evaluate", None, None, None, 405, "method_not_allowed"),
-                ("PATCH", "/evaluate", None, None, None, 405, "method_not_allowed"),
+                ("POST", "/evaluate", None, {"content-type": "text/plain"}, b"{}", 415, "INVALID_CONTENT_TYPE"),
+                ("POST", "/evaluate", None, {"content-type": "application/json"}, b"{bad", 400, "INVALID_JSON"),
+                ("POST", "/evaluate", {"task_id": "missing"}, None, None, 400, "MISSING_FIELD"),
+                ("POST", "/evaluate", dict(valid_task, requested_capabilities="read_files"), None, None, 400, "INVALID_JSON"),
+                ("POST", "/evaluate", None, {"content-type": "application/json"}, b"{" + (b" " * (MAX_BODY_BYTES + 1)), 413, "PAYLOAD_TOO_LARGE"),
+                ("POST", "/unknown", valid_task, None, None, 404, "UNKNOWN_ENDPOINT"),
+                ("DELETE", "/evaluate", None, None, None, 405, "METHOD_NOT_ALLOWED"),
+                ("PATCH", "/evaluate", None, None, None, 405, "METHOD_NOT_ALLOWED"),
             ]
             for method, path, body, headers, raw, expected_status, expected_code in error_cases:
                 status, content_type, data = _request(port, method, path, body=body, headers=headers, raw=raw)
