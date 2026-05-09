@@ -37,3 +37,18 @@
 - no distributed governance
 - no new runtime execution model
 - no product UI
+
+## v0.10.1 update – Runtime / Boundary Hardening
+
+Closed / improved:
+- Direct Governance entry is fail-closed without trusted entry context.
+- Public evaluation entry is explicitly classified as `service_adapter`.
+- Forbidden caller classes now fail closed in runtime evidence.
+- Selected freeze assumptions are covered by executable runtime invariant evidence.
+
+Still open:
+- Auth/TLS reference architecture.
+- Asymmetric token signing / KMS.
+- Packaging and deployment baseline.
+- Real external framework integration.
+
