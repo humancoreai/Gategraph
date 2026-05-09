@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.10.1_CANDIDATE"
-BASE = "v0.10.0_CANDIDATE"
+VERSION = "v0.10.2_CANDIDATE"
+BASE = "v0.10.1_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -114,6 +114,7 @@ def main() -> None:
     assert "tests/caller_boundary_evidence.py" in paths
     assert "tests/release_integrity_evidence.py" in paths
     assert "tests/runtime_boundary_hardening_evidence.py" in paths
+    assert "tests/runtime_chain_order_evidence.py" in paths
     assert "tests/multi_agent_architecture_evidence.py" in paths
     assert "docs/MULTI_AGENT_SSOT.md" in paths
     assert "docs/MULTI_MODE_SSOT.md" in paths
@@ -122,7 +123,9 @@ def main() -> None:
     assert "docs/MULTI_AGENT_REPLAY_AUDIT.md" in paths
     assert "docs/EMERGENCE_BOUNDARIES.md" in paths
     assert "docs/RUNTIME_BOUNDARY_HARDENING.md" in paths
+    assert "docs/RUNTIME_CHAIN_ASSERTIONS.md" in paths
     assert "src/runtime_path_assertions.py" in paths
+    assert "src/runtime_chain_assertions.py" in paths
     assert "TRUST_MODEL.md" in paths
     forbidden_manifest = [
         p for p in paths
@@ -137,6 +140,7 @@ def main() -> None:
     assert "release_integrity_evidence" in ci_manifest
     assert "multi_agent_architecture_evidence" in ci_manifest
     assert "runtime_boundary_hardening_evidence" in ci_manifest
+    assert "runtime_chain_order_evidence" in ci_manifest
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():

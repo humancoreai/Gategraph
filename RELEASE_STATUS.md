@@ -1,21 +1,20 @@
-# Release Status – v0.10.1_STABLE
+# Release Status – v0.10.2_CANDIDATE
 
-Status: stable
+Status: candidate
 
-Base: v0.10.0_STABLE
+Base: v0.10.1_STABLE
 
 Phase: Runtime / Boundary Hardening
 
 Scope:
-- internal/public API boundary split
-- forbidden governance entry assertions
-- freeze-aware runtime invariant evidence
-- release metadata consistency
+- runtime chain/order assertions
+- skipped-stage detection
+- invalid enforcement chain detection
+- freeze-aware runtime invariant evidence tied further to runtime behavior
 
 Out of scope:
-- no new runtime model
-- no adapter expansion
-- no autonomous agent behavior
-- no distributed governance
-- no orchestration logic
-- no risk model expansion
+- no new adapters
+- no new agents
+- no packaging/deployment work
+- no UI
+- no runtime capability expansion
