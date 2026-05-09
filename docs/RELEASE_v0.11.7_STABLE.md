@@ -1,4 +1,4 @@
-# Release — GateGraph v0.11.7_CANDIDATE
+# Release — GateGraph v0.11.7_STABLE
 
 ## Phase
 

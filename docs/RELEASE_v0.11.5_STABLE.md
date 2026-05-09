@@ -1,10 +1,10 @@
-# GateGraph v0.11.7_CANDIDATE
+# GateGraph v0.11.7_STABLE
 
 Phase: Context / Memory Governance Baseline
 
 ## Scope
 
-v0.11.7_CANDIDATE adds explicit security mapping documentation and strengthens reviewer-facing exposure boundaries for token, Authorization header, and secret material.
+v0.11.7_STABLE adds explicit security mapping documentation and strengthens reviewer-facing exposure boundaries for token, Authorization header, and secret material.
 
 ## Added
 
