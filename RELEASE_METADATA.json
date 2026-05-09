@@ -8,7 +8,8 @@
   "new_risk_model": false,
   "new_runtime_model": false,
   "phase": "Runtime / Boundary Hardening",
-  "release": "v0.10.2_CANDIDATE",
+  "release": "v0.10.2_STABLE",
   "scope_freeze": true,
-  "self_orchestration": false
+  "self_orchestration": false,
+  "status": "stable"
 }
