@@ -1,5 +1,5 @@
 {
-  "base": "v0.12.5_STABLE",
+  "base": "v0.12.6_STABLE",
   "invariant": "surface, evidence, semantic registries and registry locks are checked deterministically and do not mutate governance policy",
   "invariants": {
     "INV-INC-001": {
@@ -29,6 +29,23 @@
         "replay",
         "freeze",
         "manifest"
+      ]
+    },
+    "INV-REL-001": {
+      "auto_promotion": false,
+      "description": "Release-state transitions are manual, deterministic and surface-symmetric between Candidate and Stable artifacts.",
+      "evidence": [
+        "release_state_transition_evidence.py",
+        "promotion_surface_symmetry_evidence.py",
+        "candidate_stable_surface_parity_evidence.py"
+      ],
+      "runtime_authority": false,
+      "surfaces": [
+        "release",
+        "manifest",
+        "registry",
+        "evidence",
+        "docs"
       ]
     },
     "INV-SCHEMA-001": {
@@ -120,6 +137,6 @@
       ]
     }
   },
-  "release": "v0.12.6_STABLE",
-  "schema_version": "0.12.6"
+  "release": "v0.12.7_CANDIDATE",
+  "schema_version": "0.12.7"
 }

@@ -1,11 +1,9 @@
-# GateGraph Version
+# Version
 
-Current release: **v0.12.6_STABLE**
+Release: v0.12.7_CANDIDATE
 
-Base release: **v0.12.5_STABLE**
+Base: v0.12.6_STABLE
 
-Status: **stable**
+Status: candidate
 
-Version: **0.12.6**
-
-Phase: Deterministic Evidence Lineage / Governance Provenance.
+Phase: Release State Transition / Promotion Surface Symmetry.
