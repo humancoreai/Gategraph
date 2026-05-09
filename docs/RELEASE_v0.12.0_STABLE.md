@@ -1,4 +1,4 @@
-# GateGraph v0.12.0_STABLE
+# GateGraph v0.12.1_CANDIDATE
 
 ## Phase
 
@@ -6,7 +6,7 @@ Governance Surface Freeze.
 
 ## Base
 
-`v0.11.9_STABLE`.
+`v0.12.0_STABLE`.
 
 ## Scope
 
