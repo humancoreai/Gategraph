@@ -39,6 +39,10 @@ class CapabilityToken:
     expires_at: datetime
     signature: str
     signing_key_id: str = DEFAULT_SIGNING_KEY_ID
+    budget_scope_id: Optional[str] = None
+    budget_reservation_id: Optional[str] = None
+    max_cost_for_action: Optional[int] = None
+    escalation_state: Optional[str] = None
 
     def is_expired(self) -> bool:
         return datetime.now(timezone.utc) >= self.expires_at
@@ -54,6 +58,14 @@ def _ensure_token_schema(conn: sqlite3.Connection) -> None:
         conn.execute("ALTER TABLE capability_tokens ADD COLUMN signature TEXT NOT NULL DEFAULT ''")
     if "signing_key_id" not in cols:
         conn.execute("ALTER TABLE capability_tokens ADD COLUMN signing_key_id TEXT NOT NULL DEFAULT 'local-dev-v1'")
+    if "budget_scope_id" not in cols:
+        conn.execute("ALTER TABLE capability_tokens ADD COLUMN budget_scope_id TEXT")
+    if "budget_reservation_id" not in cols:
+        conn.execute("ALTER TABLE capability_tokens ADD COLUMN budget_reservation_id TEXT")
+    if "max_cost_for_action" not in cols:
+        conn.execute("ALTER TABLE capability_tokens ADD COLUMN max_cost_for_action INTEGER")
+    if "escalation_state" not in cols:
+        conn.execute("ALTER TABLE capability_tokens ADD COLUMN escalation_state TEXT")
 
 
 def load_trusted_keyring() -> Dict[str, bytes]:
@@ -71,12 +83,10 @@ def load_trusted_keyring() -> Dict[str, bytes]:
         except Exception:
             return {}
 
-    # Compatibility path for v0.8.8 single-key deployments.
     if os.environ.get(_ENV_SECRET):
         active = os.environ.get(_ENV_ACTIVE_KEY_ID, DEFAULT_SIGNING_KEY_ID)
         return {active: os.environ[_ENV_SECRET].encode("utf-8")}
 
-    # Local deterministic default keeps evidence tests reproducible; not a production secret store.
     return {kid: secret.encode("utf-8") for kid, secret in _DEV_KEYRING.items()}
 
 
@@ -93,7 +103,20 @@ def is_trusted_signing_key(signing_key_id: str, keyring: Optional[Mapping[str, b
     return signing_key_id in (keyring or load_trusted_keyring())
 
 
-def _canonical_claims(*, token_id: str, decision_id: str, task_id: str, capabilities: Dict[str, bool], issued_at: datetime, expires_at: datetime, signing_key_id: str) -> str:
+def _canonical_claims(
+    *,
+    token_id: str,
+    decision_id: str,
+    task_id: str,
+    capabilities: Dict[str, bool],
+    issued_at: datetime,
+    expires_at: datetime,
+    signing_key_id: str,
+    budget_scope_id: Optional[str] = None,
+    budget_reservation_id: Optional[str] = None,
+    max_cost_for_action: Optional[int] = None,
+    escalation_state: Optional[str] = None,
+) -> str:
     payload = {
         "token_id": token_id,
         "decision_id": decision_id,
@@ -102,11 +125,29 @@ def _canonical_claims(*, token_id: str, decision_id: str, task_id: str, capabili
         "issued_at": issued_at.isoformat(),
         "expires_at": expires_at.isoformat(),
         "signing_key_id": signing_key_id,
+        "budget_scope_id": budget_scope_id,
+        "budget_reservation_id": budget_reservation_id,
+        "max_cost_for_action": max_cost_for_action,
+        "escalation_state": escalation_state,
     }
     return json.dumps(payload, sort_keys=True, separators=(",", ":"))
 
 
-def sign_claims(*, token_id: str, decision_id: str, task_id: str, capabilities: Dict[str, bool], issued_at: datetime, expires_at: datetime, signing_key_id: str = DEFAULT_SIGNING_KEY_ID, keyring: Optional[Mapping[str, bytes]] = None) -> str:
+def sign_claims(
+    *,
+    token_id: str,
+    decision_id: str,
+    task_id: str,
+    capabilities: Dict[str, bool],
+    issued_at: datetime,
+    expires_at: datetime,
+    signing_key_id: str = DEFAULT_SIGNING_KEY_ID,
+    keyring: Optional[Mapping[str, bytes]] = None,
+    budget_scope_id: Optional[str] = None,
+    budget_reservation_id: Optional[str] = None,
+    max_cost_for_action: Optional[int] = None,
+    escalation_state: Optional[str] = None,
+) -> str:
     secret = _signing_secret(signing_key_id, keyring)
     if secret is None:
         raise ValueError(f"unknown signing key id: {signing_key_id}")
@@ -118,6 +159,10 @@ def sign_claims(*, token_id: str, decision_id: str, task_id: str, capabilities: 
         issued_at=issued_at,
         expires_at=expires_at,
         signing_key_id=signing_key_id,
+        budget_scope_id=budget_scope_id,
+        budget_reservation_id=budget_reservation_id,
+        max_cost_for_action=max_cost_for_action,
+        escalation_state=escalation_state,
     )
     return hmac.new(secret, canonical.encode("utf-8"), hashlib.sha256).hexdigest()
 
@@ -133,6 +178,10 @@ def verify_signature(token: CapabilityToken, persisted_signature: Optional[str] 
             expires_at=token.expires_at,
             signing_key_id=token.signing_key_id,
             keyring=keyring,
+            budget_scope_id=token.budget_scope_id,
+            budget_reservation_id=token.budget_reservation_id,
+            max_cost_for_action=token.max_cost_for_action,
+            escalation_state=token.escalation_state,
         )
     except Exception:
         return False
@@ -148,8 +197,9 @@ def _insert_token(conn: sqlite3.Connection, token: CapabilityToken, revoked: int
     conn.execute(
         """
         INSERT INTO capability_tokens
-          (token_id, decision_id, task_id, capabilities, issued_at, expires_at, revoked, signature, signing_key_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+          (token_id, decision_id, task_id, capabilities, issued_at, expires_at, revoked, signature, signing_key_id,
+           budget_scope_id, budget_reservation_id, max_cost_for_action, escalation_state)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             token.token_id,
@@ -161,18 +211,58 @@ def _insert_token(conn: sqlite3.Connection, token: CapabilityToken, revoked: int
             revoked,
             token.signature,
             token.signing_key_id,
+            token.budget_scope_id,
+            token.budget_reservation_id,
+            token.max_cost_for_action,
+            token.escalation_state,
         ),
     )
     return token
 
 
-def issue_token(conn: sqlite3.Connection, decision_id: str, task_id: str, final_capabilities: Dict[str, bool], ttl_seconds: int = DEFAULT_TTL_SECONDS) -> CapabilityToken:
+def issue_token(
+    conn: sqlite3.Connection,
+    decision_id: str,
+    task_id: str,
+    final_capabilities: Dict[str, bool],
+    ttl_seconds: int = DEFAULT_TTL_SECONDS,
+    *,
+    budget_scope_id: Optional[str] = None,
+    budget_reservation_id: Optional[str] = None,
+    max_cost_for_action: Optional[int] = None,
+    escalation_state: Optional[str] = None,
+) -> CapabilityToken:
     token_id = f"TOK-{uuid.uuid4().hex[:12].upper()}"
     now = datetime.now(timezone.utc)
     expires_at = now + timedelta(seconds=ttl_seconds)
     signing_key_id = active_signing_key_id()
-    signature = sign_claims(token_id=token_id, decision_id=decision_id, task_id=task_id, capabilities=final_capabilities, issued_at=now, expires_at=expires_at, signing_key_id=signing_key_id)
-    token = CapabilityToken(token_id, decision_id, task_id, dict(final_capabilities), now, expires_at, signature, signing_key_id)
+    signature = sign_claims(
+        token_id=token_id,
+        decision_id=decision_id,
+        task_id=task_id,
+        capabilities=final_capabilities,
+        issued_at=now,
+        expires_at=expires_at,
+        signing_key_id=signing_key_id,
+        budget_scope_id=budget_scope_id,
+        budget_reservation_id=budget_reservation_id,
+        max_cost_for_action=max_cost_for_action,
+        escalation_state=escalation_state,
+    )
+    token = CapabilityToken(
+        token_id,
+        decision_id,
+        task_id,
+        dict(final_capabilities),
+        now,
+        expires_at,
+        signature,
+        signing_key_id,
+        budget_scope_id,
+        budget_reservation_id,
+        max_cost_for_action,
+        escalation_state,
+    )
     return _insert_token(conn, token)
 
 
