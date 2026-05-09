@@ -28,3 +28,11 @@ DB events accumulated: 31
 ## v0.4.0
 
 - initial PoC implementation based on GateGraph v0.4 spec
+
+## v0.4.3 — Usage simulation semantic fixes
+
+- Risk Engine: `api_call` with `input_source="external"` now classifies as `medium`.
+- Risk Engine: `data_sensitivity="secret"` is evaluated before write/delete and always classifies as `critical`.
+- Governance: `require_review` now issues an analysis-only token when requested capability is `read_files`.
+- `require_review` still denies side-effect capabilities (`write_files`, `delete_files`, `api_call`).
+- No architecture changes; only semantic alignment with v0.4 intent.
