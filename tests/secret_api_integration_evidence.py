@@ -14,7 +14,7 @@ from typing import Mapping
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.database import get_connection, init_db, seed_rules, ensure_runtime_schema, ensure_pattern_schema
-from src import runtime_guard, session_budget_guard, event_logger, capability_token, secret_provider
+from src import runtime_guard, session_budget_guard, event_logger, capability_token, secret_provider, http_policy
 from src.external_api_adapter import ControlledAPIResponse, ExternalAPIRequest, call_controlled_external_api
 from audit_evidence import EvidenceRunLog, EvidenceScenarioResult, collect_task_evidence
 
@@ -32,6 +32,7 @@ def fresh_conn():
     ensure_pattern_schema(conn)
     session_budget_guard.ensure_session_budget_schema(conn)
     secret_provider.ensure_secret_schema(conn)
+    http_policy.ensure_http_policy_schema(conn)
     with conn:
         seed_rules(conn)
     return conn, db_path
@@ -102,6 +103,16 @@ def make_request(*, request_id: str, session_id: str, task_id: str, endpoint: st
     )
 
 
+def register_policy(conn) -> None:
+    http_policy.register_api_endpoint_policy(
+        conn,
+        policy_id="POL-API-EXAMPLE",
+        allowed_host="api.example.test",
+        allowed_path_prefixes=["/v1/"],
+        allowed_methods=["POST"],
+    )
+
+
 def register_ref(conn, *, active: bool = True) -> None:
     secret_provider.register_env_secret_ref(
         conn,
@@ -121,6 +132,7 @@ def scenario_secret_resolved_only_after_guards() -> EvidenceScenarioResult:
         os.environ["GATEGRAPH_SECRET_PROVIDER_JSON"] = '{"TEST_API_KEY":"super-secret-test-value"}'
         prepare_allowed(conn, session_id=session_id, task_id=task_id)
         register_ref(conn)
+        register_policy(conn)
 
         def fake_transport(request: ExternalAPIRequest, headers: Mapping[str, str]) -> ControlledAPIResponse:
             calls.append(dict(headers))
@@ -154,6 +166,7 @@ def scenario_missing_secret_blocks_before_transport() -> EvidenceScenarioResult:
     try:
         prepare_allowed(conn, session_id=session_id, task_id=task_id)
         register_ref(conn)
+        register_policy(conn)
 
         def fake_transport(request: ExternalAPIRequest, headers: Mapping[str, str]) -> ControlledAPIResponse:
             calls.append(dict(headers))
@@ -177,6 +190,14 @@ def scenario_endpoint_scope_mismatch_blocks() -> EvidenceScenarioResult:
         os.environ["GATEGRAPH_SECRET_PROVIDER_JSON"] = '{"TEST_API_KEY":"super-secret-test-value"}'
         prepare_allowed(conn, session_id=session_id, task_id=task_id)
         register_ref(conn)
+        register_policy(conn)
+        http_policy.register_api_endpoint_policy(
+            conn,
+            policy_id="POL-EVIL-FOR-SECRET-SCOPE-TEST",
+            allowed_host="evil.example.test",
+            allowed_path_prefixes=["/v1/"],
+            allowed_methods=["POST"],
+        )
 
         def fake_transport(request: ExternalAPIRequest, headers: Mapping[str, str]) -> ControlledAPIResponse:
             calls.append(dict(headers))
@@ -202,6 +223,7 @@ def scenario_no_token_blocks_before_secret_resolution() -> EvidenceScenarioResul
         os.environ["GATEGRAPH_SECRET_PROVIDER_JSON"] = '{"TEST_API_KEY":"super-secret-test-value"}'
         prepare_allowed(conn, session_id=session_id, task_id=task_id)
         register_ref(conn)
+        register_policy(conn)
 
         def fake_transport(request: ExternalAPIRequest, headers: Mapping[str, str]) -> ControlledAPIResponse:
             calls.append(dict(headers))
