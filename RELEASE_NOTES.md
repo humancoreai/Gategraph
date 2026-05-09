@@ -1,16 +1,14 @@
-# Release Notes – v0.11.2_STABLE
+# Release Notes – v0.11.3_CANDIDATE
 
-Status: stable
-Base: v0.11.1_STABLE
-Phase: Operational Consistency / Runtime Surface Tightening
+Status: candidate
+Base: v0.11.2_STABLE
+Phase: Mode Boundary Surface Control
 
-v0.11.2_STABLE continues Phase B by making the operational runtime surface more explicit and more tightly coupled to release evidence.
+v0.11.3_CANDIDATE tightens the existing multi-mode documentation boundary. It keeps mode classes descriptive only and adds evidence that mode labels do not imply authority expansion.
 
 Added:
-- `docs/RUNTIME_SURFACE_FREEZE.md`
-- `docs/OPERATIONAL_BOUNDARY_TIGHTENING.md`
-- `tests/startup_shutdown_semantics_evidence.py`
-- `tests/runtime_surface_consistency_evidence.py`
-- `tests/surface_freeze_coupling_evidence.py`
+- `docs/MODE_BOUNDARY_SURFACE.md`
+- `tests/mode_boundary_surface_evidence.py`
+- Evidence CI coupling for the mode-boundary surface
 
-No new runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior is introduced.
+No runtime, governance, enforcement, adapter, token, budget, secret, tool, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior is introduced.

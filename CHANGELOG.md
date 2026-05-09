@@ -2,16 +2,14 @@
 
 All notable changes to GateGraph are documented here.
 
+## v0.11.3_CANDIDATE
+
+- Added mode-boundary surface documentation.
+- Added mode-boundary evidence to keep `observer`, `worker`, `reviewer`, and `blocked` descriptive only.
+- Coupled mode claims to release metadata, manifest and Evidence CI.
+- No runtime/governance/enforcement/adapter/token/budget/secret/tool/agentic capability change.
+
 ## v0.11.2_STABLE
-
-- Added runtime startup/shutdown semantics evidence.
-- Added runtime surface consistency evidence.
-- Added surface freeze coupling evidence.
-- Added explicit runtime surface freeze and operational boundary tightening documentation.
-- Hardened release-process guard coverage for changelog, known-gaps roadmap, and HTTP server version consistency.
-- No runtime/governance/enforcement/adapter/agentic capability change.
-
-## v0.11.1_STABLE
 
 - Stabilized v0.11.1 packaging baseline after Windows Evidence CI PASS.
 - Preserved install surface, startup surface, config consistency and deterministic packaging claims.

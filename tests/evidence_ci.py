@@ -58,6 +58,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("startup_shutdown_semantics_evidence", "tests/startup_shutdown_semantics_evidence.py", 40),
     ("runtime_surface_consistency_evidence", "tests/runtime_surface_consistency_evidence.py", 30),
     ("surface_freeze_coupling_evidence", "tests/surface_freeze_coupling_evidence.py", 30),
+    ("mode_boundary_surface_evidence", "tests/mode_boundary_surface_evidence.py", 20),
     ("multi_agent_architecture_evidence", "tests/multi_agent_architecture_evidence.py", 20),
     ("operator_evidence", "tests/operator_evidence.py", 20),
     ("cross_session_budget_evidence", "tests/cross_session_budget_evidence.py", 20),
