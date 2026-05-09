@@ -64,6 +64,7 @@ def main() -> int:
                 "requested_capabilities": ["read_files"],
                 "input_source": "local",
                 "data_sensitivity": "internal",
+                "secrets_involved": False,
             }
             status, success = _request(port, "POST", "/evaluate", task)
             assert status == 200, success
