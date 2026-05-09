@@ -1,7 +1,7 @@
 {
   "schema_version": "0.12.0",
   "surface": "normalized_reason",
-  "status": "frozen_candidate",
+  "status": "frozen_stable",
   "description": "Descriptive contract for normalized reason payloads used by audit/explain/monitoring surfaces.",
   "required_fields": {
     "code": "string",

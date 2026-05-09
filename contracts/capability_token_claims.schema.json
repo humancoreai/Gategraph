@@ -1,7 +1,7 @@
 {
   "schema_version": "0.12.0",
   "surface": "capability_token_claims",
-  "status": "frozen_candidate",
+  "status": "frozen_stable",
   "description": "Descriptive claim contract for signed capability tokens; token verification logic remains in src/capability_token.py.",
   "required_fields": {
     "token_id": "string",
