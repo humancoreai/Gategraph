@@ -1,13 +1,13 @@
 # Version
 
-Current stable: v0.12.2_STABLE
+Current release: v0.12.3_CANDIDATE
 
-Base: v0.12.1_STABLE
+Base: v0.12.2_STABLE
 
-Package version: 0.12.2
+Package version: 0.12.3
 
-Status: stable
+Status: candidate
 
-Phase: Recovery & Replay Hardening
+Phase: Semantic & Registry Consolidation
 
-Invariant: v0.12.2_STABLE introduces no new agent capability, memory system, semantic scoring, autonomous governance mutation, runtime authority expansion, enforcement rule change, secret/tool authority expansion, distributed governance, cloud deployment layer, Docker/Kubernetes scope, or UI. It hardens descriptive recovery and replay consistency around idempotent recovery attempts, reservation collisions, partial-state fail-closed handling, deterministic replay order, reference integrity, and release/surface registry synchronization.
+Invariant: v0.12.3_CANDIDATE introduces no new agent capability, runtime authority, enforcement rule change, autonomous governance mutation, semantic scoring, memory system, distributed governance, cloud deployment layer, Docker/Kubernetes scope, or UI. It consolidates descriptive semantic object, invariant/surface, incident lifecycle and evidence-surface registries.

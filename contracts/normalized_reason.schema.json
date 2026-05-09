@@ -1,19 +1,29 @@
 {
-  "schema_version": "0.12.2",
-  "surface": "normalized_reason",
-  "status": "frozen_stable",
-  "description": "Descriptive contract for normalized reason payloads used by audit/explain/monitoring surfaces.",
-  "required_fields": {
-    "code": "string",
-    "category": "string",
-    "severity": "string",
-    "stage": "string",
-    "message": "string",
-    "raw_reason": "string",
-    "priority": "integer"
-  },
   "allowed_values": {
-    "severity": ["info", "low", "medium", "high", "critical"]
+    "severity": [
+      "info",
+      "low",
+      "medium",
+      "high",
+      "critical"
+    ]
   },
-  "non_scope": ["automatic classification beyond existing normalizer", "policy mutation", "operator action"]
+  "description": "Descriptive contract for normalized reason payloads used by audit/explain/monitoring surfaces.",
+  "non_scope": [
+    "automatic classification beyond existing normalizer",
+    "policy mutation",
+    "operator action"
+  ],
+  "required_fields": {
+    "category": "string",
+    "code": "string",
+    "message": "string",
+    "priority": "integer",
+    "raw_reason": "string",
+    "severity": "string",
+    "stage": "string"
+  },
+  "schema_version": "0.12.3",
+  "status": "frozen_stable",
+  "surface": "normalized_reason"
 }

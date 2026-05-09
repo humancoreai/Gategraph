@@ -31,3 +31,5 @@ This registry gives stable IDs to the core governance invariants used by the v0.
 Each critical invariant must remain referencable and must be covered by at least one evidence group or explicit boundary document.
 
 This registry is not a compliance framework. It is a compact traceability baseline.
+
+Current release surface: v0.12.3_CANDIDATE

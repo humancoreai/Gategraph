@@ -15,7 +15,8 @@ from src import operational_hardening
 VALID_TRANSITIONS = {
     "open": {"acknowledged"},
     "acknowledged": {"resolved"},
-    "resolved": set(),
+    "resolved": {"archived"},
+    "archived": set(),
 }
 
 
@@ -35,7 +36,28 @@ def transition_incident_state(incident: operational_hardening.IncidentRecord, ne
         return replace(incident, state=new_state, acknowledged_at=timestamp)
     if new_state == "resolved":
         return replace(incident, state=new_state, resolved_at=timestamp)
+    if new_state == "archived":
+        return replace(incident, state=new_state)
     raise ValueError(f"invalid incident state: {new_state}")
+
+
+def validate_incident_transition_history(states: list[str]) -> dict[str, object]:
+    """Validate a forward-only incident lifecycle trace without mutating incident state.
+
+    INV: History validation is descriptive and append-only; it never repairs or rewrites incident records.
+    """
+    if not states:
+        return {"ok": False, "reason": "INCIDENT_HISTORY_EMPTY", "violations": []}
+    violations: list[dict[str, str]] = []
+    for current, nxt in zip(states, states[1:]):
+        if current not in VALID_TRANSITIONS:
+            violations.append({"from": current, "to": nxt, "reason": "INCIDENT_STATE_UNKNOWN"})
+        elif nxt not in VALID_TRANSITIONS[current]:
+            violations.append({"from": current, "to": nxt, "reason": "INCIDENT_STATE_REGRESSION_OR_SKIP"})
+    final_state = states[-1]
+    if final_state not in VALID_TRANSITIONS:
+        violations.append({"from": final_state, "to": "", "reason": "INCIDENT_FINAL_STATE_UNKNOWN"})
+    return {"ok": not violations, "reason": "INCIDENT_HISTORY_FORWARD_ONLY" if not violations else "INCIDENT_HISTORY_INVALID", "violations": violations}
 
 
 def transition_incident_state_in_db(conn: sqlite3.Connection, incident_id: str, new_state: str, *, now: str | None = None) -> operational_hardening.IncidentRecord:
