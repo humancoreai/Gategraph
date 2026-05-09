@@ -1,10 +1,16 @@
-# Release Status – v0.11.5_CANDIDATE
+# Release Status – v0.11.5_STABLE
 
-Status: candidate
+Status: stable
 
 Base: v0.11.4_STABLE
 
 Phase: Security Mapping + Token Exposure Hardening
+
+Promotion basis:
+- promoted from v0.11.5_CANDIDATE after full Windows Evidence CI reported Passed: True on 2026-05-08
+- no governance logic change during stable promotion
+- no runtime logic change during stable promotion
+- no enforcement logic change during stable promotion
 
 Scope:
 - add explicit security model and known limitation documentation
