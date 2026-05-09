@@ -51,6 +51,8 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("runtime_chain_order_evidence", "tests/runtime_chain_order_evidence.py", 20),
     ("release_integrity_evidence", "tests/release_integrity_evidence.py", 40),
     ("release_process_guard_evidence", "tests/release_process_guard_evidence.py", 20),
+    ("packaging_integrity_evidence", "tests/packaging_integrity_evidence.py", 20),
+    ("install_surface_evidence", "tests/install_surface_evidence.py", 30),
     ("multi_agent_architecture_evidence", "tests/multi_agent_architecture_evidence.py", 20),
     ("operator_evidence", "tests/operator_evidence.py", 20),
     ("cross_session_budget_evidence", "tests/cross_session_budget_evidence.py", 20),
