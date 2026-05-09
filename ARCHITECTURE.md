@@ -53,3 +53,6 @@ v0.11.4_STABLE adds a release-integrity layer around packaging and review artifa
 ## v0.11.9_STABLE Security Mapping Boundary
 
 v0.11.9_STABLE adds security mapping and token exposure hardening only. It does not participate in runtime governance and does not expand authority.
+
+
+Current release surface: `v0.12.0_CANDIDATE`.

@@ -69,6 +69,8 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("context_replay_explain_boundary_evidence", "tests/context_replay_explain_boundary_evidence.py", 20),
     ("context_freeze_coupling_evidence", "tests/context_freeze_coupling_evidence.py", 20),
     ("version_consistency_evidence", "tests/version_consistency_evidence.py", 20),
+    ("surface_contract_registry_evidence", "tests/surface_contract_registry_evidence.py", 20),
+    ("semantic_boundary_evidence", "tests/semantic_boundary_evidence.py", 20),
     ("root_surface_hygiene_evidence", "tests/root_surface_hygiene_evidence.py", 20),
     ("governance_semantics_evidence", "tests/governance_semantics_evidence.py", 20),
     ("operator_evidence", "tests/operator_evidence.py", 20),

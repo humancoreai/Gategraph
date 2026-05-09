@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.12.0_CANDIDATE
+
+- Adds Governance Surface Freeze candidate scope.
+- Adds descriptive contract registry for governance decision, normalized reason, monitoring export and capability token claim surfaces.
+- Adds surface contract registry and semantic boundary evidence.
+- No governance, runtime or enforcement authority change.
+
 ## v0.11.9_STABLE
 
 ### Review hygiene fix

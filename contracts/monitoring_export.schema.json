@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.12.0",
+  "surface": "monitoring_export",
+  "status": "frozen_candidate",
+  "description": "Read-only monitoring export contract; visibility only and never a governance input.",
+  "required_fields": {
+    "schema_version": "string",
+    "generated_at": "string",
+    "summary": "object",
+    "incidents": "array[object]",
+    "alerts": "array[object]",
+    "aggregated_alerts": "array[object]",
+    "budget_snapshot": "object"
+  },
+  "mutability": "read_only",
+  "non_scope": ["repair", "policy update", "automatic mitigation", "runtime authorization"]
+}
