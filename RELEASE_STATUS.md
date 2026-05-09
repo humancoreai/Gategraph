@@ -1,10 +1,10 @@
 # Release Status
 
-Release: v0.12.3_CANDIDATE
+Release: v0.12.3_STABLE
 
 Base: v0.12.2_STABLE
 
-Status: candidate
+Status: stable
 
 Phase: Semantic & Registry Consolidation
 
