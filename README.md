@@ -22,7 +22,7 @@ GateGraph provides:
 - reason normalization for stable explain codes
 - append-only event logging
 - evidence-oriented JSON test reports
-- Pattern Engine proposals without automatic rule changes
+- Pattern Engine proposals from repeated audit patterns without automatic rule changes
 
 The current control flow:
 
@@ -60,7 +60,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.17 block-e-documentation-reality-check
+Version: v0.8.18 pattern-engine-intelligence
 Core status: stable proof of concept
 Production status: not production-ready; Single-Node PoC evidence is mature, operational production layers remain out of scope
 ```
@@ -77,6 +77,7 @@ Scale Safety Evidence:        passed
 External API Mock Evidence:    passed
 Secret/API Integration:        passed
 Pattern Engine:               passed
+Pattern Intelligence:         passed
 Normal usage simulation:      passed
 Unusual input simulation:     passed
 Agent scenario simulation:    passed
@@ -98,6 +99,7 @@ Individual checks:
 python tests/test_loop.py
 python tests/runtime_guard_tests.py
 python tests/pattern_engine_tests.py
+python tests/pattern_intelligence_evidence.py
 python tests/usage_simulation.py
 python tests/unusual_inputs.py
 python tests/agent_scenarios.py
