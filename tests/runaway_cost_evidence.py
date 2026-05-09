@@ -266,4 +266,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    os._exit(main())
+    raise SystemExit(main())
