@@ -297,3 +297,11 @@ Scope remains mock-only: no real network calls.
 - Uses local HMAC secret model, not distributed key management.
 - No key rotation yet.
 - No asymmetric signatures yet.
+
+
+## v0.8.13-security-finesse
+
+- Added Block B security-finesse evidence tests.
+- Hardened HTTP path-prefix matching to avoid neighboring-path allows.
+- Rejected wildcard hosts explicitly in API endpoint policies.
+- Confirmed secret values stay out of audit/evidence while still reaching the transport seam after all gates pass.
