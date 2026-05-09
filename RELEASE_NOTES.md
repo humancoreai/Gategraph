@@ -1,23 +1,24 @@
-# Release Notes — GateGraph v0.8.30_CANDIDATE
+# Release Notes — GateGraph v0.8.30_STABLE
 
 ## Summary
 
-`v0.8.30_CANDIDATE` adds the Operational Stability layer on top of `v0.8.29_STABLE`.
+v0.8.30_STABLE completes the Operational Stability Gate.
 
 ## Added
 
-- Deterministic alert aggregation.
-- Manual forward-only incident state transitions.
-- Read-only monitoring export object.
-- Actor-scoped Flood Guard with hard task/cost window limits.
+- Alert Aggregator for deterministic alert deduplication.
+- Incident State Manager with manual forward-only lifecycle.
+- Monitoring Export for read-only operational state reports.
+- Actor-scoped deterministic Flood Guard.
 
-## Changed
+## Fixed
 
-- Guard pipeline now evaluates Flood Guard before session budget reservation.
+- Updated runaway-cost evidence expectation for v0.8.30 guard order:
+  invalid projected cost may fail closed at `flood_guard` before session reservation.
 
-## Not included
+## Invariants
 
-- No autonomous recovery.
-- No self-healing.
-- No external alert routing.
-- No UI.
+- Operational layer remains read-only.
+- Flood Guard is a Governance guard, not an Operational decision.
+- Blocked Flood Guard attempts do not reserve session budget.
+- No autonomous recovery, no UI, no external monitoring integration.
