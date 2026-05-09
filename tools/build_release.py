@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.9.3_CANDIDATE"
-BASE = "v0.9.2_STABLE"
+VERSION = "v0.10.0_CANDIDATE"
+BASE = "v0.9.3_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -47,6 +47,7 @@ REQUIRED_RELEASE_FILES = {
     "tools/verify_release.py",
     "tests/caller_boundary_evidence.py",
     "tests/release_integrity_evidence.py",
+    "tests/runtime_boundary_hardening_evidence.py",
     "tests/multi_agent_architecture_evidence.py",
     "docs/MULTI_AGENT_SSOT.md",
     "docs/MULTI_MODE_SSOT.md",
@@ -58,6 +59,8 @@ REQUIRED_RELEASE_FILES = {
     "docs/INVARIANT_REGISTRY.md",
     "docs/BOUNDARY_REFERENCES.md",
     "docs/RELEASE_REPRODUCIBILITY.md",
+    "docs/RUNTIME_BOUNDARY_HARDENING.md",
+    "src/runtime_path_assertions.py",
     "tests/governance_freeze_evidence.py",
 }
 
@@ -143,7 +146,7 @@ def build_manifest(files: Iterable[Path]) -> dict:
         "release": VERSION,
         "base": BASE,
         "kind": "candidate_release",
-        "scope": "governance_freeze_snapshot_audit_baseline",
+        "scope": "runtime_boundary_hardening",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -183,7 +186,7 @@ def main() -> int:
     metadata = {
         "release": VERSION,
         "base": BASE,
-        "phase": "Governance Freeze Snapshot / Audit Baseline",
+        "phase": "Runtime / Boundary Hardening",
         "governance_logic_changed": False,
         "new_governance_features": False,
         "new_runtime_model": False,
@@ -192,7 +195,7 @@ def main() -> int:
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "documentation-level governance freeze snapshot and invariant traceability; no new autonomy or runtime behavior",
+        "claim_boundary": "trusted entry enforcement and explicit runtime path assertions; no new runtime capability or adapter expansion",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
