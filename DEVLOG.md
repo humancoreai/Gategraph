@@ -36,3 +36,9 @@ DB events accumulated: 31
 - Governance: `require_review` now issues an analysis-only token when requested capability is `read_files`.
 - `require_review` still denies side-effect capabilities (`write_files`, `delete_files`, `api_call`).
 - No architecture changes; only semantic alignment with v0.4 intent.
+
+## v0.4.4 — Risk Engine deterministic rewrite
+
+- Rewrote `src/risk_engine.py` explicitly instead of patching conditionally.
+- Confirmed `api_call` + `input_source="external"` classifies as `medium`.
+- Preserved prior fixes: `secret` sensitivity is `critical`; `require_review` remains analysis-only.
