@@ -280,3 +280,20 @@ Expected:
 - Actual runtime overrun blocks later session work.
 - Reason normalization uses stable canonical keys.
 - New audit events use schema version 0.8.3.
+
+
+## v0.8.4 External API Mock Evidence
+
+Added tests:
+- allowed_mock_call_completed
+- no_token_blocks_before_api
+- session_budget_blocks_expensive_api
+- runtime_budget_blocks_repeated_api
+- api_timeout_audited_as_failure
+- api_rate_limit_audited_as_failure
+- untrusted_api_response_is_data
+
+Expected:
+- External mock calls only execute after guard pipeline action-ready.
+- Blocked calls are audited without simulated execution.
+- API failures are audited as execution failures.
