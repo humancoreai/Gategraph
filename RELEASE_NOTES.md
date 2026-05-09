@@ -1,28 +1,21 @@
-# Release Notes – v0.11.5_STABLE
+# Release Notes — GateGraph v0.11.6_CANDIDATE
 
-## Summary
+## Scope
 
-v0.11.5_STABLE is a security boundary hardening release. It makes GateGraph's security posture more reviewable and adds explicit evidence that token, Authorization header, base64 token, and secret material do not leak through audit, explain, or monitoring surfaces.
+Multi-Agent Delegation Boundary Hardening.
 
 ## Added
 
-- `SECURITY_MODEL.md`
-- `OWASP_AGENTIC_AI_MAPPING.md`
-- `KNOWN_LIMITATIONS.md`
-- `docs/RELEASE_v0.11.5_STABLE.md`
-- `src/security/token_redaction.py`
-- `tests/token_exposure_evidence.py`
-
-## Changed
-
-- Audit event logging now applies centralized sensitive-field redaction before persistence.
-- Monitoring export now applies sensitive-field redaction before returning reviewer-facing data.
-- Capability token audit references expose `token_id`, `token_hash`, and key identifiers, not signatures or raw token material.
+- Detection-only multi-agent delegation assessment.
+- Evidence for transitive authority, circular delegation, capability amplification, actor-chain loss, unsupported delegation mode fail-closed behavior, and authority-free summaries.
+- Documentation for delegation boundaries.
 
 ## Not changed
 
-- No governance rule change.
-- No enforcement authority change.
-- No runtime surface expansion.
-- No adapter authority expansion.
-- No distributed/cloud/runtime sandbox claim.
+- No governance logic changes.
+- No runtime logic changes.
+- No enforcement logic changes.
+- No new agentic behavior.
+- No distributed orchestration.
+- No new adapter.
+- No new token, budget, secret, or tool authority.

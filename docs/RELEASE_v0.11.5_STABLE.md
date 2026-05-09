@@ -1,10 +1,10 @@
-# GateGraph v0.11.5_STABLE
+# GateGraph v0.11.6_CANDIDATE
 
-Phase: Security Mapping + Token Exposure Hardening
+Phase: Multi-Agent Delegation Boundary Hardening
 
 ## Scope
 
-v0.11.5_STABLE adds explicit security mapping documentation and strengthens reviewer-facing exposure boundaries for token, Authorization header, and secret material.
+v0.11.6_CANDIDATE adds explicit security mapping documentation and strengthens reviewer-facing exposure boundaries for token, Authorization header, and secret material.
 
 ## Added
 
