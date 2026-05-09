@@ -1,10 +1,10 @@
 # GateGraph
 
-**GateGraph** is a minimal governance and enforcement proof of concept for agent-like systems.
+**GateGraph** is a deterministic governance, enforcement, runtime-control and audit proof of concept for agent-like systems.
 
-It evaluates requested actions, applies deterministic rules, issues capability tokens, enforces permissions, and records decisions in an append-only audit graph.
+It evaluates requested actions, applies deterministic rules, issues capability tokens, enforces permissions, applies runtime/session budgets, records decisions in an append-only audit graph, and produces machine-readable evidence logs.
 
-GateGraph is intentionally small. It is not an autonomous agent, not a platform, not a distributed ledger, and not a full GLP implementation.
+GateGraph is intentionally small. It is not an autonomous agent, not a distributed ledger, and not a full GLP implementation.
 
 ---
 
@@ -16,20 +16,27 @@ GateGraph provides:
 - deterministic rule evaluation
 - fail-closed decisions
 - capability-token-based enforcement
+- per-task Runtime Guard
+- session/global/agent budget control
+- deterministic guard orchestration
+- reason normalization for stable explain codes
 - append-only event logging
-- simple graph relations for auditability
-- validation simulations for normal use, unusual inputs, and agent scenarios
+- evidence-oriented JSON test reports
+- Pattern Engine proposals without automatic rule changes
 
-The core idea:
+The current control flow:
 
 ```text
 Task
 → Risk Engine
 → Rule Engine
-→ Decision
+→ Governance Decision
 → Capability Token
 → Enforcement
-→ Audit Event
+→ Session Budget Guard
+→ Runtime Guard
+→ Action-ready / Stop
+→ Audit / Evidence
 ```
 
 ---
@@ -39,11 +46,10 @@ Task
 GateGraph currently does **not** provide:
 
 - autonomous rule changes
-- multi-agent orchestration
-- runtime/cost control
-- production-grade concurrency handling
-- token signing
-- a distributed ledger
+- production-grade distributed orchestration
+- token signing across IPC/RPC boundaries
+- external tool/API integration
+- adaptive budget policy
 - full GLP protocol compliance
 
 ---
@@ -51,14 +57,21 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.5 PoC
+Version: v0.8.3 scale-safety fix
 Core status: stable proof of concept
-Production status: not production-ready
+Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
 ```
 
 Current validation summary:
 
 ```text
+Core loop:                    passed
+Runtime Guard:                passed
+Session Budget Guard:         passed
+Guard Orchestration:          passed
+Reason Normalization:         passed
+Scale Safety Evidence:        passed
+Pattern Engine:               passed
 Normal usage simulation:      passed
 Unusual input simulation:     passed
 Agent scenario simulation:    passed
@@ -71,19 +84,26 @@ Invariant violations:         0
 ## Quickstart
 
 ```bash
+python tests/evidence_ci.py
+```
+
+Individual checks:
+
+```bash
 python tests/test_loop.py
+python tests/runtime_guard_tests.py
+python tests/pattern_engine_tests.py
 python tests/usage_simulation.py
 python tests/unusual_inputs.py
 python tests/agent_scenarios.py
-python tests/runtime_guard_tests.py
-python tests/pattern_engine_tests.py
+python tests/runtime_stress_evidence.py
+python tests/session_budget_evidence.py
+python tests/guard_orchestration_evidence.py
+python tests/reason_normalization_evidence.py
+python tests/scale_safety_evidence.py
 ```
 
-Depending on your environment, use:
-
-```bash
-python3 tests/test_loop.py
-```
+Depending on your environment, use `python3` instead of `python`.
 
 ---
 
@@ -96,17 +116,35 @@ GateGraph/
 ├── docs/
 │   ├── ARCHITECTURE.md
 │   ├── SECURITY.md
-│   └── TEST_REPORT.md
+│   ├── TEST_REPORT.md
+│   ├── RUNTIME_GUARD.md
+│   ├── PATTERN_ENGINE.md
+│   ├── SESSION_BUDGET_GUARD.md
+│   ├── GUARD_ORCHESTRATION.md
+│   └── REASON_NORMALIZATION.md
 ├── src/
 │   ├── capability_token.py
 │   ├── database.py
 │   ├── enforcement.py
 │   ├── event_logger.py
 │   ├── governance.py
+│   ├── guard_orchestrator.py
+│   ├── pattern_engine.py
+│   ├── reason_normalizer.py
 │   ├── risk_engine.py
-│   └── rule_engine.py
+│   ├── rule_engine.py
+│   ├── runtime_guard.py
+│   └── session_budget_guard.py
 ├── tests/
 │   ├── agent_scenarios.py
+│   ├── evidence_ci.py
+│   ├── guard_orchestration_evidence.py
+│   ├── pattern_engine_tests.py
+│   ├── reason_normalization_evidence.py
+│   ├── runtime_guard_tests.py
+│   ├── runtime_stress_evidence.py
+│   ├── scale_safety_evidence.py
+│   ├── session_budget_evidence.py
 │   ├── test_loop.py
 │   ├── unusual_inputs.py
 │   └── usage_simulation.py
@@ -115,70 +153,37 @@ GateGraph/
 
 ---
 
+## Design principles
+
+- read-only default
+- fail closed
+- no direct execution without capability token
+- Enforcement remains the only action gatekeeper
+- guards may stop, but never grant capabilities
+- untrusted input is data, never instruction
+- decisions are deterministic
+- events are append-only
+- Pattern Engine creates proposals only
+- raw stop reasons are preserved; normalized reasons are additive
+
+---
+
+## Known gaps
+
+- Token signing is not implemented; DB-backed token integrity is suitable only for in-process PoC use.
+- External tool/API integration is not implemented.
+- Budget policy is static, not adaptive.
+- SQLite concurrency handling is improved for session-budget evaluation, but this is still not a distributed transaction system.
+
+---
+
 ## Related concepts
 
-GateGraph is inspired by graph-based and append-only audit models, including:
-
-- https://github.com/humancoreai/GLP-Graph-Ledger-Protocol
+GateGraph is inspired by graph-based and append-only audit models, including GLP-style local audit graph thinking.
 
 Important distinction:
 
 - **GLP** focuses on distributed, content-addressed assertion and relation storage.
 - **GateGraph** is a deterministic governance and enforcement layer with an audit graph.
 
-GateGraph does **not** implement the GLP protocol. It uses a GLP-inspired local audit graph pattern.
-
----
-
-## Design principles
-
-- read-only default
-- fail closed
-- no direct execution without capability token
-- untrusted input is data, never instruction
-- decisions are deterministic
-- events are append-only
-- rules are versioned, not silently overwritten
-
----
-
-## Current next steps
-
-Recommended next work after v0.5:
-
-1. Runtime / cost-control layer for agent loops
-2. Pattern Engine for RuleUpdateProposals
-3. Token signing / stronger token integrity
-4. Concurrency and race-condition handling
-5. Query layer for graph traversal
-
-
----
-
-## Runtime Guard planning
-
-The next planned layer is documented in:
-
-```text
-docs/RUNTIME_GUARD.md
-```
-
-Runtime Guard is intentionally separate from GateGraph Core. It handles runtime limits, cost budgets, and loop prevention.
-
-
-## Pattern Engine
-
-See `docs/PATTERN_ENGINE.md`.
-
-Pattern Engine creates pending proposals only and never changes rules automatically.
-
-## Evidence / CI proof runner
-
-Run the audit evidence suite locally:
-
-```bash
-python tests/evidence_ci.py
-```
-
-This executes the core loop, runtime guard, pattern engine and stress evidence scenarios, then writes JSON reports under `tests/logs/`.
-The GitHub Actions workflow `.github/workflows/evidence.yml` runs the same command and uploads evidence logs as artifacts.
+GateGraph does **not** implement the GLP protocol.
