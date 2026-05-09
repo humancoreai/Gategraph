@@ -1,28 +1,27 @@
-# Release Status — GateGraph v0.8.28_STABLE
+# Release Status — GateGraph v0.8.29_CANDIDATE
 
 ## Status
 
-Stable release.
+Candidate release.
 
-`v0.8.28_STABLE` promotes the governance-documentation candidate after full Windows Evidence CI passed.
+`v0.8.29_CANDIDATE` starts the Operational Gate after `v0.8.28_STABLE`.
 
-## Stable scope
+## Candidate scope
 
-- Root-level `GOVERNANCE.md` added as repository-level governance SSOT.
-- README references governance document.
-- Version/release metadata updated.
-- No functional code changes from `v0.8.27.1_STABLE` / `v0.8.28_CANDIDATE`.
+- Adds read-only operational alert evaluation.
+- Converts open operational incidents into sorted alert signals.
+- Keeps Operational Layer observational only.
+- Adds targeted evidence for alert generation and non-mutation.
 
 ## Validation
 
-Full Windows Evidence CI on `v0.8.28_CANDIDATE`:
+Targeted evidence in this environment:
 
 ```text
-Passed: True
-Unexpected Allows: 0
-Invariant Violations: 0
-Date: 2026-04-28
+operational_alerting_evidence: 4/4 passed
 ```
+
+Full Evidence CI was attempted but did not complete in this Linux container because the existing runner selftest hangs here. Windows full Evidence CI remains the required promotion gate, as in prior releases.
 
 ## Production boundary
 
@@ -32,9 +31,9 @@ Still not production-ready for open distributed use. Remaining boundaries:
 - No production KMS
 - No distributed budget lock/consensus
 - Mock external API integration only
-- No production monitoring/alerting stack
+- No production monitoring transport
 - No automated incident recovery
 
-## Stable release document
+## Candidate release document
 
-See `docs/RELEASE_v0.8.28_STABLE.md`.
+See `docs/RELEASE_v0.8.29_CANDIDATE.md`.
