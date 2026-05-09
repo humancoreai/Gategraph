@@ -2,6 +2,7 @@
 WHY: Pattern Engine tests prove advisory learning without autonomous rule mutation.
 INV: Pattern Engine creates proposals only; active rules must remain unchanged.
 """
+import os
 import os, sys
 from pathlib import Path
 

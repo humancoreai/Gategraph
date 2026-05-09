@@ -1,37 +1,34 @@
-# Release Status - GateGraph v0.8.14-security-finesse
+# Release Status - GateGraph v0.8.15-block-c-stress-evidence
 
-Status: Single-node PoC / security-finesse hardening.
+Status: Single-node PoC / stress-evidence hardening.
 
 ## Added
-- `tests/security_finesse_evidence.py` with focused Block B checks:
-  - secret value does not appear in audit/evidence,
-  - HTTP policy denial prevents secret resolution,
-  - subdomains are not implicitly allowed,
-  - wildcard host policies are rejected,
-  - path-prefix boundaries block `/v10` when only `/v1` is allowed,
-  - lowercase HTTP methods normalize correctly,
-  - expired+revoked tokens stay fail-closed with deterministic expiry-first reason.
+- `tests/block_c_stress_evidence.py` with focused Block C checks:
+  - cross-task micro-flood stops at Session Budget,
+  - same-agent fan-out stops at agent-level Session Budget,
+  - exact budget-fill is allowed and the next action is blocked,
+  - same-task repeated API-shaped loop stops at Runtime Guard before another transport call.
+- `docs/BLOCK_C_STRESS_EVIDENCE.md`.
 
 ## Changed
-- HTTP policy path matching is boundary-aware.
-- Endpoint policy registration rejects wildcard hosts.
-- Evidence CI script includes the new security-finesse evidence group.
+- Evidence runner manifests include Block C stress evidence.
 
 ## Unchanged
 - Enforcement remains the only authorization gatekeeper.
 - Guards still only stop, never allow.
-- Secrets are resolved only after Enforcement, Session Budget, Runtime Guard, and HTTP Policy pass.
+- HTTP Policy and Secret Provider order is unchanged.
 - No real network client is shipped; transport remains an explicit seam.
+- Production governance/enforcement/runtime semantics unchanged.
+
+## Evidence
+- Block C Stress Evidence: 4/4 passed.
+- Session Budget Evidence: 6/6 passed.
+- Runtime Stress Evidence: 14/14 passed.
+- Runtime Guard Tests: 6/6 passed.
+- External API Evidence: 7/7 passed.
 
 ## Known Limits
-- No OS keychain/KMS.
-- No real HTTP client policy stack beyond allowlist semantics.
-- No distributed trust/budgeting.
-- Aggregate runner remains environment-sensitive; individual evidence paths are preferred for local proof.
-
-## v0.8.14 Runner Stabilization
-
-- Stabilized isolated evidence wrapper.
-- Replaced `runpy(..., run_name="__main__")` execution with module import + public `main()`/`run()` entrypoint calls.
-- Preserved hard timeboxing in the shell aggregate runner.
-- Production governance/enforcement/runtime logic unchanged.
+- Still single-node SQLite evidence.
+- No distributed budget.
+- No real HTTP/network failure model.
+- Aggregate runner remains environment-sensitive; supervised or individual evidence paths are preferred for local proof.

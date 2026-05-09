@@ -20,11 +20,9 @@ for import_path in (str(PROJECT_ROOT), str(TESTS_DIR)):
 
 
 def _finish(code: int) -> None:
-    try:
-        sys.stdout.flush()
-        sys.stderr.flush()
-    finally:
-        os._exit(code)
+    # WHY: Explicit stdout/stderr flush can hang after some evidence scripts in this environment.
+    # The aggregate runner uses python -u, so line output is already unbuffered before hard-exit.
+    os._exit(code)
 
 
 def _load_entrypoint(script_path: Path) -> Callable[[], object]:

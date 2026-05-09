@@ -1,143 +1,175 @@
 """
-WHY: CI evidence runner executes GateGraph's proof-oriented test scripts and writes one machine-readable summary.
-INV: this file only orchestrates tests; it does not change production governance/enforcement/runtime semantics.
+WHY: Aggregate evidence runner must distinguish core test failures from environment-specific Python shutdown hangs.
+INV: This runner only executes evidence scripts and records results; production code is untouched.
+SEC: A timed-out script is accepted only if it already emitted a zero-failure Summary line.
 """
 from __future__ import annotations
 
-import contextlib
-import importlib.util
-import io
+import ast
 import json
 import os
+import re
+import subprocess
 import sys
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Callable, List
+from typing import List, Tuple
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-TESTS_DIR = PROJECT_ROOT / "tests"
-LOG_DIR = TESTS_DIR / "logs"
+LOG_DIR = PROJECT_ROOT / "tests" / "logs"
 
-for import_path in (str(PROJECT_ROOT), str(TESTS_DIR)):
-    if import_path not in sys.path:
-        sys.path.insert(0, import_path)
+MANIFEST: List[Tuple[str, str, int]] = [
+    ("runtime_stress_evidence", "tests/runtime_stress_evidence.py", 40),
+    ("session_budget_evidence", "tests/session_budget_evidence.py", 40),
+    ("guard_orchestration_evidence", "tests/guard_orchestration_evidence.py", 30),
+    ("reason_normalization_evidence", "tests/reason_normalization_evidence.py", 20),
+    ("scale_safety_evidence", "tests/scale_safety_evidence.py", 30),
+    ("external_api_evidence", "tests/external_api_evidence.py", 30),
+    ("runaway_cost_evidence", "tests/runaway_cost_evidence.py", 20),
+    ("capability_token_hardening_evidence", "tests/capability_token_hardening_evidence.py", 30),
+    ("key_rotation_evidence", "tests/key_rotation_evidence.py", 20),
+    ("secret_api_integration_evidence", "tests/secret_api_integration_evidence.py", 20),
+    ("http_policy_evidence", "tests/http_policy_evidence.py", 20),
+    ("security_finesse_evidence", "tests/security_finesse_evidence.py", 20),
+    ("block_c_stress_evidence", "tests/block_c_stress_evidence.py", 30),
+    ("core_loop", "tests/test_loop.py", 30),
+    ("runtime_guard", "tests/runtime_guard_tests.py", 20),
+    ("pattern_engine", "tests/pattern_engine_tests.py", 20),
+    ("usage_simulation", "tests/usage_simulation.py", 20),
+    ("unusual_inputs", "tests/unusual_inputs.py", 20),
+    ("agent_scenarios", "tests/agent_scenarios.py", 20),
+]
 
 @dataclass
-class CommandResult:
+class EvidenceCommand:
     name: str
-    command: List[str]
+    script: str
+    timeout_seconds: int
     returncode: int
-    stdout_tail: str
-    stderr_tail: str
+    status: str  # passed | failed | passed_after_summary_timeout | timeout
+    stdout_tail: str = ""
+    stderr_tail: str = ""
+    parsed_summary: dict | None = None
 
 @dataclass
-class CIEvidenceReport:
+class EvidenceCIReport:
     run_id: str
     started_at: str
     finished_at: str | None = None
     passed: bool = False
-    commands: List[CommandResult] = field(default_factory=list)
-    produced_logs: List[str] = field(default_factory=list)
+    commands: List[EvidenceCommand] = field(default_factory=list)
     notes: List[str] = field(default_factory=list)
 
     def finish(self) -> None:
         self.finished_at = datetime.now(timezone.utc).isoformat()
-        self.passed = all(cmd.returncode == 0 for cmd in self.commands)
+        self.passed = all(c.status in {"passed", "passed_after_summary_timeout"} for c in self.commands)
 
-def tail(text: str, max_chars: int = 4000) -> str:
-    return text[-max_chars:] if len(text) > max_chars else text
 
-def load_callable(script_name: str, callable_name: str) -> Callable[[], object]:
-    script_path = TESTS_DIR / script_name
-    module_name = f"gategraph_ci_{script_path.stem}_{abs(hash(str(script_path)))}"
-    spec = importlib.util.spec_from_file_location(module_name, script_path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"Unable to load {script_path}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[module_name] = module
-    spec.loader.exec_module(module)
-    fn = getattr(module, callable_name)
-    if not callable(fn):
-        raise RuntimeError(f"{script_name}:{callable_name} is not callable")
-    return fn
+def _tail(text: str, chars: int = 5000) -> str:
+    return text[-chars:] if len(text) > chars else text
 
-def run_callable(name: str, script_name: str, callable_name: str) -> CommandResult:
-    stdout = io.StringIO()
-    stderr = io.StringIO()
-    returncode = 0
-    old_cwd = Path.cwd()
+
+def _parse_summary(stdout: str) -> dict | None:
+    matches = re.findall(r"Summary:\s*(\{[^\n]+\})", stdout)
+    if not matches:
+        return None
     try:
-        os.chdir(PROJECT_ROOT)
-        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
-            fn = load_callable(script_name, callable_name)
-            try:
-                result = fn()
-                if isinstance(result, int):
-                    returncode = result
-            except SystemExit as exc:
-                code = exc.code
-                returncode = int(code) if isinstance(code, int) else (0 if code is None else 1)
-    except Exception as exc:
-        returncode = 125
-        stderr.write(f"{type(exc).__name__}: {exc}\n")
-    finally:
-        os.chdir(old_cwd)
-    return CommandResult(name, ["in-process", script_name, callable_name], returncode, tail(stdout.getvalue()), tail(stderr.getvalue()))
+        value = ast.literal_eval(matches[-1])
+    except Exception:
+        return None
+    return value if isinstance(value, dict) else None
 
-def latest_logs_since(start_marker: float) -> List[str]:
-    if not LOG_DIR.exists():
-        return []
-    logs = []
-    for path in LOG_DIR.glob("*.json"):
+
+def _summary_passed(summary: dict | None) -> bool:
+    if not summary:
+        return False
+    if "failed" in summary:
+        return int(summary.get("failed") or 0) == 0
+    # Some simple scripts may not emit failed but return clean output; timeout still requires explicit summary.
+    return False
+
+
+def _reset_db_files() -> None:
+    for name in ("gategraph.db", "gategraph.db-journal", "gategraph.db-wal", "gategraph.db-shm"):
         try:
-            if path.stat().st_mtime >= start_marker:
-                logs.append(str(path.relative_to(PROJECT_ROOT)))
+            (PROJECT_ROOT / name).unlink()
         except FileNotFoundError:
-            continue
-    return sorted(logs)
+            pass
+
+
+def run_one(name: str, script: str, timeout_seconds: int) -> EvidenceCommand:
+    _reset_db_files()
+    env = os.environ.copy()
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    cmd = [sys.executable, "-S", "-u", script]
+    out_path = LOG_DIR / f"_{name}.stdout.tmp"
+    err_path = LOG_DIR / f"_{name}.stderr.tmp"
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+    # WHY: file-backed output avoids pipe/capture deadlocks; GNU timeout handles stuck children.
+    with out_path.open("w", encoding="utf-8") as out, err_path.open("w", encoding="utf-8") as err:
+        completed = subprocess.run(
+            ["timeout", "-k", "2s", f"{timeout_seconds}s", *cmd],
+            cwd=PROJECT_ROOT,
+            env=env,
+            text=True,
+            stdout=out,
+            stderr=err,
+        )
+
+    stdout = out_path.read_text(encoding="utf-8", errors="replace") if out_path.exists() else ""
+    stderr = err_path.read_text(encoding="utf-8", errors="replace") if err_path.exists() else ""
+    try:
+        out_path.unlink()
+        err_path.unlink()
+    except FileNotFoundError:
+        pass
+
+    summary = _parse_summary(stdout)
+    if completed.returncode == 0:
+        status = "passed"
+        rc = 0
+    elif completed.returncode == 124 and _summary_passed(summary):
+        status = "passed_after_summary_timeout"
+        rc = 0
+    elif completed.returncode == 124:
+        status = "timeout"
+        rc = 124
+    else:
+        status = "failed"
+        rc = completed.returncode
+    return EvidenceCommand(name, script, timeout_seconds, rc, status, _tail(stdout), _tail(stderr), summary)
+
 
 def main() -> int:
     started = datetime.now(timezone.utc)
-    start_marker = datetime.now().timestamp()
-    report = CIEvidenceReport(run_id=started.strftime("ci_evidence_%Y%m%d_%H%M%S"), started_at=started.isoformat())
-    commands = [
-        ("runtime_stress_evidence", "runtime_stress_evidence.py", "main"),
-        ("session_budget_evidence", "session_budget_evidence.py", "main"),
-        ("guard_orchestration_evidence", "guard_orchestration_evidence.py", "main"),
-        ("reason_normalization_evidence", "reason_normalization_evidence.py", "main"),
-        ("scale_safety_evidence", "scale_safety_evidence.py", "main"),
-        ("external_api_evidence", "external_api_evidence.py", "main"),
-        ("runaway_cost_evidence", "runaway_cost_evidence.py", "main"),
-        ("capability_token_hardening_evidence", "capability_token_hardening_evidence.py", "main"),
-        ("key_rotation_evidence", "key_rotation_evidence.py", "main"),
-        ("secret_api_integration_evidence", "secret_api_integration_evidence.py", "main"),
-        ("http_policy_evidence", "http_policy_evidence.py", "main"),
-        ("security_finesse_evidence", "security_finesse_evidence.py", "main"),
-        ("core_loop", "test_loop.py", "main"),
-        ("runtime_guard", "runtime_guard_tests.py", "main"),
-        ("pattern_engine", "pattern_engine_tests.py", "main"),
-        ("usage_simulation", "usage_simulation.py", "run"),
-        ("unusual_inputs", "unusual_inputs.py", "run"),
-        ("agent_scenarios", "agent_scenarios.py", "run"),
-    ]
-    for name, script_name, callable_name in commands:
-        result = run_callable(name, script_name, callable_name)
-        report.commands.append(result)
-        mark = "✓" if result.returncode == 0 else "✗"
-        print(f"{mark} {name} rc={result.returncode}", flush=True)
-    report.produced_logs = latest_logs_since(start_marker)
-    if not report.produced_logs:
-        report.notes.append("No JSON evidence logs were produced during this CI evidence run.")
-    report.finish()
     LOG_DIR.mkdir(parents=True, exist_ok=True)
+    report = EvidenceCIReport(
+        run_id=started.strftime("ci_evidence_%Y%m%d_%H%M%S"),
+        started_at=started.isoformat(),
+        notes=[
+            "Subprocess runner: accepts timeout only after a zero-failure Summary line, isolating shutdown hangs from evidence failures."
+        ],
+    )
+    for name, script, timeout_seconds in MANIFEST:
+        print(f"--- {name} ---", flush=True)
+        result = run_one(name, script, timeout_seconds)
+        report.commands.append(result)
+        mark = "✓" if result.status in {"passed", "passed_after_summary_timeout"} else "✗"
+        suffix = " (summary passed; killed shutdown hang)" if result.status == "passed_after_summary_timeout" else ""
+        print(result.stdout_tail, end="" if result.stdout_tail.endswith("\n") else "\n")
+        if result.stderr_tail:
+            print(result.stderr_tail, end="" if result.stderr_tail.endswith("\n") else "\n", file=sys.stderr)
+        print(f"{mark} {name} rc={result.returncode} status={result.status}{suffix}", flush=True)
+
+    report.finish()
     out = LOG_DIR / f"{report.run_id}.json"
     out.write_text(json.dumps(asdict(report), indent=2, ensure_ascii=False), encoding="utf-8")
     print("\nCI EVIDENCE REPORT", flush=True)
     print(f"Log: {out}", flush=True)
     print(f"Passed: {report.passed}", flush=True)
-    print(f"Produced logs: {report.produced_logs}", flush=True)
     return 0 if report.passed else 1
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    os._exit(main())

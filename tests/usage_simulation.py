@@ -2,6 +2,7 @@
 WHY: usage simulation validates normal everyday flows after semantic fixes.
 INV: no write/delete/api_call executes without approval; require_review is analysis-only.
 """
+import os
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
