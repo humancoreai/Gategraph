@@ -9,6 +9,8 @@ from typing import List
 
 
 RISK_LEVELS = ("low", "medium", "high", "critical")
+VALID_INPUT_SOURCES = {"local", "external", "untrusted"}
+VALID_DATA_SENSITIVITY = {"public", "internal", "confidential", "secret"}
 
 
 @dataclass(frozen=True)
@@ -25,7 +27,7 @@ def classify(
 ) -> RiskResult:
     """
     INV: highest applicable risk wins; no later rule may downgrade a prior classification.
-    SEC: secrets and external boundaries are explicit risk escalators.
+    SEC: unknown enum values are at least medium — never silently treated as safe.
     """
     caps = set(requested_capabilities)
 
@@ -43,7 +45,20 @@ def classify(
             reason="data_sensitivity=secret — treat as critical",
         )
 
-    # Priority 3 — persistent side-effect capabilities.
+    # Priority 3 — unknown enum values require review instead of silent allow.
+    if input_source not in VALID_INPUT_SOURCES:
+        return RiskResult(
+            risk_level="medium",
+            reason=f"unknown input_source={input_source!r} — requires review",
+        )
+
+    if data_sensitivity not in VALID_DATA_SENSITIVITY:
+        return RiskResult(
+            risk_level="medium",
+            reason=f"unknown data_sensitivity={data_sensitivity!r} — requires review",
+        )
+
+    # Priority 4 — persistent side-effect capabilities.
     destructive = {"write_files", "delete_files", "modify_config"}
     if destructive & caps:
         return RiskResult(
@@ -51,14 +66,14 @@ def classify(
             reason=f"destructive capability requested: {sorted(destructive & caps)}",
         )
 
-    # Priority 4 — external API calls cross the local trust boundary.
+    # Priority 5 — external API calls cross the local trust boundary.
     if "api_call" in caps and input_source == "external":
         return RiskResult(
             risk_level="medium",
             reason="api_call with input_source=external — external boundary crossing",
         )
 
-    # Priority 5 — untrusted input must be treated as data, never instruction.
+    # Priority 6 — untrusted input must be treated as data, never instruction.
     if input_source == "untrusted":
         return RiskResult(
             risk_level="medium",
