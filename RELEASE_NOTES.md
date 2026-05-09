@@ -1,9 +1,9 @@
-# Release Notes — GateGraph v0.12.2_CANDIDATE
+# Release Notes — GateGraph v0.12.2_STABLE
 
-## v0.12.2_CANDIDATE — Recovery & Replay Hardening
+## v0.12.2_STABLE — Recovery & Replay Hardening
 
 Base: v0.12.1_STABLE  
-Status: candidate
+Status: stable
 
 ### Added
 - Recovery idempotency helpers for duplicate recovery attempts and partial-state recovery classification.

@@ -62,4 +62,4 @@ See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operation
 Current release surface: `v0.12.1_STABLE`.
 
 
-Current release surface: v0.12.2_CANDIDATE.
+Current release surface: v0.12.2_STABLE.
