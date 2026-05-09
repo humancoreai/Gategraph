@@ -1,51 +1,28 @@
-# GateGraph Release Status — v0.8.5 Hygiene Fix
+# Release Status - GateGraph v0.8.6-runaway-cost-control
 
 ## Status
 
-GateGraph v0.8.5 is a stable single-node proof of concept for deterministic agent-action governance.
+Evidence build: PASS on targeted and individual evidence runs.
 
-This release does not change governance semantics. It only cleans repository hygiene and stabilizes the evidence runner.
+## Change type
 
-## Core invariants
+Security / control-plane hardening.
 
-- No action without a valid capability token.
-- Enforcement is the only gatekeeper.
-- Guards may stop execution, but never grant permission.
-- Pattern Engine creates proposals only; it does not mutate rules.
+## Core changes
+
+- Non-positive projected session costs fail closed.
+- Non-positive runtime costs fail closed.
+- Invalid cost stops receive normalized reason codes.
+- New runaway-cost evidence scenarios added.
+
+## Invariants preserved
+
+- Enforcement remains the only capability gatekeeper.
+- Guards can only stop; they never grant capability.
+- External API calls remain mock-only and pass through Enforcement + Guard Pipeline.
+- Pattern Engine remains proposal-only.
 - Audit remains append-only.
-- Unknown or invalid states fail closed.
 
-## Validation
+## Known limitation
 
-Evidence runner command:
-
-```bash
-python -S -u tests/evidence_ci.py
-```
-
-Validated groups:
-
-- Runtime Stress Evidence
-- Session Budget Evidence
-- Guard Orchestration Evidence
-- Reason Normalization Evidence
-- Scale Safety Evidence
-- External API Evidence
-- Core Loop
-- Runtime Guard
-- Pattern Engine
-- Usage Simulation
-- Unusual Inputs
-- Agent Scenarios
-
-## Known non-goals
-
-- No distributed budget enforcement.
-- No cryptographic token signing.
-- No real external APIs.
-- No adaptive budget strategy.
-- No production-grade billing integration.
-
-## Release note
-
-Generated files such as `__pycache__/`, local SQLite databases and JSON evidence logs are intentionally excluded from the clean release archive.
+The aggregate CI runner still shows environment-level shutdown/runner instability in this container. Individual evidence scripts were executed successfully. Production semantics were not weakened to accommodate the runner.
