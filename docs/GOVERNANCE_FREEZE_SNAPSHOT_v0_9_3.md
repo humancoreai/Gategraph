@@ -1,4 +1,4 @@
-# GateGraph Governance Freeze Snapshot – v0.9.3_CANDIDATE
+# GateGraph Governance Freeze Snapshot – v0.9.3_STABLE
 
 ## Purpose
 
@@ -10,7 +10,7 @@ This document is descriptive and constraining. It does not introduce runtime beh
 
 | Field | Value |
 |---|---|
-| Version | v0.9.3_CANDIDATE |
+| Version | v0.9.3_STABLE |
 | Base | v0.9.2_STABLE |
 | Snapshot type | Governance freeze / audit baseline |
 | Runtime scope | Single-node governance runtime |

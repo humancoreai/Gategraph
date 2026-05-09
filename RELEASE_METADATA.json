@@ -8,7 +8,9 @@
   "new_risk_model": false,
   "new_runtime_model": false,
   "phase": "Governance Freeze Snapshot / Audit Baseline",
-  "release": "v0.9.3_CANDIDATE",
+  "release": "v0.9.3_STABLE",
   "scope_freeze": true,
-  "self_orchestration": false
+  "self_orchestration": false,
+  "stable_promotion": true,
+  "status": "stable"
 }
