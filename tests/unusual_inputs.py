@@ -2,6 +2,7 @@
 WHY: unusual input simulation checks robustness without expanding system scope.
 INV: invalid/unknown/ambiguous input must never produce unsafe allow.
 """
+import os
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
