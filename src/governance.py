@@ -67,10 +67,17 @@ def evaluate_task(
     risk = risk_engine.classify(requested_capabilities, input_source, data_sensitivity, secrets_involved)
     rule_result = rule_engine.evaluate(conn, caps_for_storage, risk.risk_level)
 
-    # SEC: only allow/warn may issue a token; all other decisions deny requested capabilities.
+    # SEC: require_review is analysis-only; it may allow reads but never side effects.
     final_caps: Dict[str, bool] = {}
     for cap in ALL_KNOWN_CAPABILITIES:
-        final_caps[cap] = cap in requested_capabilities and rule_result.final_decision in ("allow", "warn")
+        if cap not in requested_capabilities:
+            final_caps[cap] = False
+        elif rule_result.final_decision in ("allow", "warn"):
+            final_caps[cap] = True
+        elif rule_result.final_decision == "require_review":
+            final_caps[cap] = cap == "read_files"
+        else:
+            final_caps[cap] = False
 
     matched_rule_ids = [r.rule_id for r in rule_result.matched_rules]
     selected_rationale = next((r.rationale for r in rule_result.matched_rules if r.rule_id == rule_result.selected_rule_id), None)
@@ -124,7 +131,7 @@ def evaluate_task(
         event_logger.log_relation(conn, event_record.event_id, "event", "produced", decision_id, "decision")
 
     token: Optional[CapabilityToken] = None
-    if rule_result.final_decision in ("allow", "warn"):
+    if any(final_caps.values()):
         with conn:
             token = cap_module.issue_token(conn, decision_id, task_id, final_caps, token_ttl)
 
