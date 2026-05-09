@@ -59,15 +59,15 @@ GateGraph currently does **not** provide:
 
 ## Project status
 
-Current stable release: **v0.8.26_STABLE**
+Current stable release: **v0.8.27.1_STABLE**
 
-This stable point consolidates Cross-Session Budget Control on top of Runtime Governance / Runaway Cost Control and Evidence Runner hardening. The Windows full Evidence CI run reported `Passed: True` on 2026-04-28. See `docs/RELEASE_v0.8.26_STABLE.md` for the release evidence summary and known limits.
+This stable point consolidates Operational Hardening on top of Cross-Session Budget Control, Runtime Governance / Runaway Cost Control and Evidence Runner hardening. The full Windows Evidence CI run reported `Passed: True` on 2026-04-28. See `docs/RELEASE_v0.8.27.1_STABLE.md` for the release evidence summary and known limits.
 
 
 ```text
-Version: v0.8.26_STABLE
+Version: v0.8.27.1_STABLE
 Core status: stable proof of concept
-Production status: not production-ready; Single-Node Governance-Core evidence is mature, operational/distributed production layers remain out of scope
+Production status: not production-ready; Single-Node Governance-Core and operational-hardening evidence are mature, distributed production layers remain out of scope
 ```
 
 Current validation summary:
@@ -80,6 +80,8 @@ Guard Orchestration:          passed
 Reason Normalization:         passed
 Scale Safety Evidence:        passed
 Cross-Session Budget Evidence:  passed
+Operational Hardening:         passed
+Evidence Runner Selftest:      passed
 External API Mock Evidence:    passed
 Secret/API Integration:        passed
 Pattern Engine:               passed
@@ -115,6 +117,7 @@ python tests/guard_orchestration_evidence.py
 python tests/reason_normalization_evidence.py
 python tests/scale_safety_evidence.py
 python tests/external_api_evidence.py
+python tests/operational_hardening_evidence.py
 ```
 
 Depending on your environment, use `python3` instead of `python`.
@@ -277,4 +280,8 @@ GateGraph now includes a strictly limited Controlled Apply prototype. It is disa
 
 ## v0.8.26 Cross-Session Budget Control
 
-This stable release adds a single-node Budget Ledger and token-bound budget reservations to prevent task/session splitting from bypassing budget controls. Runtime remains non-authoritative; Governance reserves budget and Enforcement verifies the signed/persisted budget claims. See `docs/CROSS_SESSION_BUDGET_CONTROL.md` and `docs/RELEASE_v0.8.26_STABLE.md`.
+This stable release adds a single-node Budget Ledger and token-bound budget reservations to prevent task/session splitting from bypassing budget controls. Runtime remains non-authoritative; Governance reserves budget and Enforcement verifies the signed/persisted budget claims. See `docs/CROSS_SESSION_BUDGET_CONTROL.md` and `docs/RELEASE_v0.8.27.1_STABLE.md`.
+
+## v0.8.27.1 Stable Operational Hardening
+
+This stable release adds operational visibility and consistency checks without changing the authority model. Budget snapshots, deterministic audit replay checks and append-only incident records are now part of the stable scope. The POSIX Evidence Runner timeout path was hardened by replacing the external `timeout` wrapper with Python-owned process supervision. Full Windows Evidence CI reported `Passed: True` on 2026-04-28.
