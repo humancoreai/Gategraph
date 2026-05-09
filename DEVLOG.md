@@ -414,3 +414,13 @@ Promoted `v0.8.26_CROSS_SESSION_BUDGET_CANDIDATE` to `v0.8.26_STABLE` after the 
 - No production KMS.
 - No distributed budget consensus or lock manager.
 - No monitoring/alerting/incident layer.
+
+## v0.8.27_OPERATIONAL_HARDENING_CANDIDATE
+
+- Added `src/operational_hardening.py`.
+- Added budget snapshot visibility for all Budget Ledger scopes.
+- Added deterministic audit replay consistency checks.
+- Added append-only operational incident records.
+- Added `tests/operational_hardening_evidence.py`.
+- Added documentation in `docs/OPERATIONAL_HARDENING.md`.
+- No changes to Enforcement/Governance allow-path semantics.
