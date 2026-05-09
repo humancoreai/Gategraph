@@ -85,3 +85,6 @@ Current release context: v0.12.4_STABLE.
 - no AI content moderation
 
 Current release surface: v0.12.5_STABLE
+
+
+Release surface: v0.12.6_CANDIDATE.

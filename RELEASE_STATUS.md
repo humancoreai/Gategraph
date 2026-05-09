@@ -1,7 +1,13 @@
 # Release Status
 
-Release: `v0.12.5_STABLE`
-Base: `v0.12.4_STABLE`
-Status: `stable`
+Release: v0.12.6_CANDIDATE
 
-Scope: Deterministic Registry / Schema Governance.
+Base: v0.12.5_STABLE
+
+Status: candidate
+
+Scope: Deterministic Evidence Lineage / Governance Provenance.
+
+No runtime, enforcement, governance-rule, agentic, distributed, or auto-mutation authority is introduced.
+
+Compatibility phase label: Deterministic Registry / Schema Governance.
