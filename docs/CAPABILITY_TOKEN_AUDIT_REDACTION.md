@@ -1,6 +1,6 @@
 # Capability Token Audit Redaction
 
-Release: `v0.11.4_CANDIDATE`
+Release: `v0.11.4_STABLE`
 
 Capability tokens are authorization material. Audit records may prove which token was involved in issuance or enforcement, but they must not store the raw token object, token signature, signing input, Authorization header, bearer value, or signing secret material.
 
