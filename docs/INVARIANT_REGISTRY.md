@@ -32,4 +32,4 @@ Each critical invariant must remain referencable and must be covered by at least
 
 This registry is not a compliance framework. It is a compact traceability baseline.
 
-Current release surface: v0.12.6_CANDIDATE
+Current release surface: v0.12.6_STABLE
