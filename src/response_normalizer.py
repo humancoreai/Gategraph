@@ -9,7 +9,9 @@ from datetime import datetime, timezone
 from typing import Any
 from uuid import uuid4
 
-SCHEMA_VERSION = "0.8.35"
+from src.version import current_schema_version
+
+SCHEMA_VERSION = current_schema_version()
 TOP_LEVEL_KEYS = ("ok", "data", "error", "meta")
 ERROR_CODES = {
     "INVALID_JSON",
