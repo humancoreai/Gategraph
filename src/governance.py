@@ -177,6 +177,19 @@ def evaluate_task(
                 max_cost_for_action=projected_cost_units,
                 escalation_state=escalation_state,
             )
+            event_logger.log_event(
+                conn,
+                event_id=f"EVT-TOK-{uuid.uuid4().hex[:12].upper()}",
+                idempotency_key=f"token-issued:{token.token_id}",
+                correlation_id=correlation_id,
+                causation_id=event_record.event_id,
+                event_type="capability_token_issued",
+                task_id=task_id,
+                actor_component="capability_token",
+                input_data={"token_ref": cap_module.token_audit_ref(token)},
+                evaluation={"token_audit_redaction": "raw_token_signature_and_authorization_material_excluded"},
+                decision={"status": "issued", "token_id": token.token_id, "token_hash": cap_module.token_hash(token)},
+            )
 
     return GovernanceResult(
         task_id, correlation_id, risk.risk_level, risk.reason, rule_result.final_decision,

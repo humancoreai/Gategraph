@@ -1,7 +1,7 @@
-# Operational Boundary Tightening – GateGraph v0.11.3_STABLE
+# Operational Boundary Tightening – GateGraph v0.11.4_CANDIDATE
 
 Status: stable
-Base: v0.11.2_STABLE
+Base: v0.11.3_STABLE
 
 ## Boundary statement
 
