@@ -1,6 +1,6 @@
 # PRODUCTION.md
 
-GateGraph v0.11.9_STABLE is stable for the defined single-node and local/protected server-adapter scope.
+GateGraph v0.12.0_STABLE is stable for the defined single-node and local/protected server-adapter scope.
 
 ## Scope
 
@@ -53,10 +53,10 @@ Production rule:
 This is not a governance limitation. It is a deployment boundary: the server remains an adapter.
 
 
-See also `docs/DEPLOYMENT_BOUNDARY.md` for the supported/unsupported/unsafe deployment surface preserved through v0.11.9_STABLE.
+See also `docs/DEPLOYMENT_BOUNDARY.md` for the supported/unsupported/unsafe deployment surface preserved through v0.12.0_STABLE.
 
 
 See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operational start-surface expectations.
 
 
-Current release surface: `v0.12.0_STABLE`.
+Current release surface: `v0.12.1_CANDIDATE`.

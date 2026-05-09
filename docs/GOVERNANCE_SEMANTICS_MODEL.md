@@ -1,4 +1,4 @@
-# Governance Semantics Model — v0.11.9_STABLE
+# Governance Semantics Model — v0.12.0_STABLE
 
 This document defines semantic boundaries for GateGraph object surfaces. It is descriptive and non-executable.
 

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.12.1",
   "surface": "monitoring_export",
   "status": "frozen_stable",
   "description": "Read-only monitoring export contract; visibility only and never a governance input.",

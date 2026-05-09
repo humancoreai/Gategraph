@@ -84,9 +84,9 @@ Packaging must not create an alternative governance path. All evaluation still f
 See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operational start-surface expectations.
 
 
-## v0.11.9_STABLE Note
+## v0.12.0_STABLE Note
 
-v0.11.9_STABLE preserves this boundary while adding security mapping and token exposure hardening.
+v0.12.0_STABLE preserves this boundary while adding security mapping and token exposure hardening.
 
 
-Current release surface: `v0.12.0_STABLE`.
+Current release surface: `v0.12.1_CANDIDATE`.
