@@ -1,18 +1,16 @@
-# Release Notes — GateGraph v0.11.7_STABLE
+# Release Notes — GateGraph v0.11.8_CANDIDATE
 
 ## Scope
 
-Context Governance Boundary Release.
+Context Lifecycle / Freeze Coupling Baseline.
 
 ## Added
 
-- Deterministic context classification layer.
-- Required context provenance checks.
-- Instruction/data separation utility.
-- Replay/explain context hardening with descriptive-only, non-executable reference markers.
-- Visibility-only suspicious context markers for hidden instructions, fake operator claims, recursive delegation phrases, and embedded authority patterns.
-- Evidence for context poisoning resistance, instruction/data separation, and provenance fail-closed behavior.
-- `CONTEXT_GOVERNANCE_MODEL.md`.
+- Descriptive context lifecycle utility.
+- Fail-closed lifecycle state and transition validation.
+- Replay/explain/proposal rehydration blocking.
+- Context lifecycle model documentation.
+- Evidence for lifecycle boundaries, replay/explain non-executability and freeze coupling.
 
 ## Not changed
 
@@ -22,6 +20,7 @@ Context Governance Boundary Release.
 - No semantic scoring.
 - No ML classifier.
 - No autonomous context filtering.
+- No adaptive trust system.
 - No automatic poison detection claim.
 - No AI content moderation.
 - No governance logic changes.
@@ -31,3 +30,11 @@ Context Governance Boundary Release.
 - No distributed orchestration.
 - No new adapter.
 - No new token, budget, secret, or tool authority.
+
+## Review hygiene fix
+
+- README base-stable claim aligned with `v0.11.7_STABLE`.
+- Canonical namespace boundary documented: `src/` remains runtime/governance surface; `gategraph/context/` remains bounded context-governance extension.
+- Development STARTPROMPT artifacts excluded from release packaging.
+- OWASP Agentic AI mapping surfaced from README.
+
