@@ -1,5 +1,7 @@
 # Security Notes
 
+Current security documentation status: v0.8.17 documentation reality check. This file separates implemented Single-Node PoC controls from production requirements.
+
 ## Core security model
 
 GateGraph follows fail-closed governance.
@@ -13,6 +15,8 @@ Security-critical invariants:
 - no capability not explicitly granted
 - no automatic allow for critical risk
 - no direct execution of agent output
+- no external API transport without HTTP Policy allowlist pass
+- no raw secret values in SQLite or audit traces
 
 ## Current PoC limitations
 
