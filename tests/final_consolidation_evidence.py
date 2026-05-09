@@ -35,6 +35,9 @@ REQUIRED_EVIDENCE = [
     "mode_boundary_surface_evidence",
     "token_exposure_evidence",
     "multi_agent_delegation_boundary_evidence",
+    "context_poisoning_evidence",
+    "instruction_data_separation_evidence",
+    "context_provenance_evidence",
 ]
 
 FORBIDDEN_RELEASE_FIELDS = [
@@ -51,9 +54,9 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
+    assert "v0.11.7_CANDIDATE" in version
     assert "v0.11.6_STABLE" in version
-    assert "v0.11.5_STABLE" in version
-    assert "Multi-Agent Delegation Boundary Hardening" in status
+    assert "Context / Memory Governance Baseline" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
     missing_evidence = [name for name in REQUIRED_EVIDENCE if name not in manifest]
