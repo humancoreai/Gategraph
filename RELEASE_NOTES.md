@@ -1,4 +1,4 @@
-# GateGraph v0.9.1_CANDIDATE Release Notes
+# GateGraph v0.9.1_STABLE Release Notes
 
 Base: v0.9.0_STABLE
 
