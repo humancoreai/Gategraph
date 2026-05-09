@@ -74,3 +74,10 @@ Stable promotion from `v0.8.34_CANDIDATE` after Full Windows Evidence CI passed.
 - Added single-node CLI evidence.
 - No changes to Governance, Enforcement, Runtime Guard, Budget Ledger, HTTP Policy, Secret Handling, or Operational logic.
 - Full Windows Evidence CI passed.
+
+
+## v0.8.40_CANDIDATE
+
+- Added read-only operator control layer.
+- Added operator evidence test.
+- No core behavior changes.
