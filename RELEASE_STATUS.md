@@ -1,8 +1,8 @@
-# Release Status — GateGraph v0.8.30_CANDIDATE
+# Release Status — GateGraph v0.8.30_STABLE
 
 ## Status
 
-Candidate release.
+Stable release.
 
 ## Scope
 
@@ -15,5 +15,10 @@ Operational Stability Gate A-D:
 
 ## Validation
 
-Targeted evidence: `operational_stability_evidence`.
-Full CI required before promotion to stable.
+- `operational_stability_evidence`: passed.
+- `runaway_cost_evidence`: patched expectation and passed.
+- Full Windows CI before patch showed one expected-order mismatch only; all other evidence passed.
+
+## Notes
+
+Flood Guard intentionally runs before session reservation so blocked flood attempts do not create budget side effects.
