@@ -1,6 +1,6 @@
 # PRODUCTION.md
 
-GateGraph v0.11.0_CANDIDATE is production-ready for the defined single-node and local/protected server-adapter scope.
+GateGraph v0.11.0_STABLE is production-ready for the defined single-node and local/protected server-adapter scope.
 
 ## Scope
 
@@ -53,4 +53,4 @@ Production rule:
 This is not a governance limitation. It is a deployment boundary: the server remains an adapter.
 
 
-See also `docs/DEPLOYMENT_BOUNDARY.md` for the supported/unsupported/unsafe deployment surface introduced in v0.11.0_CANDIDATE.
+See also `docs/DEPLOYMENT_BOUNDARY.md` for the supported/unsupported/unsafe deployment surface introduced in v0.11.0_STABLE.
