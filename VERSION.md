@@ -1,6 +1,15 @@
 # GateGraph Version
 
-Current: v0.8.19-pattern-priority-scoring
+Current: v0.8.22-controlled-apply
+
+## v0.8.22-controlled-apply
+- Adds strictly limited Controlled Apply path behind separate two-person Human-Gate.
+- Adds signed, TTL-bound, single-use Apply Artifacts.
+- Initial scope supports only validated rule hardening (`rule_update`); unsupported or loosening changes fail closed.
+- Adds target-state drift detection before execution.
+- Adds append-only audit events for controlled apply request/approval/execution.
+- Adds `src/controlled_apply.py`, `tests/controlled_apply_evidence.py`, and `docs/CONTROLLED_APPLY.md`.
+- Existing Governance/Enforcement/Runtime/Pattern/Review invariants remain unchanged.
 
 ## v0.8.19-pattern-priority-scoring
 - Adds advisory Pattern Engine priority and score metadata (`P0`–`P3`, numeric score, score basis).

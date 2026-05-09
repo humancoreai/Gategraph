@@ -195,3 +195,11 @@ def ensure_review_schema(conn):
     CREATE INDEX IF NOT EXISTS idx_proposal_review_decisions_proposal
         ON proposal_review_decisions(proposal_id);
     """)
+
+def ensure_controlled_apply_schema(conn):
+    """
+    WHY: Controlled Apply is additive and gated by separate human approvals.
+    INV: schema creation does not apply proposals or mutate enforcement/runtime logic.
+    """
+    from src.controlled_apply import ensure_controlled_apply_schema as _ensure
+    _ensure(conn)
