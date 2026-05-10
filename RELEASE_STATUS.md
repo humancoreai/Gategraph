@@ -1,8 +1,8 @@
 # Release Status
 
-Current release: v0.13.2_CANDIDATE  
+Current release: v0.13.2_STABLE  
 Base: v0.13.1_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Candidate CI Gate Hardening
 
 ## Scope

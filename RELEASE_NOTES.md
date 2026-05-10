@@ -1,8 +1,8 @@
-# GateGraph v0.13.2_CANDIDATE Release Notes
+# GateGraph v0.13.2_STABLE Release Notes
 
 Base: v0.13.1_STABLE
 
-Status: candidate
+Status: stable
 
 Scope: Candidate CI Gate Hardening.
 
@@ -27,7 +27,7 @@ Scope: Candidate CI Gate Hardening.
 - Semantic registry lock checks.
 - Governance integrity graph checks.
 
-Compatibility note: v0.13.2_CANDIDATE is a release-process evidence hardening candidate built from v0.13.1_STABLE.
+Compatibility note: v0.13.2_STABLE is a release-process evidence hardening candidate built from v0.13.1_STABLE.
 
 Carried forward: Semantic Registry lock and recovery surface checks remain active.
 

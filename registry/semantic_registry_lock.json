@@ -13,10 +13,10 @@
     },
     {
       "path": "registry/invariant_surface_registry.json",
-      "sha256": "acc275b0c4f9f4c2f3a4dfc758c78b4d497d0ba7a37351429cc62313484af2d9"
+      "sha256": "4e68712bef6ddcc575cf0ae514924395db021e1841559aa21fd527bbdff62e63"
     }
   ],
-  "release": "v0.13.2_CANDIDATE",
+  "release": "v0.13.2_STABLE",
   "runtime_access": false,
   "schema_version": "0.13.2",
   "semantic_promotion_allowed": false

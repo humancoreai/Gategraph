@@ -1,12 +1,12 @@
-# GateGraph v0.13.2_CANDIDATE
+# GateGraph v0.13.2_STABLE
 
 Base: v0.13.1_STABLE  
-Status: candidate
+Status: stable
 Phase: Candidate CI Gate Hardening
 
 ## Scope
 
-v0.13.2_CANDIDATE adds release-gate evidence for the Candidate PASS requirement before Stable promotion. It is a process/integrity hardening release only.
+v0.13.2_STABLE adds release-gate evidence for the Candidate PASS requirement before Stable promotion. It is a process/integrity hardening release only.
 
 ## Added evidence
 

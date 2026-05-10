@@ -1,9 +1,9 @@
 # Changelog
 
-## v0.13.2_CANDIDATE
+## v0.13.2_STABLE
 
 Base: v0.13.1_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Candidate CI Gate Hardening
 
 - Added Candidate CI gate evidence.

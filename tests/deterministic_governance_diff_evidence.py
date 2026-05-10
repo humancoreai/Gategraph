@@ -8,7 +8,7 @@ def main():
     g=json.loads((ROOT/'registry/governance_integrity_graph.json').read_text())
     diff=g['expected_diff']
     assert g['diff_baseline']=='v0.13.1_STABLE'
-    assert g['diff_current']=='v0.13.2_CANDIDATE'
+    assert g['diff_current']=='v0.13.2_STABLE'
     assert diff['runtime_authority_changed'] is False
     assert 'governance_integrity_graph' in diff['added_nodes']
     assert diff['removed_nodes']==[]
