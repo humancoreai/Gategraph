@@ -1,16 +1,16 @@
 # Changelog
 
-## v0.13.1_STABLE
+## v0.13.2_CANDIDATE
 
-Base: v0.13.0_STABLE  
-Status: stable  
-Phase: Recovery Replay Finality Hardening
+Base: v0.13.1_STABLE  
+Status: candidate  
+Phase: Candidate CI Gate Hardening
 
-- Added recovery/replay finality evidence.
-- Added bounded recovery finality release documentation.
+- Added Candidate CI gate evidence.
+- Added bounded Candidate CI gate release documentation.
 - No runtime, enforcement or governance decision logic change.
 
-## v0.13.0_STABLE
+## v0.13.1_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 

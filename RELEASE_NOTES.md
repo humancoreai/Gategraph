@@ -1,16 +1,16 @@
-# GateGraph v0.13.1_STABLE Release Notes
+# GateGraph v0.13.2_CANDIDATE Release Notes
 
-Base: v0.13.0_STABLE
+Base: v0.13.1_STABLE
 
-Status: stable
+Status: candidate
 
-Scope: Recovery Replay Finality Hardening.
+Scope: Candidate CI Gate Hardening.
 
 ## Added
 
-- Recovery/replay finality evidence for duplicate recovery attempts, consumed/released reservation finality, conflicting audit-derived finality, and recovery snapshot reference-only behavior.
-- `docs/RECOVERY_REPLAY_FINALITY.md` as the bounded release-surface explanation for this phase.
-- Explicit `recovery_replay_finality_scope` marker in release metadata.
+- Candidate CI gate evidence for the rule that Stable promotion requires a prior Candidate Windows CI PASS.
+- `docs/CANDIDATE_CI_GATE.md` as the bounded release-process explanation for this phase.
+- Explicit `candidate_ci_gate_scope` marker in release metadata.
 
 ## Boundary invariants
 
@@ -27,7 +27,7 @@ Scope: Recovery Replay Finality Hardening.
 - Semantic registry lock checks.
 - Governance integrity graph checks.
 
-Compatibility note: v0.13.1_STABLE is a recovery/replay evidence hardening stable release built from v0.13.0_STABLE.
+Compatibility note: v0.13.2_CANDIDATE is a release-process evidence hardening candidate built from v0.13.1_STABLE.
 
 Carried forward: Semantic Registry lock and recovery surface checks remain active.
 
@@ -40,6 +40,7 @@ Carried forward: Semantic Registry lock and recovery surface checks remain activ
 
 ## Explicit evidence surface list
 
+- `candidate_ci_gate_evidence`
 - `recovery_replay_finality_evidence`
 - `candidate_stable_surface_parity_evidence`
 - `promotion_surface_symmetry_evidence`
