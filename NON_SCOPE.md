@@ -1,6 +1,6 @@
-<!-- v0.9.1_STABLE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
+<!-- v0.9.2_CANDIDATE note: Multi-agent/multi-mode architecture definition only; no autonomy or governance expansion. -->
 
-# Non-Scope – v0.9.0_CANDIDATE
+# Non-Scope – v0.9.2_CANDIDATE
 
 GateGraph v0.9.0_CANDIDATE intentionally does not provide:
 
@@ -16,6 +16,11 @@ GateGraph v0.9.0_CANDIDATE intentionally does not provide:
 - causal diagnosis beyond recorded evidence
 - human priority ranking
 - multi-node/distributed governance
+- self-orchestration
+- agent-created policy changes
+- hidden agent-to-agent communication
+- budget farming
+- token chaining that broadens capability
 - dashboard/UI system
 - enterprise deployment guarantees
 
@@ -28,4 +33,4 @@ Release and review documents must not describe this milestone as:
 - a self-correcting intelligence system
 - a production enterprise platform
 
-Accurate wording: deterministic governance/enforcement milestone with auditable evidence and reproducible release packaging.
+Accurate wording: deterministic governance/enforcement milestone with explicit multi-agent and multi-mode boundaries, auditable evidence, and reproducible release packaging.
