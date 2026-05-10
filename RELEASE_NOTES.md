@@ -1,8 +1,8 @@
-# Release Notes – v0.10.1_CANDIDATE
+# Release Notes – v0.10.1_STABLE
 
 ## Summary
 
-v0.10.1_CANDIDATE continues Phase A: Runtime / Boundary Hardening. It makes the internal/public API boundary explicit and adds executable evidence for forbidden runtime entry paths and freeze-aware runtime invariants.
+v0.10.1_STABLE continues Phase A: Runtime / Boundary Hardening. It makes the internal/public API boundary explicit and adds executable evidence for forbidden runtime entry paths and freeze-aware runtime invariants.
 
 ## Added
 
@@ -14,7 +14,7 @@ v0.10.1_CANDIDATE continues Phase A: Runtime / Boundary Hardening. It makes the 
 
 - `runtime_path_assertions` now delegates component classification to the explicit API boundary classifier.
 - Trusted entry audit data now records the boundary class.
-- Release metadata and release build tooling now target `v0.10.1_CANDIDATE`.
+- Release metadata and release build tooling now target `v0.10.1_STABLE`.
 
 ## Unchanged
 
