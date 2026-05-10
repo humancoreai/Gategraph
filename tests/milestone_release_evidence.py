@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.1_STABLE"
-BASE = "v0.11.0_STABLE"
+VERSION = "v0.11.2_CANDIDATE"
+BASE = "v0.11.1_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -76,7 +76,7 @@ def main() -> None:
     assert BASE in version
     assert VERSION in status
     assert BASE in status
-    assert "Operational Start Surface / Minimal Deployment Consistency" in status
+    assert "Operational Consistency / Runtime Surface Tightening" in status
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
