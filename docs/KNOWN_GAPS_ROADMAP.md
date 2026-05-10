@@ -1,4 +1,4 @@
-# Known Gaps Roadmap – v0.11.3_STABLE
+# Known Gaps Roadmap – v0.11.4_CANDIDATE
 
 ## Closed before / at v0.9.3
 
@@ -30,14 +30,14 @@
 - Invalid downstream execution after Enforcement denial fails closed.
 - Freeze-aware runtime invariant evidence covers chain/order behavior.
 
-## Closed / hardened in v0.11.0_STABLE / v0.11.2_STABLE
+## Closed / hardened in v0.11.0_STABLE / v0.11.3_STABLE
 
 - `pyproject.toml` packaging baseline is present.
 - Editable install via `python -m pip install -e .` is supported.
 - Console entry points are declared: `gategraph` and `gategraph-server`.
 - Packaging, install surface, startup surface and config consistency evidence are present.
 
-## Closed / hardened in v0.11.3_STABLE
+## Closed / hardened in v0.11.4_CANDIDATE
 
 - Startup/shutdown semantics are explicitly covered by evidence.
 - Config/runtime mismatch detection is explicitly covered by evidence.
@@ -58,7 +58,7 @@
 - No audit-log retention management.
 - No security-disclosure process.
 
-## Non-scope for v0.11.3
+## Non-scope for v0.11.4
 
 - no new agents
 - no new adapters

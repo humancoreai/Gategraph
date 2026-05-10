@@ -1,6 +1,7 @@
 {
-  "base": "v0.11.2_STABLE",
-  "claim_boundary": "mode-boundary surface control only; modes remain descriptive labels and cannot create runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker, Kubernetes, UI, budget, secret, or tool-authority behavior changes",
+  "base": "v0.11.3_STABLE",
+  "capability_token_audit_redaction_scope": true,
+  "claim_boundary": "capability-token audit redaction only; audit may record token_id and token_hash but never raw token objects, signatures, signing input, Authorization headers, secret material, or bearer values",
   "config_consistency_scope": true,
   "deployment_scope": "single_node_local_protected",
   "distributed_governance": false,
@@ -14,8 +15,8 @@
   "new_runtime_capability": false,
   "new_runtime_model": false,
   "packaging_scope": true,
-  "phase": "Mode Boundary Surface Control",
-  "release": "v0.11.3_STABLE",
+  "phase": "Capability Token Audit Redaction",
+  "release": "v0.11.4_CANDIDATE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "runtime_surface_scope": true,
@@ -23,6 +24,6 @@
   "self_orchestration": false,
   "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "stable",
+  "status": "candidate",
   "surface_freeze_coupling_scope": true
 }

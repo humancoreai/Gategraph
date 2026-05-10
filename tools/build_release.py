@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.3_STABLE"
-BASE = "v0.11.2_STABLE"
+VERSION = "v0.11.4_CANDIDATE"
+BASE = "v0.11.3_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -88,6 +88,8 @@ REQUIRED_RELEASE_FILES = {
     "src/runtime_chain_assertions.py",
     "src/api_boundary.py",
     "tests/governance_freeze_evidence.py",
+    "docs/CAPABILITY_TOKEN_AUDIT_REDACTION.md",
+    "tests/capability_token_redaction_evidence.py",
 }
 
 
@@ -170,10 +172,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "mode_boundary_surface_control",
+        "kind": "candidate_release",
+        "scope": "capability_token_audit_redaction",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -212,9 +214,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Mode Boundary Surface Control",
+        "phase": "Capability Token Audit Redaction",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -231,12 +233,13 @@ def main() -> int:
         "runtime_surface_scope": True,
         "surface_freeze_coupling_scope": True,
         "mode_boundary_surface_scope": True,
+        "capability_token_audit_redaction_scope": True,
         "startup_shutdown_semantics_scope": True,
         "release_process_guard": True,
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "mode-boundary surface control only; modes remain descriptive labels and cannot create runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker, Kubernetes, UI, budget, secret, or tool-authority behavior changes",
+        "claim_boundary": "capability-token audit redaction only; audit may record token_id and token_hash but never raw token objects, signatures, signing input, Authorization headers, secret material, or bearer values",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
