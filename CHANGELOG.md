@@ -1,9 +1,9 @@
 # Changelog
 
-## v0.13.1_CANDIDATE
+## v0.13.1_STABLE
 
 Base: v0.13.0_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Recovery Replay Finality Hardening
 
 - Added recovery/replay finality evidence.

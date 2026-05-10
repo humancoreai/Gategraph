@@ -1,8 +1,8 @@
 # Release Status
 
-Current release: v0.13.1_CANDIDATE  
+Current release: v0.13.1_STABLE  
 Base: v0.13.0_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Recovery Replay Finality Hardening
 
 ## Scope
