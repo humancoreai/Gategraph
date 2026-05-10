@@ -4,7 +4,7 @@
 
 GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
-Current release: **v0.13.6_CANDIDATE**  
+Current release: **v0.13.6_STABLE**  
 Base stable: **v0.13.5_STABLE**  
 Phase: GitHub Actions CI Preparation
 License: Apache 2.0
@@ -241,7 +241,7 @@ Releases are built deterministically via `tools/build_release.py`. Every release
 - `.db` files excluded from release artifacts by default
 
 ```bash
-python tools/verify_release.py dist/GateGraph_v0.13.6_CANDIDATE.zip
+python tools/verify_release.py dist/GateGraph_v0.13.6_STABLE.zip
 ```
 
 ---
@@ -273,4 +273,4 @@ See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operation
 
 ## v0.13.6 Candidate Scope
 
-This candidate adds a minimal Windows GitHub Actions workflow for reproducible Evidence CI. The workflow is validation-only: no secret access, no package publishing, no deployment, and no Candidate-to-Stable auto-promotion.
+This stable release preserves a minimal Windows GitHub Actions workflow for reproducible Evidence CI. The workflow is validation-only: no secret access, no package publishing, no deployment, and no Candidate-to-Stable auto-promotion.

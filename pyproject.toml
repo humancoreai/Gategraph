@@ -1,4 +1,4 @@
-# gategraph-release = "v0.13.6_CANDIDATE"
+# gategraph-release = "v0.13.6_STABLE"
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"

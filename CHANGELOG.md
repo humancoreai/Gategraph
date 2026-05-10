@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.13.6_CANDIDATE
+## v0.13.6_STABLE
 
-Status: candidate.
+Status: stable.
 Base: v0.13.5_STABLE.
 Phase: GitHub Actions CI Preparation.
 

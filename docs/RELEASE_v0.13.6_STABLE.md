@@ -1,13 +1,13 @@
-# GateGraph v0.13.6_CANDIDATE Release
+# GateGraph v0.13.6_STABLE Release
 
-Status: candidate.  
+Status: stable.  
 Base: v0.13.5_STABLE.
 
 ## Scope
 
 GitHub Actions CI Preparation.
 
-This candidate adds a minimal, deterministic GitHub Actions validation surface for Windows Evidence CI. It does not change governance, runtime, enforcement, risk, token, recovery, replay, registry, or operator logic.
+This stable release preserves a minimal, deterministic GitHub Actions validation surface for Windows Evidence CI. It does not change governance, runtime, enforcement, risk, token, recovery, replay, registry, or operator logic.
 
 ## Added surfaces
 

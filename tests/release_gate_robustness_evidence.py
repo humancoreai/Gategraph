@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.13.6_CANDIDATE"
+EXPECTED_RELEASE = "v0.13.6_STABLE"
 EXPECTED_BASE = "v0.13.5_STABLE"
-EXPECTED_STATUS = "candidate"
+EXPECTED_STATUS = "stable"
 SURFACES = [
     "README.md",
     "VERSION.md",
@@ -16,7 +16,7 @@ SURFACES = [
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.13.6_CANDIDATE.md",
+    "docs/RELEASE_v0.13.6_STABLE.md",
 ]
 
 
@@ -43,19 +43,19 @@ def main() -> int:
         text = read(surface)
         if EXPECTED_RELEASE not in text:
             missing_release.append(surface)
-        if surface in {"README.md", "VERSION.md", "RELEASE_NOTES.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.13.6_CANDIDATE.md"} and EXPECTED_BASE not in text:
+        if surface in {"README.md", "VERSION.md", "RELEASE_NOTES.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.13.6_STABLE.md"} and EXPECTED_BASE not in text:
             missing_base.append(surface)
         lowered = text.lower()
-        if "status: candidate" in lowered or '"status": "candidate"' in lowered:
+        if "status: stable" in lowered or '"status": "stable"' in lowered:
             candidate_status_surfaces.append(surface)
 
     forbidden = transition.get("forbidden_transitions", [])
     allowed = transition.get("allowed_transitions", [])
 
     checks = [
-        check("metadata_candidate_state", metadata.get("release") == EXPECTED_RELEASE and metadata.get("base") == EXPECTED_BASE and metadata.get("status") == EXPECTED_STATUS, {"release": metadata.get("release"), "base": metadata.get("base"), "status": metadata.get("status")}),
-        check("manifest_candidate_state", manifest.get("release") == EXPECTED_RELEASE and manifest.get("base") == EXPECTED_BASE and manifest.get("status") == EXPECTED_STATUS, {"release": manifest.get("release"), "base": manifest.get("base"), "status": manifest.get("status")}),
-        check("registry_candidate_state", registry.get("release") == EXPECTED_RELEASE and registry.get("base") == EXPECTED_BASE and registry.get("status") == EXPECTED_STATUS, registry),
+        check("metadata_stable_state", metadata.get("release") == EXPECTED_RELEASE and metadata.get("base") == EXPECTED_BASE and metadata.get("status") == EXPECTED_STATUS, {"release": metadata.get("release"), "base": metadata.get("base"), "status": metadata.get("status")}),
+        check("manifest_stable_state", manifest.get("release") == EXPECTED_RELEASE and manifest.get("base") == EXPECTED_BASE and manifest.get("status") == EXPECTED_STATUS, {"release": manifest.get("release"), "base": manifest.get("base"), "status": manifest.get("status")}),
+        check("registry_stable_state", registry.get("release") == EXPECTED_RELEASE and registry.get("base") == EXPECTED_BASE and registry.get("status") == EXPECTED_STATUS, registry),
         check("candidate_surfaces_have_release", not missing_release, {"missing": missing_release}),
         check("candidate_surfaces_have_base", not missing_base, {"missing": missing_base}),
         check("candidate_status_explicit", bool(candidate_status_surfaces), {"surfaces": candidate_status_surfaces}),

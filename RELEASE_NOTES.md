@@ -1,13 +1,13 @@
-# GateGraph v0.13.6_CANDIDATE Release Notes
+# GateGraph v0.13.6_STABLE Release Notes
 
-Status: candidate.
+Status: stable.
 Base: v0.13.5_STABLE.
 
 ## Scope
 
 GitHub Actions CI Preparation.
 
-This candidate adds a minimal GitHub Actions validation surface for Windows Evidence CI. It does not remove tests, alter governance logic, change runtime behavior, access secrets, publish artifacts, deploy, or grant automatic repair/promotion authority.
+This stable release preserves a minimal GitHub Actions validation surface for Windows Evidence CI. It does not remove tests, alter governance logic, change runtime behavior, access secrets, publish artifacts, deploy, or grant automatic repair/promotion authority.
 
 ## Added
 
