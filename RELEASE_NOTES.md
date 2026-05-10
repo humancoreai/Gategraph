@@ -1,6 +1,6 @@
-# GateGraph v0.14.0_CANDIDATE Release Notes
+# GateGraph v0.14.0_STABLE Release Notes
 
-Status: candidate.
+Status: stable.
 Base: v0.13.6_STABLE.
 
 ## Scope
