@@ -1,9 +1,25 @@
-# Release Notes — GateGraph v0.12.6_STABLE
+# GateGraph v0.12.7_CANDIDATE Release Notes
 
-## v0.12.6_STABLE — Deterministic Evidence Lineage / Governance Provenance
+Base: v0.12.6_STABLE
 
-Base: v0.12.5_STABLE  
-Status: stable
+Status: candidate
+
+Scope: Release State Transition / Promotion Surface Symmetry.
+
+## Evidence added
+
+- release_state_transition_evidence
+- promotion_surface_symmetry_evidence
+- candidate_stable_surface_parity_evidence
+
+No runtime, enforcement or governance decision logic changes.
+
+# Release Notes — GateGraph v0.12.7_CANDIDATE
+
+## v0.12.7_CANDIDATE — Release State Transition / Promotion Surface Symmetry
+
+Base: v0.12.6_STABLE  
+Status: candidate
 
 ### Added
 - Evidence provenance registry for deterministic, read-only evidence origin and dependency visibility.

@@ -1,12 +1,12 @@
-# GateGraph v0.12.5_STABLE
+# GateGraph v0.12.6_STABLE
 
 Base: v0.12.4_STABLE  
-Status: stable  
+Status: candidate  
 Phase: Deterministic Registry / Schema Governance
 
 ## Scope
 
-v0.12.5_STABLE consolidates descriptive semantic object rules, invariant/surface/evidence mapping, incident lifecycle semantics and evidence-surface coupling.
+v0.12.6_STABLE consolidates descriptive semantic object rules, invariant/surface/evidence mapping, incident lifecycle semantics and evidence-surface coupling.
 
 ## Added evidence
 
