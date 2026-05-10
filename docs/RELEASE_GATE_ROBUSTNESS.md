@@ -1,8 +1,8 @@
-# GitHub Actions CI Preparation
+# Practical Single-Node Scenario Run
 
-Release: v0.13.6_STABLE.
-Base: v0.13.5_STABLE.
-Status: stable.
+Release: v0.14.0_CANDIDATE.
+Base: v0.13.6_STABLE.
+Status: candidate.
 
 ## Scope
 

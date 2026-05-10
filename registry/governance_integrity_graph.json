@@ -6,9 +6,9 @@
     "runtime_authority": false,
     "self_healing": false
   },
-  "base": "v0.13.5_STABLE",
-  "diff_baseline": "v0.13.5_STABLE",
-  "diff_current": "v0.13.6_STABLE",
+  "base": "v0.13.6_STABLE",
+  "diff_baseline": "v0.13.6_STABLE",
+  "diff_current": "v0.14.0_CANDIDATE",
   "edge_types": [
     "depends_on",
     "validated_by",
@@ -93,12 +93,12 @@
     },
     {
       "from": "governance_lineage",
-      "to": "v0.13.5_STABLE",
+      "to": "v0.13.6_STABLE",
       "type": "lineage_of"
     },
     {
       "from": "governance_lineage",
-      "to": "v0.13.6_STABLE",
+      "to": "v0.14.0_CANDIDATE",
       "type": "lineage_of"
     },
     {
@@ -187,6 +187,6 @@
       "path": "registry/governance_integrity_graph.json"
     }
   ],
-  "release": "v0.13.6_STABLE",
-  "schema_version": "0.13.6"
+  "release": "v0.14.0_CANDIDATE",
+  "schema_version": "0.14.0"
 }

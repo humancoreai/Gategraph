@@ -1,9 +1,9 @@
 # Release Status
 
-Current release: v0.13.6_STABLE  
-Base stable: v0.13.5_STABLE  
-Status: stable  
-Phase: GitHub Actions CI Preparation
+Current release: v0.14.0_CANDIDATE  
+Base stable: v0.13.6_STABLE  
+Status: candidate  
+Phase: Practical Single-Node Scenario Run
 
 ## Gate
 

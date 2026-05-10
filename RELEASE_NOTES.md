@@ -1,11 +1,11 @@
-# GateGraph v0.13.6_STABLE Release Notes
+# GateGraph v0.14.0_CANDIDATE Release Notes
 
-Status: stable.
-Base: v0.13.5_STABLE.
+Status: candidate.
+Base: v0.13.6_STABLE.
 
 ## Scope
 
-GitHub Actions CI Preparation.
+Practical Single-Node Scenario Run.
 
 This stable release preserves a minimal GitHub Actions validation surface for Windows Evidence CI. It does not remove tests, alter governance logic, change runtime behavior, access secrets, publish artifacts, deploy, or grant automatic repair/promotion authority.
 
@@ -150,3 +150,10 @@ Referenced evidence surfaces:
 - No runtime/enforcement behavior change.
 - No autonomous policy update.
 - No semantic scoring or memory system.
+
+
+## v0.14.0 candidate scope
+
+- Practical single-node scenario evidence added as deterministic local validation.
+- No ad-hoc stress report is integrated into release surfaces.
+- No governance, runtime, enforcement, policy-learning, deployment, or auto-promotion authority added.

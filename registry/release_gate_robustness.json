@@ -1,16 +1,16 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.13.5_STABLE",
+  "base": "v0.13.6_STABLE",
   "checks": [
     "candidate_status_surface",
     "manual_ci_gate_declared",
     "surface_sync_required",
     "stable_without_candidate_ci_forbidden"
   ],
-  "release": "v0.13.6_STABLE",
+  "release": "v0.14.0_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.13.6",
-  "status": "stable",
+  "schema_version": "0.14.0",
+  "status": "candidate",
   "mode": "descriptive_release_gate_hardening_only"
 }
