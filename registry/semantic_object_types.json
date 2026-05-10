@@ -1,69 +1,93 @@
 {
-  "schema_version": "0.12.3",
-  "invariant": "semantic objects are descriptive registry entries only; registry membership never grants runtime authority",
+  "invariant": "semantic objects are descriptive registry entries only; registry membership and registry locks never grant runtime authority",
   "object_types": {
-    "replay_object": {
-      "authoritative": false,
-      "executable": false,
-      "runtime_access": false,
-      "policy_mutation": false,
-      "governance_influence": false,
-      "semantic_promotion_allowed": false,
-      "surfaces": ["replay", "archive", "explain"]
-    },
-    "explain_object": {
-      "authoritative": false,
-      "executable": false,
-      "runtime_access": false,
-      "policy_mutation": false,
-      "governance_influence": false,
-      "semantic_promotion_allowed": false,
-      "surfaces": ["explain", "monitoring"]
-    },
-    "monitoring_object": {
-      "authoritative": false,
-      "executable": false,
-      "runtime_access": false,
-      "policy_mutation": false,
-      "governance_influence": false,
-      "semantic_promotion_allowed": false,
-      "surfaces": ["monitoring"]
-    },
-    "proposal_object": {
-      "authoritative": false,
-      "executable": false,
-      "runtime_access": false,
-      "policy_mutation": false,
-      "governance_influence": false,
-      "semantic_promotion_allowed": false,
-      "surfaces": ["review", "explain", "archive"]
-    },
     "archive_object": {
       "authoritative": false,
       "executable": false,
-      "runtime_access": false,
-      "policy_mutation": false,
       "governance_influence": false,
-      "semantic_promotion_allowed": false,
-      "surfaces": ["archive", "replay"]
-    },
-    "recovery_snapshot": {
-      "authoritative": false,
-      "executable": false,
-      "runtime_access": false,
       "policy_mutation": false,
-      "governance_influence": false,
+      "runtime_access": false,
       "semantic_promotion_allowed": false,
-      "surfaces": ["recovery", "archive", "replay"]
+      "surfaces": [
+        "archive",
+        "replay"
+      ]
     },
     "context_reference": {
       "authoritative": false,
       "executable": false,
-      "runtime_access": false,
-      "policy_mutation": false,
       "governance_influence": false,
+      "policy_mutation": false,
+      "runtime_access": false,
       "semantic_promotion_allowed": false,
-      "surfaces": ["context", "explain", "archive"]
+      "surfaces": [
+        "context",
+        "explain",
+        "archive"
+      ]
+    },
+    "explain_object": {
+      "authoritative": false,
+      "executable": false,
+      "governance_influence": false,
+      "policy_mutation": false,
+      "runtime_access": false,
+      "semantic_promotion_allowed": false,
+      "surfaces": [
+        "explain",
+        "monitoring"
+      ]
+    },
+    "monitoring_object": {
+      "authoritative": false,
+      "executable": false,
+      "governance_influence": false,
+      "policy_mutation": false,
+      "runtime_access": false,
+      "semantic_promotion_allowed": false,
+      "surfaces": [
+        "monitoring"
+      ]
+    },
+    "proposal_object": {
+      "authoritative": false,
+      "executable": false,
+      "governance_influence": false,
+      "policy_mutation": false,
+      "runtime_access": false,
+      "semantic_promotion_allowed": false,
+      "surfaces": [
+        "review",
+        "explain",
+        "archive"
+      ]
+    },
+    "recovery_snapshot": {
+      "authoritative": false,
+      "executable": false,
+      "governance_influence": false,
+      "policy_mutation": false,
+      "runtime_access": false,
+      "semantic_promotion_allowed": false,
+      "surfaces": [
+        "recovery",
+        "archive",
+        "replay"
+      ]
+    },
+    "replay_object": {
+      "authoritative": false,
+      "executable": false,
+      "governance_influence": false,
+      "policy_mutation": false,
+      "runtime_access": false,
+      "semantic_promotion_allowed": false,
+      "surfaces": [
+        "replay",
+        "archive",
+        "explain"
+      ]
     }
-  }
+  },
+  "schema_version": "0.12.4"
 }

@@ -1,5 +1,5 @@
-# Known Gaps Roadmap – v0.12.2_STABLE
-Current release context: v0.12.2_STABLE.
+# Known Gaps Roadmap – v0.12.3_STABLE
+Current release context: v0.12.3_STABLE.
 
 
 ## Closed before / at v0.9.3
@@ -84,4 +84,4 @@ Current release context: v0.12.2_STABLE.
 - no autonomous context filtering
 - no AI content moderation
 
-Current release surface: v0.12.3_STABLE
+Current release surface: v0.12.4_CANDIDATE
