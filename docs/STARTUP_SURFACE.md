@@ -58,6 +58,6 @@ Release surface: v0.12.8_STABLE.
 Release surface: v0.13.3_STABLE.
 
 
-Release surface: v0.13.4_CANDIDATE.
+Release surface: v0.13.4_STABLE.
 Base stable: v0.13.3_STABLE.
 Phase: Recovery Replay Finality Hardening.

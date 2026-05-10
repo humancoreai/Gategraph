@@ -1,12 +1,12 @@
 # GateGraph v0.12.4_STABLE
 
 Base: v0.12.1_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Recovery & Replay Hardening
 
 ## Purpose
 
-This candidate hardens recovery and replay consistency around idempotency, collision handling, deterministic replay order, reference integrity, and release/surface synchronization.
+This stable release hardens recovery and replay consistency around idempotency, collision handling, deterministic replay order, reference integrity, and release/surface synchronization.
 
 ## Scope
 

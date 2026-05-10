@@ -1,9 +1,9 @@
 # Changelog
 
-## v0.13.4_CANDIDATE
+## v0.13.4_STABLE
 
 Base: v0.13.3_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Evidence Failure Classification
 
 - Added Evidence Failure Classification evidence.

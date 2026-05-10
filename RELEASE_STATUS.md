@@ -1,8 +1,8 @@
 # Release Status
 
-Current release: v0.13.4_CANDIDATE  
+Current stable: v0.13.4_STABLE  
 Base: v0.13.3_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Evidence Failure Classification
 
 ## Scope

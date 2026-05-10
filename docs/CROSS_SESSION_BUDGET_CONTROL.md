@@ -1,6 +1,6 @@
 # Cross-Session Budget Control
 
-Status: implemented as candidate extension on top of `v0.8.25.1_STABLE`.
+Status: implemented as stable extension on top of `v0.8.25.1_STABLE`.
 
 ## Purpose
 

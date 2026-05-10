@@ -364,7 +364,7 @@ Scope remains mock-only: no real network calls.
 
 ## v0.8.26_CANDIDATE - Cross-Session Budget Control
 
-Implemented candidate extension for system/actor budget control across task boundaries.
+Implemented stable extension for system/actor budget control across task boundaries.
 
 Added:
 - `src/budget_ledger.py`

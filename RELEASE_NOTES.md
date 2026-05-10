@@ -1,13 +1,13 @@
-# GateGraph v0.13.4_CANDIDATE Release Notes
+# GateGraph v0.13.4_STABLE Release Notes
 
-Status: candidate.
+Status: stable.
 Base: v0.13.3_STABLE.
 
 ## Scope
 
 Evidence Failure Classification.
 
-This candidate adds a descriptive failure-classification registry and evidence check for CI/evidence failure grouping. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic repair/pruning authority.
+This stable release contains a descriptive failure-classification registry and evidence check for CI/evidence failure grouping. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic repair/pruning authority.
 
 ## Added
 

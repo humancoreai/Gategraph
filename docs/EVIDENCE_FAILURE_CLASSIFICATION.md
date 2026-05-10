@@ -1,7 +1,7 @@
 # Evidence Failure Classification
 
 Status: descriptive only.
-Release: v0.13.4_CANDIDATE.
+Release: v0.13.4_STABLE.
 Base: v0.13.3_STABLE.
 
 This surface groups evidence failures into review buckets such as release-surface, semantic-boundary, registry-lock, server-surface, runtime-governance, and security.

@@ -25,7 +25,7 @@
       "to": "stable_without_candidate_ci"
     }
   ],
-  "release": "v0.13.4_CANDIDATE",
+  "release": "v0.13.4_STABLE",
   "runtime_authority": false,
   "schema_version": "0.13.4",
   "surface_parity": {
