@@ -4,15 +4,17 @@ INV: this module never writes to rules; it only creates pending proposals.
 SEC: proposals are advisory and require human review before affecting Governance behavior.
 """
 
+from __future__ import annotations
+
 import json
 import sqlite3
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import List, Optional
+from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 
-SCHEMA_VERSION = "0.7"
+SCHEMA_VERSION = "0.8.18"
 DEFAULT_MIN_EVENTS = 3
 DEFAULT_CONFIDENCE_THRESHOLD = 0.75
 
@@ -36,49 +38,139 @@ class PatternRunResult:
     proposals: List[PatternProposal]
 
 
+@dataclass(frozen=True)
+class PatternObservation:
+    event_id: str
+    task_id: str
+    event_type: str
+    stage: str
+    capability: str
+    bucket: str
+    raw_reason: str
+    severity: str
+
+
 def analyze_rejections(
     conn: sqlite3.Connection,
     *,
     min_events: int = DEFAULT_MIN_EVENTS,
     confidence_threshold: float = DEFAULT_CONFIDENCE_THRESHOLD,
 ) -> PatternRunResult:
+    """Backward-compatible entry point for enforcement-only rejection patterns."""
+    observations = [obs for obs in _collect_observations(conn) if obs.event_type == "enforcement_rejection"]
+    return _create_proposals_from_observations(
+        conn,
+        observations,
+        proposal_type="repeated_enforcement_rejection",
+        min_events=min_events,
+        confidence_threshold=confidence_threshold,
+    )
+
+
+def analyze_audit_patterns(
+    conn: sqlite3.Connection,
+    *,
+    min_events: int = DEFAULT_MIN_EVENTS,
+    confidence_threshold: float = DEFAULT_CONFIDENCE_THRESHOLD,
+) -> PatternRunResult:
+    """
+    Scans audit evidence across Enforcement, Runtime/Session, HTTP Policy, and Secret stages.
+
+    INV: this function creates proposal records only. It never updates rules, tokens,
+    budgets, policies, secrets, or decisions.
+    """
+    observations = _collect_observations(conn)
+    return _create_proposals_from_observations(
+        conn,
+        observations,
+        proposal_type="repeated_guard_pattern",
+        min_events=min_events,
+        confidence_threshold=confidence_threshold,
+    )
+
+
+def _collect_observations(conn: sqlite3.Connection) -> List[PatternObservation]:
     rows = conn.execute(
         """
-        SELECT event_id, input_json, decision_json
+        SELECT event_id, task_id, type, input_json, evaluation_json, decision_json
         FROM events
-        WHERE type = 'enforcement_rejection'
         ORDER BY timestamp ASC
         """
     ).fetchall()
 
-    if len(rows) < min_events:
+    observations: List[PatternObservation] = []
+    for row in rows:
+        input_data = _loads(row["input_json"])
+        evaluation = _loads(row["evaluation_json"])
+        decision = _loads(row["decision_json"])
+        obs = _observation_from_event(row, input_data, evaluation, decision)
+        if obs is not None:
+            observations.append(obs)
+    return observations
+
+
+def _observation_from_event(row: sqlite3.Row, input_data: Dict[str, Any], evaluation: Dict[str, Any], decision: Dict[str, Any]) -> Optional[PatternObservation]:
+    event_type = row["type"]
+    capability = str(input_data.get("requested_capability") or "unknown")
+
+    if event_type == "enforcement_rejection":
+        raw_reason = str(decision.get("reason") or "unknown")
+        bucket = _bucket(capability=capability, stage="enforcement", reason=raw_reason)
+        return PatternObservation(row["event_id"], row["task_id"], event_type, "enforcement", capability, bucket, raw_reason, _severity_for("enforcement", bucket))
+
+    if event_type == "external_api_call" and decision.get("status") == "blocked":
+        stage, raw_reason = _blocked_external_api_stage(evaluation, decision)
+        bucket = _bucket(capability=capability, stage=stage, reason=raw_reason)
+        return PatternObservation(row["event_id"], row["task_id"], event_type, stage, capability, bucket, raw_reason, _severity_for(stage, bucket))
+
+    return None
+
+
+def _blocked_external_api_stage(evaluation: Dict[str, Any], decision: Dict[str, Any]) -> Tuple[str, str]:
+    http_policy = evaluation.get("http_policy") or {}
+    if isinstance(http_policy, dict) and http_policy.get("allowed") is False:
+        return "http_policy", str(http_policy.get("reason") or decision.get("response_summary") or "http policy blocked")
+
+    secret_resolution = evaluation.get("secret_resolution") or {}
+    if isinstance(secret_resolution, dict) and secret_resolution.get("allowed") is False:
+        return "secret_provider", str(secret_resolution.get("reason") or decision.get("response_summary") or "secret provider blocked")
+
+    stage = str(evaluation.get("pipeline_stage") or "external_api")
+    reason = str(evaluation.get("pipeline_reason") or decision.get("response_summary") or "external api blocked")
+    return stage, reason
+
+
+def _create_proposals_from_observations(
+    conn: sqlite3.Connection,
+    observations: List[PatternObservation],
+    *,
+    proposal_type: str,
+    min_events: int,
+    confidence_threshold: float,
+) -> PatternRunResult:
+    if len(observations) < min_events:
         return PatternRunResult(proposals_created=0, proposals=[])
 
-    grouped = {}
-    for row in rows:
-        input_data = json.loads(row["input_json"])
-        decision_data = json.loads(row["decision_json"])
-        cap = input_data.get("requested_capability", "unknown")
-        reason = decision_data.get("reason", "unknown")
-        key = _bucket(capability=cap, reason=reason)
-        grouped.setdefault(key, []).append(row["event_id"])
+    grouped: Dict[Tuple[str, str, str], List[PatternObservation]] = {}
+    for obs in observations:
+        key = (obs.stage, obs.capability, obs.bucket)
+        grouped.setdefault(key, []).append(obs)
 
     proposals: List[PatternProposal] = []
-    total_relevant = len(rows)
-
-    for key, event_ids in grouped.items():
-        if len(event_ids) < min_events:
+    total_relevant = len(observations)
+    for key, items in grouped.items():
+        if len(items) < min_events:
             continue
-        confidence = len(event_ids) / total_relevant
+        confidence = len(items) / total_relevant
         if confidence < confidence_threshold:
             continue
-
-        capability, reason_bucket = key
-        proposal = _create_rejection_proposal(
+        proposal = _create_pattern_proposal(
             conn,
-            capability=capability,
-            reason_bucket=reason_bucket,
-            supporting_events=event_ids,
+            proposal_type=proposal_type,
+            stage=key[0],
+            capability=key[1],
+            bucket=key[2],
+            observations=items,
             confidence=confidence,
             total_relevant=total_relevant,
         )
@@ -87,49 +179,113 @@ def analyze_rejections(
     return PatternRunResult(proposals_created=len(proposals), proposals=proposals)
 
 
-def _bucket(*, capability: str, reason: str) -> tuple[str, str]:
-    reason = reason.lower()
-    if "no capability token" in reason:
-        return capability, "missing_token"
-    if "expired" in reason:
-        return capability, "expired_token"
-    if "revoked" in reason:
-        return capability, "revoked_token"
-    if "not granted" in reason:
-        return capability, "capability_not_granted"
-    if "bound to task" in reason:
-        return capability, "cross_task_reuse"
-    return capability, "other_rejection"
+def _bucket(*, capability: str, stage: str = "enforcement", reason: str) -> str:
+    reason = (reason or "").lower()
+    if stage == "enforcement":
+        if "no capability token" in reason:
+            return "missing_token"
+        if "expired" in reason:
+            return "expired_token"
+        if "revoked" in reason:
+            return "revoked_token"
+        if "not granted" in reason:
+            return "capability_not_granted"
+        if "bound to task" in reason:
+            return "cross_task_reuse"
+        if "invalid signature" in reason:
+            return "invalid_signature"
+        if "claim mismatch" in reason:
+            return "claim_mismatch"
+        if "unknown signing key" in reason:
+            return "unknown_signing_key"
+    if stage == "http_policy":
+        if "scheme" in reason:
+            return "http_scheme_blocked"
+        if "method" in reason:
+            return "http_method_blocked"
+        if "host" in reason or "allowlisted" in reason or "endpoint" in reason:
+            return "http_endpoint_blocked"
+    if stage == "secret_provider":
+        if "not found" in reason:
+            return "secret_ref_missing"
+        if "disabled" in reason:
+            return "secret_ref_disabled"
+        if "scope mismatch" in reason:
+            return "secret_scope_mismatch"
+        if "unavailable" in reason:
+            return "secret_value_unavailable"
+    if stage in {"session_budget", "runtime_guard", "runtime_budget"}:
+        if "cost" in reason:
+            return "budget_cost_pressure"
+        if "step" in reason:
+            return "runtime_step_pressure"
+        if "repeated" in reason:
+            return "runtime_repetition_pressure"
+    return "other_rejection"
 
 
-def _create_rejection_proposal(
+def _severity_for(stage: str, bucket: str) -> str:
+    if stage == "enforcement" and bucket in {"invalid_signature", "claim_mismatch", "cross_task_reuse", "unknown_signing_key"}:
+        return "critical"
+    if stage == "secret_provider":
+        return "high"
+    if stage == "http_policy":
+        return "high"
+    if "budget" in stage or "runtime" in stage:
+        return "medium"
+    return "medium"
+
+
+def _create_pattern_proposal(
     conn: sqlite3.Connection,
     *,
+    proposal_type: str,
+    stage: str,
     capability: str,
-    reason_bucket: str,
-    supporting_events: List[str],
+    bucket: str,
+    observations: List[PatternObservation],
     confidence: float,
     total_relevant: int,
 ) -> PatternProposal:
     proposal_id = f"RUP-{uuid.uuid4().hex[:12].upper()}"
     now = datetime.now(timezone.utc).isoformat()
-    reason = f"Repeated enforcement rejections for capability={capability!r}, bucket={reason_bucket!r}."
-    proposed_change = (
-        "Review whether task prompts, capability requests, or rules should be clarified. "
-        "Do not auto-change rules."
+    event_ids = [obs.event_id for obs in observations]
+    severities = sorted({obs.severity for obs in observations})
+    reason = (
+        f"Repeated guard pattern detected: stage={stage!r}, capability={capability!r}, "
+        f"bucket={bucket!r}, severity={','.join(severities)}."
     )
+    proposed_change = _proposed_change_for(stage, bucket)
 
     proposal = PatternProposal(
         proposal_id=proposal_id,
-        proposal_type="repeated_enforcement_rejection",
+        proposal_type=proposal_type,
         target_rule_id=None,
         reason=reason,
         proposed_change=proposed_change,
-        supporting_events=supporting_events,
+        supporting_events=event_ids,
         confidence=round(confidence, 4),
-        confidence_basis=f"{len(supporting_events)}/{total_relevant} matching rejection events",
+        confidence_basis=f"{len(event_ids)}/{total_relevant} matching audit observations; stage={stage}; bucket={bucket}",
     )
 
+    _insert_proposal(conn, proposal, now)
+    return proposal
+
+
+def _proposed_change_for(stage: str, bucket: str) -> str:
+    base = "Proposal only: require human review before any rule, policy, budget, or secret change. "
+    if stage == "http_policy":
+        return base + "Review whether callers are misconfigured or whether an explicit endpoint policy should be added; do not widen allowlists automatically."
+    if stage == "secret_provider":
+        return base + "Review secret reference scope/provider setup; never expose or log raw secret values."
+    if stage == "enforcement":
+        return base + "Review token issuance flow, task binding, and requested capabilities; do not auto-grant capabilities."
+    if stage in {"session_budget", "runtime_guard", "runtime_budget"}:
+        return base + "Review task design and budget sizing; do not auto-raise limits."
+    return base + "Review repeated audit evidence and decide whether documentation, caller behavior, or governance rules need adjustment."
+
+
+def _insert_proposal(conn: sqlite3.Connection, proposal: PatternProposal, created_at: str) -> None:
     with conn:
         conn.execute(
             """
@@ -150,11 +306,17 @@ def _create_rejection_proposal(
                 proposal.confidence,
                 proposal.confidence_basis,
                 proposal.status,
-                now,
+                created_at,
             ),
         )
 
-    return proposal
+
+def _loads(raw: str) -> Dict[str, Any]:
+    try:
+        data = json.loads(raw or "{}")
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
 
 
 def count_proposals(conn: sqlite3.Connection) -> int:
