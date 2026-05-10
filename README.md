@@ -59,15 +59,15 @@ GateGraph currently does **not** provide:
 
 ## Project status
 
-Current stable release: **v0.8.25.1_STABLE**
+Current stable release: **v0.8.26_STABLE**
 
-This stable point consolidates Runtime Governance / Runaway Cost Control and Evidence Runner hardening. The Windows full evidence run reported `Passed: True` on 2026-04-28. See `docs/RELEASE_v0.8.25.1_STABLE.md` for the release evidence summary and known limits.
+This stable point consolidates Cross-Session Budget Control on top of Runtime Governance / Runaway Cost Control and Evidence Runner hardening. The Windows full Evidence CI run reported `Passed: True` on 2026-04-28. See `docs/RELEASE_v0.8.26_STABLE.md` for the release evidence summary and known limits.
 
 
 ```text
-Version: v0.8.19 pattern-priority-scoring
+Version: v0.8.26_STABLE
 Core status: stable proof of concept
-Production status: not production-ready; Single-Node PoC evidence is mature, operational production layers remain out of scope
+Production status: not production-ready; Single-Node Governance-Core evidence is mature, operational/distributed production layers remain out of scope
 ```
 
 Current validation summary:
@@ -79,6 +79,7 @@ Session Budget Guard:         passed
 Guard Orchestration:          passed
 Reason Normalization:         passed
 Scale Safety Evidence:        passed
+Cross-Session Budget Evidence:  passed
 External API Mock Evidence:    passed
 Secret/API Integration:        passed
 Pattern Engine:               passed
@@ -133,9 +134,11 @@ GateGraph/
 │   ├── RUNTIME_GUARD.md
 │   ├── PATTERN_ENGINE.md
 │   ├── SESSION_BUDGET_GUARD.md
+│   ├── CROSS_SESSION_BUDGET_CONTROL.md
 │   ├── GUARD_ORCHESTRATION.md
 │   └── REASON_NORMALIZATION.md
 ├── src/
+│   ├── budget_ledger.py
 │   ├── capability_token.py
 │   ├── database.py
 │   ├── enforcement.py
@@ -157,6 +160,7 @@ GateGraph/
 │   ├── reason_normalization_evidence.py
 │   ├── runtime_guard_tests.py
 │   ├── runtime_stress_evidence.py
+│   ├── cross_session_budget_evidence.py
 │   ├── scale_safety_evidence.py
 │   ├── session_budget_evidence.py
 │   ├── test_loop.py
@@ -269,3 +273,8 @@ Pattern proposals now include advisory priority and score metadata for human tri
 ## Controlled Apply v0.8.22
 
 GateGraph now includes a strictly limited Controlled Apply prototype. It is disabled by process unless a proposal has first passed manual review and then receives two distinct controlled-apply approvals. Initial scope is rule hardening only; unsupported or loosening changes fail closed. See `docs/CONTROLLED_APPLY.md`.
+
+
+## v0.8.26 Cross-Session Budget Control
+
+This stable release adds a single-node Budget Ledger and token-bound budget reservations to prevent task/session splitting from bypassing budget controls. Runtime remains non-authoritative; Governance reserves budget and Enforcement verifies the signed/persisted budget claims. See `docs/CROSS_SESSION_BUDGET_CONTROL.md` and `docs/RELEASE_v0.8.26_STABLE.md`.
