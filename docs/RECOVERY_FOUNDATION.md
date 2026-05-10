@@ -1,14 +1,16 @@
-# Recovery Foundation
+# Recovery & Replay Hardening
 
-v0.12.1_STABLE adds descriptive recovery evidence for interrupted local governance state.
+v0.12.2_CANDIDATE hardens the descriptive recovery/replay foundation without adding repair authority.
 
 ## Scope
 
-- interrupted reservation recovery is observable and bounded
-- duplicate consume attempts fail closed
-- partial audit append gaps fail closed
-- incident lifecycle transitions remain forward-only
-- replay consistency is asserted over stable descriptive fields
+- duplicate recovery attempts are visible and idempotent
+- reservation recovery collisions fail closed
+- partial-state recovery remains descriptive and fail-closed
+- recovery sequences are represented as append-only audit events
+- replay order is deterministic and explicit-sequence aware
+- replay, explain, archive and recovery objects remain reference-only
+- release, manifest, freeze and recovery surfaces remain synchronized
 
 ## Non-scope
 
@@ -17,7 +19,9 @@ v0.12.1_STABLE adds descriptive recovery evidence for interrupted local governan
 - no runtime authority expansion
 - no distributed recovery protocol
 - no production self-healing
+- no replay execution
+- no runtime rehydration from replay or recovery objects
 
 ## Invariant
 
-Recovery evidence may describe or reject state. It must not invent missing authority, recreate capability tokens, mutate governance rules, or promote replay/explain objects into runtime input.
+Recovery evidence may describe, classify, release an interrupted local reservation through an explicit bounded effect, or reject state. It must not invent missing authority, recreate capability tokens, mutate governance rules, or promote replay/explain/archive/recovery objects into runtime input.
