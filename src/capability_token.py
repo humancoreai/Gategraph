@@ -73,6 +73,7 @@ def token_audit_ref(token: "CapabilityToken") -> dict:
         "token_id": token.token_id,
         "token_hash": token_hash(token),
         "key_id": token.signing_key_id,
+        "kid": token.signing_key_id,
         "task_id": token.task_id,
         "decision_id": token.decision_id,
         "expires_at": token.expires_at.isoformat(),

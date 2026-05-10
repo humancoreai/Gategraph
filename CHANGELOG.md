@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.11.5_CANDIDATE
+
+- Added explicit security model, OWASP-style agentic risk mapping, and known limitations.
+- Added centralized token/Authorization/sensitive-field redaction utilities.
+- Added token exposure evidence for audit, explain, monitoring, base64 token, Authorization header, and secret exposure boundaries.
+- No governance rule, enforcement authority, runtime mode, adapter authority, distributed, cloud, Docker/Kubernetes, or UI scope expansion.
+
 All notable changes to GateGraph are documented here.
 
 ## v0.11.4_STABLE
