@@ -1,13 +1,13 @@
 # Release Status
 
-Release: v0.12.9_STABLE
+Current release: v0.13.0_CANDIDATE
 
-Base: v0.12.8_STABLE
+Base stable: v0.12.9_STABLE
 
-Status: stable
+Status: candidate
 
-Scope: Governance Integrity Graph.
+Phase: Release Consistency Hardening.
 
-No runtime, enforcement, governance-rule, agentic, distributed, auto-promotion or auto-repair authority is introduced.
+Windows CI required before Stable promotion.
 
-Compatibility phase label: Governance Integrity Graph.
+Governance Integrity Graph: carried forward as descriptive release-surface evidence.

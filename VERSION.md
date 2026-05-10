@@ -1,9 +1,9 @@
 # Version
 
-Release: v0.12.9_STABLE
+Release: v0.13.0_CANDIDATE
 
-Base: v0.12.8_STABLE
+Base: v0.12.9_STABLE
 
-Status: stable
+Status: candidate
 
-Phase: Operator Explainability Hygiene.
+Phase: Release Consistency Hardening.
