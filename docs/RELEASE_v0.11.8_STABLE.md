@@ -1,4 +1,4 @@
-# GateGraph v0.11.8_STABLE
+# GateGraph v0.11.9_CANDIDATE
 
 ## Phase
 
@@ -6,7 +6,7 @@ Context Lifecycle / Freeze Coupling Baseline.
 
 ## Scope
 
-This candidate builds on `v0.11.7_STABLE` and tightens lifecycle coupling around context governance.
+This candidate builds on `v0.11.9_STABLE` and tightens lifecycle coupling around context governance.
 
 ## Added
 
@@ -27,4 +27,4 @@ No memory system, vector database, embeddings, semantic scoring, ML classifier, 
 
 ## Promotion Evidence
 
-Promoted after full Windows Evidence CI reported `Passed: True` for v0.11.8_CANDIDATE on 2026-05-08.
+Promoted after full Windows Evidence CI reported `Passed: True` for v0.11.9_CANDIDATE on 2026-05-08.
