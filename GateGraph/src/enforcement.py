@@ -43,6 +43,13 @@ def enforce(conn: sqlite3.Connection, token: Optional[CapabilityToken], requeste
         return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
     if row["signing_key_id"] != token.signing_key_id:
         return _reject(conn, task_id, correlation_id, f"capability token claim mismatch: {token.token_id}", requested_capability)
+    if row["budget_scope_id"] != token.budget_scope_id or row["budget_reservation_id"] != token.budget_reservation_id:
+        return _reject(conn, task_id, correlation_id, f"capability token budget claim mismatch: {token.token_id}", requested_capability)
+    persisted_max_cost = row["max_cost_for_action"]
+    if persisted_max_cost is not None and token.max_cost_for_action != int(persisted_max_cost):
+        return _reject(conn, task_id, correlation_id, f"capability token budget claim mismatch: {token.token_id}", requested_capability)
+    if row["escalation_state"] != token.escalation_state:
+        return _reject(conn, task_id, correlation_id, f"capability token escalation claim mismatch: {token.token_id}", requested_capability)
 
     # SEC: load trust material once per enforcement decision to avoid split-brain keyring reads.
     keyring = load_trusted_keyring()
