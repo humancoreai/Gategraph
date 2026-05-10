@@ -1,60 +1,55 @@
-# Release Notes — GateGraph v0.12.5_STABLE
+# Release Notes — GateGraph v0.12.6_CANDIDATE
 
-## v0.12.5_STABLE — Deterministic Registry / Schema Governance
+## v0.12.6_CANDIDATE — Deterministic Evidence Lineage / Governance Provenance
 
-Base: v0.12.4_STABLE  
-Status: stable
+Base: v0.12.5_STABLE  
+Status: candidate
 
 ### Added
-- Deterministic semantic registry lock for `semantic_object_types.json` and `invariant_surface_registry.json`.
-- Registry hash validation that detects silent semantic/surface registry mutation.
-- Release manifest coverage evidence for registry-lock files and related evidence surfaces.
-- Explicit lock boundary flags: non-authoritative, non-executable, no runtime access, no policy mutation, no dynamic loading and no auto-repair.
+- Evidence provenance registry for deterministic, read-only evidence origin and dependency visibility.
+- Governance lineage snapshot registry for release-to-release provenance of declarative governance surfaces.
+- Dependency visibility evidence for evidence-to-registry and evidence-to-manifest references.
+- Governance mutation visibility evidence for descriptive lineage delta detection.
+- Replay provenance consistency evidence linking replay reconstruction to release, schema and lineage state.
 
 ### Evidence gates
-- `semantic_registry_lock_evidence`
-- `release_manifest_coverage_evidence`
-- Existing semantic registry, invariant surface, incident lifecycle, drift and evidence surface checks remain active:
-  - `semantic_registry_evidence`
-  - `invariant_surface_mapping_evidence`
-  - `incident_lifecycle_consistency_evidence`
-  - `semantic_drift_detection_evidence`
-  - `evidence_surface_consistency_evidence`
+- `evidence_provenance_registry_evidence`
+- `governance_lineage_snapshot_evidence`
+- `dependency_visibility_evidence`
+- `governance_mutation_visibility_evidence`
+- `replay_provenance_consistency_evidence`
 
 ### Boundary invariants
-- Registry locks are release evidence only.
-- Registry locks do not grant runtime authority.
-- Registry locks do not dynamically load files or plugins.
-- Registry locks do not auto-repair semantic drift.
-- Registry hash mismatch is visible and fail-closed in evidence.
+- Provenance is descriptive only.
+- Provenance does not grant runtime authority.
+- Provenance does not mutate governance, policy, registry, schema, freeze or replay state.
+- Dependency visibility does not load plugins or external resources.
+- Replay provenance is reconstruction context only, not execution context.
 
 ### Non-scope
 - No governance logic change.
 - No enforcement behavior change.
 - No runtime authority expansion.
-- No autonomous policy interpretation.
+- No distributed consensus.
 - No dynamic plugin or loader system.
-- No automatic semantic drift correction.
+- No automatic migration or repair.
 
 Compatibility note: No runtime/enforcement behavior change.
-Compatibility note: No autonomous policy update.
+Compatibility note: No autonomous governance mutation.
 Compatibility note: No semantic scoring or memory system.
 
-## v0.12.5_STABLE — Registry/Schema Governance Addendum
-
-Base: `v0.12.4_STABLE`
-Status: `stable`
-
-Additional evidence gates:
+### Carried forward active evidence gates
+- `semantic_registry_evidence`
+- `invariant_surface_mapping_evidence`
+- `incident_lifecycle_consistency_evidence`
+- `semantic_drift_detection_evidence`
+- `evidence_surface_consistency_evidence`
+- `semantic_registry_lock_evidence`
+- `release_manifest_coverage_evidence`
 - `schema_governance_evidence`
 - `cross_registry_integrity_evidence`
 - `deterministic_export_contract_evidence`
 - `schema_drift_visibility_evidence`
 - `freeze_snapshot_determinism_evidence`
-
-Additional artifacts:
-- `registry/schema_governance_registry.json`
-- `docs/SCHEMA_GOVERNANCE.md`
-- `docs/RELEASE_v0.12.5_STABLE.md`
-
-Compatibility: Semantic Registry remains active and Registry surfaces remain deterministic under v0.12.5_STABLE.
+Compatibility note: No autonomous policy update.
+Compatibility note: Semantic Registry linkage remains active and locked.
