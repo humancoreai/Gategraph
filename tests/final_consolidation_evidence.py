@@ -49,7 +49,7 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
-    assert "v0.11.4_CANDIDATE" in version
+    assert "v0.11.4_STABLE" in version
     assert "v0.11.3_STABLE" in version
     assert "Capability Token Audit Redaction" in status
 
