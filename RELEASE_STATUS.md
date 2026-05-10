@@ -1,36 +1,22 @@
 # Release Status
 
-Current stable: **v0.8.33_STABLE**
+## Current
 
-Base stable: **v0.8.32_STABLE**
+GateGraph v0.8.34_CANDIDATE
 
-## Stable scope
+## Classification
 
-Phase 2 server/integration layer:
+Candidate build only.
 
-- minimal HTTP adapter
-- shared CLI/server service adapter
-- `POST /evaluate`
-- `GET /status`
-- `GET /monitoring`
-- server evidence test
-- CLI fail-closed mode boundary
+## Verified in this package
 
-## Stable gate
+- Existing `server_mode_evidence` passes.
+- New `server_hardening_evidence` passes.
 
-Passed.
+## Not yet verified
 
-Target-environment Windows Evidence CI:
+- Full Windows Evidence CI for v0.8.34_CANDIDATE.
 
-```text
-CI EVIDENCE REPORT
-Passed: True
-```
+## Stable promotion rule
 
-## Stable invariants
-
-- Server Mode remains adapter-only.
-- CLI and Server use the shared `service_adapter` path.
-- Unsupported CLI modes fail closed with non-zero exit code.
-- Monitoring export remains read-only.
-- No Governance Core, Runtime Guard, Budget Ledger, HTTP Policy, Secret Handling, or Operational decision logic was changed for the Stable promotion.
+Do not mark this package stable until the full aggregate Windows evidence run passes unchanged.
