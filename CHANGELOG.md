@@ -2,7 +2,7 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.11.2_CANDIDATE
+## v0.11.2_STABLE
 
 - Added runtime startup/shutdown semantics evidence.
 - Added runtime surface consistency evidence.

@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.2_CANDIDATE"
+VERSION = "v0.11.2_STABLE"
 BASE = "v0.11.1_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
@@ -168,9 +168,9 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "candidate",
+        "status": "stable",
         "base": BASE,
-        "kind": "candidate_release",
+        "kind": "stable_release",
         "scope": "runtime_surface_tightening",
         "deterministic_packaging": True,
         "file_count": len(entries),
@@ -210,7 +210,7 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "candidate",
+        "status": "stable",
         "base": BASE,
         "phase": "Operational Consistency / Runtime Surface Tightening",
         "governance_logic_changed": False,
