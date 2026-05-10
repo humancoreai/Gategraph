@@ -12,6 +12,25 @@
         "audit"
       ]
     },
+    "INV-SCHEMA-001": {
+      "description": "Registry and schema governance remains deterministic, descriptive-only, and non-authoritative.",
+      "evidence": [
+        "schema_governance_evidence.py",
+        "cross_registry_integrity_evidence.py",
+        "deterministic_export_contract_evidence.py",
+        "schema_drift_visibility_evidence.py",
+        "freeze_snapshot_determinism_evidence.py"
+      ],
+      "non_authoritative": true,
+      "runtime_authority": false,
+      "surfaces": [
+        "registry",
+        "schema",
+        "manifest",
+        "freeze",
+        "evidence"
+      ]
+    },
     "INV-SEM-001": {
       "description": "Reference-class semantic objects remain non-authoritative and non-executable.",
       "evidence": [
@@ -82,6 +101,6 @@
       ]
     }
   },
-  "release": "v0.12.4_STABLE",
-  "schema_version": "0.12.4"
+  "release": "v0.12.5_CANDIDATE",
+  "schema_version": "0.12.5"
 }

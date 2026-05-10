@@ -1,9 +1,9 @@
-# Release Notes — GateGraph v0.12.4_STABLE
+# Release Notes — GateGraph v0.12.5_CANDIDATE
 
-## v0.12.4_STABLE — Semantic Registry Lock & Coverage Freeze
+## v0.12.5_CANDIDATE — Deterministic Registry / Schema Governance
 
-Base: v0.12.3_STABLE  
-Status: stable
+Base: v0.12.4_STABLE  
+Status: candidate
 
 ### Added
 - Deterministic semantic registry lock for `semantic_object_types.json` and `invariant_surface_registry.json`.
@@ -39,3 +39,22 @@ Status: stable
 Compatibility note: No runtime/enforcement behavior change.
 Compatibility note: No autonomous policy update.
 Compatibility note: No semantic scoring or memory system.
+
+## v0.12.5_CANDIDATE — Registry/Schema Governance Addendum
+
+Base: `v0.12.4_STABLE`
+Status: `candidate`
+
+Additional evidence gates:
+- `schema_governance_evidence`
+- `cross_registry_integrity_evidence`
+- `deterministic_export_contract_evidence`
+- `schema_drift_visibility_evidence`
+- `freeze_snapshot_determinism_evidence`
+
+Additional artifacts:
+- `registry/schema_governance_registry.json`
+- `docs/SCHEMA_GOVERNANCE.md`
+- `docs/RELEASE_v0.12.5_CANDIDATE.md`
+
+Compatibility: Semantic Registry remains active and Registry surfaces remain deterministic under v0.12.5_CANDIDATE.

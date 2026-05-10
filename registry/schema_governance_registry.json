@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.12.5",
+  "release": "v0.12.5_CANDIDATE",
+  "base": "v0.12.4_STABLE",
+  "registry_mode": "declarative_only",
+  "dynamic_loading": false,
+  "auto_migration": false,
+  "auto_repair": false,
+  "runtime_authority": false,
+  "schemas": [
+    {
+      "schema_id": "semantic_object_types",
+      "path": "registry/semantic_object_types.json",
+      "owner_surface": "semantic_registry",
+      "compatibility": "strict",
+      "authority": "descriptive_only"
+    },
+    {
+      "schema_id": "invariant_surface_registry",
+      "path": "registry/invariant_surface_registry.json",
+      "owner_surface": "surface_registry",
+      "compatibility": "strict",
+      "authority": "descriptive_only"
+    },
+    {
+      "schema_id": "semantic_registry_lock",
+      "path": "registry/semantic_registry_lock.json",
+      "owner_surface": "registry_lock",
+      "compatibility": "hash_locked",
+      "authority": "descriptive_only"
+    },
+    {
+      "schema_id": "release_manifest",
+      "path": "RELEASE_MANIFEST.json",
+      "owner_surface": "release",
+      "compatibility": "strict",
+      "authority": "descriptive_only"
+    },
+    {
+      "schema_id": "release_metadata",
+      "path": "RELEASE_METADATA.json",
+      "owner_surface": "release",
+      "compatibility": "strict",
+      "authority": "descriptive_only"
+    }
+  ],
+  "exports": [
+    {
+      "bundle_type": "monitoring_export",
+      "deterministic_hash_required": true,
+      "runtime_authority": false,
+      "auto_import": false
+    },
+    {
+      "bundle_type": "replay_bundle",
+      "deterministic_hash_required": true,
+      "runtime_authority": false,
+      "auto_import": false
+    },
+    {
+      "bundle_type": "recovery_bundle",
+      "deterministic_hash_required": true,
+      "runtime_authority": false,
+      "auto_import": false
+    },
+    {
+      "bundle_type": "incident_bundle",
+      "deterministic_hash_required": true,
+      "runtime_authority": false,
+      "auto_import": false
+    }
+  ],
+  "lineage": [
+    {
+      "from": "v0.12.4_STABLE",
+      "to": "v0.12.5_CANDIDATE",
+      "mode": "declarative_schema_governance_only",
+      "automatic_migration": false
+    }
+  ]
+}
