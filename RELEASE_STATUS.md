@@ -1,24 +1,22 @@
-# Release Status – v0.9.3_STABLE
+# Release Status – v0.10.0_CANDIDATE
 
-Status: stable
+Status: candidate
 
-Base: v0.9.2_STABLE
+Base: v0.9.3_STABLE
 
-Phase: Governance Freeze Snapshot / Audit Baseline
-
-Full Windows Evidence CI: passed according to supplied evidence before stable promotion
+Phase: Runtime / Boundary Hardening
 
 Scope:
-- consolidate governance freeze snapshot documentation
-- preserve invariant registry with stable IDs
-- preserve boundary references
-- preserve governance freeze evidence
-- promote verified pre-stable metadata to stable metadata
+- require trusted entry context before Governance evaluation
+- assert public entry path through service_adapter
+- keep direct Governance calls fail-closed by default
+- keep historical direct evidence scripts behind explicit test-only compatibility flag
+- add runtime boundary hardening evidence
 
 Out of scope:
-- no new runtime model
-- no adapter implementation
-- no autonomous agent behavior
+- no new runtime capability
+- no new agentic behavior
+- no new adapter
 - no distributed governance
-- no orchestration logic
-- no risk model expansion
+- no framework integration
+- no packaging/deployment work

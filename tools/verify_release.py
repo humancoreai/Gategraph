@@ -11,7 +11,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-VERSION = "v0.9.3_CANDIDATE"
+VERSION = "v0.10.0_CANDIDATE"
 EXPECTED_PREFIX = f"GateGraph_{VERSION}/"
 FIXED_ZIP_DT = (2026, 1, 1, 0, 0, 0)
 FORBIDDEN_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea", ".vscode", "dist"}
@@ -31,6 +31,7 @@ REQUIRED = {
     "tools/verify_release.py",
     "tests/caller_boundary_evidence.py",
     "tests/release_integrity_evidence.py",
+    "tests/runtime_boundary_hardening_evidence.py",
     "tests/multi_agent_architecture_evidence.py",
     "docs/MULTI_AGENT_SSOT.md",
     "docs/MULTI_MODE_SSOT.md",
@@ -42,6 +43,8 @@ REQUIRED = {
     "docs/INVARIANT_REGISTRY.md",
     "docs/BOUNDARY_REFERENCES.md",
     "docs/RELEASE_REPRODUCIBILITY.md",
+    "docs/RUNTIME_BOUNDARY_HARDENING.md",
+    "src/runtime_path_assertions.py",
     "tests/governance_freeze_evidence.py",
 }
 

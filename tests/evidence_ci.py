@@ -45,6 +45,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("governance_freeze_evidence", "tests/governance_freeze_evidence.py", 20),
     ("milestone_release_evidence", "tests/milestone_release_evidence.py", 30),
     ("caller_boundary_evidence", "tests/caller_boundary_evidence.py", 20),
+    ("runtime_boundary_hardening_evidence", "tests/runtime_boundary_hardening_evidence.py", 20),
     ("release_integrity_evidence", "tests/release_integrity_evidence.py", 40),
     ("multi_agent_architecture_evidence", "tests/multi_agent_architecture_evidence.py", 20),
     ("operator_evidence", "tests/operator_evidence.py", 20),
@@ -286,6 +287,9 @@ def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, s
     # UTF-8 stdio prevents false UnicodeEncodeError failures in isolated subprocesses.
     env["PYTHONIOENCODING"] = "utf-8"
     env["PYTHONUTF8"] = "1"
+    # INV: Legacy evidence scripts that exercise Governance directly use an explicit
+    # test-only bypass. Production/default runtime still fails closed without context.
+    env["GATEGRAPH_ALLOW_TEST_DIRECT_GOVERNANCE"] = "1"
     if extra_env:
         env.update(extra_env)
     cmd = [sys.executable, "-S", "-u", "tests/_run_isolated.py", script]
@@ -380,7 +384,7 @@ def main() -> int:
         notes=[
             "Subprocess runner uses Python-owned timeout, file-backed I/O, process-session isolation and hard process-group kill on timeout.",
             "Timeout is fail-closed: an evidence script that exceeds its budget fails even if it emitted a passing Summary before hanging.",
-            "Production governance/enforcement/runtime code is not executed differently by this runner."
+            "Legacy direct-governance evidence uses an explicit test-only trusted-entry compatibility path."
         ],
     )
     for name, script, timeout_seconds in MANIFEST:
