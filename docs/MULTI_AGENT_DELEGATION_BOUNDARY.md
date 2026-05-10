@@ -1,7 +1,7 @@
 # Multi-Agent Delegation Boundary
 
-Release: v0.11.8_STABLE  
-Base: v0.11.8_STABLE
+Release: v0.11.9_CANDIDATE  
+Base: v0.11.9_CANDIDATE
 
 ## Scope
 
