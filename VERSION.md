@@ -1,11 +1,11 @@
 # GateGraph Version
 
-Current: v0.8.1-guard-orchestration
+Current: v0.8.2-reason-normalization
 
-Previous: v0.8.0-session-budget-guard
+Previous: v0.8.1-guard-orchestration
 
 Notes:
-- Added deterministic Guard Orchestrator.
-- Added Guard Orchestration evidence tests.
-- Fixed stop priority: Enforcement → Session Budget → Runtime Guard → Action.
+- Added additive reason normalization/explain metadata.
+- Guard Orchestrator now returns normalized_reason alongside raw reason.
+- Raw stop reasons remain preserved.
 - Existing Governance/Enforcement/Runtime/Pattern semantics preserved.
