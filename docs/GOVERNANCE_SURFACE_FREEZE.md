@@ -2,7 +2,7 @@
 
 ## Scope
 
-`v0.12.2_CANDIDATE` maintains descriptive surface contracts for core GateGraph outputs and review surfaces.
+`v0.12.2_STABLE` maintains descriptive surface contracts for core GateGraph outputs and review surfaces.
 
 The contracts define stable field shapes for:
 
