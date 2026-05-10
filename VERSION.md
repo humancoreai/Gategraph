@@ -1,9 +1,9 @@
 # Version
 
-Release: v0.12.7_CANDIDATE
+Release: v0.12.7_STABLE
 
 Base: v0.12.6_STABLE
 
-Status: candidate
+Status: stable
 
 Phase: Release State Transition / Promotion Surface Symmetry.

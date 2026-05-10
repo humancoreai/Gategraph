@@ -1,14 +1,14 @@
-# GateGraph v0.12.7_CANDIDATE
+# GateGraph v0.12.7_STABLE
 
 Base: v0.12.6_STABLE
 
-Status: candidate
+Status: stable
 
 Phase: Release State Transition / Promotion Surface Symmetry
 
 ## Scope
 
-This candidate hardens deterministic release-state transitions and Candidate/Stable surface parity. The release remains descriptive and non-authoritative.
+This stable release hardens deterministic release-state transitions and Candidate/Stable surface parity. The release remains descriptive and non-authoritative.
 
 ## Evidence added
 
