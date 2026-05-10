@@ -13,11 +13,12 @@
   "new_runtime_model": false,
   "packaging_scope": true,
   "phase": "Operational Start Surface / Minimal Deployment Consistency",
-  "release": "v0.11.1_CANDIDATE",
+  "release": "v0.11.1_STABLE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "scope_freeze": true,
   "self_orchestration": false,
+  "stable_promotion": true,
   "startup_surface_scope": true,
-  "status": "candidate"
+  "status": "stable"
 }

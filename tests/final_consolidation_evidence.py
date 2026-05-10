@@ -48,7 +48,7 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
-    assert "v0.11.1_CANDIDATE" in version
+    assert "v0.11.1_STABLE" in version
     assert "v0.11.0_STABLE" in version
     assert "Operational Start Surface / Minimal Deployment Consistency" in status
 
