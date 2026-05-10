@@ -11,7 +11,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-VERSION = "v0.9.2_STABLE"
+VERSION = "v0.9.3_CANDIDATE"
 EXPECTED_PREFIX = f"GateGraph_{VERSION}/"
 FIXED_ZIP_DT = (2026, 1, 1, 0, 0, 0)
 FORBIDDEN_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea", ".vscode", "dist"}
@@ -38,6 +38,11 @@ REQUIRED = {
     "docs/MULTI_AGENT_BUDGET_AUTHORITY.md",
     "docs/MULTI_AGENT_REPLAY_AUDIT.md",
     "docs/EMERGENCE_BOUNDARIES.md",
+    "docs/GOVERNANCE_FREEZE_SNAPSHOT_v0_9_3.md",
+    "docs/INVARIANT_REGISTRY.md",
+    "docs/BOUNDARY_REFERENCES.md",
+    "docs/RELEASE_REPRODUCIBILITY.md",
+    "tests/governance_freeze_evidence.py",
 }
 
 
