@@ -14,9 +14,9 @@ def main() -> int:
         [
             sys.executable,
             str(ROOT / "tools" / "release_process_guard.py"),
+            "v0.11.7_CANDIDATE",
+            "candidate",
             "v0.11.6_STABLE",
-            "stable",
-            "v0.11.5_STABLE",
         ],
         cwd=str(ROOT),
         text=True,
