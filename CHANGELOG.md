@@ -1,11 +1,40 @@
 # Changelog
 
+All notable changes to GateGraph are documented here.
+
+## v0.11.2_CANDIDATE
+
+- Added runtime startup/shutdown semantics evidence.
+- Added runtime surface consistency evidence.
+- Added surface freeze coupling evidence.
+- Added explicit runtime surface freeze and operational boundary tightening documentation.
+- Hardened release-process guard coverage for changelog, known-gaps roadmap, and HTTP server version consistency.
+- No runtime/governance/enforcement/adapter/agentic capability change.
+
 ## v0.11.1_STABLE
 
-- Added release-process guard for Candidate/Stable metadata consistency.
-- Added structured manifest validation and stale/missing manifest detection.
-- Added dead local markdown reference checks.
-- No runtime, governance, enforcement, adapter, packaging, or UI behavior changed.
+- Stabilized v0.11.1 packaging baseline after Windows Evidence CI PASS.
+- Preserved install surface, startup surface, config consistency and deterministic packaging claims.
+- No runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior changed.
+
+## v0.11.1_CANDIDATE
+
+- Tightened packaging/install/startup consistency around the v0.11.0 packaging baseline.
+- Added supporting evidence for install surface, startup surface and config consistency.
+- No runtime/governance/enforcement/adapter/agentic capability change.
+
+## v0.11.0_STABLE
+
+- Stabilized v0.11.0 packaging baseline after Windows Evidence CI PASS.
+- Confirmed `pyproject.toml`, editable install and CLI entry points as release-supported surfaces.
+- No runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior changed.
+
+## v0.11.0_CANDIDATE
+
+- Added `pyproject.toml` packaging baseline.
+- Added package metadata for editable install via `python -m pip install -e .`.
+- Added console entry points: `gategraph` and `gategraph-server`.
+- Added packaging/install evidence without changing runtime/governance/enforcement behavior.
 
 ## v0.10.2_STABLE
 
