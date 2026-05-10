@@ -1,10 +1,23 @@
-# Release Notes — GateGraph v0.12.0_STABLE
+# Release Notes — GateGraph v0.12.1_CANDIDATE
 
-Base: `v0.11.9_STABLE`
+## v0.12.1_CANDIDATE — Consistency / Recovery Foundation
+
+Base: v0.12.0_STABLE  
+Status: candidate
+
+### Added
+- Descriptive recovery foundation for interrupted reservation, duplicate consume, partial audit append, incident forward-only lifecycle, and deterministic replay signatures.
+- Evidence gates: `recovery_foundation_evidence`, `replay_recovery_consistency_evidence`, `surface_recovery_consistency_evidence`.
+
+### Non-scope
+- No automatic repair, no policy mutation, no new adapter, no runtime authority expansion, no distributed recovery.
+
+
+Base: `v0.12.0_STABLE`
 
 ## Purpose
 
-`v0.12.0_STABLE` promotes the Governance Surface Freeze phase to stable. It adds a minimal contract registry for core governance surfaces and evidence that checks those surfaces for deterministic schema/version drift.
+`v0.12.1_CANDIDATE` promotes the Governance Surface Freeze phase to stable. It adds a minimal contract registry for core governance surfaces and evidence that checks those surfaces for deterministic schema/version drift.
 
 ## Added
 

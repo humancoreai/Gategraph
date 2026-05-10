@@ -1,5 +1,5 @@
-# Known Gaps Roadmap – v0.11.9_STABLE
-Current release context: v0.12.0_STABLE.
+# Known Gaps Roadmap – v0.12.0_STABLE
+Current release context: v0.12.1_CANDIDATE.
 
 
 ## Closed before / at v0.9.3
@@ -39,7 +39,7 @@ Current release context: v0.12.0_STABLE.
 - Console entry points are declared: `gategraph` and `gategraph-server`.
 - Packaging, install surface, startup surface and config consistency evidence are present.
 
-## Closed / hardened in v0.11.9_STABLE
+## Closed / hardened in v0.12.0_STABLE
 
 - Context is explicitly classified as a governance boundary.
 - Context provenance is required and inconsistent provenance fails closed.
@@ -68,7 +68,7 @@ Current release context: v0.12.0_STABLE.
 - No audit-log retention management.
 - No security-disclosure process.
 
-## Non-scope for v0.11.9_STABLE
+## Non-scope for v0.12.0_STABLE
 
 - no new agents
 - no new adapters

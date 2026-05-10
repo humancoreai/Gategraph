@@ -1,16 +1,16 @@
 # Changelog
 
-## v0.12.0_STABLE
+## v0.12.1_CANDIDATE
 
 - Adds Governance Surface Freeze candidate scope.
 - Adds descriptive contract registry for governance decision, normalized reason, monitoring export and capability token claim surfaces.
 - Adds surface contract registry and semantic boundary evidence.
 - No governance, runtime or enforcement authority change.
 
-## v0.11.9_STABLE
+## v0.12.0_STABLE
 
 ### Review hygiene fix
-- Align README base-stable claim with `v0.11.9_STABLE`.
+- Align README base-stable claim with `v0.12.0_STABLE`.
 - Document canonical namespace boundary for `src/` versus `gategraph/context/`.
 - Exclude development STARTPROMPT artifacts from release packaging.
 - Surface `OWASP_AGENTIC_AI_MAPPING.md` in README.
