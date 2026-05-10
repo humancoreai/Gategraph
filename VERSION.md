@@ -1,3 +1,6 @@
-GateGraph v0.12.4_STABLE
-Base: v0.12.3_STABLE
-Status: stable
+# Version
+
+Release: `v0.12.5_CANDIDATE`
+Base: `v0.12.4_STABLE`
+Status: `candidate`
+Version: `0.12.5`
