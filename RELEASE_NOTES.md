@@ -1,4 +1,4 @@
-# Release Notes — GateGraph v0.11.6_CANDIDATE
+# Release Notes — GateGraph v0.11.6_STABLE
 
 ## Scope
 
