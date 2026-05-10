@@ -1,16 +1,17 @@
 # Changelog
 
+## v0.13.6_CANDIDATE
+
+Status: candidate.
+Base: v0.13.5_STABLE.
+Phase: GitHub Actions CI Preparation.
+
+- Added minimal Windows GitHub Actions evidence workflow.
+- Added read-only CI documentation and evidence check.
+- Preserved no-secrets, no-publish, no-deploy, no-auto-promotion boundaries.
+- No governance/runtime/enforcement logic changed.
+
 ## v0.13.5_STABLE
-
-Base: v0.13.4_STABLE  
-Status: stable  
-Phase: Release Gate Robustness
-
-- Added Release Gate Robustness evidence.
-- Added bounded classification registry and documentation.
-- No runtime, enforcement or governance decision logic change.
-
-## v0.13.4_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 

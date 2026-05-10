@@ -57,9 +57,9 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
+    assert "v0.13.6_CANDIDATE" in version
     assert "v0.13.5_STABLE" in version
-    assert "v0.13.4_STABLE" in version
-    assert "Governance Integrity Graph" in status
+    assert "GitHub Actions CI Preparation" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
     missing_evidence = [name for name in REQUIRED_EVIDENCE if name not in manifest]
@@ -75,4 +75,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# Current release surface: v0.13.5_STABLE
+# Current release surface: v0.13.6_CANDIDATE

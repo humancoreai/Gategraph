@@ -1,8 +1,8 @@
-# Release Gate Robustness
+# GitHub Actions CI Preparation
 
-Release: v0.13.5_STABLE.
-Base: v0.13.4_STABLE.
-Status: stable.
+Release: v0.13.6_CANDIDATE.
+Base: v0.13.5_STABLE.
+Status: candidate.
 
 ## Scope
 

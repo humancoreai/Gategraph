@@ -103,6 +103,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("evidence_suite_profile_evidence", "tests/evidence_suite_profile_evidence.py", 20),
     ("evidence_failure_classification_evidence", "tests/evidence_failure_classification_evidence.py", 20),
     ("release_gate_robustness_evidence", "tests/release_gate_robustness_evidence.py", 20),
+    ("github_actions_ci_evidence", "tests/github_actions_ci_evidence.py", 20),
     ("promotion_surface_symmetry_evidence", "tests/promotion_surface_symmetry_evidence.py", 20),
     ("candidate_stable_surface_parity_evidence", "tests/candidate_stable_surface_parity_evidence.py", 20),
     ("governance_integrity_graph_evidence", "tests/governance_integrity_graph_evidence.py", 20),

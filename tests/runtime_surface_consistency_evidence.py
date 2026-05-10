@@ -14,8 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-EXPECTED_RELEASE = "v0.13.5_STABLE"
-EXPECTED_BASE = "v0.13.4_STABLE"
+EXPECTED_RELEASE = "v0.13.6_CANDIDATE"
+EXPECTED_BASE = "v0.13.5_STABLE"
 
 
 def expect_error(text: str, fragment: str) -> None:
@@ -44,14 +44,14 @@ def main() -> int:
     expect_error("mode: single_node\nsession_budget: nope\n", "must be a mapping")
 
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
-    assert pyproject["project"]["version"] == "0.13.5"
+    assert pyproject["project"]["version"] == "0.13.6"
     scripts = pyproject["project"]["scripts"]
     assert scripts == {"gategraph": "src.cli:main", "gategraph-server": "src.server:main"}
 
     metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
     assert metadata["release"] == EXPECTED_RELEASE
     assert metadata["base"] == EXPECTED_BASE
-    assert metadata["status"] == "stable"
+    assert metadata["status"] == "candidate"
     assert metadata["runtime_surface_scope"] is True
     for key in ["governance_logic_changed", "runtime_logic_changed", "enforcement_logic_changed", "new_runtime_capability", "new_agentic_behavior", "new_adapter", "distributed_governance"]:
         assert metadata[key] is False, key

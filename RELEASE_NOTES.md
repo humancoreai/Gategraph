@@ -1,19 +1,19 @@
-# GateGraph v0.13.5_STABLE Release Notes
+# GateGraph v0.13.6_CANDIDATE Release Notes
 
-Status: stable.
-Base: v0.13.4_STABLE.
+Status: candidate.
+Base: v0.13.5_STABLE.
 
 ## Scope
 
-Release Gate Robustness.
+GitHub Actions CI Preparation.
 
-This stable release preserves descriptive release-gate robustness checks around Candidate/Stable status, surface synchronization, and CI-gated promotion rules. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic repair/promotion authority.
+This candidate adds a minimal GitHub Actions validation surface for Windows Evidence CI. It does not remove tests, alter governance logic, change runtime behavior, access secrets, publish artifacts, deploy, or grant automatic repair/promotion authority.
 
 ## Added
 
-- `docs/RELEASE_GATE_ROBUSTNESS.md`
-- `registry/release_gate_robustness.json`
-- `tests/release_gate_robustness_evidence.py`
+- `.github/workflows/evidence_ci.yml`
+- `docs/GITHUB_ACTIONS_CI.md`
+- `tests/github_actions_ci_evidence.py`
 
 ## Release / Semantic Registry surfaces
 

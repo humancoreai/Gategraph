@@ -1,8 +1,8 @@
-# Release Gate Robustness
+# GitHub Actions CI Preparation
 
 Status: descriptive only.
-Release: v0.13.5_STABLE.
-Base: v0.13.4_STABLE.
+Release: v0.13.6_CANDIDATE.
+Base: v0.13.5_STABLE.
 
 This surface groups evidence failures into review buckets such as release-surface, semantic-boundary, registry-lock, server-surface, runtime-governance, and security.
 
