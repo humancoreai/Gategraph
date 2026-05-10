@@ -1,10 +1,10 @@
-# Startup Surface – GateGraph v0.11.3_STABLE
+# Startup Surface – GateGraph v0.11.4_CANDIDATE
 
 ## Purpose
 
 This document defines the canonical local startup surface for GateGraph after the v0.11.0 packaging baseline.
 
-v0.11.3_STABLE does not introduce new runtime behavior.
+v0.11.4_CANDIDATE does not introduce new runtime behavior.
 
 ## Canonical start paths
 

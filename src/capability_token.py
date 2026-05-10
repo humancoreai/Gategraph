@@ -51,6 +51,38 @@ class CapabilityToken:
         return self.capabilities.get(capability, False)
 
 
+def token_hash(token: "CapabilityToken") -> str:
+    """Return a stable audit-safe token fingerprint.
+
+    SEC: Audit may prove which token was involved, but must never persist the raw
+    token object, signature, signing input, Authorization material, or secrets.
+    """
+    material = ":".join([
+        token.token_id,
+        token.decision_id,
+        token.task_id,
+        token.signing_key_id,
+        token.expires_at.isoformat(),
+    ])
+    return "sha256:" + hashlib.sha256(material.encode("utf-8")).hexdigest()
+
+
+def token_audit_ref(token: "CapabilityToken") -> dict:
+    """Minimal, non-secret audit reference for a capability token."""
+    return {
+        "token_id": token.token_id,
+        "token_hash": token_hash(token),
+        "key_id": token.signing_key_id,
+        "task_id": token.task_id,
+        "decision_id": token.decision_id,
+        "expires_at": token.expires_at.isoformat(),
+        "budget_scope_id": token.budget_scope_id,
+        "budget_reservation_id": token.budget_reservation_id,
+        "max_cost_for_action": token.max_cost_for_action,
+        "escalation_state": token.escalation_state,
+    }
+
+
 def _ensure_token_schema(conn: sqlite3.Connection) -> None:
     """WHY: additive migration keeps older local DBs readable during prototype iteration."""
     cols = {row[1] for row in conn.execute("PRAGMA table_info(capability_tokens)")}
