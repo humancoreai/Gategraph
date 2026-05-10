@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.9_CANDIDATE
+
+- Adds descriptive `block_reason` output for fail-closed unknown capability decisions.
+- Keeps governance, runtime, enforcement, and token behavior unchanged.
+
+
 ## v0.12.8_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.

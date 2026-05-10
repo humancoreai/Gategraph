@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_DIR = ROOT / "contracts"
-EXPECTED_VERSION = "0.12.8"
+EXPECTED_VERSION = "0.12.9"
 EXPECTED_CONTRACTS = {
     "governance_decision.schema.json": {"surface": "governance_decision", "required_fields": {"decision_id": "string", "task_id": "string", "decision": "string", "risk_level": "string", "selected_rule_id": "string_or_null", "matched_rule_ids": "array[string]", "token_issued": "boolean", "event_id": "string", "schema_version": "string"}},
     "normalized_reason.schema.json": {"surface": "normalized_reason", "required_fields": {"code": "string", "category": "string", "severity": "string", "stage": "string", "message": "string", "raw_reason": "string", "priority": "integer"}},
@@ -22,9 +22,9 @@ EXPECTED_CONTRACTS = {
 
 def main() -> int:
     metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
-    assert metadata["release"] == "v0.12.8_STABLE"
-    assert metadata["status"] == "stable"
-    assert metadata["base"] == "v0.12.7_STABLE"
+    assert metadata["release"] == "v0.12.9_CANDIDATE"
+    assert metadata["status"] == "candidate"
+    assert metadata["base"] == "v0.12.8_STABLE"
     assert metadata["surface_contract_registry_scope"] is True
     assert metadata["surface_contract_version"] == EXPECTED_VERSION
     assert metadata["governance_logic_changed"] is False
@@ -39,6 +39,8 @@ def main() -> int:
         assert contract.get("surface") == expected["surface"], filename
         assert contract.get("status") == "frozen_stable", filename
         assert contract.get("required_fields") == expected["required_fields"], filename
+        if filename == "governance_decision.schema.json":
+            assert contract.get("optional_fields", {}).get("block_reason") == "string_or_null", filename
         assert contract.get("description"), filename
         checked.append(contract["surface"])
     docs = (ROOT / "docs" / "GOVERNANCE_SURFACE_FREEZE.md").read_text(encoding="utf-8")

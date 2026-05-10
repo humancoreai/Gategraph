@@ -11,7 +11,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-VERSION = "v0.12.8_STABLE"
+VERSION = "v0.12.9_CANDIDATE"
 EXPECTED_PREFIX = f"GateGraph_{VERSION}/"
 FIXED_ZIP_DT = (2026, 1, 1, 0, 0, 0)
 FORBIDDEN_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea", ".vscode", "dist"}
@@ -60,7 +60,7 @@ REQUIRED = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.12.8_STABLE.md",
+    "docs/RELEASE_v0.12.9_CANDIDATE.md",
     "src/security/__init__.py",
     "src/security/token_redaction.py",
     "tests/token_exposure_evidence.py",
@@ -72,7 +72,7 @@ REQUIRED = {
     "tests/context_poisoning_evidence.py",
     "tests/instruction_data_separation_evidence.py",
     "tests/context_provenance_evidence.py",
-    "docs/RELEASE_v0.12.8_STABLE.md",
+    "docs/RELEASE_v0.12.9_CANDIDATE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -86,10 +86,10 @@ REQUIRED = {
     "registry/invariant_surface_registry.json",
     "tests/semantic_registry_lock_evidence.py",
     "tests/release_manifest_coverage_evidence.py",
-    "docs/RELEASE_v0.12.8_STABLE.md",
+    "docs/RELEASE_v0.12.9_CANDIDATE.md",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.12.8_STABLE.md",
+    "docs/RELEASE_v0.12.9_CANDIDATE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",

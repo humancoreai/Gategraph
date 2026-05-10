@@ -1,10 +1,10 @@
 # Release Status
 
-Release: v0.12.8_STABLE
+Release: v0.12.9_CANDIDATE
 
-Base: v0.12.7_STABLE
+Base: v0.12.8_STABLE
 
-Status: stable
+Status: candidate
 
 Scope: Governance Integrity Graph.
 
