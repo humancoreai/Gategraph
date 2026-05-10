@@ -27,3 +27,5 @@ v0.12.7_STABLE hardens the descriptive recovery/replay foundation without adding
 Recovery evidence may describe, classify, release an interrupted local reservation through an explicit bounded effect, or reject state. It must not invent missing authority, recreate capability tokens, mutate governance rules, or promote replay/explain/archive/recovery objects into runtime input.
 
 Current release surface: v0.12.8_STABLE
+
+Release surface: v0.12.9_CANDIDATE.

@@ -4,8 +4,8 @@
 
 GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
-Current release: **v0.12.8_STABLE**  
-Base stable: **v0.12.7_STABLE**  
+Current release: **v0.12.9_CANDIDATE**  
+Base stable: **v0.12.8_STABLE**  
 License: Apache 2.0
 
 ---
@@ -224,6 +224,9 @@ GateGraph is **production-ready for single-node, local/protected deployment**.
 | `docs/ARCHITECTURE.md` | Layer separation and data flow |
 | `docs/SERVER_MODE.md` | HTTP adapter invariants and endpoints |
 | `RELEASE_PROCESS.md` | How releases are built, verified, and promoted |
+| `docs/GOVERNANCE_INTEGRITY_GRAPH.md` | Governance artifact dependency and integrity visibility |
+| `docs/SCHEMA_GOVERNANCE.md` | Descriptive schema registry and non-authoritative export contracts |
+| `registry/semantic_registry_lock.json` | Machine-checkable semantic registry lock for release consistency |
 
 ---
 
@@ -237,7 +240,7 @@ Releases are built deterministically via `tools/build_release.py`. Every release
 - `.db` files excluded from release artifacts by default
 
 ```bash
-python tools/verify_release.py dist/GateGraph_v0.12.8_STABLE.zip
+python tools/verify_release.py dist/GateGraph_v0.12.9_CANDIDATE.zip
 ```
 
 ---
@@ -267,6 +270,6 @@ Apache 2.0 — see `LICENSE`.
 See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operational start-surface expectations.
 
 
-## v0.12.8 Candidate Scope
+## v0.12.9 Candidate Scope
 
-Governance Integrity Graph. No runtime, enforcement or governance-rule authority is added.
+Operator Explainability Hygiene. Adds descriptive `block_reason` output for fail-closed unknown capability decisions. No runtime, enforcement or governance-rule authority is added.

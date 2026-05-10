@@ -19,6 +19,9 @@
     "policy mutation",
     "semantic scoring"
   ],
+  "optional_fields": {
+    "block_reason": "string_or_null"
+  },
   "required_fields": {
     "decision": "string",
     "decision_id": "string",
@@ -30,7 +33,7 @@
     "task_id": "string",
     "token_issued": "boolean"
   },
-  "schema_version": "0.12.8",
+  "schema_version": "0.12.9",
   "status": "frozen_stable",
   "surface": "governance_decision"
 }
