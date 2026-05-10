@@ -89,4 +89,4 @@ See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operation
 v0.11.9_STABLE preserves this boundary while adding security mapping and token exposure hardening.
 
 
-Current release surface: `v0.12.0_CANDIDATE`.
+Current release surface: `v0.12.0_STABLE`.

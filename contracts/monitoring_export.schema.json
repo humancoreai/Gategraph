@@ -1,7 +1,7 @@
 {
   "schema_version": "0.12.0",
   "surface": "monitoring_export",
-  "status": "frozen_candidate",
+  "status": "frozen_stable",
   "description": "Read-only monitoring export contract; visibility only and never a governance input.",
   "required_fields": {
     "schema_version": "string",
