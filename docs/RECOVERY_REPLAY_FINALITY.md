@@ -1,13 +1,13 @@
 # Recovery Replay Finality
 
-Release: v0.13.1_STABLE  
-Base: v0.13.0_STABLE  
-Status: stable  
+Release: v0.13.2_CANDIDATE  
+Base: v0.13.1_STABLE  
+Status: candidate  
 Scope: Recovery Replay Finality Hardening.
 
 ## Purpose
 
-This document defines the v0.13.1 recovery/replay finality surface. The scope is evidence-only hardening around already existing recovery behavior:
+This document defines the v0.13.2 recovery/replay finality surface. The scope is evidence-only hardening around already existing recovery behavior:
 
 - duplicate recovery attempts remain idempotent and descriptive;
 - consumed/released reservations remain final;

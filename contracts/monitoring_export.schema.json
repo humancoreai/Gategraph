@@ -16,7 +16,7 @@
     "schema_version": "string",
     "summary": "object"
   },
-  "schema_version": "0.13.1",
+  "schema_version": "0.13.2",
   "status": "frozen_stable",
   "surface": "monitoring_export"
 }

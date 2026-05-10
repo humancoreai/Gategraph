@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.13.1_STABLE"
-BASE = "v0.13.0_STABLE"
+VERSION = "v0.13.2_CANDIDATE"
+BASE = "v0.13.1_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -93,7 +93,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.13.1_STABLE.md",
+    "docs/RELEASE_v0.13.2_CANDIDATE.md",
     "tests/release_claim_consistency_evidence.py",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
@@ -105,7 +105,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_provenance_evidence.py",
     "gategraph/context/context_lifecycle.py",
     "docs/CONTEXT_LIFECYCLE_MODEL.md",
-    "docs/RELEASE_v0.13.1_STABLE.md",
+    "docs/RELEASE_v0.13.2_CANDIDATE.md",
     "tests/context_lifecycle_evidence.py",
     "tests/context_replay_explain_boundary_evidence.py",
     "tests/context_freeze_coupling_evidence.py",
@@ -123,8 +123,8 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.13.1_STABLE.md",
-    "docs/RELEASE_v0.13.1_STABLE.md",
+    "docs/RELEASE_v0.13.2_CANDIDATE.md",
+    "docs/RELEASE_v0.13.2_CANDIDATE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -150,11 +150,11 @@ REQUIRED_RELEASE_FILES = {
     "registry/invariant_surface_registry.json",
     "tests/semantic_registry_lock_evidence.py",
     "tests/release_manifest_coverage_evidence.py",
-    "docs/RELEASE_v0.13.1_STABLE.md",
-    "docs/RELEASE_v0.13.1_STABLE.md",
+    "docs/RELEASE_v0.13.2_CANDIDATE.md",
+    "docs/RELEASE_v0.13.2_CANDIDATE.md",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.13.1_STABLE.md",
+    "docs/RELEASE_v0.13.2_CANDIDATE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",
@@ -170,6 +170,8 @@ REQUIRED_RELEASE_FILES = {
     "registry/evidence_provenance_registry.json",
     "registry/release_state_transition_registry.json",
     "tests/release_state_transition_evidence.py",
+    "docs/CANDIDATE_CI_GATE.md",
+    "tests/candidate_ci_gate_evidence.py",
     "tests/promotion_surface_symmetry_evidence.py",
     "tests/candidate_stable_surface_parity_evidence.py",
     "registry/governance_integrity_graph.json",
@@ -264,10 +266,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "recovery_replay_finality_hardening",
+        "kind": "candidate_release",
+        "scope": "candidate_ci_gate_hardening",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -306,9 +308,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Recovery Replay Finality Hardening",
+        "phase": "Candidate CI Gate Hardening",
         "release_claim_consistency_scope": True,
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
@@ -350,7 +352,7 @@ def main() -> int:
         "self_orchestration": False,
         "scope_freeze": True,
         "surface_contract_registry_scope": True,
-        "surface_contract_version": "0.13.1",
+        "surface_contract_version": "0.13.2",
         "semantic_boundary_evidence_scope": True,
         "release_manifest_ssot_scope": True,
         "claim_boundary": "surface contracts are descriptive/review surfaces only; they do not add runtime authority, policy learning, automatic governance mutation, semantic scoring, or enforcement behavior",
@@ -392,6 +394,7 @@ def main() -> int:
         "governance_mutation_visibility_scope": True,
         "replay_provenance_consistency_scope": True,
         "release_state_transition_scope": True,
+        "candidate_ci_gate_scope": True,
         "promotion_surface_symmetry_scope": True,
         "candidate_stable_surface_parity_scope": True,
         "release_state_runtime_authority": False,
