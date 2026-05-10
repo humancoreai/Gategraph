@@ -1,6 +1,6 @@
 {
   "auto_repair": false,
-  "base": "v0.12.5_STABLE",
+  "base": "v0.12.6_STABLE",
   "dynamic_loading": false,
   "evidence": [
     {
@@ -43,7 +43,7 @@
       ],
       "deterministic": true,
       "evidence_id": "evidence_provenance_registry_evidence",
-      "introduced_in": "v0.12.6",
+      "introduced_in": "v0.12.7",
       "path": "tests/evidence_provenance_registry_evidence.py"
     },
     {
@@ -54,7 +54,7 @@
       ],
       "deterministic": true,
       "evidence_id": "governance_lineage_snapshot_evidence",
-      "introduced_in": "v0.12.6",
+      "introduced_in": "v0.12.7",
       "path": "tests/governance_lineage_snapshot_evidence.py"
     },
     {
@@ -65,7 +65,7 @@
       ],
       "deterministic": true,
       "evidence_id": "dependency_visibility_evidence",
-      "introduced_in": "v0.12.6",
+      "introduced_in": "v0.12.7",
       "path": "tests/dependency_visibility_evidence.py"
     },
     {
@@ -75,7 +75,7 @@
       ],
       "deterministic": true,
       "evidence_id": "governance_mutation_visibility_evidence",
-      "introduced_in": "v0.12.6",
+      "introduced_in": "v0.12.7",
       "path": "tests/governance_mutation_visibility_evidence.py"
     },
     {
@@ -86,12 +86,47 @@
       ],
       "deterministic": true,
       "evidence_id": "replay_provenance_consistency_evidence",
-      "introduced_in": "v0.12.6",
+      "introduced_in": "v0.12.7",
       "path": "tests/replay_provenance_consistency_evidence.py"
+    },
+    {
+      "authority": "descriptive_only",
+      "depends_on": [
+        "registry/release_state_transition_registry.json",
+        "RELEASE_METADATA.json"
+      ],
+      "deterministic": true,
+      "evidence_id": "release_state_transition_evidence",
+      "introduced_in": "v0.12.7",
+      "path": "tests/release_state_transition_evidence.py"
+    },
+    {
+      "authority": "descriptive_only",
+      "depends_on": [
+        "registry/release_state_transition_registry.json",
+        "RELEASE_MANIFEST.json",
+        "docs/RELEASE_v0.12.7_CANDIDATE.md"
+      ],
+      "deterministic": true,
+      "evidence_id": "promotion_surface_symmetry_evidence",
+      "introduced_in": "v0.12.7",
+      "path": "tests/promotion_surface_symmetry_evidence.py"
+    },
+    {
+      "authority": "descriptive_only",
+      "depends_on": [
+        "RELEASE_METADATA.json",
+        "RELEASE_STATUS.md",
+        "RELEASE_NOTES.md"
+      ],
+      "deterministic": true,
+      "evidence_id": "candidate_stable_surface_parity_evidence",
+      "introduced_in": "v0.12.7",
+      "path": "tests/candidate_stable_surface_parity_evidence.py"
     }
   ],
   "policy_mutation": false,
-  "release": "v0.12.6_STABLE",
+  "release": "v0.12.7_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.12.6"
+  "schema_version": "0.12.7"
 }

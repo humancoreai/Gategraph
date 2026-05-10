@@ -5,6 +5,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
+    "candidate_stable_surface_parity_evidence.py",
+    "promotion_surface_symmetry_evidence.py",
+    "release_state_transition_evidence.py",
     "replay_provenance_consistency_evidence.py",
     "governance_mutation_visibility_evidence.py",
     "dependency_visibility_evidence.py",

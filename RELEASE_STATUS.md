@@ -1,13 +1,13 @@
 # Release Status
 
-Release: v0.12.6_STABLE
+Release: v0.12.7_CANDIDATE
 
-Base: v0.12.5_STABLE
+Base: v0.12.6_STABLE
 
-Status: stable
+Status: candidate
 
-Scope: Deterministic Evidence Lineage / Governance Provenance.
+Scope: Release State Transition / Promotion Surface Symmetry.
 
-No runtime, enforcement, governance-rule, agentic, distributed, or auto-mutation authority is introduced.
+No runtime, enforcement, governance-rule, agentic, distributed, auto-promotion or auto-repair authority is introduced.
 
-Compatibility phase label: Deterministic Registry / Schema Governance.
+Compatibility phase label: Deterministic Evidence Lineage / Governance Provenance.

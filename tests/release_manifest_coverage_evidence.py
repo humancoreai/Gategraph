@@ -13,12 +13,17 @@ REQUIRED_COVERAGE = {
     "registry/invariant_surface_registry.json",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.12.6_STABLE.md",
+    "docs/RELEASE_v0.12.7_CANDIDATE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",
     "tests/schema_drift_visibility_evidence.py",
     "tests/freeze_snapshot_determinism_evidence.py",
+    "tests/candidate_stable_surface_parity_evidence.py",
+    "tests/promotion_surface_symmetry_evidence.py",
+    "tests/release_state_transition_evidence.py",
+    "docs/RELEASE_STATE_TRANSITION.md",
+    "registry/release_state_transition_registry.json",
 }
 
 
@@ -33,8 +38,8 @@ def main() -> int:
     paths = {entry["path"] for entry in manifest.get("files", []) if isinstance(entry, dict) and isinstance(entry.get("path"), str)}
     missing = sorted(REQUIRED_COVERAGE - paths)
     checks.append(check("release_manifest_declares_registry_lock_surface", not missing, {"missing": missing}))
-    checks.append(check("manifest_release_matches_stable", manifest.get("release") == "v0.12.6_STABLE", {"release": manifest.get("release")}))
-    checks.append(check("manifest_status_stable", manifest.get("status") == "stable", {"status": manifest.get("status")}))
+    checks.append(check("manifest_release_matches_candidate", manifest.get("release") == "v0.12.7_CANDIDATE", {"release": manifest.get("release")}))
+    checks.append(check("manifest_status_candidate", manifest.get("status") == "candidate", {"status": manifest.get("status")}))
 
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})
