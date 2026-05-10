@@ -9,7 +9,9 @@ from dataclasses import asdict, is_dataclass
 from datetime import datetime, timezone
 from typing import Any
 
-SCHEMA_VERSION = "0.8.30"
+from src.version import current_schema_version
+
+SCHEMA_VERSION = current_schema_version()
 
 
 def utc_now() -> str:
@@ -26,11 +28,16 @@ def _copy_value(value: Any) -> Any:
     return value
 
 
-def build_monitoring_export(*, budget_snapshot: Any, incidents: list[Any], alerts: list[Any], aggregated_alerts: list[dict[str, Any]]) -> dict[str, Any]:
+def build_monitoring_export(*, budget_snapshot: Any, incidents: list[Any], alerts: list[Any], aggregated_alerts: list[dict[str, Any]], observability: dict[str, Any] | None = None) -> dict[str, Any]:
     budget_copy = _copy_value(budget_snapshot)
     incidents_copy = [_copy_value(incident) for incident in incidents]
     alerts_copy = [_copy_value(alert) for alert in alerts]
     aggregated_copy = [_copy_value(alert) for alert in aggregated_alerts]
+    observability_copy = _copy_value(observability or {
+        "stop_reason_distribution": {},
+        "guard_distribution": {},
+        "loop_detection_count": 0,
+    })
 
     return {
         "schema_version": SCHEMA_VERSION,
@@ -39,6 +46,7 @@ def build_monitoring_export(*, budget_snapshot: Any, incidents: list[Any], alert
         "incidents": incidents_copy,
         "alerts": alerts_copy,
         "aggregated_alerts": aggregated_copy,
+        "observability": observability_copy,
         "summary": {
             "incident_count": len(incidents_copy),
             "open_incidents": sum(1 for incident in incidents_copy if incident.get("state") == "open"),
