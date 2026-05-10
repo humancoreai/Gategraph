@@ -4,8 +4,8 @@
 
 GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
-Current stable baseline: **v0.11.7_STABLE**  
-Base stable: **v0.11.4_STABLE**  
+Current candidate: **v0.11.8_CANDIDATE**  
+Base stable: **v0.11.7_STABLE**  
 License: Apache 2.0
 
 ---
@@ -66,6 +66,10 @@ CLI / HTTP Server
 ```
 
 **CLI and HTTP server both use the same `service_adapter` path.** There is no separate code path for server-mode evaluation. Governance logic is never duplicated or bypassed.
+
+**Canonical runtime namespace:** the executable CLI/server entry points use `src.cli:main` and `src.server:main` as defined in `pyproject.toml`. The `src/` package is the canonical runtime/governance surface. The `gategraph/context/` package is a bounded context-governance extension layer used for context classification, provenance, and instruction/data separation; it must not become an alternative governance or execution path.
+
+**Security mapping:** the OWASP Agentic AI mapping is documented in `OWASP_AGENTIC_AI_MAPPING.md` and is part of the release surface, not an autonomous risk-scoring system.
 
 ---
 
@@ -233,7 +237,7 @@ Releases are built deterministically via `tools/build_release.py`. Every release
 - `.db` files excluded from release artifacts by default
 
 ```bash
-python tools/verify_release.py dist/GateGraph_v0.11.7_STABLE.zip
+python tools/verify_release.py dist/GateGraph_v0.11.8_CANDIDATE.zip
 ```
 
 ---
