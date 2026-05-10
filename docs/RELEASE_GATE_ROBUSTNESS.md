@@ -1,8 +1,8 @@
 # Practical Single-Node Scenario Run
 
-Release: v0.14.0_STABLE.
+Release: v0.14.0_CANDIDATE.
 Base: v0.13.6_STABLE.
-Status: stable.
+Status: candidate.
 
 ## Scope
 

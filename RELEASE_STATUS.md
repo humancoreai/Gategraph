@@ -1,8 +1,8 @@
 # Release Status
 
-Current release: v0.14.0_STABLE  
+Current release: v0.14.0_CANDIDATE  
 Base stable: v0.13.6_STABLE  
-Status: stable  
+Status: candidate  
 Phase: Practical Single-Node Scenario Run
 
 ## Gate
