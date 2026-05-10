@@ -1,6 +1,6 @@
 <!-- v0.9.1_STABLE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
 
-# Architecture – v0.12.0_STABLE
+# Architecture – v0.11.0_CANDIDATE
 
 ## System role
 
@@ -47,24 +47,4 @@ Makes recorded state inspectable and exportable. It must remain observational an
 
 ## Release layer
 
-v0.11.4_STABLE adds a release-integrity layer around packaging and review artifacts. This layer verifies structure, hashes and documentation consistency; it does not participate in runtime governance.
-
-
-## v0.12.0_STABLE Security Mapping Boundary
-
-v0.12.0_STABLE adds security mapping and token exposure hardening only. It does not participate in runtime governance and does not expand authority.
-
-
-Current release surface: `v0.12.1_STABLE`.
-
-
-Current release surface: v0.12.7_STABLE.
-
-Current release surface: v0.12.8_STABLE
-
-Release surface: v0.12.9_STABLE.
-
-
-Release surface: v0.13.0_STABLE.
-Base stable: v0.12.9_STABLE.
-Phase: Release Consistency Hardening.
+v0.11.0_CANDIDATE adds a release-integrity layer around packaging and review artifacts. This layer verifies structure, hashes and documentation consistency; it does not participate in runtime governance.

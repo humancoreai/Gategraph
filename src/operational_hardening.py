@@ -16,7 +16,7 @@ from typing import Any
 from src import budget_ledger
 
 SCHEMA_VERSION = "0.8.27"
-INCIDENT_STATES = ("open", "acknowledged", "resolved", "archived")
+INCIDENT_STATES = ("open", "acknowledged", "resolved")
 INCIDENT_SEVERITIES = ("low", "medium", "high", "critical")
 
 
@@ -132,7 +132,7 @@ def ensure_operational_schema(conn: sqlite3.Connection) -> None:
             severity TEXT NOT NULL CHECK (severity IN ('low','medium','high','critical')),
             trigger_type TEXT NOT NULL,
             trigger_ref TEXT NOT NULL,
-            state TEXT NOT NULL CHECK (state IN ('open','acknowledged','resolved','archived')),
+            state TEXT NOT NULL CHECK (state IN ('open','acknowledged','resolved')),
             reason_code TEXT NOT NULL,
             details_json TEXT NOT NULL,
             created_at TEXT NOT NULL,

@@ -4,7 +4,7 @@
 
 Candidate release.
 
-This stable release integrates `GOVERNANCE.md` as the repository-level SSOT for GateGraph governance principles.
+This candidate integrates `GOVERNANCE.md` as the repository-level SSOT for GateGraph governance principles.
 
 ## Scope
 
@@ -20,7 +20,7 @@ No runtime, enforcement, budget, token, HTTP, secret, audit, explain, pattern-en
 
 ## Validation baseline
 
-This stable release inherits the `v0.8.27.1_STABLE` validation baseline:
+This candidate inherits the `v0.8.27.1_STABLE` validation baseline:
 
 ```text
 Full Windows Evidence CI: Passed: True

@@ -30,7 +30,7 @@ class RequestValidationError(ValueError):
 
 
 class GateGraphHandler(BaseHTTPRequestHandler):
-    server_version = "GateGraphHTTP/0.13.0"
+    server_version = "GateGraphHTTP/0.8.36"
 
     def setup(self) -> None:
         super().setup()

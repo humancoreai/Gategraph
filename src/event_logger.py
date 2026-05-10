@@ -10,8 +10,6 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
-from src.security.token_redaction import redact_sensitive_value
-
 # INV: audit schema version is compatibility-facing and may lag release version intentionally.
 SCHEMA_VERSION = "0.8.3"
 ACTOR_LAYER = "governance"
@@ -58,7 +56,7 @@ def log_event(
         (
             event_id, SCHEMA_VERSION, idempotency_key, correlation_id, causation_id,
             event_type, now, task_id, ACTOR_LAYER, actor_component, ACTOR_VERSION,
-            json.dumps(redact_sensitive_value(input_data)), json.dumps(redact_sensitive_value(evaluation)), json.dumps(redact_sensitive_value(decision)),
+            json.dumps(input_data), json.dumps(evaluation), json.dumps(decision),
         ),
     )
     return EventRecord(event_id, idempotency_key, False)

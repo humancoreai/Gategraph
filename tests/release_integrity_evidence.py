@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-VERSION = "v0.13.0_STABLE"
+VERSION = "v0.11.0_CANDIDATE"
 
 
 def load_module(name: str, path: Path):
@@ -84,31 +84,6 @@ def main() -> None:
     assert "docs/RUNTIME_CHAIN_ASSERTIONS.md" in paths
     assert "docs/GOVERNANCE_FREEZE_SNAPSHOT_v0_9_3.md" in paths
     assert "tests/governance_freeze_evidence.py" in paths
-    assert "SECURITY_MODEL.md" in paths
-    assert "OWASP_AGENTIC_AI_MAPPING.md" in paths
-    assert "KNOWN_LIMITATIONS.md" in paths
-    assert "src/security/token_redaction.py" in paths
-    assert "tests/token_exposure_evidence.py" in paths
-    assert "docs/GOVERNANCE_SURFACE_FREEZE.md" in paths
-    assert "contracts/governance_decision.schema.json" in paths
-    assert "contracts/normalized_reason.schema.json" in paths
-    assert "contracts/monitoring_export.schema.json" in paths
-    assert "contracts/capability_token_claims.schema.json" in paths
-    assert "tests/surface_contract_registry_evidence.py" in paths
-    assert "tests/semantic_boundary_evidence.py" in paths
-    assert "src/semantic_registry_lock.py" in paths
-    assert "registry/semantic_registry_lock.json" in paths
-    assert "registry/semantic_object_types.json" in paths
-    assert "registry/invariant_surface_registry.json" in paths
-    assert "tests/semantic_registry_lock_evidence.py" in paths
-    assert "tests/release_manifest_coverage_evidence.py" in paths
-    assert "docs/RELEASE_v0.13.0_STABLE.md" in paths
-    assert "src/recovery_foundation.py" in paths
-    assert "tests/recovery_foundation_evidence.py" in paths
-    assert "tests/replay_recovery_consistency_evidence.py" in paths
-    assert "tests/surface_recovery_consistency_evidence.py" in paths
-    assert "docs/RECOVERY_FOUNDATION.md" in paths
-    assert "docs/RELEASE_v0.13.0_STABLE.md" in paths
 
     with zipfile.ZipFile(zip_path, "r") as zf:
         rel_names = [name.removeprefix(f"GateGraph_{VERSION}/") for name in zf.namelist()]

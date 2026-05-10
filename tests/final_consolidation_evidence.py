@@ -30,17 +30,6 @@ REQUIRED_EVIDENCE = [
     "api_boundary_split_evidence",
     "freeze_runtime_invariant_evidence",
     "runtime_chain_order_evidence",
-    "startup_surface_evidence",
-    "config_consistency_evidence",
-    "mode_boundary_surface_evidence",
-    "token_exposure_evidence",
-    "multi_agent_delegation_boundary_evidence",
-    "context_poisoning_evidence",
-    "instruction_data_separation_evidence",
-    "context_provenance_evidence",
-    "context_lifecycle_evidence",
-    "context_replay_explain_boundary_evidence",
-    "context_freeze_coupling_evidence",
 ]
 
 FORBIDDEN_RELEASE_FIELDS = [
@@ -57,9 +46,9 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
-    assert "v0.13.0_STABLE" in version
-    assert "v0.12.9_STABLE" in version
-    assert "Governance Integrity Graph" in status
+    assert "v0.11.0_CANDIDATE" in version
+    assert "v0.10.3_STABLE" in version
+    assert "Deployment / Packaging Baseline" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
     missing_evidence = [name for name in REQUIRED_EVIDENCE if name not in manifest]
@@ -74,5 +63,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-# Current release surface: v0.13.0_STABLE

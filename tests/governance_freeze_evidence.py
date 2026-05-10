@@ -18,7 +18,7 @@ REQUIRED_DOCS = [
     "RELEASE_REPRODUCIBILITY.md",
 ]
 
-REQUIRED_INVARIANTS = [f"INV-{i:03d}" for i in range(1, 19)]
+REQUIRED_INVARIANTS = [f"INV-{i:03d}" for i in range(1, 16)]
 REQUIRED_BOUNDARIES = ["BOUNDARY-001", "BOUNDARY-002", "BOUNDARY-003", "BOUNDARY-004"]
 FORBIDDEN_CLAIMS = [
     "autonomous planning added",

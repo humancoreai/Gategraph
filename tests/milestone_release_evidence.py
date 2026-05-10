@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.13.0_STABLE"
-BASE = "v0.12.9_STABLE"
+VERSION = "v0.11.0_CANDIDATE"
+BASE = "v0.10.3_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -66,25 +66,17 @@ def load_verify_module():
     return module
 
 
-def load_build_module():
-    spec = importlib.util.spec_from_file_location("build_release", ROOT / "tools" / "build_release.py")
-    assert spec and spec.loader, "could not load build_release.py"
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-
-
 def main() -> None:
     missing = [name for name in REQUIRED_ROOT_FILES if not (ROOT / name).exists()]
     assert not missing, f"missing required milestone files: {missing}"
 
     version = read("VERSION.md")
     status = read("RELEASE_STATUS.md")
-    assert VERSION in version, "VERSION.md missing release identifier"
-    assert BASE in version, "VERSION.md missing base identifier"
-    assert VERSION in status, "RELEASE_STATUS.md missing release identifier"
-    assert BASE in status, "RELEASE_STATUS.md missing base identifier"
-    assert "Governance Integrity Graph" in status, "RELEASE_STATUS.md missing phase label"
+    assert VERSION in version
+    assert BASE in version
+    assert VERSION in status
+    assert BASE in status
+    assert "Deployment / Packaging Baseline" in status
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -130,8 +122,6 @@ def main() -> None:
     assert "tests/multi_agent_architecture_evidence.py" in paths
     assert "docs/MULTI_AGENT_SSOT.md" in paths
     assert "docs/MULTI_MODE_SSOT.md" in paths
-    assert "docs/MODE_BOUNDARY_SURFACE.md" in paths
-    assert "tests/mode_boundary_surface_evidence.py" in paths
     assert "docs/DELEGATION_BOUNDARY.md" in paths
     assert "docs/MULTI_AGENT_BUDGET_AUTHORITY.md" in paths
     assert "docs/MULTI_AGENT_REPLAY_AUDIT.md" in paths
@@ -141,11 +131,6 @@ def main() -> None:
     assert "src/runtime_path_assertions.py" in paths
     assert "src/runtime_chain_assertions.py" in paths
     assert "TRUST_MODEL.md" in paths
-    assert "CONTEXT_GOVERNANCE_MODEL.md" in paths
-    assert "gategraph/context/context_classifier.py" in paths
-    assert "gategraph/context/context_boundary.py" in paths
-    assert "gategraph/context/context_lifecycle.py" in paths
-    assert "docs/CONTEXT_LIFECYCLE_MODEL.md" in paths
     forbidden_manifest = [
         p for p in paths
         if Path(p).suffix.lower() in FORBIDDEN_RELEASE_SUFFIXES
@@ -160,34 +145,19 @@ def main() -> None:
     assert "multi_agent_architecture_evidence" in ci_manifest
     assert "runtime_boundary_hardening_evidence" in ci_manifest
     assert "runtime_chain_order_evidence" in ci_manifest
-    assert "mode_boundary_surface_evidence" in ci_manifest
-    assert "context_poisoning_evidence" in ci_manifest
-    assert "instruction_data_separation_evidence" in ci_manifest
-    assert "context_provenance_evidence" in ci_manifest
-    assert "context_lifecycle_evidence" in ci_manifest
-    assert "context_replay_explain_boundary_evidence" in ci_manifest
-    assert "context_freeze_coupling_evidence" in ci_manifest
 
     zip_path = ROOT / "dist" / f"GateGraph_{VERSION}.zip"
     if zip_path.exists():
-        # WHY: Evidence CI may start from a downloaded candidate with a stale or user-modified
-        # dist ZIP. Rebuild before verifying so milestone evidence checks the current tree,
-        # while release_integrity_evidence remains the canonical packaging gate.
-        builder = load_build_module()
-        build_rc = builder.main()
-        assert build_rc == 0, "build_release did not complete before milestone zip verification"
         verifier = load_verify_module()
         result = verifier.verify(zip_path)
         assert result["passed"], result["errors"]
         with zipfile.ZipFile(zip_path, "r") as zf:
             names = zf.namelist()
         assert names == sorted(names), "zip entries are not sorted"
-        assert all(name.startswith(f"GateGraph_{VERSION}/") for name in names), "zip entry outside release root prefix"
+        assert all(name.startswith(f"GateGraph_{VERSION}/") for name in names)
 
     print("PASS milestone_release_evidence")
 
 
 if __name__ == "__main__":
     main()
-
-# Current release surface: v0.13.0_STABLE

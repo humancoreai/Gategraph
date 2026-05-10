@@ -10,7 +10,6 @@ from datetime import datetime, timezone
 from typing import Any
 
 from src.version import current_schema_version
-from src.security.token_redaction import redact_sensitive_value
 
 SCHEMA_VERSION = current_schema_version()
 
@@ -40,7 +39,7 @@ def build_monitoring_export(*, budget_snapshot: Any, incidents: list[Any], alert
         "loop_detection_count": 0,
     })
 
-    return redact_sensitive_value({
+    return {
         "schema_version": SCHEMA_VERSION,
         "generated_at": utc_now(),
         "budget_snapshot": budget_copy,
@@ -55,4 +54,4 @@ def build_monitoring_export(*, budget_snapshot: Any, incidents: list[Any], alert
             "critical_alerts": sum(1 for alert in alerts_copy if alert.get("severity") == "critical"),
             "aggregated_alert_count": len(aggregated_copy),
         },
-    })
+    }
