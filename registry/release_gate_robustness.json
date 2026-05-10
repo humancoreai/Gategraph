@@ -8,9 +8,9 @@
     "surface_sync_required",
     "stable_without_candidate_ci_forbidden"
   ],
-  "release": "v0.13.5_CANDIDATE",
+  "release": "v0.13.5_STABLE",
   "runtime_authority": false,
   "schema_version": "0.13.5",
-  "status": "candidate",
+  "status": "stable",
   "mode": "descriptive_release_gate_hardening_only"
 }

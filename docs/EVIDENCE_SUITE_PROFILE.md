@@ -1,7 +1,7 @@
 # Evidence Suite Profile Management
 
 Status: descriptive release evidence.
-Release: v0.13.5_CANDIDATE.
+Release: v0.13.5_STABLE.
 Base: v0.13.4_STABLE.
 
 ## Purpose

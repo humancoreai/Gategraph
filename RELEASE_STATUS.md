@@ -1,17 +1,17 @@
 # Release Status
 
-Current candidate: v0.13.5_CANDIDATE  
+Current stable: v0.13.5_STABLE  
 Base: v0.13.4_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Release Gate Robustness
 
 ## Scope
 
 Release gate robustness and release/evidence grouping. No runtime, enforcement or governance decision logic changes.
 
-## Candidate gate
+## Stable gate
 
-Windows Evidence CI has passed before candidate promotion.
+Windows Evidence CI has passed before stable promotion.
 
 ## Carried forward phase surfaces
 

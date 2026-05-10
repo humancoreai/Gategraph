@@ -1,13 +1,13 @@
-# GateGraph v0.13.5_CANDIDATE Release Notes
+# GateGraph v0.13.5_STABLE Release Notes
 
-Status: candidate.
+Status: stable.
 Base: v0.13.4_STABLE.
 
 ## Scope
 
 Release Gate Robustness.
 
-This candidate release adds descriptive release-gate robustness checks around Candidate/Stable status, surface synchronization, and CI-gated promotion rules. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic repair/promotion authority.
+This stable release preserves descriptive release-gate robustness checks around Candidate/Stable status, surface synchronization, and CI-gated promotion rules. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic repair/promotion authority.
 
 ## Added
 

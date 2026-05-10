@@ -1,8 +1,8 @@
 # Release Gate Robustness
 
-Release: v0.13.5_CANDIDATE.
+Release: v0.13.5_STABLE.
 Base: v0.13.4_STABLE.
-Status: candidate.
+Status: stable.
 
 ## Scope
 
