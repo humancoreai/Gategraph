@@ -1,13 +1,13 @@
 # Release Status
 
-Current release: v0.13.0_CANDIDATE
+Current release: v0.13.0_STABLE
 
 Base stable: v0.12.9_STABLE
 
-Status: candidate
+Status: stable
 
 Phase: Release Consistency Hardening.
 
-Windows CI required before Stable promotion.
+Windows CI passed before Stable promotion.
 
 Governance Integrity Graph: carried forward as descriptive release-surface evidence.

@@ -21,7 +21,7 @@
       "to": "stable_without_surface_sync"
     }
   ],
-  "release": "v0.13.0_CANDIDATE",
+  "release": "v0.13.0_STABLE",
   "runtime_authority": false,
   "schema_version": "0.13.0",
   "surface_parity": {
