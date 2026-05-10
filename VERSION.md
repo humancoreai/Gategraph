@@ -1,11 +1,11 @@
 # GateGraph Version
 
-Current stable: v0.11.6_STABLE
+Current candidate: v0.11.7_CANDIDATE
 
-Base: v0.11.5_STABLE
+Base: v0.11.6_STABLE
 
-Package version: 0.11.6
+Package version: 0.11.7
 
-Phase: Multi-Agent Delegation Boundary Hardening
+Phase: Context / Memory Governance Baseline
 
-Invariant: v0.11.6_STABLE introduces no runtime capability, no governance behavior, no enforcement rule change, no adapter authority, no budget/secret/tool authority expansion, no agentic behavior, no distributed governance, no cloud deployment layer, no Docker/Kubernetes scope, and no UI. It adds detection-only multi-agent delegation boundary evidence and documentation.
+Invariant: v0.11.7_CANDIDATE introduces no memory system, vector database, semantic scoring, autonomous context filtering, governance mutation, runtime capability, enforcement rule change, adapter authority, budget/secret/tool authority expansion, agentic behavior, distributed governance, cloud deployment layer, Docker/Kubernetes scope, or UI. It adds deterministic context classification, required provenance, instruction/data separation, replay/explain non-executable boundaries, suspicious-context visibility markers, documentation and evidence only.

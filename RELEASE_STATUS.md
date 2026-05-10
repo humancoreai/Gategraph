@@ -1,9 +1,9 @@
 # Release Status
 
-Release: v0.11.6_STABLE
-Status: stable
-Base: v0.11.5_STABLE
+Release: v0.11.7_CANDIDATE
+Status: candidate
+Base: v0.11.6_STABLE
 
-Gate: Promoted after Windows Evidence CI reported Passed: True on 2026-05-08.
+Gate: Candidate prepared for Windows Evidence CI.
 
-Phase: Multi-Agent Delegation Boundary Hardening
+Phase: Context / Memory Governance Baseline
