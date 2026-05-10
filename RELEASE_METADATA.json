@@ -20,7 +20,7 @@
   "new_runtime_model": false,
   "packaging_scope": true,
   "phase": "Multi-Agent Delegation Boundary Hardening",
-  "release": "v0.11.6_CANDIDATE",
+  "release": "v0.11.6_STABLE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "runtime_surface_scope": true,
@@ -29,7 +29,7 @@
   "self_orchestration": false,
   "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "candidate",
+  "status": "stable",
   "surface_freeze_coupling_scope": true,
   "token_exposure_hardening_scope": true,
   "transitive_authority_blocked": true
