@@ -1,4 +1,4 @@
-# Architecture – GateGraph v0.11.3_CANDIDATE
+# Architecture – GateGraph v0.11.3_STABLE
 
 # GateGraph Architecture
 
