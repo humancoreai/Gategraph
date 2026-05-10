@@ -259,3 +259,8 @@ This release aligns README, SECURITY notes, release status, and current limitati
 ## v0.8.19 Pattern priority scoring
 
 Pattern proposals now include advisory priority and score metadata for human triage. The Pattern Engine remains strictly proposal-only and cannot change rules, policies, budgets, tokens, secrets, or actions.
+
+
+## Controlled Apply v0.8.22
+
+GateGraph now includes a strictly limited Controlled Apply prototype. It is disabled by process unless a proposal has first passed manual review and then receives two distinct controlled-apply approvals. Initial scope is rule hardening only; unsupported or loosening changes fail closed. See `docs/CONTROLLED_APPLY.md`.
