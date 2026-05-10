@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 
-SCHEMA_VERSION = "0.8.18"
+SCHEMA_VERSION = "0.8.19"
 DEFAULT_MIN_EVENTS = 3
 DEFAULT_CONFIDENCE_THRESHOLD = 0.75
 
@@ -29,6 +29,9 @@ class PatternProposal:
     supporting_events: List[str]
     confidence: float
     confidence_basis: str
+    priority: str
+    score: float
+    score_basis: str
     status: str = "pending_review"
 
 
@@ -164,6 +167,7 @@ def _create_proposals_from_observations(
         confidence = len(items) / total_relevant
         if confidence < confidence_threshold:
             continue
+        score, priority, score_basis = _score_pattern(items, confidence=confidence)
         proposal = _create_pattern_proposal(
             conn,
             proposal_type=proposal_type,
@@ -173,6 +177,9 @@ def _create_proposals_from_observations(
             observations=items,
             confidence=confidence,
             total_relevant=total_relevant,
+            priority=priority,
+            score=score,
+            score_basis=score_basis,
         )
         proposals.append(proposal)
 
@@ -236,6 +243,38 @@ def _severity_for(stage: str, bucket: str) -> str:
     return "medium"
 
 
+
+def _score_pattern(observations: List[PatternObservation], *, confidence: float) -> Tuple[float, str, str]:
+    """
+    Converts repeated audit evidence into reviewer priority and score.
+
+    INV: scoring changes proposal triage only; it never changes runtime decisions.
+    WHY: humans need ordering without granting the Pattern Engine authority.
+    """
+    severity_rank = {"critical": 1.0, "high": 0.75, "medium": 0.5, "low": 0.25}
+    max_severity = max((severity_rank.get(obs.severity, 0.5) for obs in observations), default=0.5)
+    support_factor = min(len(observations) / 10.0, 1.0)
+    bounded_confidence = max(0.0, min(confidence, 1.0))
+    raw_score = (0.50 * max_severity) + (0.30 * bounded_confidence) + (0.20 * support_factor)
+    score = round(raw_score * 100.0, 2)
+    priority = _priority_for_score(score)
+    severities = sorted({obs.severity for obs in observations})
+    basis = (
+        f"score={score}; priority={priority}; severity={','.join(severities)}; "
+        f"support={len(observations)}; confidence={round(bounded_confidence, 4)}"
+    )
+    return score, priority, basis
+
+
+def _priority_for_score(score: float) -> str:
+    if score >= 85.0:
+        return "P0"
+    if score >= 70.0:
+        return "P1"
+    if score >= 50.0:
+        return "P2"
+    return "P3"
+
 def _create_pattern_proposal(
     conn: sqlite3.Connection,
     *,
@@ -246,6 +285,9 @@ def _create_pattern_proposal(
     observations: List[PatternObservation],
     confidence: float,
     total_relevant: int,
+    priority: str,
+    score: float,
+    score_basis: str,
 ) -> PatternProposal:
     proposal_id = f"RUP-{uuid.uuid4().hex[:12].upper()}"
     now = datetime.now(timezone.utc).isoformat()
@@ -266,6 +308,9 @@ def _create_pattern_proposal(
         supporting_events=event_ids,
         confidence=round(confidence, 4),
         confidence_basis=f"{len(event_ids)}/{total_relevant} matching audit observations; stage={stage}; bucket={bucket}",
+        priority=priority,
+        score=score,
+        score_basis=score_basis,
     )
 
     _insert_proposal(conn, proposal, now)
@@ -292,8 +337,8 @@ def _insert_proposal(conn: sqlite3.Connection, proposal: PatternProposal, create
             INSERT INTO proposals (
                 proposal_id, schema_version, proposal_type, target_rule_id,
                 reason, proposed_change, supporting_events, confidence,
-                confidence_basis, status, created_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                confidence_basis, priority, score, score_basis, status, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 proposal.proposal_id,
@@ -305,6 +350,9 @@ def _insert_proposal(conn: sqlite3.Connection, proposal: PatternProposal, create
                 json.dumps(proposal.supporting_events),
                 proposal.confidence,
                 proposal.confidence_basis,
+                proposal.priority,
+                proposal.score,
+                proposal.score_basis,
                 proposal.status,
                 created_at,
             ),
