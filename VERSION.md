@@ -1,11 +1,11 @@
 # GateGraph Version
 
-Current stable: v0.11.7_STABLE
+Current candidate: v0.11.8_CANDIDATE
 
-Base: v0.11.6_STABLE
+Base: v0.11.7_STABLE
 
-Package version: 0.11.7
+Package version: 0.11.8
 
-Phase: Context / Memory Governance Baseline
+Phase: Context Lifecycle / Freeze Coupling Baseline
 
-Invariant: v0.11.7_STABLE introduces no memory system, vector database, semantic scoring, autonomous context filtering, governance mutation, runtime capability, enforcement rule change, adapter authority, budget/secret/tool authority expansion, agentic behavior, distributed governance, cloud deployment layer, Docker/Kubernetes scope, or UI. It adds deterministic context classification, required provenance, instruction/data separation, replay/explain non-executable boundaries, suspicious-context visibility markers, documentation and evidence only.
+Invariant: v0.11.8_CANDIDATE introduces no memory system, vector database, semantic scoring, autonomous context filtering, governance mutation, runtime capability, enforcement rule change, adapter authority, budget/secret/tool authority expansion, agentic behavior, distributed governance, cloud deployment layer, Docker/Kubernetes scope, or UI. It adds descriptive context lifecycle coupling, immutable provenance checks, replay/explain rehydration blocking, documentation and evidence only.

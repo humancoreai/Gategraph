@@ -38,6 +38,9 @@ REQUIRED_EVIDENCE = [
     "context_poisoning_evidence",
     "instruction_data_separation_evidence",
     "context_provenance_evidence",
+    "context_lifecycle_evidence",
+    "context_replay_explain_boundary_evidence",
+    "context_freeze_coupling_evidence",
 ]
 
 FORBIDDEN_RELEASE_FIELDS = [
@@ -54,9 +57,9 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
+    assert "v0.11.8_CANDIDATE" in version
     assert "v0.11.7_STABLE" in version
-    assert "v0.11.6_STABLE" in version
-    assert "Context / Memory Governance Baseline" in status
+    assert "Context Lifecycle / Freeze Coupling Baseline" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
     missing_evidence = [name for name in REQUIRED_EVIDENCE if name not in manifest]

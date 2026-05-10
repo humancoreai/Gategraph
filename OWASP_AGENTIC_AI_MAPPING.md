@@ -1,4 +1,4 @@
-# OWASP Agentic AI Risk Mapping – v0.11.7_STABLE
+# OWASP Agentic AI Risk Mapping – v0.11.8_CANDIDATE
 
 This mapping is an internal review aid. It is not a certification claim and does not assert complete coverage of any external standard.
 
@@ -14,7 +14,7 @@ This mapping is an internal review aid. It is not a certification claim and does
 | Context Poisoning | open | Some untrusted input treatment exists. | `tests/agent_scenarios.py` | No complete provenance, quarantine, or memory governance layer yet. |
 | Runtime Escalation | partial | Runtime surface, API boundary, startup/shutdown, and freeze coupling evidence constrain known surfaces. | `tests/runtime_boundary_hardening_evidence.py`, `tests/api_boundary_split_evidence.py`, `tests/runtime_surface_consistency_evidence.py` | No kernel/process/container isolation guarantee. |
 | Human Override Abuse | partial | Controlled apply and review workflows constrain rule hardening and review lifecycle. | `tests/controlled_apply_evidence.py`, `tests/review_workflow_evidence.py`, `tests/human_review_queue_evidence.py` | Emergency override and organization-level access control remain host/process concerns. |
-| Sensitive Observability Leakage | partial | v0.11.7 centralizes token/auth redaction and tests audit/explain/monitoring boundaries. | `tests/capability_token_redaction_evidence.py`, `tests/token_exposure_evidence.py` | Requires ongoing review whenever new export surfaces are added. |
+| Sensitive Observability Leakage | partial | v0.11.8 centralizes token/auth redaction and tests audit/explain/monitoring boundaries. | `tests/capability_token_redaction_evidence.py`, `tests/token_exposure_evidence.py` | Requires ongoing review whenever new export surfaces are added. |
 
 ## Status definitions
 
