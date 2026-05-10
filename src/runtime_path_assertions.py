@@ -10,6 +10,8 @@ import os
 from dataclasses import dataclass
 from typing import Any, Mapping
 
+from src.api_boundary import assert_component_boundary
+
 TRUSTED_ENTRY_KIND = "trusted_entry_context"
 _ALLOWED_COMPONENTS = {"service_adapter", "test_harness"}
 _TEST_COMPAT_ENV = "GATEGRAPH_ALLOW_TEST_DIRECT_GOVERNANCE"
@@ -25,9 +27,11 @@ class TrustedEntryContext:
     direct_governance_call: bool = False
 
     def as_audit_dict(self) -> dict[str, Any]:
+        from src.api_boundary import classify_component
         return {
             "kind": self.kind,
             "source_component": self.source_component,
+            "boundary_class": classify_component(self.source_component).boundary_class,
             "public_entry": self.public_entry,
             "boundary_validated": self.boundary_validated,
             "runtime_path": self.runtime_path,
@@ -84,12 +88,15 @@ def assert_trusted_entry_context(context: TrustedEntryContext | Mapping[str, Any
         raise PermissionError("trusted_entry_context must be a TrustedEntryContext")
     if context.kind != TRUSTED_ENTRY_KIND:
         raise PermissionError("invalid trusted_entry_context.kind")
+    boundary = assert_component_boundary(
+        context.source_component,
+        public_entry=context.public_entry,
+        direct_governance_call=context.direct_governance_call,
+    )
     if context.source_component not in _ALLOWED_COMPONENTS:
         raise PermissionError("untrusted source_component for governance entry")
     if not context.boundary_validated:
         raise PermissionError("caller boundary must be validated before governance entry")
-    if context.public_entry and context.source_component != "service_adapter":
-        raise PermissionError("public governance entry must pass through service_adapter")
     if context.direct_governance_call and not _test_compat_enabled():
         raise PermissionError("direct governance invocation is not a production entry path")
     return context
