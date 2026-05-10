@@ -32,6 +32,6 @@ Surface contracts may be used by evidence tests and reviewers to detect drift. T
 
 Candidate promotion requires surface contract evidence, semantic boundary evidence, version consistency evidence, recovery/replay surface evidence, release process guard evidence and full Evidence CI to pass.
 
-Current release surface: v0.12.6_CANDIDATE
+Current release surface: v0.12.6_STABLE
 
 Semantic/registry surface evidence: semantic/registry surface evidence.

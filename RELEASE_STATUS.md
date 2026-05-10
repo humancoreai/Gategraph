@@ -1,10 +1,10 @@
 # Release Status
 
-Release: v0.12.6_CANDIDATE
+Release: v0.12.6_STABLE
 
 Base: v0.12.5_STABLE
 
-Status: candidate
+Status: stable
 
 Scope: Deterministic Evidence Lineage / Governance Provenance.
 
