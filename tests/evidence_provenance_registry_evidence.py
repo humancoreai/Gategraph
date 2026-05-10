@@ -15,7 +15,7 @@ def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
 def main() -> int:
     data = json.loads(REGISTRY.read_text(encoding="utf-8"))
     checks = []
-    checks.append(check("provenance_release_stable", data.get("release") == "v0.13.3_CANDIDATE", {"release": data.get("release")}))
+    checks.append(check("provenance_release_stable", data.get("release") == "v0.13.3_STABLE", {"release": data.get("release")}))
     checks.append(check("provenance_base_stable", data.get("base") == "v0.13.2_STABLE", {"base": data.get("base")}))
     forbidden = ["dynamic_loading", "auto_repair", "runtime_authority", "policy_mutation"]
     checks.append(check("provenance_authority_flags_false", all(data.get(k) is False for k in forbidden), {k: data.get(k) for k in forbidden}))

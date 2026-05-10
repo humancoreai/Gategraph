@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.13.3_CANDIDATE
+## v0.13.3_STABLE
 
 Base: v0.13.2_STABLE  
 Status: stable  

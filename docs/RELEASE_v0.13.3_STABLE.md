@@ -1,12 +1,12 @@
-# GateGraph v0.13.3_CANDIDATE
+# GateGraph v0.13.3_STABLE
 
 Base: v0.13.2_STABLE  
-Status: candidate
+Status: stable
 Phase: Evidence Suite Profile Management
 
 ## Scope
 
-v0.13.3_CANDIDATE adds descriptive evidence-suite profile management. It is a release/test-surface hygiene release only and does not change governance or runtime behavior.
+v0.13.3_STABLE adds descriptive evidence-suite profile management. It is a release/test-surface hygiene release only and does not change governance or runtime behavior.
 
 ## Added evidence
 
