@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.12.3_STABLE"
-BASE = "v0.12.2_STABLE"
+VERSION = "v0.12.4_CANDIDATE"
+BASE = "v0.12.3_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -93,7 +93,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.12.3_STABLE.md",
+    "docs/RELEASE_v0.12.4_CANDIDATE.md",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
     "gategraph/context/__init__.py",
@@ -104,7 +104,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_provenance_evidence.py",
     "gategraph/context/context_lifecycle.py",
     "docs/CONTEXT_LIFECYCLE_MODEL.md",
-    "docs/RELEASE_v0.12.3_STABLE.md",
+    "docs/RELEASE_v0.12.4_CANDIDATE.md",
     "tests/context_lifecycle_evidence.py",
     "tests/context_replay_explain_boundary_evidence.py",
     "tests/context_freeze_coupling_evidence.py",
@@ -122,8 +122,8 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.12.3_STABLE.md",
-    "docs/RELEASE_v0.12.3_STABLE.md",
+    "docs/RELEASE_v0.12.4_CANDIDATE.md",
+    "docs/RELEASE_v0.12.4_CANDIDATE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -141,7 +141,14 @@ REQUIRED_RELEASE_FILES = {
     "tests/recovery_surface_registry_evidence.py",
     "tests/release_surface_sync_evidence.py",
     "tests/replay_reference_integrity_evidence.py",
-    "docs/RELEASE_v0.12.3_STABLE.md",
+    "src/semantic_registry_lock.py",
+    "registry/semantic_registry_lock.json",
+    "registry/semantic_object_types.json",
+    "registry/invariant_surface_registry.json",
+    "tests/semantic_registry_lock_evidence.py",
+    "tests/release_manifest_coverage_evidence.py",
+    "docs/RELEASE_v0.12.4_CANDIDATE.md",
+    "docs/RELEASE_v0.12.4_CANDIDATE.md",
 }
 
 
@@ -226,10 +233,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "semantic_registry_consolidation",
+        "kind": "candidate_release",
+        "scope": "semantic_registry_lock_coverage_freeze",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -268,9 +275,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Semantic & Registry Consolidation",
+        "phase": "Semantic Registry Lock & Coverage Freeze",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -311,7 +318,7 @@ def main() -> int:
         "self_orchestration": False,
         "scope_freeze": True,
         "surface_contract_registry_scope": True,
-        "surface_contract_version": "0.12.3",
+        "surface_contract_version": "0.12.4",
         "semantic_boundary_evidence_scope": True,
         "release_manifest_ssot_scope": True,
         "claim_boundary": "surface contracts are descriptive/review surfaces only; they do not add runtime authority, policy learning, automatic governance mutation, semantic scoring, or enforcement behavior",
@@ -326,6 +333,10 @@ def main() -> int:
         "recovery_surface_registry_scope": True,
         "release_surface_sync_scope": True,
         "replay_reference_integrity_scope": True,
+        "semantic_registry_lock_scope": True,
+        "release_manifest_coverage_scope": True,
+        "registry_dynamic_loading": False,
+        "registry_auto_repair": False,
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 

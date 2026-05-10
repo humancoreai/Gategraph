@@ -1,12 +1,12 @@
-# GateGraph v0.12.3_STABLE
+# GateGraph v0.12.4_CANDIDATE
 
-Base: v0.12.2_STABLE  
-Status: stable  
-Phase: Semantic & Registry Consolidation
+Base: v0.12.3_STABLE  
+Status: candidate  
+Phase: Semantic Registry Lock & Coverage Freeze
 
 ## Scope
 
-v0.12.3_STABLE consolidates descriptive semantic object rules, invariant/surface/evidence mapping, incident lifecycle semantics and evidence-surface coupling.
+v0.12.4_CANDIDATE consolidates descriptive semantic object rules, invariant/surface/evidence mapping, incident lifecycle semantics and evidence-surface coupling.
 
 ## Added evidence
 
