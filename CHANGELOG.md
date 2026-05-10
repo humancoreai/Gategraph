@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.12.2_CANDIDATE
+
+- Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
+
 ## v0.12.1_STABLE
 
 - Adds Governance Surface Freeze candidate scope.
