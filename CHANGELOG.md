@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.14.0_CANDIDATE
+## v0.14.0_STABLE
 
-Status: candidate.
+Status: stable.
 Base: v0.13.6_STABLE.
 Phase: Practical Single-Node Scenario Run.
 
