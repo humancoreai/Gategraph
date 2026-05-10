@@ -34,11 +34,11 @@
       "automatic_migration": false,
       "from": "v0.14.0_STABLE",
       "mode": "declarative_schema_governance_only",
-      "to": "v0.14.1_CANDIDATE"
+      "to": "v0.14.1_STABLE"
     }
   ],
   "registry_mode": "declarative_only",
-  "release": "v0.14.1_CANDIDATE",
+  "release": "v0.14.1_STABLE",
   "runtime_authority": false,
   "schema_version": "0.14.1",
   "schemas": [
