@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.2_STABLE"
-BASE = "v0.11.1_STABLE"
+VERSION = "v0.11.3_CANDIDATE"
+BASE = "v0.11.2_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -50,6 +50,8 @@ REQUIRED_RELEASE_FILES = {
     "tests/startup_surface_evidence.py",
     "docs/STARTUP_SURFACE.md",
     "docs/RUNTIME_SURFACE_FREEZE.md",
+    "docs/MODE_BOUNDARY_SURFACE.md",
+    "tests/mode_boundary_surface_evidence.py",
     "docs/OPERATIONAL_BOUNDARY_TIGHTENING.md",
     "tests/startup_shutdown_semantics_evidence.py",
     "tests/runtime_surface_consistency_evidence.py",
@@ -168,10 +170,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "kind": "stable_release",
-        "scope": "runtime_surface_tightening",
+        "kind": "candidate_release",
+        "scope": "mode_boundary_surface_control",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -210,9 +212,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Operational Consistency / Runtime Surface Tightening",
+        "phase": "Mode Boundary Surface Control",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -228,12 +230,13 @@ def main() -> int:
         "config_consistency_scope": True,
         "runtime_surface_scope": True,
         "surface_freeze_coupling_scope": True,
+        "mode_boundary_surface_scope": True,
         "startup_shutdown_semantics_scope": True,
         "release_process_guard": True,
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "startup/config/runtime-surface consistency only; no runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker, Kubernetes, or UI behavior changes",
+        "claim_boundary": "mode-boundary surface control only; modes remain descriptive labels and cannot create runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker, Kubernetes, UI, budget, secret, or tool-authority behavior changes",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
