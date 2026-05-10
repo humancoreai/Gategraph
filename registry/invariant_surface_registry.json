@@ -1,7 +1,27 @@
 {
-  "base": "v0.12.6_STABLE",
+  "base": "v0.12.7_STABLE",
   "invariant": "surface, evidence, semantic registries and registry locks are checked deterministically and do not mutate governance policy",
   "invariants": {
+    "INV-GRAPH-001": {
+      "auto_repair": false,
+      "description": "Governance integrity graph remains deterministic, declarative, non-authoritative and fully linked to validation evidence.",
+      "evidence": [
+        "governance_integrity_graph_evidence.py",
+        "orphan_governance_artifact_evidence.py",
+        "governance_impact_visibility_evidence.py",
+        "integrity_graph_freeze_evidence.py",
+        "deterministic_governance_diff_evidence.py"
+      ],
+      "runtime_authority": false,
+      "surfaces": [
+        "registry",
+        "graph",
+        "evidence",
+        "freeze",
+        "replay",
+        "release"
+      ]
+    },
     "INV-INC-001": {
       "description": "Incident lifecycle state transitions are forward-only and append-only.",
       "evidence": [
@@ -137,6 +157,6 @@
       ]
     }
   },
-  "release": "v0.12.7_STABLE",
-  "schema_version": "0.12.7"
+  "release": "v0.12.8_CANDIDATE",
+  "schema_version": "0.12.8"
 }

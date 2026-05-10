@@ -1,9 +1,9 @@
 # Version
 
-Release: v0.12.7_STABLE
+Release: v0.12.8_CANDIDATE
 
-Base: v0.12.6_STABLE
+Base: v0.12.7_STABLE
 
-Status: stable
+Status: candidate
 
-Phase: Release State Transition / Promotion Surface Symmetry.
+Phase: Governance Integrity Graph.
