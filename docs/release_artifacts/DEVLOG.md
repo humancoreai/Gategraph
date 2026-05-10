@@ -502,7 +502,7 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 - Added `OperationalAlert` signal model.
 - Added deterministic severity sorting for operational alerts.
 - Added `tests/operational_alerting_evidence.py`.
-- Added `docs/OPERATIONAL_ALERTING.md` and stable release document.
+- Added `docs/OPERATIONAL_ALERTING.md` and candidate release document.
 
 ### Boundary
 - Alerts are signals only.

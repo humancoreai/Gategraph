@@ -99,9 +99,9 @@ Current release surface: v0.12.7_STABLE
 
 Release surface: v0.12.8_STABLE.
 
-Release surface: v0.13.2_STABLE.
+Release surface: v0.12.9_STABLE.
 
 
-Release surface: v0.13.3_STABLE.
-Base stable: v0.13.2_STABLE.
-Phase: Recovery Replay Finality Hardening.
+Release surface: v0.13.0_CANDIDATE.
+Base stable: v0.12.9_STABLE.
+Phase: Release Consistency Hardening.

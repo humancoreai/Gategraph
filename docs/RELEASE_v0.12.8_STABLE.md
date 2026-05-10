@@ -8,7 +8,7 @@ Phase: Governance Integrity Graph
 
 ## Scope
 
-This stable release carries a deterministic, declarative Governance Integrity Graph for existing registries, evidence, freeze references, replay references and release surfaces. The release remains descriptive and non-authoritative.
+This candidate adds a deterministic, declarative Governance Integrity Graph for existing registries, evidence, freeze references, replay references and release surfaces. The release remains descriptive and non-authoritative.
 
 ## Evidence added
 

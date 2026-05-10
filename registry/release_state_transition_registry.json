@@ -10,7 +10,7 @@
   "authority": "descriptive_only",
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.13.2_STABLE",
+  "base": "v0.12.9_STABLE",
   "forbidden_transitions": [
     {
       "from": "stable",
@@ -19,15 +19,11 @@
     {
       "from": "stable",
       "to": "stable_without_surface_sync"
-    },
-    {
-      "from": "candidate",
-      "to": "stable_without_candidate_ci"
     }
   ],
-  "release": "v0.13.3_STABLE",
+  "release": "v0.13.0_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.13.3",
+  "schema_version": "0.13.0",
   "surface_parity": {
     "allowed_differences": [
       "release",

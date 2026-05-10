@@ -1,54 +1,62 @@
-# GateGraph v0.13.3_STABLE Release Notes
+# GateGraph v0.13.0_CANDIDATE Release Notes
 
-Status: stable.
-Base: v0.13.2_STABLE.
+Base: v0.12.9_STABLE
 
-## Scope
+Status: candidate
 
-Evidence Suite Profile Management.
-
-This candidate adds a descriptive registry and evidence check for CI evidence suite profile management. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic pruning authority.
+Scope: Release Consistency Hardening.
 
 ## Added
 
-- `docs/EVIDENCE_SUITE_PROFILE.md`
-- `registry/evidence_suite_profile.json`
-- `tests/evidence_suite_profile_evidence.py`
+- Release claim consistency evidence across metadata, notes, status, README, changelog and release document.
+- Explicit `release_claim_consistency_scope` marker in release metadata.
+- Candidate release document for v0.13.0.
 
-## Release / Semantic Registry surfaces
+## Boundary invariants
 
-The release keeps the existing Semantic Registry, Registry Lock, Release Surface, Recovery, Replay, Schema, Provenance, and Governance Lineage evidence surfaces visible in the release notes so `evidence_surface_consistency_evidence` can verify that the CI manifest, files, and release notes remain synchronized.
+- No runtime, enforcement or governance decision logic change.
+- No new adapter, autonomous repair, policy mutation or self-promotion path.
+- Evidence is descriptive and release-surface-only.
+- Stable promotion remains manually gated by Windows CI.
 
-Referenced evidence surfaces:
+## Carried forward active evidence surfaces
 
-- `candidate_stable_surface_parity_evidence`
-- `cross_registry_integrity_evidence`
-- `dependency_visibility_evidence`
-- `deterministic_export_contract_evidence`
-- `evidence_provenance_registry_evidence`
-- `evidence_surface_consistency_evidence`
-- `freeze_snapshot_determinism_evidence`
-- `governance_lineage_snapshot_evidence`
-- `governance_mutation_visibility_evidence`
-- `incident_lifecycle_consistency_evidence`
-- `invariant_surface_mapping_evidence`
-- `promotion_surface_symmetry_evidence`
-- `release_manifest_coverage_evidence`
-- `release_state_transition_evidence`
-- `replay_provenance_consistency_evidence`
-- `schema_drift_visibility_evidence`
-- `schema_governance_evidence`
-- `semantic_drift_detection_evidence`
-- `semantic_registry_evidence`
-- `semantic_registry_lock_evidence`
+- Release process guard.
+- Version and surface consistency checks.
+- Recovery and registry surface checks.
+- Semantic registry lock checks.
+- Governance integrity graph checks.
 
-## Invariants
+Compatibility note: v0.13.0_CANDIDATE is a release-hygiene candidate built from v0.12.9_STABLE.
 
-- Evidence profiles are descriptive only.
-- Core release/security gates remain mandatory.
-- No automatic test pruning or promotion authority is introduced.
-- Candidate-to-Stable promotion still requires Windows CI `Passed: True`.
+Carried forward: Semantic Registry lock and recovery surface checks remain active.
+
+## Explicit semantic boundary claims
+
 - No governance logic change.
 - No runtime/enforcement behavior change.
 - No autonomous policy update.
 - No semantic scoring or memory system.
+
+## Explicit evidence surface list
+
+- `candidate_stable_surface_parity_evidence`
+- `promotion_surface_symmetry_evidence`
+- `release_state_transition_evidence`
+- `replay_provenance_consistency_evidence`
+- `governance_mutation_visibility_evidence`
+- `dependency_visibility_evidence`
+- `governance_lineage_snapshot_evidence`
+- `evidence_provenance_registry_evidence`
+- `semantic_registry_evidence`
+- `invariant_surface_mapping_evidence`
+- `incident_lifecycle_consistency_evidence`
+- `semantic_drift_detection_evidence`
+- `evidence_surface_consistency_evidence`
+- `semantic_registry_lock_evidence`
+- `release_manifest_coverage_evidence`
+- `schema_governance_evidence`
+- `cross_registry_integrity_evidence`
+- `deterministic_export_contract_evidence`
+- `schema_drift_visibility_evidence`
+- `freeze_snapshot_determinism_evidence`

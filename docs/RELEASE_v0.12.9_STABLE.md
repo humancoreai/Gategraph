@@ -1,4 +1,4 @@
-# GateGraph v0.13.2_STABLE
+# GateGraph v0.12.9_STABLE
 
 ## Phase
 
@@ -10,7 +10,7 @@ Operator Explainability Hygiene.
 
 ## Scope
 
-This stable release carries a small operator-facing explanation surface for fail-closed unknown capability decisions.
+This candidate adds a small operator-facing explanation surface for fail-closed unknown capability decisions.
 It does not change governance logic, enforcement behavior, runtime guards, token semantics, policy mutation rules, or registry authority.
 
 ## Changes

@@ -1,18 +1,13 @@
 # Release Status
 
-Current release: v0.13.3_STABLE  
-Base: v0.13.2_STABLE  
-Status: stable  
-Phase: Evidence Suite Profile Management
+Current release: v0.13.0_CANDIDATE
 
-## Scope
+Base stable: v0.12.9_STABLE
 
-Evidence-only Candidate CI gate hardening. No runtime, enforcement or governance decision logic changes.
+Status: candidate
 
-## Candidate gate
+Phase: Release Consistency Hardening.
 
-Windows Evidence CI has passed before candidate promotion.
+Windows CI required before Stable promotion.
 
-## Carried forward phase surfaces
-
-Governance Integrity Graph remains an active carried-forward release surface.
+Governance Integrity Graph: carried forward as descriptive release-surface evidence.
