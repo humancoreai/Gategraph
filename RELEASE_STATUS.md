@@ -1,15 +1,16 @@
-# Release Status – v0.11.4_STABLE
+# Release Status – v0.11.5_CANDIDATE
 
-Status: stable
+Status: candidate
 
-Base: v0.11.3_STABLE
+Base: v0.11.4_STABLE
 
-Phase: Capability Token Audit Redaction
+Phase: Security Mapping + Token Exposure Hardening
 
 Scope:
-- freeze mode labels as descriptive governance-surface concepts
-- prove that modes cannot create runtime, governance, enforcement, adapter, budget, secret, tool, distributed, cloud, Docker/Kubernetes, or UI authority
-- couple `docs/MULTI_MODE_SSOT.md`, `docs/MODE_BOUNDARY_SURFACE.md`, runtime surface docs, release metadata and Evidence CI
+- add explicit security model and known limitation documentation
+- map common agentic AI risk classes to existing GateGraph controls and evidence
+- centralize token / Authorization / sensitive-field redaction helpers
+- prove audit, explain, and monitoring surfaces do not expose raw token, bearer, base64 token, or secret material
 - preserve the existing single-node/local protected runtime surface
 
 Out of scope:

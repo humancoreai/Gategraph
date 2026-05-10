@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.11.4_STABLE"
-BASE = "v0.11.3_STABLE"
+VERSION = "v0.11.5_CANDIDATE"
+BASE = "v0.11.4_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -90,6 +90,13 @@ REQUIRED_RELEASE_FILES = {
     "tests/governance_freeze_evidence.py",
     "docs/CAPABILITY_TOKEN_AUDIT_REDACTION.md",
     "tests/capability_token_redaction_evidence.py",
+    "SECURITY_MODEL.md",
+    "OWASP_AGENTIC_AI_MAPPING.md",
+    "KNOWN_LIMITATIONS.md",
+    "docs/RELEASE_v0.11.5_CANDIDATE.md",
+    "src/security/__init__.py",
+    "src/security/token_redaction.py",
+    "tests/token_exposure_evidence.py",
 }
 
 
@@ -172,10 +179,10 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
         "kind": "candidate_release",
-        "scope": "capability_token_audit_redaction",
+        "scope": "security_mapping_token_exposure_hardening",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -214,9 +221,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Capability Token Audit Redaction",
+        "phase": "Security Mapping + Token Exposure Hardening",
         "governance_logic_changed": False,
         "runtime_logic_changed": False,
         "enforcement_logic_changed": False,
@@ -234,12 +241,14 @@ def main() -> int:
         "surface_freeze_coupling_scope": True,
         "mode_boundary_surface_scope": True,
         "capability_token_audit_redaction_scope": True,
+        "security_mapping_scope": True,
+        "token_exposure_hardening_scope": True,
         "startup_shutdown_semantics_scope": True,
         "release_process_guard": True,
         "distributed_governance": False,
         "self_orchestration": False,
         "scope_freeze": True,
-        "claim_boundary": "capability-token audit redaction only; audit may record token_id and token_hash but never raw token objects, signatures, signing input, Authorization headers, secret material, or bearer values",
+        "claim_boundary": "security mapping and token exposure hardening only; audit/explain/monitoring may record token_id, token_hash and key id but never raw token objects, signatures, signing input, Authorization headers, secret material, bearer values, or base64 token material",
     }
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
