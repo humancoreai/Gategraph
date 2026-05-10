@@ -1,71 +1,65 @@
-# GateGraph v0.12.7_STABLE Release Notes
+# GateGraph v0.12.8_CANDIDATE Release Notes
 
-Base: v0.12.6_STABLE
+Base: v0.12.7_STABLE
 
-Status: stable
+Status: candidate
 
-Scope: Release State Transition / Promotion Surface Symmetry.
+Scope: Governance Integrity Graph.
 
 ## Evidence added
 
-- release_state_transition_evidence
-- promotion_surface_symmetry_evidence
-- candidate_stable_surface_parity_evidence
+- `governance_integrity_graph_evidence`
+- `orphan_governance_artifact_evidence`
+- `governance_impact_visibility_evidence`
+- `integrity_graph_freeze_evidence`
+- `deterministic_governance_diff_evidence`
 
-No runtime, enforcement or governance decision logic changes.
+## Added
 
-# Release Notes — GateGraph v0.12.7_STABLE
+- Declarative Governance Integrity Graph registry.
+- Canonical edge types: `depends_on`, `validated_by`, `affects`, `lineage_of`.
+- Orphan detection for governance graph nodes and validators.
+- Descriptive impact visibility for freeze/replay affected surfaces.
+- Deterministic integrity graph freeze hash.
+- Deterministic governance diff from v0.12.7_STABLE to v0.12.8_CANDIDATE.
 
-## v0.12.7_STABLE — Release State Transition / Promotion Surface Symmetry
+## Boundary invariants
 
-Base: v0.12.6_STABLE  
-Status: stable
+- Integrity graph is descriptive only.
+- Integrity graph does not grant runtime authority.
+- Integrity graph does not mutate governance, policy, registries, schemas or evidence.
+- No auto-repair, self-healing, dynamic loading or distributed consensus.
+- Existing runtime, enforcement and governance decision logic unchanged.
 
-### Added
-- Evidence provenance registry for deterministic, read-only evidence origin and dependency visibility.
-- Governance lineage snapshot registry for release-to-release provenance of declarative governance surfaces.
-- Dependency visibility evidence for evidence-to-registry and evidence-to-manifest references.
-- Governance mutation visibility evidence for descriptive lineage delta detection.
-- Replay provenance consistency evidence linking replay reconstruction to release, schema and lineage state.
+## Carried forward active evidence gates
 
-### Evidence gates
+- `release_state_transition_evidence`
+- `promotion_surface_symmetry_evidence`
+- `candidate_stable_surface_parity_evidence`
 - `evidence_provenance_registry_evidence`
 - `governance_lineage_snapshot_evidence`
 - `dependency_visibility_evidence`
 - `governance_mutation_visibility_evidence`
 - `replay_provenance_consistency_evidence`
-
-### Boundary invariants
-- Provenance is descriptive only.
-- Provenance does not grant runtime authority.
-- Provenance does not mutate governance, policy, registry, schema, freeze or replay state.
-- Dependency visibility does not load plugins or external resources.
-- Replay provenance is reconstruction context only, not execution context.
-
-### Non-scope
-- No governance logic change.
-- No enforcement behavior change.
-- No runtime authority expansion.
-- No distributed consensus.
-- No dynamic plugin or loader system.
-- No automatic migration or repair.
+- `semantic_registry_evidence`
+- `semantic_registry_lock_evidence`
+- `schema_governance_evidence`
+- `cross_registry_integrity_evidence`
+- `freeze_snapshot_determinism_evidence`
 
 Compatibility note: No runtime/enforcement behavior change.
 Compatibility note: No autonomous governance mutation.
 Compatibility note: No semantic scoring or memory system.
 
-### Carried forward active evidence gates
-- `semantic_registry_evidence`
-- `invariant_surface_mapping_evidence`
-- `incident_lifecycle_consistency_evidence`
-- `semantic_drift_detection_evidence`
-- `evidence_surface_consistency_evidence`
-- `semantic_registry_lock_evidence`
-- `release_manifest_coverage_evidence`
-- `schema_governance_evidence`
-- `cross_registry_integrity_evidence`
+Carried forward compatibility: Semantic Registry remains locked and descriptive-only.
+No governance logic change.
+No autonomous policy update.
+
+Additional carried-forward evidence surface names:
 - `deterministic_export_contract_evidence`
+- `evidence_surface_consistency_evidence`
+- `incident_lifecycle_consistency_evidence`
+- `invariant_surface_mapping_evidence`
+- `release_manifest_coverage_evidence`
 - `schema_drift_visibility_evidence`
-- `freeze_snapshot_determinism_evidence`
-Compatibility note: No autonomous policy update.
-Compatibility note: Semantic Registry linkage remains active and locked.
+- `semantic_drift_detection_evidence`

@@ -1,6 +1,6 @@
 # Release State Transition Model
 
-GateGraph v0.12.7_STABLE records release-state transition expectations as descriptive release evidence.
+GateGraph v0.12.8_CANDIDATE records release-state transition expectations as descriptive release evidence.
 
 Allowed release-state transition for this scope:
 
