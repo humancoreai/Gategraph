@@ -10,6 +10,8 @@ EXPECTED = {
     "incident_lifecycle_consistency_evidence.py",
     "semantic_drift_detection_evidence.py",
     "evidence_surface_consistency_evidence.py",
+    "semantic_registry_lock_evidence.py",
+    "release_manifest_coverage_evidence.py",
 }
 
 

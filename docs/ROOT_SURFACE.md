@@ -1,4 +1,4 @@
-# Root Surface — v0.12.2_STABLE
+# Root Surface — v0.12.3_STABLE
 
 The repository root is a public release surface. It should contain only high-signal project, release, security, and onboarding files.
 
