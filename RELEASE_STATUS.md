@@ -1,16 +1,17 @@
 # Release Status
 
-Current stable: v0.8.45_STABLE
-Base: v0.8.44_STABLE
-Phase: Governance Archive / Historical Replay
+Current candidate: v0.8.46_CANDIDATE
+Base: v0.8.45_STABLE
+Phase: Archive Integrity / Replay Consistency
 
 Evidence:
-- governance_archive_replay_evidence: passed locally
+- archive_integrity_replay_consistency_evidence: passed locally
+- governance_archive_replay_evidence: passed locally after schema bump
 - drift_detection_evidence: passed locally after schema bump
-- Full Windows Evidence CI: passed on 2026-05-06
+- Full Windows Evidence CI: pending
 
-Stable notes:
-- Historical archive records are append-only.
-- Replay reconstructs stored records only.
-- Replay does not re-evaluate governance decisions.
+Candidate notes:
+- Archive envelopes are checked for payload hash, record id and contiguous sequence observations.
+- Replay consistency is checked from different input orderings.
+- Integrity reports are descriptive and do not re-run governance decisions.
 - No policy, guard, runtime, queue or workflow mutation introduced.
