@@ -1,6 +1,6 @@
 """
 WHY: Version values are part of public schemas and must not drift across files.
-INV: VERSION.md remains the human-readable SSOT; code derives the candidate version from it.
+INV: VERSION.md remains the human-readable SSOT; code derives the stable version from it.
 """
 from __future__ import annotations
 
