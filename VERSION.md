@@ -1,10 +1,10 @@
 # GateGraph Version
 
-Current release: **v0.12.6_CANDIDATE**
+Current release: **v0.12.6_STABLE**
 
 Base release: **v0.12.5_STABLE**
 
-Status: **candidate**
+Status: **stable**
 
 Version: **0.12.6**
 
