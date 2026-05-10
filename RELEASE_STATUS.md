@@ -1,31 +1,32 @@
-# Release Status - GateGraph v0.8.23-evidence-runner-stabilization
+# Release Status — GateGraph v0.8.24
 
-Status: Single-node PoC with advisory intelligence, manual review workflow, strictly limited Controlled Apply prototype, and stabilized aggregate evidence runner.
+## Status
+
+Runner subsystem hardening implemented.
 
 ## Changed
-- `tests/evidence_ci.py` now executes evidence scripts through `tests/_run_isolated.py`.
-- `tests/evidence_supervisor.py` is now a compatibility entrypoint delegating to the same isolated CI runner.
-- Controlled Apply evidence is included in the aggregate manifest.
 
-## Unchanged
-- Governance, Enforcement, Runtime Guard, Session Budget Guard, HTTP Policy, Secret Provider, External API Adapter, Pattern Engine, Review Workflow, and Controlled Apply behavior are unchanged.
-- Enforcement remains the only runtime action gatekeeper.
-- Guards remain stop-only.
-- Pattern Engine remains proposal-only.
-- Review/Controlled Apply still require explicit human gates.
-- Audit remains append-only.
+- Replaced external shell `timeout` dependency in `tests/evidence_ci.py` with Python-owned timeout handling.
+- Added process-session isolation and process-group kill for timed-out evidence scripts.
+- Added dedicated runner selftest as first manifest item.
+- Added synthetic evidence target for pass/fail/hang/child-hang cases.
+- Added runner subsystem documentation.
 
-## Evidence
-- Aggregate runner completed with `Passed: True`.
-- Controlled Apply evidence: 7/7 passed.
-- Usage simulation: no invariant violations.
-- Unusual input simulation: no invariant violations.
-- Agent scenario simulation: no invariant violations.
-- Core loop and security evidence remain included in the aggregate evidence set.
+## Production logic
 
-## Known Limits
-- Single-node only.
-- Local signing/HMAC model; no production KMS.
-- Controlled Apply currently supports rule hardening only.
-- No production external API integration.
-- Runner is an evidence tool, not a production runtime component.
+Unchanged:
+
+- Governance
+- Enforcement
+- Token signing / rotation
+- Runtime guards
+- Session budget guard
+- HTTP policy
+- Secret management
+- External API adapter
+- Controlled Apply
+- Audit / Explain
+
+## Validation note
+
+The code-level runner fix is implemented. In this execution sandbox, timeout primitives showed unstable behavior during validation; therefore the final aggregate run should be repeated in a clean local/CI environment before treating v0.8.24 as release-final.
