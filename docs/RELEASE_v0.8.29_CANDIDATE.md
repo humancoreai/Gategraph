@@ -35,7 +35,7 @@ Full Evidence CI was attempted in this Linux container but did not complete beca
 
 ## Boundary
 
-This stable release does not implement:
+This candidate does not implement:
 
 - automated recovery
 - external monitoring transport

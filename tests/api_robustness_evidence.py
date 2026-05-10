@@ -30,30 +30,16 @@ VALID_TASK = {
 }
 
 
-def _request_once(port: int, method: str, path: str, payload: bytes | None, headers: dict | None, timeout: float):
-    conn = http.client.HTTPConnection("127.0.0.1", port, timeout=timeout)
-    try:
-        conn.request(method, path, body=payload, headers=headers or ({"content-type": "application/json"} if payload else {}))
-        res = conn.getresponse()
-        text = res.read().decode("utf-8")
-        data = json.loads(text)
-        response_normalizer.assert_contract(data)
-        return res.status, data
-    finally:
-        conn.close()
-
-
 def _request(port: int, method: str = "POST", path: str = "/evaluate", body=None, headers=None, raw: bytes | None = None, timeout: float = 5.0):
+    conn = http.client.HTTPConnection("127.0.0.1", port, timeout=timeout)
     payload = raw if raw is not None else (None if body is None else json.dumps(body).encode("utf-8"))
-    request_headers = headers or ({"content-type": "application/json"} if payload else {})
-    try:
-        return _request_once(port, method, path, payload, request_headers, timeout)
-    except (ConnectionAbortedError, ConnectionResetError, BrokenPipeError, http.client.RemoteDisconnected):
-        # EDGE: Windows may surface a local socket teardown as WinError 10053/10054 during
-        # HTTP edge-case evidence. Retry once so the evidence checks server semantics, not
-        # platform-specific TCP timing. This does not alter runtime or governance behavior.
-        time.sleep(0.1)
-        return _request_once(port, method, path, payload, request_headers, timeout)
+    conn.request(method, path, body=payload, headers=headers or ({"content-type": "application/json"} if payload else {}))
+    res = conn.getresponse()
+    text = res.read().decode("utf-8")
+    conn.close()
+    data = json.loads(text)
+    response_normalizer.assert_contract(data)
+    return res.status, data
 
 
 def _shape(payload: dict) -> dict:
@@ -115,9 +101,7 @@ def main() -> int:
             assert after_status == 200, after_abort
             assert _shape(baseline) == _shape(after_abort), (baseline, after_abort)
         finally:
-            server.shutdown()
-            server.server_close()
-            thread.join(timeout=2)
+            pass
 
     print("PASS api_robustness_evidence", flush=True)
     print("Summary: {'passed': 1, 'failed': 0}", flush=True)

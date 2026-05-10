@@ -1,65 +1,33 @@
-# GateGraph v0.12.9_STABLE Release Notes
+# Release Notes – v0.11.0_CANDIDATE
 
-Base: v0.12.8_STABLE
+## Summary
 
-Status: stable
+v0.11.0_CANDIDATE starts Phase B: Deployment / Packaging Baseline.
 
-Scope: Governance Integrity Graph.
-
-## Evidence added
-
-- `governance_integrity_graph_evidence`
-- `orphan_governance_artifact_evidence`
-- `governance_impact_visibility_evidence`
-- `integrity_graph_freeze_evidence`
-- `deterministic_governance_diff_evidence`
+This release makes GateGraph locally installable and standardizes the supported single-node deployment surface. It does not change governance, enforcement, runtime, adapter, token, budget, audit, or chain-order behavior.
 
 ## Added
 
-- Declarative Governance Integrity Graph registry.
-- Canonical edge types: `depends_on`, `validated_by`, `affects`, `lineage_of`.
-- Orphan detection for governance graph nodes and validators.
-- Descriptive impact visibility for freeze/replay affected surfaces.
-- Deterministic integrity graph freeze hash.
-- Deterministic governance diff from v0.12.8_STABLE to v0.12.9_STABLE.
+- `pyproject.toml`
+- `docs/DEPLOYMENT_BOUNDARY.md`
+- `tests/packaging_integrity_evidence.py`
+- `tests/install_surface_evidence.py`
 
-## Boundary invariants
+## Packaging scope
 
-- Integrity graph is descriptive only.
-- Integrity graph does not grant runtime authority.
-- Integrity graph does not mutate governance, policy, registries, schemas or evidence.
-- No auto-repair, self-healing, dynamic loading or distributed consensus.
-- Existing runtime, enforcement and governance decision logic unchanged.
+- editable local install with `pip install -e .`
+- console scripts mapped to existing modules
+- package metadata aligned with release metadata
+- source package excludes runtime artifacts through release hygiene
 
-## Carried forward active evidence gates
+## Unchanged
 
-- `release_state_transition_evidence`
-- `promotion_surface_symmetry_evidence`
-- `candidate_stable_surface_parity_evidence`
-- `evidence_provenance_registry_evidence`
-- `governance_lineage_snapshot_evidence`
-- `dependency_visibility_evidence`
-- `governance_mutation_visibility_evidence`
-- `replay_provenance_consistency_evidence`
-- `semantic_registry_evidence`
-- `semantic_registry_lock_evidence`
-- `schema_governance_evidence`
-- `cross_registry_integrity_evidence`
-- `freeze_snapshot_determinism_evidence`
-
-Compatibility note: No runtime/enforcement behavior change.
-Compatibility note: No autonomous governance mutation.
-Compatibility note: No semantic scoring or memory system.
-
-Carried forward compatibility: Semantic Registry remains locked and descriptive-only.
-No governance logic change.
-No autonomous policy update.
-
-Additional carried-forward evidence surface names:
-- `deterministic_export_contract_evidence`
-- `evidence_surface_consistency_evidence`
-- `incident_lifecycle_consistency_evidence`
-- `invariant_surface_mapping_evidence`
-- `release_manifest_coverage_evidence`
-- `schema_drift_visibility_evidence`
-- `semantic_drift_detection_evidence`
+- governance logic
+- enforcement logic
+- runtime logic
+- service adapter behavior
+- capability-token model
+- risk/rule engines
+- session/runtime/flood guards
+- audit/replay model
+- UI scope

@@ -22,13 +22,9 @@ RELEASE_FILES = [
     "RELEASE_NOTES.md",
     "VERSION.md",
     "docs/DEPLOYMENT_BOUNDARY.md",
-    "tests/config_consistency_evidence.py",
-    "tests/startup_surface_evidence.py",
-    "docs/STARTUP_SURFACE.md",
     "pyproject.toml",
     "README.md",
     "CHANGELOG.md",
-    "docs/KNOWN_GAPS_ROADMAP.md",
     "docs/SERVER_MODE.md",
     "docs/ARCHITECTURE.md",
     "ARCHITECTURE.md",
@@ -84,17 +80,8 @@ def check_release_truth(expected_release: str, expected_status: str, expected_ba
             if not path.exists():
                 continue
             text = path.read_text(encoding="utf-8")
-            forbidden_status_label = "Status: " + "candidate"
-            forbidden_current_label = "Current " + "candidate:"
-            forbidden_current_baseline = "Current " + "candidate baseline:"
-            if (
-                f'"release": "{forbidden}"' in text
-                or f'VERSION = "{forbidden}"' in text
-                or forbidden_status_label in text
-                or forbidden_current_label in text
-                or forbidden_current_baseline in text
-            ):
-                problems.append(f"{rel} contains forbidden current stable claim")
+            if f'"release": "{forbidden}"' in text or f'VERSION = "{forbidden}"' in text or "Status: candidate" in text or "Current candidate:" in text:
+                problems.append(f"{rel} contains forbidden current candidate claim")
 
     return fail("release_truth", "; ".join(problems)) if problems else ok("release_truth")
 
@@ -181,48 +168,11 @@ def check_dead_refs() -> dict:
     return ok("dead_refs", detail)
 
 
-
-def check_document_version_surfaces(expected_release: str) -> dict:
-    problems: list[str] = []
-
-    changelog = ROOT / "CHANGELOG.md"
-    if changelog.exists():
-        text = changelog.read_text(encoding="utf-8")
-        current_headers = re.findall(r"^##\s+" + re.escape(expected_release) + r"\s*$", text, flags=re.MULTILINE)
-        if len(current_headers) != 1:
-            problems.append(f"CHANGELOG current release header count={len(current_headers)}, expected 1")
-    else:
-        problems.append("CHANGELOG.md missing")
-
-    known = ROOT / "docs" / "KNOWN_GAPS_ROADMAP.md"
-    if known.exists():
-        text = known.read_text(encoding="utf-8")
-        if expected_release not in text:
-            problems.append("KNOWN_GAPS_ROADMAP.md does not mention current release")
-        if "No pip package / `pyproject.toml` packaging baseline" in text:
-            problems.append("KNOWN_GAPS_ROADMAP.md still lists pyproject.toml packaging baseline as open")
-        if "v0.10.0_CANDIDATE" in text.splitlines()[0]:
-            problems.append("KNOWN_GAPS_ROADMAP.md title is stale")
-    else:
-        problems.append("docs/KNOWN_GAPS_ROADMAP.md missing")
-
-    server = ROOT / "src" / "server.py"
-    if server.exists():
-        text = server.read_text(encoding="utf-8")
-        expected_http_version = expected_release.removeprefix("v").replace("_CANDIDATE", "").replace("_STABLE", "")
-        if f'GateGraphHTTP/{expected_http_version}' not in text:
-            problems.append(f"src/server.py server_version does not match {expected_http_version}")
-    else:
-        problems.append("src/server.py missing")
-
-    return fail("document_version_surfaces", "; ".join(problems)) if problems else ok("document_version_surfaces")
-
 def run(expected_release: str, expected_status: str, expected_base: str | None) -> dict:
     checks = [
         check_release_truth(expected_release, expected_status, expected_base),
         check_manifest(expected_release, expected_base),
         check_dead_refs(),
-        check_document_version_surfaces(expected_release),
     ]
     return {
         "expected_release": expected_release,
@@ -234,8 +184,8 @@ def run(expected_release: str, expected_status: str, expected_base: str | None) 
 
 
 def main(argv: list[str]) -> int:
-    expected_release = argv[1] if len(argv) > 1 else "v0.12.0_STABLE"
-    expected_status = argv[2] if len(argv) > 2 else "stable"
+    expected_release = argv[1] if len(argv) > 1 else "v0.11.0_CANDIDATE"
+    expected_status = argv[2] if len(argv) > 2 else "candidate"
     expected_base = argv[3] if len(argv) > 3 else None
     result = run(expected_release, expected_status, expected_base)
     print(json.dumps(result, indent=2, sort_keys=True))

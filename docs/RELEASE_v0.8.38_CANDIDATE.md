@@ -7,7 +7,7 @@ Runtime Cost Governance / Kill Conditions
 v0.8.36_STABLE
 
 ## Scope
-This stable release adds deterministic pre-flight runtime cost governance without changing the API contract or Governance Core.
+This candidate adds deterministic pre-flight runtime cost governance without changing the API contract or Governance Core.
 
 ## Added
 - `src/runtime_cost_guard.py`

@@ -127,21 +127,12 @@ def evaluate_request(config: AppConfig, task: dict[str, Any]) -> dict[str, Any]:
             )
             token_json = token_to_dict(result.token)
 
-        block_reason = None
-        if result.final_decision == "block" and result.selected_rule_id == "RULE-SYNTH-UNKNOWN":
-            unknown_caps = sorted(set(str(item) for item in requested) - set(governance.ALL_KNOWN_CAPABILITIES))
-            cap_text = ", ".join(unknown_caps) if unknown_caps else "<empty>"
-            block_reason = f"no matching rule for capability: {cap_text}"
-        elif result.final_decision == "block" and result.selected_rule_id is None:
-            block_reason = "no matching rule for requested capability set"
-
         return {
             "ok": True,
             "task_id": result.task_id,
             "decision": result.final_decision,
             "risk_level": result.risk_level,
             "risk_reason": result.risk_reason,
-            "block_reason": block_reason,
             "selected_rule_id": result.selected_rule_id,
             "matched_rule_ids": result.matched_rule_ids,
             "token_issued": result.token is not None,

@@ -1,4 +1,4 @@
-# Architecture – GateGraph v0.12.0_STABLE
+# Architecture – GateGraph v0.11.0_CANDIDATE
 
 # GateGraph Architecture
 
@@ -203,21 +203,3 @@ No action token is issued.
 - no autonomous rule updates
 
 These are intentionally outside the v0.5 PoC scope.
-
-
-## v0.12.0_STABLE Security Mapping Boundary
-
-v0.12.0_STABLE adds security mapping and token exposure hardening only. It does not participate in runtime governance and does not expand authority.
-
-
-Current release surface: `v0.12.1_STABLE`.
-
-
-Current release surface: v0.12.4_STABLE.
-
-Current release surface: v0.12.7_STABLE
-
-
-Release surface: v0.12.8_STABLE.
-
-Release surface: v0.12.9_STABLE.

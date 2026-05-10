@@ -1,78 +1,11 @@
 # Changelog
 
-## v0.12.9_STABLE
-
-- Adds descriptive `block_reason` output for fail-closed unknown capability decisions.
-- Keeps governance, runtime, enforcement, and token behavior unchanged.
-
-
-## v0.12.8_STABLE
-
-- Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
-
-## v0.12.7_STABLE
-
-- Adds Governance Surface Freeze candidate scope.
-- Adds descriptive contract registry for governance decision, normalized reason, monitoring export and capability token claim surfaces.
-- Adds surface contract registry and semantic boundary evidence.
-- No governance, runtime or enforcement authority change.
-
-## v0.12.0_STABLE
-
-### Review hygiene fix
-- Align README base-stable claim with `v0.12.0_STABLE`.
-- Document canonical namespace boundary for `src/` versus `gategraph/context/`.
-- Exclude development STARTPROMPT artifacts from release packaging.
-- Surface `OWASP_AGENTIC_AI_MAPPING.md` in README.
-
-- Added descriptive context lifecycle coupling around the v0.11.7 context governance boundary.
-- Added fail-closed lifecycle state and transition validation.
-- Added explicit replay/explain/proposal rehydration blocking.
-- Added `gategraph/context/context_lifecycle.py`, `docs/CONTEXT_LIFECYCLE_MODEL.md`, and lifecycle/freeze evidence.
-- No memory system, vector database, semantic scoring, autonomous filtering, adaptive trust, AI moderation, governance rule, enforcement authority, runtime mode, adapter authority, distributed, cloud, Docker/Kubernetes, or UI scope expansion.
-
-- Added deterministic context classification and required provenance boundaries.
-- Added instruction/data separation for untrusted, replay and proposal context.
-- Added replay/explain hardening markers: descriptive-only, non-executable and reference-context.
-- Added visibility-only suspicious context markers for hidden instructions, fake operator claims, recursive delegation phrases and embedded authority patterns.
-- Added context governance evidence suites and `CONTEXT_GOVERNANCE_MODEL.md`.
-- No memory system, vector database, semantic scoring, autonomous filtering, AI moderation, governance rule, enforcement authority, runtime mode, adapter authority, distributed, cloud, Docker/Kubernetes, or UI scope expansion.
-
-All notable changes to GateGraph are documented here.
-
-
-## v0.11.4_STABLE
-
-- Added capability-token audit redaction invariant.
-- Added audit-safe token references with `token_id` and `token_hash`.
-- Added `capability_token_redaction_evidence.py` to block raw token/signature/auth material in audit events.
-- Added `docs/CAPABILITY_TOKEN_AUDIT_REDACTION.md`.
-- No Governance decision model, Runtime Guard behavior, Enforcement rule, budget policy, secret resolution, HTTP policy, adapter authority, agentic behavior, distributed governance, deployment, or UI capability change.
-
-## v0.11.3_STABLE
-
-- Stabilized v0.11.1 packaging baseline after Windows Evidence CI PASS.
-- Preserved install surface, startup surface, config consistency and deterministic packaging claims.
-- No runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior changed.
-
-## v0.11.1_CANDIDATE
-
-- Tightened packaging/install/startup consistency around the v0.11.0 packaging baseline.
-- Added supporting evidence for install surface, startup surface and config consistency.
-- No runtime/governance/enforcement/adapter/agentic capability change.
-
-## v0.11.0_STABLE
-
-- Stabilized v0.11.0 packaging baseline after Windows Evidence CI PASS.
-- Confirmed `pyproject.toml`, editable install and CLI entry points as release-supported surfaces.
-- No runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior changed.
-
 ## v0.11.0_CANDIDATE
 
-- Added `pyproject.toml` packaging baseline.
-- Added package metadata for editable install via `python -m pip install -e .`.
-- Added console entry points: `gategraph` and `gategraph-server`.
-- Added packaging/install evidence without changing runtime/governance/enforcement behavior.
+- Added release-process guard for Candidate/Stable metadata consistency.
+- Added structured manifest validation and stale/missing manifest detection.
+- Added dead local markdown reference checks.
+- No runtime, governance, enforcement, adapter, packaging, or UI behavior changed.
 
 ## v0.10.2_STABLE
 
@@ -106,7 +39,7 @@ All notable changes to GateGraph are documented here.
 
 - Public adapter boundary now requires explicit `input_source`, `data_sensitivity`, and `secrets_involved` fields.
 - Release build and verification scripts now fail closed on empty manifests, forbidden artifacts, undeclared files, and manifest/ZIP mismatch.
-- Version metadata updated for v0.9.1 stable scope.
+- Version metadata updated for v0.9.1 candidate scope.
 
 ### Not Changed
 

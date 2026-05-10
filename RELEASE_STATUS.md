@@ -1,13 +1,26 @@
-# Release Status
+# Release Status – v0.11.0_CANDIDATE
 
-Release: v0.12.9_STABLE
+Status: candidate
 
-Base: v0.12.8_STABLE
+Base: v0.10.3_STABLE
 
-Status: stable
+Phase: Deployment / Packaging Baseline
 
-Scope: Governance Integrity Graph.
+Scope:
+- add pyproject.toml packaging baseline
+- add reproducible local editable-install surface
+- add console entry points for existing CLI/server modules
+- document supported/unsupported/unsafe deployment boundary
+- add packaging integrity evidence
+- add install surface evidence
 
-No runtime, enforcement, governance-rule, agentic, distributed, auto-promotion or auto-repair authority is introduced.
-
-Compatibility phase label: Governance Integrity Graph.
+Out of scope:
+- no runtime changes
+- no governance changes
+- no enforcement changes
+- no adapter changes
+- no agentic behavior
+- no multi-node/distributed governance
+- no cloud orchestration
+- no Kubernetes/Helm/service mesh
+- no UI
