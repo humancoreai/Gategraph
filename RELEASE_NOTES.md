@@ -1,11 +1,11 @@
-# Release Notes — GateGraph v0.11.9_CANDIDATE
+# Release Notes — GateGraph v0.11.9_STABLE
 
 Base: `v0.11.8_STABLE`
-Status: candidate
+Status: stable
 
 ## Summary
 
-`v0.11.9_CANDIDATE` is a governance semantics stabilization release. It tightens the distinction between runtime objects and reference objects and cleans the repository root surface.
+`v0.11.9_STABLE` is a governance semantics stabilization release. It tightens the distinction between runtime objects and reference objects and cleans the repository root surface.
 
 ## Added
 
@@ -17,7 +17,7 @@ Status: candidate
 
 ## Changed
 
-- Release metadata, version surfaces, packaging tools, and evidence expectations updated to `v0.11.9_CANDIDATE`.
+- Release metadata, version surfaces, packaging tools, and evidence expectations updated to `v0.11.9_STABLE`.
 - Development/release-history artifacts moved from repository root to `docs/release_artifacts/`.
 
 ## Non-goals
