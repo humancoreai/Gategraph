@@ -1,9 +1,9 @@
-# Release Notes — GateGraph v0.12.6_CANDIDATE
+# Release Notes — GateGraph v0.12.6_STABLE
 
-## v0.12.6_CANDIDATE — Deterministic Evidence Lineage / Governance Provenance
+## v0.12.6_STABLE — Deterministic Evidence Lineage / Governance Provenance
 
 Base: v0.12.5_STABLE  
-Status: candidate
+Status: stable
 
 ### Added
 - Evidence provenance registry for deterministic, read-only evidence origin and dependency visibility.

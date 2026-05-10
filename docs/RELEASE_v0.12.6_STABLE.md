@@ -1,8 +1,8 @@
-# GateGraph v0.12.6_CANDIDATE
+# GateGraph v0.12.6_STABLE
 
 Base: v0.12.5_STABLE
 
-Status: candidate
+Status: stable
 
 Phase: Deterministic Evidence Lineage / Governance Provenance
 
