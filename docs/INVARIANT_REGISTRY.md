@@ -20,6 +20,12 @@ This registry gives stable IDs to the core governance invariants used by the v0.
 | INV-014 | Adapter paths must not alter replay semantics | Integration | high | `governance_archive_replay_evidence` |
 | INV-015 | Human review gates remain binding | Human review | high | `human_review_queue_evidence` |
 
+| INV-016 | Recovery never creates authority | Recovery | critical | `recovery_idempotency_evidence` |
+
+| INV-017 | Replay objects remain non-executable references | Replay | critical | `replay_reference_integrity_evidence` |
+
+| INV-018 | Release/version/surface claims remain synchronized | Release | critical | `release_surface_sync_evidence` |
+
 ## Minimal requirement
 
 Each critical invariant must remain referencable and must be covered by at least one evidence group or explicit boundary document.

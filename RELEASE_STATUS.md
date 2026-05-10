@@ -1,14 +1,13 @@
 # Release Status
 
-Release: v0.12.1_STABLE
+Release: v0.12.2_CANDIDATE
 
-Base: v0.12.0_STABLE
+Base: v0.12.1_STABLE
 
-Status: stable
+Status: candidate
 
-Phase: Consistency / Recovery Foundation
+Phase: Recovery & Replay Hardening
 
-Invariant: descriptive recovery and replay evidence only; no governance, enforcement, runtime authority, adapter, distributed, or semantic-scoring expansion.
+Invariant: descriptive recovery and replay hardening only; no governance, enforcement, runtime authority, adapter, distributed, automatic repair, or semantic-scoring expansion.
 
-
-Governance Surface Freeze: maintained for release/version/surface coupling; v0.12.1 adds recovery evidence only.
+Governance Surface Freeze: maintained for release/version/surface/recovery/replay coupling; v0.12.2 adds hardening evidence only.
