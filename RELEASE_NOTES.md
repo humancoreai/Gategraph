@@ -1,9 +1,9 @@
-# Release Notes — GateGraph v0.12.4_CANDIDATE
+# Release Notes — GateGraph v0.12.4_STABLE
 
-## v0.12.4_CANDIDATE — Semantic Registry Lock & Coverage Freeze
+## v0.12.4_STABLE — Semantic Registry Lock & Coverage Freeze
 
 Base: v0.12.3_STABLE  
-Status: candidate
+Status: stable
 
 ### Added
 - Deterministic semantic registry lock for `semantic_object_types.json` and `invariant_surface_registry.json`.

@@ -84,4 +84,4 @@ Current release context: v0.12.3_STABLE.
 - no autonomous context filtering
 - no AI content moderation
 
-Current release surface: v0.12.4_CANDIDATE
+Current release surface: v0.12.4_STABLE
