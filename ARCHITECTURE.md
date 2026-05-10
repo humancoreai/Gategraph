@@ -1,24 +1,48 @@
-# Architecture
+# Architecture – v0.9.0_CANDIDATE
 
-## Components
+## System role
 
-- `risk_engine.py`: deterministic risk classification
-- `rule_engine.py`: deterministic rule matching and conflict resolution
-- `governance.py`: single entry point for evaluation
-- `event_logger.py`: append-only, idempotent event writes
-- `capability_token.py`: token issue helpers
-- `enforcement.py`: hard gate before tool/action execution
-- `database.py`: SQLite setup and seed rules
-- `tests/test_loop.py`: isolated + accumulated validation loop
+GateGraph sits before execution. It controls whether a requested action may proceed and under which bounded conditions.
 
-## Decision flow
+## Core flow
 
 ```text
-Task -> Risk -> Rule -> Decision -> Token -> Enforcement -> Event
+Task
+→ Risk Engine
+→ Rule Engine
+→ Governance Decision
+→ Capability Token
+→ Enforcement Gate
+→ Session Budget Guard
+→ Runtime Guard
+→ HTTP Policy
+→ Secret Resolution
+→ Action-ready / Stop
+→ Audit / Evidence
 ```
 
-## Audit graph
+## Layer separation
 
-The PoC uses SQLite plus a simple `relations` adjacency table.
+### Governance layer
 
-This is enough for MVP traceability, not meant as a complete graph database.
+Evaluates deterministic risk/rule inputs and produces a decision. It does not execute actions.
+
+### Enforcement layer
+
+Verifies that execution is authorized by a valid capability token and policy conditions. It is a gatekeeper, not a policy author.
+
+### Runtime/session layer
+
+Applies runtime and budget constraints after enforcement. It does not create new governance policy.
+
+### Audit/evidence layer
+
+Records decisions and evidence for later reconstruction. It supports review and replay, not automatic correction.
+
+### Operator/export layer
+
+Makes recorded state inspectable and exportable. It must remain observational and must not change decisions.
+
+## Release layer
+
+v0.9.0_CANDIDATE adds a release-integrity layer around packaging and review artifacts. This layer verifies structure, hashes and documentation consistency; it does not participate in runtime governance.
