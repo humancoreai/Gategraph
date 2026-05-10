@@ -1,4 +1,4 @@
-# Runtime Surface Freeze – GateGraph v0.11.4_CANDIDATE
+# Runtime Surface Freeze – GateGraph v0.11.4_STABLE
 
 Status: stable
 Base: v0.11.3_STABLE
