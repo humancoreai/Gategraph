@@ -1,4 +1,4 @@
-# Release v0.9.2_CANDIDATE
+# Release v0.9.2_STABLE
 
 ## Phase
 
