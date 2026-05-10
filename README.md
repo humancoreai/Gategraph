@@ -1,3 +1,5 @@
+<!-- v0.9.1_CANDIDATE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
+
 # GateGraph
 
 Current candidate: **v0.9.0_CANDIDATE**

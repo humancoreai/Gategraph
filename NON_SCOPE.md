@@ -1,3 +1,5 @@
+<!-- v0.9.1_CANDIDATE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
+
 # Non-Scope – v0.9.0_CANDIDATE
 
 GateGraph v0.9.0_CANDIDATE intentionally does not provide:

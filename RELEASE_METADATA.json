@@ -1,9 +1,12 @@
 {
-  "base": "v0.8.48_STABLE",
-  "claim_boundary": "deterministic governance/enforcement milestone with auditable evidence and reproducible release packaging",
+  "autonomous_classification": false,
+  "base": "v0.9.0_STABLE",
+  "claim_boundary": "deterministic governance/enforcement with explicit caller trust boundary and reproducible release integrity",
   "governance_logic_changed": false,
   "new_governance_features": false,
-  "phase": "Milestone Release / External Review Baseline",
-  "release": "v0.9.0_CANDIDATE",
+  "new_risk_model": false,
+  "new_runtime_model": false,
+  "phase": "Boundary Hardening / Release Integrity Closure",
+  "release": "v0.9.1_CANDIDATE",
   "scope_freeze": true
 }
