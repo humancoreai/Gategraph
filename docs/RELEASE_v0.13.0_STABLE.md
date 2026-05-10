@@ -1,14 +1,14 @@
-# GateGraph v0.13.0_CANDIDATE
+# GateGraph v0.13.0_STABLE
 
 Base: v0.12.9_STABLE
 
-Status: candidate
+Status: stable
 
 Phase: Release Consistency Hardening.
 
 ## Scope
 
-This candidate adds a deterministic release-claim consistency evidence layer. The goal is to reduce drift between release metadata, release notes, README/status surfaces, changelog and the release document.
+This stable release carries a deterministic release-claim consistency evidence layer. The goal is to reduce drift between release metadata, release notes, README/status surfaces, changelog and the release document.
 
 ## Invariants
 

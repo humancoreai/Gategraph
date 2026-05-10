@@ -1,9 +1,9 @@
 # Version
 
-Release: v0.13.0_CANDIDATE
+Release: v0.13.0_STABLE
 
 Base: v0.12.9_STABLE
 
-Status: candidate
+Status: stable
 
 Phase: Release Consistency Hardening.

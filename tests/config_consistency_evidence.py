@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, tomllib
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.13.0_CANDIDATE"
+EXPECTED_RELEASE = "v0.13.0_STABLE"
 EXPECTED_BASE = "v0.12.9_STABLE"
 def main():
     cfg = ROOT/"config.example.yaml"
@@ -31,4 +31,4 @@ def main():
 if __name__ == "__main__":
     raise SystemExit(main())
 
-# Current release surface: v0.13.0_CANDIDATE
+# Current release surface: v0.13.0_STABLE
