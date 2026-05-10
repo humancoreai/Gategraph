@@ -47,13 +47,13 @@
         "candidate_stable_surface_parity"
       ],
       "governance_logic_changed": false,
-      "release": "v0.12.7_CANDIDATE"
+      "release": "v0.12.7_STABLE"
     }
   ],
-  "release": "v0.12.7_CANDIDATE",
+  "release": "v0.12.7_STABLE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.12.7_CANDIDATE",
+    "governance_state_release": "v0.12.7_STABLE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"

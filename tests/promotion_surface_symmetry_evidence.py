@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.12.7_CANDIDATE"
+EXPECTED_RELEASE = "v0.12.7_STABLE"
 EXPECTED_BASE = "v0.12.6_STABLE"
 REQUIRED_SURFACES = [
     "README.md",
@@ -13,7 +13,7 @@ REQUIRED_SURFACES = [
     "RELEASE_STATUS.md",
     "RELEASE_METADATA.json",
     "RELEASE_MANIFEST.json",
-    "docs/RELEASE_v0.12.7_CANDIDATE.md",
+    "docs/RELEASE_v0.12.7_STABLE.md",
     "docs/RELEASE_STATE_TRANSITION.md",
     "registry/release_state_transition_registry.json",
 ]
@@ -31,7 +31,7 @@ def main() -> int:
     checks = []
     missing = sorted(path for path in REQUIRED_SURFACES if path not in paths and path != "RELEASE_MANIFEST.json")
     checks.append(check("required_transition_surfaces_manifested", not missing, {"missing": missing}))
-    checks.append(check("manifest_release_matches_candidate", manifest.get("release") == EXPECTED_RELEASE, {"release": manifest.get("release")}))
+    checks.append(check("manifest_release_matches_stable", manifest.get("release") == EXPECTED_RELEASE, {"release": manifest.get("release")}))
     checks.append(check("manifest_base_matches_previous_stable", manifest.get("base") == EXPECTED_BASE, {"base": manifest.get("base")}))
     checks.append(check("surface_parity_declared", bool(registry.get("surface_parity", {}).get("allowed_differences")), registry.get("surface_parity", {})))
     text = (ROOT / "docs" / "RELEASE_STATE_TRANSITION.md").read_text(encoding="utf-8")

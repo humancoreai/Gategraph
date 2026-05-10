@@ -137,6 +137,6 @@
       ]
     }
   },
-  "release": "v0.12.7_CANDIDATE",
+  "release": "v0.12.7_STABLE",
   "schema_version": "0.12.7"
 }
