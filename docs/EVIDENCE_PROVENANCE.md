@@ -1,8 +1,8 @@
 # Evidence Provenance
 
-Release: v0.12.7_STABLE
+Release: v0.12.8_CANDIDATE
 
-Base: v0.12.6_STABLE
+Base: v0.12.7_STABLE
 
 This document describes deterministic, read-only provenance for evidence files, governance-lineage snapshots, dependency visibility, mutation visibility and replay provenance.
 

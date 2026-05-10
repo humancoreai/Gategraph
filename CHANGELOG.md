@@ -1,10 +1,10 @@
 # Changelog
 
-## v0.12.7_STABLE
+## v0.12.8_CANDIDATE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 
-## v0.12.6_STABLE
+## v0.12.7_STABLE
 
 - Adds Governance Surface Freeze candidate scope.
 - Adds descriptive contract registry for governance decision, normalized reason, monitoring export and capability token claim surfaces.

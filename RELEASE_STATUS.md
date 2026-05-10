@@ -1,13 +1,13 @@
 # Release Status
 
-Release: v0.12.7_STABLE
+Release: v0.12.8_CANDIDATE
 
-Base: v0.12.6_STABLE
+Base: v0.12.7_STABLE
 
-Status: stable
+Status: candidate
 
-Scope: Release State Transition / Promotion Surface Symmetry.
+Scope: Governance Integrity Graph.
 
 No runtime, enforcement, governance-rule, agentic, distributed, auto-promotion or auto-repair authority is introduced.
 
-Compatibility phase label: Deterministic Evidence Lineage / Governance Provenance.
+Compatibility phase label: Governance Integrity Graph.
