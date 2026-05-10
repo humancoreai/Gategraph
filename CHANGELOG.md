@@ -1,17 +1,16 @@
 # Changelog
 
-## v0.13.0_STABLE
+## v0.13.1_CANDIDATE
 
-Base: v0.12.9_STABLE
+Base: v0.13.0_STABLE  
+Status: candidate  
+Phase: Recovery Replay Finality Hardening
 
-Phase: Release Consistency Hardening.
-
-- Added deterministic release claim consistency evidence.
-- Synchronized candidate release surfaces from v0.12.9_STABLE.
+- Added recovery/replay finality evidence.
+- Added bounded recovery finality release documentation.
 - No runtime, enforcement or governance decision logic change.
 
-
-## v0.12.9_STABLE
+## v0.13.0_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 

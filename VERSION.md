@@ -1,9 +1,7 @@
-# Version
+# GateGraph Version
 
-Release: v0.13.0_STABLE
-
-Base: v0.12.9_STABLE
-
-Status: stable
-
-Phase: Release Consistency Hardening.
+Release: v0.13.1_CANDIDATE  
+Base: v0.13.0_STABLE  
+Status: candidate  
+Version: 0.13.1  
+Phase: Recovery Replay Finality Hardening

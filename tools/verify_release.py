@@ -11,7 +11,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-VERSION = "v0.13.0_STABLE"
+VERSION = "v0.13.1_CANDIDATE"
 EXPECTED_PREFIX = f"GateGraph_{VERSION}/"
 FIXED_ZIP_DT = (2026, 1, 1, 0, 0, 0)
 FORBIDDEN_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea", ".vscode", "dist"}
@@ -60,7 +60,7 @@ REQUIRED = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.13.0_STABLE.md",
+    "docs/RELEASE_v0.13.1_CANDIDATE.md",
     "tests/release_claim_consistency_evidence.py",
     "src/security/__init__.py",
     "src/security/token_redaction.py",
@@ -73,7 +73,7 @@ REQUIRED = {
     "tests/context_poisoning_evidence.py",
     "tests/instruction_data_separation_evidence.py",
     "tests/context_provenance_evidence.py",
-    "docs/RELEASE_v0.13.0_STABLE.md",
+    "docs/RELEASE_v0.13.1_CANDIDATE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -81,16 +81,28 @@ REQUIRED = {
     "contracts/capability_token_claims.schema.json",
     "tests/surface_contract_registry_evidence.py",
     "tests/semantic_boundary_evidence.py",
+    "src/recovery_foundation.py",
+    "tests/recovery_foundation_evidence.py",
+    "tests/replay_recovery_consistency_evidence.py",
+    "tests/surface_recovery_consistency_evidence.py",
+    "tests/recovery_idempotency_evidence.py",
+    "tests/replay_order_determinism_evidence.py",
+    "tests/recovery_surface_registry_evidence.py",
+    "tests/release_surface_sync_evidence.py",
+    "tests/replay_reference_integrity_evidence.py",
+    "tests/recovery_replay_finality_evidence.py",
+    "docs/RECOVERY_FOUNDATION.md",
+    "docs/RECOVERY_REPLAY_FINALITY.md",
     "src/semantic_registry_lock.py",
     "registry/semantic_registry_lock.json",
     "registry/semantic_object_types.json",
     "registry/invariant_surface_registry.json",
     "tests/semantic_registry_lock_evidence.py",
     "tests/release_manifest_coverage_evidence.py",
-    "docs/RELEASE_v0.13.0_STABLE.md",
+    "docs/RELEASE_v0.13.1_CANDIDATE.md",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.13.0_STABLE.md",
+    "docs/RELEASE_v0.13.1_CANDIDATE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",

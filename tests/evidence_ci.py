@@ -76,6 +76,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("recovery_surface_registry_evidence", "tests/recovery_surface_registry_evidence.py", 20),
     ("release_surface_sync_evidence", "tests/release_surface_sync_evidence.py", 20),
     ("release_claim_consistency_evidence", "tests/release_claim_consistency_evidence.py", 20),
+    ("recovery_replay_finality_evidence", "tests/recovery_replay_finality_evidence.py", 20),
     ("replay_reference_integrity_evidence", "tests/replay_reference_integrity_evidence.py", 20),
     ("version_consistency_evidence", "tests/version_consistency_evidence.py", 20),
     ("surface_contract_registry_evidence", "tests/surface_contract_registry_evidence.py", 20),
