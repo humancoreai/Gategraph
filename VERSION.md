@@ -16,3 +16,15 @@ GateGraph v0.5 consolidates the working governance core after:
 - agent scenario simulation
 
 All known P0 correctness and enforcement issues from the v0.4.x cycle were resolved.
+
+
+## v0.6-spec
+
+Runtime Guard design added as documentation-only layer.
+
+No runtime code added in this step.
+
+
+## v0.6-core
+
+Runtime Guard MVP implemented with budget, step, cost, runtime, and repeated-action checks.
