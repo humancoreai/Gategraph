@@ -7,8 +7,8 @@ import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.11.5_STABLE"
-EXPECTED_BASE = "v0.11.4_STABLE"
+EXPECTED_RELEASE = "v0.11.6_CANDIDATE"
+EXPECTED_BASE = "v0.11.5_STABLE"
 
 
 def read(path: str) -> str:
@@ -23,7 +23,7 @@ def main() -> int:
     project = pyproject["project"]
 
     assert project["name"] == "gategraph"
-    assert project["version"] == "0.11.5"
+    assert project["version"] == "0.11.6"
     assert project["requires-python"] == ">=3.11"
     assert project.get("dependencies", []) == []
 
@@ -64,6 +64,9 @@ def main() -> int:
     assert "KNOWN_LIMITATIONS.md" in paths
     assert "src/security/token_redaction.py" in paths
     assert "tests/token_exposure_evidence.py" in paths
+    assert "src/multi_agent_delegation.py" in paths
+    assert "tests/multi_agent_delegation_boundary_evidence.py" in paths
+    assert "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md" in paths
 
     forbidden = [
         path for path in paths
