@@ -157,6 +157,6 @@
       ]
     }
   },
-  "release": "v0.13.3_CANDIDATE",
+  "release": "v0.13.3_STABLE",
   "schema_version": "0.13.3"
 }

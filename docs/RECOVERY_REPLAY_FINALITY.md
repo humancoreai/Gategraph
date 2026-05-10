@@ -1,8 +1,8 @@
 # Recovery Replay Finality
 
-Release: v0.13.3_CANDIDATE  
+Release: v0.13.3_STABLE  
 Base: v0.13.2_STABLE  
-Status: candidate  
+Status: stable  
 Scope: Recovery Replay Finality Hardening.
 
 ## Purpose

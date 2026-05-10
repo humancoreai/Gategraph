@@ -46,7 +46,7 @@
       "server_hardening_evidence"
     ]
   },
-  "release": "v0.13.3_CANDIDATE",
+  "release": "v0.13.3_STABLE",
   "runtime_authority": false,
   "schema_version": "0.13.3"
 }

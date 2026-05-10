@@ -1,8 +1,8 @@
 # Release Status
 
-Current release: v0.13.3_CANDIDATE  
+Current release: v0.13.3_STABLE  
 Base: v0.13.2_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Evidence Suite Profile Management
 
 ## Scope
