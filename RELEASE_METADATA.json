@@ -13,10 +13,10 @@
   "new_runtime_model": false,
   "packaging_scope": false,
   "phase": "Release Process Guard",
-  "release": "v0.10.3_CANDIDATE",
+  "release": "v0.10.3_STABLE",
   "release_process_guard": true,
   "runtime_logic_changed": false,
   "scope_freeze": true,
   "self_orchestration": false,
-  "status": "candidate"
+  "status": "stable"
 }
