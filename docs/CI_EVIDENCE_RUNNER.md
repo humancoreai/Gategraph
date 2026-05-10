@@ -36,3 +36,7 @@ timeout 60 python -S -u <script>
 ```
 
 This keeps the evidence process bounded and makes hangs visible as non-zero exit codes.
+
+## v0.8.10 runner boundary note
+
+`tests/_run_isolated.py` still uses `os._exit()` deliberately, but only after the target evidence script has returned and stdout/stderr have been flushed. This is a containment workaround for environment-specific Python shutdown hangs observed after completed evidence runs. Evidence scripts remain responsible for closing their own SQLite connections before returning; the wrapper is not a DB lifecycle owner and must not be used around production code.

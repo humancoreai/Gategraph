@@ -12,6 +12,7 @@ import tempfile
 from contextlib import contextmanager
 from dataclasses import replace
 from pathlib import Path
+from typing import Dict
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -22,7 +23,7 @@ from src.enforcement import enforce
 KEYRING = {"rot-v2": "secret-v2", "rot-v1": "secret-v1"}
 
 @contextmanager
-def key_env(active: str, keyring: dict[str, str]):
+def key_env(active: str, keyring: Dict[str, str]):
     old_active = os.environ.get("GATEGRAPH_TOKEN_ACTIVE_KEY_ID")
     old_keyring = os.environ.get("GATEGRAPH_TOKEN_KEYRING_JSON")
     os.environ["GATEGRAPH_TOKEN_ACTIVE_KEY_ID"] = active

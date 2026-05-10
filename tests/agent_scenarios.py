@@ -71,7 +71,7 @@ def run():
 
         rows.append((name, result.risk_level, result.final_decision, "allowed" if enf.allowed else "blocked", result.selected_rule_id, "VIOLATION" if violation else "ok"))
 
-    print("AGENT SCENARIO SIMULATION v0.8.8")
+    print("AGENT SCENARIO SIMULATION v0.8.10")
     print(f"Runs: {len(scenarios)}")
     print(f"Events: {event_logger.count_events(conn)}")
     print(f"Allowed: {allowed}")
