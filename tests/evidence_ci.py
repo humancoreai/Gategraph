@@ -40,6 +40,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("drift_detection_evidence", "tests/drift_detection_evidence.py", 20),
     ("governance_archive_replay_evidence", "tests/governance_archive_replay_evidence.py", 20),
     ("archive_integrity_replay_consistency_evidence", "tests/archive_integrity_replay_consistency_evidence.py", 20),
+    ("operator_export_evidence", "tests/operator_export_evidence.py", 20),
     ("operator_evidence", "tests/operator_evidence.py", 20),
     ("cross_session_budget_evidence", "tests/cross_session_budget_evidence.py", 20),
     ("operational_hardening_evidence", "tests/operational_hardening_evidence.py", 20),
