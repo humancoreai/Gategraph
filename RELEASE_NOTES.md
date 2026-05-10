@@ -1,8 +1,8 @@
-# GateGraph v0.12.8_CANDIDATE Release Notes
+# GateGraph v0.12.8_STABLE Release Notes
 
 Base: v0.12.7_STABLE
 
-Status: candidate
+Status: stable
 
 Scope: Governance Integrity Graph.
 
@@ -21,7 +21,7 @@ Scope: Governance Integrity Graph.
 - Orphan detection for governance graph nodes and validators.
 - Descriptive impact visibility for freeze/replay affected surfaces.
 - Deterministic integrity graph freeze hash.
-- Deterministic governance diff from v0.12.7_STABLE to v0.12.8_CANDIDATE.
+- Deterministic governance diff from v0.12.7_STABLE to v0.12.8_STABLE.
 
 ## Boundary invariants
 
