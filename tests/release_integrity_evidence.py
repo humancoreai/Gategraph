@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-VERSION = "v0.11.9_STABLE"
+VERSION = "v0.12.0_CANDIDATE"
 
 
 def load_module(name: str, path: Path):
@@ -89,6 +89,13 @@ def main() -> None:
     assert "KNOWN_LIMITATIONS.md" in paths
     assert "src/security/token_redaction.py" in paths
     assert "tests/token_exposure_evidence.py" in paths
+    assert "docs/GOVERNANCE_SURFACE_FREEZE.md" in paths
+    assert "contracts/governance_decision.schema.json" in paths
+    assert "contracts/normalized_reason.schema.json" in paths
+    assert "contracts/monitoring_export.schema.json" in paths
+    assert "contracts/capability_token_claims.schema.json" in paths
+    assert "tests/surface_contract_registry_evidence.py" in paths
+    assert "tests/semantic_boundary_evidence.py" in paths
 
     with zipfile.ZipFile(zip_path, "r") as zf:
         rel_names = [name.removeprefix(f"GateGraph_{VERSION}/") for name in zf.namelist()]
