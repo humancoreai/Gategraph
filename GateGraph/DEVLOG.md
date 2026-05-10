@@ -346,3 +346,18 @@ Scope remains mock-only: no real network calls.
 - POSIX path uses external watchdog (`timeout --kill-after`) to avoid interpreter wait/signal hangs.
 - Windows path keeps process-tree termination via `taskkill /T /F` and direct kill fallback.
 - Selftest reduced to deterministic pass/fail/timeout proof; brittle nested child-hang case removed from release gate.
+
+
+## v0.8.25.1_STABLE
+
+- Consolidated `v0.8.25.1_RUNNER_HARDENING_CANDIDATE` into a stable recovery point.
+- Windows full Evidence CI reported `Passed: True` on 2026-04-28.
+- Runtime Governance / Runaway Cost Control retained as stable scope.
+- Runner timeout path retained with deterministic pass/fail/timeout selftest.
+- Added `docs/RELEASE_v0.8.25.1_STABLE.md`.
+- No governance, enforcement, token, secret or controlled-apply authority model changes were introduced during consolidation.
+
+### Stable boundary
+- Stable for current local evidence scope.
+- Still single-node.
+- No production KMS, distributed budget or monitoring/alerting.
