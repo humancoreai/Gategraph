@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.14.4_CANDIDATE
+## v0.14.4_STABLE
 
-Status: candidate.
+Status: stable.
 Base: v0.14.3_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
