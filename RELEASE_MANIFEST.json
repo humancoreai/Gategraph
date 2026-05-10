@@ -10,13 +10,13 @@
     },
     {
       "path": "ARCHITECTURE.md",
-      "sha256": "05ece53b987e04b98b9057e0fad00ca0fa571f6844cb773598ae3cbf5b0fa19f",
-      "size": 1744
+      "sha256": "7bafcda4624b69e0de622fb10ed3bbfcde5b8a1eb1a96377276c8ba06461b4df",
+      "size": 1741
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "c0b169b2e4ea34346ad50a5bfd79156eb9d6ca9697769480412f31c0730e9ff3",
-      "size": 5887
+      "sha256": "e741c3a2e02f731df2e7c4a76d710471f2956578bcd644e8523dd12ea605bcfd",
+      "size": 5884
     },
     {
       "path": "CONTEXT_GOVERNANCE_MODEL.md",
@@ -65,13 +65,13 @@
     },
     {
       "path": "PRODUCTION.md",
-      "sha256": "fd197623d76412dfa3b488ee1a11adfce1c94829afffcf824df76937ea556632",
-      "size": 2208
+      "sha256": "48efed54598c1f26b9abf43a73cde1e7663ba7bdfdc57299d160173467660e3c",
+      "size": 2205
     },
     {
       "path": "README.md",
-      "sha256": "d724203ad1eaa877b73de64a58c5a15299f9c82bff148e08f1489b0470227e51",
-      "size": 8340
+      "sha256": "016519cd396778317ee35e57a8bacc2ba97c9cfe2719e02b736ba67986668fbc",
+      "size": 8331
     },
     {
       "path": "RELEASE_CONTENT_RULES.md",
@@ -80,13 +80,13 @@
     },
     {
       "path": "RELEASE_METADATA.json",
-      "sha256": "a3a7f2b3fb8d83ee281566aee36fcff7d7fa7b3768f9859f51b2d60e10cdcc08",
-      "size": 2462
+      "sha256": "82dafe18d2d5025516399874291581d736c04fcb3d70a7d42cfbf971a7cedead",
+      "size": 2456
     },
     {
       "path": "RELEASE_NOTES.md",
-      "sha256": "9b0dcceeb155a602ceee3a351d20712d1841b8155ef67c6f1c10ee75990cb8a3",
-      "size": 1358
+      "sha256": "0801ed79e1980497de9d2731fa9822d4fa6762712827757c0c6efa8fdf62b9b3",
+      "size": 1349
     },
     {
       "path": "RELEASE_PROCESS.md",
@@ -95,8 +95,8 @@
     },
     {
       "path": "RELEASE_STATUS.md",
-      "sha256": "84462a5f5ebc3e130e1364c229b64d138d8bd2f1c95b2942e499e7d2b2f22a5a",
-      "size": 431
+      "sha256": "a5ab5f746ecce5b158e6e5c3434448370a4d7d426e68d05e15bb0b9f12120d86",
+      "size": 425
     },
     {
       "path": "SECURITY.md",
@@ -115,8 +115,8 @@
     },
     {
       "path": "VERSION.md",
-      "sha256": "17beee1f2d2a43b4fc19320908c86d7a353845c2a3cc8147a48873a963d87e0c",
-      "size": 695
+      "sha256": "32d0e7357e78516acdda04aad0ff9aa8bc19ae6ee5ef39405e0840b57ec980e9",
+      "size": 683
     },
     {
       "path": "config.example.yaml",
@@ -155,8 +155,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "sha256": "c33f91e5b5071716769d5609e463ed9b2454de282920bae3ea314d25cedcd151",
-      "size": 3769
+      "sha256": "68defea59d06367d2add293ed3de6b079697a13503f0e69b294acb8970c8bc14",
+      "size": 3766
     },
     {
       "path": "docs/BLOCK_C_STRESS_EVIDENCE.md",
@@ -220,8 +220,8 @@
     },
     {
       "path": "docs/DEPLOYMENT_BOUNDARY.md",
-      "sha256": "1185f8810c319c61d4e1132bbfd75a0d6f883a4fa29db4e8458e2c639f9a7e4f",
-      "size": 2645
+      "sha256": "e476882e747d3ef34f70149816392267aa45039ddf95b2cf79757cd1e531b4cb",
+      "size": 2642
     },
     {
       "path": "docs/EMERGENCE_BOUNDARIES.md",
@@ -245,8 +245,8 @@
     },
     {
       "path": "docs/GOVERNANCE_SURFACE_FREEZE.md",
-      "sha256": "48becdf006fa265f5b8959bfecf7d216e4892196407af5e791814e36d0392c9a",
-      "size": 1072
+      "sha256": "32de055cf3bb4638a271103361920f6091b6e88f690223a2372da3ec641e9890",
+      "size": 1069
     },
     {
       "path": "docs/GUARD_ORCHESTRATION.md",
@@ -270,8 +270,8 @@
     },
     {
       "path": "docs/KNOWN_GAPS_ROADMAP.md",
-      "sha256": "f5b7d3312f38d29fc8b3dd976f264e4c278f4e5aa5fa1eb9a76fa47b84a18e40",
-      "size": 3544
+      "sha256": "eb18a5b23543f6d6f0dffa79db620bfed8857d51ae797e58d3d16290d7f96359",
+      "size": 3538
     },
     {
       "path": "docs/MODE_BOUNDARY_SURFACE.md",
@@ -355,8 +355,8 @@
     },
     {
       "path": "docs/RECOVERY_FOUNDATION.md",
-      "sha256": "2caceb898f327c5ab8fd76cbb9ac2a7109ffdb0a8d46ad1bb6ac6f0401e10b2d",
-      "size": 1125
+      "sha256": "afb58aefd5ecbe04bf3eb4fad01a60bcf68f01ac58e8f81bb537ce510e7290a8",
+      "size": 1122
     },
     {
       "path": "docs/RELEASE_REPRODUCIBILITY.md",
@@ -399,9 +399,9 @@
       "size": 746
     },
     {
-      "path": "docs/RELEASE_v0.12.2_CANDIDATE.md",
-      "sha256": "63a06dedb0efc19e9430777acf119b8fbaf237def25bf97e6926fc4e6f1367c3",
-      "size": 1123
+      "path": "docs/RELEASE_v0.12.2_STABLE.md",
+      "sha256": "e2f924114694ae46c846b32a407161c3ca5962ab16d85747270963e2969a5a05",
+      "size": 1117
     },
     {
       "path": "docs/RELEASE_v0.8.25.1_STABLE.md",
@@ -575,8 +575,8 @@
     },
     {
       "path": "docs/ROOT_SURFACE.md",
-      "sha256": "df85a2d0ecde30863f648017504b5a491c191a4101fe2b8a1e33b98ee855efab",
-      "size": 723
+      "sha256": "9cbef2652b080eebc67b2666813ee721b6efda98dca6a1b51dc702504e2bf9d1",
+      "size": 720
     },
     {
       "path": "docs/RUNAWAY_COST_CONTROL.md",
@@ -635,8 +635,8 @@
     },
     {
       "path": "docs/SERVER_MODE.md",
-      "sha256": "2f0d2aa7ab9e4c83e67e1b3c8e0495f5620482f85fe774d9eb9cc7ded37a2204",
-      "size": 3374
+      "sha256": "6d276d37d8063281eec3a1ec1b8f3ad1a2b1751d0d6a892fc96fd81199bd96d8",
+      "size": 3371
     },
     {
       "path": "docs/SESSION_BUDGET_GUARD.md",
@@ -645,8 +645,8 @@
     },
     {
       "path": "docs/STARTUP_SURFACE.md",
-      "sha256": "6429867af23abe555cbe53d7327c5271eca3362f3f98cd9372e149c457f8738a",
-      "size": 1558
+      "sha256": "02dd7c07a267432602bfd36afd1c2e7576a5322ffae85401617bb1a8139a3da3",
+      "size": 1555
     },
     {
       "path": "docs/TEST_REPORT.md",
@@ -740,8 +740,8 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "f3a6574eb8f507219be8300afa3c019bc122c8831e3c5a668e51990cc34fff44",
-      "size": 1353
+      "sha256": "83cfed6e9b4894d3cb9b298e3daf39f7b7257df5bb682f73f763615fe4d75d05",
+      "size": 1350
     },
     {
       "path": "src/__init__.py",
@@ -1085,13 +1085,13 @@
     },
     {
       "path": "tests/config_consistency_evidence.py",
-      "sha256": "e5df9d1872ba42034e663cfa4df929b43f54bf2cda3965b6419771a8ce4a5e5e",
-      "size": 1843
+      "sha256": "d6b07802a2f0dd73e3ff45c2ff0b2d01943ea3b7689817fcb7527a880ebcd676",
+      "size": 1837
     },
     {
       "path": "tests/context_freeze_coupling_evidence.py",
-      "sha256": "958cbfa5948d574090aaa770db0ebe7a99ac3d0080fa5aa8d0ddc46343f1969a",
-      "size": 2731
+      "sha256": "4d999952a23b48e4a7724e879290b1a0cbc73884ab67b8bcfab2a8223cf942fd",
+      "size": 2719
     },
     {
       "path": "tests/context_lifecycle_evidence.py",
@@ -1165,8 +1165,8 @@
     },
     {
       "path": "tests/final_consolidation_evidence.py",
-      "sha256": "79dd993303668cc424ad019da63aa58c21e94e8772c8c6309874b312d0ea2160",
-      "size": 2422
+      "sha256": "5277510e37caecd8a7b82746a6e62dd0eb0c3e3e47d46dc66c625982fd055249",
+      "size": 2416
     },
     {
       "path": "tests/freeze_runtime_invariant_evidence.py",
@@ -1220,13 +1220,13 @@
     },
     {
       "path": "tests/milestone_release_evidence.py",
-      "sha256": "30f80223950aac05c629af45e22c7d317e10d41bc2ffafc5ada99e9d5ed86d82",
-      "size": 7926
+      "sha256": "c51a12eda22302a9a496272fc16100d74f62bf4bc3dfb208e1654d0f081f0bcd",
+      "size": 7920
     },
     {
       "path": "tests/mode_boundary_surface_evidence.py",
-      "sha256": "11b3293b8eb99d3870ce211a60bc791dc1d78b347a88e45f08a656d0610e6872",
-      "size": 3013
+      "sha256": "0972f6ddfc115c36e2bc3c802b1640c8375d789bc03f4aecee31a4c253d1bfa3",
+      "size": 3004
     },
     {
       "path": "tests/multi_agent_architecture_evidence.py",
@@ -1275,8 +1275,8 @@
     },
     {
       "path": "tests/packaging_integrity_evidence.py",
-      "sha256": "aac8e1a11687b274f4e370b60a632806f257adf40293bc7adca9a27c573c156f",
-      "size": 4864
+      "sha256": "7b9b813f0d31f12dffd5e01f0bcbe16fd0d582e9afad8a09badf8e39e3540433",
+      "size": 4861
     },
     {
       "path": "tests/pattern_clustering_evidence.py",
@@ -1315,28 +1315,28 @@
     },
     {
       "path": "tests/recovery_surface_registry_evidence.py",
-      "sha256": "6388c6112fe983bea7398ac499a954857efe1e08f2b5b99f3df2a16f3f8ee3fa",
-      "size": 1633
+      "sha256": "581357c85d860a0c8d0d319d46a984d765cdd5498aa4c4963e080ebda1bb87b7",
+      "size": 1624
     },
     {
       "path": "tests/release_content_hygiene_evidence.py",
-      "sha256": "3bcc576559a5ff8e37d3407ac8ae0e376262afd2ba06baf1abe944bd84277bbe",
-      "size": 1867
+      "sha256": "62a0aef5c7f157233d4777e014394a78e844e4fda9d5ccc06ef0c2a120614e00",
+      "size": 1858
     },
     {
       "path": "tests/release_integrity_evidence.py",
-      "sha256": "3343ddabbd28b2c32084b43d4071deadb34a532b678ab0931f6bd53d50275be7",
-      "size": 5744
+      "sha256": "70c1123f5b442ec5d868419fd6e878c697b4f426739056319c559b1c5e9840a0",
+      "size": 5738
     },
     {
       "path": "tests/release_process_guard_evidence.py",
-      "sha256": "1b5b3cc77e7d7a98c40b7e3ff6d3a9103fbc2ed51c15ec2097fa623d54728b16",
-      "size": 711
+      "sha256": "42e901e126ba827eedb283a8ac1b6f523655a04ed27b956636e04c68d5275df5",
+      "size": 705
     },
     {
       "path": "tests/release_surface_sync_evidence.py",
-      "sha256": "03b0c3159c4e639f54fa94206aed994c9892e52c77a422823d4a8b23a2fe2a39",
-      "size": 1759
+      "sha256": "405bb60d15429a4edb7348480a49f5f7a8acd13f5a21e45c67642af9f8029baf",
+      "size": 1750
     },
     {
       "path": "tests/replay_order_determinism_evidence.py",
@@ -1405,8 +1405,8 @@
     },
     {
       "path": "tests/runtime_surface_consistency_evidence.py",
-      "sha256": "44d370ad886f09ace9ca36a0e4691be26c746485c96ce2da3cee2f7056ca4b24",
-      "size": 3007
+      "sha256": "4429498b0c803b3709b7345899dab5b7789bbd26ce0d5f223567de91fc7f762a",
+      "size": 3001
     },
     {
       "path": "tests/scale_safety_evidence.py",
@@ -1460,23 +1460,23 @@
     },
     {
       "path": "tests/startup_surface_evidence.py",
-      "sha256": "1cdb7569546e1d4f6c3e531a683c57c174fb87fa530cf136bfeb6e1f7544def4",
-      "size": 1549
+      "sha256": "c1d5867ae0173837bc1745b0a7b7b57357b828af21bc40d07f938b8afd3ec1e7",
+      "size": 1543
     },
     {
       "path": "tests/surface_contract_registry_evidence.py",
-      "sha256": "fd9f448d4b74678594dacec9f00d60a77ec7087a901584fd5cc9ef191be08e12",
-      "size": 3418
+      "sha256": "cd4d38e32a2932ee876f39a0e6d6457d0cf90a63c8e6cb71b5189b1ca3e345ff",
+      "size": 3412
     },
     {
       "path": "tests/surface_freeze_coupling_evidence.py",
-      "sha256": "2befc58d473f4bba7f83b14aa723cdaf34dac0c047ddce82dd34f802ac3d68ad",
-      "size": 3538
+      "sha256": "6da01e22499cd26e30331b31fc113bddd28b8f10d6b50babfef6d4f08fd72d6a",
+      "size": 3529
     },
     {
       "path": "tests/surface_recovery_consistency_evidence.py",
-      "sha256": "4dfb87e38c94ab4791b52153e41a1111a297197d7c23ce1d2d6c701dafe4b95e",
-      "size": 1472
+      "sha256": "4de093713e396a6d7f28a7e8b13f09eafed942853558b647186acfd39a554e7c",
+      "size": 1463
     },
     {
       "path": "tests/test_loop.py",
@@ -1500,13 +1500,13 @@
     },
     {
       "path": "tests/version_consistency_evidence.py",
-      "sha256": "0b71769c37dc5f4657b9d72b6eaa4541587fd5f3999f2a6903cfb1f9f4144259",
-      "size": 1325
+      "sha256": "f60058cfc26bbe0320ece82169b3d2aae207e1a6731491313a4e90de4f9ba78d",
+      "size": 1319
     },
     {
       "path": "tools/build_release.py",
-      "sha256": "d13c9aa001a4455afaab65388f3e9699c2cb8cd3b8b48caf39f8d67ff4fc6c41",
-      "size": 13221
+      "sha256": "56b6c91fe4c689ea17df71f65041f9d3bc820fdfe06307ef2fd5443c0c1dd26d",
+      "size": 13194
     },
     {
       "path": "tools/release_process_guard.py",
@@ -1515,12 +1515,12 @@
     },
     {
       "path": "tools/verify_release.py",
-      "sha256": "ed4d50c0de21507ecd8a9e1f6cdb04e7f5f5413c3a1ef72391654cff38f3f9ac",
-      "size": 7858
+      "sha256": "8d2ea9798003726a4618fc7d6bd57472f3479fefdecf3ede060844d0335a8846",
+      "size": 7849
     }
   ],
-  "kind": "candidate_release",
-  "release": "v0.12.2_CANDIDATE",
+  "kind": "stable_release",
+  "release": "v0.12.2_STABLE",
   "scope": "governance_surface_freeze",
-  "status": "candidate"
+  "status": "stable"
 }
