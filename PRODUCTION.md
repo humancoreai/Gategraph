@@ -64,6 +64,6 @@ Current release surface: `v0.12.1_STABLE`.
 
 Current release surface: v0.12.7_STABLE.
 
-Current release surface: v0.13.2_STABLE
+Current release surface: v0.13.3_STABLE
 
-Release surface: v0.13.3_STABLE.
+Release surface: v0.13.4_CANDIDATE.

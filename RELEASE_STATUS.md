@@ -1,13 +1,13 @@
 # Release Status
 
-Current release: v0.13.3_STABLE  
-Base: v0.13.2_STABLE  
-Status: stable  
-Phase: Evidence Suite Profile Management
+Current release: v0.13.4_CANDIDATE  
+Base: v0.13.3_STABLE  
+Status: candidate  
+Phase: Evidence Failure Classification
 
 ## Scope
 
-Evidence-only Candidate CI gate hardening. No runtime, enforcement or governance decision logic changes.
+Evidence failure classification and release/evidence grouping. No runtime, enforcement or governance decision logic changes.
 
 ## Candidate gate
 

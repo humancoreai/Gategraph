@@ -1,16 +1,16 @@
 # Changelog
 
-## v0.13.3_STABLE
+## v0.13.4_CANDIDATE
 
-Base: v0.13.2_STABLE  
-Status: stable  
-Phase: Evidence Suite Profile Management
+Base: v0.13.3_STABLE  
+Status: candidate  
+Phase: Evidence Failure Classification
 
-- Added Candidate CI gate evidence.
-- Added bounded Candidate CI gate release documentation.
+- Added Evidence Failure Classification evidence.
+- Added bounded classification registry and documentation.
 - No runtime, enforcement or governance decision logic change.
 
-## v0.13.2_STABLE
+## v0.13.3_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 

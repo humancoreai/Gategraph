@@ -1,7 +1,7 @@
 # GateGraph Version
 
-Release: v0.13.3_STABLE  
-Base: v0.13.2_STABLE  
-Status: stable  
-Version: 0.13.3  
-Phase: Evidence Suite Profile Management
+Release: v0.13.4_CANDIDATE  
+Base: v0.13.3_STABLE  
+Status: candidate  
+Version: 0.13.4  
+Phase: Evidence Failure Classification

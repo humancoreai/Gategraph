@@ -1,0 +1,52 @@
+{
+  "auto_promotion": false,
+  "auto_pruning": false,
+  "auto_repair": false,
+  "base": "v0.13.3_STABLE",
+  "classes": {
+    "registry_lock": [
+      "semantic_registry_lock_evidence",
+      "cross_registry_integrity_evidence",
+      "schema_governance_evidence"
+    ],
+    "release_surface": [
+      "release_integrity_evidence",
+      "release_process_guard_evidence",
+      "version_consistency_evidence",
+      "release_manifest_coverage_evidence",
+      "evidence_surface_consistency_evidence",
+      "surface_recovery_consistency_evidence"
+    ],
+    "runtime_governance": [
+      "runtime_stress_evidence",
+      "session_budget_evidence",
+      "guard_orchestration_evidence",
+      "runtime_chain_order_evidence",
+      "runtime_guard"
+    ],
+    "security": [
+      "capability_token_hardening_evidence",
+      "token_exposure_evidence",
+      "http_policy_evidence",
+      "secret_api_integration_evidence",
+      "security_finesse_evidence"
+    ],
+    "semantic_boundary": [
+      "semantic_boundary_evidence",
+      "semantic_registry_evidence",
+      "semantic_drift_detection_evidence",
+      "governance_semantics_evidence"
+    ],
+    "server_surface": [
+      "server_mode_evidence",
+      "server_hardening_evidence",
+      "api_contract_evidence",
+      "api_robustness_evidence"
+    ]
+  },
+  "classification_mode": "descriptive_grouping_only",
+  "mandatory_unclassified_fail_closed": true,
+  "release": "v0.13.4_CANDIDATE",
+  "runtime_authority": false,
+  "schema_version": "0.13.4"
+}
