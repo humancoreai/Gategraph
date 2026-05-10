@@ -28,4 +28,4 @@ Recovery evidence may describe, classify, release an interrupted local reservati
 
 Current release surface: v0.12.8_STABLE
 
-Release surface: v0.12.9_CANDIDATE.
+Release surface: v0.12.9_STABLE.

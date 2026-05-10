@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.12.9_CANDIDATE
+## v0.12.9_STABLE
 
 - Adds descriptive `block_reason` output for fail-closed unknown capability decisions.
 - Keeps governance, runtime, enforcement, and token behavior unchanged.
