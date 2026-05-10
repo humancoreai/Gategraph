@@ -1,32 +1,33 @@
-# Release Status - GateGraph v0.8.16-block-d-audit-explain-evidence
+# Release Status - GateGraph v0.8.17-block-e-documentation-reality-check
 
-Status: Single-node PoC / audit-explain evidence hardening.
+Status: Single-node PoC / documentation reality check.
 
 ## Added
-- `src/explain_trace.py` read-only reviewer trace builder.
-- `tests/block_d_audit_explain_evidence.py` with focused Audit/Explain reconstruction checks.
-- `docs/BLOCK_D_AUDIT_EXPLAIN_EVIDENCE.md`.
+- `docs/BLOCK_E_DOCUMENTATION_REALITY.md`.
+- Explicit current-limitations section in README.
+- Updated SECURITY framing for implemented PoC controls vs. production gaps.
 
-## Proved
-- Completed API-shaped flow is reconstructable through action-ready evidence.
-- No-token flow stops at Enforcement without Session/Runtime work.
-- HTTP Policy block is distinguishable from core Guard blocks.
-- Secret-backed completed flow is explainable without raw secret leakage.
+## Corrected
+- Removed obsolete claims that token signing is not implemented.
+- Removed obsolete claims that runtime/cost-control layer is absent.
+- Removed obsolete claims that external API integration is absent; it is now documented as controlled/policy-gated PoC integration.
+- Version labels aligned to v0.8.17.
 
 ## Unchanged
 - Enforcement remains the only authorization gatekeeper.
 - Guards still only stop, never allow.
 - HTTP Policy and Secret Provider order is unchanged.
-- Trace building is read-only and does not re-run decisions.
+- Trace building remains read-only.
 - Production governance/enforcement/runtime semantics unchanged.
 
 ## Evidence
-- Block D Audit/Explain Evidence: 4/4 passed.
-- Block C Stress Evidence: expected unchanged from v0.8.15.
-- HTTP Policy / Secret / External API evidence should remain compatible.
+- Block E is documentation-only.
+- Syntax/compile check remains the relevant technical sanity check.
+- Existing Block C/D and security evidence remain applicable from v0.8.16/v0.8.15/v0.8.14.
 
 ## Known Limits
-- Trace format is a reviewer-facing PoC, not a final public API contract.
-- Still single-node SQLite evidence.
-- No distributed causal trace model.
-- Aggregate runner remains environment-sensitive; supervised or individual evidence paths are preferred for local proof.
+- GateGraph remains a Single-Node SQLite PoC.
+- No KMS/OS-keychain lifecycle.
+- No distributed trust/budget model.
+- No unrestricted production HTTP/API execution.
+- Aggregate runner remains environment-sensitive in local runs.

@@ -1,6 +1,13 @@
 # GateGraph Version
 
-Current: v0.8.16-block-d-audit-explain-evidence
+Current: v0.8.17-block-e-documentation-reality-check
+
+## v0.8.17-block-e-documentation-reality-check
+- Aligns README, SECURITY.md, docs/SECURITY.md, VERSION.md, and RELEASE_STATUS.md with the actual v0.8.16 system state.
+- Adds explicit current-limitations / not-production-ready framing.
+- Removes obsolete documentation claims that token signing, runtime/cost controls, or API integration are entirely absent.
+- Adds `docs/BLOCK_E_DOCUMENTATION_REALITY.md`.
+- Production governance/enforcement/runtime semantics unchanged.
 
 ## v0.8.16-block-d-audit-explain-evidence
 - Adds read-only audit/explain trace reconstruction via `src/explain_trace.py`.
@@ -13,8 +20,6 @@ Current: v0.8.16-block-d-audit-explain-evidence
 - Proves session-level micro-flood blocking, agent-level fan-out blocking, exact budget-boundary behavior, and same-task repeated-action runtime stops.
 - Adds `tests/block_c_stress_evidence.py` and `docs/BLOCK_C_STRESS_EVIDENCE.md`.
 - Production governance/enforcement/runtime semantics unchanged.
-
-Previous: v0.8.14-runner-harness-hardening / v0.8.14-security-finesse
 
 ## v0.8.14 runner-harness-hardening
 - Evidence runner hardened with file-backed subprocess execution and timeout classification.
