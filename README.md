@@ -203,3 +203,8 @@ Non-positive projected/runtime costs now fail closed. See `docs/RUNAWAY_COST_CON
 ## v0.8.8 note: Capability Token hardening
 
 Capability Tokens are now HMAC-signed over immutable claims and checked by Enforcement against persisted token state. This protects the current Single-Node model against simple token mutation, forged capability expansion, and persisted signature tampering. See `docs/CAPABILITY_TOKEN_HARDENING.md`.
+
+
+## Current security hardening note
+
+v0.8.9 adds Capability Token key IDs and keyring-based verification so local HMAC key rotation can be tested deterministically. Unknown signing keys fail closed.
