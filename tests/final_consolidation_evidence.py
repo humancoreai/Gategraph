@@ -57,7 +57,7 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
-    assert "v0.12.5_CANDIDATE" in version
+    assert "v0.12.5_STABLE" in version
     assert "v0.12.4_STABLE" in version
     assert "Deterministic Registry / Schema Governance" in status
 
@@ -75,4 +75,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# Current release surface: v0.12.5_CANDIDATE
+# Current release surface: v0.12.5_STABLE
