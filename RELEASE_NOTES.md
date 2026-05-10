@@ -1,10 +1,10 @@
-# Release Notes — GateGraph v0.12.0_CANDIDATE
+# Release Notes — GateGraph v0.12.0_STABLE
 
 Base: `v0.11.9_STABLE`
 
 ## Purpose
 
-`v0.12.0_CANDIDATE` starts the Governance Surface Freeze phase. It adds a minimal contract registry for core governance surfaces and evidence that checks those surfaces for deterministic schema/version drift.
+`v0.12.0_STABLE` promotes the Governance Surface Freeze phase to stable. It adds a minimal contract registry for core governance surfaces and evidence that checks those surfaces for deterministic schema/version drift.
 
 ## Added
 
