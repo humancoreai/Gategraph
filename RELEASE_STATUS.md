@@ -1,18 +1,18 @@
-# Release Status – v0.11.0_STABLE
+# Release Status – v0.11.1_CANDIDATE
 
-Status: stable
+Status: candidate
 
-Base: v0.10.3_STABLE
+Base: v0.11.0_STABLE
 
-Phase: Deployment / Packaging Baseline
+Phase: Operational Start Surface / Minimal Deployment Consistency
 
 Scope:
-- add pyproject.toml packaging baseline
-- add reproducible local editable-install surface
-- add console entry points for existing CLI/server modules
-- document supported/unsupported/unsafe deployment boundary
-- add packaging integrity evidence
-- add install surface evidence
+- document canonical CLI/server startup paths
+- document config and ENV expectations
+- verify startup entry points remain importable
+- verify package metadata stays aligned
+- verify deterministic health/status surface expectations
+- add startup/config evidence
 
 Out of scope:
 - no runtime changes
@@ -22,5 +22,5 @@ Out of scope:
 - no agentic behavior
 - no multi-node/distributed governance
 - no cloud orchestration
-- no Kubernetes/Helm/service mesh
-- no UI
+- no Docker/Kubernetes/Helm/service mesh
+- no UI/dashboard

@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.11.0_STABLE
+## v0.11.1_CANDIDATE
 
 - Added release-process guard for Candidate/Stable metadata consistency.
 - Added structured manifest validation and stale/missing manifest detection.
