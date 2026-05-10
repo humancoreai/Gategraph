@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.12.1",
   "surface": "normalized_reason",
   "status": "frozen_stable",
   "description": "Descriptive contract for normalized reason payloads used by audit/explain/monitoring surfaces.",

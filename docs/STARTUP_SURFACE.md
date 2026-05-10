@@ -40,9 +40,9 @@ The supported status surface remains intentionally minimal: release/version meta
 No telemetry stack, dashboard, remote alert router, or cloud monitoring layer is introduced in this phase.
 
 
-## v0.11.9_STABLE Note
+## v0.12.0_STABLE Note
 
-v0.11.9_STABLE preserves this boundary while adding security mapping and token exposure hardening.
+v0.12.0_STABLE preserves this boundary while adding security mapping and token exposure hardening.
 
 
-Current release surface: `v0.12.0_STABLE`.
+Current release surface: `v0.12.1_CANDIDATE`.
