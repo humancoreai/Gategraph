@@ -2,7 +2,7 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.11.3_CANDIDATE
+## v0.11.3_STABLE
 
 - Added mode-boundary surface documentation.
 - Added mode-boundary evidence to keep `observer`, `worker`, `reviewer`, and `blocked` descriptive only.
