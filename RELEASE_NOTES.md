@@ -1,9 +1,9 @@
-# Release Notes — GateGraph v0.12.5_CANDIDATE
+# Release Notes — GateGraph v0.12.5_STABLE
 
-## v0.12.5_CANDIDATE — Deterministic Registry / Schema Governance
+## v0.12.5_STABLE — Deterministic Registry / Schema Governance
 
 Base: v0.12.4_STABLE  
-Status: candidate
+Status: stable
 
 ### Added
 - Deterministic semantic registry lock for `semantic_object_types.json` and `invariant_surface_registry.json`.
@@ -40,10 +40,10 @@ Compatibility note: No runtime/enforcement behavior change.
 Compatibility note: No autonomous policy update.
 Compatibility note: No semantic scoring or memory system.
 
-## v0.12.5_CANDIDATE — Registry/Schema Governance Addendum
+## v0.12.5_STABLE — Registry/Schema Governance Addendum
 
 Base: `v0.12.4_STABLE`
-Status: `candidate`
+Status: `stable`
 
 Additional evidence gates:
 - `schema_governance_evidence`
@@ -55,6 +55,6 @@ Additional evidence gates:
 Additional artifacts:
 - `registry/schema_governance_registry.json`
 - `docs/SCHEMA_GOVERNANCE.md`
-- `docs/RELEASE_v0.12.5_CANDIDATE.md`
+- `docs/RELEASE_v0.12.5_STABLE.md`
 
-Compatibility: Semantic Registry remains active and Registry surfaces remain deterministic under v0.12.5_CANDIDATE.
+Compatibility: Semantic Registry remains active and Registry surfaces remain deterministic under v0.12.5_STABLE.
