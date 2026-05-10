@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.12.5_CANDIDATE
+## v0.12.5_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 
