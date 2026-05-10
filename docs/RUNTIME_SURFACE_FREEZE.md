@@ -1,7 +1,7 @@
-# Runtime Surface Freeze – GateGraph v0.11.2_STABLE
+# Runtime Surface Freeze – GateGraph v0.11.3_CANDIDATE
 
-Status: stable
-Base: v0.11.1_STABLE
+Status: candidate
+Base: v0.11.2_STABLE
 Phase: Operational Consistency / Runtime Surface Tightening
 
 ## Purpose
