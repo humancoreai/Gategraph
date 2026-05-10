@@ -572,3 +572,8 @@ The CLI is an adapter only. It does not duplicate or bypass Governance, Enforcem
 - Confirmed api_robustness_evidence passes.
 - Confirmed server hardening and repo push hygiene remain green.
 - No API schema changes, no new response fields, no core governance changes.
+
+
+## v0.8.40_CANDIDATE — Operator Control / Debug Interface
+
+Added a passive operator layer for inspecting decisions, compact explanations, exact trace queries, stop-reason drilldowns, and lightweight incident/alert navigation. Core governance logic remains unchanged.

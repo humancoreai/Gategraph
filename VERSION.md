@@ -1,9 +1,9 @@
 # GateGraph Version
 
-Current candidate: v0.8.39_STABLE
+Current candidate: v0.8.40_CANDIDATE
 
-Base: v0.8.38_STABLE
+Base: v0.8.39_STABLE
 
-Phase: Observability / Explainability
+Phase: Operator Control / Debug Interface
 
-Promotion evidence: Full evidence CI passed in packaged workspace.
+Promotion evidence: pending operator_evidence and full evidence CI.
