@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional
 # INV: audit schema version is compatibility-facing and may lag release version intentionally.
 SCHEMA_VERSION = "0.8.3"
 ACTOR_LAYER = "governance"
-ACTOR_VERSION = "0.8.5"
+ACTOR_VERSION = "0.8.13"
 
 
 @dataclass(frozen=True)
