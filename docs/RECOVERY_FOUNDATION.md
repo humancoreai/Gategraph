@@ -1,6 +1,6 @@
 # Recovery Foundation
 
-v0.12.1_CANDIDATE adds descriptive recovery evidence for interrupted local governance state.
+v0.12.1_STABLE adds descriptive recovery evidence for interrupted local governance state.
 
 ## Scope
 

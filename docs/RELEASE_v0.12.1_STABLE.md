@@ -1,12 +1,12 @@
-# GateGraph v0.12.1_CANDIDATE
+# GateGraph v0.12.1_STABLE
 
 Base: v0.12.0_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Consistency / Recovery Foundation
 
 ## Summary
 
-This candidate adds a narrow recovery/replay evidence layer. It does not change governance, enforcement, runtime authority, token semantics, adapters, deployment mode, or agent behavior.
+This stable release contains the narrow recovery/replay evidence layer promoted from the tested candidate. It does not change governance, enforcement, runtime authority, token semantics, adapters, deployment mode, or agent behavior.
 
 ## Added
 
