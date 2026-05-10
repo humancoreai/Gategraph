@@ -1,64 +1,54 @@
-# GateGraph v0.13.2_STABLE Release Notes
+# GateGraph v0.13.3_CANDIDATE Release Notes
 
-Base: v0.13.1_STABLE
+Status: candidate.
+Base: v0.13.2_STABLE.
 
-Status: stable
+## Scope
 
-Scope: Candidate CI Gate Hardening.
+Evidence Suite Profile Management.
+
+This candidate adds a descriptive registry and evidence check for CI evidence suite profile management. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic pruning authority.
 
 ## Added
 
-- Candidate CI gate evidence for the rule that Stable promotion requires a prior Candidate Windows CI PASS.
-- `docs/CANDIDATE_CI_GATE.md` as the bounded release-process explanation for this phase.
-- Explicit `candidate_ci_gate_scope` marker in release metadata.
+- `docs/EVIDENCE_SUITE_PROFILE.md`
+- `registry/evidence_suite_profile.json`
+- `tests/evidence_suite_profile_evidence.py`
 
-## Boundary invariants
+## Release / Semantic Registry surfaces
 
-- No runtime, enforcement or governance decision logic change.
-- No autonomous repair, replay-to-runtime rehydration, policy mutation, capability creation or self-promotion path.
-- Recovery/replay objects remain descriptive/reference-only.
-- Candidate requires Windows CI before stable promotion.
+The release keeps the existing Semantic Registry, Registry Lock, Release Surface, Recovery, Replay, Schema, Provenance, and Governance Lineage evidence surfaces visible in the release notes so `evidence_surface_consistency_evidence` can verify that the CI manifest, files, and release notes remain synchronized.
 
-## Carried forward active evidence surfaces
+Referenced evidence surfaces:
 
-- Release process guard.
-- Version and surface consistency checks.
-- Recovery and registry surface checks.
-- Semantic registry lock checks.
-- Governance integrity graph checks.
+- `candidate_stable_surface_parity_evidence`
+- `cross_registry_integrity_evidence`
+- `dependency_visibility_evidence`
+- `deterministic_export_contract_evidence`
+- `evidence_provenance_registry_evidence`
+- `evidence_surface_consistency_evidence`
+- `freeze_snapshot_determinism_evidence`
+- `governance_lineage_snapshot_evidence`
+- `governance_mutation_visibility_evidence`
+- `incident_lifecycle_consistency_evidence`
+- `invariant_surface_mapping_evidence`
+- `promotion_surface_symmetry_evidence`
+- `release_manifest_coverage_evidence`
+- `release_state_transition_evidence`
+- `replay_provenance_consistency_evidence`
+- `schema_drift_visibility_evidence`
+- `schema_governance_evidence`
+- `semantic_drift_detection_evidence`
+- `semantic_registry_evidence`
+- `semantic_registry_lock_evidence`
 
-Compatibility note: v0.13.2_STABLE is a release-process evidence hardening candidate built from v0.13.1_STABLE.
+## Invariants
 
-Carried forward: Semantic Registry lock and recovery surface checks remain active.
-
-## Explicit semantic boundary claims
-
+- Evidence profiles are descriptive only.
+- Core release/security gates remain mandatory.
+- No automatic test pruning or promotion authority is introduced.
+- Candidate-to-Stable promotion still requires Windows CI `Passed: True`.
 - No governance logic change.
 - No runtime/enforcement behavior change.
 - No autonomous policy update.
 - No semantic scoring or memory system.
-
-## Explicit evidence surface list
-
-- `candidate_ci_gate_evidence`
-- `recovery_replay_finality_evidence`
-- `candidate_stable_surface_parity_evidence`
-- `promotion_surface_symmetry_evidence`
-- `release_state_transition_evidence`
-- `replay_provenance_consistency_evidence`
-- `governance_mutation_visibility_evidence`
-- `dependency_visibility_evidence`
-- `governance_lineage_snapshot_evidence`
-- `evidence_provenance_registry_evidence`
-- `semantic_registry_evidence`
-- `invariant_surface_mapping_evidence`
-- `incident_lifecycle_consistency_evidence`
-- `semantic_drift_detection_evidence`
-- `evidence_surface_consistency_evidence`
-- `semantic_registry_lock_evidence`
-- `release_manifest_coverage_evidence`
-- `schema_governance_evidence`
-- `cross_registry_integrity_evidence`
-- `deterministic_export_contract_evidence`
-- `schema_drift_visibility_evidence`
-- `freeze_snapshot_determinism_evidence`

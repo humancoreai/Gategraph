@@ -1,4 +1,4 @@
-# GateGraph v0.13.1_STABLE
+# GateGraph v0.13.2_STABLE
 
 Base: v0.13.0_STABLE  
 Status: stable  
@@ -6,7 +6,7 @@ Scope: Recovery Replay Finality Hardening.
 
 ## Summary
 
-v0.13.1_STABLE adds evidence-only hardening for recovery/replay finality. It verifies that final recovery states remain final, conflicting finality fails closed, and recovery snapshots stay reference-only.
+v0.13.2_STABLE adds evidence-only hardening for recovery/replay finality. It verifies that final recovery states remain final, conflicting finality fails closed, and recovery snapshots stay reference-only.
 
 ## Added
 

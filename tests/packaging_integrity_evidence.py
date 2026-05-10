@@ -7,8 +7,8 @@ import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.13.2_STABLE"
-EXPECTED_BASE = "v0.13.1_STABLE"
+EXPECTED_RELEASE = "v0.13.3_CANDIDATE"
+EXPECTED_BASE = "v0.13.2_STABLE"
 
 
 def read(path: str) -> str:
@@ -23,7 +23,7 @@ def main() -> int:
     project = pyproject["project"]
 
     assert project["name"] == "gategraph"
-    assert project["version"] == "0.13.2"
+    assert project["version"] == "0.13.3"
     assert project["requires-python"] == ">=3.11"
     assert project.get("dependencies", []) == []
 
@@ -42,7 +42,7 @@ def main() -> int:
     assert metadata["distributed_governance"] is False
 
     readme = read("README.md")
-    assert "Base stable: **v0.13.1_STABLE**" in readme
+    assert "Base stable: **v0.13.2_STABLE**" in readme
     assert "Canonical runtime namespace" in readme
     assert "`src/` package is the canonical runtime/governance surface" in readme
     assert "OWASP_AGENTIC_AI_MAPPING.md" in readme

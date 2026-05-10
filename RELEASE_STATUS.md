@@ -1,9 +1,9 @@
 # Release Status
 
-Current release: v0.13.2_STABLE  
-Base: v0.13.1_STABLE  
-Status: stable  
-Phase: Candidate CI Gate Hardening
+Current release: v0.13.3_CANDIDATE  
+Base: v0.13.2_STABLE  
+Status: candidate  
+Phase: Evidence Suite Profile Management
 
 ## Scope
 
@@ -11,7 +11,7 @@ Evidence-only Candidate CI gate hardening. No runtime, enforcement or governance
 
 ## Candidate gate
 
-Windows Evidence CI has passed before stable promotion.
+Windows Evidence CI has passed before candidate promotion.
 
 ## Carried forward phase surfaces
 
