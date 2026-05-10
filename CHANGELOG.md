@@ -1,16 +1,16 @@
 # Changelog
 
-## v0.13.2_STABLE
+## v0.13.3_CANDIDATE
 
-Base: v0.13.1_STABLE  
+Base: v0.13.2_STABLE  
 Status: stable  
-Phase: Candidate CI Gate Hardening
+Phase: Evidence Suite Profile Management
 
 - Added Candidate CI gate evidence.
 - Added bounded Candidate CI gate release documentation.
 - No runtime, enforcement or governance decision logic change.
 
-## v0.13.1_STABLE
+## v0.13.2_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 
