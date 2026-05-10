@@ -1,8 +1,8 @@
-# GateGraph v0.13.0_CANDIDATE Release Notes
+# GateGraph v0.13.0_STABLE Release Notes
 
 Base: v0.12.9_STABLE
 
-Status: candidate
+Status: stable
 
 Scope: Release Consistency Hardening.
 
@@ -10,14 +10,14 @@ Scope: Release Consistency Hardening.
 
 - Release claim consistency evidence across metadata, notes, status, README, changelog and release document.
 - Explicit `release_claim_consistency_scope` marker in release metadata.
-- Candidate release document for v0.13.0.
+- Stable release document for v0.13.0.
 
 ## Boundary invariants
 
 - No runtime, enforcement or governance decision logic change.
 - No new adapter, autonomous repair, policy mutation or self-promotion path.
 - Evidence is descriptive and release-surface-only.
-- Stable promotion remains manually gated by Windows CI.
+- Stable promotion completed after Windows CI passed.
 
 ## Carried forward active evidence surfaces
 
@@ -27,7 +27,7 @@ Scope: Release Consistency Hardening.
 - Semantic registry lock checks.
 - Governance integrity graph checks.
 
-Compatibility note: v0.13.0_CANDIDATE is a release-hygiene candidate built from v0.12.9_STABLE.
+Compatibility note: v0.13.0_STABLE is a release-hygiene stable built from v0.12.9_STABLE.
 
 Carried forward: Semantic Registry lock and recovery surface checks remain active.
 

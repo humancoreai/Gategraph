@@ -10,7 +10,7 @@ Operator Explainability Hygiene.
 
 ## Scope
 
-This candidate adds a small operator-facing explanation surface for fail-closed unknown capability decisions.
+This stable release carries a small operator-facing explanation surface for fail-closed unknown capability decisions.
 It does not change governance logic, enforcement behavior, runtime guards, token semantics, policy mutation rules, or registry authority.
 
 ## Changes
