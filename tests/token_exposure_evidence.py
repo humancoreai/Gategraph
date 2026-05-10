@@ -1,5 +1,5 @@
 """
-WHY: v0.11.5 proves observability-safe governance boundaries for tokens, auth headers and secrets.
+WHY: v0.11.6 proves observability-safe governance boundaries for tokens, auth headers and secrets.
 INV: audit/explain/monitoring outputs may reference ids and one-way hashes only; raw sensitive material is redacted.
 SEC: Base64 is not protection. Unexpected token/header formats fail closed instead of being serialized.
 """
