@@ -1,23 +1,23 @@
-# GateGraph v0.13.0_STABLE Release Notes
+# GateGraph v0.13.1_CANDIDATE Release Notes
 
-Base: v0.12.9_STABLE
+Base: v0.13.0_STABLE
 
-Status: stable
+Status: candidate
 
-Scope: Release Consistency Hardening.
+Scope: Recovery Replay Finality Hardening.
 
 ## Added
 
-- Release claim consistency evidence across metadata, notes, status, README, changelog and release document.
-- Explicit `release_claim_consistency_scope` marker in release metadata.
-- Stable release document for v0.13.0.
+- Recovery/replay finality evidence for duplicate recovery attempts, consumed/released reservation finality, conflicting audit-derived finality, and recovery snapshot reference-only behavior.
+- `docs/RECOVERY_REPLAY_FINALITY.md` as the bounded release-surface explanation for this phase.
+- Explicit `recovery_replay_finality_scope` marker in release metadata.
 
 ## Boundary invariants
 
 - No runtime, enforcement or governance decision logic change.
-- No new adapter, autonomous repair, policy mutation or self-promotion path.
-- Evidence is descriptive and release-surface-only.
-- Stable promotion completed after Windows CI passed.
+- No autonomous repair, replay-to-runtime rehydration, policy mutation, capability creation or self-promotion path.
+- Recovery/replay objects remain descriptive/reference-only.
+- Candidate requires Windows CI before stable promotion.
 
 ## Carried forward active evidence surfaces
 
@@ -27,7 +27,7 @@ Scope: Release Consistency Hardening.
 - Semantic registry lock checks.
 - Governance integrity graph checks.
 
-Compatibility note: v0.13.0_STABLE is a release-hygiene stable built from v0.12.9_STABLE.
+Compatibility note: v0.13.1_CANDIDATE is a recovery/replay evidence hardening candidate built from v0.13.0_STABLE.
 
 Carried forward: Semantic Registry lock and recovery surface checks remain active.
 
@@ -40,6 +40,7 @@ Carried forward: Semantic Registry lock and recovery surface checks remain activ
 
 ## Explicit evidence surface list
 
+- `recovery_replay_finality_evidence`
 - `candidate_stable_surface_parity_evidence`
 - `promotion_surface_symmetry_evidence`
 - `release_state_transition_evidence`

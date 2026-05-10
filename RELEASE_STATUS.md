@@ -1,13 +1,18 @@
 # Release Status
 
-Current release: v0.13.0_STABLE
+Current release: v0.13.1_CANDIDATE  
+Base: v0.13.0_STABLE  
+Status: candidate  
+Phase: Recovery Replay Finality Hardening
 
-Base stable: v0.12.9_STABLE
+## Scope
 
-Status: stable
+Evidence-only recovery/replay finality hardening. No runtime, enforcement or governance decision logic changes.
 
-Phase: Release Consistency Hardening.
+## Candidate gate
 
-Windows CI passed before Stable promotion.
+Windows Evidence CI must pass before stable promotion.
 
-Governance Integrity Graph: carried forward as descriptive release-surface evidence.
+## Carried forward phase surfaces
+
+Governance Integrity Graph remains an active carried-forward release surface.

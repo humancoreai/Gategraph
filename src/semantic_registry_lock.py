@@ -39,14 +39,14 @@ def registry_hash(path: Path) -> str:
     return hashlib.sha256(canonical_json_bytes(load_json(path))).hexdigest()
 
 
-def build_lock_payload(*, root: Path | None = None, release: str = "v0.13.0_STABLE") -> dict[str, Any]:
+def build_lock_payload(*, root: Path | None = None, release: str = "v0.13.1_CANDIDATE") -> dict[str, Any]:
     project_root = root or PROJECT_ROOT
     registries = []
     for rel_path in LOCKED_REGISTRY_PATHS:
         path = project_root / rel_path
         registries.append({"path": rel_path, "sha256": registry_hash(path)})
     return {
-        "schema_version": "0.13.0",
+        "schema_version": "0.13.1",
         "release": release,
         "invariant": "semantic registry locks are release evidence only and never grant authority",
         "authoritative": False,

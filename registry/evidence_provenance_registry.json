@@ -1,6 +1,6 @@
 {
   "auto_repair": false,
-  "base": "v0.12.9_STABLE",
+  "base": "v0.13.0_STABLE",
   "dynamic_loading": false,
   "evidence": [
     {
@@ -43,7 +43,7 @@
       ],
       "deterministic": true,
       "evidence_id": "evidence_provenance_registry_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/evidence_provenance_registry_evidence.py"
     },
     {
@@ -54,7 +54,7 @@
       ],
       "deterministic": true,
       "evidence_id": "governance_lineage_snapshot_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/governance_lineage_snapshot_evidence.py"
     },
     {
@@ -65,7 +65,7 @@
       ],
       "deterministic": true,
       "evidence_id": "dependency_visibility_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/dependency_visibility_evidence.py"
     },
     {
@@ -75,7 +75,7 @@
       ],
       "deterministic": true,
       "evidence_id": "governance_mutation_visibility_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/governance_mutation_visibility_evidence.py"
     },
     {
@@ -86,7 +86,7 @@
       ],
       "deterministic": true,
       "evidence_id": "replay_provenance_consistency_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/replay_provenance_consistency_evidence.py"
     },
     {
@@ -97,7 +97,7 @@
       ],
       "deterministic": true,
       "evidence_id": "release_state_transition_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/release_state_transition_evidence.py"
     },
     {
@@ -105,11 +105,11 @@
       "depends_on": [
         "registry/release_state_transition_registry.json",
         "RELEASE_MANIFEST.json",
-        "docs/RELEASE_v0.13.0_STABLE.md"
+        "docs/RELEASE_v0.13.1_CANDIDATE.md"
       ],
       "deterministic": true,
       "evidence_id": "promotion_surface_symmetry_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/promotion_surface_symmetry_evidence.py"
     },
     {
@@ -121,7 +121,7 @@
       ],
       "deterministic": true,
       "evidence_id": "candidate_stable_surface_parity_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/candidate_stable_surface_parity_evidence.py"
     },
     {
@@ -131,7 +131,7 @@
       ],
       "deterministic": true,
       "evidence_id": "governance_integrity_graph_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/governance_integrity_graph_evidence.py"
     },
     {
@@ -142,7 +142,7 @@
       ],
       "deterministic": true,
       "evidence_id": "orphan_governance_artifact_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/orphan_governance_artifact_evidence.py"
     },
     {
@@ -152,7 +152,7 @@
       ],
       "deterministic": true,
       "evidence_id": "governance_impact_visibility_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/governance_impact_visibility_evidence.py"
     },
     {
@@ -163,7 +163,7 @@
       ],
       "deterministic": true,
       "evidence_id": "integrity_graph_freeze_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/integrity_graph_freeze_evidence.py"
     },
     {
@@ -174,12 +174,12 @@
       ],
       "deterministic": true,
       "evidence_id": "deterministic_governance_diff_evidence",
-      "introduced_in": "v0.13.0",
+      "introduced_in": "v0.13.1",
       "path": "tests/deterministic_governance_diff_evidence.py"
     }
   ],
   "policy_mutation": false,
-  "release": "v0.13.0_STABLE",
+  "release": "v0.13.1_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.13.0"
+  "schema_version": "0.13.1"
 }
