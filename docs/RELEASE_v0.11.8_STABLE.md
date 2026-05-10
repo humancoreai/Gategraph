@@ -1,4 +1,4 @@
-# GateGraph v0.11.8_CANDIDATE
+# GateGraph v0.11.8_STABLE
 
 ## Phase
 
@@ -23,3 +23,8 @@ Context lifecycle movement is descriptive only. It cannot create authority, muta
 ## Non-scope
 
 No memory system, vector database, embeddings, semantic scoring, ML classifier, autonomous context filtering, adaptive trust system, AI moderation, new runtime capability, new adapter, distributed orchestration, cloud deployment, Docker/Kubernetes scope, or UI.
+
+
+## Promotion Evidence
+
+Promoted after full Windows Evidence CI reported `Passed: True` for v0.11.8_CANDIDATE on 2026-05-08.
