@@ -1,16 +1,16 @@
 # Changelog
 
-## v0.13.4_STABLE
+## v0.13.5_CANDIDATE
 
-Base: v0.13.3_STABLE  
-Status: stable  
-Phase: Evidence Failure Classification
+Base: v0.13.4_STABLE  
+Status: candidate  
+Phase: Release Gate Robustness
 
-- Added Evidence Failure Classification evidence.
+- Added Release Gate Robustness evidence.
 - Added bounded classification registry and documentation.
 - No runtime, enforcement or governance decision logic change.
 
-## v0.13.3_STABLE
+## v0.13.4_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 

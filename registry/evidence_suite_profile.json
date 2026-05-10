@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_pruning": false,
-  "base": "v0.13.3_STABLE",
+  "base": "v0.13.4_STABLE",
   "mandatory_for_stable": [
     "evidence_runner_selftest",
     "release_integrity_evidence",
@@ -10,7 +10,8 @@
     "semantic_registry_lock_evidence",
     "release_manifest_coverage_evidence",
     "candidate_ci_gate_evidence",
-    "server_hardening_evidence"
+    "server_hardening_evidence",
+    "release_gate_robustness_evidence"
   ],
   "profile_mode": "descriptive_grouping_only",
   "profiles": {
@@ -43,10 +44,11 @@
       "candidate_ci_gate_evidence",
       "evidence_suite_profile_evidence",
       "evidence_runner_selftest",
-      "server_hardening_evidence"
+      "server_hardening_evidence",
+      "release_gate_robustness_evidence"
     ]
   },
-  "release": "v0.13.4_STABLE",
+  "release": "v0.13.5_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.13.4"
+  "schema_version": "0.13.5"
 }

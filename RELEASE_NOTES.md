@@ -1,19 +1,19 @@
-# GateGraph v0.13.4_STABLE Release Notes
+# GateGraph v0.13.5_CANDIDATE Release Notes
 
-Status: stable.
-Base: v0.13.3_STABLE.
+Status: candidate.
+Base: v0.13.4_STABLE.
 
 ## Scope
 
-Evidence Failure Classification.
+Release Gate Robustness.
 
-This stable release contains a descriptive failure-classification registry and evidence check for CI/evidence failure grouping. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic repair/pruning authority.
+This candidate release adds descriptive release-gate robustness checks around Candidate/Stable status, surface synchronization, and CI-gated promotion rules. It does not remove tests, alter governance logic, change runtime behavior, or grant automatic repair/promotion authority.
 
 ## Added
 
-- `docs/EVIDENCE_FAILURE_CLASSIFICATION.md`
-- `registry/evidence_failure_classification.json`
-- `tests/evidence_failure_classification_evidence.py`
+- `docs/RELEASE_GATE_ROBUSTNESS.md`
+- `registry/release_gate_robustness.json`
+- `tests/release_gate_robustness_evidence.py`
 
 ## Release / Semantic Registry surfaces
 
@@ -137,10 +137,11 @@ Referenced evidence surfaces:
 - `agent_scenarios`
 - `controlled_apply`
 - `evidence_failure_classification_evidence`
+- `release_gate_robustness_evidence`
 
 ## Invariants
 
-- Evidence failure classification is descriptive only.
+- Release gate robustness is descriptive only.
 - No automatic repair.
 - No automatic test pruning.
 - Core release/security gates remain mandatory.

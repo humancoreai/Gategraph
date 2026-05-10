@@ -1,8 +1,8 @@
-# Evidence Failure Classification
+# Release Gate Robustness
 
 Status: descriptive only.
-Release: v0.13.4_STABLE.
-Base: v0.13.3_STABLE.
+Release: v0.13.5_CANDIDATE.
+Base: v0.13.4_STABLE.
 
 This surface groups evidence failures into review buckets such as release-surface, semantic-boundary, registry-lock, server-surface, runtime-governance, and security.
 

@@ -33,7 +33,7 @@
     "task_id": "string",
     "token_issued": "boolean"
   },
-  "schema_version": "0.13.4",
+  "schema_version": "0.13.5",
   "status": "frozen_stable",
   "surface": "governance_decision"
 }
