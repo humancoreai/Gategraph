@@ -138,6 +138,14 @@ def evaluate_before_task(
     ensure_session_budget_schema(conn)
     _begin_immediate(conn)
     try:
+        if projected_cost_units <= 0:
+            decision = _record_decision(
+                conn, session_id, task_id, actor_id, projected_cost_units,
+                "stop", "invalid projected_cost_units: must be positive", 0, 0, 0
+            )
+            conn.commit()
+            return decision
+
         budget = _get_session_budget(conn, session_id)
         if budget is None:
             decision = _record_decision(
