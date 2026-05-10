@@ -104,6 +104,35 @@ flood_guard:
         {"returncode": evaluate.returncode, "decision": eval_json, "token": {"token_id": token_json.get("token_id"), "capabilities": token_json.get("capabilities")}},
     ))
 
+
+    unknown_task = work / "unknown_task.json"
+    unknown_task.write_text(
+        json.dumps(
+            {
+                "task_id": "CLI-TASK-UNKNOWN-001",
+                "task_type": "single_node_task",
+                "requested_capabilities": ["http_request"],
+                "input_source": "external",
+                "data_sensitivity": "confidential",
+                "secrets_involved": False,
+                "projected_cost_units": 1,
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    unknown = run_cli("--config", str(config), "evaluate", "--task", str(unknown_task))
+    unknown_json = json.loads(unknown.stdout) if unknown.stdout.strip() else {}
+    checks.append(check(
+        "cli_block_reason_explains_unknown_capability",
+        unknown.returncode == 0
+        and unknown_json.get("decision") == "block"
+        and unknown_json.get("selected_rule_id") == "RULE-SYNTH-UNKNOWN"
+        and unknown_json.get("block_reason") == "no matching rule for capability: http_request"
+        and unknown_json.get("token_issued") is False,
+        {"returncode": unknown.returncode, "decision": unknown_json},
+    ))
+
     status = run_cli("--config", str(config), "status")
     status_json = json.loads(status.stdout) if status.stdout.strip() else {}
     counts = status_json.get("counts", {})
