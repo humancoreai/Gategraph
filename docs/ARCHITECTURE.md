@@ -210,4 +210,4 @@ These are intentionally outside the v0.5 PoC scope.
 v0.11.9_STABLE adds security mapping and token exposure hardening only. It does not participate in runtime governance and does not expand authority.
 
 
-Current release surface: `v0.12.0_CANDIDATE`.
+Current release surface: `v0.12.0_STABLE`.

@@ -36,7 +36,7 @@ def main() -> int:
         for term in FORBIDDEN_TERMS:
             assert term not in text_values, f"forbidden semantic authority term in {path.name}: {term}"
         assert payload.get("description"), f"missing descriptive boundary: {path.name}"
-        assert payload.get("status") == "frozen_candidate", path.name
+        assert payload.get("status") == "frozen_stable", path.name
         if payload.get("surface") == "monitoring_export":
             assert payload.get("mutability") == "read_only"
             assert "automatic mitigation" in payload.get("non_scope", [])
