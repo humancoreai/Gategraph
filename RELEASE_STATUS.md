@@ -1,6 +1,6 @@
-# Release Status – v0.11.1_CANDIDATE
+# Release Status – v0.11.1_STABLE
 
-Status: candidate
+Status: stable
 
 Base: v0.11.0_STABLE
 
