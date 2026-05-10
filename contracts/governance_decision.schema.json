@@ -1,22 +1,36 @@
 {
-  "schema_version": "0.12.2",
-  "surface": "governance_decision",
-  "status": "frozen_stable",
-  "description": "Descriptive contract for governance decision records; not executable policy.",
-  "required_fields": {
-    "decision_id": "string",
-    "task_id": "string",
-    "decision": "string",
-    "risk_level": "string",
-    "selected_rule_id": "string_or_null",
-    "matched_rule_ids": "array[string]",
-    "token_issued": "boolean",
-    "event_id": "string",
-    "schema_version": "string"
-  },
   "allowed_values": {
-    "decision": ["allow", "block", "review", "require_approval"],
-    "risk_level": ["low", "medium", "high", "critical"]
+    "decision": [
+      "allow",
+      "block",
+      "review",
+      "require_approval"
+    ],
+    "risk_level": [
+      "low",
+      "medium",
+      "high",
+      "critical"
+    ]
   },
-  "non_scope": ["runtime authority", "policy mutation", "semantic scoring"]
+  "description": "Descriptive contract for governance decision records; not executable policy.",
+  "non_scope": [
+    "runtime authority",
+    "policy mutation",
+    "semantic scoring"
+  ],
+  "required_fields": {
+    "decision": "string",
+    "decision_id": "string",
+    "event_id": "string",
+    "matched_rule_ids": "array[string]",
+    "risk_level": "string",
+    "schema_version": "string",
+    "selected_rule_id": "string_or_null",
+    "task_id": "string",
+    "token_issued": "boolean"
+  },
+  "schema_version": "0.12.3",
+  "status": "frozen_stable",
+  "surface": "governance_decision"
 }
