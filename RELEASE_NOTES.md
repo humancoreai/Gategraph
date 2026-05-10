@@ -1,8 +1,8 @@
-# GateGraph v0.12.7_CANDIDATE Release Notes
+# GateGraph v0.12.7_STABLE Release Notes
 
 Base: v0.12.6_STABLE
 
-Status: candidate
+Status: stable
 
 Scope: Release State Transition / Promotion Surface Symmetry.
 
@@ -14,12 +14,12 @@ Scope: Release State Transition / Promotion Surface Symmetry.
 
 No runtime, enforcement or governance decision logic changes.
 
-# Release Notes — GateGraph v0.12.7_CANDIDATE
+# Release Notes — GateGraph v0.12.7_STABLE
 
-## v0.12.7_CANDIDATE — Release State Transition / Promotion Surface Symmetry
+## v0.12.7_STABLE — Release State Transition / Promotion Surface Symmetry
 
 Base: v0.12.6_STABLE  
-Status: candidate
+Status: stable
 
 ### Added
 - Evidence provenance registry for deterministic, read-only evidence origin and dependency visibility.
