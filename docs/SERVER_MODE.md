@@ -1,6 +1,6 @@
 # Server Mode / Integration Layer
 
-Version: v0.11.5_CANDIDATE
+Version: v0.11.5_STABLE
 
 ## Zweck
 
@@ -84,7 +84,7 @@ Damit bleibt die Regel erhalten:
 - Fehlerhafte Requests liefern `ok=false`
 - `GET /monitoring` ist read-only
 - Server startet keine Hintergrundaktionen außer dem HTTP-Listener selbst
-- Keine Authentifizierung in v0.11.5_CANDIDATE; daher nur lokal/geschützt betreiben
+- Keine Authentifizierung in v0.11.5_STABLE; daher nur lokal/geschützt betreiben
 
 ## Testnachweis
 
@@ -102,7 +102,7 @@ Der Evidence-Test prüft:
 - nicht erlaubte Methoden werden abgelehnt
 - malformed evaluate requests fail-closed
 
-## v0.11.5_CANDIDATE Server Boundary Hardening
+## v0.11.5_STABLE Server Boundary Hardening
 
 Server mode remains an adapter over `src/service_adapter.py`.
 

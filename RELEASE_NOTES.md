@@ -1,15 +1,15 @@
-# Release Notes – v0.11.5_CANDIDATE
+# Release Notes – v0.11.5_STABLE
 
 ## Summary
 
-v0.11.5_CANDIDATE is a security boundary hardening release. It makes GateGraph's security posture more reviewable and adds explicit evidence that token, Authorization header, base64 token, and secret material do not leak through audit, explain, or monitoring surfaces.
+v0.11.5_STABLE is a security boundary hardening release. It makes GateGraph's security posture more reviewable and adds explicit evidence that token, Authorization header, base64 token, and secret material do not leak through audit, explain, or monitoring surfaces.
 
 ## Added
 
 - `SECURITY_MODEL.md`
 - `OWASP_AGENTIC_AI_MAPPING.md`
 - `KNOWN_LIMITATIONS.md`
-- `docs/RELEASE_v0.11.5_CANDIDATE.md`
+- `docs/RELEASE_v0.11.5_STABLE.md`
 - `src/security/token_redaction.py`
 - `tests/token_exposure_evidence.py`
 
