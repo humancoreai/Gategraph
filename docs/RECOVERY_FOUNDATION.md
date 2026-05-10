@@ -1,6 +1,6 @@
 # Recovery & Replay Hardening
 
-v0.12.2_CANDIDATE hardens the descriptive recovery/replay foundation without adding repair authority.
+v0.12.2_STABLE hardens the descriptive recovery/replay foundation without adding repair authority.
 
 ## Scope
 

@@ -213,4 +213,4 @@ v0.12.0_STABLE adds security mapping and token exposure hardening only. It does 
 Current release surface: `v0.12.1_STABLE`.
 
 
-Current release surface: v0.12.2_CANDIDATE.
+Current release surface: v0.12.2_STABLE.

@@ -141,4 +141,4 @@ These endpoints are observation endpoints and must not perform governance decisi
 Current release surface: `v0.12.1_STABLE`.
 
 
-Current release surface: v0.12.2_CANDIDATE.
+Current release surface: v0.12.2_STABLE.
