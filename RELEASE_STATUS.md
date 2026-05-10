@@ -2,21 +2,23 @@
 
 ## Current
 
-GateGraph v0.8.34_CANDIDATE
+GateGraph v0.8.34_STABLE
 
 ## Classification
 
-Candidate build only.
+Stable build for the defined scope.
 
 ## Verified in this package
 
-- Existing `server_mode_evidence` passes.
-- New `server_hardening_evidence` passes.
-
-## Not yet verified
-
-- Full Windows Evidence CI for v0.8.34_CANDIDATE.
+- Full Windows Evidence CI passed for v0.8.34 candidate before promotion.
+- `server_mode_evidence` passes.
+- `server_hardening_evidence` passes.
+- Existing CLI, Core, Runtime, Session, Budget, Token, HTTP Policy, Secret, Monitoring and Controlled Apply evidence remains green.
 
 ## Stable promotion rule
 
-Do not mark this package stable until the full aggregate Windows evidence run passes unchanged.
+Satisfied for v0.8.34: aggregate Windows evidence run passed unchanged.
+
+## Scope note
+
+Stable means production-ready only within the documented local/protected single-node and server-adapter scope. It does not imply public internet exposure, authentication, TLS, reverse proxy support, multi-node operation, webhooks or background jobs.

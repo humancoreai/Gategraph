@@ -1,6 +1,6 @@
 # PRODUCTION_CHECKLIST.md
 
-## Production criteria for v0.8.32_STABLE
+## Production criteria for v0.8.34_STABLE
 
 - [x] Deterministic Governance decisions
 - [x] Enforcement as only gatekeeper
@@ -17,17 +17,29 @@
 - [x] Operational alerting
 - [x] Monitoring export
 - [x] Single-node CLI init/evaluate/status/export-monitoring
-- [x] Full CI Evidence Run passed
+- [x] Server mode uses `src/service_adapter.py`
+- [x] Server request validation fail-closed
+- [x] Server deterministic JSON error schema
+- [x] Server body-size limit
+- [x] Server default bind is local (`127.0.0.1`)
+- [x] Server public bind warning documented/implemented
+- [x] Server `/status` and `/monitoring` remain read-only
+- [x] Full Windows Evidence CI passed
 - [x] No invariant violations
 - [x] No unexpected allows
 
 ## Result
 
-GateGraph is production-ready for the defined single-node scope.
+GateGraph is production-ready for the defined single-node and local/protected server-adapter scope.
 
 ## Out of scope
 
-- Server mode
-- Distributed systems
+- Public internet exposure
+- Authentication
+- TLS
+- Reverse proxy setup
+- Webhooks
+- Background jobs
+- Multi-node operation
 - External monitoring integration
 - Automated recovery
