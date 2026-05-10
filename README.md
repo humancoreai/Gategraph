@@ -48,7 +48,7 @@ GateGraph currently does **not** provide:
 - autonomous rule changes
 - production-grade distributed orchestration
 - production-grade token signing across IPC/RPC boundaries
-- unrestricted external tool/API integration; v0.8.11 only provides a controlled transport seam
+- unrestricted external tool/API integration; v0.8.12 only provides a controlled transport seam
 - adaptive budget policy
 - full GLP protocol compliance
 
@@ -57,7 +57,7 @@ GateGraph currently does **not** provide:
 ## Project status
 
 ```text
-Version: v0.8.11 secret-api-integration
+Version: v0.8.12 http-policy-allowlist
 Core status: stable proof of concept
 Production status: not production-ready, but audit/evidence pipeline is mature for PoC level
 ```
@@ -194,7 +194,7 @@ GateGraph does **not** implement the GLP protocol.
 
 ## v0.8.5 API Enforcement Binding
 
-External API Adapter now calls Enforcement internally with the provided Capability Token. Callers cannot spoof `enforcement_allowed`. v0.8.11 adds a controlled transport seam with scoped secret refs; evidence tests still perform no real network calls.
+External API Adapter now calls Enforcement internally with the provided Capability Token. Callers cannot spoof `enforcement_allowed`. v0.8.12 adds a controlled transport seam with scoped secret refs; evidence tests still perform no real network calls.
 
 
 ## v0.8.6 Runaway / Cost Control Hardening
