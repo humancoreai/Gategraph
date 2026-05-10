@@ -1,12 +1,12 @@
-# GateGraph v0.13.1_CANDIDATE
+# GateGraph v0.13.1_STABLE
 
 Base: v0.13.0_STABLE  
-Status: candidate  
+Status: stable  
 Scope: Recovery Replay Finality Hardening.
 
 ## Summary
 
-v0.13.1_CANDIDATE adds evidence-only hardening for recovery/replay finality. It verifies that final recovery states remain final, conflicting finality fails closed, and recovery snapshots stay reference-only.
+v0.13.1_STABLE stabilizes evidence-only hardening for recovery/replay finality. It verifies that final recovery states remain final, conflicting finality fails closed, and recovery snapshots stay reference-only.
 
 ## Added
 

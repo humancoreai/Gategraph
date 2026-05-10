@@ -7,7 +7,7 @@ import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.13.1_CANDIDATE"
+EXPECTED_RELEASE = "v0.13.1_STABLE"
 EXPECTED_BASE = "v0.13.0_STABLE"
 
 

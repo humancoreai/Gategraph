@@ -1,8 +1,8 @@
-# GateGraph v0.13.1_CANDIDATE Release Notes
+# GateGraph v0.13.1_STABLE Release Notes
 
 Base: v0.13.0_STABLE
 
-Status: candidate
+Status: stable
 
 Scope: Recovery Replay Finality Hardening.
 
@@ -27,7 +27,7 @@ Scope: Recovery Replay Finality Hardening.
 - Semantic registry lock checks.
 - Governance integrity graph checks.
 
-Compatibility note: v0.13.1_CANDIDATE is a recovery/replay evidence hardening candidate built from v0.13.0_STABLE.
+Compatibility note: v0.13.1_STABLE is a recovery/replay evidence hardening stable release built from v0.13.0_STABLE.
 
 Carried forward: Semantic Registry lock and recovery surface checks remain active.
 
