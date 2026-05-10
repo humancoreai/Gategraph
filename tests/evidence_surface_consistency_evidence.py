@@ -12,6 +12,11 @@ EXPECTED = {
     "evidence_surface_consistency_evidence.py",
     "semantic_registry_lock_evidence.py",
     "release_manifest_coverage_evidence.py",
+    "schema_governance_evidence.py",
+    "cross_registry_integrity_evidence.py",
+    "deterministic_export_contract_evidence.py",
+    "schema_drift_visibility_evidence.py",
+    "freeze_snapshot_determinism_evidence.py",
 }
 
 

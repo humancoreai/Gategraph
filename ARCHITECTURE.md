@@ -58,6 +58,6 @@ v0.12.0_STABLE adds security mapping and token exposure hardening only. It does 
 Current release surface: `v0.12.1_STABLE`.
 
 
-Current release surface: v0.12.3_STABLE.
+Current release surface: v0.12.4_STABLE.
 
-Current release surface: v0.12.4_STABLE
+Current release surface: v0.12.5_CANDIDATE
