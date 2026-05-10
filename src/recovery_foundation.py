@@ -8,7 +8,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from typing import Iterable, Mapping, Sequence
 
-FORWARD_INCIDENT_STATES = {"open": 0, "acknowledged": 1, "resolved": 2}
+FORWARD_INCIDENT_STATES = {"open": 0, "acknowledged": 1, "resolved": 2, "archived": 3}
 FINAL_RESERVATION_STATES = {"consumed", "released"}
 REFERENCE_ONLY_CONTEXT_TYPES = {"replay_context", "explain_snapshot", "archive_record", "recovery_snapshot"}
 

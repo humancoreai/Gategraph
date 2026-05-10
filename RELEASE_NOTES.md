@@ -1,42 +1,42 @@
-# Release Notes — GateGraph v0.12.2_STABLE
+# Release Notes — GateGraph v0.12.3_CANDIDATE
 
-## v0.12.2_STABLE — Recovery & Replay Hardening
+## v0.12.3_CANDIDATE — Semantic & Registry Consolidation
 
-Base: v0.12.1_STABLE  
-Status: stable
+Base: v0.12.2_STABLE  
+Status: candidate
 
 ### Added
-- Recovery idempotency helpers for duplicate recovery attempts and partial-state recovery classification.
-- Reservation recovery collision hardening for conflicting reservation state and event-derived finality.
-- Deterministic replay ordering using explicit sequence fields before descriptive fallback fields.
-- Reference-integrity checks ensuring replay/explain/archive/recovery objects remain non-executable and non-authoritative.
-- Release/surface registry synchronization evidence for recovery, replay, freeze, manifest, metadata and CI surfaces.
+- Declarative semantic object registry for replay, explain, monitoring, proposal, archive, recovery snapshot and context reference objects.
+- Invariant/surface/evidence mapping registry for semantic, incident and release-surface coupling.
+- Forward-only incident lifecycle formalization including `archived` as terminal state.
+- Deterministic semantic drift checks for authority, execution, runtime access, policy mutation and semantic promotion regressions.
+- Evidence/surface consistency checks so new semantic evidence files are surfaced in CI, release notes and invariant mapping.
 
 ### Evidence gates
-- `recovery_idempotency_evidence`
-- `replay_order_determinism_evidence`
-- `recovery_surface_registry_evidence`
-- `release_surface_sync_evidence`
-- `replay_reference_integrity_evidence`
+- `semantic_registry_evidence`
+- `invariant_surface_mapping_evidence`
+- `incident_lifecycle_consistency_evidence`
+- `semantic_drift_detection_evidence`
+- `evidence_surface_consistency_evidence`
 
 ### Boundary invariants
-- No governance logic change.
-- No runtime/enforcement behavior change.
-- No autonomous policy update.
-- No semantic scoring or memory system.
+- Reference objects remain non-authoritative.
+- Replay remains non-executable.
+- Explain remains referential.
+- Monitoring remains read-only.
+- Proposal objects remain proposal-only.
+- Semantic promotion remains blocked.
+- Registry and surface mapping remain deterministic.
+- Incident lifecycle is forward-only.
 
 ### Non-scope
-- No automatic repair loop.
-- No policy mutation.
-- No new runtime authority.
-- No replay execution or runtime rehydration.
-- No distributed recovery protocol.
-- No external dependency.
+- No governance logic change.
+- No enforcement behavior change.
+- No runtime authority expansion.
+- No autonomous policy interpretation.
+- No dynamic plugin or loader system.
+- No automatic semantic drift correction.
 
-## Evidence expectation
-
-Run:
-
-```powershell
-python tests\evidence_ci.py
-```
+Compatibility note: No runtime/enforcement behavior change.
+Compatibility note: No autonomous policy update.
+Compatibility note: No semantic scoring or memory system.
