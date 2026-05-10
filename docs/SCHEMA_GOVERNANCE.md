@@ -1,6 +1,6 @@
-# Schema Governance — v0.12.5 Candidate
+# Schema Governance — v0.12.6 Candidate
 
-GateGraph v0.12.5 introduces a deterministic schema/registry governance surface for already-existing declarative structures.
+GateGraph v0.12.6 introduces a deterministic schema/registry governance surface for already-existing declarative structures.
 
 ## Invariants
 

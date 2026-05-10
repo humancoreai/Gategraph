@@ -1,6 +1,11 @@
-# Version
+# GateGraph Version
 
-Release: `v0.12.5_STABLE`
-Base: `v0.12.4_STABLE`
-Status: `stable`
-Version: `0.12.5`
+Current release: **v0.12.6_CANDIDATE**
+
+Base release: **v0.12.5_STABLE**
+
+Status: **candidate**
+
+Version: **0.12.6**
+
+Phase: Deterministic Evidence Lineage / Governance Provenance.

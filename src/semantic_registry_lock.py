@@ -1,5 +1,5 @@
 """
-WHY: Semantic registries became release-critical in v0.12.3; v0.12.5 freezes their declared content with deterministic hashes.
+WHY: Semantic registries became release-critical in v0.12.3; v0.12.6 keeps their declared content with deterministic hashes.
 INV: The lock is descriptive release evidence only; it never loads plugins, mutates policy, or grants runtime authority.
 """
 from __future__ import annotations
@@ -39,14 +39,14 @@ def registry_hash(path: Path) -> str:
     return hashlib.sha256(canonical_json_bytes(load_json(path))).hexdigest()
 
 
-def build_lock_payload(*, root: Path | None = None, release: str = "v0.12.5_STABLE") -> dict[str, Any]:
+def build_lock_payload(*, root: Path | None = None, release: str = "v0.12.6_CANDIDATE") -> dict[str, Any]:
     project_root = root or PROJECT_ROOT
     registries = []
     for rel_path in LOCKED_REGISTRY_PATHS:
         path = project_root / rel_path
         registries.append({"path": rel_path, "sha256": registry_hash(path)})
     return {
-        "schema_version": "0.12.5",
+        "schema_version": "0.12.6",
         "release": release,
         "invariant": "semantic registry locks are release evidence only and never grant authority",
         "authoritative": False,

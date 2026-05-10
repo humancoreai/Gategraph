@@ -1,4 +1,5 @@
 {
+  "base": "v0.12.5_STABLE",
   "invariant": "surface, evidence, semantic registries and registry locks are checked deterministically and do not mutate governance policy",
   "invariants": {
     "INV-INC-001": {
@@ -10,6 +11,24 @@
       "surfaces": [
         "incident",
         "audit"
+      ]
+    },
+    "INV-PROV-001": {
+      "description": "Evidence provenance and governance lineage remain deterministic, descriptive and non-authoritative.",
+      "evidence": [
+        "evidence_provenance_registry_evidence.py",
+        "governance_lineage_snapshot_evidence.py",
+        "dependency_visibility_evidence.py",
+        "governance_mutation_visibility_evidence.py",
+        "replay_provenance_consistency_evidence.py"
+      ],
+      "surfaces": [
+        "evidence",
+        "registry",
+        "lineage",
+        "replay",
+        "freeze",
+        "manifest"
       ]
     },
     "INV-SCHEMA-001": {
@@ -101,6 +120,6 @@
       ]
     }
   },
-  "release": "v0.12.5_STABLE",
-  "schema_version": "0.12.5"
+  "release": "v0.12.6_CANDIDATE",
+  "schema_version": "0.12.6"
 }
