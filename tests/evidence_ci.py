@@ -128,12 +128,9 @@ def main() -> int:
     print(f"Log: {out}")
     print(f"Passed: {report.passed}")
     print(f"Produced logs: {report.produced_logs}")
-    return 0 if report.passed else 1
+    # WHY: terminate immediately after evidence is written; some environments hang during Python shutdown.
+    os._exit(0 if report.passed else 1)
 
 
 if __name__ == "__main__":
-    rc = main()
-    sys.stdout.flush()
-    sys.stderr.flush()
-    # WHY: some local Python environments hang during interpreter shutdown; CI result is already written.
-    os._exit(rc)
+    main()
