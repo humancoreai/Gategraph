@@ -1,11 +1,27 @@
-# GateGraph v0.14.0_STABLE Release Notes
 
-Status: stable.
-Base: v0.13.6_STABLE.
+## v0.14.1_CANDIDATE
+
+Phase: Install / Packaging / Public Repo Hygiene
+Base: v0.14.0_STABLE
+Status: candidate
+
+Scope:
+- Public-repo and packaging hygiene surface.
+- Deterministic quickstart/install guidance.
+- README and release-surface consistency checks.
+- No governance, runtime, enforcement, policy, or agentic behavior changes.
+
+Evidence added:
+- public_repo_hygiene_evidence.py
+
+# GateGraph v0.14.1_CANDIDATE Release Notes
+
+Status: candidate.
+Base: v0.14.0_STABLE.
 
 ## Scope
 
-Practical Single-Node Scenario Run.
+Install / Packaging / Public Repo Hygiene.
 
 This stable release preserves a minimal GitHub Actions validation surface for Windows Evidence CI. It does not remove tests, alter governance logic, change runtime behavior, access secrets, publish artifacts, deploy, or grant automatic repair/promotion authority.
 
@@ -152,7 +168,7 @@ Referenced evidence surfaces:
 - No semantic scoring or memory system.
 
 
-## v0.14.0 candidate scope
+## v0.14.1 candidate scope
 
 - Practical single-node scenario evidence added as deterministic local validation.
 - No ad-hoc stress report is integrated into release surfaces.
