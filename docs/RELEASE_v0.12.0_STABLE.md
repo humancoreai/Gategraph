@@ -1,4 +1,4 @@
-# GateGraph v0.12.1_CANDIDATE
+# GateGraph v0.12.1_STABLE
 
 ## Phase
 

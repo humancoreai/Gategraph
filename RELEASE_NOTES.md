@@ -1,9 +1,9 @@
-# Release Notes — GateGraph v0.12.1_CANDIDATE
+# Release Notes — GateGraph v0.12.1_STABLE
 
-## v0.12.1_CANDIDATE — Consistency / Recovery Foundation
+## v0.12.1_STABLE — Consistency / Recovery Foundation
 
 Base: v0.12.0_STABLE  
-Status: candidate
+Status: stable
 
 ### Added
 - Descriptive recovery foundation for interrupted reservation, duplicate consume, partial audit append, incident forward-only lifecycle, and deterministic replay signatures.
@@ -17,7 +17,7 @@ Base: `v0.12.0_STABLE`
 
 ## Purpose
 
-`v0.12.1_CANDIDATE` promotes the Governance Surface Freeze phase to stable. It adds a minimal contract registry for core governance surfaces and evidence that checks those surfaces for deterministic schema/version drift.
+`v0.12.1_STABLE` promotes the Governance Surface Freeze phase to stable. It adds a minimal contract registry for core governance surfaces and evidence that checks those surfaces for deterministic schema/version drift.
 
 ## Added
 
