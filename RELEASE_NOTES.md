@@ -1,9 +1,9 @@
-# Release Notes — GateGraph v0.12.3_CANDIDATE
+# Release Notes — GateGraph v0.12.3_STABLE
 
-## v0.12.3_CANDIDATE — Semantic & Registry Consolidation
+## v0.12.3_STABLE — Semantic & Registry Consolidation
 
 Base: v0.12.2_STABLE  
-Status: candidate
+Status: stable
 
 ### Added
 - Declarative semantic object registry for replay, explain, monitoring, proposal, archive, recovery snapshot and context reference objects.
