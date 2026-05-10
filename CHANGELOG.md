@@ -1,6 +1,18 @@
 # Changelog
 
-## v0.11.7_STABLE
+## v0.11.8_CANDIDATE
+
+### Review hygiene fix
+- Align README base-stable claim with `v0.11.7_STABLE`.
+- Document canonical namespace boundary for `src/` versus `gategraph/context/`.
+- Exclude development STARTPROMPT artifacts from release packaging.
+- Surface `OWASP_AGENTIC_AI_MAPPING.md` in README.
+
+- Added descriptive context lifecycle coupling around the v0.11.7 context governance boundary.
+- Added fail-closed lifecycle state and transition validation.
+- Added explicit replay/explain/proposal rehydration blocking.
+- Added `gategraph/context/context_lifecycle.py`, `docs/CONTEXT_LIFECYCLE_MODEL.md`, and lifecycle/freeze evidence.
+- No memory system, vector database, semantic scoring, autonomous filtering, adaptive trust, AI moderation, governance rule, enforcement authority, runtime mode, adapter authority, distributed, cloud, Docker/Kubernetes, or UI scope expansion.
 
 - Added deterministic context classification and required provenance boundaries.
 - Added instruction/data separation for untrusted, replay and proposal context.
