@@ -10,7 +10,7 @@
   "authority": "descriptive_only",
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.12.8_STABLE",
+  "base": "v0.12.9_STABLE",
   "forbidden_transitions": [
     {
       "from": "stable",
@@ -21,9 +21,9 @@
       "to": "stable_without_surface_sync"
     }
   ],
-  "release": "v0.12.9_STABLE",
+  "release": "v0.13.0_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.12.9",
+  "schema_version": "0.13.0",
   "surface_parity": {
     "allowed_differences": [
       "release",

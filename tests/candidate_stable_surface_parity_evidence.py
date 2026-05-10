@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.12.9_STABLE"
-EXPECTED_BASE = "v0.12.8_STABLE"
-EXPECTED_STATUS = "stable"
+EXPECTED_RELEASE = "v0.13.0_CANDIDATE"
+EXPECTED_BASE = "v0.12.9_STABLE"
+EXPECTED_STATUS = "candidate"
 SURFACES = ["README.md", "VERSION.md", "RELEASE_NOTES.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "pyproject.toml", "tools/build_release.py", "tools/verify_release.py"]
 
 
@@ -32,9 +32,9 @@ def main() -> int:
     forbidden = []
     for rel in SURFACES:
         text = (ROOT / rel).read_text(encoding="utf-8")
-        if "v0.12.9_STABLE" in text:
+        if EXPECTED_RELEASE in text:
             forbidden.append(rel)
-    checks.append(check("stable_token_present_on_stable_surfaces", bool(forbidden) and len(forbidden) == len(SURFACES), {"present": forbidden}))
+    checks.append(check("candidate_token_present_on_candidate_surfaces", bool(forbidden) and len(forbidden) == len(SURFACES), {"present": forbidden}))
     checks.append(check("no_auto_transition_authority", meta.get("release_state_auto_promotion") is False and meta.get("release_state_auto_repair") is False, {"auto_promotion": meta.get("release_state_auto_promotion"), "auto_repair": meta.get("release_state_auto_repair")}))
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})

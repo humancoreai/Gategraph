@@ -4,8 +4,8 @@
 
 GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
-Current release: **v0.12.9_STABLE**  
-Base stable: **v0.12.8_STABLE**  
+Current release: **v0.13.0_CANDIDATE**  
+Base stable: **v0.12.9_STABLE**  
 License: Apache 2.0
 
 ---
@@ -240,7 +240,7 @@ Releases are built deterministically via `tools/build_release.py`. Every release
 - `.db` files excluded from release artifacts by default
 
 ```bash
-python tools/verify_release.py dist/GateGraph_v0.12.9_STABLE.zip
+python tools/verify_release.py dist/GateGraph_v0.13.0_CANDIDATE.zip
 ```
 
 ---
@@ -270,6 +270,6 @@ Apache 2.0 — see `LICENSE`.
 See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operational start-surface expectations.
 
 
-## v0.12.9 Candidate Scope
+## v0.13.0 Candidate Scope
 
-Operator Explainability Hygiene. Adds descriptive `block_reason` output for fail-closed unknown capability decisions. No runtime, enforcement or governance-rule authority is added.
+Release Consistency Hardening. Adds descriptive `block_reason` output for fail-closed unknown capability decisions. No runtime, enforcement or governance-rule authority is added.

@@ -1,12 +1,17 @@
 # Changelog
 
+## v0.13.0_CANDIDATE
+
+Base: v0.12.9_STABLE
+
+Phase: Release Consistency Hardening.
+
+- Added deterministic release claim consistency evidence.
+- Synchronized candidate release surfaces from v0.12.9_STABLE.
+- No runtime, enforcement or governance decision logic change.
+
+
 ## v0.12.9_STABLE
-
-- Adds descriptive `block_reason` output for fail-closed unknown capability decisions.
-- Keeps governance, runtime, enforcement, and token behavior unchanged.
-
-
-## v0.12.8_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 
