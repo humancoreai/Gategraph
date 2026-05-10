@@ -1,4 +1,4 @@
-# Governance Integrity Graph — v0.12.8_CANDIDATE
+# Governance Integrity Graph — v0.12.8_STABLE
 
 Base: v0.12.7_STABLE
 
