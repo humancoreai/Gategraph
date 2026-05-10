@@ -11,7 +11,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-VERSION = "v0.11.0_CANDIDATE"
+VERSION = "v0.11.0_STABLE"
 EXPECTED_PREFIX = f"GateGraph_{VERSION}/"
 FIXED_ZIP_DT = (2026, 1, 1, 0, 0, 0)
 FORBIDDEN_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea", ".vscode", "dist"}
