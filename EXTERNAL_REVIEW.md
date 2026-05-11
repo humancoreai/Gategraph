@@ -28,6 +28,6 @@ Do not infer capabilities from terminology. Explainability means deterministic r
 
 ## Reviewable claim boundary
 
-The reviewable claim for v0.9.0_STABLE is narrow:
+The reviewable claim for v0.9.0_CANDIDATE is narrow:
 
 > GateGraph is a deterministic, single-node governance/enforcement milestone with auditable evidence and reproducible release packaging.

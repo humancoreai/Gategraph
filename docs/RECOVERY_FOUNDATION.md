@@ -28,8 +28,8 @@ Recovery evidence may describe, classify, release an interrupted local reservati
 
 Current release surface: v0.12.8_STABLE
 
-Release surface: v0.14.7_STABLE.
+Release surface: v0.13.6_STABLE.
 
-Release surface: v0.14.9_STABLE.
-Base stable: v0.14.7_STABLE.
+Release surface: v0.14.0_CANDIDATE.
+Base stable: v0.13.6_STABLE.
 Phase: Recovery Replay Finality Hardening.

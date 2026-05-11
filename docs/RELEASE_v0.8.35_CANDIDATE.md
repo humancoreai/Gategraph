@@ -1,4 +1,4 @@
-# Release Notes – v0.8.35_STABLE
+# Release Notes – v0.8.35_CANDIDATE
 
 ## Phase
 

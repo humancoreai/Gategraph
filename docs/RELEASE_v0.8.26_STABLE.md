@@ -2,7 +2,7 @@
 
 ## Status
 
-`v0.8.26_CROSS_SESSION_BUDGET_STABLE` was promoted to `v0.8.26_STABLE` after a full Windows Evidence CI run reported `Passed: True` on 2026-04-28.
+`v0.8.26_CROSS_SESSION_BUDGET_CANDIDATE` was promoted to `v0.8.26_STABLE` after a full Windows Evidence CI run reported `Passed: True` on 2026-04-28.
 
 ## Release focus
 

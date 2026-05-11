@@ -1,4 +1,4 @@
-# GateGraph v0.8.26_STABLE
+# GateGraph v0.8.26_CANDIDATE
 
 Focus: Cross-Session Budget Control.
 

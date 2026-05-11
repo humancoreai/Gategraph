@@ -1,4 +1,4 @@
-# RELEASE v0.8.42_STABLE
+# RELEASE v0.8.42_CANDIDATE
 
 ## Phase
 
@@ -20,7 +20,7 @@ GateGraph kann erkannte Muster jetzt mit statischen Operator-Playbooks verknüpf
 - `playbooks/pb_policy_001.json`
 - `tests/operator_workflow_evidence.py`
 - `docs/OPERATOR_WORKFLOWS.md`
-- `docs/RELEASE_v0.8.42_STABLE.md`
+- `docs/RELEASE_v0.8.42_CANDIDATE.md`
 
 ## Geänderte Dateien
 

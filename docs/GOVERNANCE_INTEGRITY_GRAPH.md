@@ -1,6 +1,6 @@
 # Governance Integrity Graph — v0.12.8_STABLE
 
-Base: v0.14.7_STABLE
+Base: v0.12.7_STABLE
 
 This release adds a deterministic, declarative relationship map for governance artifacts.
 

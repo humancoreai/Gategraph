@@ -1,8 +1,8 @@
 # GateGraph v0.12.8_STABLE
 
-Base: v0.14.7_STABLE
+Base: v0.12.7_STABLE
 
-Status: stable
+Status: candidate
 
 Phase: Governance Integrity Graph
 

@@ -1,7 +1,7 @@
 # GateGraph v0.12.1_STABLE
 
-Base: v0.14.7_STABLE  
-Status: stable  
+Base: v0.12.0_STABLE  
+Status: candidate  
 Phase: Consistency / Recovery Foundation
 
 ## Summary
