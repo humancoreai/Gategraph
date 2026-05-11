@@ -1,8 +1,8 @@
 # Public Repo Hygiene
 
-Release: v0.14.7_STABLE  
-Base: v0.14.6_STABLE  
-Status: stable
+Release: v0.14.8_CANDIDATE  
+Base: v0.14.7_STABLE  
+Status: candidate
 
 This surface documents the minimal hygiene expected before public repository use.
 

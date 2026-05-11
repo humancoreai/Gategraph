@@ -1,9 +1,16 @@
+## v0.14.8_CANDIDATE
+Phase: Release artifact determinism and failure explainability
+
+- Added descriptive root-cause grouping for related CI failures.
+- Added artifact determinism evidence for release manifest hygiene.
+- Added fresh-clone surface validation evidence.
+
 # Changelog
 
 ## v0.14.7_STABLE
 
-Status: stable.
-Base: v0.14.6_STABLE.
+Status: candidate.
+Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.
