@@ -1,16 +1,16 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.14.8_STABLE",
+  "base": "v0.13.6_STABLE",
   "checks": [
-    "stable_status_surface",
+    "candidate_status_surface",
     "manual_ci_gate_declared",
     "surface_sync_required",
     "stable_without_candidate_ci_forbidden"
   ],
-  "mode": "descriptive_release_gate_hardening_only",
-  "release": "v0.14.9_CANDIDATE",
+  "release": "v0.14.0_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.14.6",
-  "status": "candidate"
+  "schema_version": "0.14.0",
+  "status": "candidate",
+  "mode": "descriptive_release_gate_hardening_only"
 }

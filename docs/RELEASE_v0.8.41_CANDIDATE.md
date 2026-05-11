@@ -1,4 +1,4 @@
-# GateGraph v0.8.41_STABLE
+# GateGraph v0.8.41_CANDIDATE
 
 ## Phase 9: Failure Analysis / Postmortem Layer
 

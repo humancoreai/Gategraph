@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.14.9_CANDIDATE"
-BASE = "v0.14.8_STABLE"
+VERSION = "v0.14.0_CANDIDATE"
+BASE = "v0.13.6_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -34,13 +34,6 @@ FORBIDDEN_NAMES = {
     "Thumbs.db",
 }
 REQUIRED_RELEASE_FILES = {
-    "registry/failure_root_cause_grouping.json",
-    "tests/fresh_clone_surface_validation_evidence.py",
-    "tests/artifact_determinism_evidence.py",
-    "tests/failure_root_cause_grouping_evidence.py",
-    "docs/FRESH_CLONE_SURFACE_VALIDATION.md",
-    "docs/ARTIFACT_DETERMINISM.md",
-    "docs/FAILURE_ROOT_CAUSE_GROUPING.md",
     "VERSION.md",
     "RELEASE_METADATA.json",
     "RELEASE_MANIFEST.json",
@@ -52,11 +45,6 @@ REQUIRED_RELEASE_FILES = {
     "RELEASE_PROCESS.md",
     "tests/install_surface_evidence.py",
     "tests/practical_single_node_scenario_evidence.py",
-    "tests/public_repo_hygiene_evidence.py",
-    "tests/fresh_clone_reproducibility_evidence.py",
-    "docs/PUBLIC_REPO_HYGIENE.md",
-    "docs/FRESH_CLONE_REPRODUCIBILITY.md",
-    "docs/QUICKSTART.md",
     "tests/packaging_integrity_evidence.py",
     "docs/DEPLOYMENT_BOUNDARY.md",
     "docs/PRACTICAL_SINGLE_NODE_SCENARIO.md",
@@ -107,7 +95,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.14.9_CANDIDATE.md",
+    "docs/RELEASE_v0.14.0_CANDIDATE.md",
     "tests/release_claim_consistency_evidence.py",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
@@ -119,7 +107,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_provenance_evidence.py",
     "gategraph/context/context_lifecycle.py",
     "docs/CONTEXT_LIFECYCLE_MODEL.md",
-    "docs/RELEASE_v0.14.9_CANDIDATE.md",
+    "docs/RELEASE_v0.14.0_CANDIDATE.md",
     "tests/context_lifecycle_evidence.py",
     "tests/context_replay_explain_boundary_evidence.py",
     "tests/context_freeze_coupling_evidence.py",
@@ -137,8 +125,8 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.14.9_CANDIDATE.md",
-    "docs/RELEASE_v0.14.9_CANDIDATE.md",
+    "docs/RELEASE_v0.14.0_CANDIDATE.md",
+    "docs/RELEASE_v0.14.0_CANDIDATE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -164,11 +152,11 @@ REQUIRED_RELEASE_FILES = {
     "registry/invariant_surface_registry.json",
     "tests/semantic_registry_lock_evidence.py",
     "tests/release_manifest_coverage_evidence.py",
-    "docs/RELEASE_v0.14.9_CANDIDATE.md",
-    "docs/RELEASE_v0.14.9_CANDIDATE.md",
+    "docs/RELEASE_v0.14.0_CANDIDATE.md",
+    "docs/RELEASE_v0.14.0_CANDIDATE.md",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.14.9_CANDIDATE.md",
+    "docs/RELEASE_v0.14.0_CANDIDATE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",
@@ -184,7 +172,7 @@ REQUIRED_RELEASE_FILES = {
     "registry/evidence_provenance_registry.json",
     "registry/release_state_transition_registry.json",
     "tests/release_state_transition_evidence.py",
-    "docs/STABLE_CI_GATE.md",
+    "docs/CANDIDATE_CI_GATE.md",
     "tests/candidate_ci_gate_evidence.py",
     "tests/evidence_suite_profile_evidence.py",
     "registry/evidence_suite_profile.json",
@@ -281,16 +269,15 @@ def sha256_file(path: Path) -> str:
 
 
 def build_manifest(files: Iterable[Path]) -> dict:
-    entries = [{"path": rel(p), "size": p.stat().st_size, "size_bytes": p.stat().st_size, "sha256": sha256_file(p)} for p in files]
+    entries = [{"path": rel(p), "size": p.stat().st_size, "sha256": sha256_file(p)} for p in files]
     if not entries:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
         "status": "candidate",
         "base": BASE,
-        "version": "0.14.9",
         "kind": "candidate_release",
-        "scope": "public_repo_packaging_hygiene",
+        "scope": "practical_single_node_scenario",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -331,7 +318,7 @@ def main() -> int:
         "release": VERSION,
         "status": "candidate",
         "base": BASE,
-        "phase": "Release artifact determinism and failure explainability",
+        "phase": "Practical Single-Node Scenario Run",
         "evidence_failure_classification_scope": True,
         "practical_single_node_scenario_scope": True,
         "github_actions_runtime_authority": False,
@@ -350,10 +337,6 @@ def main() -> int:
         "new_agentic_behavior": False,
         "new_adapter": False,
         "packaging_scope": True,
-        "public_repo_hygiene_scope": True,
-        "quickstart_surface_scope": True,
-        "install_reproducibility_scope": True,
-        "root_surface_hygiene_scope": True,
         "deployment_scope": "single_node_local_protected",
         "startup_surface_scope": True,
         "config_consistency_scope": True,
@@ -384,7 +367,7 @@ def main() -> int:
         "self_orchestration": False,
         "scope_freeze": True,
         "surface_contract_registry_scope": True,
-        "surface_contract_version": "0.14.6",
+        "surface_contract_version": "0.14.0",
         "semantic_boundary_evidence_scope": True,
         "release_manifest_ssot_scope": True,
         "claim_boundary": "surface contracts are descriptive/review surfaces only; they do not add runtime authority, policy learning, automatic governance mutation, semantic scoring, or enforcement behavior",
@@ -439,24 +422,7 @@ def main() -> int:
         "provenance_auto_repair": False,
         "provenance_dynamic_loading": False,
         "lineage_auto_mutation": False,
-        "failure_root_cause_grouping_scope": True,
-        "artifact_determinism_scope": True,
-        "fresh_clone_surface_validation_scope": True,
     }
-    # INV: Build packaging must not erase release-surface metadata added by later gates.
-    metadata_path = ROOT / "RELEASE_METADATA.json"
-    if metadata_path.exists():
-        existing_metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
-        existing_metadata.update(metadata)
-        metadata = existing_metadata
-    metadata["version"] = "0.14.9"
-    metadata["release_focus"] = "Promotion / Surface / Registry Lock Hardening"
-    metadata["promotion_status_ssot_scope"] = True
-    metadata["promotion_surface_matrix_scope"] = True
-    metadata["registry_lock_rebuild_scope"] = True
-    metadata["manifest_rehash_scope"] = True
-    metadata["candidate_stable_assertion_split_scope"] = True
-    metadata["release_focus_scope"] = True
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
     files_without_manifest = [p for p in iter_release_files() if rel(p) != "RELEASE_MANIFEST.json"]
@@ -483,7 +449,3 @@ if __name__ == "__main__":
     except Exception as exc:
         print(json.dumps({"ok": False, "error": str(exc)}, indent=2), file=sys.stderr)
         raise SystemExit(1)
-
-# RELEASE_BASE = "v0.14.8_STABLE"
-
-# Base: v0.14.8_STABLE

@@ -6,21 +6,21 @@ Server Hardening / Safe Service Boundary
 
 ## Status
 
-Stable. Promoted from `v0.8.34_STABLE` after Full Windows Evidence CI passed.
+Stable. Promoted from `v0.8.34_CANDIDATE` after Full Windows Evidence CI passed.
 
 ## Promotion basis
 
 Observed Windows evidence run:
 
 ```text
-PS C:\users\user\desktop\gategraph\GateGraph_v0.8.34_STABLE> python tests\evidence_ci.py
+PS C:\users\user\desktop\gategraph\GateGraph_v0.8.34_CANDIDATE> python tests\evidence_ci.py
 ...
 --- server_hardening_evidence ---
 PASS server_hardening_evidence
 Summary: {'passed': 1, 'failed': 0}
 ...
 CI EVIDENCE REPORT
-Log: C:\Users\User\Desktop\Gategraph\GateGraph_v0.8.34_STABLE\tests\logs\ci_evidence_20260429_052441.json
+Log: C:\Users\User\Desktop\Gategraph\GateGraph_v0.8.34_CANDIDATE\tests\logs\ci_evidence_20260429_052441.json
 Passed: True
 ```
 
@@ -56,4 +56,4 @@ Included:
 
 ## Result
 
-v0.8.34_STABLE is promoted to **v0.8.34_STABLE** for the defined local/protected server-adapter scope.
+v0.8.34_CANDIDATE is promoted to **v0.8.34_STABLE** for the defined local/protected server-adapter scope.

@@ -6,9 +6,9 @@
     "runtime_authority": false,
     "self_healing": false
   },
-  "base": "v0.14.8_STABLE",
-  "diff_baseline": "v0.14.8_STABLE",
-  "diff_current": "v0.14.9_CANDIDATE",
+  "base": "v0.13.6_STABLE",
+  "diff_baseline": "v0.13.6_STABLE",
+  "diff_current": "v0.14.0_CANDIDATE",
   "edge_types": [
     "depends_on",
     "validated_by",
@@ -93,12 +93,12 @@
     },
     {
       "from": "governance_lineage",
-      "to": "v0.14.4_STABLE",
+      "to": "v0.13.6_STABLE",
       "type": "lineage_of"
     },
     {
       "from": "governance_lineage",
-      "to": "v0.14.9_CANDIDATE",
+      "to": "v0.14.0_CANDIDATE",
       "type": "lineage_of"
     },
     {
@@ -115,11 +115,6 @@
       "from": "invariant_surface_registry",
       "to": "invariant_surface_mapping_evidence.py",
       "type": "validated_by"
-    },
-    {
-      "from": "governance_lineage",
-      "to": "v0.14.7_STABLE",
-      "type": "lineage_of"
     }
   ],
   "expected_diff": {
@@ -192,6 +187,6 @@
       "path": "registry/governance_integrity_graph.json"
     }
   ],
-  "release": "v0.14.9_CANDIDATE",
-  "schema_version": "0.14.6"
+  "release": "v0.14.0_CANDIDATE",
+  "schema_version": "0.14.0"
 }

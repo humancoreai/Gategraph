@@ -23,20 +23,6 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 LOG_DIR = PROJECT_ROOT / "tests" / "logs"
 
 
-def runtime_stress_profile() -> str:
-    """Return the runtime stress profile.
-
-    WHY: Hosted CI runners can be slower and noisier than local Windows CI.
-    The CI profile keeps the same invariants and scenario types, but bounds the
-    heaviest visibility-only micro-flood loop so the suite remains deterministic.
-    """
-    return os.environ.get("GATEGRAPH_RUNTIME_STRESS_PROFILE", "full").strip().lower() or "full"
-
-
-def runtime_stress_micro_flood_count() -> int:
-    return 25 if runtime_stress_profile() == "ci" else 100
-
-
 def fresh_conn():
     tmp = tempfile.NamedTemporaryFile(prefix="gategraph_evidence_", suffix=".db", delete=False)
     tmp.close()
@@ -522,8 +508,7 @@ def scenario_micro_task_flood_drift_visible() -> EvidenceScenarioResult:
         total_cost = 0
         stop_count = 0
 
-        micro_task_count = runtime_stress_micro_flood_count()
-        for idx in range(1, micro_task_count + 1):
+        for idx in range(1, 101):
             task_id = f"STRESS-MICRO-FLOOD-{idx:03d}"
             runtime_guard.create_budget(conn, task_id=task_id, max_steps=2, max_cost_units=2, repeated_action_limit=10)
             decision = runtime_guard.evaluate_before_step(
@@ -540,13 +525,12 @@ def scenario_micro_task_flood_drift_visible() -> EvidenceScenarioResult:
             if decision.decision == "stop":
                 stop_count += 1
 
-        expected_total_cost = micro_task_count
-        passed = stop_count == 0 and total_cost == expected_total_cost
+        passed = stop_count == 0 and total_cost == 100
         return EvidenceScenarioResult(
             test_name="micro_task_flood_drift_visible",
-            description="Individually valid micro-tasks create aggregate cost without a global stop.",
-            expected={"tasks": micro_task_count, "per_task_stops": 0, "total_cost_units": expected_total_cost, "global_flood_guard_present": False, "profile": runtime_stress_profile()},
-            actual={"tasks": len(task_evidence), "per_task_stops": stop_count, "total_cost_units": total_cost, "global_flood_guard_present": False, "profile": runtime_stress_profile()},
+            description="One hundred individually valid micro-tasks create aggregate cost without a global stop.",
+            expected={"tasks": 100, "per_task_stops": 0, "total_cost_units": 100, "global_flood_guard_present": False},
+            actual={"tasks": len(task_evidence), "per_task_stops": stop_count, "total_cost_units": total_cost, "global_flood_guard_present": False},
             passed=passed,
             severity="high",
             notes=[
