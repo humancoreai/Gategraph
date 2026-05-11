@@ -1,5 +1,5 @@
 """
-Release surface symmetry evidence for GateGraph v0.14.7_STABLE.
+Release surface symmetry evidence for GateGraph v0.14.8_CANDIDATE.
 Descriptive validation only. No governance mutation.
 """
 
@@ -18,7 +18,7 @@ SURFACES = [
     "CONTEXT_GOVERNANCE_MODEL.md",
 ]
 
-EXPECTED_RELEASE = "v0.14.7_STABLE"
+EXPECTED_RELEASE = "v0.14.8_CANDIDATE"
 
 def classify(content: str):
     findings = []

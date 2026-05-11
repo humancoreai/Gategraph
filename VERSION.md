@@ -1,14 +1,9 @@
 # GateGraph Version
+Phase: Release artifact determinism and failure explainability
 
-Release: v0.14.7_STABLE  
-Status: stable  
-Base: v0.14.6_STABLE  
-Version: 0.14.7
+Release: v0.14.8_CANDIDATE  
+Status: candidate  
+Base: v0.14.7_STABLE  
+Version: 0.14.8
 
-## Release Claims
-
-Release: v0.14.7_STABLE
-Base: v0.14.6_STABLE
-Status: stable
-Version: 0.14.7
-Phase: Install / Packaging / Public Repo Hygiene
+Candidate promotion requires Windows Evidence CI PASS before any Stable artifact is created.
