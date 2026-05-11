@@ -1,7 +1,7 @@
 # Practical Single-Node Scenario Run
 
 Status: descriptive only.
-Release: v0.14.0_CANDIDATE.
+Release: v0.14.0_STABLE.
 Base: v0.13.6_STABLE.
 
 This surface groups evidence failures into review buckets such as release-surface, semantic-boundary, registry-lock, server-surface, runtime-governance, and security.
