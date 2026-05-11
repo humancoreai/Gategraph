@@ -4,7 +4,7 @@ import json, subprocess, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 def main() -> int:
-    proc = subprocess.run([sys.executable, str(ROOT / "tools" / "release_process_guard.py"), "v0.14.4_STABLE", "stable", "v0.14.3_STABLE"], cwd=str(ROOT), text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=20)
+    proc = subprocess.run([sys.executable, str(ROOT / "tools" / "release_process_guard.py"), "v0.14.5_CANDIDATE", "candidate", "v0.14.4_STABLE"], cwd=str(ROOT), text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=20)
     payload = json.loads(proc.stdout)
     print(json.dumps({"release_process_guard": payload}, indent=2, sort_keys=True))
     assert proc.returncode == 0
@@ -15,7 +15,7 @@ def main() -> int:
     previous = git_head.read_text(encoding="utf-8") if git_head.exists() else None
     git_head.write_text("ref: refs/heads/main\n", encoding="utf-8")
     try:
-        proc_git = subprocess.run([sys.executable, str(ROOT / "tools" / "release_process_guard.py"), "v0.14.4_STABLE", "stable", "v0.14.3_STABLE"], cwd=str(ROOT), text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=20)
+        proc_git = subprocess.run([sys.executable, str(ROOT / "tools" / "release_process_guard.py"), "v0.14.5_CANDIDATE", "candidate", "v0.14.4_STABLE"], cwd=str(ROOT), text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=20)
         payload_git = json.loads(proc_git.stdout)
         assert proc_git.returncode == 0
         assert payload_git["passed"] is True
