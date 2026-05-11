@@ -1,4 +1,4 @@
-# GateGraph v0.8.36_CANDIDATE
+# GateGraph v0.8.36_STABLE
 
 ## Phase
 API Robustness / Real-World Stability
@@ -21,7 +21,7 @@ API contract remains unchanged:
 - Added deterministic oversized-payload rejection without parsing.
 - Added `tests/api_robustness_evidence.py`.
 - Added robustness evidence to `tests/evidence_ci.py` manifest.
-- Updated version metadata to `v0.8.36_CANDIDATE`.
+- Updated version metadata to `v0.8.36_STABLE`.
 
 ## Evidence
 

@@ -1,4 +1,4 @@
-# RELEASE v0.8.40_CANDIDATE
+# RELEASE v0.8.40_STABLE
 
 ## Phase
 
@@ -18,7 +18,7 @@ Operative Nutzbarkeit der vorhandenen Observability-Daten herstellen, ohne Syste
 - Neue Evidence: `tests/operator_evidence.py`
 - Evidence CI Manifest um `operator_evidence` erweitert
 - Dokumentation: `docs/OPERATOR_CONTROL.md`
-- Version auf `v0.8.40_CANDIDATE` gesetzt
+- Version auf `v0.8.40_STABLE` gesetzt
 
 ## Invarianten
 

@@ -1,9 +1,9 @@
 
-## v0.14.6_CANDIDATE
+## v0.14.6_STABLE
 
 Phase: Install / Packaging / Public Repo Hygiene
 Base: v0.14.5_STABLE
-Status: candidate
+Status: stable
 
 Scope:
 - Public-repo and packaging hygiene surface.
@@ -14,9 +14,9 @@ Scope:
 Evidence added:
 - public_repo_hygiene_evidence.py
 
-# GateGraph v0.14.6_CANDIDATE Release Notes
+# GateGraph v0.14.6_STABLE Release Notes
 
-Status: candidate.
+Status: stable.
 Base: v0.14.5_STABLE.
 
 ## Scope
@@ -175,7 +175,7 @@ Referenced evidence surfaces:
 - No governance, runtime, enforcement, policy-learning, deployment, or auto-promotion authority added.
 
 
-## v0.14.6_CANDIDATE - Promotion Pipeline Hardening
+## v0.14.6_STABLE - Promotion Pipeline Hardening
 
 - Adds descriptive promotion pipeline evidence.
 - Checks release surface tokens, manifest freshness, and semantic registry lock freshness.
