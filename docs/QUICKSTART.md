@@ -1,8 +1,8 @@
 # GateGraph Quickstart
 
-Release: v0.14.6_STABLE  
-Base: v0.14.5_STABLE  
-Status: stable
+Release: v0.14.7_CANDIDATE  
+Base: v0.14.6_STABLE  
+Status: candidate
 
 ## Local verification
 
