@@ -1,4 +1,4 @@
-# GateGraph v0.8.45_STABLE
+# GateGraph v0.8.45_CANDIDATE
 
 Phase: Governance Archive / Historical Replay
 

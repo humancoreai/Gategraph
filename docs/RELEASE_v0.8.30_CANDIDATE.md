@@ -1,4 +1,4 @@
-# GateGraph v0.8.30_STABLE
+# GateGraph v0.8.30_CANDIDATE
 
 Operational Stability candidate based on v0.8.29_STABLE.
 

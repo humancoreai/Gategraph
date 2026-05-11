@@ -10,8 +10,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.14.9_CANDIDATE"
-EXPECTED_BASE = "v0.14.8_STABLE"
+EXPECTED_RELEASE = "v0.14.0_CANDIDATE"
+EXPECTED_BASE = "v0.13.6_STABLE"
 REQUIRED_SURFACE = {
     "docs/STARTUP_SURFACE.md",
     "docs/RUNTIME_SURFACE_FREEZE.md",
@@ -42,10 +42,10 @@ def main() -> int:
 
     assert metadata["release"] == EXPECTED_RELEASE
     assert metadata["base"] == EXPECTED_BASE
-    assert metadata["status"] == "stable"
+    assert metadata["status"] == "candidate"
     assert manifest["release"] == EXPECTED_RELEASE
     assert manifest["base"] == EXPECTED_BASE
-    assert manifest["status"] == "stable"
+    assert manifest["status"] == "candidate"
     assert manifest["file_count"] == len(manifest["files"])
     assert (ROOT / "RELEASE_MANIFEST.json").exists()
     assert not (REQUIRED_SURFACE - paths), sorted(REQUIRED_SURFACE - paths)

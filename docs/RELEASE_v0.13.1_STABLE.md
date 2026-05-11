@@ -1,6 +1,6 @@
 # GateGraph v0.13.3_STABLE
 
-Base: v0.14.7_STABLE  
+Base: v0.13.0_STABLE  
 Status: candidate  
 Scope: Recovery Replay Finality Hardening.
 

@@ -2,7 +2,7 @@
 
 # Non-Scope – v0.9.2_STABLE
 
-GateGraph v0.9.0_STABLE intentionally does not provide:
+GateGraph v0.9.0_CANDIDATE intentionally does not provide:
 
 - autonomous agents
 - autonomous policy changes

@@ -1,4 +1,4 @@
-# Release v0.8.29_STABLE
+# Release v0.8.29_CANDIDATE
 
 ## Scope
 

@@ -1,24 +1,17 @@
-## v0.14.9_CANDIDATE
-Phase: Release artifact determinism and failure explainability
-
-- Added descriptive root-cause grouping for related CI failures.
-- Added artifact determinism evidence for release manifest hygiene.
-- Added fresh-clone surface validation evidence.
-
 # Changelog
 
-## v0.14.7_STABLE
+## v0.14.0_CANDIDATE
 
 Status: candidate.
-Base: v0.14.7_STABLE.
-Phase: Install / Packaging / Public Repo Hygiene.
+Base: v0.13.6_STABLE.
+Phase: Practical Single-Node Scenario Run.
 
 - Added minimal Windows GitHub Actions evidence workflow.
 - Added read-only CI documentation and evidence check.
 - Preserved no-secrets, no-publish, no-deploy, no-auto-promotion boundaries.
 - No governance/runtime/enforcement logic changed.
 
-## v0.14.4_STABLE
+## v0.13.6_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 
@@ -67,7 +60,7 @@ All notable changes to GateGraph are documented here.
 - Preserved install surface, startup surface, config consistency and deterministic packaging claims.
 - No runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior changed.
 
-## v0.11.1_STABLE
+## v0.11.1_CANDIDATE
 
 - Tightened packaging/install/startup consistency around the v0.11.0 packaging baseline.
 - Added supporting evidence for install surface, startup surface and config consistency.
@@ -79,7 +72,7 @@ All notable changes to GateGraph are documented here.
 - Confirmed `pyproject.toml`, editable install and CLI entry points as release-supported surfaces.
 - No runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior changed.
 
-## v0.11.0_STABLE
+## v0.11.0_CANDIDATE
 
 - Added `pyproject.toml` packaging baseline.
 - Added package metadata for editable install via `python -m pip install -e .`.
@@ -128,7 +121,7 @@ All notable changes to GateGraph are documented here.
 - No autonomous or semantic classification.
 - No multi-node behavior.
 
-## [v0.9.0_STABLE] - 2026-05-06
+## [v0.9.0_CANDIDATE] - 2026-05-06
 
 ### Added
 
