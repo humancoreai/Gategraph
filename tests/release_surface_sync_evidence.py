@@ -3,11 +3,11 @@ from __future__ import annotations
 import json, re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE='v0.14.5_CANDIDATE'
+EXPECTED_RELEASE='v0.14.5_STABLE'
 EXPECTED_BASE='v0.14.4_STABLE'
-EXPECTED_STATUS='candidate'
+EXPECTED_STATUS='stable'
 EXPECTED_VERSION='0.14.5'
-SURFACES=['README.md','VERSION.md','RELEASE_NOTES.md','RELEASE_STATUS.md','RELEASE_METADATA.json','RELEASE_MANIFEST.json','pyproject.toml','tools/build_release.py','tools/verify_release.py','docs/RECOVERY_FOUNDATION.md','docs/RELEASE_v0.14.5_CANDIDATE.md']
+SURFACES=['README.md','VERSION.md','RELEASE_NOTES.md','RELEASE_STATUS.md','RELEASE_METADATA.json','RELEASE_MANIFEST.json','pyproject.toml','tools/build_release.py','tools/verify_release.py','docs/RECOVERY_FOUNDATION.md','docs/RELEASE_v0.14.5_STABLE.md']
 
 def read(p): return (ROOT/p).read_text(encoding='utf-8')
 def main() -> int:
