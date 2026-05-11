@@ -1,4 +1,4 @@
-# GateGraph v0.8.38_CANDIDATE
+# GateGraph v0.8.38_STABLE
 
 ## Phase
 Runtime Cost Governance / Kill Conditions

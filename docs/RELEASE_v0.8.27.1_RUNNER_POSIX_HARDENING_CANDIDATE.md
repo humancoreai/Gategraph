@@ -1,4 +1,4 @@
-# Release Candidate: v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE
+# Release Candidate: v0.8.27.1_RUNNER_POSIX_HARDENING_STABLE
 
 ## Classification
 

@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.14.6_CANDIDATE
+## v0.14.6_STABLE
 
-Status: candidate.
+Status: stable.
 Base: v0.14.5_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
@@ -60,7 +60,7 @@ All notable changes to GateGraph are documented here.
 - Preserved install surface, startup surface, config consistency and deterministic packaging claims.
 - No runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior changed.
 
-## v0.11.1_CANDIDATE
+## v0.11.1_STABLE
 
 - Tightened packaging/install/startup consistency around the v0.11.0 packaging baseline.
 - Added supporting evidence for install surface, startup surface and config consistency.
@@ -72,7 +72,7 @@ All notable changes to GateGraph are documented here.
 - Confirmed `pyproject.toml`, editable install and CLI entry points as release-supported surfaces.
 - No runtime, governance, enforcement, adapter, agentic, distributed, cloud, Docker/Kubernetes/Helm, or UI behavior changed.
 
-## v0.11.0_CANDIDATE
+## v0.11.0_STABLE
 
 - Added `pyproject.toml` packaging baseline.
 - Added package metadata for editable install via `python -m pip install -e .`.
@@ -121,7 +121,7 @@ All notable changes to GateGraph are documented here.
 - No autonomous or semantic classification.
 - No multi-node behavior.
 
-## [v0.9.0_CANDIDATE] - 2026-05-06
+## [v0.9.0_STABLE] - 2026-05-06
 
 ### Added
 
