@@ -1,4 +1,4 @@
-## v0.14.8_STABLE
+## v0.14.9_CANDIDATE
 Phase: Release artifact determinism and failure explainability
 
 Candidate release after v0.14.7_STABLE Windows Evidence CI PASS.
@@ -11,13 +11,13 @@ Scope:
 No governance logic or runtime authority changes.
 
 
-## v0.14.8_STABLE
+## v0.14.9_CANDIDATE
 
 Candidate release built after v0.14.7_STABLE Windows Evidence CI PASS.
 
 Phase: Install / Packaging / Public Repo Hygiene
 Base: v0.14.7_STABLE
-Status: stable
+Status: candidate
 
 Scope:
 - Public-repo and packaging hygiene surface.
@@ -28,9 +28,9 @@ Scope:
 Evidence added:
 - public_repo_hygiene_evidence.py
 
-# GateGraph v0.14.8_STABLE Release Notes
+# GateGraph v0.14.9_CANDIDATE Release Notes
 
-Status: stable.
+Status: candidate.
 Base: v0.14.7_STABLE.
 
 ## Scope
@@ -189,10 +189,12 @@ Referenced evidence surfaces:
 - No governance, runtime, enforcement, policy-learning, deployment, or auto-promotion authority added.
 
 
-## v0.14.8_STABLE
+## v0.14.9_CANDIDATE
 
 Candidate release built after v0.14.7_STABLE Windows Evidence CI PASS. - Promotion Pipeline Hardening
 
 - Adds descriptive promotion pipeline evidence.
 - Checks release surface tokens, manifest freshness, and semantic registry lock freshness.
 - No runtime/governance authority expansion.
+
+Base: v0.14.8_STABLE
