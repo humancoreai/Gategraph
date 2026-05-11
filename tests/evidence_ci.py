@@ -18,12 +18,6 @@ import threading
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-
-# GitHub Actions Windows consoles may default to cp1252; evidence output contains Unicode markers.
-# Force UTF-8 with replacement so logging never becomes a CI failure mode.
-for _stream in (sys.stdout, sys.stderr):
-    if hasattr(_stream, "reconfigure"):
-        _stream.reconfigure(encoding="utf-8", errors="replace")
 from typing import List, Tuple
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -126,8 +120,6 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("operational_stability_evidence", "tests/operational_stability_evidence.py", 20),
     ("single_node_cli_evidence", "tests/single_node_cli_evidence.py", 20),
     ("practical_single_node_scenario_evidence", "tests/practical_single_node_scenario_evidence.py", 20),
-    ("public_repo_hygiene_evidence", "tests/public_repo_hygiene_evidence.py", 20),
-    ("fresh_clone_reproducibility_evidence", "tests/fresh_clone_reproducibility_evidence.py", 20),
     ("single_node_monitoring_export_evidence", "tests/single_node_monitoring_export_evidence.py", 20),
     ("server_mode_evidence", "tests/server_mode_evidence.py", 20),
     ("server_hardening_evidence", "tests/server_hardening_evidence.py", 20),

@@ -135,8 +135,6 @@ def check_manifest(expected_release: str, expected_base: str | None) -> dict:
             continue
         if (
             rel == "ARTIFACTS.sha256"
-            or rel.startswith(".git/")
-            or rel.startswith(".github/_temp/")
             or rel.startswith("dist/")
             or rel.startswith("tests/logs/")
             or "__pycache__" in rel
