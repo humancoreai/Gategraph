@@ -122,6 +122,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("artifact_determinism_evidence", "tests/artifact_determinism_evidence.py", 20),
     ("fresh_clone_surface_validation_evidence", "tests/fresh_clone_surface_validation_evidence.py", 20),
     ("github_actions_ci_evidence", "tests/github_actions_ci_evidence.py", 20),
+    ("stable_promotion_surface_model_evidence", "tests/stable_promotion_surface_model_evidence.py", 20),
     ("promotion_surface_symmetry_evidence", "tests/promotion_surface_symmetry_evidence.py", 20),
     ("candidate_stable_surface_parity_evidence", "tests/candidate_stable_surface_parity_evidence.py", 20),
     ("governance_integrity_graph_evidence", "tests/governance_integrity_graph_evidence.py", 20),
