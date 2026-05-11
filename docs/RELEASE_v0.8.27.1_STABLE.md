@@ -4,7 +4,7 @@
 
 Stable recovery point after Operational Hardening and Evidence Runner POSIX hardening.
 
-Promoted from `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` after the full Windows Evidence CI run reported `Passed: True` on 2026-04-28.
+Promoted from `v0.8.27.1_RUNNER_POSIX_HARDENING_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-04-28.
 
 ## Consolidated scope
 

@@ -77,16 +77,16 @@ def check_release_truth(expected_release: str, expected_status: str, expected_ba
             if expected_base is not None and metadata.get("base") != expected_base:
                 problems.append(f"metadata base={metadata.get('base')!r}, expected {expected_base!r}")
 
-    if expected_status == "stable":
-        forbidden = expected_release.replace("_STABLE", "_CANDIDATE")
+    if expected_status == "candidate":
+        forbidden = expected_release.replace("_CANDIDATE", "_STABLE")
         for rel in RELEASE_FILES:
             path = ROOT / rel
             if not path.exists():
                 continue
             text = path.read_text(encoding="utf-8")
-            forbidden_status_label = "Status: " + "candidate"
-            forbidden_current_label = "Current " + "candidate:"
-            forbidden_current_baseline = "Current " + "candidate baseline:"
+            forbidden_status_label = "Status: " + "stable"
+            forbidden_current_label = "Current " + "stable:"
+            forbidden_current_baseline = "Current " + "stable baseline:"
             if (
                 f'"release": "{forbidden}"' in text
                 or f'VERSION = "{forbidden}"' in text
@@ -94,7 +94,7 @@ def check_release_truth(expected_release: str, expected_status: str, expected_ba
                 or forbidden_current_label in text
                 or forbidden_current_baseline in text
             ):
-                problems.append(f"{rel} contains forbidden current stable claim")
+                problems.append(f"{rel} contains forbidden stable claim before promotion")
 
     return fail("release_truth", "; ".join(problems)) if problems else ok("release_truth")
 
@@ -203,7 +203,7 @@ def check_document_version_surfaces(expected_release: str) -> dict:
             problems.append("KNOWN_GAPS_ROADMAP.md does not mention current release")
         if "No pip package / `pyproject.toml` packaging baseline" in text:
             problems.append("KNOWN_GAPS_ROADMAP.md still lists pyproject.toml packaging baseline as open")
-        if "v0.10.0_CANDIDATE" in text.splitlines()[0]:
+        if "v0.10.0_STABLE" in text.splitlines()[0]:
             problems.append("KNOWN_GAPS_ROADMAP.md title is stale")
     else:
         problems.append("docs/KNOWN_GAPS_ROADMAP.md missing")
@@ -211,7 +211,7 @@ def check_document_version_surfaces(expected_release: str) -> dict:
     server = ROOT / "src" / "server.py"
     if server.exists():
         text = server.read_text(encoding="utf-8")
-        expected_http_version = expected_release.removeprefix("v").replace("_CANDIDATE", "").replace("_STABLE", "")
+        expected_http_version = expected_release.removeprefix("v").replace("_STABLE", "").replace("_STABLE", "")
         if f'GateGraphHTTP/{expected_http_version}' not in text:
             problems.append(f"src/server.py server_version does not match {expected_http_version}")
     else:

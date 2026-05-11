@@ -1,4 +1,4 @@
-# GateGraph v0.8.44_CANDIDATE — Governance Drift Detection
+# GateGraph v0.8.44_STABLE — Governance Drift Detection
 
 ## Scope
 

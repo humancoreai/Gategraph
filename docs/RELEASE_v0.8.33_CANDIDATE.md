@@ -1,4 +1,4 @@
-# RELEASE v0.8.33_CANDIDATE
+# RELEASE v0.8.33_STABLE
 
 ## Schwerpunkt
 

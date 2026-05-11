@@ -1,4 +1,4 @@
-# Release — GateGraph v0.8.28_CANDIDATE
+# Release — GateGraph v0.8.28_STABLE
 
 ## Status
 
@@ -10,7 +10,7 @@ This stable release integrates `GOVERNANCE.md` as the repository-level SSOT for 
 
 - Added root-level `GOVERNANCE.md`.
 - Added README reference to `GOVERNANCE.md`.
-- Updated version/release metadata to `v0.8.28_CANDIDATE`.
+- Updated version/release metadata to `v0.8.28_STABLE`.
 
 ## Functional changes
 
