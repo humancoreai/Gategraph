@@ -1,7 +1,7 @@
 {
   "auto_migration": false,
   "auto_repair": false,
-  "base": "v0.14.2_STABLE",
+  "base": "v0.14.3_STABLE",
   "dynamic_loading": false,
   "exports": [
     {
@@ -32,15 +32,15 @@
   "lineage": [
     {
       "automatic_migration": false,
-      "from": "v0.14.2_STABLE",
+      "from": "v0.14.3_STABLE",
       "mode": "declarative_schema_governance_only",
-      "to": "v0.14.3_STABLE"
+      "to": "v0.14.4_CANDIDATE"
     }
   ],
   "registry_mode": "declarative_only",
-  "release": "v0.14.3_STABLE",
+  "release": "v0.14.4_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.14.3",
+  "schema_version": "0.14.4",
   "schemas": [
     {
       "authority": "descriptive_only",
@@ -79,20 +79,20 @@
     },
     {
       "authority": "descriptive_only",
-      "introduced_in": "v0.14.3",
+      "introduced_in": "v0.14.4",
       "path": "registry/evidence_provenance_registry.json",
       "schema_id": "evidence_provenance_registry"
     },
     {
       "authority": "descriptive_only",
-      "introduced_in": "v0.14.3",
+      "introduced_in": "v0.14.4",
       "path": "registry/governance_lineage.json",
       "schema_id": "governance_lineage"
     },
     {
       "authority": "descriptive_only",
       "compatibility": "strict",
-      "introduced_in": "v0.14.3",
+      "introduced_in": "v0.14.4",
       "owner_surface": "release",
       "path": "registry/release_state_transition_registry.json",
       "schema_id": "release_state_transition_registry"
@@ -100,7 +100,7 @@
     {
       "authority": "descriptive_only",
       "compatibility": "strict",
-      "introduced_in": "v0.14.3",
+      "introduced_in": "v0.14.4",
       "owner_surface": "integrity_graph",
       "path": "registry/governance_integrity_graph.json",
       "schema_id": "governance_integrity_graph"
