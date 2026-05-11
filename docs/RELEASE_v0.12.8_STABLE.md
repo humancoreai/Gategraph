@@ -2,7 +2,7 @@
 
 Base: v0.12.7_STABLE
 
-Status: stable
+Status: candidate
 
 Phase: Governance Integrity Graph
 
