@@ -1,7 +1,7 @@
 # GateGraph v0.12.7_STABLE
 
 Base: v0.14.7_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Deterministic Registry / Schema Governance
 
 ## Scope

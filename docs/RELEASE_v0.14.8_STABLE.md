@@ -1,12 +1,12 @@
-# GateGraph v0.14.8_CANDIDATE
+# GateGraph v0.14.8_STABLE
 Phase: Release artifact determinism and failure explainability
 
-Status: candidate  
+Status: stable  
 Base: v0.14.7_STABLE
 
 ## Scope
 
-v0.14.8_CANDIDATE hardens release/evidence determinism without adding governance logic or runtime authority.
+v0.14.8_STABLE hardens release/evidence determinism without adding governance logic or runtime authority.
 
 ## Changes
 
@@ -21,3 +21,4 @@ v0.14.8_CANDIDATE hardens release/evidence determinism without adding governance
 - No runtime authority expansion.
 - No adaptive or ML-based decisions.
 - No Stable promotion before Windows Candidate CI PASS.
+status: stable
