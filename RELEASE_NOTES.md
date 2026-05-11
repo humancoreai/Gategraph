@@ -1,9 +1,9 @@
 
-## v0.14.3_CANDIDATE
+## v0.14.3_STABLE
 
 Phase: Install / Packaging / Public Repo Hygiene
 Base: v0.14.2_STABLE
-Status: candidate
+Status: stable
 
 Scope:
 - Public-repo and packaging hygiene surface.
@@ -14,9 +14,9 @@ Scope:
 Evidence added:
 - public_repo_hygiene_evidence.py
 
-# GateGraph v0.14.3_CANDIDATE Release Notes
+# GateGraph v0.14.3_STABLE Release Notes
 
-Status: candidate.
+Status: stable.
 Base: v0.14.2_STABLE.
 
 ## Scope
