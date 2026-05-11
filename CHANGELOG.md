@@ -1,17 +1,17 @@
 # Changelog
 
-## v0.14.0_STABLE
+## v0.14.1_CANDIDATE
 
-Status: stable.
-Base: v0.13.6_STABLE.
-Phase: Practical Single-Node Scenario Run.
+Status: candidate.
+Base: v0.14.0_STABLE.
+Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.
 - Added read-only CI documentation and evidence check.
 - Preserved no-secrets, no-publish, no-deploy, no-auto-promotion boundaries.
 - No governance/runtime/enforcement logic changed.
 
-## v0.13.6_STABLE
+## v0.14.0_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 
