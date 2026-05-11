@@ -1,6 +1,6 @@
 # GateGraph Quickstart
 
-Release: v0.14.3_CANDIDATE  
+Release: v0.14.3_STABLE  
 Base: v0.14.2_STABLE  
 Status: candidate
 
