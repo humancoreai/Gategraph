@@ -1,11 +1,12 @@
 # GateGraph
+Phase: Release artifact determinism and failure explainability
 
 **Deterministic governance layer for AI-assisted task execution.**
 
 GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
-Current release: **v0.14.7_STABLE**  
-Base stable: **v0.14.6_STABLE**  
+Current release: **v0.14.8_CANDIDATE**  
+Base stable: **v0.14.7_STABLE**  
 Phase: Install / Packaging / Public Repo Hygiene
 Fresh clone reproducibility: see `docs/FRESH_CLONE_REPRODUCIBILITY.md`
 License: Apache 2.0
@@ -242,7 +243,7 @@ Releases are built deterministically via `tools/build_release.py`. Every release
 - `.db` files excluded from release artifacts by default
 
 ```bash
-python tools/verify_release.py dist/GateGraph_v0.14.7_STABLE.zip
+python tools/verify_release.py dist/GateGraph_v0.14.8_CANDIDATE.zip
 ```
 
 ---
@@ -277,4 +278,4 @@ See also `docs/STARTUP_SURFACE.md` for canonical local start paths and operation
 This stable release preserves a minimal Windows GitHub Actions workflow for reproducible Evidence CI. The workflow is validation-only: no secret access, no package publishing, no deployment, and no Candidate-to-Stable auto-promotion.
 
 
-Current release base: v0.14.6_STABLE
+Current release base: v0.14.7_STABLE

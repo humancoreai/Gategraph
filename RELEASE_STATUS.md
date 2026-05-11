@@ -1,19 +1,13 @@
 # GateGraph Release Status
 
-Current stable release: v0.14.7_STABLE
+Release: v0.14.8_CANDIDATE
+Base: v0.14.7_STABLE
+Status: candidate
+Version: 0.14.8
+Phase: Release artifact determinism and failure explainability
+Release surface note: Install / Packaging / Public Repo Hygiene
+Active release claim surface: Release artifact determinism and failure explainability
 
-Release: v0.14.7_STABLE  
-Status: stable  
-Base: v0.14.6_STABLE  
-Version: 0.14.7
+Current candidate release: v0.14.8_CANDIDATE
 
-Windows Evidence CI: Passed: True for v0.14.7_CANDIDATE.
-Stable promotion: manual.
-
-## Release Claims
-
-Release: v0.14.7_STABLE
-Base: v0.14.6_STABLE
-Status: stable
-Version: 0.14.7
-Phase: Install / Packaging / Public Repo Hygiene
+Stable promotion is forbidden until Windows Evidence CI for this Candidate reports `Passed: True`.

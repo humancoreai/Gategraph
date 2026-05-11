@@ -2,7 +2,7 @@
   "auto_promotion": false,
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.14.6_STABLE",
+  "base": "v0.14.7_STABLE",
   "classes": {
     "registry_lock": [
       "semantic_registry_lock_evidence",
@@ -16,7 +16,10 @@
       "release_manifest_coverage_evidence",
       "evidence_surface_consistency_evidence",
       "surface_recovery_consistency_evidence",
-      "release_gate_robustness_evidence"
+      "release_gate_robustness_evidence",
+      "failure_root_cause_grouping_evidence",
+      "artifact_determinism_evidence",
+      "fresh_clone_surface_validation_evidence"
     ],
     "runtime_governance": [
       "runtime_stress_evidence",
@@ -47,7 +50,7 @@
   },
   "classification_mode": "descriptive_grouping_only",
   "mandatory_unclassified_fail_closed": true,
-  "release": "v0.14.7_STABLE",
+  "release": "v0.14.8_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.14.6"
 }
