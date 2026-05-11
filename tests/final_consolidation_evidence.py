@@ -57,8 +57,8 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
+    assert "v0.14.9_CANDIDATE" in version
     assert "v0.14.8_STABLE" in version
-    assert "v0.14.7_STABLE" in version
     assert "Install / Packaging / Public Repo Hygiene" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
@@ -75,4 +75,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# Current release surface: v0.14.8_STABLE
+# Current release surface: v0.14.9_CANDIDATE
