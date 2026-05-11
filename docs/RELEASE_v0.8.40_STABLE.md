@@ -2,7 +2,7 @@
 
 ## Status
 
-Stable release based on v0.8.40_STABLE_WIN_FIX.
+Stable release based on v0.8.40_CANDIDATE_WIN_FIX.
 
 ## Evidence
 

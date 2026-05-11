@@ -5,8 +5,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.14.10_CANDIDATE"
-EXPECTED_BASE = "v0.14.9_STABLE"
+EXPECTED_RELEASE = "v0.14.0_CANDIDATE"
+EXPECTED_BASE = "v0.13.6_STABLE"
 
 def check(name: str, ok: bool, detail: dict | None = None) -> dict:
     marker = "✓" if ok else "✗"

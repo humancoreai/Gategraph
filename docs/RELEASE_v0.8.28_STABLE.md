@@ -4,7 +4,7 @@
 
 Stable release.
 
-This release promotes `v0.8.28_STABLE` after full Windows Evidence CI passed.
+This release promotes `v0.8.28_CANDIDATE` after full Windows Evidence CI passed.
 
 ## Scope
 

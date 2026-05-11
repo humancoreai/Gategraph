@@ -1,7 +1,7 @@
-# Install / Packaging / Public Repo Hygiene
+# Practical Single-Node Scenario Run
 
-Release: v0.14.10_CANDIDATE.
-Base: v0.14.7_STABLE.
+Release: v0.14.0_CANDIDATE.
+Base: v0.13.6_STABLE.
 Status: candidate.
 
 ## Scope
