@@ -1,9 +1,9 @@
 # Changelog
 
-## v0.14.1_STABLE
+## v0.14.2_CANDIDATE
 
-Status: stable.
-Base: v0.14.0_STABLE.
+Status: candidate.
+Base: v0.14.1_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.
@@ -11,7 +11,7 @@ Phase: Install / Packaging / Public Repo Hygiene.
 - Preserved no-secrets, no-publish, no-deploy, no-auto-promotion boundaries.
 - No governance/runtime/enforcement logic changed.
 
-## v0.14.0_STABLE
+## v0.14.1_STABLE
 
 - Candidate recovery/replay hardening: idempotency, deterministic replay ordering, reference integrity and release/surface sync evidence.
 
