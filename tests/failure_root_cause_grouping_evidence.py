@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE="v0.15.1_CANDIDATE"
-EXPECTED_BASE="v0.15.0_STABLE"
+EXPECTED_RELEASE="v0.15.2_CANDIDATE"
+EXPECTED_BASE="v0.15.1_STABLE"
 def check(name, ok, detail):
     print(("✓" if ok else "✗")+f" {name}: {detail}")
     return name, ok, detail
