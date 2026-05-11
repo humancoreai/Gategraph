@@ -7,9 +7,12 @@ from __future__ import annotations
 
 import http.client
 import json
+import sys
+import time
 import tempfile
 import threading
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.config_loader import AppConfig
 from src.server import MAX_BODY_BYTES, build_server
@@ -17,19 +20,28 @@ from src import service_adapter
 
 
 def _request(port: int, method: str, path: str, body=None, headers=None, raw: bytes | None = None):
-    conn = http.client.HTTPConnection("127.0.0.1", port, timeout=5)
     if raw is not None:
         payload = raw
     elif body is None:
         payload = None
     else:
         payload = json.dumps(body).encode("utf-8")
-    conn.request(method, path, body=payload, headers=headers or ({"content-type": "application/json"} if payload else {}))
-    res = conn.getresponse()
-    raw_data = res.read().decode("utf-8")
-    data = json.loads(raw_data)
-    conn.close()
-    return res.status, res.getheader("content-type"), data
+
+    last_error = None
+    for _ in range(3):
+        conn = http.client.HTTPConnection("127.0.0.1", port, timeout=5)
+        try:
+            conn.request(method, path, body=payload, headers=headers or ({"content-type": "application/json"} if payload else {}))
+            res = conn.getresponse()
+            raw_data = res.read().decode("utf-8")
+            data = json.loads(raw_data)
+            return res.status, res.getheader("content-type"), data
+        except ConnectionAbortedError as exc:
+            last_error = exc
+            time.sleep(0.05)
+        finally:
+            conn.close()
+    raise last_error
 
 
 def _assert_error(status: int, data: dict, expected_status: int, expected_code: str) -> None:
