@@ -1,7 +1,7 @@
 # GateGraph v0.8.43_CANDIDATE
 
 Phase: Human Review Queue
-Base: v0.8.42_STABLE
+Base: v0.14.5_STABLE
 
 ## Scope
 
