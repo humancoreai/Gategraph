@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.14.1_CANDIDATE"
+EXPECTED_RELEASE = "v0.14.1_STABLE"
 EXPECTED_BASE = "v0.14.0_STABLE"
 ALLOWED_MODE_LABELS = {"observer", "worker", "reviewer", "blocked"}
 FORBIDDEN_CLAIMS = [
@@ -41,14 +41,14 @@ def main() -> int:
 
     assert metadata["release"] == EXPECTED_RELEASE
     assert metadata["base"] == EXPECTED_BASE
-    assert metadata["status"] == "candidate"
+    assert metadata["status"] == "stable"
     assert metadata["mode_boundary_surface_scope"] is True
     for key in ["governance_logic_changed", "runtime_logic_changed", "enforcement_logic_changed", "new_runtime_capability", "new_agentic_behavior", "new_adapter", "distributed_governance"]:
         assert metadata[key] is False, key
 
     assert manifest["release"] == EXPECTED_RELEASE
     assert manifest["base"] == EXPECTED_BASE
-    assert manifest["status"] == "candidate"
+    assert manifest["status"] == "stable"
     assert not (REQUIRED_FILES - paths), sorted(REQUIRED_FILES - paths)
 
     ssot = (ROOT / "docs" / "MULTI_MODE_SSOT.md").read_text(encoding="utf-8")
