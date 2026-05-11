@@ -10,8 +10,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.14.8_STABLE"
-EXPECTED_BASE = "v0.14.7_STABLE"
+EXPECTED_RELEASE = "v0.14.9_CANDIDATE"
+EXPECTED_BASE = "v0.14.8_STABLE"
 REQUIRED_SURFACE = {
     "docs/STARTUP_SURFACE.md",
     "docs/RUNTIME_SURFACE_FREEZE.md",

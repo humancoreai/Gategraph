@@ -14,8 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-EXPECTED_RELEASE = "v0.14.8_STABLE"
-EXPECTED_BASE = "v0.14.7_STABLE"
+EXPECTED_RELEASE = "v0.14.9_CANDIDATE"
+EXPECTED_BASE = "v0.14.8_STABLE"
 
 
 def expect_error(text: str, fragment: str) -> None:

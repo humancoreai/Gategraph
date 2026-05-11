@@ -31,6 +31,8 @@ LOG_DIR = PROJECT_ROOT / "tests" / "logs"
 
 MANIFEST: List[Tuple[str, str, int]] = [
     ("evidence_runner_selftest", "tests/evidence_runner_selftest.py", 10),
+    ("promotion_status_ssot_evidence", "tests/promotion_status_ssot_evidence.py", 30),
+    ("promotion_surface_matrix_evidence", "tests/promotion_surface_matrix_evidence.py", 30),
     ("runtime_stress_evidence", "tests/runtime_stress_evidence.py", 40, {"GATEGRAPH_RUNTIME_STRESS_PROFILE": "ci"}),
     ("session_budget_evidence", "tests/session_budget_evidence.py", 40),
     ("guard_orchestration_evidence", "tests/guard_orchestration_evidence.py", 30),
@@ -108,6 +110,8 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("candidate_ci_gate_evidence", "tests/candidate_ci_gate_evidence.py", 20),
     ("evidence_suite_profile_evidence", "tests/evidence_suite_profile_evidence.py", 20),
     ("evidence_failure_classification_evidence", "tests/evidence_failure_classification_evidence.py", 20),
+    ("promotion_status_ssot_evidence", "tests/promotion_status_ssot_evidence.py", 20),
+    ("promotion_surface_matrix_evidence", "tests/promotion_surface_matrix_evidence.py", 20),
     ("promotion_pipeline_hardening_evidence", "tests/promotion_pipeline_hardening_evidence.py", 20),
     ("release_gate_robustness_evidence", "tests/release_gate_robustness_evidence.py", 20),
     ("failure_root_cause_grouping_evidence", "tests/failure_root_cause_grouping_evidence.py", 20),

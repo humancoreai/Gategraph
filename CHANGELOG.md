@@ -1,4 +1,4 @@
-## v0.14.8_STABLE
+## v0.14.9_CANDIDATE
 Phase: Release artifact determinism and failure explainability
 
 - Added descriptive root-cause grouping for related CI failures.
@@ -9,7 +9,7 @@ Phase: Release artifact determinism and failure explainability
 
 ## v0.14.7_STABLE
 
-Status: stable.
+Status: candidate.
 Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
