@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_pruning": false,
-  "base": "v0.14.6_STABLE",
+  "base": "v0.14.7_STABLE",
   "mandatory_for_stable": [
     "evidence_runner_selftest",
     "release_integrity_evidence",
@@ -45,10 +45,13 @@
       "evidence_suite_profile_evidence",
       "evidence_runner_selftest",
       "server_hardening_evidence",
-      "release_gate_robustness_evidence"
+      "release_gate_robustness_evidence",
+      "failure_root_cause_grouping_evidence",
+      "artifact_determinism_evidence",
+      "fresh_clone_surface_validation_evidence"
     ]
   },
-  "release": "v0.14.7_STABLE",
+  "release": "v0.14.8_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.14.6"
 }
