@@ -1,6 +1,6 @@
 # GateGraph v0.8.25.1_STABLE
 
-Status: STABLE  
+Status: CANDIDATE  
 Basis: `v0.8.25.1_RUNNER_HARDENING_CANDIDATE`  
 Validation: full Windows evidence run reported `Passed: True` on 2026-04-28.
 

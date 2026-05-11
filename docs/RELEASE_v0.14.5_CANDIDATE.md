@@ -1,7 +1,7 @@
-# GateGraph v0.14.4_STABLE
+# GateGraph v0.14.5_CANDIDATE
 
-Base: v0.14.3_STABLE  
-Status: stable  
+Base: v0.14.4_STABLE  
+Status: candidate  
 Phase: Install / Packaging / Public Repo Hygiene
 
 ## Purpose
@@ -32,4 +32,11 @@ This candidate focuses on fresh-clone reproducibility, dependency/onboarding hyg
 
 ## Promotion gate
 
-Candidate promotion requires Windows Evidence CI `Passed: True` for `v0.14.4_STABLE`.
+Candidate promotion requires Windows Evidence CI `Passed: True` for `v0.14.5_CANDIDATE`.
+
+
+## v0.14.5 Candidate Scope
+
+- GitHub Actions runtime stress determinism hardening.
+- CI profile for runtime stress micro-flood evidence to avoid hosted-runner timeout drift.
+- No governance logic change, no runtime authority expansion, no auto-promotion.
