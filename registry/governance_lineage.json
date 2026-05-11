@@ -1,7 +1,7 @@
 {
   "auto_mutation": false,
   "auto_repair": false,
-  "base": "v0.15.0_STABLE",
+  "base": "v0.15.1_STABLE",
   "dynamic_loading": false,
   "lineage": [
     {
@@ -75,16 +75,16 @@
         "governance_decision_optional_block_reason",
         "cli_unknown_capability_explainability"
       ],
-      "base": "v0.15.0_STABLE",
+      "base": "v0.15.1_STABLE",
       "governance_logic_changed": false,
-      "release": "v0.15.1_CANDIDATE",
+      "release": "v0.15.2_CANDIDATE",
       "status": "candidate"
     }
   ],
-  "release": "v0.15.1_CANDIDATE",
+  "release": "v0.15.2_CANDIDATE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.15.1_CANDIDATE",
+    "governance_state_release": "v0.15.2_CANDIDATE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"

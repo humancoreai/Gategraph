@@ -34,6 +34,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("evidence_registry_evidence", "tests/evidence_registry_evidence.py", 20),
     ("promotion_status_ssot_evidence", "tests/promotion_status_ssot_evidence.py", 30),
     ("promotion_surface_matrix_evidence", "tests/promotion_surface_matrix_evidence.py", 30),
+    ("stable_surface_separation_evidence", "tests/stable_surface_separation_evidence.py", 30),
     ("runtime_stress_evidence", "tests/runtime_stress_evidence.py", 40, {"GATEGRAPH_RUNTIME_STRESS_PROFILE": "ci"}),
     ("session_budget_evidence", "tests/session_budget_evidence.py", 40),
     ("guard_orchestration_evidence", "tests/guard_orchestration_evidence.py", 30),
