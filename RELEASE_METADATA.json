@@ -76,7 +76,7 @@
   "recovery_surface_registry_scope": true,
   "registry_auto_repair": false,
   "registry_dynamic_loading": false,
-  "release": "v0.14.8_CANDIDATE",
+  "release": "v0.14.8_STABLE",
   "release_claim_consistency_scope": true,
   "release_manifest_coverage_scope": true,
   "release_manifest_ssot_scope": true,
@@ -106,12 +106,23 @@
   "semantic_registry_lock_scope": true,
   "startup_shutdown_semantics_scope": true,
   "startup_surface_scope": true,
-  "status": "candidate",
+  "status": "stable",
   "surface_contract_registry_scope": true,
   "surface_contract_version": "0.14.6",
   "surface_freeze_coupling_scope": true,
   "surface_recovery_consistency_scope": true,
   "token_exposure_hardening_scope": true,
   "transitive_authority_blocked": true,
-  "version": "0.14.8"
+  "version": "0.14.8",
+  "stable_promotion": {
+    "source_candidate": "v0.14.8_CANDIDATE",
+    "candidate_windows_ci_passed": true,
+    "promotion_mode": "manual_after_ci",
+    "runtime_logic_changed": false
+  },
+  "fresh_clone_reproducibility_scope": true,
+  "runtime_surface_consistency_scope": true,
+  "public_hygiene_scope": true,
+  "fresh_clone_scope": true,
+  "recovery_surface_scope": true
 }

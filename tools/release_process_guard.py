@@ -94,7 +94,7 @@ def check_release_truth(expected_release: str, expected_status: str, expected_ba
                 or forbidden_current_label in text
                 or forbidden_current_baseline in text
             ):
-                problems.append(f"{rel} contains forbidden stable claim before promotion")
+                problems.append(f"{rel} contains stable claim while expected status is not stable")
 
     return fail("release_truth", "; ".join(problems)) if problems else ok("release_truth")
 

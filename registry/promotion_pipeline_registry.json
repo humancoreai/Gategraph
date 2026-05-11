@@ -10,7 +10,7 @@
   ],
   "mode": "descriptive_promotion_pipeline_hardening_only",
   "policy_mutation": false,
-  "release": "v0.14.8_CANDIDATE",
+  "release": "v0.14.8_STABLE",
   "required_steps": [
     "candidate_surfaces_current",
     "candidate_release_doc_present",
@@ -21,5 +21,5 @@
   ],
   "runtime_authority": false,
   "schema_version": "0.14.6",
-  "status": "candidate"
+  "status": "stable"
 }
