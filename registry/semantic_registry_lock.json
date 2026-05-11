@@ -16,7 +16,7 @@
       "sha256": "b3f5118c1cb3eebc5f0155d6aca35fa6a489e1b5ff93b4d7f867fee055d2147c"
     }
   ],
-  "release": "v0.14.5_CANDIDATE",
+  "release": "v0.14.5_STABLE",
   "runtime_access": false,
   "schema_version": "0.14.5",
   "semantic_promotion_allowed": false

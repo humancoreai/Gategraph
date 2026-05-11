@@ -6,7 +6,7 @@ Phase: Install / Packaging / Public Repo Hygiene
 
 ## Purpose
 
-This candidate focuses on fresh-clone reproducibility, dependency/onboarding hygiene and public repository verification after v0.14.1 stable public-repo hygiene.
+This candidate focuses on fresh-clone reproducibility, dependency/onboarding hygiene and public repository verification after v0.14.1 candidate public-repo hygiene.
 
 ## Scope
 
@@ -32,4 +32,11 @@ This candidate focuses on fresh-clone reproducibility, dependency/onboarding hyg
 
 ## Promotion gate
 
-Stable promotion requires Windows Evidence CI `Passed: True` for `v0.14.5_STABLE`.
+Candidate promotion requires Windows Evidence CI `Passed: True` for `v0.14.5_STABLE`.
+
+
+## v0.14.5 Candidate Scope
+
+- GitHub Actions runtime stress determinism hardening.
+- CI profile for runtime stress micro-flood evidence to avoid hosted-runner timeout drift.
+- No governance logic change, no runtime authority expansion, no auto-promotion.
