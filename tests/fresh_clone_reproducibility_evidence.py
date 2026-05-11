@@ -1,5 +1,5 @@
 """
-WHY: v0.14.3 checks that a fresh clone has enough deterministic onboarding surface to run evidence.
+WHY: v0.14.4 checks that a fresh clone has enough deterministic onboarding surface to run evidence.
 INV: This evidence is read-only; it does not install packages, mutate policy, or promote releases.
 SEC: Reproducibility claims must not depend on secrets, publish steps, or generated local artifacts.
 """
@@ -9,9 +9,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.14.3_STABLE"
-BASE = "v0.14.2_STABLE"
-VERSION = "0.14.3"
+RELEASE = "v0.14.4_CANDIDATE"
+BASE = "v0.14.3_STABLE"
+VERSION = "0.14.4"
 
 REQUIRED = [
     "README.md",
@@ -49,13 +49,13 @@ def main() -> int:
 
     check(
         "metadata_current_candidate",
-        metadata.get("release") == RELEASE and metadata.get("base") == BASE and metadata.get("status") == "stable",
+        metadata.get("release") == RELEASE and metadata.get("base") == BASE and metadata.get("status") == "candidate",
         {"release": metadata.get("release"), "base": metadata.get("base"), "status": metadata.get("status")},
         failures,
     )
     check(
         "manifest_current_candidate",
-        manifest.get("release") == RELEASE and manifest.get("base") == BASE and manifest.get("status") == "stable",
+        manifest.get("release") == RELEASE and manifest.get("base") == BASE and manifest.get("status") == "candidate",
         {"release": manifest.get("release"), "base": manifest.get("base"), "status": manifest.get("status")},
         failures,
     )

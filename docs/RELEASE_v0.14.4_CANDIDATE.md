@@ -1,6 +1,6 @@
-# GateGraph v0.14.3_STABLE
+# GateGraph v0.14.4_CANDIDATE
 
-Base: v0.14.2_STABLE  
+Base: v0.14.3_STABLE  
 Status: candidate  
 Phase: Install / Packaging / Public Repo Hygiene
 
@@ -32,4 +32,4 @@ This candidate focuses on fresh-clone reproducibility, dependency/onboarding hyg
 
 ## Promotion gate
 
-Candidate promotion requires Windows Evidence CI `Passed: True` for `v0.14.3_STABLE`.
+Candidate promotion requires Windows Evidence CI `Passed: True` for `v0.14.4_CANDIDATE`.
