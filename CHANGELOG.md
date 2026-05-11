@@ -1,4 +1,8 @@
-## v0.14.9_STABLE
+## v0.14.10_CANDIDATE
+
+Status: candidate
+
+Base: v0.14.9_STABLE
 
 Base: v0.14.8_STABLE
 Phase: Release artifact determinism and failure explainability
@@ -8,10 +12,11 @@ Phase: Release artifact determinism and failure explainability
 - Added fresh-clone surface validation evidence.
 
 # Changelog
+- Public surface cleanup and review readiness.
 
 ## v0.14.7_STABLE
 
-Status: stable.
+Status: candidate.
 Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 

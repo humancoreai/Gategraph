@@ -1,25 +1,23 @@
 # GateGraph Release Status
 
-Release: v0.14.9_STABLE
-Base: v0.14.8_STABLE
-Status: stable
-Version: 0.14.9
-Phase: Release artifact determinism and failure explainability
-Release focus: Promotion / Surface / Registry Lock Hardening
+Release: v0.14.10_CANDIDATE
+Base: v0.14.9_STABLE
+Status: candidate
+Version: 0.14.10
+Phase: Public surface cleanup and review readiness
+Phase label: Public surface cleanup and review readiness
+Legacy phase reference: Release artifact determinism and failure explainability
+Release focus: Public Surface / Review Readiness / Release Hygiene
+Operational release focus: Public Surface / Review Readiness / Release Hygiene
+Historical packaging focus: Install / Packaging / Public Repo Hygiene
 
-Current stable release: v0.14.9_STABLE
-Source candidate: v0.14.9_CANDIDATE
-Candidate Windows Evidence CI: Passed: True
+Current candidate release: v0.14.10_CANDIDATE
 
-Stable release promoted after Windows Evidence CI for the Candidate reported `Passed: True`.
+Stable promotion is forbidden until Windows Evidence CI for this Candidate reports `Passed: True`.
 
-Promotion hardening invariants:
-- Candidate/stable assertions are split by release status.
-- `phase`, `release_focus`, and `status` are separate fields.
-- Registry lock rebuild is required after promotion-affecting registry changes.
-- Manifest hashes and paths must be refreshed after release-surface changes.
-- Promotion pipeline status must come from release metadata SSOT.
-Phase label: Install / Packaging / Public Repo Hygiene
-Operational release focus: Install / Packaging / Public Repo Hygiene
-Release claim surface: Release artifact determinism and failure explainability
-Active phase authority: Release artifact determinism and failure explainability
+Public-surface cleanup invariants:
+- README is a public product/review surface, not an evidence archive.
+- Scope backlog separates deferred items from current capability.
+- Release metadata, manifest, status, version, README and release doc must agree.
+- Build tooling must preserve release metadata fields.
+- No runtime authority, auto-promotion, auto-repair or policy mutation is added.
