@@ -1,14 +1,14 @@
-# Release Notes – v0.15.2_CANDIDATE
+# Release Notes – v0.15.0_CANDIDATE
 
-Base: v0.15.1_STABLE
+Base: v0.14.10_STABLE
 Status: candidate
-Version: 0.15.2
-Phase: Promotion semantics cleanup and stable-surface separation
-Release focus: Promotion Semantics Cleanup / Stable-Surface Separation / Release-Hygiene Hardening
+Version: 0.15.0
+Phase: Evidence simplification and practical readiness
+Release focus: Evidence Simplification / Practical Readiness / Surface Decoupling
 
 ## Summary
 
-v0.15.2_CANDIDATE introduces a descriptive evidence registry and begins reducing meta-drift in the Evidence and public-surface layer.
+v0.15.0_CANDIDATE introduces a descriptive evidence registry and begins reducing meta-drift in the Evidence and public-surface layer.
 
 ## Changes
 

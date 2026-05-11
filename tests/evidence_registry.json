@@ -1,283 +1,13 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.15.1_STABLE",
+  "base": "v0.14.10_STABLE",
   "classes": {
     "P0": "Core invariants; fail closed, authority boundaries, runtime/enforcement, replay determinism, security boundaries.",
     "P1": "Structural integrity; release, registry, manifest, promotion, provenance and practical readiness surfaces.",
     "P2": "Public/review surface; README, wording, documentation and operator-facing review surfaces."
   },
   "entries": [
-    {
-      "category": "public_surface",
-      "class": "P2",
-      "criticality": "low",
-      "exact_string_assertions": false,
-      "mutable_surface": true,
-      "path": "tests/agent_scenarios.py",
-      "test": "agent_scenarios"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/api_boundary_split_evidence.py",
-      "test": "api_boundary_split_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/api_contract_evidence.py",
-      "test": "api_contract_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/api_robustness_evidence.py",
-      "test": "api_robustness_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/archive_integrity_replay_consistency_evidence.py",
-      "test": "archive_integrity_replay_consistency_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/artifact_determinism_evidence.py",
-      "test": "artifact_determinism_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/block_c_stress_evidence.py",
-      "test": "block_c_stress_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/block_d_audit_explain_evidence.py",
-      "test": "block_d_audit_explain_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/caller_boundary_evidence.py",
-      "test": "caller_boundary_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/candidate_ci_gate_evidence.py",
-      "test": "candidate_ci_gate_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/candidate_stable_surface_parity_evidence.py",
-      "test": "candidate_stable_surface_parity_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/capability_token_hardening_evidence.py",
-      "test": "capability_token_hardening_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/capability_token_redaction_evidence.py",
-      "test": "capability_token_redaction_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/config_consistency_evidence.py",
-      "test": "config_consistency_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/context_freeze_coupling_evidence.py",
-      "test": "context_freeze_coupling_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/context_lifecycle_evidence.py",
-      "test": "context_lifecycle_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/context_poisoning_evidence.py",
-      "test": "context_poisoning_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/context_provenance_evidence.py",
-      "test": "context_provenance_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/context_replay_explain_boundary_evidence.py",
-      "test": "context_replay_explain_boundary_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/controlled_apply_evidence.py",
-      "test": "controlled_apply"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/test_loop.py",
-      "test": "core_loop"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/cross_registry_integrity_evidence.py",
-      "test": "cross_registry_integrity_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/cross_session_budget_evidence.py",
-      "test": "cross_session_budget_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/dependency_visibility_evidence.py",
-      "test": "dependency_visibility_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/deterministic_export_contract_evidence.py",
-      "test": "deterministic_export_contract_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/deterministic_governance_diff_evidence.py",
-      "test": "deterministic_governance_diff_evidence"
-    },
-    {
-      "category": "public_surface",
-      "class": "P2",
-      "criticality": "low",
-      "exact_string_assertions": false,
-      "mutable_surface": true,
-      "path": "tests/drift_detection_evidence.py",
-      "test": "drift_detection_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/evidence_failure_classification_evidence.py",
-      "test": "evidence_failure_classification_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/evidence_provenance_registry_evidence.py",
-      "test": "evidence_provenance_registry_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/evidence_registry_evidence.py",
-      "test": "evidence_registry_evidence"
-    },
     {
       "category": "structural_integrity",
       "class": "P1",
@@ -293,8 +23,35 @@
       "criticality": "high",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/evidence_suite_profile_evidence.py",
-      "test": "evidence_suite_profile_evidence"
+      "path": "tests/evidence_registry_evidence.py",
+      "test": "evidence_registry_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/promotion_status_ssot_evidence.py",
+      "test": "promotion_status_ssot_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/promotion_surface_matrix_evidence.py",
+      "test": "promotion_surface_matrix_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/runtime_stress_evidence.py",
+      "test": "runtime_stress_evidence"
     },
     {
       "category": "structural_integrity",
@@ -302,8 +59,35 @@
       "criticality": "medium",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/evidence_surface_consistency_evidence.py",
-      "test": "evidence_surface_consistency_evidence"
+      "path": "tests/session_budget_evidence.py",
+      "test": "session_budget_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/guard_orchestration_evidence.py",
+      "test": "guard_orchestration_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/reason_normalization_evidence.py",
+      "test": "reason_normalization_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/scale_safety_evidence.py",
+      "test": "scale_safety_evidence"
     },
     {
       "category": "structural_integrity",
@@ -315,6 +99,33 @@
       "test": "external_api_evidence"
     },
     {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/runaway_cost_evidence.py",
+      "test": "runaway_cost_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/runtime_cost_governance_evidence.py",
+      "test": "runtime_cost_governance_evidence"
+    },
+    {
+      "category": "public_surface",
+      "class": "P2",
+      "criticality": "low",
+      "exact_string_assertions": false,
+      "mutable_surface": true,
+      "path": "tests/observability_evidence.py",
+      "test": "observability_evidence"
+    },
+    {
       "category": "public_surface",
       "class": "P2",
       "criticality": "low",
@@ -324,67 +135,31 @@
       "test": "failure_analysis_evidence"
     },
     {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
+      "category": "public_surface",
+      "class": "P2",
+      "criticality": "low",
       "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/failure_root_cause_grouping_evidence.py",
-      "test": "failure_root_cause_grouping_evidence"
+      "mutable_surface": true,
+      "path": "tests/operator_workflow_evidence.py",
+      "test": "operator_workflow_evidence"
     },
     {
       "category": "public_surface",
       "class": "P2",
       "criticality": "low",
-      "exact_string_assertions": true,
+      "exact_string_assertions": false,
       "mutable_surface": true,
-      "path": "tests/final_consolidation_evidence.py",
-      "test": "final_consolidation_evidence"
+      "path": "tests/human_review_queue_evidence.py",
+      "test": "human_review_queue_evidence"
     },
     {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/freeze_runtime_invariant_evidence.py",
-      "test": "freeze_runtime_invariant_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
+      "category": "public_surface",
+      "class": "P2",
+      "criticality": "low",
       "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/freeze_snapshot_determinism_evidence.py",
-      "test": "freeze_snapshot_determinism_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/fresh_clone_reproducibility_evidence.py",
-      "test": "fresh_clone_reproducibility_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/fresh_clone_surface_validation_evidence.py",
-      "test": "fresh_clone_surface_validation_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/github_actions_ci_evidence.py",
-      "test": "github_actions_ci_evidence"
+      "mutable_surface": true,
+      "path": "tests/drift_detection_evidence.py",
+      "test": "drift_detection_evidence"
     },
     {
       "category": "structural_integrity",
@@ -401,71 +176,8 @@
       "criticality": "high",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/governance_freeze_evidence.py",
-      "test": "governance_freeze_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/governance_impact_visibility_evidence.py",
-      "test": "governance_impact_visibility_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/governance_integrity_graph_evidence.py",
-      "test": "governance_integrity_graph_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/governance_lineage_snapshot_evidence.py",
-      "test": "governance_lineage_snapshot_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/governance_mutation_visibility_evidence.py",
-      "test": "governance_mutation_visibility_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/governance_semantics_evidence.py",
-      "test": "governance_semantics_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/guard_orchestration_evidence.py",
-      "test": "guard_orchestration_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/http_policy_evidence.py",
-      "test": "http_policy_evidence"
+      "path": "tests/archive_integrity_replay_consistency_evidence.py",
+      "test": "archive_integrity_replay_consistency_evidence"
     },
     {
       "category": "public_surface",
@@ -473,17 +185,116 @@
       "criticality": "low",
       "exact_string_assertions": false,
       "mutable_surface": true,
-      "path": "tests/human_review_queue_evidence.py",
-      "test": "human_review_queue_evidence"
+      "path": "tests/operator_export_evidence.py",
+      "test": "operator_export_evidence"
+    },
+    {
+      "category": "public_surface",
+      "class": "P2",
+      "criticality": "low",
+      "exact_string_assertions": true,
+      "mutable_surface": true,
+      "path": "tests/final_consolidation_evidence.py",
+      "test": "final_consolidation_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/governance_freeze_evidence.py",
+      "test": "governance_freeze_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/milestone_release_evidence.py",
+      "test": "milestone_release_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/caller_boundary_evidence.py",
+      "test": "caller_boundary_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/runtime_boundary_hardening_evidence.py",
+      "test": "runtime_boundary_hardening_evidence"
     },
     {
       "category": "structural_integrity",
       "class": "P1",
       "criticality": "medium",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/api_boundary_split_evidence.py",
+      "test": "api_boundary_split_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/freeze_runtime_invariant_evidence.py",
+      "test": "freeze_runtime_invariant_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/incident_lifecycle_consistency_evidence.py",
-      "test": "incident_lifecycle_consistency_evidence"
+      "path": "tests/runtime_chain_order_evidence.py",
+      "test": "runtime_chain_order_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/release_integrity_evidence.py",
+      "test": "release_integrity_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/release_process_guard_evidence.py",
+      "test": "release_process_guard_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/packaging_integrity_evidence.py",
+      "test": "packaging_integrity_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/release_content_hygiene_evidence.py",
+      "test": "release_content_hygiene_evidence"
     },
     {
       "category": "structural_integrity",
@@ -495,13 +306,40 @@
       "test": "install_surface_evidence"
     },
     {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/config_consistency_evidence.py",
+      "test": "config_consistency_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/startup_surface_evidence.py",
+      "test": "startup_surface_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/startup_shutdown_semantics_evidence.py",
+      "test": "startup_shutdown_semantics_evidence"
+    },
+    {
       "category": "core_invariant",
       "class": "P0",
       "criticality": "critical",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/instruction_data_separation_evidence.py",
-      "test": "instruction_data_separation_evidence"
+      "path": "tests/runtime_surface_consistency_evidence.py",
+      "test": "runtime_surface_consistency_evidence"
     },
     {
       "category": "structural_integrity",
@@ -509,35 +347,8 @@
       "criticality": "high",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/integrity_graph_freeze_evidence.py",
-      "test": "integrity_graph_freeze_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/invariant_surface_mapping_evidence.py",
-      "test": "invariant_surface_mapping_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/key_rotation_evidence.py",
-      "test": "key_rotation_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/milestone_release_evidence.py",
-      "test": "milestone_release_evidence"
+      "path": "tests/surface_freeze_coupling_evidence.py",
+      "test": "surface_freeze_coupling_evidence"
     },
     {
       "category": "public_surface",
@@ -567,31 +378,13 @@
       "test": "multi_agent_delegation_boundary_evidence"
     },
     {
-      "category": "public_surface",
-      "class": "P2",
-      "criticality": "low",
-      "exact_string_assertions": false,
-      "mutable_surface": true,
-      "path": "tests/observability_evidence.py",
-      "test": "observability_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/operational_alerting_evidence.py",
-      "test": "operational_alerting_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/operational_hardening_evidence.py",
-      "test": "operational_hardening_evidence"
+      "path": "tests/context_poisoning_evidence.py",
+      "test": "context_poisoning_evidence"
     },
     {
       "category": "core_invariant",
@@ -599,8 +392,368 @@
       "criticality": "critical",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/operational_stability_evidence.py",
-      "test": "operational_stability_evidence"
+      "path": "tests/instruction_data_separation_evidence.py",
+      "test": "instruction_data_separation_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/context_provenance_evidence.py",
+      "test": "context_provenance_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/context_lifecycle_evidence.py",
+      "test": "context_lifecycle_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/context_replay_explain_boundary_evidence.py",
+      "test": "context_replay_explain_boundary_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/context_freeze_coupling_evidence.py",
+      "test": "context_freeze_coupling_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/recovery_foundation_evidence.py",
+      "test": "recovery_foundation_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/replay_recovery_consistency_evidence.py",
+      "test": "replay_recovery_consistency_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/surface_recovery_consistency_evidence.py",
+      "test": "surface_recovery_consistency_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/recovery_idempotency_evidence.py",
+      "test": "recovery_idempotency_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/replay_order_determinism_evidence.py",
+      "test": "replay_order_determinism_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/recovery_surface_registry_evidence.py",
+      "test": "recovery_surface_registry_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/release_surface_sync_evidence.py",
+      "test": "release_surface_sync_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/release_claim_consistency_evidence.py",
+      "test": "release_claim_consistency_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/recovery_replay_finality_evidence.py",
+      "test": "recovery_replay_finality_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/replay_reference_integrity_evidence.py",
+      "test": "replay_reference_integrity_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/version_consistency_evidence.py",
+      "test": "version_consistency_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/surface_contract_registry_evidence.py",
+      "test": "surface_contract_registry_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/semantic_boundary_evidence.py",
+      "test": "semantic_boundary_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/semantic_registry_evidence.py",
+      "test": "semantic_registry_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/invariant_surface_mapping_evidence.py",
+      "test": "invariant_surface_mapping_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/incident_lifecycle_consistency_evidence.py",
+      "test": "incident_lifecycle_consistency_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/semantic_drift_detection_evidence.py",
+      "test": "semantic_drift_detection_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/evidence_surface_consistency_evidence.py",
+      "test": "evidence_surface_consistency_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/semantic_registry_lock_evidence.py",
+      "test": "semantic_registry_lock_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/release_manifest_coverage_evidence.py",
+      "test": "release_manifest_coverage_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/schema_governance_evidence.py",
+      "test": "schema_governance_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/cross_registry_integrity_evidence.py",
+      "test": "cross_registry_integrity_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/deterministic_export_contract_evidence.py",
+      "test": "deterministic_export_contract_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/schema_drift_visibility_evidence.py",
+      "test": "schema_drift_visibility_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/freeze_snapshot_determinism_evidence.py",
+      "test": "freeze_snapshot_determinism_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/evidence_provenance_registry_evidence.py",
+      "test": "evidence_provenance_registry_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/governance_lineage_snapshot_evidence.py",
+      "test": "governance_lineage_snapshot_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/dependency_visibility_evidence.py",
+      "test": "dependency_visibility_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/governance_mutation_visibility_evidence.py",
+      "test": "governance_mutation_visibility_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/replay_provenance_consistency_evidence.py",
+      "test": "replay_provenance_consistency_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/release_state_transition_evidence.py",
+      "test": "release_state_transition_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/candidate_ci_gate_evidence.py",
+      "test": "candidate_ci_gate_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/evidence_suite_profile_evidence.py",
+      "test": "evidence_suite_profile_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/evidence_failure_classification_evidence.py",
+      "test": "evidence_failure_classification_evidence"
+    },
+    {
+      "category": "public_surface",
+      "class": "P2",
+      "criticality": "low",
+      "exact_string_assertions": true,
+      "mutable_surface": true,
+      "path": "tests/public_surface_cleanup_evidence.py",
+      "test": "public_surface_cleanup_evidence"
+    },
+    {
+      "category": "public_surface",
+      "class": "P2",
+      "criticality": "low",
+      "exact_string_assertions": true,
+      "mutable_surface": true,
+      "path": "tests/scope_backlog_evidence.py",
+      "test": "scope_backlog_evidence"
     },
     {
       "category": "public_surface",
@@ -608,26 +761,89 @@
       "criticality": "low",
       "exact_string_assertions": false,
       "mutable_surface": true,
-      "path": "tests/operator_evidence.py",
-      "test": "operator_evidence"
+      "path": "tests/review_readiness_surface_evidence.py",
+      "test": "review_readiness_surface_evidence"
     },
     {
-      "category": "public_surface",
-      "class": "P2",
-      "criticality": "low",
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
       "exact_string_assertions": false,
-      "mutable_surface": true,
-      "path": "tests/operator_export_evidence.py",
-      "test": "operator_export_evidence"
+      "mutable_surface": false,
+      "path": "tests/promotion_pipeline_hardening_evidence.py",
+      "test": "promotion_pipeline_hardening_evidence"
     },
     {
-      "category": "public_surface",
-      "class": "P2",
-      "criticality": "low",
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
       "exact_string_assertions": false,
-      "mutable_surface": true,
-      "path": "tests/operator_workflow_evidence.py",
-      "test": "operator_workflow_evidence"
+      "mutable_surface": false,
+      "path": "tests/release_gate_robustness_evidence.py",
+      "test": "release_gate_robustness_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/failure_root_cause_grouping_evidence.py",
+      "test": "failure_root_cause_grouping_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/artifact_determinism_evidence.py",
+      "test": "artifact_determinism_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/fresh_clone_surface_validation_evidence.py",
+      "test": "fresh_clone_surface_validation_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/github_actions_ci_evidence.py",
+      "test": "github_actions_ci_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/promotion_surface_symmetry_evidence.py",
+      "test": "promotion_surface_symmetry_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/candidate_stable_surface_parity_evidence.py",
+      "test": "candidate_stable_surface_parity_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/governance_integrity_graph_evidence.py",
+      "test": "governance_integrity_graph_evidence"
     },
     {
       "category": "structural_integrity",
@@ -641,11 +857,281 @@
     {
       "category": "structural_integrity",
       "class": "P1",
-      "criticality": "high",
+      "criticality": "medium",
       "exact_string_assertions": true,
       "mutable_surface": false,
-      "path": "tests/packaging_integrity_evidence.py",
-      "test": "packaging_integrity_evidence"
+      "path": "tests/governance_impact_visibility_evidence.py",
+      "test": "governance_impact_visibility_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/integrity_graph_freeze_evidence.py",
+      "test": "integrity_graph_freeze_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/deterministic_governance_diff_evidence.py",
+      "test": "deterministic_governance_diff_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/root_surface_hygiene_evidence.py",
+      "test": "root_surface_hygiene_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/governance_semantics_evidence.py",
+      "test": "governance_semantics_evidence"
+    },
+    {
+      "category": "public_surface",
+      "class": "P2",
+      "criticality": "low",
+      "exact_string_assertions": false,
+      "mutable_surface": true,
+      "path": "tests/operator_evidence.py",
+      "test": "operator_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/cross_session_budget_evidence.py",
+      "test": "cross_session_budget_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/operational_hardening_evidence.py",
+      "test": "operational_hardening_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/operational_alerting_evidence.py",
+      "test": "operational_alerting_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/operational_stability_evidence.py",
+      "test": "operational_stability_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/single_node_cli_evidence.py",
+      "test": "single_node_cli_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/practical_single_node_scenario_evidence.py",
+      "test": "practical_single_node_scenario_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/public_repo_hygiene_evidence.py",
+      "test": "public_repo_hygiene_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/fresh_clone_reproducibility_evidence.py",
+      "test": "fresh_clone_reproducibility_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/single_node_monitoring_export_evidence.py",
+      "test": "single_node_monitoring_export_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/server_mode_evidence.py",
+      "test": "server_mode_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/server_hardening_evidence.py",
+      "test": "server_hardening_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/api_contract_evidence.py",
+      "test": "api_contract_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/api_robustness_evidence.py",
+      "test": "api_robustness_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/repo_push_hygiene_evidence.py",
+      "test": "repo_push_hygiene_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/capability_token_hardening_evidence.py",
+      "test": "capability_token_hardening_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/capability_token_redaction_evidence.py",
+      "test": "capability_token_redaction_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/token_exposure_evidence.py",
+      "test": "token_exposure_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/key_rotation_evidence.py",
+      "test": "key_rotation_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/secret_api_integration_evidence.py",
+      "test": "secret_api_integration_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/http_policy_evidence.py",
+      "test": "http_policy_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/security_finesse_evidence.py",
+      "test": "security_finesse_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/block_c_stress_evidence.py",
+      "test": "block_c_stress_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/block_d_audit_explain_evidence.py",
+      "test": "block_d_audit_explain_evidence"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/test_loop.py",
+      "test": "core_loop"
+    },
+    {
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/runtime_guard_tests.py",
+      "test": "runtime_guard"
     },
     {
       "category": "public_surface",
@@ -666,508 +1152,13 @@
       "test": "pattern_intelligence"
     },
     {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/practical_single_node_scenario_evidence.py",
-      "test": "practical_single_node_scenario_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/promotion_pipeline_hardening_evidence.py",
-      "test": "promotion_pipeline_hardening_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/promotion_status_ssot_evidence.py",
-      "test": "promotion_status_ssot_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/promotion_surface_matrix_evidence.py",
-      "test": "promotion_surface_matrix_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/promotion_surface_symmetry_evidence.py",
-      "test": "promotion_surface_symmetry_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/public_repo_hygiene_evidence.py",
-      "test": "public_repo_hygiene_evidence"
-    },
-    {
-      "category": "public_surface",
-      "class": "P2",
-      "criticality": "low",
-      "exact_string_assertions": true,
-      "mutable_surface": true,
-      "path": "tests/public_surface_cleanup_evidence.py",
-      "test": "public_surface_cleanup_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/reason_normalization_evidence.py",
-      "test": "reason_normalization_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/recovery_foundation_evidence.py",
-      "test": "recovery_foundation_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/recovery_idempotency_evidence.py",
-      "test": "recovery_idempotency_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/recovery_replay_finality_evidence.py",
-      "test": "recovery_replay_finality_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/recovery_surface_registry_evidence.py",
-      "test": "recovery_surface_registry_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_claim_consistency_evidence.py",
-      "test": "release_claim_consistency_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/release_content_hygiene_evidence.py",
-      "test": "release_content_hygiene_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_gate_robustness_evidence.py",
-      "test": "release_gate_robustness_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/release_integrity_evidence.py",
-      "test": "release_integrity_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_manifest_coverage_evidence.py",
-      "test": "release_manifest_coverage_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_process_guard_evidence.py",
-      "test": "release_process_guard_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_state_transition_evidence.py",
-      "test": "release_state_transition_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_surface_sync_evidence.py",
-      "test": "release_surface_sync_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/replay_order_determinism_evidence.py",
-      "test": "replay_order_determinism_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/replay_provenance_consistency_evidence.py",
-      "test": "replay_provenance_consistency_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/replay_recovery_consistency_evidence.py",
-      "test": "replay_recovery_consistency_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/replay_reference_integrity_evidence.py",
-      "test": "replay_reference_integrity_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/repo_push_hygiene_evidence.py",
-      "test": "repo_push_hygiene_evidence"
-    },
-    {
       "category": "public_surface",
       "class": "P2",
       "criticality": "low",
       "exact_string_assertions": false,
       "mutable_surface": true,
-      "path": "tests/review_readiness_surface_evidence.py",
-      "test": "review_readiness_surface_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/root_surface_hygiene_evidence.py",
-      "test": "root_surface_hygiene_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/runaway_cost_evidence.py",
-      "test": "runaway_cost_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/runtime_boundary_hardening_evidence.py",
-      "test": "runtime_boundary_hardening_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/runtime_chain_order_evidence.py",
-      "test": "runtime_chain_order_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/runtime_cost_governance_evidence.py",
-      "test": "runtime_cost_governance_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/runtime_guard_tests.py",
-      "test": "runtime_guard"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/runtime_stress_evidence.py",
-      "test": "runtime_stress_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/runtime_surface_consistency_evidence.py",
-      "test": "runtime_surface_consistency_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/scale_safety_evidence.py",
-      "test": "scale_safety_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/schema_drift_visibility_evidence.py",
-      "test": "schema_drift_visibility_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/schema_governance_evidence.py",
-      "test": "schema_governance_evidence"
-    },
-    {
-      "category": "public_surface",
-      "class": "P2",
-      "criticality": "low",
-      "exact_string_assertions": true,
-      "mutable_surface": true,
-      "path": "tests/scope_backlog_evidence.py",
-      "test": "scope_backlog_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/secret_api_integration_evidence.py",
-      "test": "secret_api_integration_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/security_finesse_evidence.py",
-      "test": "security_finesse_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/semantic_boundary_evidence.py",
-      "test": "semantic_boundary_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/semantic_drift_detection_evidence.py",
-      "test": "semantic_drift_detection_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/semantic_registry_evidence.py",
-      "test": "semantic_registry_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/semantic_registry_lock_evidence.py",
-      "test": "semantic_registry_lock_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/server_hardening_evidence.py",
-      "test": "server_hardening_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/server_mode_evidence.py",
-      "test": "server_mode_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/session_budget_evidence.py",
-      "test": "session_budget_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/single_node_cli_evidence.py",
-      "test": "single_node_cli_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/single_node_monitoring_export_evidence.py",
-      "test": "single_node_monitoring_export_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/stable_promotion_surface_model_evidence.py",
-      "test": "stable_promotion_surface_model_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/startup_shutdown_semantics_evidence.py",
-      "test": "startup_shutdown_semantics_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/startup_surface_evidence.py",
-      "test": "startup_surface_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/surface_contract_registry_evidence.py",
-      "test": "surface_contract_registry_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/surface_freeze_coupling_evidence.py",
-      "test": "surface_freeze_coupling_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/surface_recovery_consistency_evidence.py",
-      "test": "surface_recovery_consistency_evidence"
-    },
-    {
-      "category": "core_invariant",
-      "class": "P0",
-      "criticality": "critical",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/token_exposure_evidence.py",
-      "test": "token_exposure_evidence"
+      "path": "tests/usage_simulation.py",
+      "test": "usage_simulation"
     },
     {
       "category": "public_surface",
@@ -1184,30 +1175,21 @@
       "criticality": "low",
       "exact_string_assertions": false,
       "mutable_surface": true,
-      "path": "tests/usage_simulation.py",
-      "test": "usage_simulation"
+      "path": "tests/agent_scenarios.py",
+      "test": "agent_scenarios"
     },
     {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "high",
+      "category": "core_invariant",
+      "class": "P0",
+      "criticality": "critical",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/version_consistency_evidence.py",
-      "test": "version_consistency_evidence"
-    },
-    {
-      "category": "release_surface",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/stable_surface_separation_evidence.py",
-      "test": "stable_surface_separation_evidence"
+      "path": "tests/controlled_apply_evidence.py",
+      "test": "controlled_apply"
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.15.2_CANDIDATE",
+  "release": "v0.15.0_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.15.2"
+  "schema_version": "0.15.0"
 }

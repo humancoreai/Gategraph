@@ -1,10 +1,10 @@
-# GateGraph v0.15.2_CANDIDATE
+# GateGraph v0.15.0_CANDIDATE
 
-Base: v0.15.1_STABLE
+Base: v0.14.10_STABLE
 Status: stable
-Version: 0.15.2
-Phase: Promotion semantics cleanup and stable-surface separation
-Release focus: Promotion Semantics Cleanup / Stable-Surface Separation / Release-Hygiene Hardening
+Version: 0.15.0
+Phase: Evidence simplification and practical readiness
+Release focus: Evidence Simplification / Practical Readiness / Surface Decoupling
 
 ## Scope
 
