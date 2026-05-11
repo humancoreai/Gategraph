@@ -59,4 +59,4 @@ PASS server_mode_evidence
 
 ## Stable-Entscheidung
 
-v0.8.33_CANDIDATE ist nach erfolgreichem Windows-CI-Lauf und geschlossenem CLI-Fail-Closed-Blocker als **v0.8.33_STABLE** freigegeben.
+v0.8.33_STABLE ist nach erfolgreichem Windows-CI-Lauf und geschlossenem CLI-Fail-Closed-Blocker als **v0.8.33_STABLE** freigegeben.

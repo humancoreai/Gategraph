@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.14.6_CANDIDATE"
+EXPECTED_RELEASE = "v0.14.6_STABLE"
 EXPECTED_BASE = "v0.14.5_STABLE"
 
 
@@ -23,9 +23,9 @@ def main() -> int:
     checks.append(check("no_runtime_authority", registry.get("runtime_authority") is False and metadata.get("release_state_runtime_authority") is False, {"registry": registry.get("runtime_authority"), "metadata": metadata.get("release_state_runtime_authority")}))
     checks.append(check("no_auto_promotion_or_repair", registry.get("auto_promotion") is False and registry.get("auto_repair") is False, {"auto_promotion": registry.get("auto_promotion"), "auto_repair": registry.get("auto_repair")}))
     allowed = registry.get("allowed_transitions", [])
-    checks.append(check("candidate_to_stable_manual_gate", any(t.get("from") == "candidate" and t.get("to") == "stable" and t.get("manual_gate_required") is True and t.get("ci_required") is True for t in allowed), {"allowed": allowed}))
+    checks.append(check("candidate_to_stable_manual_gate", any(t.get("from") == "stable" and t.get("to") == "stable" and t.get("manual_gate_required") is True and t.get("ci_required") is True for t in allowed), {"allowed": allowed}))
     forbidden = registry.get("forbidden_transitions", [])
-    checks.append(check("stable_to_candidate_forbidden", any(t.get("from") == "stable" and t.get("to") == "candidate" for t in forbidden), {"forbidden": forbidden}))
+    checks.append(check("stable_to_candidate_forbidden", any(t.get("from") == "stable" and t.get("to") == "stable" for t in forbidden), {"forbidden": forbidden}))
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})
     return 1 if failed else 0
