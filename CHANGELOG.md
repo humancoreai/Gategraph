@@ -1,9 +1,9 @@
 # Changelog
 
-## v0.14.5_STABLE
+## v0.14.6_CANDIDATE
 
-Status: stable.
-Base: v0.14.4_STABLE.
+Status: candidate.
+Base: v0.14.5_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.

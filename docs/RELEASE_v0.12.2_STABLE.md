@@ -1,7 +1,7 @@
 # GateGraph v0.12.4_STABLE
 
-Base: v0.12.1_STABLE  
-Status: stable  
+Base: v0.14.5_STABLE  
+Status: candidate  
 Phase: Recovery & Replay Hardening
 
 ## Purpose
