@@ -1,4 +1,6 @@
-# Known Limitations – v0.12.0_STABLE
+# Known Limitations – v0.14.10_STABLE
+
+Current release context: v0.14.10_STABLE.
 
 GateGraph intentionally states its limits. This file is part of the security model, not a marketing document.
 

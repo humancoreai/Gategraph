@@ -370,72 +370,63 @@ def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, s
     reset_warnings = _reset_db_files()
     env = os.environ.copy()
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    # WHY: Windows consoles default to legacy codepages; evidence scripts print checkmarks.
-    # UTF-8 stdio prevents false UnicodeEncodeError failures in isolated subprocesses.
     env["PYTHONIOENCODING"] = "utf-8"
     env["PYTHONUTF8"] = "1"
-    # INV: Legacy evidence scripts that exercise Governance directly use an explicit
-    # test-only bypass. Production/default runtime still fails closed without context.
+    # INV: Legacy direct-governance evidence uses an explicit test-only trusted-entry compatibility path.
     env["GATEGRAPH_ALLOW_TEST_DIRECT_GOVERNANCE"] = "1"
     if extra_env:
         env.update(extra_env)
-    cmd = [sys.executable, "-S", "-u", "tests/_run_isolated.py", script]
-    out_path = LOG_DIR / f"_{name}.stdout.tmp"
-    err_path = LOG_DIR / f"_{name}.stderr.tmp"
-    LOG_DIR.mkdir(parents=True, exist_ok=True)
 
+    cmd = [sys.executable, "-S", "-u", "tests/_run_isolated.py", script]
     started = time.monotonic()
     timed_out = False
     killed_group = False
     rc: int | None = None
+    stdout = ""
+    stderr = ""
 
-    # WHY: binary file-backed output avoids pipe deadlocks and all Windows codepage decode paths.
-    with out_path.open("wb") as out, err_path.open("wb") as err:
-        if os.name == "posix":
-            # SEC: Python owns the watchdog and starts an isolated session. Avoid GNU
-            # timeout as a second supervisor because subprocess.run() can wait forever
-            # if the wrapped child never reports exit in hostile kernel/IO states.
-            proc = subprocess.Popen(
-                cmd,
-                cwd=PROJECT_ROOT,
-                env=env,
-                stdout=out,
-                stderr=err,
-                start_new_session=True,
-            )
-        else:
-            creationflags = subprocess.CREATE_NEW_PROCESS_GROUP
-            proc = subprocess.Popen(
-                cmd,
-                cwd=PROJECT_ROOT,
-                env=env,
-                stdout=out,
-                stderr=err,
-                creationflags=creationflags,
-            )
+    if os.name == "posix":
+        proc = subprocess.Popen(
+            cmd,
+            cwd=PROJECT_ROOT,
+            env=env,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            start_new_session=True,
+        )
+    else:
+        proc = subprocess.Popen(
+            cmd,
+            cwd=PROJECT_ROOT,
+            env=env,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
+        )
+    try:
+        stdout, stderr = proc.communicate(timeout=timeout_seconds)
+        rc = proc.returncode
+    except subprocess.TimeoutExpired:
+        timed_out = True
+        killed_group = _kill_process_group(proc)
         try:
-            rc = proc.wait(timeout=timeout_seconds)
+            extra_out, extra_err = proc.communicate(timeout=2)
+            stdout = (stdout or "") + (extra_out or "")
+            stderr = (stderr or "") + (extra_err or "")
         except subprocess.TimeoutExpired:
-            timed_out = True
-            killed_group = _kill_process_group(proc)
-            rc = _bounded_wait_after_kill(proc, 2.0)
+            killed_group = _kill_process_group(proc) or killed_group
+            stdout = stdout or ""
+            stderr = stderr or ""
+        rc = 124
+        killed_group = True if killed_group or timed_out else False
 
     duration = time.monotonic() - started
-    stdout = out_path.read_text(encoding="utf-8", errors="replace") if out_path.exists() else ""
-    stderr = err_path.read_text(encoding="utf-8", errors="replace") if err_path.exists() else ""
-    cleanup_warnings: list[str] = []
-    for path in (out_path, err_path):
-        for attempt in range(10):
-            try:
-                path.unlink()
-                break
-            except FileNotFoundError:
-                break
-            except OSError as exc:
-                if attempt == 9:
-                    cleanup_warnings.append(f"could not unlink temp log {path.name}: {type(exc).__name__}: {exc}")
-                time.sleep(0.1)
-
     summary = _parse_summary(stdout)
     if timed_out:
         status = "timeout"
@@ -458,7 +449,7 @@ def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, s
         parsed_summary=summary,
         timed_out=timed_out,
         killed_process_group=killed_group,
-        reset_warnings=reset_warnings + cleanup_warnings,
+        reset_warnings=reset_warnings,
         duration_seconds=round(duration, 3),
     )
 

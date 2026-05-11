@@ -75,21 +75,21 @@
         "governance_decision_optional_block_reason",
         "cli_unknown_capability_explainability"
       ],
-      "governance_logic_changed": false,
-      "release": "v0.14.10_CANDIDATE",
       "base": "v0.14.9_STABLE",
-      "status": "candidate"
+      "governance_logic_changed": false,
+      "release": "v0.14.10_STABLE",
+      "status": "stable"
     }
   ],
-  "release": "v0.14.10_CANDIDATE",
+  "release": "v0.14.10_STABLE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.14.10_CANDIDATE",
+    "governance_state_release": "v0.14.10_STABLE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"
   },
   "runtime_authority": false,
   "schema_version": "0.14.6",
-  "status": "candidate"
+  "status": "stable"
 }

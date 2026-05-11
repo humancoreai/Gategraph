@@ -1,22 +1,22 @@
-## v0.14.10_CANDIDATE
-
-Status: candidate
-
-Base: v0.14.9_STABLE
-
-Base: v0.14.8_STABLE
-Phase: Release artifact determinism and failure explainability
-
-- Added descriptive root-cause grouping for related CI failures.
-- Added artifact determinism evidence for release manifest hygiene.
-- Added fresh-clone surface validation evidence.
-
 # Changelog
-- Public surface cleanup and review readiness.
+
+All notable changes to GateGraph are documented here.
+
+## v0.14.10_STABLE
+
+Status: stable
+Base: v0.14.9_STABLE
+Phase: Public surface cleanup and review readiness.
+
+- Cleaned README into a current public review surface.
+- Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
+- Added public-surface cleanup, scope-backlog and review-readiness evidence.
+- Preserved build-mutation hardening from v0.14.9.
+- No runtime/governance/enforcement authority expansion.
 
 ## v0.14.7_STABLE
 
-Status: candidate.
+Status: stable.
 Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 

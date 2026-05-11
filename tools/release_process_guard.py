@@ -77,7 +77,7 @@ def check_release_truth(expected_release: str, expected_status: str, expected_ba
             if expected_base is not None and metadata.get("base") != expected_base:
                 problems.append(f"metadata base={metadata.get('base')!r}, expected {expected_base!r}")
 
-    if expected_status == "candidate":
+    if expected_status == "candidate" and "_CANDIDATE" in expected_release:
         forbidden = expected_release.replace("_CANDIDATE", "_STABLE")
         for rel in RELEASE_FILES:
             path = ROOT / rel
@@ -221,12 +221,46 @@ def check_document_version_surfaces(expected_release: str) -> dict:
 
     return fail("document_version_surfaces", "; ".join(problems)) if problems else ok("document_version_surfaces")
 
+
+def check_public_surface_contracts() -> dict:
+    problems: list[str] = []
+
+    readme = ROOT / "README.md"
+    if readme.exists():
+        text = readme.read_text(encoding="utf-8")
+        if len(re.findall(r"^Base stable:", text, flags=re.MULTILINE)) > 1:
+            problems.append("README.md contains multiple Base stable claims")
+        if len(re.findall(r"^Base:", text, flags=re.MULTILINE)) > 1:
+            problems.append("README.md contains multiple Base claims")
+
+    risk_engine = ROOT / "src" / "risk_engine.py"
+    trust_model = ROOT / "TRUST_MODEL.md"
+    if risk_engine.exists() and trust_model.exists():
+        src = risk_engine.read_text(encoding="utf-8")
+        match = re.search(r"VALID_INPUT_SOURCES\s*=\s*\{([^}]+)\}", src)
+        if not match:
+            problems.append("src/risk_engine.py does not expose VALID_INPUT_SOURCES")
+        else:
+            code_values = set(re.findall(r"['\"]([^'\"]+)['\"]", match.group(1)))
+            tm = trust_model.read_text(encoding="utf-8")
+            documented = set(re.findall(r"`(local|external|untrusted|trusted)`", tm))
+            # SEC: `trusted` is a trust-level/context word, not a valid input_source unless code supports it.
+            if "trusted" in documented and "not a valid `input_source`" not in tm and "trusted" not in code_values:
+                problems.append("TRUST_MODEL.md documents trusted as input_source but risk_engine.py does not support it")
+            for value in code_values:
+                if f"`{value}`" not in tm:
+                    problems.append(f"TRUST_MODEL.md does not document input_source={value!r}")
+
+    return fail("public_surface_contracts", "; ".join(problems)) if problems else ok("public_surface_contracts")
+
+
 def run(expected_release: str, expected_status: str, expected_base: str | None) -> dict:
     checks = [
         check_release_truth(expected_release, expected_status, expected_base),
         check_manifest(expected_release, expected_base),
         check_dead_refs(),
         check_document_version_surfaces(expected_release),
+        check_public_surface_contracts(),
     ]
     return {
         "expected_release": expected_release,
