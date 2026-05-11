@@ -2,12 +2,12 @@ import json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.15.0_CANDIDATE"
-EXPECTED_BASE = "v0.14.10_STABLE"
+EXPECTED_RELEASE = "v0.15.1_CANDIDATE"
+EXPECTED_BASE = "v0.15.0_STABLE"
 EXPECTED_STATUS = "candidate"
-EXPECTED_VERSION = "0.15.0"
-EXPECTED_PHASE = "Evidence simplification and practical readiness"
-SURFACES = ['README.md', 'VERSION.md', 'RELEASE_NOTES.md', 'RELEASE_STATUS.md', 'RELEASE_METADATA.json', 'RELEASE_MANIFEST.json', 'pyproject.toml', 'tools/build_release.py', 'tools/verify_release.py', 'docs/RECOVERY_FOUNDATION.md', 'docs/RELEASE_v0.15.0_CANDIDATE.md']
+EXPECTED_VERSION = "0.15.1"
+EXPECTED_PHASE = "Stable-aware promotion and release-surface hardening"
+SURFACES = ['README.md', 'VERSION.md', 'RELEASE_NOTES.md', 'RELEASE_STATUS.md', 'RELEASE_METADATA.json', 'RELEASE_MANIFEST.json', 'pyproject.toml', 'tools/build_release.py', 'tools/verify_release.py', 'docs/RECOVERY_FOUNDATION.md', 'docs/RELEASE_v0.15.1_CANDIDATE.md']
 
 def read(rel):
     return (ROOT / rel).read_text(encoding="utf-8")
