@@ -1,6 +1,6 @@
 # GitHub Actions CI
 
-GateGraph v0.14.2 introduces a minimal GitHub Actions workflow for reproducible evidence execution.
+GateGraph v0.14.3 introduces a minimal GitHub Actions workflow for reproducible evidence execution.
 
 ## Scope
 
