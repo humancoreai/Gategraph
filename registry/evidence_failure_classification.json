@@ -47,7 +47,7 @@
   },
   "classification_mode": "descriptive_grouping_only",
   "mandatory_unclassified_fail_closed": true,
-  "release": "v0.14.3_CANDIDATE",
+  "release": "v0.14.3_STABLE",
   "runtime_authority": false,
   "schema_version": "0.14.3"
 }

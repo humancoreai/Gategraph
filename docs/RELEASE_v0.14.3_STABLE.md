@@ -1,4 +1,4 @@
-# GateGraph v0.14.3_CANDIDATE
+# GateGraph v0.14.3_STABLE
 
 Base: v0.14.2_STABLE  
 Status: candidate  
@@ -32,4 +32,4 @@ This candidate focuses on fresh-clone reproducibility, dependency/onboarding hyg
 
 ## Promotion gate
 
-Candidate promotion requires Windows Evidence CI `Passed: True` for `v0.14.3_CANDIDATE`.
+Candidate promotion requires Windows Evidence CI `Passed: True` for `v0.14.3_STABLE`.
