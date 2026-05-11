@@ -14,8 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-EXPECTED_RELEASE = "v0.15.1_CANDIDATE"
-EXPECTED_BASE = "v0.15.0_STABLE"
+EXPECTED_RELEASE = "v0.15.0_CANDIDATE"
+EXPECTED_BASE = "v0.14.10_STABLE"
 
 
 def expect_error(text: str, fragment: str) -> None:
@@ -44,7 +44,7 @@ def main() -> int:
     expect_error("mode: single_node\nsession_budget: nope\n", "must be a mapping")
 
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
-    assert pyproject["project"]["version"] == "0.15.1"
+    assert pyproject["project"]["version"] == "0.15.0"
     scripts = pyproject["project"]["scripts"]
     assert scripts == {"gategraph": "src.cli:main", "gategraph-server": "src.server:main"}
 

@@ -3,11 +3,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE="v0.15.1_CANDIDATE"
-EXPECTED_BASE="v0.15.0_STABLE"
+EXPECTED_RELEASE="v0.15.0_CANDIDATE"
+EXPECTED_BASE="v0.14.10_STABLE"
 REQUIRED=[
  'README.md','VERSION.md','RELEASE_STATUS.md','RELEASE_METADATA.json','RELEASE_MANIFEST.json',
- 'docs/RELEASE_v0.15.1_CANDIDATE.md','docs/FRESH_CLONE_SURFACE_VALIDATION.md','docs/FAILURE_ROOT_CAUSE_GROUPING.md','docs/ARTIFACT_DETERMINISM.md',
+ 'docs/RELEASE_v0.15.0_CANDIDATE.md','docs/FRESH_CLONE_SURFACE_VALIDATION.md','docs/FAILURE_ROOT_CAUSE_GROUPING.md','docs/ARTIFACT_DETERMINISM.md',
  'tests/failure_root_cause_grouping_evidence.py','tests/artifact_determinism_evidence.py','tests/fresh_clone_surface_validation_evidence.py'
 ]
 def check(name, ok, detail):
