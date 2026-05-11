@@ -1,4 +1,4 @@
-# Runtime Boundary Hardening – v0.10.1_CANDIDATE
+# Runtime Boundary Hardening – v0.10.1_STABLE
 
 ## Purpose
 

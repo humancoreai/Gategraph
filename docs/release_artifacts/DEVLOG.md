@@ -331,7 +331,7 @@ Scope remains mock-only: no real network calls.
 
 ### Boundary
 - This is not autonomous rule learning. It is a human-authorized deterministic apply seam with minimal scope.
-## v0.8.25_RUNTIME_GOVERNANCE_CANDIDATE
+## v0.8.25_RUNTIME_GOVERNANCE_STABLE
 
 - Added `src/runtime_governance.py` with deterministic normal/degraded/throttled/blocked escalation states.
 - Runtime Guard now applies stricter `max_cost_for_action` constraints before recording a new step.
@@ -341,7 +341,7 @@ Scope remains mock-only: no real network calls.
 
 
 
-## v0.8.25.1_RUNNER_HARDENING_CANDIDATE
+## v0.8.25.1_RUNNER_HARDENING_STABLE
 - Evidence runner hardened for timeout handling.
 - POSIX path uses external watchdog (`timeout --kill-after`) to avoid interpreter wait/signal hangs.
 - Windows path keeps process-tree termination via `taskkill /T /F` and direct kill fallback.
@@ -350,7 +350,7 @@ Scope remains mock-only: no real network calls.
 
 ## v0.8.25.1_STABLE
 
-- Consolidated `v0.8.25.1_RUNNER_HARDENING_CANDIDATE` into a stable recovery point.
+- Consolidated `v0.8.25.1_RUNNER_HARDENING_STABLE` into a stable recovery point.
 - Windows full Evidence CI reported `Passed: True` on 2026-04-28.
 - Runtime Governance / Runaway Cost Control retained as stable scope.
 - Runner timeout path retained with deterministic pass/fail/timeout selftest.
@@ -362,7 +362,7 @@ Scope remains mock-only: no real network calls.
 - Still single-node.
 - No production KMS, distributed budget or monitoring/alerting.
 
-## v0.8.26_CANDIDATE - Cross-Session Budget Control
+## v0.8.26_STABLE - Cross-Session Budget Control
 
 Implemented stable extension for system/actor budget control across task boundaries.
 
@@ -386,7 +386,7 @@ Known limit:
 
 ## v0.8.26_STABLE - Stable Consolidation + Repo Hygiene
 
-Promoted `v0.8.26_CROSS_SESSION_BUDGET_CANDIDATE` to `v0.8.26_STABLE` after the Windows full Evidence CI run reported `Passed: True`.
+Promoted `v0.8.26_CROSS_SESSION_BUDGET_STABLE` to `v0.8.26_STABLE` after the Windows full Evidence CI run reported `Passed: True`.
 
 ### Consolidated
 - Cross-Session Budget Control is now part of the stable recovery point.
@@ -415,7 +415,7 @@ Promoted `v0.8.26_CROSS_SESSION_BUDGET_CANDIDATE` to `v0.8.26_STABLE` after the 
 - No distributed budget consensus or lock manager.
 - No monitoring/alerting/incident layer.
 
-## v0.8.27_OPERATIONAL_HARDENING_CANDIDATE
+## v0.8.27_OPERATIONAL_HARDENING_STABLE
 
 - Added `src/operational_hardening.py`.
 - Added budget snapshot visibility for all Budget Ledger scopes.
@@ -426,7 +426,7 @@ Promoted `v0.8.26_CROSS_SESSION_BUDGET_CANDIDATE` to `v0.8.26_STABLE` after the 
 - No changes to Enforcement/Governance allow-path semantics.
 
 
-## v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE
+## v0.8.27.1_RUNNER_POSIX_HARDENING_STABLE
 
 ### Scope
 
@@ -450,7 +450,7 @@ Targeted evidence runner selftest passed locally. Full CI remains the release ga
 
 ## v0.8.27.1_STABLE - Stable Consolidation + Repo Hygiene
 
-Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-04-28.
+Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_STABLE` to `v0.8.27.1_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-04-28.
 
 ### Consolidated
 - Operational Hardening is now part of the stable recovery point.
@@ -479,7 +479,7 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 - Mock external API only.
 - No automated incident recovery.
 
-## v0.8.28_CANDIDATE - Governance SSOT Integration
+## v0.8.28_STABLE - Governance SSOT Integration
 
 ### Scope
 - Added `GOVERNANCE.md` at repository root.
@@ -495,7 +495,7 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 - Inherits `v0.8.27.1_STABLE` full Windows Evidence CI baseline: `Passed: True`, unexpected allows `0`, invariant violations `0`.
 
 
-## v0.8.29_CANDIDATE - Operational Alerting
+## v0.8.29_STABLE - Operational Alerting
 
 ### Scope
 - Added read-only operational alert evaluation on top of append-only incident records.
@@ -518,7 +518,7 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 ## v0.8.29_STABLE - Operational Alerting Stable
 
 ### Scope
-- Promoted `v0.8.29_CANDIDATE` to stable after full Windows Evidence CI.
+- Promoted `v0.8.29_STABLE` to stable after full Windows Evidence CI.
 - Operational Alerting remains read-only and observational.
 - No automated recovery, notification transport, or enforcement-path changes added.
 
@@ -532,7 +532,7 @@ Promoted `v0.8.27.1_RUNNER_POSIX_HARDENING_CANDIDATE` to `v0.8.27.1_STABLE` afte
 - Stable within current single-node proof-of-concept scope.
 - Production KMS, distributed budget consensus, monitoring transport, and incident recovery remain out of scope.
 
-## v0.8.31_CANDIDATE
+## v0.8.31_STABLE
 
 ### Goal
 
@@ -556,7 +556,7 @@ Make GateGraph usable in single-node mode without changing core governance behav
 
 The CLI is an adapter only. It does not duplicate or bypass Governance, Enforcement, Budget, Runtime, or Operational logic.
 
-## v0.8.36_CANDIDATE - API Robustness / Real-World Stability
+## v0.8.36_STABLE - API Robustness / Real-World Stability
 
 - Preserved the v0.8.35 API contract without adding fields or changing response shape.
 - Added server socket timeout for malformed/truncated reads.
@@ -567,20 +567,20 @@ The CLI is an adapter only. It does not duplicate or bypass Governance, Enforcem
 
 ## v0.8.36_STABLE - Stable Promotion
 
-- Promoted v0.8.36_CANDIDATE to STABLE after Full Windows Evidence CI passed.
+- Promoted v0.8.36_STABLE to STABLE after Full Windows Evidence CI passed.
 - Confirmed api_contract_evidence remains green.
 - Confirmed api_robustness_evidence passes.
 - Confirmed server hardening and repo push hygiene remain green.
 - No API schema changes, no new response fields, no core governance changes.
 
 
-## v0.8.40_CANDIDATE — Operator Control / Debug Interface
+## v0.8.40_STABLE — Operator Control / Debug Interface
 
 Added a passive operator layer for inspecting decisions, compact explanations, exact trace queries, stop-reason drilldowns, and lightweight incident/alert navigation. Core governance logic remains unchanged.
 
 ## v0.8.44_STABLE - Stable Promotion
 
-Promoted `v0.8.44_CANDIDATE` to `v0.8.44_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-05-06.
+Promoted `v0.8.44_STABLE` to `v0.8.44_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-05-06.
 
 - Confirmed `drift_detection_evidence` is included in the evidence manifest.
 - Confirmed Governance Drift Detection remains descriptive-only.
@@ -590,7 +590,7 @@ Promoted `v0.8.44_CANDIDATE` to `v0.8.44_STABLE` after the full Windows Evidence
 
 ## v0.8.45_STABLE - Stable Promotion
 
-Promoted `v0.8.45_CANDIDATE` to `v0.8.45_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-05-06.
+Promoted `v0.8.45_STABLE` to `v0.8.45_STABLE` after the full Windows Evidence CI run reported `Passed: True` on 2026-05-06.
 
 - Confirmed `governance_archive_replay_evidence` is included in the evidence manifest.
 - Confirmed historical replay reconstructs archived payloads without re-running governance logic.
@@ -598,7 +598,7 @@ Promoted `v0.8.45_CANDIDATE` to `v0.8.45_STABLE` after the full Windows Evidence
 - Confirmed no policy, guard, runtime, queue, workflow, escalation, recommendation or automatic reaction path was added.
 
 
-## v0.8.46_CANDIDATE
+## v0.8.46_STABLE
 
 - Added descriptive archive integrity checks.
 - Added replay consistency evidence.

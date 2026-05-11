@@ -7,7 +7,7 @@ API Robustness / Real-World Stability.
 GateGraph v0.8.35_STABLE.
 
 ## Stable Promotion
-Promoted from v0.8.36_CANDIDATE after Full Windows Evidence CI passed on 2026-04-29.
+Promoted from v0.8.36_STABLE after Full Windows Evidence CI passed on 2026-04-29.
 
 ## Confirmed Evidence
 - evidence_runner_selftest: PASS
