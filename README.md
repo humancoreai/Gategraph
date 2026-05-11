@@ -1,3 +1,8 @@
+Current release: **v0.14.9_CANDIDATE**
+Base: v0.14.8_STABLE
+Status: candidate
+Version: 0.14.9
+
 # GateGraph
 Phase: Release artifact determinism and failure explainability
 
@@ -5,7 +10,7 @@ Phase: Release artifact determinism and failure explainability
 
 GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
-Current release: **v0.14.8_STABLE**  
+Current release: **v0.14.9_CANDIDATE**  
 Base stable: **v0.14.7_STABLE**  
 Phase: Install / Packaging / Public Repo Hygiene
 Fresh clone reproducibility: see `docs/FRESH_CLONE_REPRODUCIBILITY.md`
@@ -243,7 +248,7 @@ Releases are built deterministically via `tools/build_release.py`. Every release
 - `.db` files excluded from release artifacts by default
 
 ```bash
-python tools/verify_release.py dist/GateGraph_v0.14.8_STABLE.zip
+python tools/verify_release.py dist/GateGraph_v0.14.9_CANDIDATE.zip
 ```
 
 ---
@@ -280,4 +285,8 @@ This stable release preserves a minimal Windows GitHub Actions workflow for repr
 
 Current release base: v0.14.7_STABLE
 
-Status: stable
+Status: candidate
+
+Base: v0.14.8_STABLE
+
+Base stable: **v0.14.8_STABLE**

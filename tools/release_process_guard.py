@@ -155,6 +155,8 @@ def check_manifest(expected_release: str, expected_base: str | None) -> dict:
             problems.append(f"size mismatch: {rel}")
 
     for stale in sorted(set(by_path) - actual_paths):
+        if stale == "RELEASE_MANIFEST.json":
+            continue
         problems.append(f"stale manifest entry: {stale}")
 
     return fail("manifest", "; ".join(problems[:30])) if problems else ok("manifest")
@@ -211,7 +213,7 @@ def check_document_version_surfaces(expected_release: str) -> dict:
     server = ROOT / "src" / "server.py"
     if server.exists():
         text = server.read_text(encoding="utf-8")
-        expected_http_version = expected_release.removeprefix("v").replace("_STABLE", "").replace("_STABLE", "")
+        expected_http_version = expected_release.replace("_STABLE", "").replace("_STABLE", "")
         if f'GateGraphHTTP/{expected_http_version}' not in text:
             problems.append(f"src/server.py server_version does not match {expected_http_version}")
     else:

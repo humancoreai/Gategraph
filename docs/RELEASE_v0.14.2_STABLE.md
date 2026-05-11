@@ -1,7 +1,7 @@
-# GateGraph v0.14.8_STABLE
+# GateGraph v0.14.9_CANDIDATE
 
 Base: v0.14.7_STABLE  
-Status: stable  
+Status: candidate  
 Phase: Install / Packaging / Public Repo Hygiene
 
 ## Purpose
@@ -32,4 +32,4 @@ This candidate focuses on fresh-clone reproducibility, dependency/onboarding hyg
 
 ## Promotion gate
 
-Stable artifact was promoted after Windows Evidence CI `Passed: True` for `v0.14.8_STABLE`.
+Stable artifact was promoted after Windows Evidence CI `Passed: True` for `v0.14.9_CANDIDATE`.

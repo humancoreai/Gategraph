@@ -10,9 +10,9 @@ from pathlib import Path
 from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-CURRENT_RELEASE = "v0.14.8_STABLE"
-CURRENT_BASE = "v0.14.7_STABLE"
-CURRENT_STATUS = "stable"
+CURRENT_RELEASE = "v0.14.9_CANDIDATE"
+CURRENT_BASE = "v0.14.8_STABLE"
+CURRENT_STATUS = "candidate"
 REGISTRY_PATH = PROJECT_ROOT / "registry" / "promotion_pipeline_registry.json"
 
 SURFACE_FILES = (
@@ -24,10 +24,20 @@ SURFACE_FILES = (
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.14.8_STABLE.md",
+    "docs/RELEASE_v0.14.9_CANDIDATE.md",
     "registry/promotion_pipeline_registry.json",
 )
 
+
+
+def current_release_state(root: Path | None = None) -> dict[str, str]:
+    project_root = root or PROJECT_ROOT
+    metadata = load_json(project_root / "RELEASE_METADATA.json")
+    return {
+        "release": metadata.get("release", CURRENT_RELEASE),
+        "base": metadata.get("base", CURRENT_BASE),
+        "status": metadata.get("status", CURRENT_STATUS),
+    }
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -72,7 +82,7 @@ def check_surface_tokens(root: Path | None = None) -> dict[str, Any]:
             missing_release.append(rel)
         if rel != "RELEASE_MANIFEST.json" and CURRENT_BASE not in text:
             missing_base.append(rel)
-        if rel in ("RELEASE_METADATA.json", "RELEASE_STATUS.md", "VERSION.md", "docs/RELEASE_v0.14.8_STABLE.md", "registry/promotion_pipeline_registry.json"):
+        if rel in ("RELEASE_METADATA.json", "RELEASE_STATUS.md", "VERSION.md", "docs/RELEASE_v0.14.9_CANDIDATE.md", "registry/promotion_pipeline_registry.json"):
             if CURRENT_STATUS not in text:
                 missing_status.append(rel)
     return {
@@ -123,9 +133,9 @@ def promotion_pipeline_report(root: Path | None = None) -> dict[str, Any]:
     no_authority = not any(bool(registry.get(flag)) for flag in ("runtime_authority", "auto_promotion", "auto_repair", "policy_mutation"))
     ok = surface["ok"] and manifest["ok"] and lock["ok"] and no_authority
     return {
-        "release": CURRENT_RELEASE,
-        "base": CURRENT_BASE,
-        "status": CURRENT_STATUS,
+        "release": current_release_state(project_root)["release"],
+        "base": current_release_state(project_root)["base"],
+        "status": current_release_state(project_root)["status"],
         "ok": ok,
         "surface": surface,
         "manifest": manifest,
