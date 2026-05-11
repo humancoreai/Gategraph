@@ -4,7 +4,7 @@
 
 GateGraph sits before execution. It decides whether a requested action may proceed, under what conditions, and produces a signed, bounded capability token as the sole execution authority. It does not execute actions. It does not create goals. It does not change policy autonomously.
 
-Current release: **v0.14.7_CANDIDATE**  
+Current release: **v0.14.7_STABLE**  
 Base stable: **v0.14.6_STABLE**  
 Phase: Install / Packaging / Public Repo Hygiene
 Fresh clone reproducibility: see `docs/FRESH_CLONE_REPRODUCIBILITY.md`
@@ -242,7 +242,7 @@ Releases are built deterministically via `tools/build_release.py`. Every release
 - `.db` files excluded from release artifacts by default
 
 ```bash
-python tools/verify_release.py dist/GateGraph_v0.14.7_CANDIDATE.zip
+python tools/verify_release.py dist/GateGraph_v0.14.7_STABLE.zip
 ```
 
 ---
