@@ -10,7 +10,7 @@ v0.8.41_STABLE
 
 ## Status
 
-STABLE. Promoted from v0.8.42_CANDIDATE after Full Windows Evidence CI passed on 2026-05-06.
+STABLE. Promoted from v0.8.42_STABLE after Full Windows Evidence CI passed on 2026-05-06.
 
 ## Evidence
 
@@ -18,7 +18,7 @@ User-provided Windows CI evidence:
 
 ```text
 CI EVIDENCE REPORT
-Log: C:\Users\User\Desktop\Gategraph\GateGraph_v0.8.42_CANDIDATE\tests\logs\ci_evidence_20260506_113158.json
+Log: C:\Users\User\Desktop\Gategraph\GateGraph_v0.8.42_STABLE\tests\logs\ci_evidence_20260506_113158.json
 Passed: True
 ```
 
