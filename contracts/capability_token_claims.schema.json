@@ -15,7 +15,7 @@
     "task_id": "string",
     "token_id": "string"
   },
-  "schema_version": "0.14.5",
+  "schema_version": "0.14.6",
   "security": {
     "audit_logging": "log token_id/token_hash only; never log full token values",
     "replay_boundary": "token must remain bound to task/scope claims"
