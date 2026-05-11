@@ -18,12 +18,6 @@ import threading
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-
-# GitHub Actions Windows consoles may default to cp1252; evidence output contains Unicode markers.
-# Force UTF-8 with replacement so logging never becomes a CI failure mode.
-for _stream in (sys.stdout, sys.stderr):
-    if hasattr(_stream, "reconfigure"):
-        _stream.reconfigure(encoding="utf-8", errors="replace")
 from typing import List, Tuple
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -31,7 +25,7 @@ LOG_DIR = PROJECT_ROOT / "tests" / "logs"
 
 MANIFEST: List[Tuple[str, str, int]] = [
     ("evidence_runner_selftest", "tests/evidence_runner_selftest.py", 10),
-    ("runtime_stress_evidence", "tests/runtime_stress_evidence.py", 40, {"GATEGRAPH_RUNTIME_STRESS_PROFILE": "ci"}),
+    ("runtime_stress_evidence", "tests/runtime_stress_evidence.py", 40),
     ("session_budget_evidence", "tests/session_budget_evidence.py", 40),
     ("guard_orchestration_evidence", "tests/guard_orchestration_evidence.py", 30),
     ("reason_normalization_evidence", "tests/reason_normalization_evidence.py", 20),
@@ -126,8 +120,6 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("operational_stability_evidence", "tests/operational_stability_evidence.py", 20),
     ("single_node_cli_evidence", "tests/single_node_cli_evidence.py", 20),
     ("practical_single_node_scenario_evidence", "tests/practical_single_node_scenario_evidence.py", 20),
-    ("public_repo_hygiene_evidence", "tests/public_repo_hygiene_evidence.py", 20),
-    ("fresh_clone_reproducibility_evidence", "tests/fresh_clone_reproducibility_evidence.py", 20),
     ("single_node_monitoring_export_evidence", "tests/single_node_monitoring_export_evidence.py", 20),
     ("server_mode_evidence", "tests/server_mode_evidence.py", 20),
     ("server_hardening_evidence", "tests/server_hardening_evidence.py", 20),
@@ -463,14 +455,9 @@ def main() -> int:
             "Legacy direct-governance evidence uses an explicit test-only trusted-entry compatibility path."
         ],
     )
-    for command in MANIFEST:
-        if len(command) == 4:
-            name, script, timeout_seconds, extra_env = command
-        else:
-            name, script, timeout_seconds = command
-            extra_env = None
+    for name, script, timeout_seconds in MANIFEST:
         print(f"--- {name} ---", flush=True)
-        result = run_one(name, script, timeout_seconds, extra_env=extra_env)
+        result = run_one(name, script, timeout_seconds)
         report.commands.append(result)
         mark = "PASS" if result.status == "passed" else "FAIL"
         print(result.stdout_tail, end="" if result.stdout_tail.endswith("\n") else "\n")

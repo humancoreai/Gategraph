@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-VERSION = "v0.14.5_STABLE"
+VERSION = "v0.14.0_CANDIDATE"
 
 
 def load_module(name: str, path: Path):
@@ -73,8 +73,6 @@ def main() -> None:
     assert "TRUST_MODEL.md" in paths
     assert "tests/caller_boundary_evidence.py" in paths
     assert "tests/release_integrity_evidence.py" in paths
-    assert "docs/FRESH_CLONE_REPRODUCIBILITY.md" in paths
-    assert "tests/fresh_clone_reproducibility_evidence.py" in paths
     assert "tests/runtime_boundary_hardening_evidence.py" in paths
     assert "tests/freeze_runtime_invariant_evidence.py" in paths
     assert "tests/runtime_chain_order_evidence.py" in paths
@@ -104,13 +102,13 @@ def main() -> None:
     assert "registry/invariant_surface_registry.json" in paths
     assert "tests/semantic_registry_lock_evidence.py" in paths
     assert "tests/release_manifest_coverage_evidence.py" in paths
-    assert "docs/RELEASE_v0.14.5_STABLE.md" in paths
+    assert "docs/RELEASE_v0.14.0_CANDIDATE.md" in paths
     assert "src/recovery_foundation.py" in paths
     assert "tests/recovery_foundation_evidence.py" in paths
     assert "tests/replay_recovery_consistency_evidence.py" in paths
     assert "tests/surface_recovery_consistency_evidence.py" in paths
     assert "docs/RECOVERY_FOUNDATION.md" in paths
-    assert "docs/RELEASE_v0.14.5_STABLE.md" in paths
+    assert "docs/RELEASE_v0.14.0_CANDIDATE.md" in paths
 
     with zipfile.ZipFile(zip_path, "r") as zf:
         rel_names = [name.removeprefix(f"GateGraph_{VERSION}/") for name in zf.namelist()]
