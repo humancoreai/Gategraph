@@ -1,7 +1,7 @@
 {
   "auto_mutation": false,
   "auto_repair": false,
-  "base": "v0.14.5_STABLE",
+  "base": "v0.14.6_STABLE",
   "dynamic_loading": false,
   "lineage": [
     {
@@ -61,7 +61,7 @@
       "release": "v0.14.4_STABLE"
     },
     {
-      "release": "v0.14.5_STABLE",
+      "release": "v0.14.6_STABLE",
       "adds": [
         "release_surface_repair",
         "github_actions_ci_green",
@@ -76,13 +76,13 @@
         "cli_unknown_capability_explainability"
       ],
       "governance_logic_changed": false,
-      "release": "v0.14.6_STABLE"
+      "release": "v0.14.7_CANDIDATE"
     }
   ],
-  "release": "v0.14.6_STABLE",
+  "release": "v0.14.7_CANDIDATE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.14.6_STABLE",
+    "governance_state_release": "v0.14.7_CANDIDATE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"
