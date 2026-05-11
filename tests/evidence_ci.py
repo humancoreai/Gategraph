@@ -18,6 +18,12 @@ import threading
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
+
+# GitHub Actions Windows consoles may default to cp1252; evidence output contains Unicode markers.
+# Force UTF-8 with replacement so logging never becomes a CI failure mode.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 from typing import List, Tuple
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
