@@ -1,4 +1,4 @@
-# GateGraph v0.8.34_STABLE – Server Hardening / Safe Service Boundary
+# GateGraph v0.8.34_CANDIDATE – Server Hardening / Safe Service Boundary
 
 ## Status
 

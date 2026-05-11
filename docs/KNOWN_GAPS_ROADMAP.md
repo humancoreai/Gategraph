@@ -12,7 +12,7 @@ Current release context: v0.12.4_STABLE.
 - Governance freeze snapshot and invariant registry present.
 - Missing `docs/THREAT_MODEL.md` reference fixed in v0.9.3_STABLE_FIXED.
 
-## Closed / hardened in v0.10.0_STABLE
+## Closed / hardened in v0.10.0_CANDIDATE
 
 - Naked `governance.evaluate_task()` invocation fails closed by default unless a trusted entry context is supplied.
 - Service adapter supplies the trusted production entry context after caller-boundary validation.
@@ -89,9 +89,9 @@ Current release surface: v0.12.7_STABLE
 
 Release surface: v0.12.8_STABLE.
 
-Release surface: v0.14.5_STABLE.
+Release surface: v0.13.6_STABLE.
 
 
-Release surface: v0.14.6_STABLE.
-Base stable: v0.14.5_STABLE.
+Release surface: v0.14.0_CANDIDATE.
+Base stable: v0.13.6_STABLE.
 Phase: Recovery Replay Finality Hardening.

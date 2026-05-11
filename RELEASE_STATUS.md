@@ -1,19 +1,10 @@
-# GateGraph Release Status
+# Release Status
 
-Current stable baseline: v0.14.6_STABLE
+Current release: v0.14.0_CANDIDATE  
+Base stable: v0.13.6_STABLE  
+Status: candidate  
+Phase: Practical Single-Node Scenario Run
 
-Release: v0.14.6_STABLE  
-Status: stable  
-Base: v0.14.5_STABLE  
-Version: 0.14.6
+## Gate
 
-Windows Evidence CI: pending stable verification.
-
-## Release Claims
-
-Release: v0.14.6_STABLE
-Base: v0.14.5_STABLE
-Status: stable
-Version: 0.14.6
-Phase: Install / Packaging / Public Repo Hygiene
-
+Stable promoted after Windows Evidence CI passed on candidate.
