@@ -1,5 +1,5 @@
 """
-WHY: v0.14.0 needs one realistic single-node path without turning ad-hoc stress into release content.
+WHY: v0.14.1 needs one realistic single-node path without turning ad-hoc stress into release content.
 INV: The scenario uses existing service_adapter/governance behavior only; no new runtime authority.
 SEC: Prompt-injection-like text must not grant write/delete/API capability or mutate policy.
 """

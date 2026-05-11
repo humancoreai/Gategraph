@@ -1,10 +1,8 @@
-# Release Status
+# GateGraph Release Status
 
-Current release: v0.14.0_STABLE  
-Base stable: v0.13.6_STABLE  
-Status: stable  
-Phase: Practical Single-Node Scenario Run
+Current release: v0.14.1_CANDIDATE  
+Current stable baseline: v0.14.0_STABLE  
+Status: candidate  
+Phase: Install / Packaging / Public Repo Hygiene
 
-## Gate
-
-Stable promoted after Windows Evidence CI passed on candidate.
+Stable promotion requires Windows Evidence CI `Passed: True` for this candidate.
