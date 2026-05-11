@@ -1,15 +1,14 @@
-# GateGraph v0.14.9_CANDIDATE
+# GateGraph v0.14.9_STABLE
 
 Base: v0.14.8_STABLE
-Status: candidate
+Status: stable
 Version: 0.14.9
 Phase: Release artifact determinism and failure explainability
 Release focus: Promotion / Surface / Registry Lock Hardening
-Operational release focus: Install / Packaging / Public Repo Hygiene
 
 ## Scope
 
-This candidate hardens the release-promotion surface. It does not add runtime authority, auto-promotion, auto-repair, or new governance decision logic.
+Stable promotion of the v0.14.9 promotion/surface hardening candidate after Windows Evidence CI `Passed: True`.
 
 ## Promotion Matrix
 
@@ -30,4 +29,6 @@ Required surfaces:
 
 ## Non-authority statement
 
-The release pipeline remains descriptive and evidentiary. Stable promotion still requires manual approval and Windows Evidence CI `Passed: True`.
+The release pipeline remains descriptive and evidentiary. Stable promotion does not add runtime authority, auto-promotion, auto-repair, or policy mutation.
+
+Operational release focus: Install / Packaging / Public Repo Hygiene
