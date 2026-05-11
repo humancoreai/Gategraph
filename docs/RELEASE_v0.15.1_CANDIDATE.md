@@ -1,10 +1,10 @@
-# GateGraph v0.15.0_CANDIDATE
+# GateGraph v0.15.1_CANDIDATE
 
-Base: v0.14.10_STABLE
+Base: v0.15.0_STABLE
 Status: stable
-Version: 0.15.0
-Phase: Evidence simplification and practical readiness
-Release focus: Evidence Simplification / Practical Readiness / Surface Decoupling
+Version: 0.15.1
+Phase: Stable-aware promotion and release-surface hardening
+Release focus: Stable-Aware Promotion / Release-Surface Hardening / Drift Reduction
 
 ## Scope
 

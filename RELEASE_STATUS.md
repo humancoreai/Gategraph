@@ -1,10 +1,10 @@
 # GateGraph Release Status
 
-Release: v0.15.0_CANDIDATE
-Base: v0.14.10_STABLE
+Release: v0.15.1_CANDIDATE
+Base: v0.15.0_STABLE
 Status: candidate
-Version: 0.15.0
-Phase: Evidence simplification and practical readiness
+Version: 0.15.1
+Phase: Stable-aware promotion and release-surface hardening
 
 Candidate scope:
 - Introduce descriptive evidence classification.
