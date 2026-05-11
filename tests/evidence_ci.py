@@ -31,7 +31,7 @@ LOG_DIR = PROJECT_ROOT / "tests" / "logs"
 
 MANIFEST: List[Tuple[str, str, int]] = [
     ("evidence_runner_selftest", "tests/evidence_runner_selftest.py", 10),
-    ("runtime_stress_evidence", "tests/runtime_stress_evidence.py", 40),
+    ("runtime_stress_evidence", "tests/runtime_stress_evidence.py", 40, {"GATEGRAPH_RUNTIME_STRESS_PROFILE": "ci"}),
     ("session_budget_evidence", "tests/session_budget_evidence.py", 40),
     ("guard_orchestration_evidence", "tests/guard_orchestration_evidence.py", 30),
     ("reason_normalization_evidence", "tests/reason_normalization_evidence.py", 20),
@@ -463,9 +463,14 @@ def main() -> int:
             "Legacy direct-governance evidence uses an explicit test-only trusted-entry compatibility path."
         ],
     )
-    for name, script, timeout_seconds in MANIFEST:
+    for command in MANIFEST:
+        if len(command) == 4:
+            name, script, timeout_seconds, extra_env = command
+        else:
+            name, script, timeout_seconds = command
+            extra_env = None
         print(f"--- {name} ---", flush=True)
-        result = run_one(name, script, timeout_seconds)
+        result = run_one(name, script, timeout_seconds, extra_env=extra_env)
         report.commands.append(result)
         mark = "PASS" if result.status == "passed" else "FAIL"
         print(result.stdout_tail, end="" if result.stdout_tail.endswith("\n") else "\n")

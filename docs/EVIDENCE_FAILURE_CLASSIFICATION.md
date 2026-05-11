@@ -1,8 +1,8 @@
 # Install / Packaging / Public Repo Hygiene
 
 Status: descriptive only.
-Release: v0.14.4_STABLE.
-Base: v0.14.3_STABLE.
+Release: v0.14.5_CANDIDATE.
+Base: v0.14.4_STABLE.
 
 This surface groups evidence failures into review buckets such as release-surface, semantic-boundary, registry-lock, server-surface, runtime-governance, and security.
 
