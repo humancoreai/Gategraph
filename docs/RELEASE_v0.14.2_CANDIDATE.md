@@ -1,16 +1,17 @@
-# GateGraph v0.14.1_STABLE
+# GateGraph v0.14.2_CANDIDATE
 
-Base: v0.14.0_STABLE  
-Status: stable  
+Base: v0.14.1_STABLE  
+Status: candidate  
 Phase: Install / Packaging / Public Repo Hygiene
 
 ## Purpose
 
-This candidate focuses on install, packaging and public repository hygiene after the practical single-node scenario baseline.
+This candidate focuses on fresh-clone reproducibility, dependency/onboarding hygiene and public repository verification after v0.14.1 stable public-repo hygiene.
 
 ## Scope
 
-- Public-repo hygiene documentation.
+- Fresh-clone reproducibility documentation.
+- Dependency and onboarding surface consistency.
 - Quickstart surface for reproducible local verification.
 - Evidence coverage for packaging/public-facing repository hygiene.
 - Release/manifest/version consistency for the candidate.
@@ -26,8 +27,9 @@ This candidate focuses on install, packaging and public repository hygiene after
 ## Evidence
 
 - `tests/public_repo_hygiene_evidence.py`
+- `tests/fresh_clone_reproducibility_evidence.py`
 - existing release, manifest, surface, packaging and CI evidence gates
 
 ## Promotion gate
 
-Stable promotion requires Windows Evidence CI `Passed: True` for `v0.14.1_STABLE`.
+Stable promotion requires Windows Evidence CI `Passed: True` for `v0.14.2_CANDIDATE`.
