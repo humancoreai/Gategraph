@@ -1,61 +1,38 @@
-# Release Notes – v0.14.10_STABLE
+# Release Notes – v0.15.0_CANDIDATE
 
-Base: v0.14.9_STABLE
-Status: stable
-Version: 0.14.10
-Phase: Public surface cleanup and review readiness
-Release focus: Public Surface / Review Readiness / Release Hygiene
+Base: v0.14.10_STABLE
+Status: candidate
+Version: 0.15.0
+Phase: Evidence simplification and practical readiness
+Release focus: Evidence Simplification / Practical Readiness / Surface Decoupling
 
 ## Summary
 
-Public-surface cleanup and review-readiness candidate.
+v0.15.0_CANDIDATE introduces a descriptive evidence registry and begins reducing meta-drift in the Evidence and public-surface layer.
 
 ## Changes
 
-- Cleaned README into a current public review surface.
-- Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
-- Added public-surface cleanup evidence.
-- Added scope-backlog evidence.
-- Added release-hygiene evidence for external review readiness.
-- Preserved build-mutation hardening from v0.14.9.
-- No runtime/governance authority expansion.
+- Added `tests/evidence_registry.json` with P0/P1/P2 evidence classification.
+- Added `tests/evidence_registry_evidence.py` to validate registry shape and non-authority boundaries.
+- Added `docs/EVIDENCE_REGISTRY.md` as the operator-facing explanation surface.
+- Declared evidence classification as descriptive only: no pruning, no auto-repair, no policy mutation, no runtime authority.
+- Preserved local practical readiness scope from v0.14.10.
 
+## Non-scope
 
-## Governance Change Statement
+- No new Runtime Authority.
+- No Multi-Node.
+- No Public Deployment.
+- No autonomous policy mutation.
+- No auto-repair logic.
 
-No governance logic change.
-No runtime logic change.
+## Compatibility Notes
 
+Semantic Registry and Recovery surfaces remain descriptive and non-authoritative.
 
-## Evidence Surface Inventory
+## Semantic Boundary Confirmation
 
-- `candidate_stable_surface_parity_evidence.py`
-- `cross_registry_integrity_evidence.py`
-- `dependency_visibility_evidence.py`
-- `deterministic_export_contract_evidence.py`
-- `evidence_provenance_registry_evidence.py`
-- `evidence_surface_consistency_evidence.py`
-- `freeze_snapshot_determinism_evidence.py`
-- `governance_lineage_snapshot_evidence.py`
-- `governance_mutation_visibility_evidence.py`
-- `incident_lifecycle_consistency_evidence.py`
-- `invariant_surface_mapping_evidence.py`
-- `promotion_surface_symmetry_evidence.py`
-- `release_manifest_coverage_evidence.py`
-- `release_state_transition_evidence.py`
-- `replay_provenance_consistency_evidence.py`
-- `schema_drift_visibility_evidence.py`
-- `schema_governance_evidence.py`
-- `semantic_drift_detection_evidence.py`
-- `semantic_registry_evidence.py`
-- `semantic_registry_lock_evidence.py`
-
-No runtime/enforcement behavior change.
-
-Semantic registry surfaces remain descriptive.
-
-Registry and Semantic evidence surfaces remain part of the documented evidence inventory.
-
-No autonomous policy update.
-
-No semantic scoring or memory system.
+- No governance logic change.
+- No runtime/enforcement behavior change.
+- No autonomous policy update.
+- No semantic scoring or memory system.

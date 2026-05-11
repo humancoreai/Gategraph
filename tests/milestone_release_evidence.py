@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.14.10_STABLE"
-BASE = "v0.14.9_STABLE"
+VERSION = "v0.15.0_CANDIDATE"
+BASE = "v0.14.10_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -84,7 +84,7 @@ def main() -> None:
     assert BASE in version, "VERSION.md missing base identifier"
     assert VERSION in status, "RELEASE_STATUS.md missing release identifier"
     assert BASE in status, "RELEASE_STATUS.md missing base identifier"
-    assert "Install / Packaging / Public Repo Hygiene" in status, "RELEASE_STATUS.md missing phase label"
+    assert "Evidence simplification and practical readiness" in status, "RELEASE_STATUS.md missing phase label"
 
     metadata = json.loads(read("RELEASE_METADATA.json"))
     assert metadata["release"] == VERSION
@@ -190,4 +190,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# Current release surface: v0.14.10_STABLE
+# Current release surface: v0.15.0_CANDIDATE

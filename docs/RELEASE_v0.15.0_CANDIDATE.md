@@ -3,8 +3,8 @@
 Base: v0.14.10_STABLE
 Status: stable
 Version: 0.15.0
-Phase: Public surface cleanup and review readiness
-Release focus: Public Surface / Review Readiness / Release Hygiene
+Phase: Evidence simplification and practical readiness
+Release focus: Evidence Simplification / Practical Readiness / Surface Decoupling
 
 ## Scope
 

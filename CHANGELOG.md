@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.14.10_STABLE
+## v0.15.0_CANDIDATE
 
-Status: stable
-Base: v0.14.9_STABLE
-Phase: Public surface cleanup and review readiness.
+State: stable
+Base: v0.14.10_STABLE
+Phase: Evidence simplification and practical readiness.
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
@@ -16,7 +16,7 @@ Phase: Public surface cleanup and review readiness.
 
 ## v0.14.7_STABLE
 
-Status: stable.
+State: stable.
 Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 

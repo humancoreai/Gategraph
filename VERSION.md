@@ -1,10 +1,10 @@
 # GateGraph Version
 
-Release: v0.14.10_STABLE
-Base: v0.14.9_STABLE
-Base stable: **v0.14.9_STABLE**
-Status: stable
-Version: 0.14.10
-Phase: Public surface cleanup and review readiness
-Release focus: Public Surface / Review Readiness / Release Hygiene
-Operational release focus: Public Surface / Review Readiness / Release Hygiene
+Release: v0.15.0_CANDIDATE
+Base: v0.14.10_STABLE
+Base stable: **v0.14.10_STABLE**
+Status: candidate
+Version: 0.15.0
+Phase: Evidence simplification and practical readiness
+Release focus: Evidence Simplification / Practical Readiness / Surface Decoupling
+Operational release focus: Evidence Classification / Surface Decoupling / Local Readiness

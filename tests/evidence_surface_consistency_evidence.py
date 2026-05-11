@@ -36,14 +36,15 @@ def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
 def main() -> int:
     checks = []
     ci_text = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
-    release_notes = (ROOT / "RELEASE_NOTES.md").read_text(encoding="utf-8")
+    evidence_registry = json.loads((ROOT / "tests" / "evidence_registry.json").read_text(encoding="utf-8"))
+    registered = {entry.get("path", "").split("/")[-1] for entry in evidence_registry.get("entries", [])}
     invariant_registry = json.loads((ROOT / "registry" / "invariant_surface_registry.json").read_text(encoding="utf-8"))
     mapped = {name for spec in invariant_registry["invariants"].values() for name in spec.get("evidence", [])}
 
     for name in sorted(EXPECTED):
         checks.append(check(f"{name}_file_exists", (ROOT / "tests" / name).exists(), {}))
         checks.append(check(f"{name}_in_ci_manifest", name in ci_text, {}))
-        checks.append(check(f"{name}_in_release_notes", name.removesuffix(".py") in release_notes, {}))
+        checks.append(check(f"{name}_in_evidence_registry", name in registered, {}))
 
     missing_from_mapping = sorted((EXPECTED - {"evidence_surface_consistency_evidence.py"}) - mapped)
     checks.append(check("semantic_evidence_mapped_to_invariants", not missing_from_mapping, {"missing": missing_from_mapping}))

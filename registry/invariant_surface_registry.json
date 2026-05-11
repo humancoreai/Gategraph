@@ -1,5 +1,5 @@
 {
-  "base": "v0.14.9_STABLE",
+  "base": "v0.14.10_STABLE",
   "invariant": "surface, evidence, semantic registries and registry locks are checked deterministically and do not mutate governance policy",
   "invariants": {
     "INV-GRAPH-001": {
@@ -157,6 +157,6 @@
       ]
     }
   },
-  "release": "v0.14.10_STABLE",
+  "release": "v0.15.0_CANDIDATE",
   "schema_version": "0.14.6"
 }
