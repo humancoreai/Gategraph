@@ -9,14 +9,14 @@
   "registries": [
     {
       "path": "registry/semantic_object_types.json",
-      "sha256": "e456cd25ec2683dade4e09d0c362e100dfa7a98765d4ff495604286247ea0459"
+      "sha256": "8cf155496789f6e17ca324a99e0a2ba08b697173967f52f71d21d204ae107ec7"
     },
     {
       "path": "registry/invariant_surface_registry.json",
-      "sha256": "48af26c1cb68a3a2bb1862170eef1235d518f2bc1488d8f4560c9d475ab41b71"
+      "sha256": "2c3ed41044e7079a21b54624d2ab8c96c077cba3dc91e1a64a91375b4f919f29"
     }
   ],
-  "release": "v0.14.4_CANDIDATE",
+  "release": "v0.14.4_STABLE",
   "runtime_access": false,
   "schema_version": "0.14.4",
   "semantic_promotion_allowed": false
