@@ -10,7 +10,7 @@
   ],
   "mode": "descriptive_promotion_pipeline_hardening_only",
   "policy_mutation": false,
-  "release": "v0.14.9_CANDIDATE",
+  "release": "v0.14.9_STABLE",
   "required_steps": [
     "candidate_surfaces_current",
     "candidate_release_doc_present",
@@ -21,9 +21,11 @@
   ],
   "runtime_authority": false,
   "schema_version": "0.14.6",
-  "status": "candidate",
+  "status": "stable",
   "promotion_surface_matrix_scope": true,
   "promotion_status_ssot_scope": true,
   "registry_lock_rebuild_required": true,
-  "manifest_rehash_required": true
+  "manifest_rehash_required": true,
+  "source_candidate": "v0.14.9_CANDIDATE",
+  "candidate_windows_ci_passed": true
 }
