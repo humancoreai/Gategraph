@@ -1,8 +1,8 @@
 # GateGraph Release Status
 
-Release: v0.15.6_CANDIDATE
+Release: v0.15.6_STABLE
 Base: v0.15.5_STABLE
-Status: candidate
+Status: stable
 Version: 0.15.6
 Phase: CI parity and fresh-clone release-surface consolidation
 

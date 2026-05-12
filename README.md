@@ -1,9 +1,9 @@
 # GateGraph
 
-Current release: **v0.15.6_CANDIDATE**  
+Current release: **v0.15.6_STABLE**  
 Base: **v0.15.5_STABLE**  
 Base stable: **v0.15.5_STABLE**  
-Status: **candidate**  
+Status: **stable**  
 Version: **0.15.6**  
 Phase: **CI parity and fresh-clone release-surface consolidation**  
 Release focus: **CI Parity / Fresh Clone Release Surface Consolidation**
@@ -77,7 +77,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.15.6_CANDIDATE.md`
+- `docs/RELEASE_v0.15.6_STABLE.md`
 
 ## Security posture
 
