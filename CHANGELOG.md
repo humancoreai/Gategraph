@@ -4,7 +4,7 @@ All notable changes to GateGraph are documented here.
 
 ## v0.15.0_CANDIDATE
 
-State: stable
+State: candidate
 Base: v0.14.10_STABLE
 Phase: Evidence simplification and practical readiness.
 
@@ -16,7 +16,7 @@ Phase: Evidence simplification and practical readiness.
 
 ## v0.14.7_STABLE
 
-State: stable.
+State: candidate.
 Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
