@@ -43,7 +43,10 @@ def main() -> int:
         if path != "RELEASE_MANIFEST.json" and path not in manifest_paths:
             missing_manifest.append(path)
         if path in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"} and future_stable in text:
-            accidental_stable_claims.append(path)
+            # INV: v0.15.4 intentionally uses v0.15.4_STABLE as the stable base token.
+            # A base reference is valid; a current-release stable claim is not.
+            if f"Release: {future_stable}" in text or f"Current release: {future_stable}" in text or f"Current stable baseline: {future_stable}" in text:
+                accidental_stable_claims.append(path)
 
     checks.append(check("candidate_surfaces_name_candidate_release", not missing_release, {"missing": missing_release}))
     checks.append(check("candidate_surfaces_manifested", not missing_manifest, {"missing": missing_manifest}))
