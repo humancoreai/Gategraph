@@ -1,14 +1,14 @@
-# Release Notes – v0.15.4_STABLE
+# Release Notes – v0.15.0_CANDIDATE
 
-Base: v0.15.4_STABLE
-Status: stable
-Version: 0.15.4
-Phase: Release truth centralization and evidence-maintainability cleanup
-Release focus: Release Truth Centralization / Evidence Maintainability / Drift Reduction
+Base: v0.14.10_STABLE
+Status: candidate
+Version: 0.15.0
+Phase: Evidence simplification and practical readiness
+Release focus: Evidence Simplification / Practical Readiness / Surface Decoupling
 
 ## Summary
 
-v0.15.4_STABLE introduces a descriptive evidence registry and begins reducing meta-drift in the Evidence and public-surface layer.
+v0.15.0_CANDIDATE introduces a descriptive evidence registry and begins reducing meta-drift in the Evidence and public-surface layer.
 
 ## Changes
 
