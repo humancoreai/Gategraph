@@ -1,6 +1,6 @@
 # Stable Promotion Surface Model
 
-Release: `v0.15.4_CANDIDATE`  
+Release: `v0.15.4_STABLE`  
 Base: `v0.15.4_STABLE`  
 Status: `candidate`
 
@@ -23,7 +23,7 @@ The model separates two states that must not be mixed:
 
 ## Candidate surface rule
 
-For `v0.15.4_CANDIDATE`, public release surfaces must continue to name `v0.15.4_CANDIDATE` until a dedicated Stable package is created.
+For `v0.15.4_STABLE`, public release surfaces must continue to name `v0.15.4_STABLE` until a dedicated Stable package is created.
 
 ## Stable surface rule
 
