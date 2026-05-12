@@ -77,7 +77,7 @@ def check_release_truth(expected_release: str, expected_status: str, expected_ba
             if expected_base is not None and metadata.get("base") != expected_base:
                 problems.append(f"metadata base={metadata.get('base')!r}, expected {expected_base!r}")
 
-    if expected_status == "stable" and "_CANDIDATE" in expected_release:
+    if expected_status == "candidate" and "_CANDIDATE" in expected_release:
         forbidden = expected_release.replace("_CANDIDATE", "_STABLE")
         for rel in RELEASE_FILES:
             path = ROOT / rel
