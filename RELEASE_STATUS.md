@@ -1,9 +1,9 @@
 # GateGraph Release Status
 
-Release: v0.15.3_CANDIDATE
-Base: v0.15.2_STABLE
+Release: v0.15.4_CANDIDATE
+Base: v0.15.4_STABLE
 Status: candidate
-Version: 0.15.3
+Version: 0.15.4
 Phase: Release truth centralization and evidence-maintainability cleanup
 
 Candidate scope:
