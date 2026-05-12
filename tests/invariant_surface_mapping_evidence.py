@@ -16,7 +16,7 @@ def main() -> int:
     data = json.loads(REGISTRY.read_text(encoding="utf-8"))
     checks = []
     invariants = data.get("invariants", {})
-    checks.append(check("registry_release_stable", data.get("release") == "v0.15.2_CANDIDATE", {"release": data.get("release")}))
+    checks.append(check("registry_release_stable", data.get("release") == "v0.15.3_CANDIDATE", {"release": data.get("release")}))
     checks.append(check("invariants_present", bool(invariants), {"count": len(invariants)}))
 
     for invariant_id, spec in sorted(invariants.items()):

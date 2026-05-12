@@ -1,10 +1,10 @@
 # GateGraph Release Status
 
-Release: v0.15.2_CANDIDATE
-Base: v0.15.1_STABLE
+Release: v0.15.3_CANDIDATE
+Base: v0.15.2_STABLE
 Status: candidate
-Version: 0.15.2
-Phase: Promotion semantics cleanup and stable-surface separation
+Version: 0.15.3
+Phase: Release truth centralization and evidence-maintainability cleanup
 
 Candidate scope:
 - Introduce descriptive evidence classification.
