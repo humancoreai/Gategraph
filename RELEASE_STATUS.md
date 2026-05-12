@@ -1,10 +1,10 @@
 # GateGraph Release Status
 
-Release: v0.15.6_STABLE
-Base: v0.15.5_STABLE
-Status: stable
-Version: 0.15.6
-Phase: CI parity and fresh-clone release-surface consolidation
+Release: v0.15.7_CANDIDATE
+Base: v0.15.6_STABLE
+Status: candidate
+Version: 0.15.7
+Phase: Production-readiness audit and operator-transparency consolidation
 
 Candidate scope:
 - Introduce descriptive evidence classification.

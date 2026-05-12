@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.15.6_STABLE
+## v0.15.7_CANDIDATE
 
 State: candidate
-Base: v0.15.5_STABLE
-Phase: CI parity and fresh-clone release-surface consolidation.
+Base: v0.15.6_STABLE
+Phase: Production-readiness audit and operator-transparency consolidation.
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.

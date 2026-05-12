@@ -1,13 +1,13 @@
-# GateGraph v0.15.6_STABLE
+# GateGraph v0.15.7_CANDIDATE
 
-Base: v0.15.5_STABLE  
-Status: stable  
-Version: 0.15.6  
-Phase: CI parity and fresh-clone release-surface consolidation
+Base: v0.15.6_STABLE  
+Status: candidate  
+Version: 0.15.7  
+Phase: Production-readiness audit and operator-transparency consolidation
 
 ## Summary
 
-v0.15.6_STABLE consolidates GitHub Actions / Windows CI parity and fresh-clone release-surface validation without changing runtime governance logic.
+v0.15.7_CANDIDATE consolidates GitHub Actions / Windows CI parity and fresh-clone release-surface validation without changing runtime governance logic.
 
 ## Changes
 

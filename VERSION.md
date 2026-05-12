@@ -1,10 +1,10 @@
 # GateGraph Version
 
-Release: v0.15.6_STABLE
-Base: v0.15.5_STABLE
-Base stable: **v0.15.5_STABLE**
-Status: stable
-Version: 0.15.6
-Phase: CI parity and fresh-clone release-surface consolidation
-Release focus: CI Parity / Fresh Clone Release Surface Consolidation
+Release: v0.15.7_CANDIDATE
+Base: v0.15.6_STABLE
+Base stable: **v0.15.6_STABLE**
+Status: candidate
+Version: 0.15.7
+Phase: Production-readiness audit and operator-transparency consolidation
+Release focus: Production Readiness / Audit and Operator Transparency Consolidation
 Operational release focus: Evidence Classification / Surface Decoupling / Local Readiness
