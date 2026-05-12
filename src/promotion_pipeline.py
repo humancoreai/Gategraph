@@ -10,9 +10,9 @@ from pathlib import Path
 from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-CURRENT_RELEASE = "v0.15.6_CANDIDATE"
+CURRENT_RELEASE = "v0.15.6_STABLE"
 CURRENT_BASE = "v0.15.5_STABLE"
-CURRENT_STATUS = "candidate"
+CURRENT_STATUS = "stable"
 REGISTRY_PATH = PROJECT_ROOT / "registry" / "promotion_pipeline_registry.json"
 
 SURFACE_FILES = (
@@ -24,7 +24,7 @@ SURFACE_FILES = (
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.15.6_CANDIDATE.md",
+    "docs/RELEASE_v0.15.6_STABLE.md",
     "registry/promotion_pipeline_registry.json",
 )
 
@@ -82,7 +82,7 @@ def check_surface_tokens(root: Path | None = None) -> dict[str, Any]:
             missing_release.append(rel)
         if rel != "RELEASE_MANIFEST.json" and CURRENT_BASE not in text:
             missing_base.append(rel)
-        if rel in ("RELEASE_METADATA.json", "RELEASE_STATUS.md", "VERSION.md", "docs/RELEASE_v0.15.6_CANDIDATE.md", "registry/promotion_pipeline_registry.json"):
+        if rel in ("RELEASE_METADATA.json", "RELEASE_STATUS.md", "VERSION.md", "docs/RELEASE_v0.15.6_STABLE.md", "registry/promotion_pipeline_registry.json"):
             if CURRENT_STATUS not in text:
                 missing_status.append(rel)
     return {

@@ -1,4 +1,4 @@
-# gategraph-release = "v0.15.6_CANDIDATE"
+# gategraph-release = "v0.15.6_STABLE"
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
@@ -59,4 +59,4 @@ exclude = [
 
 
 # Base: v0.15.5_STABLE
-# Status: candidate
+# Status: stable

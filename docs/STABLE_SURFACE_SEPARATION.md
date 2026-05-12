@@ -1,6 +1,6 @@
 # Stable Surface Separation
 
-Release: v0.15.6_CANDIDATE  
+Release: v0.15.6_STABLE  
 Base: v0.15.5_STABLE  
 Status: stable  
 
@@ -29,6 +29,6 @@ It does not add:
 
 ## Candidate rule
 
-For the candidate state, public and release surfaces must name `v0.15.6_CANDIDATE` as the current release and `v0.15.5_STABLE` as the base.
+For the candidate state, public and release surfaces must name `v0.15.6_STABLE` as the current release and `v0.15.5_STABLE` as the base.
 
-The future stable token `v0.15.6_CANDIDATE` may appear only as a future/promotion target, not as the current release.
+The future stable token `v0.15.6_STABLE` may appear only as a future/promotion target, not as the current release.
