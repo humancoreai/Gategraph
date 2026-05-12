@@ -1,4 +1,4 @@
-# GateGraph v0.15.4_CANDIDATE
+# GateGraph v0.15.4_STABLE
 
 Base: v0.15.4_STABLE
 Status: stable
