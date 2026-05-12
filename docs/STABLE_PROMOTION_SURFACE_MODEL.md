@@ -1,7 +1,7 @@
 # Stable Promotion Surface Model
 
-Release: `v0.15.2_CANDIDATE`  
-Base: `v0.15.1_STABLE`  
+Release: `v0.15.3_CANDIDATE`  
+Base: `v0.15.2_STABLE`  
 Status: `candidate`
 
 This document defines the descriptive release-surface model used before a Candidate is manually promoted to Stable.
@@ -23,7 +23,7 @@ The model separates two states that must not be mixed:
 
 ## Candidate surface rule
 
-For `v0.15.2_CANDIDATE`, public release surfaces must continue to name `v0.15.2_CANDIDATE` until a dedicated Stable package is created.
+For `v0.15.3_CANDIDATE`, public release surfaces must continue to name `v0.15.3_CANDIDATE` until a dedicated Stable package is created.
 
 ## Stable surface rule
 

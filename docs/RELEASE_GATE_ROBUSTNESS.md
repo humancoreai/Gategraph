@@ -1,6 +1,6 @@
 # Install / Packaging / Public Repo Hygiene
 
-Release: v0.15.2_CANDIDATE.
+Release: v0.15.3_CANDIDATE.
 Base: v0.14.7_STABLE.
 Status: stable.
 
