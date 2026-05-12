@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.15.4_STABLE"
+RELEASE = "v0.15.5_CANDIDATE"
 BASE = "v0.15.4_STABLE"
 VERSION = "0.14.8"
 
@@ -36,7 +36,7 @@ REQUIRED_PUBLIC_SURFACES = [
     "docs/QUICKSTART.md",
     "docs/PUBLIC_REPO_HYGIENE.md",
     "docs/GITHUB_ACTIONS_CI.md",
-    "docs/RELEASE_v0.15.4_STABLE.md",
+    "docs/RELEASE_v0.15.5_CANDIDATE.md",
 ]
 
 
@@ -62,7 +62,7 @@ def main() -> int:
         "metadata_candidate_public_hygiene_scope",
         metadata.get("release") == RELEASE
         and metadata.get("base") == BASE
-        and metadata.get("status") == "stable"
+        and metadata.get("status") == "candidate"
         and metadata.get("public_repo_hygiene_scope") is True
         and metadata.get("quickstart_surface_scope") is True,
         {"release": metadata.get("release"), "base": metadata.get("base"), "status": metadata.get("status")},
@@ -70,7 +70,7 @@ def main() -> int:
     )
     check(
         "manifest_candidate_state",
-        manifest.get("release") == RELEASE and manifest.get("base") == BASE and manifest.get("status") == "stable",
+        manifest.get("release") == RELEASE and manifest.get("base") == BASE and manifest.get("status") == "candidate",
         {"release": manifest.get("release"), "base": manifest.get("base"), "status": manifest.get("status")},
         failures,
     )
