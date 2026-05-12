@@ -1,4 +1,4 @@
-# GateGraph v0.15.7_STABLE
+# GateGraph v0.15.0_CANDIDATE
 
 Base: v0.14.7_STABLE  
 Status: stable  
@@ -6,7 +6,7 @@ Phase: Install / Packaging / Public Repo Hygiene
 
 ## Purpose
 
-This stable focuses on fresh-clone reproducibility, dependency/onboarding hygiene and public repository verification after v0.14.1 stable public-repo hygiene.
+This candidate focuses on fresh-clone reproducibility, dependency/onboarding hygiene and public repository verification after v0.14.1 stable public-repo hygiene.
 
 ## Scope
 
@@ -32,4 +32,4 @@ This stable focuses on fresh-clone reproducibility, dependency/onboarding hygien
 
 ## Promotion gate
 
-Stable artifact was promoted after Windows Evidence CI `Passed: True` for `v0.15.7_STABLE`.
+Stable artifact was promoted after Windows Evidence CI `Passed: True` for `v0.15.0_CANDIDATE`.

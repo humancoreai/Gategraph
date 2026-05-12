@@ -9,9 +9,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.15.7_STABLE"
-BASE = "v0.15.6_STABLE"
-VERSION = "0.15.7"
+RELEASE = "v0.15.0_CANDIDATE"
+BASE = "v0.14.10_STABLE"
+VERSION = "0.15.0"
 
 REQUIRED = [
     "README.md",
@@ -49,13 +49,13 @@ def main() -> int:
 
     check(
         "metadata_current_candidate",
-        metadata.get("release") == RELEASE and metadata.get("base") == BASE and metadata.get("status") == "stable",
+        metadata.get("release") == RELEASE and metadata.get("base") == BASE and metadata.get("status") == "candidate",
         {"release": metadata.get("release"), "base": metadata.get("base"), "status": metadata.get("status")},
         failures,
     )
     check(
         "manifest_current_candidate",
-        manifest.get("release") == RELEASE and manifest.get("base") == BASE and manifest.get("status") == "stable",
+        manifest.get("release") == RELEASE and manifest.get("base") == BASE and manifest.get("status") == "candidate",
         {"release": manifest.get("release"), "base": manifest.get("base"), "status": manifest.get("status")},
         failures,
     )
