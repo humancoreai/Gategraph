@@ -26,7 +26,7 @@ def main() -> int:
     future_stable = release.replace("_CANDIDATE", "_STABLE")
 
     checks = []
-    checks.append(check("metadata_candidate_state", release == "v0.15.4_CANDIDATE" and base == "v0.15.4_STABLE" and metadata["status"] == "candidate", {"release": release, "base": base, "status": metadata["status"]}))
+    checks.append(check("metadata_stable_state", release == "v0.15.4_STABLE" and base == "v0.15.4_STABLE" and metadata["status"] == "stable", {"release": release, "base": base, "status": metadata["status"]}))
     checks.append(check("registry_descriptive_only", registry.get("mode") == "descriptive_stable_surface_separation_only", {"mode": registry.get("mode")}))
     checks.append(check("no_runtime_or_repair_authority", registry.get("runtime_authority") is False and registry.get("auto_promotion") is False and registry.get("auto_repair") is False and registry.get("policy_mutation") is False, {"runtime_authority": registry.get("runtime_authority"), "auto_promotion": registry.get("auto_promotion"), "auto_repair": registry.get("auto_repair"), "policy_mutation": registry.get("policy_mutation")}))
 
@@ -37,7 +37,7 @@ def main() -> int:
         text = read(surface)
         if release not in text:
             missing_release.append(surface)
-        if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md", "CHANGELOG.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.15.4_CANDIDATE.md"} and base not in text:
+        if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md", "CHANGELOG.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.15.4_STABLE.md"} and base not in text:
             missing_base.append(surface)
         # EDGE: When the release model intentionally names the future stable token as the candidate base, base mentions are not current-stable claims.
         if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"} and future_stable != base and future_stable in text:

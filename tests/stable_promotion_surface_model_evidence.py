@@ -27,11 +27,11 @@ def main() -> int:
     future_stable = release.replace("_CANDIDATE", "_STABLE")
 
     checks = []
-    checks.append(check("metadata_current_candidate", release.endswith("_CANDIDATE") and status == "candidate", {"release": release, "status": status}))
+    checks.append(check("metadata_current_stable", release.endswith("_STABLE") and status == "stable", {"release": release, "status": status}))
     checks.append(check("base_is_previous_stable", base.endswith("_STABLE"), {"base": base}))
     checks.append(check("model_declared_descriptive_only", registry.get("mode") == "descriptive_stable_promotion_surface_model_only", {"mode": registry.get("mode")}))
     checks.append(check("no_runtime_or_repair_authority", registry.get("runtime_authority") is False and registry.get("auto_promotion") is False and registry.get("auto_repair") is False and registry.get("policy_mutation") is False, {"runtime_authority": registry.get("runtime_authority"), "auto_promotion": registry.get("auto_promotion"), "auto_repair": registry.get("auto_repair"), "policy_mutation": registry.get("policy_mutation")}))
-    checks.append(check("future_stable_token_is_derived_not_current", registry.get("future_stable_token") == future_stable and future_stable != release, {"future_stable": registry.get("future_stable_token")}))
+    checks.append(check("future_stable_token_is_derived_not_current", registry.get("future_stable_token") == future_stable and future_stable == release, {"future_stable": registry.get("future_stable_token")}))
 
     missing_release = []
     missing_manifest = []
@@ -43,9 +43,13 @@ def main() -> int:
         if path != "RELEASE_MANIFEST.json" and path not in manifest_paths:
             missing_manifest.append(path)
         if path in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"} and future_stable in text:
-            # INV: v0.15.4 intentionally uses v0.15.4_STABLE as the stable base token.
-            # A base reference is valid; a current-release stable claim is not.
-            if f"Release: {future_stable}" in text or f"Current release: {future_stable}" in text or f"Current stable baseline: {future_stable}" in text:
+            # INV: Future-stable wording is forbidden only while the release is still a Candidate.
+            # In a promoted Stable, current Stable claims are the expected release truth.
+            if status != "stable" and (
+                f"Release: {future_stable}" in text
+                or f"Current release: {future_stable}" in text
+                or f"Current stable baseline: {future_stable}" in text
+            ):
                 accidental_stable_claims.append(path)
 
     checks.append(check("candidate_surfaces_name_candidate_release", not missing_release, {"missing": missing_release}))

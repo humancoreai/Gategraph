@@ -77,19 +77,19 @@
       ],
       "base": "v0.15.4_STABLE",
       "governance_logic_changed": false,
-      "release": "v0.15.4_CANDIDATE",
-      "status": "candidate"
+      "release": "v0.15.4_STABLE",
+      "status": "stable"
     }
   ],
-  "release": "v0.15.4_CANDIDATE",
+  "release": "v0.15.4_STABLE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.15.4_CANDIDATE",
+    "governance_state_release": "v0.15.4_STABLE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"
   },
   "runtime_authority": false,
   "schema_version": "0.14.6",
-  "status": "candidate"
+  "status": "stable"
 }
