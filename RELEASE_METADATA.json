@@ -3,7 +3,7 @@
   "artifact_determinism_scope": true,
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.15.2_STABLE",
+  "base": "v0.15.4_STABLE",
   "candidate_ci_gate_scope": true,
   "candidate_ci_passed": false,
   "candidate_stable_assertion_split_scope": true,
@@ -96,7 +96,7 @@
   "registry_auto_repair": false,
   "registry_dynamic_loading": false,
   "registry_lock_rebuild_scope": true,
-  "release": "v0.15.3_CANDIDATE",
+  "release": "v0.15.4_CANDIDATE",
   "release_claim_consistency_scope": true,
   "release_focus": "Release Truth Centralization / Evidence Maintainability / Drift Reduction",
   "release_focus_scope": true,
@@ -148,5 +148,5 @@
   "surface_recovery_consistency_scope": true,
   "token_exposure_hardening_scope": true,
   "transitive_authority_blocked": true,
-  "version": "0.15.3"
+  "version": "0.15.4"
 }
