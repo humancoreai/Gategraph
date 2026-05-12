@@ -17,15 +17,6 @@ v0.15.8_CANDIDATE closes the stale-token window found during practical controlle
 - Extended `controlled_apply_evidence` with stale-token proof: token issued before rule change → rule hardened → token revoked → enforcement rejects token.
 - Preserved existing enforcement semantics: revoked tokens are rejected through the existing DB-backed enforcement check.
 
-## Semantic Boundary / Registry Notes
-
-- Semantic Registry surfaces remain descriptive-only and retain their existing review/archive/explain boundaries.
-- Registry and recovery surface coupling is explicitly documented for this candidate.
-- No governance logic change in semantic surface contracts.
-- No runtime/enforcement behavior change in semantic surface contracts.
-- No autonomous policy update.
-- No semantic scoring or memory system.
-
 ## Non-scope
 
 - No distributed governance.

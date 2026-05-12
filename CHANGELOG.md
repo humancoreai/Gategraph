@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.15.7_STABLE
+## v0.15.8_CANDIDATE
 
 State: candidate
-Base: v0.15.6_STABLE
-Phase: Production-readiness audit and operator-transparency consolidation.
+Base: v0.15.7_STABLE
+Phase: Stale-token revocation after controlled rule hardening.
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.

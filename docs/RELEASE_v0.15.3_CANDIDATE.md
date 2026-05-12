@@ -1,14 +1,14 @@
-# GateGraph v0.15.7_STABLE
+# GateGraph v0.15.8_CANDIDATE
 
-Base: v0.15.6_STABLE
-Status: stable
-Version: 0.15.7
+Base: v0.15.7_STABLE
+Status: candidate
+Version: 0.15.8
 Phase: Release truth centralization and evidence-maintainability cleanup
 Release focus: Release Truth Centralization / Evidence Maintainability / Drift Reduction
 
 ## Scope
 
-This stable performs public-surface cleanup and review-readiness hardening after v0.14.9 stabilized release promotion and build-mutation handling.
+This candidate performs public-surface cleanup and review-readiness hardening after v0.14.9 stabilized release promotion and build-mutation handling.
 
 ## Critical cleanup
 

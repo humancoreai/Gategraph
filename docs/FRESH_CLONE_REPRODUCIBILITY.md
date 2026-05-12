@@ -1,8 +1,8 @@
 # Fresh Clone Reproducibility
 
-Release: v0.15.7_STABLE  
+Release: v0.15.8_CANDIDATE  
 Base: v0.14.7_STABLE  
-Status: stable
+Status: candidate
 
 ## Purpose
 

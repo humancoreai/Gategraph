@@ -16,7 +16,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
 from typing import Any, Dict, Mapping, Optional, Tuple
 
-from src import event_logger
+from src import event_logger, capability_token
 
 APPLY_SCHEMA_VERSION = "0.8.22"
 DEFAULT_APPLY_TTL_SECONDS = 600
@@ -385,16 +385,28 @@ def execute_apply_artifact(conn: sqlite3.Connection, *, artifact_id: str) -> Dic
         raise ControlledApplyError("target state changed since artifact creation")
 
     with conn:
+        revoked_token_ids: list[str] = []
         if dry_run["change_type"] == "rule_update":
             assignments = ", ".join(f"{field} = ?" for field in dry_run["updates"])
             values = list(dry_run["updates"].values()) + [dry_run["target_id"]]
             conn.execute(f"UPDATE rules SET {assignments} WHERE rule_id = ?", values)
+            revoked_token_ids = capability_token.revoke_active_tokens_for_rule(
+                conn,
+                dry_run["target_id"],
+                reason="controlled_apply_rule_update",
+            )
         conn.execute(
             "UPDATE controlled_apply_artifacts SET status = 'executed', executed_at = ? WHERE artifact_id = ?",
             (_now().isoformat(), artifact_id),
         )
-        _audit_controlled_apply(conn, row["proposal_id"], "controlled_apply_executed", {"artifact_id": artifact_id, "change_type": dry_run["change_type"], "before": dry_run["before"], "after": dry_run["after"]})
-    return {"executed": True, "artifact_id": artifact_id, "change_type": dry_run["change_type"], "target_id": dry_run["target_id"]}
+        _audit_controlled_apply(conn, row["proposal_id"], "controlled_apply_executed", {
+            "artifact_id": artifact_id,
+            "change_type": dry_run["change_type"],
+            "before": dry_run["before"],
+            "after": dry_run["after"],
+            "revoked_token_count": len(revoked_token_ids),
+        })
+    return {"executed": True, "artifact_id": artifact_id, "change_type": dry_run["change_type"], "target_id": dry_run["target_id"], "revoked_token_count": len(revoked_token_ids)}
 
 
 def _audit_controlled_apply(conn: sqlite3.Connection, proposal_id: str, event_type: str, details: Mapping[str, Any]) -> None:

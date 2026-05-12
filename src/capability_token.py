@@ -299,6 +299,40 @@ def issue_token(
     return _insert_token(conn, token)
 
 
+def revoke_active_tokens_for_rule(conn: sqlite3.Connection, rule_id: str, *, reason: str = "controlled_apply_rule_update") -> list[str]:
+    """Revoke non-expired tokens whose issuing decision matched a changed rule.
+
+    SEC: controlled rule hardening must not leave previously-issued capability
+    tokens usable until TTL expiry when their decision depended on the changed rule.
+    """
+    _ensure_token_schema(conn)
+    now = datetime.now(timezone.utc).isoformat()
+    rows = conn.execute(
+        """
+        SELECT t.token_id, d.matched_rules_json
+        FROM capability_tokens t
+        JOIN decisions d ON d.decision_id = t.decision_id
+        WHERE t.revoked = 0
+          AND t.expires_at > ?
+        """,
+        (now,),
+    ).fetchall()
+    token_ids: list[str] = []
+    for row in rows:
+        try:
+            matched = json.loads(row["matched_rules_json"] or "[]")
+        except Exception:
+            matched = []
+        if rule_id in matched:
+            token_ids.append(row["token_id"])
+    if token_ids:
+        conn.executemany(
+            "UPDATE capability_tokens SET revoked = 1 WHERE token_id = ?",
+            [(token_id,) for token_id in token_ids],
+        )
+    return token_ids
+
+
 def issue_expired_token(conn: sqlite3.Connection, decision_id: str, task_id: str, final_capabilities: Dict[str, bool]) -> CapabilityToken:
     """
     WHY: test-only helper for timeout validation.

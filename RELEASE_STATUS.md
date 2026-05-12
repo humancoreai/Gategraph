@@ -1,10 +1,10 @@
 # GateGraph Release Status
 
-Release: v0.15.7_STABLE
-Base: v0.15.6_STABLE
-Status: stable
-Version: 0.15.7
-Phase: Production-readiness audit and operator-transparency consolidation
+Release: v0.15.8_CANDIDATE
+Base: v0.15.7_STABLE
+Status: candidate
+Version: 0.15.8
+Phase: Stale-token revocation after controlled rule hardening
 
 Candidate scope:
 - Introduce descriptive evidence classification.
