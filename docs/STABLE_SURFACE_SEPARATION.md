@@ -1,8 +1,8 @@
 # Stable Surface Separation
 
-Release: v0.15.7_CANDIDATE  
+Release: v0.15.7_STABLE  
 Base: v0.15.6_STABLE  
-Status: candidate  
+Status: stable  
 
 This document defines the release-surface cleanup scope for v0.15.7.
 
@@ -29,6 +29,6 @@ It does not add:
 
 ## Candidate rule
 
-For the candidate state, public and release surfaces must name `v0.15.7_CANDIDATE` as the current release and `v0.15.6_STABLE` as the base.
+For the stable state, public and release surfaces must name `v0.15.7_STABLE` as the current release and `v0.15.6_STABLE` as the base.
 
-The future stable token `v0.15.7_CANDIDATE` may appear only as a future/promotion target, not as the current release.
+The future stable token `v0.15.7_STABLE` may appear only as a future/promotion target, not as the current release.

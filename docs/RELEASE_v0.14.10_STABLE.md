@@ -1,14 +1,14 @@
-# GateGraph v0.15.7_CANDIDATE
+# GateGraph v0.15.7_STABLE
 
 Base: v0.15.6_STABLE
-Status: candidate
+Status: stable
 Version: 0.15.7
 Phase: Public surface cleanup and review readiness
 Release focus: Public Surface / Review Readiness / Release Hygiene
 
 ## Scope
 
-This candidate performs public-surface cleanup and review-readiness hardening after v0.14.9 stabilized release promotion and build-mutation handling.
+This stable performs public-surface cleanup and review-readiness hardening after v0.14.9 stabilized release promotion and build-mutation handling.
 
 ## Critical cleanup
 

@@ -1,8 +1,8 @@
 # GateGraph Release Status
 
-Release: v0.15.7_CANDIDATE
+Release: v0.15.7_STABLE
 Base: v0.15.6_STABLE
-Status: candidate
+Status: stable
 Version: 0.15.7
 Phase: Production-readiness audit and operator-transparency consolidation
 
