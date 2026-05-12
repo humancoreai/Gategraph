@@ -1,14 +1,14 @@
-# Release Notes – v0.15.6_STABLE
+# Release Notes – v0.15.7_CANDIDATE
 
-Base: v0.15.5_STABLE  
-Status: stable  
-Version: 0.15.6  
-Phase: CI parity and fresh-clone release-surface consolidation  
-Release focus: CI Parity / Fresh Clone Release Surface Consolidation
+Base: v0.15.6_STABLE  
+Status: candidate  
+Version: 0.15.7  
+Phase: Production-readiness audit and operator-transparency consolidation  
+Release focus: Production Readiness / Audit and Operator Transparency Consolidation
 
 ## Summary
 
-v0.15.6_STABLE is a narrow consolidation Candidate focused on GitHub Actions / Windows CI parity, fresh-clone reproducibility, release-surface drift prevention, and deterministic packaging hygiene.
+v0.15.7_CANDIDATE is a narrow consolidation Candidate focused on production-readiness surfaces, audit/reason visibility, operator transparency, and release reproducibility.
 
 ## Changes
 
@@ -27,7 +27,7 @@ v0.15.6_STABLE is a narrow consolidation Candidate focused on GitHub Actions / W
 
 ## Compatibility Notes
 
-v0.15.6_STABLE is based on v0.15.5_STABLE and keeps the single-node local protected deployment boundary unchanged.
+v0.15.7_CANDIDATE is based on v0.15.6_STABLE and keeps the single-node local protected deployment boundary unchanged.
 
 ## Semantic Boundary Confirmation
 

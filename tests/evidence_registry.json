@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.15.5_STABLE",
+  "base": "v0.15.6_STABLE",
   "classes": {
     "P0": "Core invariants; fail closed, authority boundaries, runtime/enforcement, replay determinism, security boundaries.",
     "P1": "Structural integrity; release, registry, manifest, promotion, provenance and practical readiness surfaces.",
@@ -1216,7 +1216,7 @@
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.15.6_STABLE",
+  "release": "v0.15.7_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.15.6"
+  "schema_version": "0.15.7"
 }
