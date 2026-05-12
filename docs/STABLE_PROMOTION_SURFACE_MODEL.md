@@ -1,7 +1,7 @@
 # Stable Promotion Surface Model
 
-Release: v0.15.5_STABLE  
-Base: v0.15.4_STABLE  
+Release: v0.15.6_CANDIDATE  
+Base: v0.15.5_STABLE  
 Status: stable  
 Mode: descriptive evidence only
 
@@ -13,7 +13,7 @@ This model defines how Candidate and Stable public surfaces are checked during m
 
 Candidate surfaces may reference the previous stable base, but must not claim the future stable token as the current release. After promotion, Stable surfaces may legitimately claim the stable token as current release.
 
-## v0.15.5 hardening
+## v0.15.6 hardening
 
 The evidence is status-sensitive:
 

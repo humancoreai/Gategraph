@@ -57,9 +57,9 @@ def main() -> None:
 
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
+    assert "v0.15.6_CANDIDATE" in version
     assert "v0.15.5_STABLE" in version
-    assert "v0.15.4_STABLE" in version
-    assert "Stable-promotion evidence regression hardening and release-surface consistency cleanup" in status
+    assert "CI parity and fresh-clone release-surface consolidation" in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
     missing_evidence = [name for name in REQUIRED_EVIDENCE if name not in manifest]
@@ -75,4 +75,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# Current release surface: v0.15.5_STABLE
+# Current release surface: v0.15.6_CANDIDATE
