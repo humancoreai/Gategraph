@@ -31,8 +31,8 @@ def main() -> int:
     ))
 
     checks.append(check(
-        "stable_token_matches_current_release",
-        constants["FUTURE_STABLE"] == constants["CURRENT_RELEASE"],
+        "future_stable_is_future_only",
+        constants["FUTURE_STABLE"] != constants["CURRENT_RELEASE"],
         {"future_stable": constants["FUTURE_STABLE"]}
     ))
 

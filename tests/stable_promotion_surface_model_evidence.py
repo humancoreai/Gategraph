@@ -15,6 +15,17 @@ def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
     return name, ok, detail
 
 
+def _is_current_stable_claim(text: str, stable_token: str) -> bool:
+    return any(marker in text for marker in (
+        f"Release: {stable_token}",
+        f"Release: **{stable_token}**",
+        f"Current release: {stable_token}",
+        f"Current release: **{stable_token}**",
+        f"Current stable baseline: {stable_token}",
+        f"Current stable baseline: **{stable_token}**",
+    ))
+
+
 def main() -> int:
     metadata = json.loads(read("RELEASE_METADATA.json"))
     registry = json.loads(read("registry/stable_promotion_surface_model.json"))
@@ -25,13 +36,15 @@ def main() -> int:
     base = metadata["base"]
     status = metadata["status"]
     future_stable = release.replace("_CANDIDATE", "_STABLE")
+    candidate_mode = status == "candidate"
+    stable_mode = status == "stable"
 
     checks = []
-    checks.append(check("metadata_current_stable", release.endswith("_STABLE") and status == "stable", {"release": release, "status": status}))
-    checks.append(check("base_is_previous_stable", base.endswith("_STABLE"), {"base": base}))
+    checks.append(check("metadata_status_matches_release_token", (candidate_mode and release.endswith("_CANDIDATE")) or (stable_mode and release.endswith("_STABLE")), {"release": release, "status": status}))
+    checks.append(check("base_is_stable_reference", base.endswith("_STABLE"), {"base": base}))
     checks.append(check("model_declared_descriptive_only", registry.get("mode") == "descriptive_stable_promotion_surface_model_only", {"mode": registry.get("mode")}))
     checks.append(check("no_runtime_or_repair_authority", registry.get("runtime_authority") is False and registry.get("auto_promotion") is False and registry.get("auto_repair") is False and registry.get("policy_mutation") is False, {"runtime_authority": registry.get("runtime_authority"), "auto_promotion": registry.get("auto_promotion"), "auto_repair": registry.get("auto_repair"), "policy_mutation": registry.get("policy_mutation")}))
-    checks.append(check("future_stable_token_is_derived_not_current", registry.get("future_stable_token") == future_stable and future_stable == release, {"future_stable": registry.get("future_stable_token")}))
+    checks.append(check("future_stable_token_derivation_matches_status", registry.get("future_stable_token") == future_stable and ((candidate_mode and future_stable != release) or (stable_mode and future_stable == release)), {"future_stable": registry.get("future_stable_token"), "release": release, "status": status}))
 
     missing_release = []
     missing_manifest = []
@@ -42,19 +55,13 @@ def main() -> int:
             missing_release.append(path)
         if path != "RELEASE_MANIFEST.json" and path not in manifest_paths:
             missing_manifest.append(path)
-        if path in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"} and future_stable in text:
-            # INV: Future-stable wording is forbidden only while the release is still a Candidate.
-            # In a promoted Stable, current Stable claims are the expected release truth.
-            if status != "stable" and (
-                f"Release: {future_stable}" in text
-                or f"Current release: {future_stable}" in text
-                or f"Current stable baseline: {future_stable}" in text
-            ):
-                accidental_stable_claims.append(path)
+        if candidate_mode and path in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"} and _is_current_stable_claim(text, future_stable):
+            # INV: Candidate surfaces may reference the previous stable base, but must not claim their future Stable as current release.
+            accidental_stable_claims.append(path)
 
-    checks.append(check("candidate_surfaces_name_candidate_release", not missing_release, {"missing": missing_release}))
-    checks.append(check("candidate_surfaces_manifested", not missing_manifest, {"missing": missing_manifest}))
-    checks.append(check("candidate_public_surfaces_do_not_claim_future_stable", not accidental_stable_claims, {"stable_claims": accidental_stable_claims}))
+    checks.append(check("release_surfaces_name_current_release", not missing_release, {"missing": missing_release}))
+    checks.append(check("release_surfaces_manifested", not missing_manifest, {"missing": missing_manifest}))
+    checks.append(check("candidate_public_surfaces_do_not_claim_future_stable", not accidental_stable_claims, {"stable_claims": accidental_stable_claims, "status": status}))
 
     required_differences = {"release", "status", "release_doc_path", "zip_name", "root_folder", "manifest_kind"}
     allowed = set(registry.get("allowed_candidate_to_stable_differences", []))

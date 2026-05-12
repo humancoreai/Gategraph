@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.15.4_STABLE"
+EXPECTED_RELEASE = "v0.15.5_CANDIDATE"
 EXPECTED_BASE = "v0.15.4_STABLE"
 
 
@@ -20,7 +20,7 @@ def main() -> int:
     readme = read("README.md")
     assert f"Current release: **{EXPECTED_RELEASE}**" in readme
     assert f"Base stable: **{EXPECTED_BASE}**" in readme
-    assert "Current stable baseline: **v0.15.4_STABLE**" not in readme
+    assert "Current stable baseline: **v0.15.5_STABLE**" not in readme
     assert "Base stable: **v0.11.4_STABLE**" not in readme
 
     assert "Canonical runtime namespace" in readme

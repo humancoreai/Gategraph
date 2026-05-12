@@ -2,7 +2,7 @@
   "auto_promotion": false,
   "auto_repair": false,
   "base": "v0.15.4_STABLE",
-  "current_candidate_token": "v0.15.4_STABLE",
+  "current_candidate_token": "v0.15.5_CANDIDATE",
   "current_release_surfaces": [
     "README.md",
     "VERSION.md",
@@ -11,18 +11,18 @@
     "CHANGELOG.md",
     "RELEASE_METADATA.json",
     "RELEASE_MANIFEST.json",
-    "docs/RELEASE_v0.15.4_STABLE.md"
+    "docs/RELEASE_v0.15.5_CANDIDATE.md"
   ],
   "future_stable_allowed_contexts": [
     "registry/stable_promotion_surface_model.json",
     "docs/STABLE_SURFACE_SEPARATION.md"
   ],
-  "future_stable_token": "v0.15.4_STABLE",
+  "future_stable_token": "v0.15.5_STABLE",
   "mode": "descriptive_stable_surface_separation_only",
   "policy_mutation": false,
   "previous_stable_token": "v0.15.4_STABLE",
-  "release": "v0.15.4_STABLE",
+  "release": "v0.15.5_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.15.4",
-  "status": "stable"
+  "schema_version": "0.15.5",
+  "status": "candidate"
 }

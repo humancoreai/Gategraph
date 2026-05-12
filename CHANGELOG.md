@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.15.4_STABLE
+## v0.15.5_CANDIDATE
 
 State: candidate
 Base: v0.15.4_STABLE
-Phase: Release truth centralization and evidence-maintainability cleanup.
+Phase: Stable-promotion evidence regression hardening and release-surface consistency cleanup.
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.

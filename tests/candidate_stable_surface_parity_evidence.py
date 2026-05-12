@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.15.4_STABLE"
+EXPECTED_RELEASE = "v0.15.5_CANDIDATE"
 EXPECTED_BASE = "v0.15.4_STABLE"
-EXPECTED_STATUS = "stable"
+EXPECTED_STATUS = "candidate"
 SURFACES = ["README.md", "VERSION.md", "RELEASE_NOTES.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "pyproject.toml", "tools/build_release.py", "tools/verify_release.py"]
 
 
