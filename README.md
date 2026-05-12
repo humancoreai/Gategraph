@@ -1,10 +1,10 @@
 # GateGraph
 
-Current release: **v0.15.3_CANDIDATE**  
-Base: **v0.15.2_STABLE**  
-Base stable: **v0.15.2_STABLE**  
+Current release: **v0.15.4_CANDIDATE**  
+Base: **v0.15.4_STABLE**  
+Base stable: **v0.15.4_STABLE**  
 Status: **candidate**  
-Version: **0.15.3**  
+Version: **0.15.4**  
 Phase: **Release truth centralization and evidence-maintainability cleanup**  
 Release focus: **Release Truth Centralization / Evidence Maintainability / Drift Reduction**
 
@@ -77,7 +77,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.15.3_CANDIDATE.md`
+- `docs/RELEASE_v0.15.4_CANDIDATE.md`
 
 ## Security posture
 

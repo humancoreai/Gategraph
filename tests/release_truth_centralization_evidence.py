@@ -25,10 +25,10 @@ def main() -> int:
     report = release_truth_surface_report(ROOT, registry["checked_surfaces"])
 
     checks = []
-    checks.append(check("metadata_current_candidate", truth.release == "v0.15.3_CANDIDATE" and truth.base == "v0.15.2_STABLE" and truth.status == "candidate", {"release": truth.release, "base": truth.base, "status": truth.status}))
+    checks.append(check("metadata_current_candidate", truth.release == "v0.15.4_CANDIDATE" and truth.base == "v0.15.4_STABLE" and truth.status == "candidate", {"release": truth.release, "base": truth.base, "status": truth.status}))
     checks.append(check("truth_matches_metadata", truth.release == metadata["release"] and truth.base == metadata["base"] and truth.version == metadata["version"], {"truth": truth.__dict__, "metadata_release": metadata["release"]}))
     checks.append(check("surface_report_ok", report["ok"], report))
-    checks.append(check("future_stable_is_derived_not_current", truth.future_stable == "v0.15.3_STABLE" and truth.future_stable != truth.release, {"future_stable": truth.future_stable}))
+    checks.append(check("future_stable_is_derived_not_current", truth.future_stable == "v0.15.4_STABLE" and truth.future_stable != truth.release, {"future_stable": truth.future_stable}))
     checks.append(check("registry_descriptive_only", registry.get("mode") == "descriptive_release_truth_centralization_only", {"mode": registry.get("mode")}))
     checks.append(check("no_runtime_or_repair_authority", registry.get("runtime_authority") is False and registry.get("auto_promotion") is False and registry.get("auto_repair") is False and registry.get("policy_mutation") is False, {"runtime_authority": registry.get("runtime_authority"), "auto_promotion": registry.get("auto_promotion"), "auto_repair": registry.get("auto_repair"), "policy_mutation": registry.get("policy_mutation")}))
 
