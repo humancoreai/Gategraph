@@ -31,9 +31,10 @@ def main() -> int:
     ))
 
     checks.append(check(
-        "future_stable_is_future_only",
-        constants["FUTURE_STABLE"] != constants["CURRENT_RELEASE"],
-        {"future_stable": constants["FUTURE_STABLE"]}
+        "future_stable_derivation_matches_status",
+        (metadata["status"] == "candidate" and constants["FUTURE_STABLE"] != constants["CURRENT_RELEASE"])
+        or (metadata["status"] == "stable" and constants["FUTURE_STABLE"] == constants["CURRENT_RELEASE"]),
+        {"future_stable": constants["FUTURE_STABLE"], "current_release": constants["CURRENT_RELEASE"], "status": metadata["status"]}
     ))
 
     checks.append(check(
