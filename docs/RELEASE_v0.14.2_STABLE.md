@@ -1,4 +1,4 @@
-# GateGraph v0.15.5_CANDIDATE
+# GateGraph v0.15.5_STABLE
 
 Base: v0.14.7_STABLE  
 Status: stable  
@@ -32,4 +32,4 @@ This candidate focuses on fresh-clone reproducibility, dependency/onboarding hyg
 
 ## Promotion gate
 
-Stable artifact was promoted after Windows Evidence CI `Passed: True` for `v0.15.5_CANDIDATE`.
+Stable artifact was promoted after Windows Evidence CI `Passed: True` for `v0.15.5_STABLE`.

@@ -1,6 +1,6 @@
 # Fresh Clone Reproducibility
 
-Release: v0.15.5_CANDIDATE  
+Release: v0.15.5_STABLE  
 Base: v0.14.7_STABLE  
 Status: stable
 

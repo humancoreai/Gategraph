@@ -1,14 +1,14 @@
-# Release Notes – v0.15.5_CANDIDATE
+# Release Notes – v0.15.5_STABLE
 
 Base: v0.15.4_STABLE  
-Status: candidate  
+Status: stable  
 Version: 0.15.5  
 Phase: Stable-promotion evidence regression hardening and release-surface consistency cleanup  
 Release focus: Stable Promotion Evidence Regression Hardening / Release Surface Consistency
 
 ## Summary
 
-v0.15.5_CANDIDATE is a narrow consolidation release. It hardens the stable-promotion surface model after the v0.15.4 Stable test cycle exposed that legitimate Stable claims could still be interpreted as Candidate-only violations.
+v0.15.5_STABLE is a narrow consolidation release. It hardens the stable-promotion surface model after the v0.15.4 Stable test cycle exposed that legitimate Stable claims could still be interpreted as Candidate-only violations.
 
 ## Changes
 
@@ -27,7 +27,7 @@ v0.15.5_CANDIDATE is a narrow consolidation release. It hardens the stable-promo
 
 ## Compatibility Notes
 
-v0.15.5_CANDIDATE is based on v0.15.4_STABLE and keeps the single-node local protected deployment boundary unchanged.
+v0.15.5_STABLE is based on v0.15.4_STABLE and keeps the single-node local protected deployment boundary unchanged.
 
 ## Semantic Boundary Confirmation
 

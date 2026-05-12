@@ -1,13 +1,13 @@
-# GateGraph v0.15.5_CANDIDATE
+# GateGraph v0.15.5_STABLE
 
 Base: v0.15.4_STABLE  
-Status: candidate  
+Status: stable  
 Version: 0.15.5  
 Phase: Stable-promotion evidence regression hardening and release-surface consistency cleanup
 
 ## Summary
 
-v0.15.5_CANDIDATE hardens the stable-promotion surface evidence after the v0.15.4 Stable test cycle exposed a status-boundary edge case.
+v0.15.5_STABLE hardens the stable-promotion surface evidence after the v0.15.4 Stable test cycle exposed a status-boundary edge case.
 
 ## Changes
 
