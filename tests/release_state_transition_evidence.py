@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.15.4_STABLE"
+EXPECTED_RELEASE = "v0.15.5_CANDIDATE"
 EXPECTED_BASE = "v0.15.4_STABLE"
 
 

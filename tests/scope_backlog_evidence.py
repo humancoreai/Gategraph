@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.15.4_STABLE"
+RELEASE = "v0.15.5_CANDIDATE"
 BASE = "v0.15.4_STABLE"
 REQUIRED_DEFERRED = [
     "Auth/TLS built into GateGraph",

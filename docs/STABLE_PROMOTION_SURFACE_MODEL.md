@@ -1,39 +1,29 @@
 # Stable Promotion Surface Model
 
-Release: `v0.15.4_STABLE`  
-Base: `v0.15.4_STABLE`  
-Status: `candidate`
-
-This document defines the descriptive release-surface model used before a Candidate is manually promoted to Stable.
+Release: v0.15.5_CANDIDATE  
+Base: v0.15.4_STABLE  
+Status: candidate  
+Mode: descriptive evidence only
 
 ## Purpose
 
-The model separates two states that must not be mixed:
+This model defines how Candidate and Stable public surfaces are checked during manual promotion.
 
-- Candidate verification surfaces: current working truth for CI and review.
-- Future Stable promotion surfaces: manually produced after Candidate CI has passed.
+## Boundary
 
-## Invariants
+Candidate surfaces may reference the previous stable base, but must not claim the future stable token as the current release. After promotion, Stable surfaces may legitimately claim the stable token as current release.
 
-- The model is descriptive only.
-- It grants no runtime authority.
-- It does not auto-promote Candidate artifacts.
-- It does not auto-repair release metadata.
-- It does not mutate governance policy.
+## v0.15.5 hardening
 
-## Candidate surface rule
+The evidence is status-sensitive:
 
-For `v0.15.4_STABLE`, public release surfaces must continue to name `v0.15.4_STABLE` until a dedicated Stable package is created.
+- Candidate mode: future-Stable current-release claims are blocked.
+- Stable mode: current-Stable claims are legitimate release truth.
+- The check remains descriptive only and has no runtime, repair, promotion, or policy authority.
 
-## Stable surface rule
+## Non-scope
 
-A future Stable package may differ only in explicit promotion fields:
-
-- release token
-- status
-- release document path
-- ZIP name
-- root folder
-- manifest kind
-
-All governance, runtime, registry, evidence and security invariants remain unchanged.
+- No auto-promotion.
+- No auto-repair.
+- No governance mutation.
+- No runtime authority.
