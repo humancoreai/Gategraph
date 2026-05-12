@@ -1,7 +1,7 @@
 # GateGraph v0.13.3_STABLE
 
 Base: v0.14.7_STABLE  
-Status: candidate  
+Status: stable  
 Scope: Recovery Replay Finality Hardening.
 
 ## Summary
@@ -25,4 +25,4 @@ v0.13.3_STABLE adds evidence-only hardening for recovery/replay finality. It ver
 
 ## Validation
 
-Candidate release requires full Windows Evidence CI before stable promotion.
+Stable release requires full Windows Evidence CI before stable promotion.

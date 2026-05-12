@@ -1,21 +1,21 @@
 # GateGraph Release Status
 
-Release: v0.15.8_CANDIDATE
+Release: v0.15.8_STABLE
 Base: v0.15.7_STABLE
-Status: candidate
+Status: stable
 Version: 0.15.8
 Phase: Stale-token revocation after controlled rule hardening
 
-Candidate scope:
+Stable scope:
 - Introduce descriptive evidence classification.
 - Reduce evidence/surface coupling.
 - Preserve registry and manifest as authoritative release surfaces.
 - Prepare local practical readiness without public deployment.
 
 Release gate:
-- Candidate requires full Evidence CI before Stable promotion.
+- Stable was promoted only after Candidate Evidence CI passed.
 - Windows Evidence CI remains final promotion authority.
-- Stable promotion is forbidden until Candidate Passed: True.
+- Stable promotion prerequisite satisfied: Candidate Passed: True.
 
 Invariant status:
 - No runtime authority expansion.

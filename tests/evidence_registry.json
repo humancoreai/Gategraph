@@ -1216,7 +1216,7 @@
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.15.8_CANDIDATE",
+  "release": "v0.15.8_STABLE",
   "runtime_authority": false,
   "schema_version": "0.15.8"
 }

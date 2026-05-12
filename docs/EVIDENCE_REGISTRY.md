@@ -1,4 +1,4 @@
-# Evidence Registry – v0.15.8_CANDIDATE
+# Evidence Registry – v0.15.8_STABLE
 
 GateGraph v0.15.8 introduces a descriptive evidence registry at `tests/evidence_registry.json`.
 

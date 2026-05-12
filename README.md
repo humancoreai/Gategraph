@@ -1,9 +1,9 @@
 # GateGraph
 
-Current release: **v0.15.8_CANDIDATE**  
+Current release: **v0.15.8_STABLE**  
 Base: **v0.15.7_STABLE**  
 Base stable: **v0.15.7_STABLE**  
-Status: **candidate**  
+Status: **stable**  
 Version: **0.15.8**  
 Phase: **Stale-token revocation after controlled rule hardening**  
 Release focus: **Stale Token Revocation / Controlled Apply Safety**
@@ -77,7 +77,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.15.8_CANDIDATE.md`
+- `docs/RELEASE_v0.15.8_STABLE.md`
 
 ## Security posture
 

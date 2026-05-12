@@ -2,7 +2,7 @@
 
 ## Candidate Criteria
 
-A candidate release may be produced when:
+A stable release may be produced when:
 
 - the phase scope is documented
 - governance invariants are unchanged unless explicitly in scope

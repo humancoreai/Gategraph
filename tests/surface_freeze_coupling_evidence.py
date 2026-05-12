@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.15.8_CANDIDATE"
+EXPECTED_RELEASE = "v0.15.8_STABLE"
 EXPECTED_BASE = "v0.15.7_STABLE"
 REQUIRED_SURFACE = {
     "docs/STARTUP_SURFACE.md",
@@ -42,7 +42,7 @@ def main() -> int:
 
     assert metadata["release"] == EXPECTED_RELEASE
     assert metadata["base"] == EXPECTED_BASE
-    assert metadata["status"] == "candidate"
+    assert metadata["status"] == "stable"
     assert manifest["release"] == EXPECTED_RELEASE
     assert manifest["base"] == EXPECTED_BASE
     assert manifest["status"] == metadata["status"]

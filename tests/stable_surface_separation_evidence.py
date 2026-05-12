@@ -28,7 +28,7 @@ def main() -> int:
     future_stable = release.replace("_CANDIDATE", "_STABLE")
 
     checks = []
-    checks.append(check("metadata_status_matches_release_token", release == "v0.15.8_CANDIDATE" and base == "v0.15.7_STABLE" and status == "candidate", {"release": release, "base": base, "status": status}))
+    checks.append(check("metadata_status_matches_release_token", release == "v0.15.8_STABLE" and base == "v0.15.7_STABLE" and status == "stable", {"release": release, "base": base, "status": status}))
     checks.append(check("registry_descriptive_only", registry.get("mode") == "descriptive_stable_surface_separation_only", {"mode": registry.get("mode")}))
     checks.append(check("no_runtime_or_repair_authority", registry.get("runtime_authority") is False and registry.get("auto_promotion") is False and registry.get("auto_repair") is False and registry.get("policy_mutation") is False, {"runtime_authority": registry.get("runtime_authority"), "auto_promotion": registry.get("auto_promotion"), "auto_repair": registry.get("auto_repair"), "policy_mutation": registry.get("policy_mutation")}))
 
@@ -39,15 +39,15 @@ def main() -> int:
         text = read(surface)
         if release not in text:
             missing_release.append(surface)
-        if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md", "CHANGELOG.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.15.8_CANDIDATE.md"} and base not in text:
+        if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md", "CHANGELOG.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.15.8_STABLE.md"} and base not in text:
             missing_base.append(surface)
         # EDGE: Only Candidate surfaces are forbidden from claiming their future Stable as current.
         # In Stable status, the stable token is expected on public release surfaces.
         if candidate_mode and surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"} and future_stable != base and future_stable in text:
             accidental_stable_current.append(surface)
 
-    checks.append(check("candidate_release_surfaces_name_current_candidate", not missing_release, {"missing": missing_release}))
-    checks.append(check("candidate_release_surfaces_name_previous_stable_base", not missing_base, {"missing": missing_base}))
+    checks.append(check("stable_release_surfaces_name_current_release", not missing_release, {"missing": missing_release}))
+    checks.append(check("stable_release_surfaces_name_base", not missing_base, {"missing": missing_base}))
     checks.append(check("public_surfaces_do_not_claim_future_stable", not accidental_stable_current, {"stable_claims": accidental_stable_current, "status": status}))
 
     required_paths = {

@@ -2,7 +2,7 @@
 
 ## Status
 
-Candidate release.
+Stable release.
 
 This stable release integrates `GOVERNANCE.md` as the repository-level SSOT for GateGraph governance principles.
 

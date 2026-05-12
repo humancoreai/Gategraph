@@ -1,14 +1,14 @@
-# Release Notes – v0.15.8_CANDIDATE
+# Release Notes – v0.15.8_STABLE
 
 Base: v0.15.7_STABLE  
-Status: candidate  
+Status: stable  
 Version: 0.15.8  
 Phase: Stale-token revocation after controlled rule hardening  
 Release focus: Stale Token Revocation / Controlled Apply Safety
 
 ## Summary
 
-v0.15.8_CANDIDATE closes the stale-token window found during practical controlled-apply testing. When a rule is hardened through controlled apply, active non-expired capability tokens whose issuing decision depended on that rule are revoked.
+v0.15.8_STABLE closes the stale-token window found during practical controlled-apply testing. When a rule is hardened through controlled apply, active non-expired capability tokens whose issuing decision depended on that rule are revoked.
 
 ## Changes
 
@@ -20,7 +20,7 @@ v0.15.8_CANDIDATE closes the stale-token window found during practical controlle
 ## Semantic Boundary / Registry Notes
 
 - Semantic Registry surfaces remain descriptive-only and retain their existing review/archive/explain boundaries.
-- Registry and recovery surface coupling is explicitly documented for this candidate.
+- Registry and recovery surface coupling is explicitly documented for this stable release.
 - No governance logic change in semantic surface contracts.
 - No runtime/enforcement behavior change in semantic surface contracts.
 - No autonomous policy update.
@@ -32,8 +32,8 @@ v0.15.8_CANDIDATE closes the stale-token window found during practical controlle
 - No new runtime model.
 - No new risk model.
 - No automatic policy mutation.
-- No production keyring overhaul in this candidate.
+- No production keyring overhaul in this stable release.
 
 ## Compatibility Notes
 
-v0.15.8_CANDIDATE is based on v0.15.7_STABLE and keeps the single-node local protected deployment boundary unchanged.
+v0.15.8_STABLE is based on v0.15.7_STABLE and keeps the single-node local protected deployment boundary unchanged.
