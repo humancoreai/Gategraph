@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.15.0_CANDIDATE
+## v0.15.1_CANDIDATE
 
 State: candidate
-Base: v0.14.10_STABLE
-Phase: Evidence simplification and practical readiness.
+Base: v0.15.0_STABLE
+Phase: Stable-aware promotion and release-surface hardening.
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
