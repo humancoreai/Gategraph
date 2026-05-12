@@ -75,8 +75,14 @@ def release_truth_surface_report(root: Path | None = None, surfaces: list[str] |
             missing_release.append(rel)
         if rel != "RELEASE_MANIFEST.json" and truth.base not in text:
             missing_base.append(rel)
-        # EDGE: Current candidate evidence uses the stable token as the declared base; do not classify base mentions as current-stable claims.
-        if rel in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"} and truth.future_stable != truth.base and truth.future_stable in text:
+        # EDGE: Future-stable public-claim checks apply only while evaluating a Candidate.
+        # After Stable promotion, the stable token is the legitimate current release claim.
+        if (
+            truth.status == "candidate"
+            and rel in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"}
+            and truth.future_stable != truth.base
+            and truth.future_stable in text
+        ):
             accidental_future_stable_current.append(rel)
 
     return {
