@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.15.3_CANDIDATE"
-BASE = "v0.15.2_STABLE"
+RELEASE = "v0.15.0_CANDIDATE"
+BASE = "v0.14.10_STABLE"
 REQUIRED_DEFERRED = [
     "Auth/TLS built into GateGraph",
     "KMS / managed secret backend",
