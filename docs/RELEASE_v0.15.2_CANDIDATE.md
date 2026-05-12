@@ -1,10 +1,10 @@
-# GateGraph v0.15.1_CANDIDATE
+# GateGraph v0.15.2_CANDIDATE
 
-Base: v0.15.0_STABLE
+Base: v0.15.1_STABLE
 Status: stable
-Version: 0.15.1
-Phase: Stable-aware promotion and release-surface hardening
-Release focus: Stable-Aware Promotion / Release-Surface Hardening / Drift Reduction
+Version: 0.15.2
+Phase: Promotion semantics cleanup and stable-surface separation
+Release focus: Promotion Semantics Cleanup / Stable-Surface Separation / Release-Hygiene Hardening
 
 ## Scope
 
