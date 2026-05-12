@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE='v0.15.0_CANDIDATE'; EXPECTED_BASE='v0.14.10_STABLE'
-REQUIRED_FILES={'gategraph/context/context_lifecycle.py','docs/CONTEXT_LIFECYCLE_MODEL.md','tests/context_lifecycle_evidence.py','tests/context_freeze_coupling_evidence.py','tests/context_replay_explain_boundary_evidence.py','docs/RELEASE_v0.15.0_CANDIDATE.md'}
+EXPECTED_RELEASE='v0.15.1_CANDIDATE'; EXPECTED_BASE='v0.15.0_STABLE'
+REQUIRED_FILES={'gategraph/context/context_lifecycle.py','docs/CONTEXT_LIFECYCLE_MODEL.md','tests/context_lifecycle_evidence.py','tests/context_freeze_coupling_evidence.py','tests/context_replay_explain_boundary_evidence.py','docs/RELEASE_v0.15.1_CANDIDATE.md'}
 REQUIRED_EVIDENCE={'context_lifecycle_evidence','context_freeze_coupling_evidence','context_replay_explain_boundary_evidence'}
 PASSED=FAILED=0
 def check(name, condition, details=None):

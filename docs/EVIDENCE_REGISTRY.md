@@ -1,6 +1,6 @@
-# Evidence Registry – v0.15.0_CANDIDATE
+# Evidence Registry – v0.15.1_CANDIDATE
 
-GateGraph v0.15.0 introduces a descriptive evidence registry at `tests/evidence_registry.json`.
+GateGraph v0.15.1 introduces a descriptive evidence registry at `tests/evidence_registry.json`.
 
 The registry classifies evidence gates without changing runtime behavior:
 
