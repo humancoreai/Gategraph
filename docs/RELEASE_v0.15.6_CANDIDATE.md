@@ -1,13 +1,13 @@
-# GateGraph v0.15.5_STABLE
+# GateGraph v0.15.6_CANDIDATE
 
-Base: v0.15.4_STABLE  
-Status: stable  
-Version: 0.15.5  
-Phase: Stable-promotion evidence regression hardening and release-surface consistency cleanup
+Base: v0.15.5_STABLE  
+Status: candidate  
+Version: 0.15.6  
+Phase: CI parity and fresh-clone release-surface consolidation
 
 ## Summary
 
-v0.15.5_STABLE hardens the stable-promotion surface evidence after the v0.15.4 Stable test cycle exposed a status-boundary edge case.
+v0.15.6_CANDIDATE consolidates GitHub Actions / Windows CI parity and fresh-clone release-surface validation without changing runtime governance logic.
 
 ## Changes
 

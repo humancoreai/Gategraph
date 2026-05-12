@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.15.5_STABLE
+## v0.15.6_CANDIDATE
 
 State: candidate
-Base: v0.15.4_STABLE
-Phase: Stable-promotion evidence regression hardening and release-surface consistency cleanup.
+Base: v0.15.5_STABLE
+Phase: CI parity and fresh-clone release-surface consolidation.
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
