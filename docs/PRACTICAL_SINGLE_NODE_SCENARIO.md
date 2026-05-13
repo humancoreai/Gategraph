@@ -1,8 +1,8 @@
 # Practical Single-Node Scenario
 
-Release: v0.16.0_STABLE  
+Release: v0.16.1_CANDIDATE  
 Base: v0.14.7_STABLE  
-Status: stable
+Status: candidate
 
 ## Scope
 

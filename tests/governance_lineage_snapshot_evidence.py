@@ -28,12 +28,12 @@ def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
 def main() -> int:
     data = json.loads(LINEAGE.read_text(encoding="utf-8"))
     checks = []
-    checks.append(check("lineage_release_stable", data.get("release") == "v0.16.0_STABLE", {"release": data.get("release")}))
-    checks.append(check("lineage_base_stable", data.get("base") == "v0.15.9_STABLE", {"base": data.get("base")}))
+    checks.append(check("lineage_release_stable", data.get("release") == "v0.16.1_CANDIDATE", {"release": data.get("release")}))
+    checks.append(check("lineage_base_stable", data.get("base") == "v0.16.0_STABLE", {"base": data.get("base")}))
     flags = ["runtime_authority", "auto_mutation", "auto_repair", "dynamic_loading"]
     checks.append(check("lineage_authority_flags_false", all(data.get(f) is False for f in flags), {f: data.get(f) for f in flags}))
     releases = [item.get("release") for item in data.get("lineage", [])]
-    expected_tail = ['v0.12.3_STABLE', 'v0.12.4_STABLE', 'v0.12.5_STABLE', 'v0.12.6_STABLE', 'v0.12.7_STABLE', 'v0.14.4_STABLE', 'v0.14.7_STABLE', 'v0.16.0_STABLE']
+    expected_tail = ['v0.12.3_STABLE', 'v0.12.4_STABLE', 'v0.12.5_STABLE', 'v0.12.6_STABLE', 'v0.12.7_STABLE', 'v0.14.4_STABLE', 'v0.14.7_STABLE', 'v0.16.1_CANDIDATE']
     checks.append(check("lineage_order_deterministic", releases == expected_tail, {"releases": releases}))
     logic_changes = [item.get("release") for item in data.get("lineage", []) if item.get("governance_logic_changed")]
     checks.append(check("lineage_no_governance_logic_change", not logic_changes, {"logic_changes": logic_changes}))
