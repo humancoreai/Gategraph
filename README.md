@@ -1,10 +1,10 @@
 # GateGraph
 
-Current release: **v0.16.0_STABLE**  
-Base: **v0.15.9_STABLE**  
-Base stable: **v0.15.9_STABLE**  
+Current release: **v0.16.1_CANDIDATE**  
+Base: **v0.16.0_STABLE**  
+Base stable: **v0.16.0_STABLE**  
 Status: **candidate**  
-Version: **0.16.0**  
+Version: **0.16.1**  
 Phase: **Replay/Recovery and Runtime Budget Edge Hardening**  
 Release focus: **Replay/Recovery / Runtime Budget Edge Hardening**
 
@@ -77,7 +77,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.16.0_STABLE.md`
+- `docs/RELEASE_v0.16.1_CANDIDATE.md`
 
 ## Security posture
 

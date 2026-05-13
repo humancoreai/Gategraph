@@ -2,7 +2,7 @@
   "allowed_transitions": [
     {
       "ci_required": true,
-      "from": "stable",
+      "from": "candidate",
       "manual_gate_required": true,
       "to": "stable"
     }
@@ -10,14 +10,14 @@
   "authority": "descriptive_only",
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.15.9_STABLE",
+  "base": "v0.16.0_STABLE",
   "forbidden_transitions": [
     {
-      "from": "stable",
+      "from": "candidate",
       "to": "stable_without_candidate_ci"
     },
     {
-      "from": "stable",
+      "from": "candidate",
       "to": "stable_without_surface_sync"
     },
     {
@@ -25,10 +25,10 @@
       "to": "candidate"
     }
   ],
-  "release": "v0.16.0_STABLE",
+  "release": "v0.16.1_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.0",
-  "status": "stable",
+  "schema_version": "0.16.1",
+  "status": "candidate",
   "surface_parity": {
     "allowed_differences": [
       "release",
@@ -38,6 +38,6 @@
       "manifest_kind"
     ],
     "candidate_token": "STABLE",
-    "stable_token": "v0.16.0_STABLE"
+    "stable_token": "STABLE"
   }
 }

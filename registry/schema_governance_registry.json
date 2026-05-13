@@ -1,7 +1,7 @@
 {
   "auto_migration": false,
   "auto_repair": false,
-  "base": "v0.15.9_STABLE",
+  "base": "v0.16.0_STABLE",
   "dynamic_loading": false,
   "exports": [
     {
@@ -34,13 +34,13 @@
       "automatic_migration": false,
       "from": "v0.14.7_STABLE",
       "mode": "declarative_schema_governance_only",
-      "to": "v0.16.0_STABLE"
+      "to": "v0.16.1_CANDIDATE"
     }
   ],
   "registry_mode": "declarative_only",
-  "release": "v0.16.0_STABLE",
+  "release": "v0.16.1_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.0",
+  "schema_version": "0.16.1",
   "schemas": [
     {
       "authority": "descriptive_only",
