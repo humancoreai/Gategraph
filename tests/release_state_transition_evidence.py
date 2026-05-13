@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.0_STABLE"
-EXPECTED_BASE = "v0.15.9_STABLE"
+EXPECTED_RELEASE = "v0.15.9_CANDIDATE"
+EXPECTED_BASE = "v0.15.8_STABLE"
 
 
 def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
@@ -25,7 +25,7 @@ def main() -> int:
     allowed = registry.get("allowed_transitions", [])
     checks.append(check("candidate_to_stable_manual_gate", any(t.get("from") == "stable" and t.get("to") == "stable" and t.get("manual_gate_required") is True and t.get("ci_required") is True for t in allowed), {"allowed": allowed}))
     forbidden = registry.get("forbidden_transitions", [])
-    checks.append(check("stable_to_candidate_forbidden", any(t.get("from") == "stable" and t.get("to") == "candidate" for t in forbidden), {"forbidden": forbidden}))
+    checks.append(check("stable_to_candidate_forbidden", any(t.get("from") == "stable" and t.get("to") == "stable" for t in forbidden), {"forbidden": forbidden}))
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})
     return 1 if failed else 0

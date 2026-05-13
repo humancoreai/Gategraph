@@ -2,12 +2,10 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.0_STABLE
+## v0.15.9_CANDIDATE
 
-Base: v0.15.9_STABLE
-
-Status: stable
-Base: v0.16.0_STABLE
+Status: candidate
+Base: v0.15.8_STABLE
 Phase: Evidence artifact hygiene and revocation negative-path hardening
 Release focus: Evidence Artifact Hygiene / Revocation Negative Path Hardening
 

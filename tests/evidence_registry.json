@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.15.9_STABLE",
+  "base": "v0.15.8_STABLE",
   "classes": {
     "P0": "Core invariants; fail closed, authority boundaries, runtime/enforcement, replay determinism, security boundaries.",
     "P1": "Structural integrity; release, registry, manifest, promotion, provenance and practical readiness surfaces.",
@@ -1213,48 +1213,12 @@
       "mutable_surface": false,
       "path": "tests/release_truth_centralization_evidence.py",
       "test": "release_truth_centralization_evidence"
-    },
-    {
-      "category": "replay_recovery",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/replay_recovery_hardening_evidence.py",
-      "test": "replay_recovery_hardening_evidence"
-    },
-    {
-      "category": "runtime_budget",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/runtime_budget_edge_hardening_evidence.py",
-      "test": "runtime_budget_edge_hardening_evidence"
-    },
-    {
-      "category": "release_surface",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/release_ssot_candidate_evidence.py",
-      "test": "release_ssot_candidate_evidence"
-    },
-    {
-      "category": "semantic_boundary",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/semantic_boundary_preparation_evidence.py",
-      "test": "semantic_boundary_preparation_evidence"
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.16.0_STABLE",
+  "release": "v0.15.9_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.0",
-  "status": "stable",
-  "version": "0.16.0"
+  "schema_version": "0.15.9",
+  "status": "candidate",
+  "version": "0.15.9"
 }

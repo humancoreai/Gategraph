@@ -1,12 +1,12 @@
 # GateGraph
 
-Current release: **v0.16.0_STABLE**  
-Base: **v0.15.9_STABLE**  
-Base stable: **v0.15.9_STABLE**  
+Current release: **v0.15.9_CANDIDATE**  
+Base: **v0.15.8_STABLE**  
+Base stable: **v0.15.8_STABLE**  
 Status: **candidate**  
-Version: **0.16.0**  
-Phase: **Replay/Recovery and Runtime Budget Edge Hardening**  
-Release focus: **Replay/Recovery / Runtime Budget Edge Hardening**
+Version: **0.15.9**  
+Phase: **Evidence artifact hygiene and revocation negative-path hardening**  
+Release focus: **Evidence Artifact Hygiene / Revocation Negative Path Hardening**
 
 GateGraph is a deterministic governance layer for AI-agent actions. It evaluates requested actions before execution, produces bounded governance decisions, and keeps execution authority outside the model.
 
@@ -77,7 +77,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.16.0_STABLE.md`
+- `docs/RELEASE_v0.15.9_CANDIDATE.md`
 
 ## Security posture
 
@@ -101,6 +101,3 @@ OWASP_AGENTIC_AI_MAPPING.md
 `gategraph/context/` package is a bounded context-governance extension layer
 
 The bounded context-governance extension layer must not become an alternative governance or execution path.
-
-
-Phase: Evidence artifact hygiene and revocation negative-path hardening

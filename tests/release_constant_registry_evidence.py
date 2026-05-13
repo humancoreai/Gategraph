@@ -32,7 +32,7 @@ def main() -> int:
 
     checks.append(check(
         "future_stable_derivation_matches_status",
-        (metadata["status"] == "stable" and constants["FUTURE_STABLE"] != constants["CURRENT_RELEASE"])
+        (metadata["status"] == "candidate" and constants["FUTURE_STABLE"] != constants["CURRENT_RELEASE"])
         or (metadata["status"] == "stable" and constants["FUTURE_STABLE"] == constants["CURRENT_RELEASE"]),
         {"future_stable": constants["FUTURE_STABLE"], "current_release": constants["CURRENT_RELEASE"], "status": metadata["status"]}
     ))
