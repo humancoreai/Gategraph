@@ -4,7 +4,7 @@
 
 | Version | Supported |
 |---|---:|
-| v0.16.1_CANDIDATE | yes |
+| v0.16.1_STABLE | yes |
 | v0.16.0_STABLE | yes |
 | older v0.15.x snapshots | best-effort review only |
 | older v0.14.x and below | historical/reference only |

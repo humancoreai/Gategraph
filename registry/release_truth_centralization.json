@@ -11,16 +11,16 @@
     "RELEASE_METADATA.json",
     "RELEASE_MANIFEST.json"
   ],
-  "current_release_token": "v0.16.1_CANDIDATE",
+  "current_release_token": "v0.16.1_STABLE",
   "evidence": "tests/release_truth_centralization_evidence.py",
   "future_stable_token": "v0.16.1_STABLE",
   "mode": "descriptive_release_truth_centralization_only",
   "policy_mutation": false,
   "previous_stable_token": "v0.16.1_STABLE",
-  "release": "v0.16.1_CANDIDATE",
+  "release": "v0.16.1_STABLE",
   "resolver": "src/release_truth.py",
   "runtime_authority": false,
   "schema_version": "0.16.1",
-  "status": "candidate",
+  "status": "stable",
   "truth_source": "RELEASE_METADATA.json"
 }

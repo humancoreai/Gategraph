@@ -1,8 +1,8 @@
 # GateGraph Release Status
 
-Release: v0.16.1_CANDIDATE
+Release: v0.16.1_STABLE
 Base: v0.16.0_STABLE
-Status: candidate
+Status: stable
 Version: 0.16.1
 Phase: Replay/Recovery and Runtime Budget Edge Hardening
 
