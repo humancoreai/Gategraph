@@ -1,8 +1,8 @@
-<!-- v0.16.1_STABLE note: Non-scope surface refreshed for repository hygiene; no autonomy or governance expansion. -->
+<!-- v0.9.2_STABLE note: Multi-agent/multi-mode architecture definition only; no autonomy or governance expansion. -->
 
-# Non-Scope – v0.16.1_STABLE
+# Non-Scope – v0.9.2_STABLE
 
-GateGraph v0.16.1_STABLE intentionally does not provide:
+GateGraph v0.9.0_STABLE intentionally does not provide:
 
 - autonomous agents
 - autonomous policy changes
@@ -34,9 +34,3 @@ Release and review documents must not describe this milestone as:
 - a production enterprise platform
 
 Accurate wording: deterministic governance/enforcement milestone with explicit multi-agent and multi-mode boundaries, auditable evidence, and reproducible release packaging.
-
-
-## Release hygiene note
-
-This non-scope surface was formally bumped in v0.16.1_STABLE to keep public review documents aligned with the current release.
-The non-scope boundary remains unchanged from v0.16.0_STABLE.

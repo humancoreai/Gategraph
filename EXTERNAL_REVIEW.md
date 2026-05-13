@@ -1,4 +1,4 @@
-<!-- v0.16.1_STABLE note: External review surface refreshed for repository hygiene; no governance logic expansion. -->
+<!-- v0.9.1_STABLE note: Boundary hardening and release integrity closure; no governance logic expansion. -->
 
 # External Review Baseline
 
@@ -28,14 +28,6 @@ Do not infer capabilities from terminology. Explainability means deterministic r
 
 ## Reviewable claim boundary
 
-The reviewable claim for v0.16.1_STABLE is narrow:
+The reviewable claim for v0.9.0_STABLE is narrow:
 
-> GateGraph is a deterministic, single-node governance/enforcement candidate with auditable evidence, reproducible release packaging, and explicit review boundaries.
-
-
-## Repository hygiene note
-
-This surface was refreshed in v0.16.1_STABLE to remove stale review-baseline version claims.
-The refresh is documentation-only and does not add runtime authority, autonomous promotion, semantic enforcement, or policy mutation.
-
-Base reference: v0.16.0_STABLE.
+> GateGraph is a deterministic, single-node governance/enforcement milestone with auditable evidence and reproducible release packaging.

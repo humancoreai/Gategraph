@@ -4,9 +4,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-EXPECTED_RELEASE = "v0.16.1_STABLE"
-EXPECTED_BASE = "v0.16.0_STABLE"
-EXPECTED_STATUS = "stable"
+EXPECTED_RELEASE = "v0.15.9_CANDIDATE"
+EXPECTED_BASE = "v0.15.8_STABLE"
+EXPECTED_STATUS = "candidate"
 
 def main():
     meta = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
