@@ -1,8 +1,8 @@
-<!-- v0.16.1_CANDIDATE note: Non-scope surface refreshed for repository hygiene; no autonomy or governance expansion. -->
+<!-- v0.16.1_STABLE note: Non-scope surface refreshed for repository hygiene; no autonomy or governance expansion. -->
 
-# Non-Scope – v0.16.1_CANDIDATE
+# Non-Scope – v0.16.1_STABLE
 
-GateGraph v0.16.1_CANDIDATE intentionally does not provide:
+GateGraph v0.16.1_STABLE intentionally does not provide:
 
 - autonomous agents
 - autonomous policy changes
@@ -38,5 +38,5 @@ Accurate wording: deterministic governance/enforcement milestone with explicit m
 
 ## Release hygiene note
 
-This non-scope surface was formally bumped in v0.16.1_CANDIDATE to keep public review documents aligned with the current release.
+This non-scope surface was formally bumped in v0.16.1_STABLE to keep public review documents aligned with the current release.
 The non-scope boundary remains unchanged from v0.16.0_STABLE.
