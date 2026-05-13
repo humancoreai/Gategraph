@@ -2,7 +2,7 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.15.9_CANDIDATE
+## v0.15.9_STABLE
 
 Status: candidate
 Base: v0.15.8_STABLE
