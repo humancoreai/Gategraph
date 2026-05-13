@@ -51,8 +51,8 @@
       "fresh_clone_surface_validation_evidence"
     ]
   },
-  "release": "v0.16.0_CANDIDATE",
+  "release": "v0.16.0_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.0",
-  "status": "candidate"
+  "status": "stable"
 }

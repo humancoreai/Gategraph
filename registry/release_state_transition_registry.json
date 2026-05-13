@@ -2,7 +2,7 @@
   "allowed_transitions": [
     {
       "ci_required": true,
-      "from": "candidate",
+      "from": "stable",
       "manual_gate_required": true,
       "to": "stable"
     }
@@ -13,11 +13,11 @@
   "base": "v0.15.9_STABLE",
   "forbidden_transitions": [
     {
-      "from": "candidate",
+      "from": "stable",
       "to": "stable_without_candidate_ci"
     },
     {
-      "from": "candidate",
+      "from": "stable",
       "to": "stable_without_surface_sync"
     },
     {
@@ -25,10 +25,10 @@
       "to": "candidate"
     }
   ],
-  "release": "v0.16.0_CANDIDATE",
+  "release": "v0.16.0_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.0",
-  "status": "candidate",
+  "status": "stable",
   "surface_parity": {
     "allowed_differences": [
       "release",
@@ -38,6 +38,6 @@
       "manifest_kind"
     ],
     "candidate_token": "STABLE",
-    "stable_token": "STABLE"
+    "stable_token": "v0.16.0_STABLE"
   }
 }
