@@ -2,11 +2,12 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.15.8_STABLE
+## v0.15.9_CANDIDATE
 
-State: candidate
-Base: v0.15.7_STABLE
-Phase: Stale-token revocation after controlled rule hardening.
+Status: candidate
+Base: v0.15.8_STABLE
+Phase: Evidence artifact hygiene and revocation negative-path hardening
+Release focus: Evidence Artifact Hygiene / Revocation Negative Path Hardening
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.

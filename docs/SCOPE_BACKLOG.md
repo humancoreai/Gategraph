@@ -1,9 +1,9 @@
 # GateGraph Scope Backlog
 
-Release: v0.15.8_STABLE
-Base: v0.15.7_STABLE
+Release: v0.15.9_CANDIDATE
+Base: v0.15.8_STABLE
 Status: stable
-Version: 0.15.8
+Version: 0.15.9
 Phase: Public surface cleanup and review readiness
 Release focus: Public Surface / Review Readiness / Release Hygiene
 

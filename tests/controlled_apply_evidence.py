@@ -141,8 +141,31 @@ def test_h_rule_hardening_revokes_stale_tokens():
         ok(not enf.allowed and 'revoked' in enf.reason, 'enforcement must reject stale revoked token')
     finally: conn.close()
 
+
+def test_i_revoked_token_reuse_and_repeated_attempts_fail_closed():
+    conn=fresh_db()
+    try:
+        result = governance.evaluate_task(
+            conn, task_id='REVOKED-REUSE-1', task_type='revoked_reuse', requested_capabilities=['read_files'],
+            input_source='local', data_sensitivity='internal', secrets_involved=False, actor_id='revoked-reuse-actor',
+            trusted_entry_context=service_adapter_context(), token_ttl=300,
+        )
+        ok(result.final_decision == 'allow' and result.token is not None, 'baseline read token must be issued')
+        create_rule001_proposal(conn); approve_manual_for(conn, 'CAPROP-REVOKE'); approve2_for(conn, 'CAPROP-REVOKE')
+        art=controlled_apply.create_apply_artifact(conn, proposal_id='CAPROP-REVOKE', change={'change_type':'rule_update','rule_id':'RULE-001','updates':{'decision':'require_review'}})
+        applied = controlled_apply.execute_apply_artifact(conn, artifact_id=art.artifact_id)
+        ok(applied.get('revoked_token_count', 0) >= 1, 'revoke-after-issue must revoke dependent token')
+        first = enforcement.enforce(conn, result.token, 'read_files', 'REVOKED-REUSE-1', 'COR-REVOKED-REUSE-A')
+        second = enforcement.enforce(conn, result.token, 'read_files', 'REVOKED-REUSE-1', 'COR-REVOKED-REUSE-B')
+        ok(not first.allowed and 'revoked' in first.reason, 'first stale-token replay must fail closed as revoked')
+        ok(not second.allowed and 'revoked' in second.reason, 'repeated revoked-token attempt must stay fail closed')
+        rows=conn.execute("SELECT decision_json FROM events WHERE type='enforcement_rejection' AND task_id='REVOKED-REUSE-1'").fetchall()
+        ok(first.rejection_event_id is not None and second.rejection_event_id is not None, 'repeated revoked attempts must return rejection evidence references')
+        ok(len(rows) >= 1, 'revoked enforcement attempt must be auditable without allowing replay')
+    finally: conn.close()
+
 def main():
-    tests=[test_a_manual_review_required,test_b_two_human_gates_required,test_c_same_reviewer_blocked,test_d_unsupported_or_looser_changes_blocked,test_e_executes_strict_rule_hardening_and_audits,test_f_replay_blocked,test_g_target_drift_blocked,test_h_rule_hardening_revokes_stale_tokens]
+    tests=[test_a_manual_review_required,test_b_two_human_gates_required,test_c_same_reviewer_blocked,test_d_unsupported_or_looser_changes_blocked,test_e_executes_strict_rule_hardening_and_audits,test_f_replay_blocked,test_g_target_drift_blocked,test_h_rule_hardening_revokes_stale_tokens,test_i_revoked_token_reuse_and_repeated_attempts_fail_closed]
     passed=failed=0
     for t in tests:
         try: t(); print('✓', t.__name__); passed+=1

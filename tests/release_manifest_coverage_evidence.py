@@ -13,7 +13,7 @@ REQUIRED_COVERAGE = {
     "registry/invariant_surface_registry.json",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.15.8_STABLE.md",
+    "docs/RELEASE_v0.15.9_CANDIDATE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",
@@ -45,8 +45,8 @@ def main() -> int:
     paths = {entry["path"] for entry in manifest.get("files", []) if isinstance(entry, dict) and isinstance(entry.get("path"), str)}
     missing = sorted(REQUIRED_COVERAGE - paths)
     checks.append(check("release_manifest_declares_registry_lock_surface", not missing, {"missing": missing}))
-    checks.append(check("manifest_release_matches_current", manifest.get("release") == "v0.15.8_STABLE", {"release": manifest.get("release")}))
-    checks.append(check("manifest_status_current", manifest.get("status") == "stable", {"status": manifest.get("status")}))
+    checks.append(check("manifest_release_matches_current", manifest.get("release") == "v0.15.9_CANDIDATE", {"release": manifest.get("release")}))
+    checks.append(check("manifest_status_current", manifest.get("status") == "candidate", {"status": manifest.get("status")}))
 
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})

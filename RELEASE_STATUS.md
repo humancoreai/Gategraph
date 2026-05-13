@@ -1,10 +1,10 @@
 # GateGraph Release Status
 
-Release: v0.15.8_STABLE
-Base: v0.15.7_STABLE
-Status: stable
-Version: 0.15.8
-Phase: Stale-token revocation after controlled rule hardening
+Release: v0.15.9_CANDIDATE
+Base: v0.15.8_STABLE
+Status: candidate
+Version: 0.15.9
+Phase: Evidence artifact hygiene and revocation negative-path hardening
 
 Stable scope:
 - Introduce descriptive evidence classification.

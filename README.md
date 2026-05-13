@@ -1,12 +1,12 @@
 # GateGraph
 
-Current release: **v0.15.8_STABLE**  
-Base: **v0.15.7_STABLE**  
-Base stable: **v0.15.7_STABLE**  
-Status: **stable**  
-Version: **0.15.8**  
-Phase: **Stale-token revocation after controlled rule hardening**  
-Release focus: **Stale Token Revocation / Controlled Apply Safety**
+Current release: **v0.15.9_CANDIDATE**  
+Base: **v0.15.8_STABLE**  
+Base stable: **v0.15.8_STABLE**  
+Status: **candidate**  
+Version: **0.15.9**  
+Phase: **Evidence artifact hygiene and revocation negative-path hardening**  
+Release focus: **Evidence Artifact Hygiene / Revocation Negative Path Hardening**
 
 GateGraph is a deterministic governance layer for AI-agent actions. It evaluates requested actions before execution, produces bounded governance decisions, and keeps execution authority outside the model.
 
@@ -77,7 +77,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.15.8_STABLE.md`
+- `docs/RELEASE_v0.15.9_CANDIDATE.md`
 
 ## Security posture
 
