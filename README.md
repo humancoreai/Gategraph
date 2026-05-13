@@ -1,9 +1,9 @@
 # GateGraph
 
-Current release: **v0.15.9_CANDIDATE**  
+Current release: **v0.15.9_STABLE**  
 Base: **v0.15.8_STABLE**  
 Base stable: **v0.15.8_STABLE**  
-Status: **candidate**  
+Status: **stable**  
 Version: **0.15.9**  
 Phase: **Evidence artifact hygiene and revocation negative-path hardening**  
 Release focus: **Evidence Artifact Hygiene / Revocation Negative Path Hardening**
@@ -77,7 +77,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.15.9_CANDIDATE.md`
+- `docs/RELEASE_v0.15.9_STABLE.md`
 
 ## Security posture
 
