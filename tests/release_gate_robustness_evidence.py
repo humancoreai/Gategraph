@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.15.9_STABLE"
-EXPECTED_BASE = "v0.15.8_STABLE"
-EXPECTED_STATUS = "stable"
+EXPECTED_RELEASE = "v0.16.0_CANDIDATE"
+EXPECTED_BASE = "v0.15.9_STABLE"
+EXPECTED_STATUS = "candidate"
 SURFACES = [
     "README.md",
     "VERSION.md",
@@ -16,7 +16,7 @@ SURFACES = [
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.15.9_STABLE.md",
+    "docs/RELEASE_v0.16.0_CANDIDATE.md",
 ]
 
 
@@ -43,7 +43,7 @@ def main() -> int:
         text = read(surface)
         if EXPECTED_RELEASE not in text:
             missing_release.append(surface)
-        if surface in {"README.md", "VERSION.md", "RELEASE_NOTES.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.15.9_STABLE.md"} and EXPECTED_BASE not in text:
+        if surface in {"README.md", "VERSION.md", "RELEASE_NOTES.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.16.0_CANDIDATE.md"} and EXPECTED_BASE not in text:
             missing_base.append(surface)
         lowered = text.lower()
         if ('"status": "candidate"' not in lowered and 'status: candidate' not in lowered and 'status = "stable"' not in lowered and '# status: candidate' not in lowered):
@@ -59,8 +59,8 @@ def main() -> int:
         check("candidate_surfaces_have_release", not missing_release, {"missing": missing_release}),
         check("candidate_surfaces_have_base", not missing_base, {"missing": missing_base}),
         check("candidate_status_explicit", bool(stable_status_surfaces), {"surfaces": stable_status_surfaces}),
-        check("manual_ci_gate_declared", any(t.get("from") == "stable" and t.get("to") == "stable" and t.get("ci_required") is True and t.get("manual_gate_required") is True for t in allowed), {"allowed": allowed}),
-        check("stable_without_candidate_ci_forbidden", any(t.get("from") == "stable" and t.get("to") == "stable_without_candidate_ci" for t in forbidden), {"forbidden": forbidden}),
+        check("manual_ci_gate_declared", any(t.get("from") == "candidate" and t.get("to") == "stable" and t.get("ci_required") is True and t.get("manual_gate_required") is True for t in allowed), {"allowed": allowed}),
+        check("stable_without_candidate_ci_forbidden", any(t.get("from") == "candidate" and t.get("to") == "stable_without_candidate_ci" for t in forbidden), {"forbidden": forbidden}),
         check("no_runtime_authority", registry.get("runtime_authority") is False and registry.get("auto_repair") is False and registry.get("auto_promotion") is False, registry),
         check("registry_doc_manifested", "docs/RELEASE_GATE_ROBUSTNESS.md" in manifest_paths and "registry/release_gate_robustness.json" in manifest_paths and "tests/release_gate_robustness_evidence.py" in manifest_paths, {}),
     ]
