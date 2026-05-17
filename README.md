@@ -1,9 +1,9 @@
 # GateGraph
 
-Current release: **v0.16.2_CANDIDATE**  
+Current release: **v0.16.2_STABLE**  
 Base: **v0.16.1_STABLE**  
 Base stable: **v0.16.1_STABLE**  
-Status: **candidate**  
+Status: **stable**  
 Version: **0.16.2**  
 Phase: **Promotion Pipeline Status Token Hardening**  
 Release focus: **Promotion Pipeline Status Token Hardening**
@@ -77,7 +77,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.16.2_CANDIDATE.md`
+- `docs/RELEASE_v0.16.2_STABLE.md`
 
 ## Security posture
 

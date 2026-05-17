@@ -2,12 +2,12 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.2_CANDIDATE
+## v0.16.2_STABLE
 
 Base: v0.16.1_STABLE
 
-Status: candidate
-Status: candidate
+Status: stable
+Status: stable
 Phase: Promotion Pipeline Status Token Hardening
 Release focus: Promotion Pipeline Status Token Hardening
 

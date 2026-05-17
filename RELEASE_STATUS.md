@@ -1,8 +1,8 @@
 # GateGraph Release Status
 
-Release: v0.16.2_CANDIDATE
+Release: v0.16.2_STABLE
 Base: v0.16.1_STABLE
-Status: candidate
+Status: stable
 Version: 0.16.2
 Phase: Promotion Pipeline Status Token Hardening
 
@@ -14,7 +14,7 @@ Candidate scope:
 
 Release gate:
 - Windows Evidence CI remains final promotion authority.
-- Candidate promotion is forbidden until this candidate reports Passed: True.
+- Stable promotion completed after candidate CI Passed: True.
 
 Invariant status:
 - No runtime authority expansion.
