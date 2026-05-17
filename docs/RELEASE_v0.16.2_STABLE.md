@@ -1,8 +1,8 @@
-# GateGraph v0.16.5_STABLE
+# GateGraph v0.16.6_CANDIDATE
 
-Base: v0.16.5_STABLE
+Base: v0.16.6_CANDIDATE
 Status: stable
-Version: 0.16.5
+Version: 0.16.6
 
 ## Scope
 

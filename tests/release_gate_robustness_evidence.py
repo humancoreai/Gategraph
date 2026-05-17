@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.5_STABLE"
-EXPECTED_BASE = "v0.16.4_STABLE"
-EXPECTED_STATUS = "stable"
+EXPECTED_RELEASE = "v0.16.6_CANDIDATE"
+EXPECTED_BASE = "v0.16.5_STABLE"
+EXPECTED_STATUS = "candidate"
 SURFACES = [
     "README.md",
     "VERSION.md",
@@ -16,7 +16,7 @@ SURFACES = [
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.16.5_STABLE.md",
+    "docs/RELEASE_v0.16.6_CANDIDATE.md",
 ]
 
 
@@ -43,7 +43,7 @@ def main() -> int:
         text = read(surface)
         if EXPECTED_RELEASE not in text:
             missing_release.append(surface)
-        if surface in {"README.md", "VERSION.md", "RELEASE_NOTES.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.16.5_STABLE.md"} and EXPECTED_BASE not in text:
+        if surface in {"README.md", "VERSION.md", "RELEASE_NOTES.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.16.6_CANDIDATE.md"} and EXPECTED_BASE not in text:
             missing_base.append(surface)
         lowered = text.lower()
         if ('"status": "stable"' not in lowered and 'status: stable' not in lowered and 'status = "stable"' not in lowered and '# status: stable' not in lowered):

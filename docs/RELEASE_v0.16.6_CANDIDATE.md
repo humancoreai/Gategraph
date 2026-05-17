@@ -1,10 +1,10 @@
-# GateGraph v0.16.5_STABLE
+# GateGraph v0.16.6_CANDIDATE
 
-Base: v0.16.4_STABLE
-Status: stable
-Version: 0.16.5
-Phase: Evidence Profile Cleanup
-Release focus: Evidence Profile Cleanup
+Base: v0.16.5_STABLE
+Status: candidate
+Version: 0.16.6
+Phase: Evidence Profile Runtime Profiles
+Release focus: Evidence Profile Runtime Profiles
 
 ## Scope
 

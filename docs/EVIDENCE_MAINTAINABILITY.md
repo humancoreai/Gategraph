@@ -1,10 +1,10 @@
-# Evidence Profile Cleanup – v0.16.5_STABLE
+# Evidence Profile Runtime Profiles – v0.16.6_CANDIDATE
 
-Release: v0.16.5_STABLE  
-Base: v0.16.4_STABLE  
+Release: v0.16.6_CANDIDATE  
+Base: v0.16.5_STABLE  
 Status: stable  
-Version: 0.16.5  
-Phase: Evidence Profile Cleanup
+Version: 0.16.6  
+Phase: Evidence Profile Runtime Profiles
 
 ## Purpose
 

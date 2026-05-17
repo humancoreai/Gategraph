@@ -2,13 +2,13 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.5_STABLE
+## v0.16.6_CANDIDATE
 
-Base: v0.16.4_STABLE
+Base: v0.16.5_STABLE
 
 Status: candidate
-Phase: Evidence Profile Cleanup
-Release focus: Evidence Profile Cleanup
+Phase: Evidence Profile Runtime Profiles
+Release focus: Evidence Profile Runtime Profiles
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
@@ -16,10 +16,10 @@ Release focus: Evidence Profile Cleanup
 - Preserved build-mutation hardening from v0.14.9.
 - No runtime/governance/enforcement authority expansion.
 
-## v0.16.4_STABLE
+## v0.16.5_STABLE
 
 Base: v0.16.3_STABLE
-Status: stable
+Status: candidate
 Phase: Evidence Maintainability Hardening
 
 - Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
@@ -27,7 +27,7 @@ Phase: Evidence Maintainability Hardening
 
 ## v0.16.3_STABLE
 
-Status: stable
+Status: candidate
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.
