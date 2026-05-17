@@ -1,10 +1,10 @@
 # GateGraph Release Status
 
-Release: v0.16.2_STABLE
-Base: v0.16.1_STABLE
-Status: stable
-Version: 0.16.2
-Phase: Promotion Pipeline Status Token Hardening
+Release: v0.16.3_CANDIDATE
+Base: v0.16.2_STABLE
+Status: candidate
+Version: 0.16.3
+Phase: Release Surface Gate Robustness
 
 Candidate scope:
 - Replay/recovery hardening.
