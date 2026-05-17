@@ -22,9 +22,9 @@ EXPECTED_CONTRACTS = {
 
 def main() -> int:
     metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
-    assert metadata["release"] == "v0.16.3_STABLE"
-    assert metadata["status"] == "stable"
-    assert metadata["base"] == "v0.16.2_STABLE"
+    assert metadata["release"] == "v0.15.9_CANDIDATE"
+    assert metadata["status"] == "candidate"
+    assert metadata["base"] == "v0.15.8_STABLE"
     assert metadata["surface_contract_registry_scope"] is True
     assert metadata["surface_contract_version"] == EXPECTED_VERSION
     assert metadata["governance_logic_changed"] is False

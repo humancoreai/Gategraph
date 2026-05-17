@@ -4,11 +4,8 @@
 
 | Version | Supported |
 |---|---:|
-| v0.16.3_STABLE | yes |
-| v0.16.3_STABLE | yes |
-| older v0.15.x snapshots | best-effort review only |
-| older v0.14.x and below | historical/reference only |
-
+| v0.9.x candidates/stable | yes |
+| older v0.8.x snapshots | best-effort review only |
 
 ## Scope of Security Claims
 
@@ -33,11 +30,3 @@ A useful report should include:
 - feature requests unrelated to a security defect
 - attacks requiring a caller to intentionally provide false trusted metadata without an upstream trust failure
 - multi-node or distributed consensus concerns in single-node releases
-
-
-## Development Keyring Boundary
-
-GateGraph may include a local development keyring constant for deterministic tests and local evidence runs.
-This is not a production secret and must not be treated as deployable signing material. Production use requires operator-managed key material outside the repository.
-
-The development keyring exists to make evidence reproducible; it does not grant external authority, does not bypass enforcement, and does not remove token binding or revocation checks.

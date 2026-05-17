@@ -1,21 +1,14 @@
 {
-  "notes": "Descriptive operator workflow labels only. No policy modification.",
   "playbook_id": "PB-POLICY-001",
+  "version": "1.0",
+  "trigger": {
+    "reason_codes": ["HTTP_POLICY_BLOCKED", "ENF_NO_TOKEN", "ENF_INVALID_TOKEN"],
+    "guards": ["http_policy", "enforcement"]
+  },
   "steps": [
     "inspect_policy_context",
     "check_token_context",
     "review_request_boundary"
   ],
-  "trigger": {
-    "guards": [
-      "http_policy",
-      "enforcement"
-    ],
-    "reason_codes": [
-      "HTTP_POLICY_BLOCKED",
-      "ENF_NO_TOKEN",
-      "ENF_INVALID_TOKEN"
-    ]
-  },
-  "version": "1.0"
+  "notes": "Descriptive operator workflow labels only. No policy modification."
 }

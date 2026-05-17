@@ -10,9 +10,9 @@ from pathlib import Path
 from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-CURRENT_RELEASE = "v0.16.3_STABLE"
-CURRENT_BASE = "v0.16.2_STABLE"
-CURRENT_STATUS = "stable"
+CURRENT_RELEASE = "v0.15.9_CANDIDATE"
+CURRENT_BASE = "v0.15.8_STABLE"
+CURRENT_STATUS = "candidate"
 REGISTRY_PATH = PROJECT_ROOT / "registry" / "promotion_pipeline_registry.json"
 
 SURFACE_FILES = (
@@ -24,7 +24,7 @@ SURFACE_FILES = (
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.16.3_STABLE.md",
+    "docs/RELEASE_v0.15.9_CANDIDATE.md",
     "registry/promotion_pipeline_registry.json",
 )
 
@@ -69,10 +69,6 @@ def manifest_entries(root: Path | None = None) -> dict[str, dict[str, Any]]:
 
 def check_surface_tokens(root: Path | None = None) -> dict[str, Any]:
     project_root = root or PROJECT_ROOT
-    state = current_release_state(project_root)
-    expected_release = state["release"]
-    expected_base = state["base"]
-    expected_status = state["status"]
     missing_release: list[str] = []
     missing_base: list[str] = []
     missing_status: list[str] = []
@@ -82,12 +78,12 @@ def check_surface_tokens(root: Path | None = None) -> dict[str, Any]:
             missing_release.append(rel)
             continue
         text = path.read_text(encoding="utf-8")
-        if expected_release not in text:
+        if CURRENT_RELEASE not in text:
             missing_release.append(rel)
-        if rel != "RELEASE_MANIFEST.json" and expected_base not in text:
+        if rel != "RELEASE_MANIFEST.json" and CURRENT_BASE not in text:
             missing_base.append(rel)
-        if rel in ("RELEASE_METADATA.json", "RELEASE_STATUS.md", "VERSION.md", "docs/RELEASE_v0.16.3_STABLE.md", "registry/promotion_pipeline_registry.json"):
-            if expected_status not in text:
+        if rel in ("RELEASE_METADATA.json", "RELEASE_STATUS.md", "VERSION.md", "docs/RELEASE_v0.15.9_CANDIDATE.md", "registry/promotion_pipeline_registry.json"):
+            if CURRENT_STATUS not in text:
                 missing_status.append(rel)
     return {
         "ok": not missing_release and not missing_base and not missing_status,

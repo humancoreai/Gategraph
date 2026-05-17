@@ -78,9 +78,8 @@ def release_truth_surface_report(root: Path | None = None, surfaces: list[str] |
         # EDGE: Future-stable public-claim checks apply only while evaluating a Candidate.
         # After Stable promotion, the stable token is the legitimate current release claim.
         if (
-            truth.status == "stable"
+            truth.status == "candidate"
             and rel in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md"}
-            and truth.status == "candidate"
             and truth.future_stable != truth.base
             and truth.future_stable in text
         ):

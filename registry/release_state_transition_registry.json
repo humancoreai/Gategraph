@@ -10,11 +10,11 @@
   "authority": "descriptive_only",
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.16.2_STABLE",
+  "base": "v0.15.8_STABLE",
   "forbidden_transitions": [
     {
       "from": "stable",
-      "to": "stable_without_candidate_ci"
+      "to": "stable"
     },
     {
       "from": "stable",
@@ -22,13 +22,13 @@
     },
     {
       "from": "stable",
-      "to": "candidate"
+      "to": "stable_without_candidate_ci"
     }
   ],
-  "release": "v0.16.3_STABLE",
+  "release": "v0.15.9_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.3",
-  "status": "stable",
+  "schema_version": "0.15.9",
+  "status": "candidate",
   "surface_parity": {
     "allowed_differences": [
       "release",
@@ -37,7 +37,7 @@
       "zip_name",
       "manifest_kind"
     ],
-    "candidate_token": "CANDIDATE",
-    "stable_token": "v0.16.3_STABLE"
+    "candidate_token": "STABLE",
+    "stable_token": "STABLE"
   }
 }

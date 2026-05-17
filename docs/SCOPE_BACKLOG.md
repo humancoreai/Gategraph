@@ -1,11 +1,11 @@
 # GateGraph Scope Backlog
 
-Release: v0.16.3_STABLE
-Base: v0.16.2_STABLE
+Release: v0.15.9_CANDIDATE
+Base: v0.15.8_STABLE
 Status: stable
-Version: 0.16.3
-Phase: Release Surface Gate Robustness
-Release focus: Release Surface Gate Robustness
+Version: 0.15.9
+Phase: Public surface cleanup and review readiness
+Release focus: Public Surface / Review Readiness / Release Hygiene
 
 ## Purpose
 
@@ -42,4 +42,3 @@ Deferred items may enter scope only through a future Candidate with:
 - evidence test,
 - no silent runtime authority expansion,
 - human approval before Stable promotion.
-

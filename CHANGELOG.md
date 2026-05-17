@@ -2,14 +2,12 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.3_STABLE
+## v0.15.9_CANDIDATE
 
-Base: v0.16.2_STABLE
-
-Status: stable
-Status: stable
-Phase: Release Surface Gate Robustness
-Release focus: Release Surface Gate Robustness
+Status: candidate
+Base: v0.15.8_STABLE
+Phase: Evidence artifact hygiene and revocation negative-path hardening
+Release focus: Evidence Artifact Hygiene / Revocation Negative Path Hardening
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
@@ -19,7 +17,7 @@ Release focus: Release Surface Gate Robustness
 
 ## v0.14.7_STABLE
 
-State: stable.
+State: candidate.
 Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
