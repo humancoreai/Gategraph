@@ -8,7 +8,7 @@
   },
   "base": "v0.16.2_STABLE",
   "diff_baseline": "v0.16.2_STABLE",
-  "diff_current": "v0.16.3_CANDIDATE",
+  "diff_current": "v0.16.3_STABLE",
   "edge_types": [
     "depends_on",
     "validated_by",
@@ -98,7 +98,7 @@
     },
     {
       "from": "governance_lineage",
-      "to": "v0.16.3_CANDIDATE",
+      "to": "v0.16.3_STABLE",
       "type": "lineage_of"
     },
     {
@@ -192,7 +192,7 @@
       "path": "registry/governance_integrity_graph.json"
     }
   ],
-  "release": "v0.16.3_CANDIDATE",
+  "release": "v0.16.3_STABLE",
   "schema_version": "0.16.3",
-  "status": "candidate"
+  "status": "stable"
 }
