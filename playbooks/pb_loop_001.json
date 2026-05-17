@@ -1,14 +1,19 @@
 {
+  "notes": "Descriptive operator workflow labels only. No action authority.",
   "playbook_id": "PB-LOOP-001",
-  "version": "1.0",
-  "trigger": {
-    "reason_codes": ["RT_LOOP_DETECTED", "RT_REPEATED_ACTION"],
-    "guards": ["runtime_guard"]
-  },
   "steps": [
     "inspect_trace",
     "check_runtime_limits",
     "review_task_structure"
   ],
-  "notes": "Descriptive operator workflow labels only. No action authority."
+  "trigger": {
+    "guards": [
+      "runtime_guard"
+    ],
+    "reason_codes": [
+      "RT_LOOP_DETECTED",
+      "RT_REPEATED_ACTION"
+    ]
+  },
+  "version": "1.0"
 }
