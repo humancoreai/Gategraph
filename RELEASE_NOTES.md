@@ -1,12 +1,12 @@
-# Release Notes – v0.16.0_CANDIDATE
+# Release Notes – v0.16.0_STABLE
 
 Base: v0.15.9_STABLE  
-Status: candidate  
+Status: stable  
 Version: 0.16.0  
 
 ## Focus
 
-v0.16.0_CANDIDATE hardens replay/recovery determinism, runtime budget edge handling, release SSOT checks and semantic-boundary readiness surfaces.
+v0.16.0_STABLE hardens replay/recovery determinism, runtime budget edge handling, release SSOT checks and semantic-boundary readiness surfaces.
 
 ## Changes
 
