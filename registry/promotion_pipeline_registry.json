@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.16.0_STABLE",
+  "base": "v0.16.1_STABLE",
   "candidate_windows_ci_passed": true,
   "forbidden": [
     "stable_without_candidate_ci",
@@ -15,7 +15,7 @@
   "promotion_status_ssot_scope": true,
   "promotion_surface_matrix_scope": true,
   "registry_lock_rebuild_required": true,
-  "release": "v0.16.1_STABLE",
+  "release": "v0.16.2_CANDIDATE",
   "required_steps": [
     "candidate_surfaces_current",
     "candidate_release_doc_present",
@@ -25,7 +25,7 @@
     "stable_promotion_manual_only"
   ],
   "runtime_authority": false,
-  "schema_version": "0.16.1",
+  "schema_version": "0.16.2",
   "source_candidate": "v0.14.9_CANDIDATE",
-  "status": "stable"
+  "status": "candidate"
 }

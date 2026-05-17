@@ -8,10 +8,10 @@ ROOT = Path(__file__).resolve().parents[1]
 def main() -> int:
     meta = json.loads((ROOT / 'RELEASE_METADATA.json').read_text(encoding='utf-8'))
     release = meta['release']; version = meta['version']; base = meta['base']; status = meta['status']
-    assert release == 'v0.16.1_STABLE'
-    assert version == '0.16.1'
-    assert base == 'v0.16.0_STABLE'
-    assert status == 'stable'
+    assert release == 'v0.16.2_CANDIDATE'
+    assert version == '0.16.2'
+    assert base == 'v0.16.1_STABLE'
+    assert status == 'candidate'
     for name in ['README.md','VERSION.md','RELEASE_STATUS.md','RELEASE_NOTES.md']:
         text = (ROOT / name).read_text(encoding='utf-8')
         assert release in text, name
@@ -20,7 +20,8 @@ def main() -> int:
     readme = (ROOT / 'README.md').read_text(encoding='utf-8')
     assert release in readme
     assert base in readme
-    assert 'v0.16.1_CANDIDATE' not in readme
+    # Candidate surfaces may name the candidate itself, but must not claim its future stable as current.
+    assert meta.get('future_stable', 'v0.16.2_STABLE') not in readme
     print({'release_ssot_stable': {'release': release, 'base': base, 'status': status, 'manual_drift_surfaces': False}})
     print("Summary: {'passed': 1, 'failed': 0}")
     return 0

@@ -2,14 +2,14 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.1_STABLE
+## v0.16.2_CANDIDATE
 
-Base: v0.16.0_STABLE
-
-Status: stable
 Base: v0.16.1_STABLE
-Phase: Evidence artifact hygiene and revocation negative-path hardening
-Release focus: Evidence Artifact Hygiene / Revocation Negative Path Hardening
+
+Status: candidate
+Status: candidate
+Phase: Promotion Pipeline Status Token Hardening
+Release focus: Promotion Pipeline Status Token Hardening
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
