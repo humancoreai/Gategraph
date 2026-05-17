@@ -1,6 +1,6 @@
-# GateGraph v0.16.5_CANDIDATE
+# GateGraph v0.16.5_STABLE
 
-Base: v0.16.5_CANDIDATE
+Base: v0.16.5_STABLE
 Status: stable
 Version: 0.16.5
 Phase: Release truth centralization and evidence-maintainability cleanup

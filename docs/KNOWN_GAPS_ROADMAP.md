@@ -1,5 +1,5 @@
-# Known Gaps Roadmap – v0.16.5_CANDIDATE
-Current release context: v0.16.5_CANDIDATE.
+# Known Gaps Roadmap – v0.16.5_STABLE
+Current release context: v0.16.5_STABLE.
 
 
 ## Closed before / at v0.9.3
@@ -92,6 +92,6 @@ Release surface: v0.12.8_STABLE.
 Release surface: v0.14.7_STABLE.
 
 
-Release surface: v0.16.5_CANDIDATE.
+Release surface: v0.16.5_STABLE.
 Base stable: v0.14.7_STABLE.
 Phase: Recovery Replay Finality Hardening.

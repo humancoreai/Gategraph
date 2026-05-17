@@ -2,7 +2,7 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.5_CANDIDATE
+## v0.16.5_STABLE
 
 Base: v0.16.4_STABLE
 

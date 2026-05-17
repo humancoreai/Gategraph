@@ -25,7 +25,7 @@ def main() -> int:
     entries = {entry["test"] for entry in registry.get("entries", [])}
 
     checks: list[tuple[str, bool, dict]] = []
-    checks.append(check("metadata_current_candidate", metadata.get("release") == "v0.16.5_CANDIDATE" and metadata.get("base") == "v0.16.4_STABLE" and metadata.get("status") == "candidate", {"release": metadata.get("release"), "base": metadata.get("base"), "status": metadata.get("status")}))
+    checks.append(check("metadata_current_candidate", metadata.get("release") == "v0.16.5_STABLE" and metadata.get("base") == "v0.16.4_STABLE" and metadata.get("status") == "stable", {"release": metadata.get("release"), "base": metadata.get("base"), "status": metadata.get("status")}))
     checks.append(check("matrix_current_candidate", matrix.get("release") == metadata.get("release") and matrix.get("base") == metadata.get("base") and matrix.get("status") == metadata.get("status"), {"release": matrix.get("release"), "base": matrix.get("base"), "status": matrix.get("status")}))
     checks.append(check("descriptive_only_no_authority", not matrix.get("runtime_authority") and not matrix.get("auto_pruning") and not matrix.get("auto_repair") and not matrix.get("policy_mutation"), {"runtime_authority": matrix.get("runtime_authority"), "auto_pruning": matrix.get("auto_pruning"), "auto_repair": matrix.get("auto_repair"), "policy_mutation": matrix.get("policy_mutation")}))
     checks.append(check("tests_not_removed", matrix.get("tests_removed") is False and metadata.get("evidence_tests_removed") is False, {"matrix_tests_removed": matrix.get("tests_removed"), "metadata_tests_removed": metadata.get("evidence_tests_removed")}))

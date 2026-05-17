@@ -1,6 +1,6 @@
-# Evidence Profile Cleanup – v0.16.5_CANDIDATE
+# Evidence Profile Cleanup – v0.16.5_STABLE
 
-Release: v0.16.5_CANDIDATE  
+Release: v0.16.5_STABLE  
 Base: v0.16.4_STABLE  
 Status: stable  
 Version: 0.16.5  

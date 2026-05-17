@@ -1,9 +1,9 @@
 # GateGraph
 
-Current release: **v0.16.5_CANDIDATE**  
+Current release: **v0.16.5_STABLE**  
 Base: **v0.16.4_STABLE**  
 Base stable: **v0.16.4_STABLE**  
-Status: **candidate**  
+Status: **stable**  
 Version: **0.16.5**  
 Phase: **Evidence Profile Cleanup**  
 Release focus: **Evidence Profile Cleanup**
@@ -78,7 +78,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.16.5_CANDIDATE.md`
+- `docs/RELEASE_v0.16.5_STABLE.md`
 
 ## Security posture
 
