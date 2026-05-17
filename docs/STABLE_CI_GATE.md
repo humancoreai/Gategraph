@@ -1,7 +1,7 @@
 # Stable CI Gate
 
-Release: v0.16.0_CANDIDATE  
-Status: candidate  
+Release: v0.16.0_STABLE  
+Status: stable  
 Base: v0.14.7_STABLE
 
 ## Rule
