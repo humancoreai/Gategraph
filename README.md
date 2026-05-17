@@ -1,6 +1,6 @@
 # GateGraph
 
-Current release: **v0.16.6_CANDIDATE**  
+Current release: **v0.16.6_STABLE**  
 Base: **v0.16.5_STABLE**  
 Base stable: **v0.16.5_STABLE**  
 Status: **stable**  
@@ -78,7 +78,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.16.6_CANDIDATE.md`
+- `docs/RELEASE_v0.16.6_STABLE.md`
 
 ## Security posture
 

@@ -1,6 +1,6 @@
-# Evidence Profile Runtime Profiles – v0.16.6_CANDIDATE
+# Evidence Profile Runtime Profiles – v0.16.6_STABLE
 
-Release: v0.16.6_CANDIDATE  
+Release: v0.16.6_STABLE  
 Base: v0.16.5_STABLE  
 Status: stable  
 Version: 0.16.6  

@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.6_CANDIDATE"
+EXPECTED_RELEASE = "v0.16.6_STABLE"
 EXPECTED_BASE = "v0.16.5_STABLE"
-EXPECTED_STATUS = "candidate"
+EXPECTED_STATUS = "stable"
 
 
 def check(name: str, ok: bool, detail: object | None = None) -> dict:
@@ -26,8 +26,8 @@ def main() -> int:
     doc = (ROOT / "docs/EVIDENCE_MAINTAINABILITY.md").read_text(encoding="utf-8")
 
     checks = [
-        check("metadata_current_candidate", meta.get("release") == EXPECTED_RELEASE and meta.get("base") == EXPECTED_BASE and meta.get("status") == EXPECTED_STATUS, {"release": meta.get("release"), "base": meta.get("base"), "status": meta.get("status")}),
-        check("registry_current_candidate", reg.get("release") == EXPECTED_RELEASE and reg.get("base") == EXPECTED_BASE and reg.get("status") == EXPECTED_STATUS, reg),
+        check("metadata_current_release", meta.get("release") == EXPECTED_RELEASE and meta.get("base") == EXPECTED_BASE and meta.get("status") == EXPECTED_STATUS, {"release": meta.get("release"), "base": meta.get("base"), "status": meta.get("status")}),
+        check("registry_current_release", reg.get("release") == EXPECTED_RELEASE and reg.get("base") == EXPECTED_BASE and reg.get("status") == EXPECTED_STATUS, reg),
         check("descriptive_only_no_authority", not reg.get("runtime_authority") and not reg.get("auto_repair") and not reg.get("auto_pruning") and not reg.get("policy_mutation"), {k: reg.get(k) for k in ["runtime_authority", "auto_repair", "auto_pruning", "policy_mutation"]}),
         check("maintenance_concerns_declared", len(reg.get("maintenance_concerns", [])) >= 5, {"count": len(reg.get("maintenance_concerns", []))}),
         check("surfaces_manifested", not [p for p in reg.get("required_surfaces", []) if p not in manifest_paths], {"missing": [p for p in reg.get("required_surfaces", []) if p not in manifest_paths]}),

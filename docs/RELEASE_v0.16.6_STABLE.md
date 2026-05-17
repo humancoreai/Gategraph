@@ -1,7 +1,7 @@
-# GateGraph v0.16.6_CANDIDATE
+# GateGraph v0.16.6_STABLE
 
 Base: v0.16.5_STABLE
-Status: candidate
+Status: stable
 Version: 0.16.6
 Phase: Evidence Profile Runtime Profiles
 Release focus: Evidence Profile Runtime Profiles

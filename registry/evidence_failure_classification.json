@@ -50,8 +50,8 @@
   },
   "classification_mode": "descriptive_grouping_only",
   "mandatory_unclassified_fail_closed": true,
-  "release": "v0.16.6_CANDIDATE",
+  "release": "v0.16.6_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.6",
-  "status": "candidate"
+  "status": "stable"
 }

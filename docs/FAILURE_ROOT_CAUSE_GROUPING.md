@@ -1,6 +1,6 @@
 # Failure Root-Cause Grouping
 
-Release: v0.16.6_CANDIDATE  
+Release: v0.16.6_STABLE  
 Base: v0.14.7_STABLE
 
 This surface describes deterministic grouping of evidence failures. It is descriptive only. It does not repair files, promote releases, mutate policy, or change runtime authority.

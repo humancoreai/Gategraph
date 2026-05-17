@@ -1,12 +1,21 @@
 {
-  "auto_pruning": false,
   "auto_promotion": false,
+  "auto_pruning": false,
   "auto_repair": false,
   "base": "v0.16.5_STABLE",
   "mode": "descriptive_profile_execution_only",
   "policy_mutation": false,
   "profile_contract": "Profiles are scoped execution bundles for evidence ergonomics. They do not demote, delete, or bypass mandatory Stable gates.",
   "profiles": {
+    "core_runtime": [
+      "runtime_stress_evidence",
+      "session_budget_evidence",
+      "guard_orchestration_evidence",
+      "runtime_chain_order_evidence",
+      "cross_session_budget_evidence",
+      "operational_stability_evidence"
+    ],
+    "full_ci": "tests/evidence_ci.py remains the authoritative full validation path",
     "release_fast": [
       "evidence_runner_selftest",
       "release_integrity_evidence",
@@ -19,14 +28,6 @@
       "evidence_profile_cleanup_evidence",
       "evidence_runtime_profile_evidence"
     ],
-    "core_runtime": [
-      "runtime_stress_evidence",
-      "session_budget_evidence",
-      "guard_orchestration_evidence",
-      "runtime_chain_order_evidence",
-      "cross_session_budget_evidence",
-      "operational_stability_evidence"
-    ],
     "security_boundary": [
       "capability_token_hardening_evidence",
       "capability_token_redaction_evidence",
@@ -35,12 +36,11 @@
       "secret_api_integration_evidence",
       "http_policy_evidence",
       "security_finesse_evidence"
-    ],
-    "full_ci": "tests/evidence_ci.py remains the authoritative full validation path"
+    ]
   },
-  "release": "v0.16.6_CANDIDATE",
+  "release": "v0.16.6_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.6",
-  "status": "candidate",
+  "status": "stable",
   "tests_removed": false
 }
