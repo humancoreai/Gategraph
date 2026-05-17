@@ -10,9 +10,9 @@
     "CHANGELOG.md",
     "RELEASE_METADATA.json",
     "RELEASE_MANIFEST.json",
-    "docs/RELEASE_v0.16.7_CANDIDATE.md"
+    "docs/RELEASE_v0.16.7_STABLE.md"
   ],
-  "current_release_token": "v0.16.7_CANDIDATE",
+  "current_release_token": "v0.16.7_STABLE",
   "future_stable_allowed_contexts": [
     "registry/stable_promotion_surface_model.json",
     "docs/STABLE_SURFACE_SEPARATION.md"
@@ -21,8 +21,8 @@
   "mode": "descriptive_stable_surface_separation_only",
   "policy_mutation": false,
   "previous_stable_token": "v0.16.6_STABLE",
-  "release": "v0.16.7_CANDIDATE",
+  "release": "v0.16.7_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.7",
-  "status": "candidate"
+  "status": "stable"
 }

@@ -1,6 +1,6 @@
-# Release Status Token Centralization – v0.16.7_CANDIDATE
+# Release Status Token Centralization – v0.16.7_STABLE
 
-Release: v0.16.7_CANDIDATE  
+Release: v0.16.7_STABLE  
 Base: v0.16.6_STABLE  
 Status: stable  
 Version: 0.16.7  

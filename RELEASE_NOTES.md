@@ -1,13 +1,13 @@
-# Release Notes – v0.16.7_CANDIDATE
+# Release Notes – v0.16.7_STABLE
 
-Status: candidate  
+Status: stable  
 Base: v0.16.6_STABLE  
 Version: 0.16.7
 Phase: Release Status Token Centralization
 
 ## Focus
 
-v0.16.7_CANDIDATE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
+v0.16.7_STABLE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
 
 ## Changes
 

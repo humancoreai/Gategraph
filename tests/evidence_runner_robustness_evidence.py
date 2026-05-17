@@ -1,5 +1,5 @@
 """
-Evidence runner robustness validation for v0.16.7_CANDIDATE.
+Evidence runner robustness validation for v0.16.7_STABLE.
 """
 
 def validate_extra_env(extra_env):

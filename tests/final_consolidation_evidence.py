@@ -78,4 +78,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# Current release surface: v0.16.7_CANDIDATE
+# Current release surface: v0.16.7_STABLE

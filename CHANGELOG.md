@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.7_CANDIDATE
+## v0.16.7_STABLE
 
 Base: v0.16.6_STABLE
 
-Status: candidate
+Status: stable
 Phase: Release Status Token Centralization
 Release focus: Release Status Token Centralization
 
@@ -19,7 +19,7 @@ Release focus: Release Status Token Centralization
 ## v0.16.6_STABLE
 
 Base: v0.16.3_STABLE
-Status: candidate
+Status: stable
 Phase: Evidence Maintainability Hardening
 
 - Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
@@ -27,7 +27,7 @@ Phase: Evidence Maintainability Hardening
 
 ## v0.16.3_STABLE
 
-Status: candidate
+Status: stable
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.

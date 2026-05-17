@@ -68,9 +68,9 @@
       "replay_reference_integrity_evidence"
     ]
   },
-  "release": "v0.16.7_CANDIDATE",
+  "release": "v0.16.7_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.7",
-  "status": "candidate",
+  "status": "stable",
   "tests_removed": false
 }

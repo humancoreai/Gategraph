@@ -20,7 +20,7 @@
   "future_stable_token": "v0.16.7_STABLE",
   "mode": "descriptive_stable_promotion_surface_model_only",
   "policy_mutation": false,
-  "release": "v0.16.7_CANDIDATE",
+  "release": "v0.16.7_STABLE",
   "required_candidate_surfaces": [
     "README.md",
     "VERSION.md",
@@ -31,11 +31,11 @@
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.16.7_CANDIDATE.md"
+    "docs/RELEASE_v0.16.7_STABLE.md"
   ],
   "runtime_authority": false,
   "schema_version": "0.16.7",
   "stable_token": "v0.16.7_STABLE",
-  "status": "candidate",
+  "status": "stable",
   "status_sensitive_evidence": true
 }

@@ -1,8 +1,8 @@
 # Release Status Token Centralization
 
-Release: v0.16.7_CANDIDATE  
+Release: v0.16.7_STABLE  
 Base: v0.16.6_STABLE  
-Status: candidate
+Status: stable
 
 This surface documents a descriptive-only cleanup for release/status tokens. It does not add runtime authority, auto-promotion, policy mutation, or governance repair behavior.
 
