@@ -90,7 +90,7 @@
       ]
     }
   },
-  "release": "v0.16.3_CANDIDATE",
+  "release": "v0.16.3_STABLE",
   "schema_version": "0.16.3",
-  "status": "candidate"
+  "status": "stable"
 }

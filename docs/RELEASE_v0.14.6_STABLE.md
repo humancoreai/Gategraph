@@ -1,8 +1,8 @@
-# GateGraph v0.16.3_CANDIDATE
+# GateGraph v0.16.3_STABLE
 
 Status: stable  
 Base: v0.14.7_STABLE  
-Release: v0.16.3_CANDIDATE
+Release: v0.16.3_STABLE
 
 ## Scope
 
@@ -21,7 +21,7 @@ Promoted from v0.14.6_CANDIDATE after passing Windows Evidence CI.
 
 ## Release Claims
 
-Release: v0.16.3_CANDIDATE
+Release: v0.16.3_STABLE
 Base: v0.14.7_STABLE
 Status: stable
 Version: 0.14.8

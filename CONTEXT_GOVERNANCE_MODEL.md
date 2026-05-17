@@ -1,4 +1,4 @@
-# Context Governance Model — v0.16.3_CANDIDATE
+# Context Governance Model — v0.16.3_STABLE
 
 ## Scope
 
@@ -83,7 +83,7 @@ v0.11.9 does not claim to detect all prompt injection, context poisoning, fake a
 
 ## Release hygiene note
 
-This document is carried forward for v0.16.3_CANDIDATE as the current context-governance boundary reference.
+This document is carried forward for v0.16.3_STABLE as the current context-governance boundary reference.
 The version bump is formal documentation hygiene only; it does not introduce memory, semantic scoring,
 runtime authority, policy mutation, or enforcement behavior.
 

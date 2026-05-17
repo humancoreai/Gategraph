@@ -1,12 +1,12 @@
-# Release Notes – v0.16.3_CANDIDATE
+# Release Notes – v0.16.3_STABLE
 
 Base: v0.16.2_STABLE  
-Status: candidate  
+Status: stable  
 Version: 0.16.3  
 
 ## Focus
 
-v0.16.3_CANDIDATE hardens promotion-pipeline status-token checks so release surfaces, especially VERSION.md, cannot silently drift between candidate and stable semantics.
+v0.16.3_STABLE hardens promotion-pipeline status-token checks so release surfaces, especially VERSION.md, cannot silently drift between candidate and stable semantics.
 
 ## Changes
 

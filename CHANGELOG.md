@@ -2,12 +2,12 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.3_CANDIDATE
+## v0.16.3_STABLE
 
 Base: v0.16.2_STABLE
 
-Status: candidate
-Status: candidate
+Status: stable
+Status: stable
 Phase: Release Surface Gate Robustness
 Release focus: Release Surface Gate Robustness
 
@@ -19,7 +19,7 @@ Release focus: Release Surface Gate Robustness
 
 ## v0.14.7_STABLE
 
-State: candidate.
+State: stable.
 Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 

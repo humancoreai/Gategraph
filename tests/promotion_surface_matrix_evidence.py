@@ -2,9 +2,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.3_CANDIDATE"
+EXPECTED_RELEASE = "v0.16.3_STABLE"
 EXPECTED_BASE = "v0.16.2_STABLE"
-EXPECTED_STATUS = "candidate"
+EXPECTED_STATUS = "stable"
 EXPECTED_VERSION = "0.16.3"
 EXPECTED_PHASE = "Release Surface Gate Robustness"
 EXPECTED_FOCUS = "Release Surface Gate Robustness"
@@ -21,7 +21,7 @@ SURFACES = [
     "tools/verify_release.py",
     "registry/promotion_pipeline_registry.json",
     "registry/semantic_registry_lock.json",
-    "docs/RELEASE_v0.16.3_CANDIDATE.md",
+    "docs/RELEASE_v0.16.3_STABLE.md",
     "tests/promotion_surface_matrix_evidence.py",
     "tests/promotion_status_ssot_evidence.py",
 ]
@@ -61,7 +61,7 @@ def main():
         "VERSION.md",
         "RELEASE_STATUS.md",
         "RELEASE_NOTES.md",
-        "docs/RELEASE_v0.16.3_CANDIDATE.md",
+        "docs/RELEASE_v0.16.3_STABLE.md",
         "registry/promotion_pipeline_registry.json",
     ]
     missing_status = [rel for rel in required_status_surfaces if EXPECTED_STATUS not in read(rel)]

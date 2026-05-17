@@ -25,14 +25,14 @@ def main() -> int:
     report = release_truth_surface_report(ROOT, registry["checked_surfaces"])
 
     checks = []
-    checks.append(check("metadata_current_stable", truth.release == "v0.16.3_CANDIDATE" and truth.base == "v0.16.2_STABLE" and truth.status == "candidate", {"release": truth.release, "base": truth.base, "status": truth.status}))
+    checks.append(check("metadata_current_stable", truth.release == "v0.16.3_STABLE" and truth.base == "v0.16.2_STABLE" and truth.status == "stable", {"release": truth.release, "base": truth.base, "status": truth.status}))
     checks.append(check("truth_matches_metadata", truth.release == metadata["release"] and truth.base == metadata["base"] and truth.version == metadata["version"], {"truth": truth.__dict__, "metadata_release": metadata["release"]}))
     checks.append(check("surface_report_ok", report["ok"], report))
     checks.append(check(
         "future_stable_derivation_matches_status",
         truth.future_stable == "v0.16.3_STABLE"
-        and truth.status == "candidate"
-        and truth.future_stable != truth.release,
+        and truth.status == "stable"
+        and truth.future_stable == truth.release,
         {"future_stable": truth.future_stable, "release": truth.release, "status": truth.status}
     ))
     checks.append(check("registry_descriptive_only", registry.get("mode") == "descriptive_release_truth_centralization_only", {"mode": registry.get("mode")}))
