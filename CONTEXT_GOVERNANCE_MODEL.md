@@ -1,4 +1,4 @@
-# Context Governance Model — v0.16.2_STABLE
+# Context Governance Model — v0.12.0_STABLE
 
 ## Scope
 
@@ -79,12 +79,3 @@ GateGraph fails closed when:
 ## System limits
 
 v0.11.9 does not claim to detect all prompt injection, context poisoning, fake authority claims, or semantic manipulation. It only establishes deterministic structural boundaries so that such text cannot become authority by being included as context.
-
-
-## Release hygiene note
-
-This document is carried forward for v0.16.2_STABLE as the current context-governance boundary reference.
-The version bump is formal documentation hygiene only; it does not introduce memory, semantic scoring,
-runtime authority, policy mutation, or enforcement behavior.
-
-Base reference: v0.16.1_STABLE.

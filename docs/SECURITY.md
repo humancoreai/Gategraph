@@ -1,7 +1,3 @@
-# Security Notes — v0.16.2_STABLE
-
-Current public security surface: `v0.16.2_STABLE`. Base: `v0.16.1_STABLE`.
-
 # GateGraph Security Notes
 
 ## 1. Security posture

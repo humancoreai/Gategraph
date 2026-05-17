@@ -4,12 +4,14 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.2_STABLE"
-EXPECTED_BASE = "v0.16.1_STABLE"
+EXPECTED_RELEASE = "v0.15.9_CANDIDATE"
+EXPECTED_BASE = "v0.15.8_STABLE"
+
 
 def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
     print(("✓" if ok else "✗") + f" {name}: {detail}")
     return name, ok, detail
+
 
 def main() -> int:
     registry = json.loads((ROOT / "registry" / "release_state_transition_registry.json").read_text(encoding="utf-8"))
@@ -27,6 +29,7 @@ def main() -> int:
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})
     return 1 if failed else 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -1,11 +1,11 @@
-# gategraph-release = "v0.16.2_STABLE"
+# gategraph-release = "v0.15.9_CANDIDATE"
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "gategraph"
-version = "0.16.2"
+version = "0.15.9"
 description = "Deterministic governance layer for AI-assisted task execution."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -58,5 +58,5 @@ exclude = [
 
 
 
-# Base: v0.16.1_STABLE
+# Base: v0.15.8_STABLE
 # Status: stable

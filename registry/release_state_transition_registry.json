@@ -10,11 +10,11 @@
   "authority": "descriptive_only",
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.16.1_STABLE",
+  "base": "v0.15.8_STABLE",
   "forbidden_transitions": [
     {
       "from": "stable",
-      "to": "stable_without_candidate_ci"
+      "to": "stable"
     },
     {
       "from": "stable",
@@ -22,13 +22,13 @@
     },
     {
       "from": "stable",
-      "to": "candidate"
+      "to": "stable_without_candidate_ci"
     }
   ],
-  "release": "v0.16.2_STABLE",
+  "release": "v0.15.9_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.2",
-  "status": "stable",
+  "schema_version": "0.15.9",
+  "status": "candidate",
   "surface_parity": {
     "allowed_differences": [
       "release",
@@ -38,6 +38,6 @@
       "manifest_kind"
     ],
     "candidate_token": "STABLE",
-    "stable_token": "v0.16.2_STABLE"
+    "stable_token": "STABLE"
   }
 }
