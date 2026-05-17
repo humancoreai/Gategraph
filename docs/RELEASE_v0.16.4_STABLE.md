@@ -1,7 +1,7 @@
-# GateGraph v0.16.4_CANDIDATE
+# GateGraph v0.16.4_STABLE
 
 Base: v0.16.3_STABLE
-Status: candidate
+Status: stable
 Version: 0.16.4
 Phase: Evidence Maintainability Hardening
 Release focus: Evidence Maintainability Hardening

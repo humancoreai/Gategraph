@@ -1,6 +1,6 @@
 # GateGraph Scope Backlog
 
-Release: v0.16.4_CANDIDATE
+Release: v0.16.4_STABLE
 Base: v0.16.3_STABLE
 Status: stable
 Version: 0.16.4

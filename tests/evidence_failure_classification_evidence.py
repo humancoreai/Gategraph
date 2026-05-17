@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.4_CANDIDATE"
+EXPECTED_RELEASE = "v0.16.4_STABLE"
 EXPECTED_BASE = "v0.16.3_STABLE"
 
 def check(name: str, ok: bool, detail: dict | None = None) -> dict:
