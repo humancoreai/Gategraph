@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.16.2_STABLE",
+  "base": "v0.16.3_STABLE",
   "classes": {
     "P0": "Core invariants; fail closed, authority boundaries, runtime/enforcement, replay determinism, security boundaries.",
     "P1": "Structural integrity; release, registry, manifest, promotion, provenance and practical readiness surfaces.",
@@ -259,6 +259,15 @@
       "mutable_surface": false,
       "path": "tests/evidence_failure_classification_evidence.py",
       "test": "evidence_failure_classification_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/evidence_maintainability_evidence.py",
+      "test": "evidence_maintainability_evidence"
     },
     {
       "category": "structural_integrity",
@@ -828,6 +837,15 @@
       "test": "release_process_guard_evidence"
     },
     {
+      "category": "release_surface",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/release_ssot_candidate_evidence.py",
+      "test": "release_ssot_candidate_evidence"
+    },
+    {
       "category": "structural_integrity",
       "class": "P1",
       "criticality": "high",
@@ -844,6 +862,15 @@
       "mutable_surface": false,
       "path": "tests/release_surface_sync_evidence.py",
       "test": "release_surface_sync_evidence"
+    },
+    {
+      "category": "release_surface",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/release_truth_centralization_evidence.py",
+      "test": "release_truth_centralization_evidence"
     },
     {
       "category": "structural_integrity",
@@ -871,6 +898,15 @@
       "mutable_surface": false,
       "path": "tests/replay_recovery_consistency_evidence.py",
       "test": "replay_recovery_consistency_evidence"
+    },
+    {
+      "category": "replay_recovery",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/replay_recovery_hardening_evidence.py",
+      "test": "replay_recovery_hardening_evidence"
     },
     {
       "category": "core_invariant",
@@ -925,6 +961,15 @@
       "mutable_surface": false,
       "path": "tests/runtime_boundary_hardening_evidence.py",
       "test": "runtime_boundary_hardening_evidence"
+    },
+    {
+      "category": "runtime_budget",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/runtime_budget_edge_hardening_evidence.py",
+      "test": "runtime_budget_edge_hardening_evidence"
     },
     {
       "category": "core_invariant",
@@ -1035,6 +1080,15 @@
       "test": "semantic_boundary_evidence"
     },
     {
+      "category": "semantic_boundary",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/semantic_boundary_preparation_evidence.py",
+      "test": "semantic_boundary_preparation_evidence"
+    },
+    {
       "category": "core_invariant",
       "class": "P0",
       "criticality": "critical",
@@ -1116,6 +1170,15 @@
       "test": "stable_promotion_surface_model_evidence"
     },
     {
+      "category": "release_surface",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": true,
+      "mutable_surface": false,
+      "path": "tests/stable_surface_separation_evidence.py",
+      "test": "stable_surface_separation_evidence"
+    },
+    {
       "category": "structural_integrity",
       "class": "P1",
       "criticality": "high",
@@ -1195,66 +1258,12 @@
       "mutable_surface": false,
       "path": "tests/version_consistency_evidence.py",
       "test": "version_consistency_evidence"
-    },
-    {
-      "category": "release_surface",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/stable_surface_separation_evidence.py",
-      "test": "stable_surface_separation_evidence"
-    },
-    {
-      "category": "release_surface",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_truth_centralization_evidence.py",
-      "test": "release_truth_centralization_evidence"
-    },
-    {
-      "category": "replay_recovery",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/replay_recovery_hardening_evidence.py",
-      "test": "replay_recovery_hardening_evidence"
-    },
-    {
-      "category": "runtime_budget",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/runtime_budget_edge_hardening_evidence.py",
-      "test": "runtime_budget_edge_hardening_evidence"
-    },
-    {
-      "category": "release_surface",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": true,
-      "mutable_surface": false,
-      "path": "tests/release_ssot_candidate_evidence.py",
-      "test": "release_ssot_candidate_evidence"
-    },
-    {
-      "category": "semantic_boundary",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/semantic_boundary_preparation_evidence.py",
-      "test": "semantic_boundary_preparation_evidence"
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.16.3_STABLE",
+  "release": "v0.16.4_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.3",
-  "status": "stable",
-  "version": "0.16.3"
+  "schema_version": "0.16.4",
+  "status": "candidate",
+  "version": "0.16.4"
 }

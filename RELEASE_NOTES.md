@@ -1,12 +1,12 @@
-# Release Notes – v0.16.3_STABLE
+# Release Notes – v0.16.4_CANDIDATE
 
-Base: v0.16.2_STABLE  
-Status: stable  
-Version: 0.16.3  
+Base: v0.16.3_STABLE  
+Status: candidate  
+Version: 0.16.4  
 
 ## Focus
 
-v0.16.3_STABLE hardens promotion-pipeline status-token checks so release surfaces, especially VERSION.md, cannot silently drift between candidate and stable semantics.
+v0.16.4_CANDIDATE hardens promotion-pipeline status-token checks so release surfaces, especially VERSION.md, cannot silently drift between candidate and stable semantics.
 
 ## Changes
 
@@ -31,4 +31,4 @@ v0.16.3_STABLE hardens promotion-pipeline status-token checks so release surface
 - Semantic boundary markers are readiness/observability only and intentionally do not decide actions.
 
 
-Phase: Release Surface Gate Robustness
+Phase: Evidence Maintainability Hardening

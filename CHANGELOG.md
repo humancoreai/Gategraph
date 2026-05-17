@@ -2,14 +2,14 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.3_STABLE
+## v0.16.4_CANDIDATE
 
-Base: v0.16.2_STABLE
+Base: v0.16.3_STABLE
 
-Status: stable
-Status: stable
-Phase: Release Surface Gate Robustness
-Release focus: Release Surface Gate Robustness
+Status: candidate
+Status: candidate
+Phase: Evidence Maintainability Hardening
+Release focus: Evidence Maintainability Hardening
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.

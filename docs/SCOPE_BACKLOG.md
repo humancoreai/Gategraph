@@ -1,11 +1,11 @@
 # GateGraph Scope Backlog
 
-Release: v0.16.3_STABLE
-Base: v0.16.2_STABLE
+Release: v0.16.4_CANDIDATE
+Base: v0.16.3_STABLE
 Status: stable
-Version: 0.16.3
-Phase: Release Surface Gate Robustness
-Release focus: Release Surface Gate Robustness
+Version: 0.16.4
+Phase: Evidence Maintainability Hardening
+Release focus: Evidence Maintainability Hardening
 
 ## Purpose
 

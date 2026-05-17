@@ -1,10 +1,10 @@
-# GateGraph v0.16.3_STABLE
+# GateGraph v0.16.4_CANDIDATE
 
-Base: v0.16.2_STABLE
-Status: stable
-Version: 0.16.3
-Phase: Release Surface Gate Robustness
-Release focus: Release Surface Gate Robustness
+Base: v0.16.3_STABLE
+Status: candidate
+Version: 0.16.4
+Phase: Evidence Maintainability Hardening
+Release focus: Evidence Maintainability Hardening
 
 ## Scope
 

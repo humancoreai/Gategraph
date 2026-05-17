@@ -4,17 +4,17 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.3_STABLE"
-EXPECTED_BASE = "v0.16.2_STABLE"
-EXPECTED_STATUS = "stable"
-EXPECTED_PHASE = "Release Surface Gate Robustness"
+EXPECTED_RELEASE = "v0.16.4_CANDIDATE"
+EXPECTED_BASE = "v0.16.3_STABLE"
+EXPECTED_STATUS = "candidate"
+EXPECTED_PHASE = "Evidence Maintainability Hardening"
 SURFACES = [
     "README.md",
     "VERSION.md",
     "RELEASE_NOTES.md",
     "RELEASE_STATUS.md",
     "CHANGELOG.md",
-    "docs/RELEASE_v0.16.3_STABLE.md",
+    "docs/RELEASE_v0.16.4_CANDIDATE.md",
 ]
 
 
@@ -51,7 +51,7 @@ def main() -> int:
     checks.append(check("no_authority_expansion_claims", not forbidden_runtime_claims, {"violations": forbidden_runtime_claims}))
 
     manifest_paths = {entry["path"] for entry in manifest.get("files", [])}
-    checks.append(check("release_doc_manifested", "docs/RELEASE_v0.16.3_STABLE.md" in manifest_paths, {"present": "docs/RELEASE_v0.16.3_STABLE.md" in manifest_paths}))
+    checks.append(check("release_doc_manifested", "docs/RELEASE_v0.16.4_CANDIDATE.md" in manifest_paths, {"present": "docs/RELEASE_v0.16.4_CANDIDATE.md" in manifest_paths}))
     checks.append(check("evidence_manifested", "tests/release_claim_consistency_evidence.py" in manifest_paths, {"present": "tests/release_claim_consistency_evidence.py" in manifest_paths}))
 
     failed = [name for name, ok, _ in checks if not ok]

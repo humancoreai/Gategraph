@@ -1,0 +1,23 @@
+{
+  "auto_pruning": false,
+  "auto_repair": false,
+  "base": "v0.16.3_STABLE",
+  "maintenance_concerns": [
+    "duplicate_release_surface_assertions",
+    "fragile_text_token_assertions",
+    "registry_manifest_drift",
+    "candidate_stable_semantic_coupling",
+    "evidence_overlap_visibility"
+  ],
+  "mode": "descriptive_evidence_maintainability_only",
+  "policy_mutation": false,
+  "release": "v0.16.4_CANDIDATE",
+  "required_surfaces": [
+    "docs/EVIDENCE_MAINTAINABILITY.md",
+    "tests/evidence_maintainability_evidence.py",
+    "registry/evidence_maintainability_registry.json"
+  ],
+  "runtime_authority": false,
+  "schema_version": "0.16.4",
+  "status": "candidate"
+}

@@ -1,8 +1,8 @@
-# GateGraph v0.16.3_STABLE
+# GateGraph v0.16.4_CANDIDATE
 
-Base: v0.16.3_STABLE
+Base: v0.16.4_CANDIDATE
 Status: stable
-Version: 0.16.3
+Version: 0.16.4
 
 ## Scope
 
@@ -39,4 +39,4 @@ Passed: True
 - Semantic-boundary infrastructure is observability-only.
 
 
-Phase: Release Surface Gate Robustness
+Phase: Evidence Maintainability Hardening
