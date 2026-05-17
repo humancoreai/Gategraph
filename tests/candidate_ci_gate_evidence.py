@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.1_STABLE"
-EXPECTED_BASE = "v0.16.0_STABLE"
+EXPECTED_RELEASE = "v0.16.2_CANDIDATE"
+EXPECTED_BASE = "v0.16.1_STABLE"
 
 
 def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
@@ -17,7 +17,7 @@ def main() -> int:
     metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
     registry = json.loads((ROOT / "registry" / "release_state_transition_registry.json").read_text(encoding="utf-8"))
     checks = []
-    checks.append(check("stable_release_state", metadata.get("release") == EXPECTED_RELEASE and metadata.get("status") == "stable", {"release": metadata.get("release"), "status": metadata.get("status")}))
+    checks.append(check("stable_release_state", metadata.get("release") == EXPECTED_RELEASE and metadata.get("status") == "candidate", {"release": metadata.get("release"), "status": metadata.get("status")}))
     checks.append(check("stable_base_is_previous_stable", metadata.get("base") == EXPECTED_BASE, {"base": metadata.get("base")}))
     checks.append(check("candidate_ci_gate_scope_declared", metadata.get("candidate_ci_gate_scope") is True, {"scope": metadata.get("candidate_ci_gate_scope")}))
     allowed = registry.get("allowed_transitions", [])

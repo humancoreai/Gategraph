@@ -1,12 +1,12 @@
-# Release Notes – v0.16.1_STABLE
+# Release Notes – v0.16.2_CANDIDATE
 
-Base: v0.16.0_STABLE  
-Status: stable  
-Version: 0.16.1  
+Base: v0.16.1_STABLE  
+Status: candidate  
+Version: 0.16.2  
 
 ## Focus
 
-v0.16.1_STABLE hardens replay/recovery determinism, runtime budget edge handling, release SSOT checks and semantic-boundary readiness surfaces.
+v0.16.2_CANDIDATE hardens promotion-pipeline status-token checks so release surfaces, especially VERSION.md, cannot silently drift between candidate and stable semantics.
 
 ## Changes
 
@@ -31,4 +31,4 @@ v0.16.1_STABLE hardens replay/recovery determinism, runtime budget edge handling
 - Semantic boundary markers are readiness/observability only and intentionally do not decide actions.
 
 
-Phase: Evidence artifact hygiene and revocation negative-path hardening
+Phase: Promotion Pipeline Status Token Hardening

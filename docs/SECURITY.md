@@ -1,6 +1,6 @@
-# Security Notes — v0.16.1_STABLE
+# Security Notes — v0.16.2_CANDIDATE
 
-Current public security surface: `v0.16.1_STABLE`. Base: `v0.16.0_STABLE`.
+Current public security surface: `v0.16.2_CANDIDATE`. Base: `v0.16.1_STABLE`.
 
 # GateGraph Security Notes
 
