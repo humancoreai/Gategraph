@@ -1,6 +1,6 @@
 {
   "auto_repair": false,
-  "base": "v0.15.8_STABLE",
+  "base": "v0.15.9_STABLE",
   "dynamic_loading": false,
   "evidence": [
     {
@@ -105,7 +105,7 @@
       "depends_on": [
         "registry/release_state_transition_registry.json",
         "RELEASE_MANIFEST.json",
-        "docs/RELEASE_v0.15.9_STABLE.md"
+        "docs/RELEASE_v0.16.0_CANDIDATE.md"
       ],
       "deterministic": true,
       "evidence_id": "promotion_surface_symmetry_evidence",
@@ -179,7 +179,7 @@
     }
   ],
   "policy_mutation": false,
-  "release": "v0.15.9_STABLE",
+  "release": "v0.16.0_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.15.9"
+  "schema_version": "0.16.0"
 }
