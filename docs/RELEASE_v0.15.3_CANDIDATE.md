@@ -1,8 +1,8 @@
-# GateGraph v0.16.0_STABLE
+# GateGraph v0.16.1_CANDIDATE
 
-Base: v0.16.0_STABLE
-Status: stable
-Version: 0.16.0
+Base: v0.16.1_STABLE
+Status: candidate
+Version: 0.16.1
 Phase: Release truth centralization and evidence-maintainability cleanup
 Release focus: Release Truth Centralization / Evidence Maintainability / Drift Reduction
 
