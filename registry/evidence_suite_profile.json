@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_pruning": false,
-  "base": "v0.16.3_STABLE",
+  "base": "v0.16.4_STABLE",
   "mandatory_for_stable": [
     "evidence_runner_selftest",
     "release_integrity_evidence",
@@ -51,8 +51,8 @@
       "fresh_clone_surface_validation_evidence"
     ]
   },
-  "release": "v0.16.4_STABLE",
+  "release": "v0.16.5_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.4",
-  "status": "stable"
+  "schema_version": "0.16.5",
+  "status": "candidate"
 }

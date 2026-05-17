@@ -55,11 +55,14 @@ def main() -> None:
     missing = [name for name in REQUIRED_ROOT if not (ROOT / name).exists()]
     assert not missing, f"missing required release entries: {missing}"
 
+    import json
     version = (ROOT / "VERSION.md").read_text(encoding="utf-8")
     status = (ROOT / "RELEASE_STATUS.md").read_text(encoding="utf-8")
-    assert "v0.16.4_STABLE" in version
-    assert "v0.16.4_STABLE" in version
-    assert "Evidence artifact hygiene and revocation negative-path hardening" in status
+    metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
+    assert metadata["release"] in version
+    assert metadata["release"] in status
+    assert metadata["base"] in status
+    assert metadata["phase"] in status
 
     manifest = (ROOT / "tests" / "evidence_ci.py").read_text(encoding="utf-8")
     missing_evidence = [name for name in REQUIRED_EVIDENCE if name not in manifest]
@@ -75,4 +78,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# Current release surface: v0.16.4_STABLE
+# Current release surface: v0.16.5_CANDIDATE

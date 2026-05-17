@@ -2,20 +2,41 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.4_STABLE
+## v0.16.5_CANDIDATE
 
-Base: v0.16.3_STABLE
+Base: v0.16.4_STABLE
 
-Status: stable
-Status: stable
-Phase: Evidence Maintainability Hardening
-Release focus: Evidence Maintainability Hardening
+Status: candidate
+Phase: Evidence Profile Cleanup
+Release focus: Evidence Profile Cleanup
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
 - Added public-surface cleanup, scope-backlog and review-readiness evidence.
 - Preserved build-mutation hardening from v0.14.9.
 - No runtime/governance/enforcement authority expansion.
+
+## v0.16.4_STABLE
+
+Base: v0.16.3_STABLE
+Status: stable
+Phase: Evidence Maintainability Hardening
+
+- Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
+- Preserved governance/runtime/enforcement behavior.
+
+## v0.16.3_STABLE
+
+Status: stable
+
+- Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
+- No governance/runtime/enforcement authority expansion.
+
+## v0.15.x_STABLE line
+
+- Consolidated public-surface cleanup, structural-risk hardening and single-node readiness evidence.
+- Kept Multi-Node work deferred; no distributed trust fabric added.
+
 
 ## v0.14.7_STABLE
 

@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.16.4_STABLE"
-BASE = "v0.16.3_STABLE"
+VERSION = "v0.16.5_CANDIDATE"
+BASE = "v0.16.4_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -60,6 +60,7 @@ REQUIRED_RELEASE_FILES = {
     "docs/PUBLIC_REPO_HYGIENE.md",
     "docs/FRESH_CLONE_REPRODUCIBILITY.md",
     "docs/QUICKSTART.md",
+    "docs/GITHUB_REPOSITORY_METADATA.md",
     "tests/packaging_integrity_evidence.py",
     "docs/DEPLOYMENT_BOUNDARY.md",
     "docs/PRACTICAL_SINGLE_NODE_SCENARIO.md",
@@ -110,7 +111,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.16.4_STABLE.md",
+    "docs/RELEASE_v0.16.5_CANDIDATE.md",
     "tests/release_claim_consistency_evidence.py",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
@@ -122,7 +123,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_provenance_evidence.py",
     "gategraph/context/context_lifecycle.py",
     "docs/CONTEXT_LIFECYCLE_MODEL.md",
-    "docs/RELEASE_v0.16.4_STABLE.md",
+    "docs/RELEASE_v0.16.5_CANDIDATE.md",
     "tests/context_lifecycle_evidence.py",
     "tests/context_replay_explain_boundary_evidence.py",
     "tests/context_freeze_coupling_evidence.py",
@@ -140,8 +141,8 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.16.4_STABLE.md",
-    "docs/RELEASE_v0.16.4_STABLE.md",
+    "docs/RELEASE_v0.16.5_CANDIDATE.md",
+    "docs/RELEASE_v0.16.5_CANDIDATE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -167,11 +168,11 @@ REQUIRED_RELEASE_FILES = {
     "registry/invariant_surface_registry.json",
     "tests/semantic_registry_lock_evidence.py",
     "tests/release_manifest_coverage_evidence.py",
-    "docs/RELEASE_v0.16.4_STABLE.md",
-    "docs/RELEASE_v0.16.4_STABLE.md",
+    "docs/RELEASE_v0.16.5_CANDIDATE.md",
+    "docs/RELEASE_v0.16.5_CANDIDATE.md",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.16.4_STABLE.md",
+    "docs/RELEASE_v0.16.5_CANDIDATE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",
@@ -212,6 +213,9 @@ REQUIRED_RELEASE_FILES = {
     "docs/EVIDENCE_MAINTAINABILITY.md",
     "registry/evidence_maintainability_registry.json",
     "tests/evidence_maintainability_evidence.py",
+    "tests/evidence_profile_cleanup_evidence.py",
+    "registry/evidence_overlap_matrix.json",
+    "docs/EVIDENCE_PROFILE_CLEANUP.md",
 }
 
 
@@ -296,11 +300,11 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "version": "0.16.4",
+        "version": "0.16.5",
         "kind": "candidate_release",
-        "scope": "evidence_maintainability_hardening",
+        "scope": "evidence_profile_cleanup",
         "deterministic_packaging": True,
         "file_count": len(entries),
         "files": entries,
@@ -339,9 +343,9 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "phase": "Evidence Maintainability Hardening",
+        "phase": "Evidence Profile Cleanup",
         "evidence_failure_classification_scope": True,
         "practical_single_node_scenario_scope": True,
         "github_actions_runtime_authority": False,
@@ -461,11 +465,11 @@ def main() -> int:
         existing_metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
         existing_metadata.update(metadata)
         metadata = existing_metadata
-    metadata["version"] = "0.16.4"
+    metadata["version"] = "0.16.5"
     metadata["candidate_ci_passed"] = False
     metadata["stable_promotion_completed"] = False
     metadata["stable_promotion_surface_model_status_sensitive"] = True
-    metadata["release_focus"] = "Evidence Maintainability Hardening"
+    metadata["release_focus"] = "Evidence Profile Cleanup"
     metadata["promotion_status_ssot_scope"] = True
     metadata["promotion_surface_matrix_scope"] = True
     metadata["registry_lock_rebuild_scope"] = True
@@ -489,11 +493,11 @@ def main() -> int:
     metadata["public_surface_cleanup_scope"] = True
     metadata.update({
         "release": VERSION,
-        "status": "stable",
+        "status": "candidate",
         "base": BASE,
-        "version": "0.16.4",
-        "phase": "Evidence Maintainability Hardening",
-        "release_focus": "Evidence Maintainability Hardening",
+        "version": "0.16.5",
+        "phase": "Evidence Profile Cleanup",
+        "release_focus": "Evidence Profile Cleanup",
         "public_surface_cleanup_scope": True,
         "review_readiness_scope": True,
         "external_review_surface_scope": True,
@@ -505,6 +509,11 @@ def main() -> int:
         "production_boundary_unchanged": True,
         "promotion_status_ssot_scope": True,
         "promotion_surface_matrix_scope": True
+        ,"evidence_profile_cleanup_scope": True,
+        "evidence_overlap_matrix_scope": True,
+        "evidence_deduplication_proposal_only": True,
+        "evidence_auto_pruning": False,
+        "evidence_tests_removed": False
     })
     write_json(ROOT / "RELEASE_METADATA.json", metadata)
 
@@ -533,6 +542,6 @@ if __name__ == "__main__":
         print(json.dumps({"ok": False, "error": str(exc)}, indent=2), file=sys.stderr)
         raise SystemExit(1)
 
-# RELEASE_BASE = "v0.16.3_STABLE"
+# RELEASE_BASE = "v0.16.4_STABLE"
 
-# Base: v0.16.3_STABLE
+# Base: v0.16.4_STABLE

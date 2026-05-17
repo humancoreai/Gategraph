@@ -46,6 +46,11 @@ def main() -> int:
             assert "task/scope" in security.get("replay_boundary", "")
         checked.append(path.name)
     notes = (ROOT / "RELEASE_NOTES.md").read_text(encoding="utf-8")
+    metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
+    assert metadata["new_governance_features"] is False
+    assert metadata["new_runtime_capability"] is False
+    assert metadata["semantic_context_scoring"] is False
+    assert metadata["memory_system"] is False
     assert "No governance logic change" in notes
     assert "No runtime/enforcement behavior change" in notes
     assert "No autonomous policy update" in notes

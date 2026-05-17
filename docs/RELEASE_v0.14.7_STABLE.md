@@ -1,6 +1,6 @@
-# GateGraph v0.16.4_STABLE Release Notes
+# GateGraph v0.16.5_CANDIDATE Release Notes
 
-Release: v0.16.4_STABLE  
+Release: v0.16.5_CANDIDATE  
 Status: stable  
 Base: v0.14.7_STABLE  
 Version: 0.14.8
@@ -8,7 +8,7 @@ Phase: Install / Packaging / Public Repo Hygiene
 
 ## Scope
 
-v0.16.4_STABLE hardens release/evidence determinism without changing governance, runtime authority, enforcement logic, or policy behavior.
+v0.16.5_CANDIDATE hardens release/evidence determinism without changing governance, runtime authority, enforcement logic, or policy behavior.
 
 ## Candidate Focus
 

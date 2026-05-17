@@ -1,27 +1,11 @@
-# GateGraph Release Status
+# Release Status
 
-Release: v0.16.4_STABLE
-Base: v0.16.3_STABLE
-Status: stable
-Version: 0.16.4
-Phase: Evidence Maintainability Hardening
+Release: v0.16.5_CANDIDATE
+Status: candidate
+Base: v0.16.4_STABLE
+Version: 0.16.5
 
-Candidate scope:
-- Replay/recovery hardening.
-- Runtime/budget edge hardening.
-- Release SSOT/surface synchronization.
-- Semantic boundary preparation without enforcement authority.
+Candidate focus: Evidence Profile Cleanup.
+Phase: Evidence Profile Cleanup
 
-Release gate:
-- Windows Evidence CI remains final promotion authority.
-- Stable promotion completed after candidate CI Passed: True.
-
-Invariant status:
-- No runtime authority expansion.
-- No autonomous policy mutation.
-- No auto-repair or auto-promotion.
-- Enforcement remains the only action boundary.
-- Evidence registry is descriptive only.
-
-
-Phase: Evidence artifact hygiene and revocation negative-path hardening
+Stable promotion requires a full Windows Evidence CI pass and manual approval.

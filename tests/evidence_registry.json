@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.16.3_STABLE",
+  "base": "v0.16.4_STABLE",
   "classes": {
     "P0": "Core invariants; fail closed, authority boundaries, runtime/enforcement, replay determinism, security boundaries.",
     "P1": "Structural integrity; release, registry, manifest, promotion, provenance and practical readiness surfaces.",
@@ -61,6 +61,15 @@
       "mutable_surface": false,
       "path": "tests/artifact_determinism_evidence.py",
       "test": "artifact_determinism_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/artifact_surface_hygiene_evidence.py",
+      "test": "artifact_surface_hygiene_evidence"
     },
     {
       "category": "structural_integrity",
@@ -268,6 +277,15 @@
       "mutable_surface": false,
       "path": "tests/evidence_maintainability_evidence.py",
       "test": "evidence_maintainability_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/evidence_profile_cleanup_evidence.py",
+      "test": "evidence_profile_cleanup_evidence"
     },
     {
       "category": "structural_integrity",
@@ -1261,9 +1279,9 @@
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.16.4_STABLE",
+  "release": "v0.16.5_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.4",
-  "status": "stable",
-  "version": "0.16.4"
+  "schema_version": "0.16.5",
+  "status": "candidate",
+  "version": "0.16.5"
 }

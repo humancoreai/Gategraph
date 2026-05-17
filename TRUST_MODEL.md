@@ -1,7 +1,7 @@
 # GateGraph Trust Model
 
-Version: v0.16.4_STABLE  
-Base: v0.16.4_STABLE  
+Version: v0.16.5_CANDIDATE  
+Base: v0.16.5_CANDIDATE  
 Scope: caller trust boundary and release integrity clarification
 
 ## 1. Purpose

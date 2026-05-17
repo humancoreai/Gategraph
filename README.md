@@ -1,12 +1,12 @@
 # GateGraph
 
-Current release: **v0.16.4_STABLE**  
-Base: **v0.16.3_STABLE**  
-Base stable: **v0.16.3_STABLE**  
-Status: **stable**  
-Version: **0.16.4**  
-Phase: **Evidence Maintainability Hardening**  
-Release focus: **Evidence Maintainability Hardening**
+Current release: **v0.16.5_CANDIDATE**  
+Base: **v0.16.4_STABLE**  
+Base stable: **v0.16.4_STABLE**  
+Status: **candidate**  
+Version: **0.16.5**  
+Phase: **Evidence Profile Cleanup**  
+Release focus: **Evidence Profile Cleanup**
 
 GateGraph is a deterministic governance layer for AI-agent actions. It evaluates requested actions before execution, produces bounded governance decisions, and keeps execution authority outside the model.
 
@@ -46,23 +46,24 @@ Out of scope for the current release:
 
 ## Quickstart
 
+First verify the local package and supported command surfaces:
+
+```powershell
+python tests\fresh_clone_reproducibility_evidence.py
+python tests\single_node_cli_evidence.py
+```
+
+Then run the full evidence suite before treating a candidate as release-ready:
+
 ```powershell
 python tests\evidence_ci.py
 ```
 
-Expected result:
+Expected evidence result:
 
 ```text
 CI EVIDENCE REPORT
 Passed: True
-```
-
-For a first practical local check, use:
-
-```powershell
-python tests\fresh_clone_reproducibility_evidence.py
-python tests\promotion_surface_matrix_evidence.py
-python tests\release_process_guard_evidence.py
 ```
 
 ## Review surfaces
@@ -77,7 +78,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.16.4_STABLE.md`
+- `docs/RELEASE_v0.16.5_CANDIDATE.md`
 
 ## Security posture
 
@@ -92,15 +93,8 @@ Apache-2.0.
 
 Canonical runtime namespace: `gategraph`.
 
-Legacy or compatibility surfaces must not be presented as the canonical runtime namespace.
+`src/` package is the canonical runtime/governance surface. `gategraph/context/` package is a bounded context-governance extension layer and must not become an alternative governance or execution path.
 
-`src/` package is the canonical runtime/governance surface
+## Security mapping
 
-OWASP_AGENTIC_AI_MAPPING.md
-
-`gategraph/context/` package is a bounded context-governance extension layer
-
-The bounded context-governance extension layer must not become an alternative governance or execution path.
-
-
-Phase: Evidence artifact hygiene and revocation negative-path hardening
+`OWASP_AGENTIC_AI_MAPPING.md` is a descriptive mapping from GateGraph evidence surfaces to agentic-AI risk categories. It is a review aid, not a compliance certification or normative policy source.

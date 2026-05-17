@@ -1,6 +1,6 @@
 # GateGraph Quickstart
 
-Release: v0.16.4_STABLE  
+Release: v0.16.5_CANDIDATE  
 Base: v0.14.7_STABLE  
 Status: stable
 
@@ -25,3 +25,17 @@ This release is intended for local single-node verification and repository revie
 ## Hygiene expectations
 
 Do not commit runtime databases, generated evidence outputs, local ZIPs, CSV simulation artifacts, secrets or machine-specific IDE directories.
+
+
+## Local smoke check
+
+```powershell
+python tests\fresh_clone_reproducibility_evidence.py
+python tests\single_node_cli_evidence.py
+```
+
+## Full evidence suite
+
+```powershell
+python tests\evidence_ci.py
+```

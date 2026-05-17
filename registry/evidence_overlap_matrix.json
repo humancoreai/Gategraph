@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.16.5",
+  "release": "v0.16.5_CANDIDATE",
+  "base": "v0.16.4_STABLE",
+  "status": "candidate",
+  "mode": "descriptive_overlap_visibility_only",
+  "runtime_authority": false,
+  "auto_pruning": false,
+  "auto_repair": false,
+  "policy_mutation": false,
+  "tests_removed": false,
+  "cleanup_rule": "No evidence gate is removed or demoted unless its invariant, surface, and exclusive coverage are mapped first.",
+  "profiles": {
+    "core": [
+      "runtime_stress_evidence",
+      "session_budget_evidence",
+      "guard_orchestration_evidence",
+      "runtime_chain_order_evidence",
+      "capability_token_hardening_evidence",
+      "token_exposure_evidence",
+      "http_policy_evidence"
+    ],
+    "release_surface": [
+      "version_consistency_evidence",
+      "release_surface_sync_evidence",
+      "release_claim_consistency_evidence",
+      "release_process_guard_evidence",
+      "promotion_status_ssot_evidence",
+      "promotion_surface_matrix_evidence",
+      "candidate_stable_surface_parity_evidence",
+      "promotion_surface_symmetry_evidence",
+      "stable_surface_separation_evidence",
+      "stable_promotion_surface_model_evidence"
+    ],
+    "artifact_reproducibility": [
+      "release_integrity_evidence",
+      "packaging_integrity_evidence",
+      "artifact_determinism_evidence",
+      "artifact_surface_hygiene_evidence",
+      "fresh_clone_surface_validation_evidence",
+      "fresh_clone_reproducibility_evidence",
+      "public_repo_hygiene_evidence"
+    ],
+    "semantic_context_replay": [
+      "semantic_registry_evidence",
+      "semantic_drift_detection_evidence",
+      "governance_semantics_evidence",
+      "context_poisoning_evidence",
+      "instruction_data_separation_evidence",
+      "context_provenance_evidence",
+      "context_lifecycle_evidence",
+      "context_replay_explain_boundary_evidence",
+      "replay_reference_integrity_evidence"
+    ]
+  },
+  "overlap_candidates": [
+    {
+      "group": "release_surface",
+      "risk": "high_churn_exact_string_assertions",
+      "action": "map_exclusive_assertions_before_merge",
+      "safe_to_delete_now": false
+    },
+    {
+      "group": "artifact_reproducibility",
+      "risk": "manifest_and_disk_hash_assertion_overlap",
+      "action": "split_fast_release_profile_from_full_reproducibility_profile",
+      "safe_to_delete_now": false
+    },
+    {
+      "group": "semantic_context_replay",
+      "risk": "boundary_semantics_asserted_across_multiple_tests",
+      "action": "keep_core_boundary_gates_until multi_node trust model exists",
+      "safe_to_delete_now": false
+    }
+  ]
+}

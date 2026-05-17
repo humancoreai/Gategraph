@@ -1,34 +1,41 @@
-# Release Notes – v0.16.4_STABLE
+# Release Notes – v0.16.5_CANDIDATE
 
-Base: v0.16.3_STABLE  
-Status: stable  
-Version: 0.16.4  
+Status: candidate  
+Base: v0.16.4_STABLE  
+Version: 0.16.5
+Phase: Evidence Profile Cleanup
 
 ## Focus
 
-v0.16.4_STABLE hardens promotion-pipeline status-token checks so release surfaces, especially VERSION.md, cannot silently drift between candidate and stable semantics.
+v0.16.5_CANDIDATE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
 
 ## Changes
 
-- Added deterministic replay/recovery hardening evidence for interrupted promotion recovery, partial archive reconstruction, degraded escalation replay, release-boundary replay and incomplete reservation release recovery.
-- Added runtime/budget edge evidence for reservation-release races, throttling fairness, cross-session edge cases and repeated recovery attempts.
-- Added candidate release SSOT evidence for README, VERSION, RELEASE_STATUS and RELEASE_METADATA alignment.
-- Added semantic boundary preparation evidence with observability-only uncertainty and unverifiable-state markers.
-- Kept Semantic Registry surfaces descriptive and locked to release evidence only.
-- Kept all semantic markers proposal-only/descriptive; no enforcement effect.
+- Adds an evidence overlap matrix as a descriptive review surface.
+- Adds a cleanup evidence gate that proves overlap visibility remains non-authoritative.
+- Keeps all existing Evidence CI gates intact for this candidate.
 
-## Explicit non-changes
+## Non-scope
+
+- No automatic evidence pruning.
+- No runtime authority changes.
+- No governance policy mutation.
+- No Multi-Node implementation.
+
+
+## Runtime / governance boundary
 
 - No governance logic change.
 - No runtime/enforcement behavior change.
 - No autonomous policy update.
 - No semantic scoring or memory system.
-- No distributed consensus or multi-node revocation.
 
-## Known limitations
+## Reviewer-result handling
 
-- Candidate requires Windows Evidence CI validation before stable promotion.
-- Semantic boundary markers are readiness/observability only and intentionally do not decide actions.
+- README quickstart now separates basic local checks from the full evidence suite.
+- `OWASP_AGENTIC_AI_MAPPING.md` is described as a non-normative review mapping.
+- Release history remains visible through `CHANGELOG.md`; detailed per-release records remain under `docs/RELEASE_*`.
 
+## Semantic boundary / Registry notes
 
-Phase: Evidence Maintainability Hardening
+- Semantic and Registry surfaces remain descriptive, review-only surfaces.
