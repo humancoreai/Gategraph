@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.2_CANDIDATE"
+EXPECTED_RELEASE = "v0.16.2_STABLE"
 EXPECTED_BASE = "v0.16.1_STABLE"
 
 def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
@@ -23,7 +23,17 @@ def main() -> int:
     allowed = registry.get("allowed_transitions", [])
     checks.append(check("candidate_to_stable_manual_gate", any(t.get("from") == "stable" and t.get("to") == "stable" and t.get("manual_gate_required") is True and t.get("ci_required") is True for t in allowed), {"allowed": allowed}))
     forbidden = registry.get("forbidden_transitions", [])
-    checks.append(check("stable_to_candidate_forbidden", any(t.get("from") == "stable" and t.get("to") == "candidate" for t in forbidden), {"forbidden": forbidden}))
+    forbidden_pairs = {(t.get("from"), t.get("to")) for t in forbidden}
+    expected_forbidden = {
+        ("stable", "stable_without_candidate_ci"),
+        ("stable", "stable_without_surface_sync"),
+        ("stable", "candidate"),
+    }
+    checks.append(check(
+        "stable_to_candidate_forbidden",
+        expected_forbidden.issubset(forbidden_pairs),
+        {"forbidden": forbidden, "expected_forbidden": sorted(expected_forbidden)},
+    ))
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})
     return 1 if failed else 0
