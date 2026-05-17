@@ -1,13 +1,13 @@
-# Release Notes – v0.16.6_STABLE
+# Release Notes – v0.16.7_CANDIDATE
 
-Status: stable  
-Base: v0.16.5_STABLE  
-Version: 0.16.6
-Phase: Evidence Profile Runtime Profiles
+Status: candidate  
+Base: v0.16.6_STABLE  
+Version: 0.16.7
+Phase: Release Status Token Centralization
 
 ## Focus
 
-v0.16.6_STABLE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
+v0.16.7_CANDIDATE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
 
 ## Changes
 

@@ -2,7 +2,7 @@
   "auto_promotion": false,
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.16.5_STABLE",
+  "base": "v0.16.6_STABLE",
   "classes": {
     "registry_lock": [
       "semantic_registry_lock_evidence",
@@ -50,8 +50,8 @@
   },
   "classification_mode": "descriptive_grouping_only",
   "mandatory_unclassified_fail_closed": true,
-  "release": "v0.16.6_STABLE",
+  "release": "v0.16.7_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.6",
-  "status": "stable"
+  "schema_version": "0.16.7",
+  "status": "candidate"
 }

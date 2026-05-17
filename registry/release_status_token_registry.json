@@ -1,0 +1,34 @@
+{
+  "auto_promotion": false,
+  "auto_repair": false,
+  "base": "v0.16.6_STABLE",
+  "guards": [
+    "metadata_matches_tokens",
+    "constants_match_tokens",
+    "status_suffix_matches_release",
+    "future_stable_derives_from_status"
+  ],
+  "known_drift_sources": [
+    "hardcoded candidate-only assertions in stable tests",
+    "future_stable copied from candidate release token",
+    "release document path assertions tied to one status"
+  ],
+  "mode": "descriptive_release_status_token_centralization_only",
+  "policy_mutation": false,
+  "release": "v0.16.7_CANDIDATE",
+  "runtime_authority": false,
+  "schema_version": "0.16.7",
+  "status": "candidate",
+  "status_derivation": {
+    "candidate_future_stable": "replace _CANDIDATE with _STABLE",
+    "candidate_suffix": "_CANDIDATE",
+    "stable_future_stable": "current release",
+    "stable_suffix": "_STABLE"
+  },
+  "tokens": {
+    "current_base": "v0.16.6_STABLE",
+    "current_release": "v0.16.7_CANDIDATE",
+    "current_status": "candidate",
+    "future_stable": "v0.16.7_STABLE"
+  }
+}

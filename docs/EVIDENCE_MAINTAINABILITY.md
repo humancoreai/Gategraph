@@ -1,10 +1,10 @@
-# Evidence Profile Runtime Profiles – v0.16.6_STABLE
+# Release Status Token Centralization – v0.16.7_CANDIDATE
 
-Release: v0.16.6_STABLE  
-Base: v0.16.5_STABLE  
+Release: v0.16.7_CANDIDATE  
+Base: v0.16.6_STABLE  
 Status: stable  
-Version: 0.16.6  
-Phase: Evidence Profile Runtime Profiles
+Version: 0.16.7  
+Phase: Release Status Token Centralization
 
 ## Purpose
 

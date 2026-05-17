@@ -2,13 +2,13 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.6_STABLE
+## v0.16.7_CANDIDATE
 
-Base: v0.16.5_STABLE
+Base: v0.16.6_STABLE
 
 Status: candidate
-Phase: Evidence Profile Runtime Profiles
-Release focus: Evidence Profile Runtime Profiles
+Phase: Release Status Token Centralization
+Release focus: Release Status Token Centralization
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
@@ -16,7 +16,7 @@ Release focus: Evidence Profile Runtime Profiles
 - Preserved build-mutation hardening from v0.14.9.
 - No runtime/governance/enforcement authority expansion.
 
-## v0.16.5_STABLE
+## v0.16.6_STABLE
 
 Base: v0.16.3_STABLE
 Status: candidate

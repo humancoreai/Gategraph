@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.16.5_STABLE",
+  "base": "v0.16.6_STABLE",
   "maintenance_concerns": [
     "duplicate_release_surface_assertions",
     "fragile_text_token_assertions",
@@ -11,13 +11,13 @@
   ],
   "mode": "descriptive_evidence_maintainability_only",
   "policy_mutation": false,
-  "release": "v0.16.6_STABLE",
+  "release": "v0.16.7_CANDIDATE",
   "required_surfaces": [
     "docs/EVIDENCE_MAINTAINABILITY.md",
     "tests/evidence_maintainability_evidence.py",
     "registry/evidence_maintainability_registry.json"
   ],
   "runtime_authority": false,
-  "schema_version": "0.16.6",
-  "status": "stable"
+  "schema_version": "0.16.7",
+  "status": "candidate"
 }

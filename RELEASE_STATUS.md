@@ -1,11 +1,11 @@
 # Release Status
 
-Release: v0.16.6_STABLE
-Status: stable
-Base: v0.16.5_STABLE
-Version: 0.16.6
+Release: v0.16.7_CANDIDATE
+Status: candidate
+Base: v0.16.6_STABLE
+Version: 0.16.7
 
-Stable focus: Evidence Profile Runtime Profiles.
-Phase: Evidence Profile Runtime Profiles
+Candidate focus: Release Status Token Centralization.
+Phase: Release Status Token Centralization
 
-Stable promoted after Windows Evidence CI Passed: True on v0.16.6_CANDIDATE.
+Candidate pending Windows Evidence CI.
