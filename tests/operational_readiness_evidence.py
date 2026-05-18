@@ -19,7 +19,7 @@ def main() -> int:
     manifest = json.loads((ROOT / "RELEASE_MANIFEST.json").read_text(encoding="utf-8")) if (ROOT / "RELEASE_MANIFEST.json").exists() else {"files": []}
     paths = {entry.get("path") for entry in manifest.get("files", [])}
 
-    check("metadata_current_release", meta.get("release") == "v0.17.1_CANDIDATE" and meta.get("base") == "v0.17.0_STABLE" and meta.get("status") == "candidate", {"release": meta.get("release"), "base": meta.get("base"), "status": meta.get("status")}, results)
+    check("metadata_current_release", meta.get("release") == "v0.17.1_STABLE" and meta.get("base") == "v0.17.0_STABLE" and meta.get("status") == "stable", {"release": meta.get("release"), "base": meta.get("base"), "status": meta.get("status")}, results)
     check("registry_current_release", reg.get("release") == meta.get("release") and reg.get("base") == meta.get("base") and reg.get("status") == meta.get("status"), {"registry": reg.get("release")}, results)
     check("descriptive_only_no_authority", not any([reg.get("runtime_authority"), reg.get("auto_repair"), reg.get("auto_promotion"), reg.get("policy_mutation")]), {"runtime_authority": reg.get("runtime_authority")}, results)
     check("no_performance_claims", reg.get("performance_claims") is False and reg.get("benchmark_claims") is False and "no hard throughput claim" in doc, {}, results)
