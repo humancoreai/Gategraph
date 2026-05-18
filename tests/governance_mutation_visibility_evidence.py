@@ -34,7 +34,7 @@ def main() -> int:
     changed = copy.deepcopy(data)
     changed["lineage"][-1]["governance_logic_changed"] = True
     changed_report = diff_lineage(data, changed)
-    checks.append(check("changed_lineage_visible", changed_report["changed"] == ["v0.17.1_CANDIDATE"], changed_report))
+    checks.append(check("changed_lineage_visible", changed_report["changed"] == ["v0.17.1_STABLE"], changed_report))
     checks.append(check("mutation_visibility_no_auto_repair", not added_report["auto_repair"] and not changed_report["auto_repair"], {"added_auto_repair": added_report["auto_repair"], "changed_auto_repair": changed_report["auto_repair"]}))
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})
