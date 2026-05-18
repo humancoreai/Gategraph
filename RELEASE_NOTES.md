@@ -1,19 +1,19 @@
-Release: v0.17.1_CANDIDATE
+Release: v0.17.1_STABLE
 Base: v0.17.0_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.1
 Phase: Promotion Status Drift Guard
 
-# Release Notes – v0.17.1_CANDIDATE
+# Release Notes – v0.17.1_STABLE
 
-Status: candidate  
+Status: stable  
 Base: v0.17.0_STABLE  
 Version: 0.17.1
 Phase: Promotion Status Drift Guard
 
 ## Focus
 
-v0.17.1_CANDIDATE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
+v0.17.1_STABLE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
 
 ## Changes
 
