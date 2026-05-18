@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.17.6_CANDIDATE"
+RELEASE = "v0.17.6_STABLE"
 BASE = "v0.17.5_STABLE"
 
 FORBIDDEN_README_FRAGMENTS = [
