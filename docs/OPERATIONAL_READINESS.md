@@ -1,8 +1,8 @@
-# Promotion Status Drift Guard
+# Operational Readiness Baseline
 
-Release: v0.17.3_STABLE
-Base: v0.17.2_STABLE
-Status: stable
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
+Status: candidate
 
 This document defines a descriptive readiness surface for local single-node operation.
 It does not introduce runtime authority, automatic repair, policy mutation, semantic scoring, deployment automation, or performance claims.

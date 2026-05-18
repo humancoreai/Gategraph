@@ -1,6 +1,6 @@
-# OWASP Agentic AI Risk Mapping – v0.17.3_STABLE
+# OWASP Agentic AI Risk Mapping – v0.17.0_CANDIDATE
 
-This mapping was formally bumped during v0.17.3_STABLE release hygiene. It remains an internal review aid, not a certification claim, and does not assert complete coverage of any external standard.
+This mapping was formally bumped during v0.17.0_CANDIDATE release hygiene. It remains an internal review aid, not a certification claim, and does not assert complete coverage of any external standard.
 
 | Risk | Status | Existing Coverage | Evidence | Remaining Gap |
 |---|---|---|---|---|
