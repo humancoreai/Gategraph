@@ -131,6 +131,8 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("promotion_status_ssot_evidence", "tests/promotion_status_ssot_evidence.py", 20),
     ("promotion_surface_matrix_evidence", "tests/promotion_surface_matrix_evidence.py", 20),
     ("promotion_pipeline_hardening_evidence", "tests/promotion_pipeline_hardening_evidence.py", 20),
+    ("cleanup_lifecycle_evidence", "tests/cleanup_lifecycle_evidence.py", 20),
+    ("timeout_normalization_evidence", "tests/timeout_normalization_evidence.py", 20),
     ("release_gate_robustness_evidence", "tests/release_gate_robustness_evidence.py", 20),
     ("failure_root_cause_grouping_evidence", "tests/failure_root_cause_grouping_evidence.py", 20),
     ("artifact_determinism_evidence", "tests/artifact_determinism_evidence.py", 20),

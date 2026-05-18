@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.17.4_STABLE",
+  "base": "v0.17.5_STABLE",
   "classes": {
     "P0": "Core invariants; fail closed, authority boundaries, runtime/enforcement, replay determinism, security boundaries.",
     "P1": "Structural integrity; release, registry, manifest, promotion, provenance and practical readiness surfaces.",
@@ -1321,12 +1321,30 @@
       "mutable_surface": false,
       "path": "tests/version_consistency_evidence.py",
       "test": "version_consistency_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/cleanup_lifecycle_evidence.py",
+      "test": "cleanup_lifecycle_evidence"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/timeout_normalization_evidence.py",
+      "test": "timeout_normalization_evidence"
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.17.5_STABLE",
+  "release": "v0.17.6_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
-  "version": "0.17.5"
+  "status": "candidate",
+  "version": "0.17.6"
 }

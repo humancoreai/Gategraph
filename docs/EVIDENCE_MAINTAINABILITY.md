@@ -1,9 +1,9 @@
-# Evidence Maintainability – v0.17.5_STABLE
+# Evidence Maintainability – v0.17.6_CANDIDATE
 
-Release: v0.17.5_STABLE  
-Base: v0.17.4_STABLE  
-Status: stable  
-Phase: Promotion Registry Lock Rebaseline Formalization
+Release: v0.17.6_CANDIDATE  
+Base: v0.17.5_STABLE  
+Status: candidate  
+Phase: Evidence Lifecycle Cleanup Formalization
 
 This surface is descriptive only. It has no runtime authority, no auto-repair, no auto-pruning and no policy mutation.
 
