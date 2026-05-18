@@ -5,8 +5,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-EXPECTED_RELEASE = "v0.17.3_STABLE"
-EXPECTED_BASE = "v0.17.2_STABLE"
+EXPECTED_RELEASE = "v0.17.4_CANDIDATE"
+EXPECTED_BASE = "v0.17.3_STABLE"
 def main():
     pyproject = tomllib.loads((ROOT/"pyproject.toml").read_text(encoding="utf-8"))
     scripts = pyproject["project"]["scripts"]
@@ -30,4 +30,4 @@ def main():
 if __name__ == "__main__":
     raise SystemExit(main())
 
-# Current release surface: v0.17.3_STABLE
+# Current release surface: v0.17.4_CANDIDATE

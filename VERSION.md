@@ -1,6 +1,6 @@
-Release: v0.17.3_STABLE
-Base: v0.17.2_STABLE
-Status: stable
-Version: 0.17.3
+Release: v0.17.4_CANDIDATE
+Base: v0.17.3_STABLE
+Status: candidate
+Version: 0.17.4
 
-Phase: Promotion Status Drift Guard
+Phase: Surface Version Scanner Formalization

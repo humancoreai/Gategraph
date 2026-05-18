@@ -1,15 +1,14 @@
-Release: v0.17.3_STABLE
+Release: v0.17.4_CANDIDATE
 
 # GateGraph
 
-Current release: **v0.17.3_STABLE**  
-Base: **v0.17.2_STABLE**  
-Base stable: **v0.17.2_STABLE**  
+Current release: **v0.17.4_CANDIDATE**  
+Base: **v0.17.3_STABLE**  
+Base stable: **v0.17.3_STABLE**  
 Status: **candidate**  
-Version: **0.17.3**  
-Phase: **Promotion Status Drift Guard**  
-Release focus: **Promotion Status Drift Guard**
-
+Version: **0.17.4**  
+Phase: **Surface Version Scanner Formalization**  
+Release focus: **Surface Version Scanner Formalization**
 GateGraph is a deterministic governance layer for AI-agent actions. It evaluates requested actions before execution, produces bounded governance decisions, and keeps execution authority outside the model.
 
 ## What GateGraph is
@@ -55,6 +54,21 @@ python tests\fresh_clone_reproducibility_evidence.py
 python tests\single_node_cli_evidence.py
 ```
 
+Minimal local CLI request example:
+
+```powershell
+python -m src.cli init --mode single_node --db .\gategraph.db
+python -m src.cli evaluate --mode single_node --db .\gategraph.db --task-id CLI-DEMO-READ --actor-id demo-actor --capability read_files --input-source local --data-sensitivity internal
+python -m src.cli status --mode single_node --db .\gategraph.db
+```
+
+Minimal local HTTP surface example:
+
+```powershell
+python -m src.server --help
+# Start only in a local/protected environment; public internet exposure is out of scope.
+```
+
 Then run the full evidence suite before treating a candidate as release-ready:
 
 ```powershell
@@ -80,7 +94,23 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.17.3_STABLE.md`
+- `docs/CURRENT_RELEASE.md`
+- `docs/RELEASE_v0.17.4_CANDIDATE.md`
+
+## Key documents
+
+| Document | Purpose |
+|---|---|
+| `TRUST_MODEL.md` | Caller-boundary and trust assumptions. |
+| `SECURITY.md` | Security posture and fail-closed expectations. |
+| `PRODUCTION.md` | Current production boundary and non-scope. |
+| `docs/QUICKSTART.md` | Reproducible local setup and verification path. |
+| `docs/CURRENT_RELEASE.md` | Stable alias for the active release surface. |
+| `OWASP_AGENTIC_AI_MAPPING.md` | Descriptive mapping to agentic-AI risk categories. |
+
+## Operator playbooks
+
+`playbooks/` contains reference-only operator workflows. Playbooks are documentation and review aids; they do not grant authority, mutate policy, or execute actions.
 
 ## Security posture
 
