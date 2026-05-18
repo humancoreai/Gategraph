@@ -1,8 +1,8 @@
-# Evidence Lifecycle Cleanup – v0.17.6_STABLE
+# Evidence Lifecycle Cleanup – v0.17.7_CANDIDATE
 
-Release: v0.17.6_STABLE  
+Release: v0.17.7_CANDIDATE  
 Base: v0.17.5_STABLE  
-Status: stable  
+Status: candidate  
 Phase: Evidence Lifecycle Cleanup Formalization
 
 This surface documents deterministic evidence teardown expectations for test and CI harnesses only.

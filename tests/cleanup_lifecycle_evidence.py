@@ -18,7 +18,7 @@ def main() -> int:
         if not ok:
             failures.append(name)
 
-    check("metadata_current_release", metadata.get("release") == "v0.17.6_STABLE" and metadata.get("status") == "stable", {"release": metadata.get("release"), "status": metadata.get("status")})
+    check("metadata_current_release", metadata.get("release") == "v0.17.7_CANDIDATE" and metadata.get("status") == "candidate", {"release": metadata.get("release"), "status": metadata.get("status")})
     check("cleanup_scope_declared", metadata.get("cleanup_lifecycle_scope") is True and metadata.get("evidence_lifecycle_cleanup_scope") is True, {})
     check("descriptive_only_no_authority", all(metadata.get(k) is False for k in ["runtime_logic_changed", "governance_logic_changed", "enforcement_logic_changed", "new_runtime_capability", "new_governance_features"]), {})
     required = ["started", "completed", "timeout", "cleanup_attempted", "cleanup_confirmed", "process_group_killed"]

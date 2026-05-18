@@ -27,7 +27,7 @@ def main() -> int:
     checks.append(check("invariant_evidence_refs_resolve", not missing_evidence, {"missing": missing_evidence}))
     orphaned_surfaces = sorted({surface for spec in invariant.get("invariants", {}).values() for surface in spec.get("surfaces", []) if not isinstance(surface, str) or not surface})
     checks.append(check("surface_refs_non_empty", not orphaned_surfaces, {"invalid": orphaned_surfaces}))
-    release_doc = ROOT / "docs" / "RELEASE_v0.17.6_STABLE.md"
+    release_doc = ROOT / "docs" / "RELEASE_v0.17.7_CANDIDATE.md"
     checks.append(check("release_doc_present", release_doc.exists(), {"path": str(release_doc.relative_to(ROOT))}))
     failed = [name for name, ok, _ in checks if not ok]
     print("Summary:", {"passed": len(checks) - len(failed), "failed": len(failed), "failed_checks": failed})

@@ -1342,9 +1342,9 @@
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.17.6_STABLE",
+  "release": "v0.17.7_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
+  "status": "candidate",
   "version": "0.17.6"
 }
