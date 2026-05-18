@@ -1,6 +1,6 @@
 # Operational Readiness Baseline
 
-Release: v0.17.0_CANDIDATE
+Release: v0.17.0_STABLE
 Base: v0.16.9_STABLE
 Status: candidate
 
