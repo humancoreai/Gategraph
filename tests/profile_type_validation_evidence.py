@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PROFILE_PATHS = [ROOT / "registry" / "evidence_suite_profile.json", ROOT / "registry" / "evidence_runtime_profiles.json"]
-EXPECTED_RELEASE = "v0.17.7_CANDIDATE"
+EXPECTED_RELEASE = "v0.17.7_STABLE"
 
 def validate_profile(payload: object) -> list[str]:
     errors: list[str] = []

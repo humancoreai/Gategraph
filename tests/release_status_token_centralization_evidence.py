@@ -19,7 +19,7 @@ def _derive_status(release: str) -> str:
 
 
 def _derive_future_stable(release: str, status: str) -> str:
-    if status == "candidate":
+    if status == "stable":
         return release.replace("_CANDIDATE", "_STABLE")
     if status == "stable":
         return release

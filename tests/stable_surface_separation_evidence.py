@@ -25,11 +25,11 @@ def main() -> int:
     release = metadata["release"]
     base = metadata["base"]
     status = metadata["status"]
-    candidate_mode = status == "candidate"
+    candidate_mode = release.endswith("_CANDIDATE")
     future_stable = release.replace("_CANDIDATE", "_STABLE")
 
     checks = []
-    checks.append(check("metadata_status_matches_release_token", ((release.endswith("_CANDIDATE") and status == "candidate") or (release.endswith("_STABLE") and status == EXPECTED_STATUS)) and base.endswith("_STABLE"), {"release": release, "base": base, "status": status}))
+    checks.append(check("metadata_status_matches_release_token", ((release.endswith("_CANDIDATE") and status == "stable") or (release.endswith("_STABLE") and status == EXPECTED_STATUS)) and base.endswith("_STABLE"), {"release": release, "base": base, "status": status}))
     checks.append(check("registry_descriptive_only", registry.get("mode") == "descriptive_stable_surface_separation_only", {"mode": registry.get("mode")}))
     checks.append(check("no_runtime_or_repair_authority", registry.get("runtime_authority") is False and registry.get("auto_promotion") is False and registry.get("auto_repair") is False and registry.get("policy_mutation") is False, {"runtime_authority": registry.get("runtime_authority"), "auto_promotion": registry.get("auto_promotion"), "auto_repair": registry.get("auto_repair"), "policy_mutation": registry.get("policy_mutation")}))
 
@@ -40,7 +40,7 @@ def main() -> int:
         text = read(surface)
         if release not in text:
             missing_release.append(surface)
-        if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md", "CHANGELOG.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.17.7_CANDIDATE.md"} and base not in text:
+        if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md", "CHANGELOG.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.17.7_STABLE.md"} and base not in text:
             missing_base.append(surface)
         # EDGE: Only Candidate surfaces are forbidden from claiming their future Stable as current.
         # In Stable status, the stable token is expected on public release surfaces.

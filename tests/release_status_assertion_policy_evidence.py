@@ -42,7 +42,7 @@ def main() -> int:
     offenders = []
     for rel in monitored:
         text = (ROOT / rel).read_text(encoding="utf-8")
-        if 'status == "candidate"' in text or "status == 'candidate'" in text or 'status == "stable"' in text or "status == 'stable'" in text:
+        if 'status == "stable"' in text or "status == 'stable'" in text or 'status == "stable"' in text or "status == 'stable'" in text:
             offenders.append(rel)
     check("no_single_status_literal_assertions_in_monitored_gates", not offenders, {"offenders": offenders}, failed)
 

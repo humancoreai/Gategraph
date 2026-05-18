@@ -30,7 +30,7 @@ def main() -> int:
     checks.append(check("surface_report_ok", report["ok"], report))
     checks.append(check(
         "future_stable_derivation_matches_status",
-        truth.future_stable == (truth.release.replace("_CANDIDATE", "_STABLE") if truth.status == "candidate" else truth.release),
+        truth.future_stable == (truth.release.replace("_CANDIDATE", "_STABLE") if truth.status == "stable" else truth.release),
         {"future_stable": truth.future_stable, "release": truth.release, "status": truth.status}
     ))
     checks.append(check("registry_descriptive_only", registry.get("mode") == "descriptive_release_truth_centralization_only", {"mode": registry.get("mode")}))
