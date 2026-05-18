@@ -1,11 +1,11 @@
 # GateGraph Scope Backlog
 
-Release: v0.17.5_STABLE
-Base: v0.17.4_STABLE
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
 Status: stable
-Version: 0.17.5
-Phase: Promotion Registry Lock Rebaseline Formalization
-Release focus: Promotion Registry Lock Rebaseline Formalization
+Version: 0.17.0
+Phase: Release SSOT Consolidation
+Release focus: Release SSOT Consolidation
 
 ## Purpose
 

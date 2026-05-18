@@ -1,33 +1,35 @@
-Release: v0.17.5_STABLE
-Base: v0.17.4_STABLE
-Status: stable
-Version: 0.17.5
-Phase: Promotion Registry Lock Rebaseline Formalization
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
+Status: candidate
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
 # Changelog
 
 All notable changes to GateGraph are documented here.
 
+## v0.17.0_CANDIDATE
 
-## v0.17.5_STABLE
-
-- Formalized registry-lock rebaseline as a required promotion hygiene step.
-- Kept release/status token registry checks candidate-aware.
-- No runtime authority, governance logic, policy mutation, or enforcement behavior changes.
-
-## v0.17.4_STABLE
-
-Base: v0.17.4_STABLE
+Base: v0.16.9_STABLE
 
 Status: stable
-Phase: Surface Version Scanner Formalization
-Release focus: Surface Version Scanner Formalization
+Phase: Operational Readiness Baseline
+Release focus: Operational Readiness Baseline
 
-- Added registry schema validation evidence.
-- Added profile type validation evidence.
-- Added release-state normalization evidence.
-- Added `registry/registry_schema_registry.json` as descriptive release-state/schema registry.
+- Cleaned README into a current public review surface.
+- Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
+- Added public-surface cleanup, scope-backlog and review-readiness evidence.
+- Preserved build-mutation hardening from v0.14.9.
 - No runtime/governance/enforcement authority expansion.
+
+## v0.16.9_STABLE
+
+Base: v0.16.3_STABLE
+Status: stable
+Phase: Evidence Maintainability Hardening
+
+- Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
+- Preserved governance/runtime/enforcement behavior.
 
 ## v0.16.3_STABLE
 
@@ -45,7 +47,7 @@ Status: stable
 ## v0.14.7_STABLE
 
 State: stable.
-Base: v0.17.4_STABLE.
+Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.
