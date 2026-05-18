@@ -1,44 +1,37 @@
-# Known Limitations
+# Known Limitations – v0.17.0_CANDIDATE
 
-## Concurrency / SQLite Ownership
+Current release context: v0.17.0_CANDIDATE.
 
-GateGraph currently targets a:
+GateGraph intentionally states its limits. This file is part of the security model, not a marketing document.
 
-```text
-single-node deterministic governance baseline
-```
+## Current limitations
 
-SQLite connections are intentionally treated as thread-owned resources.
+- No full runtime sandboxing.
+- No kernel isolation.
+- No container, VM, Kubernetes, service mesh, or cloud isolation layer.
+- No distributed Byzantine-tolerant governance.
+- No complete memory governance or context quarantine system.
+- No autonomous threat hunting.
+- No automatic self-repair.
+- No guarantee against unknown future agent strategies.
+- No replacement for host OS security, network policy, identity management, or secret manager hardening.
+- No guarantee that external transports, providers, or billing systems behave safely.
 
-Current guarantees:
+## Security interpretation
 
-- deterministic local persistence
-- append-only audit behavior
-- fail-closed governance behavior
-- deterministic runtime evidence generation
+GateGraph reduces specific governance and enforcement failure modes through deterministic gates, explicit budgets, token validation, auditability, and fail-closed behavior. It does not claim to eliminate all agentic AI risk.
 
-Current non-goals:
+## Review rule
 
-- distributed runtime execution
-- multi-node clustering
-- shared cross-thread SQLite handles
-- async worker orchestration
-- enterprise parallel scaling claims
+Whenever a new surface is added, it must be classified as one of:
 
-## Runtime Boundary Clarification
+- governance logic
+- enforcement boundary
+- runtime surface
+- budget surface
+- secret surface
+- audit/explain/export surface
+- operator surface
+- out of scope
 
-Risk Engine and Rule Engine may be called directly for analysis/testing purposes.
-
-This is expected behavior because they are:
-
-- stateless evaluators
-- proposal-generating components
-- non-authoritative without Enforcement Layer approval
-
-Authority remains bound to:
-
-```text
-Enforcement Layer -> Capability Token -> Runtime Execution
-```
-
-Direct evaluator invocation alone does not bypass governance.
+Unclassified surfaces should be treated as unsafe until reviewed.

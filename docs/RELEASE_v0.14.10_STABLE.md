@@ -1,8 +1,8 @@
-# GateGraph v0.17.7_CANDIDATE
+# GateGraph v0.17.0_CANDIDATE
 
-Base: v0.17.7_CANDIDATE
-Status: candidate
-Version: 0.17.4
+Base: v0.17.0_CANDIDATE
+Status: stable
+Version: 0.17.0
 Phase: Public surface cleanup and review readiness
 Release focus: Public Surface / Review Readiness / Release Hygiene
 

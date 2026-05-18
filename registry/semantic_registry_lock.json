@@ -1,6 +1,7 @@
 {
   "authoritative": false,
   "auto_repair": false,
+  "base": "v0.16.9_STABLE",
   "dynamic_loading": false,
   "executable": false,
   "governance_influence": false,
@@ -9,15 +10,16 @@
   "registries": [
     {
       "path": "registry/semantic_object_types.json",
-      "sha256": "64eeda66630dbca611345836878cd3955c571204cee1ecfef7cacae95f50f198"
+      "sha256": "a46bb27b2255d3b6d9ff70b3e08e287ab550ba7de3af0a1447a0f96e9b4a6aae"
     },
     {
       "path": "registry/invariant_surface_registry.json",
-      "sha256": "fad6b6656ae041d33121f38a36710015d66d1a4e254643676be402e60c275e95"
+      "sha256": "d52088277a4c6b9af6bb1f4ace38b565f5dbca19b9441503fe1588b1fdaa58fd"
     }
   ],
-  "release": "v0.17.7_CANDIDATE",
+  "release": "v0.17.0_CANDIDATE",
   "runtime_access": false,
   "schema_version": "0.16.8",
-  "semantic_promotion_allowed": false
+  "semantic_promotion_allowed": false,
+  "status": "candidate"
 }

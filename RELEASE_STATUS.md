@@ -1,15 +1,9 @@
 # Release Status
 
-Release: v0.17.7_CANDIDATE
-Base: v0.17.5_STABLE
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
 Status: candidate
-Version: 0.17.6
-Phase: Evidence Lifecycle Cleanup Formalization
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
-Candidate requires Windows Evidence CI `Passed: True` before stable promotion.
-
-Scope: registry-lock rebaseline promotion guard, release/status token consistency, semantic registry lock determinism after promotion status changes.
-
-No runtime authority, governance logic, policy mutation, or enforcement behavior changes.
-
-Integrator surface from v0.17.4 is preserved.
+Candidate build. Stable promotion requires Windows CI Passed: True and manual gate.
