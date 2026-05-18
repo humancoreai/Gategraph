@@ -1,48 +1,33 @@
-Release: v0.17.2_STABLE
-Base: v0.17.1_STABLE
-Status: stable
-Status: stable
-Version: 0.17.2
+Release: v0.17.3_CANDIDATE
+Base: v0.17.2_STABLE
+Status: candidate
+Version: 0.17.3
 Phase: Promotion Status Drift Guard
 
-# Release Notes – v0.17.2_STABLE
+# Release Notes – v0.17.3_CANDIDATE
 
-Status: stable  
-Base: v0.17.1_STABLE  
-Version: 0.17.2
-Phase: Promotion Status Drift Guard
+v0.17.3_CANDIDATE focuses on post-stable release-surface finalization. It carries forward the v0.17.2_STABLE Windows-CI-passed baseline and hardens the surfaces that previously drifted during candidate-to-stable promotion.
 
-## Focus
+Included scope:
 
-v0.17.2_STABLE introduces registry schema validation, profile type validation, and release-state normalization. It does not remove tests, prune gates, or change runtime governance behavior.
+- release-state token consistency after promotion
+- stable/candidate status separation in active surfaces
+- registry-lock rebaseline after release-state changes
+- manifest/package hygiene
 
-## Changes
+Explicit non-scope:
 
-- Adds registry schema validation as descriptive evidence.
-- Adds profile type validation and release-state normalization evidence gates.
-- Keeps all existing Evidence CI gates intact for this stable release.
+- no runtime authority change
+- no governance logic change
+- no policy mutation
+- no new autonomous behavior
+- no Stable promotion in this artifact
 
-## Non-scope
+Windows Evidence CI remains the promotion gate.
 
-- No automatic evidence pruning.
-- No runtime authority changes.
-- No governance policy mutation.
-- No Multi-Node implementation.
+Boundary confirmations:
 
-
-## Runtime / governance boundary
-
-- No governance logic change.
-- No runtime/enforcement behavior change.
-- No autonomous policy update.
-- No semantic scoring or memory system.
-
-## Reviewer-result handling
-
-- README quickstart now separates basic local checks from the full evidence suite.
-- `OWASP_AGENTIC_AI_MAPPING.md` is described as a non-normative review mapping.
-- Release history remains visible through `CHANGELOG.md`; detailed per-release records remain under `docs/RELEASE_*`.
-
-## Semantic boundary / Registry notes
-
-- Semantic and Registry surfaces remain descriptive, review-only surfaces.
+- No governance logic change
+- No runtime/enforcement behavior change
+- No autonomous policy update
+- No semantic scoring or memory system
