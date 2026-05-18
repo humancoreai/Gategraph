@@ -1,7 +1,7 @@
 # Release SSOT Consolidation
 
-Release: v0.17.8_STABLE  
-Base: v0.17.8_STABLE  
+Release: v0.17.0_CANDIDATE  
+Base: v0.16.9_STABLE  
 Status: stable
 
 This surface documents a descriptive-only cleanup for release/status tokens. It does not add runtime authority, auto-promotion, policy mutation, or governance repair behavior.
@@ -15,7 +15,7 @@ Previous Candidate/Stable rounds exposed repeated drift from hardcoded status as
 - `status` must match the release suffix.
 - `future_stable` is derived from status, not copied blindly.
 
-For a stable release, `future_stable` must be the same version with `_STABLE`. For a stable release, `future_stable` must equal the current release.
+For a candidate release, `future_stable` must be the same version with `_STABLE`. For a stable release, `future_stable` must equal the current release.
 
 ## Boundaries
 

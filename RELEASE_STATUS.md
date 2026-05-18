@@ -1,11 +1,9 @@
 # Release Status
 
-Release: v0.17.8_STABLE
-Base: v0.17.7_STABLE
-Status: stable
-Version: 0.17.8
-Phase: Concurrency Scope Evidence Formalization
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
+Status: candidate
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
-Stable build for Windows Evidence CI. No stable promotion is implied.
-
-Promotion rule: no stable release without Stable CI `Passed: True`.
+Candidate build. Stable promotion requires Windows CI Passed: True and manual gate.

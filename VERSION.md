@@ -1,7 +1,5 @@
-Release: v0.17.8_STABLE
-Base: v0.17.7_STABLE
-Status: stable
-Version: 0.17.8
-Phase: Concurrency Scope Evidence Formalization
-
-Stable only. Stable promotion requires Windows Evidence CI Passed: True.
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
+Status: candidate
+Version: 0.17.0
+Phase: Operational Readiness Baseline

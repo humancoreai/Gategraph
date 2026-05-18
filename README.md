@@ -1,15 +1,15 @@
-Release: v0.17.8_STABLE
+Release: v0.17.0_CANDIDATE
 
 # GateGraph
 
-Current release: **v0.17.8_STABLE**  
-Base: **v0.17.7_STABLE**  
-Base stable: **v0.17.7_STABLE**  
+Current release: **v0.17.0_CANDIDATE**  
+Base: **v0.16.9_STABLE**  
+Base stable: **v0.16.9_STABLE**  
 Status: **candidate**  
-Phase: **Concurrency Scope Evidence Formalization**  
-Version: **0.17.6**  
-Phase: **Evidence Lifecycle Cleanup Formalization**  
-Release focus: **Evidence Lifecycle Cleanup Formalization**
+Version: **0.17.0**  
+Phase: **Operational Readiness Baseline**  
+Release focus: **Operational Readiness Baseline**
+
 GateGraph is a deterministic governance layer for AI-agent actions. It evaluates requested actions before execution, produces bounded governance decisions, and keeps execution authority outside the model.
 
 ## What GateGraph is
@@ -55,21 +55,6 @@ python tests\fresh_clone_reproducibility_evidence.py
 python tests\single_node_cli_evidence.py
 ```
 
-Minimal local CLI request example:
-
-```powershell
-python -m src.cli init --mode single_node --db .\gategraph.db
-python -m src.cli evaluate --mode single_node --db .\gategraph.db --task-id CLI-DEMO-READ --actor-id demo-actor --capability read_files --input-source local --data-sensitivity internal
-python -m src.cli status --mode single_node --db .\gategraph.db
-```
-
-Minimal local HTTP surface example:
-
-```powershell
-python -m src.server --help
-# Start only in a local/protected environment; public internet exposure is out of scope.
-```
-
 Then run the full evidence suite before treating a candidate as release-ready:
 
 ```powershell
@@ -95,23 +80,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/CURRENT_RELEASE.md`
-- `docs/RELEASE_v0.17.8_STABLE.md`
-
-## Key documents
-
-| Document | Purpose |
-|---|---|
-| `TRUST_MODEL.md` | Caller-boundary and trust assumptions. |
-| `SECURITY.md` | Security posture and fail-closed expectations. |
-| `PRODUCTION.md` | Current production boundary and non-scope. |
-| `docs/QUICKSTART.md` | Reproducible local setup and verification path. |
-| `docs/CURRENT_RELEASE.md` | Stable alias for the active release surface. |
-| `OWASP_AGENTIC_AI_MAPPING.md` | Descriptive mapping to agentic-AI risk categories. |
-
-## Operator playbooks
-
-`playbooks/` contains reference-only operator workflows. Playbooks are documentation and review aids; they do not grant authority, mutate policy, or execute actions.
+- `docs/RELEASE_v0.17.0_CANDIDATE.md`
 
 ## Security posture
 
@@ -131,9 +100,3 @@ Canonical runtime namespace: `gategraph`.
 ## Security mapping
 
 `OWASP_AGENTIC_AI_MAPPING.md` is a descriptive mapping from GateGraph evidence surfaces to agentic-AI risk categories. It is a review aid, not a compliance certification or normative policy source.
-
-## v0.17.8 Candidate Scope
-
-This candidate formalizes concurrency scope evidence for the single-node SQLite baseline. It does not introduce multi-node execution, shared cross-thread SQLite handles, async orchestration, new runtime authority, or new capability scopes.
-
-Release document: `docs/RELEASE_v0.17.8_STABLE.md`

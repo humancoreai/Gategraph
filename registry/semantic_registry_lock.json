@@ -1,35 +1,25 @@
 {
   "authoritative": false,
   "auto_repair": false,
-  "base": "v0.17.7_STABLE",
+  "base": "v0.16.9_STABLE",
   "dynamic_loading": false,
   "executable": false,
   "governance_influence": false,
   "invariant": "semantic registry locks are release evidence only and never grant authority",
-  "locked_paths": [
-    {
-      "path": "registry/semantic_object_types.json",
-      "sha256": "b3e52bec930f5aee32ad7991705f847393ad3c8f08161b3c38cb313624fdaac1"
-    },
-    {
-      "path": "registry/invariant_surface_registry.json",
-      "sha256": "a8b6c8ed4633bdef03aa65a5e11aafcc55b5f8a8b379a1df1b77926a31cae877"
-    }
-  ],
   "policy_mutation": false,
   "registries": [
     {
       "path": "registry/semantic_object_types.json",
-      "sha256": "7885adabbedf0daa4ee1dcc745abeffcaf535d9e0e97bf06f70bd4c81b7866ff"
+      "sha256": "a46bb27b2255d3b6d9ff70b3e08e287ab550ba7de3af0a1447a0f96e9b4a6aae"
     },
     {
       "path": "registry/invariant_surface_registry.json",
-      "sha256": "78d9c86fe37e30a66131bc39274e69baf87f3a1feaff2bc2b3a70446d7633ea4"
+      "sha256": "d52088277a4c6b9af6bb1f4ace38b565f5dbca19b9441503fe1588b1fdaa58fd"
     }
   ],
-  "release": "v0.17.8_STABLE",
+  "release": "v0.17.0_CANDIDATE",
   "runtime_access": false,
   "schema_version": "0.16.8",
   "semantic_promotion_allowed": false,
-  "status": "stable"
+  "status": "candidate"
 }

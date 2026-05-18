@@ -35,9 +35,9 @@ def main() -> int:
     release = metadata["release"]
     base = metadata["base"]
     status = metadata["status"]
-    candidate_mode = release.endswith("_CANDIDATE") and status == "candidate"
-    stable_mode = release.endswith("_STABLE") and status == "stable"
-    future_stable = release.replace("_CANDIDATE", "_STABLE") if candidate_mode else release
+    future_stable = release.replace("_CANDIDATE", "_STABLE")
+    candidate_mode = status == "candidate"
+    stable_mode = status == "stable"
 
     checks = []
     checks.append(check("metadata_status_matches_release_token", (candidate_mode and release.endswith("_CANDIDATE")) or (stable_mode and release.endswith("_STABLE")), {"release": release, "status": status}))

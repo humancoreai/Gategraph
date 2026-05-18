@@ -1,33 +1,35 @@
-Release: v0.17.8_STABLE
-Base: v0.17.7_STABLE
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
 Status: candidate
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
-## v0.17.8_STABLE
+# Changelog
 
-Base: v0.17.7_STABLE
-Status: candidate
-Phase: Concurrency Scope Evidence Formalization
+All notable changes to GateGraph are documented here.
 
-- Formalized concurrency scope statement for the single-node SQLite baseline.
-- Added evidence for SQLite thread ownership documentation and non-authority boundaries.
-- Kept runtime/governance authority unchanged.
+## v0.17.0_CANDIDATE
 
-- Kept registry-lock rebaseline as a required promotion hygiene step.
-- Kept release/status token registry checks candidate-aware.
-
-## v0.17.7_STABLE
-
-Base: v0.17.7_STABLE
+Base: v0.16.9_STABLE
 
 Status: stable
-Phase: Surface Version Scanner Formalization
-Release focus: Surface Version Scanner Formalization
+Phase: Operational Readiness Baseline
+Release focus: Operational Readiness Baseline
 
-- Added registry schema validation evidence.
-- Added profile type validation evidence.
-- Added release-state normalization evidence.
-- Added `registry/registry_schema_registry.json` as descriptive release-state/schema registry.
+- Cleaned README into a current public review surface.
+- Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
+- Added public-surface cleanup, scope-backlog and review-readiness evidence.
+- Preserved build-mutation hardening from v0.14.9.
 - No runtime/governance/enforcement authority expansion.
+
+## v0.16.9_STABLE
+
+Base: v0.16.3_STABLE
+Status: stable
+Phase: Evidence Maintainability Hardening
+
+- Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
+- Preserved governance/runtime/enforcement behavior.
 
 ## v0.16.3_STABLE
 
@@ -45,7 +47,7 @@ Status: stable
 ## v0.14.7_STABLE
 
 State: stable.
-Base: v0.17.8_STABLE.
+Base: v0.14.7_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.
