@@ -9,8 +9,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
-    "release": "v0.17.2_CANDIDATE",
-    "status": "candidate",
+    "release": "v0.17.2_STABLE",
+    "status": "stable",
     "base": "v0.17.1_STABLE",
     "future_stable": "v0.17.2_STABLE",
     "version": "0.17.2",
