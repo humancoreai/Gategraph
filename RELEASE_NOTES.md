@@ -1,26 +1,26 @@
-Release: v0.17.2_CANDIDATE
+Release: v0.17.2_STABLE
 Base: v0.17.1_STABLE
-Status: candidate
-Status: candidate
+Status: stable
+Status: stable
 Version: 0.17.2
 Phase: Promotion Status Drift Guard
 
-# Release Notes – v0.17.2_CANDIDATE
+# Release Notes – v0.17.2_STABLE
 
-Status: candidate  
+Status: stable  
 Base: v0.17.1_STABLE  
 Version: 0.17.2
 Phase: Promotion Status Drift Guard
 
 ## Focus
 
-v0.17.2_CANDIDATE introduces registry schema validation, profile type validation, and release-state normalization. It does not remove tests, prune gates, or change runtime governance behavior.
+v0.17.2_STABLE introduces registry schema validation, profile type validation, and release-state normalization. It does not remove tests, prune gates, or change runtime governance behavior.
 
 ## Changes
 
 - Adds registry schema validation as descriptive evidence.
 - Adds profile type validation and release-state normalization evidence gates.
-- Keeps all existing Evidence CI gates intact for this candidate release.
+- Keeps all existing Evidence CI gates intact for this stable release.
 
 ## Non-scope
 
