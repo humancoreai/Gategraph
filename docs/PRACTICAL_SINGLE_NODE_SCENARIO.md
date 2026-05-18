@@ -1,6 +1,6 @@
 # Practical Single-Node Scenario
 
-Release: v0.17.1_STABLE  
+Release: v0.17.2_CANDIDATE  
 Base: v0.14.7_STABLE  
 Status: candidate
 
