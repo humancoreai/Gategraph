@@ -1,12 +1,13 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.17.3_STABLE",
+  "base": "v0.17.4_STABLE",
   "guards": [
     "metadata_matches_tokens",
     "constants_match_tokens",
     "status_suffix_matches_release",
-    "future_stable_derives_from_status"
+    "future_stable_derives_from_status",
+    "registry_lock_rebaseline_after_status_change"
   ],
   "known_drift_sources": [
     "hardcoded candidate-only assertions in stable tests",
@@ -15,10 +16,11 @@
   ],
   "mode": "descriptive_release_status_token_centralization_only",
   "policy_mutation": false,
-  "release": "v0.17.4_STABLE",
+  "release": "v0.17.5_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
+  "stable_promotion_registry_lock_rebaseline_required": true,
+  "status": "candidate",
   "status_derivation": {
     "candidate_future_stable": "replace _CANDIDATE with _STABLE",
     "candidate_suffix": "_CANDIDATE",
@@ -26,10 +28,10 @@
     "stable_suffix": "_STABLE"
   },
   "tokens": {
-    "current_base": "v0.17.3_STABLE",
-    "current_release": "v0.17.4_STABLE",
-    "current_status": "stable",
-    "future_stable": "v0.17.4_STABLE"
+    "current_base": "v0.17.4_STABLE",
+    "current_release": "v0.17.5_CANDIDATE",
+    "current_status": "candidate",
+    "future_stable": "v0.17.5_STABLE"
   },
-  "version": "0.17.4"
+  "version": "0.17.5"
 }

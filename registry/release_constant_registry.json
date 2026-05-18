@@ -1,20 +1,21 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.17.3_STABLE",
+  "base": "v0.17.4_STABLE",
   "constants": {
-    "CURRENT_BASE": "v0.17.3_STABLE",
-    "CURRENT_RELEASE": "v0.17.4_STABLE",
-    "CURRENT_STATUS": "stable",
-    "FUTURE_STABLE": "v0.17.4_STABLE"
+    "CURRENT_BASE": "v0.17.4_STABLE",
+    "CURRENT_RELEASE": "v0.17.5_CANDIDATE",
+    "CURRENT_STATUS": "candidate",
+    "FUTURE_STABLE": "v0.17.5_STABLE"
   },
-  "future_stable": "v0.17.4_STABLE",
+  "future_stable": "v0.17.5_STABLE",
   "mode": "descriptive_release_constant_registry_only",
-  "phase": "Registry Schema Release-State Hardening",
+  "phase": "Registry Lock Rebaseline Promotion Guard",
   "policy_mutation": false,
-  "release": "v0.17.4_STABLE",
+  "release": "v0.17.5_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
-  "version": "0.17.4"
+  "stable_promotion_registry_lock_rebaseline_required": true,
+  "status": "candidate",
+  "version": "0.17.5"
 }
