@@ -10,8 +10,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.17.0_STABLE"
-BASE = "v0.16.9_STABLE"
+RELEASE = "v0.17.1_CANDIDATE"
+BASE = "v0.17.0_STABLE"
 VERSION = "0.14.8"
 
 FORBIDDEN_ROOT_ARTIFACTS = {
@@ -36,7 +36,7 @@ REQUIRED_PUBLIC_SURFACES = [
     "docs/QUICKSTART.md",
     "docs/PUBLIC_REPO_HYGIENE.md",
     "docs/GITHUB_ACTIONS_CI.md",
-    "docs/RELEASE_v0.17.0_STABLE.md",
+    "docs/RELEASE_v0.17.1_CANDIDATE.md",
 ]
 
 
