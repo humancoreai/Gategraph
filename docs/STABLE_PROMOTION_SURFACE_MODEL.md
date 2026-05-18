@@ -1,7 +1,7 @@
 # Stable Promotion Surface Model
 
-Release: v0.17.4_STABLE  
-Base: v0.17.4_STABLE  
+Release: v0.17.6_CANDIDATE  
+Base: v0.17.6_CANDIDATE  
 Status: stable  
 Mode: descriptive evidence only
 

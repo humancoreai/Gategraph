@@ -1,6 +1,6 @@
 # Public Repo Hygiene
 
-Release: v0.17.4_STABLE  
+Release: v0.17.6_CANDIDATE  
 Base: v0.14.7_STABLE  
 Status: stable
 
