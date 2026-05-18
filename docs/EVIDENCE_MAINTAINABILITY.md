@@ -1,8 +1,8 @@
-# Evidence Maintainability – v0.17.6_STABLE
+# Evidence Maintainability – v0.17.7_CANDIDATE
 
-Release: v0.17.6_STABLE  
+Release: v0.17.7_CANDIDATE  
 Base: v0.17.5_STABLE  
-Status: stable  
+Status: candidate  
 Phase: Evidence Lifecycle Cleanup Formalization
 
 This surface is descriptive only. It has no runtime authority, no auto-repair, no auto-pruning and no policy mutation.

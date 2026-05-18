@@ -6,6 +6,8 @@ SEC: no secrets or external services are used in the PoC.
 
 import json
 import sqlite3
+import threading
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -14,11 +16,62 @@ DB_PATH = PROJECT_ROOT / "gategraph.db"
 SCHEMA_PATH = PROJECT_ROOT / "db" / "schema.sql"
 
 
-def get_connection(path: Path | None = None) -> sqlite3.Connection:
-    conn = sqlite3.connect(path or DB_PATH)
+_THREAD_LOCAL = threading.local()
+
+
+def _configure_connection(conn: sqlite3.Connection) -> sqlite3.Connection:
+    """
+    WHY: every connection receives the same deterministic baseline configuration.
+    INV: ownership stays thread-local; cross-thread reuse is not allowed.
+    """
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA journal_mode = WAL")
+    conn.execute("PRAGMA busy_timeout = 5000")
     return conn
+
+
+def get_thread_local_connection(path: Path | None = None) -> sqlite3.Connection:
+    """
+    WHY: SQLite connections are thread-owned in the current single-node baseline.
+    SEC: avoids silent cross-thread connection reuse.
+    """
+    db_target = str(path or DB_PATH)
+    owned_path = getattr(_THREAD_LOCAL, "db_path", None)
+    owned_conn = getattr(_THREAD_LOCAL, "connection", None)
+
+    if owned_conn is None or owned_path != db_target:
+        owned_conn = _configure_connection(sqlite3.connect(db_target))
+        _THREAD_LOCAL.connection = owned_conn
+        _THREAD_LOCAL.db_path = db_target
+
+    return owned_conn
+
+
+@contextmanager
+def managed_connection(path: Path | None = None):
+    conn = _configure_connection(sqlite3.connect(path or DB_PATH))
+    try:
+        yield conn
+    finally:
+        conn.close()
+
+
+def close_thread_local_connection() -> None:
+    conn = getattr(_THREAD_LOCAL, "connection", None)
+    if conn is not None:
+        conn.close()
+        _THREAD_LOCAL.connection = None
+        _THREAD_LOCAL.db_path = None
+
+
+
+def get_connection(path: Path | None = None) -> sqlite3.Connection:
+    """
+    WHY: returns a short-lived deterministic connection for bounded operations.
+    INV: callers must not share returned connections across threads.
+    """
+    return _configure_connection(sqlite3.connect(path or DB_PATH))
 
 
 def init_db(path: Path | None = None) -> None:
