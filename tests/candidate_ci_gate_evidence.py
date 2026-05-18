@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.17.2_STABLE"
-EXPECTED_BASE = "v0.17.1_STABLE"
+EXPECTED_RELEASE = "v0.17.3_CANDIDATE"
+EXPECTED_BASE = "v0.17.2_STABLE"
 
 
 def check(name: str, ok: bool, detail: dict) -> tuple[str, bool, dict]:
