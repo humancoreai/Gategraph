@@ -1,8 +1,8 @@
 # Release Promotion Status Guard
 
-Release: v0.17.4_STABLE  
-Base: v0.17.3_STABLE  
-Status: stable
+Release: v0.17.5_CANDIDATE  
+Base: v0.17.4_STABLE  
+Status: candidate
 
 ## Purpose
 

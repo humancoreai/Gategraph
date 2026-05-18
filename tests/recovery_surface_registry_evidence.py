@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE='v0.17.4_STABLE'
-EXPECTED_BASE='v0.17.3_STABLE'
+EXPECTED_RELEASE='v0.17.5_CANDIDATE'
+EXPECTED_BASE='v0.17.4_STABLE'
 REQUIRED={
  'src/recovery_foundation.py',
  'docs/RECOVERY_FOUNDATION.md',
@@ -13,7 +13,7 @@ REQUIRED={
  'tests/replay_reference_integrity_evidence.py',
  'tests/recovery_surface_registry_evidence.py',
  'tests/release_surface_sync_evidence.py',
- 'docs/RELEASE_v0.17.4_STABLE.md',
+ 'docs/RELEASE_v0.17.5_CANDIDATE.md',
 }
 
 def read(p): return (ROOT/p).read_text(encoding='utf-8')
