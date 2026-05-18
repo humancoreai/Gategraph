@@ -3,10 +3,10 @@ from __future__ import annotations
 import json, re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE='v0.17.6_CANDIDATE'
-EXPECTED_BASE='v0.17.5_STABLE'
+EXPECTED_RELEASE='v0.17.0_CANDIDATE'
+EXPECTED_BASE='v0.16.9_STABLE'
 EXPECTED_STATUS = "candidate" if EXPECTED_RELEASE.endswith("_CANDIDATE") else "stable"
-EXPECTED_VERSION = "0.17.6"
+EXPECTED_VERSION = "0.17.0"
 SURFACES=['README.md','VERSION.md','RELEASE_NOTES.md','RELEASE_STATUS.md','RELEASE_METADATA.json','pyproject.toml','tools/build_release.py','tools/verify_release.py']
 def main():
     meta=json.loads((ROOT/'RELEASE_METADATA.json').read_text())

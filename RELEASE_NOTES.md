@@ -1,31 +1,47 @@
-Release: v0.17.6_CANDIDATE
-Base: v0.17.5_STABLE
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
 Status: candidate
-Version: 0.17.6
-Phase: Evidence Lifecycle Cleanup Formalization
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
-# Release Notes – v0.17.6_CANDIDATE
+# Release Notes – v0.17.0_CANDIDATE
 
-v0.17.6_CANDIDATE is a candidate based on v0.17.5_STABLE for Windows Evidence CI validation.
+Status: stable  
+Base: v0.16.9_STABLE  
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
-Included scope:
+## Focus
 
-- formalize registry-lock rebaseline as a mandatory promotion hygiene step
-- keep release/status token registries candidate-aware
-- keep semantic registry lock validation deterministic after surface changes
-- keep README/Integrator surface from v0.17.4 intact
-- no runtime authority, governance logic, policy mutation, or enforcement behavior changes
+v0.17.0_CANDIDATE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
 
-Explicit non-scope:
+## Changes
 
-- no runtime authority change
-- no governance logic change
-- no policy mutation
-- no new autonomous behavior
+- Adds an evidence overlap matrix as a descriptive review surface.
+- Adds a cleanup evidence gate that proves overlap visibility remains non-authoritative.
+- Keeps all existing Evidence CI gates intact for this candidate.
 
-Semantic boundary assertions:
+## Non-scope
 
-- No governance logic change
-- No runtime/enforcement behavior change
-- No autonomous policy update
-- No semantic scoring or memory system
+- No automatic evidence pruning.
+- No runtime authority changes.
+- No governance policy mutation.
+- No Multi-Node implementation.
+
+
+## Runtime / governance boundary
+
+- No governance logic change.
+- No runtime/enforcement behavior change.
+- No autonomous policy update.
+- No semantic scoring or memory system.
+
+## Reviewer-result handling
+
+- README quickstart now separates basic local checks from the full evidence suite.
+- `OWASP_AGENTIC_AI_MAPPING.md` is described as a non-normative review mapping.
+- Release history remains visible through `CHANGELOG.md`; detailed per-release records remain under `docs/RELEASE_*`.
+
+## Semantic boundary / Registry notes
+
+- Semantic and Registry surfaces remain descriptive, review-only surfaces.

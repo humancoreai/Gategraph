@@ -1,94 +1,88 @@
 {
   "auto_mutation": false,
   "auto_repair": false,
-  "base": "v0.17.5_STABLE",
+  "base": "v0.16.9_STABLE",
   "dynamic_loading": false,
   "lineage": [
     {
-      "auto_mutation": false,
-      "auto_repair": false,
-      "base": "",
-      "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 1,
-      "release": "v0.12.3_STABLE",
-      "runtime_authority": false
+      "adds": [
+        "semantic_registry",
+        "surface_registry"
+      ],
+      "governance_logic_changed": false,
+      "release": "v0.12.3_STABLE"
     },
     {
-      "auto_mutation": false,
-      "auto_repair": false,
-      "base": "",
-      "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 2,
-      "release": "v0.12.4_STABLE",
-      "runtime_authority": false
+      "adds": [
+        "registry_lock",
+        "surface_freeze_coupling"
+      ],
+      "governance_logic_changed": false,
+      "release": "v0.12.4_STABLE"
     },
     {
-      "auto_mutation": false,
-      "auto_repair": false,
-      "base": "",
-      "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 3,
-      "release": "v0.12.5_STABLE",
-      "runtime_authority": false
+      "adds": [
+        "schema_governance",
+        "export_contracts",
+        "freeze_snapshot_determinism"
+      ],
+      "governance_logic_changed": false,
+      "release": "v0.12.5_STABLE"
     },
     {
-      "auto_mutation": false,
-      "auto_repair": false,
-      "base": "",
-      "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 4,
-      "release": "v0.12.6_STABLE",
-      "runtime_authority": false
+      "adds": [
+        "evidence_provenance",
+        "governance_lineage",
+        "dependency_visibility",
+        "mutation_visibility",
+        "replay_provenance_consistency"
+      ],
+      "governance_logic_changed": false,
+      "release": "v0.12.6_STABLE"
     },
     {
-      "auto_mutation": false,
-      "auto_repair": false,
-      "base": "",
-      "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 5,
-      "release": "v0.12.7_STABLE",
-      "runtime_authority": false
+      "adds": [
+        "release_state_transition",
+        "promotion_surface_symmetry",
+        "candidate_stable_surface_parity"
+      ],
+      "governance_logic_changed": false,
+      "release": "v0.12.7_STABLE"
     },
     {
-      "auto_mutation": false,
-      "auto_repair": false,
-      "base": "",
-      "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 6,
-      "release": "v0.14.4_STABLE",
-      "runtime_authority": false
+      "adds": [
+        "governance_integrity_graph",
+        "orphan_detection",
+        "impact_visibility",
+        "integrity_graph_freeze",
+        "deterministic_governance_diff"
+      ],
+      "governance_logic_changed": false,
+      "release": "v0.14.4_STABLE"
     },
     {
-      "auto_mutation": false,
-      "auto_repair": false,
-      "base": "",
-      "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 7,
-      "release": "v0.14.7_STABLE",
-      "runtime_authority": false
+      "adds": [
+        "release_surface_repair",
+        "github_actions_ci_green",
+        "stable_promotion_hygiene"
+      ],
+      "governance_logic_changed": false,
+      "release": "v0.14.7_STABLE"
     },
     {
-      "auto_mutation": false,
-      "auto_repair": false,
-      "base": "v0.17.6_CANDIDATE",
-      "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 8,
-      "release": "v0.17.6_CANDIDATE",
-      "runtime_authority": false
+      "adds": [
+        "release_surface_gate_robustness",
+        "randdoc_hygiene_surface_check",
+        "release_ssot_consolidation"
+      ],
+      "governance_logic_changed": false,
+      "release": "v0.17.0_CANDIDATE"
     }
   ],
-  "release": "v0.17.6_CANDIDATE",
+  "release": "v0.17.0_CANDIDATE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.17.6_CANDIDATE",
+    "governance_state_release": "v0.17.0_CANDIDATE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"

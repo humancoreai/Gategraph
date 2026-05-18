@@ -1,6 +1,5 @@
-Release: v0.17.6_CANDIDATE
-Base: v0.17.5_STABLE
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
 Status: candidate
-Version: 0.17.6
-
-Phase: Evidence Lifecycle Cleanup Formalization
+Version: 0.17.0
+Phase: Operational Readiness Baseline

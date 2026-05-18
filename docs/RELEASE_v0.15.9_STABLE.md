@@ -1,14 +1,14 @@
-# Release Notes – v0.17.6_CANDIDATE
+# Release Notes – v0.17.0_CANDIDATE
 
-Base: v0.17.6_CANDIDATE  
+Base: v0.17.0_CANDIDATE  
 Status: stable  
-Version: 0.17.4  
+Version: 0.17.0  
 Phase: Evidence artifact hygiene and revocation negative-path hardening  
 Release focus: Evidence Artifact Hygiene / Revocation Negative Path Hardening
 
 ## Summary
 
-v0.17.6_CANDIDATE closes the stale-token window found during practical controlled-apply testing. When a rule is hardened through controlled apply, active non-expired capability tokens whose issuing decision depended on that rule are revoked.
+v0.17.0_CANDIDATE closes the stale-token window found during practical controlled-apply testing. When a rule is hardened through controlled apply, active non-expired capability tokens whose issuing decision depended on that rule are revoked.
 
 ## Changes
 
@@ -27,4 +27,4 @@ v0.17.6_CANDIDATE closes the stale-token window found during practical controlle
 
 ## Compatibility Notes
 
-v0.17.6_CANDIDATE is based on v0.17.6_CANDIDATE and keeps the single-node local protected deployment boundary unchanged.
+v0.17.0_CANDIDATE is based on v0.17.0_CANDIDATE and keeps the single-node local protected deployment boundary unchanged.

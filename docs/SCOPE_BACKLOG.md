@@ -1,11 +1,11 @@
 # GateGraph Scope Backlog
 
-Release: v0.17.6_CANDIDATE
-Base: v0.17.5_STABLE
-Status: candidate
-Version: 0.17.6
-Phase: Evidence Lifecycle Cleanup Formalization
-Release focus: Evidence Lifecycle Cleanup Formalization
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
+Status: stable
+Version: 0.17.0
+Phase: Release SSOT Consolidation
+Release focus: Release SSOT Consolidation
 
 ## Purpose
 

@@ -10,7 +10,7 @@
   "authority": "descriptive_only",
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.17.5_STABLE",
+  "base": "v0.16.9_STABLE",
   "forbidden_transitions": [
     {
       "from": "stable",
@@ -25,7 +25,7 @@
       "to": "candidate"
     }
   ],
-  "release": "v0.17.6_CANDIDATE",
+  "release": "v0.17.0_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
   "status": "candidate",
@@ -38,6 +38,6 @@
       "manifest_kind"
     ],
     "candidate_token": "CANDIDATE",
-    "stable_token": "v0.17.6_CANDIDATE"
+    "stable_token": "v0.17.0_STABLE"
   }
 }
