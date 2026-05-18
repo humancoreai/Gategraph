@@ -26,8 +26,8 @@
   },
   "mode": "descriptive_root_cause_grouping_only",
   "policy_mutation": false,
-  "release": "v0.17.3_CANDIDATE",
+  "release": "v0.17.3_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate"
+  "status": "stable"
 }
