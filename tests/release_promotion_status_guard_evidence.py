@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_STATUS = "candidate"
+EXPECTED_STATUS = "stable"
 
 
 def _load(path: str) -> dict:
@@ -14,7 +14,7 @@ def _load(path: str) -> dict:
 def _derive_future_stable(release: str, status: str) -> str:
     if status == "candidate":
         return release.replace("_CANDIDATE", "_STABLE")
-    if status == EXPECTED_STATUS:
+    if status == "stable":
         return release
     return ""
 
@@ -56,7 +56,7 @@ def main() -> int:
     future = meta.get("future_stable", _derive_future_stable(release, status))
 
     checks: list[tuple[str, bool, dict]] = []
-    checks.append(("metadata_current_release", release == "v0.17.2_CANDIDATE" and base == "v0.17.1_STABLE" and status == EXPECTED_STATUS, {"release": release, "base": base, "status": status}))
+    checks.append(("metadata_current_release", release == "v0.17.2_STABLE" and base == "v0.17.1_STABLE" and status == EXPECTED_STATUS, {"release": release, "base": base, "status": status}))
     checks.append(("guard_registry_current_release", registry.get("release") == release and registry.get("base") == base and registry.get("status") == status, {"registry": {"release": registry.get("release"), "base": registry.get("base"), "status": registry.get("status")}}))
     checks.append(("descriptive_only_no_authority", not registry.get("runtime_authority") and not registry.get("auto_repair") and not registry.get("auto_promotion") and not registry.get("policy_mutation"), {"mode": registry.get("mode")}))
 
