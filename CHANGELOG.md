@@ -1,23 +1,23 @@
-Release: v0.17.7_STABLE
-Base: v0.17.6_STABLE
-Status: stable
-Version: 0.17.7
-Phase: Evidence Lifecycle Cleanup Formalization
+Release: v0.17.8_CANDIDATE
+Base: v0.17.7_STABLE
+Status: candidate
 
-# Changelog
+## v0.17.8_CANDIDATE
 
-All notable changes to GateGraph are documented here.
+Base: v0.17.7_STABLE
+Status: candidate
+Phase: Concurrency Scope Evidence Formalization
 
+- Formalized concurrency scope statement for the single-node SQLite baseline.
+- Added evidence for SQLite thread ownership documentation and non-authority boundaries.
+- Kept runtime/governance authority unchanged.
+
+- Kept registry-lock rebaseline as a required promotion hygiene step.
+- Kept release/status token registry checks candidate-aware.
 
 ## v0.17.7_STABLE
 
-- Formalized registry-lock rebaseline as a required promotion hygiene step.
-- Kept release/status token registry checks candidate-aware.
-- No runtime authority, governance logic, policy mutation, or enforcement behavior changes.
-
-## v0.17.6_STABLE
-
-Base: v0.17.6_STABLE
+Base: v0.17.7_STABLE
 
 Status: stable
 Phase: Surface Version Scanner Formalization
@@ -45,7 +45,7 @@ Status: stable
 ## v0.14.7_STABLE
 
 State: stable.
-Base: v0.17.7_STABLE.
+Base: v0.17.8_CANDIDATE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.
