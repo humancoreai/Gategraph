@@ -1,29 +1,29 @@
+# Release v0.17.4_CANDIDATE
+
 Release: v0.17.4_CANDIDATE
 Base: v0.17.3_STABLE
 Status: candidate
 Version: 0.17.4
 Phase: Surface Version Scanner Formalization
 
-# Release Notes – v0.17.4_CANDIDATE
+This candidate formalizes active-surface version scanning and release-claim consistency after the v0.17.3_STABLE baseline.
 
-v0.17.4_CANDIDATE starts from v0.17.3_STABLE after Windows Evidence CI Passed: True.
-
-Included scope:
+Scope:
 
 - active surface version scanner formalization
-- release-claim consistency hardening for candidate/stable surfaces
+- release-claim consistency hardening
 - manifest/package hygiene
-- documentation-truth checks for release surfaces
-- integrator README recovery: minimal CLI/HTTP examples, Key Documents, and playbook visibility
+- documentation truth consistency for release surfaces
+- integrator README recovery with minimal CLI/HTTP examples, Key Documents, and playbook visibility
 - stable current-release alias: docs/CURRENT_RELEASE.md
-- no blind global rewrite of historical timeline/changelog content
 
-Explicit non-scope:
+Non-scope:
 
 - no runtime authority change
 - no governance logic change
 - no policy mutation
-- no new autonomous behavior
+- no enforcement behavior change
+- no semantic scoring or memory system
 
 Semantic boundary assertions:
 
