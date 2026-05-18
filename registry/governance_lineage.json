@@ -7,93 +7,94 @@
     {
       "auto_mutation": false,
       "auto_repair": false,
-      "base": "",
+      "change_class": "historical_reference",
       "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 1,
+      "governance_logic_changed": false,
       "release": "v0.12.3_STABLE",
-      "runtime_authority": false
+      "runtime_authority": false,
+      "status": "stable"
     },
     {
       "auto_mutation": false,
       "auto_repair": false,
-      "base": "",
+      "change_class": "historical_reference",
       "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 2,
+      "governance_logic_changed": false,
       "release": "v0.12.4_STABLE",
-      "runtime_authority": false
+      "runtime_authority": false,
+      "status": "stable"
     },
     {
       "auto_mutation": false,
       "auto_repair": false,
-      "base": "",
+      "change_class": "historical_reference",
       "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 3,
+      "governance_logic_changed": false,
       "release": "v0.12.5_STABLE",
-      "runtime_authority": false
+      "runtime_authority": false,
+      "status": "stable"
     },
     {
       "auto_mutation": false,
       "auto_repair": false,
-      "base": "",
+      "change_class": "historical_reference",
       "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 4,
+      "governance_logic_changed": false,
       "release": "v0.12.6_STABLE",
-      "runtime_authority": false
+      "runtime_authority": false,
+      "status": "stable"
     },
     {
       "auto_mutation": false,
       "auto_repair": false,
-      "base": "",
+      "change_class": "historical_reference",
       "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 5,
+      "governance_logic_changed": false,
       "release": "v0.12.7_STABLE",
-      "runtime_authority": false
+      "runtime_authority": false,
+      "status": "stable"
     },
     {
       "auto_mutation": false,
       "auto_repair": false,
-      "base": "",
+      "change_class": "historical_reference",
       "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 6,
+      "governance_logic_changed": false,
       "release": "v0.14.4_STABLE",
-      "runtime_authority": false
+      "runtime_authority": false,
+      "status": "stable"
     },
     {
       "auto_mutation": false,
       "auto_repair": false,
-      "base": "",
+      "change_class": "historical_reference",
       "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 7,
+      "governance_logic_changed": false,
       "release": "v0.14.7_STABLE",
-      "runtime_authority": false
+      "runtime_authority": false,
+      "status": "stable"
     },
     {
       "auto_mutation": false,
       "auto_repair": false,
-      "base": "v0.17.8_CANDIDATE",
+      "change_class": "current_release",
       "dynamic_loading": false,
-      "governance_logic_change": false,
-      "order": 8,
-      "release": "v0.17.8_CANDIDATE",
-      "runtime_authority": false
+      "governance_logic_changed": false,
+      "release": "v0.17.8_STABLE",
+      "runtime_authority": false,
+      "status": "stable"
     }
   ],
-  "release": "v0.17.8_CANDIDATE",
+  "mode": "descriptive_governance_lineage_only",
+  "release": "v0.17.8_STABLE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.17.8_CANDIDATE",
+    "governance_state_release": "v0.17.8_STABLE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"
   },
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate"
+  "status": "stable"
 }

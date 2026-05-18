@@ -1,4 +1,4 @@
-# MAX Simulation Findings – v0.17.8_CANDIDATE
+# MAX Simulation Findings – v0.17.8_STABLE
 
 ## Confirmed PASS Areas
 

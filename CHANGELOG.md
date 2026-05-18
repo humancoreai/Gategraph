@@ -1,8 +1,8 @@
-Release: v0.17.8_CANDIDATE
+Release: v0.17.8_STABLE
 Base: v0.17.7_STABLE
 Status: candidate
 
-## v0.17.8_CANDIDATE
+## v0.17.8_STABLE
 
 Base: v0.17.7_STABLE
 Status: candidate
@@ -45,7 +45,7 @@ Status: stable
 ## v0.14.7_STABLE
 
 State: stable.
-Base: v0.17.8_CANDIDATE.
+Base: v0.17.8_STABLE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.

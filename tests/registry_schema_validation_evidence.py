@@ -36,7 +36,7 @@ def main() -> int:
     checks.append(("missing_required_field_detected", any("missing field: release" in e for e in validate(mutated)), validate(mutated)))
     mutated = copy.deepcopy(payload); mutated["status"] = "preview"
     checks.append(("invalid_status_detected", any("invalid status" in e for e in validate(mutated)), validate(mutated)))
-    mutated = copy.deepcopy(payload); mutated["release_truth"]["release"] = "v0.17.8_CANDIDATE"
+    mutated = copy.deepcopy(payload); mutated["release_truth"]["release"] = "v0.17.8_STABLE"
     checks.append(("candidate_stable_parity_mismatch_detected", any("parity" in e for e in validate(mutated)), validate(mutated)))
     failed=[name for name, ok, _ in checks if not ok]
     for name, ok, detail in checks:

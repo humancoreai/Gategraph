@@ -1,8 +1,8 @@
-Release: v0.17.8_CANDIDATE
+Release: v0.17.8_STABLE
 
 # GateGraph
 
-Current release: **v0.17.8_CANDIDATE**  
+Current release: **v0.17.8_STABLE**  
 Base: **v0.17.7_STABLE**  
 Base stable: **v0.17.7_STABLE**  
 Status: **candidate**  
@@ -96,7 +96,7 @@ Core public review files:
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
 - `docs/CURRENT_RELEASE.md`
-- `docs/RELEASE_v0.17.8_CANDIDATE.md`
+- `docs/RELEASE_v0.17.8_STABLE.md`
 
 ## Key documents
 
@@ -136,4 +136,4 @@ Canonical runtime namespace: `gategraph`.
 
 This candidate formalizes concurrency scope evidence for the single-node SQLite baseline. It does not introduce multi-node execution, shared cross-thread SQLite handles, async orchestration, new runtime authority, or new capability scopes.
 
-Release document: `docs/RELEASE_v0.17.8_CANDIDATE.md`
+Release document: `docs/RELEASE_v0.17.8_STABLE.md`

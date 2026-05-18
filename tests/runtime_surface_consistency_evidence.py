@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-EXPECTED_RELEASE = "v0.17.8_CANDIDATE"
+EXPECTED_RELEASE = "v0.17.8_STABLE"
 EXPECTED_BASE = "v0.17.7_STABLE"
 
 
