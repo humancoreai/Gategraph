@@ -1,6 +1,6 @@
 # Surface Version Scanner Formalization
 
-Release: v0.17.4_CANDIDATE
+Release: v0.17.4_STABLE
 Base: v0.17.3_STABLE
 Status: stable
 
