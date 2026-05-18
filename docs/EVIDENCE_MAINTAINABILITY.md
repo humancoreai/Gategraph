@@ -1,8 +1,8 @@
-# Evidence Maintainability – v0.16.8_CANDIDATE
+# Evidence Maintainability – v0.16.8_STABLE
 
-Release: v0.16.8_CANDIDATE  
+Release: v0.16.8_STABLE  
 Base: v0.16.7_STABLE  
-Status: candidate  
+Status: stable  
 Phase: Release Status Assertion Policy
 
 This surface is descriptive only. It has no runtime authority, no auto-repair, no auto-pruning and no policy mutation.

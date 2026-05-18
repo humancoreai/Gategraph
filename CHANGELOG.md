@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.8_CANDIDATE
+## v0.16.8_STABLE
 
 Base: v0.16.7_STABLE
 
-Status: candidate
+Status: stable
 Phase: Release Status Assertion Policy
 Release focus: Release Status Assertion Policy
 
@@ -19,7 +19,7 @@ Release focus: Release Status Assertion Policy
 ## v0.16.7_STABLE
 
 Base: v0.16.3_STABLE
-Status: candidate
+Status: stable
 Phase: Evidence Maintainability Hardening
 
 - Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
@@ -27,7 +27,7 @@ Phase: Evidence Maintainability Hardening
 
 ## v0.16.3_STABLE
 
-Status: candidate
+Status: stable
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.

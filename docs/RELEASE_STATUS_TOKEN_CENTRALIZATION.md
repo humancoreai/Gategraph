@@ -1,6 +1,6 @@
 # Release Status Assertion Policy
 
-Release: v0.16.8_CANDIDATE  
+Release: v0.16.8_STABLE  
 Base: v0.16.7_STABLE  
 Status: stable
 
