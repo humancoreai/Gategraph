@@ -13,7 +13,7 @@
   "mode": "descriptive_operational_readiness_only",
   "performance_claims": false,
   "policy_mutation": false,
-  "release": "v0.17.6_STABLE",
+  "release": "v0.17.7_CANDIDATE",
   "required_surfaces": [
     "docs/OPERATIONAL_READINESS.md",
     "registry/operational_readiness_registry.json",
@@ -21,5 +21,5 @@
   ],
   "runtime_authority": false,
   "schema_version": "0.17.6",
-  "status": "stable"
+  "status": "candidate"
 }

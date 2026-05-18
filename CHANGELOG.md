@@ -1,6 +1,6 @@
-Release: v0.17.6_STABLE
+Release: v0.17.7_CANDIDATE
 Base: v0.17.5_STABLE
-Status: stable
+Status: candidate
 Version: 0.17.6
 Phase: Evidence Lifecycle Cleanup Formalization
 
@@ -9,7 +9,7 @@ Phase: Evidence Lifecycle Cleanup Formalization
 All notable changes to GateGraph are documented here.
 
 
-## v0.17.6_STABLE
+## v0.17.7_CANDIDATE
 
 - Formalized registry-lock rebaseline as a required promotion hygiene step.
 - Kept release/status token registry checks candidate-aware.
@@ -19,7 +19,7 @@ All notable changes to GateGraph are documented here.
 
 Base: v0.17.5_STABLE
 
-Status: stable
+Status: candidate
 Phase: Surface Version Scanner Formalization
 Release focus: Surface Version Scanner Formalization
 
@@ -31,7 +31,7 @@ Release focus: Surface Version Scanner Formalization
 
 ## v0.16.3_STABLE
 
-Status: stable
+Status: candidate
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.
@@ -45,7 +45,7 @@ Status: stable
 ## v0.14.7_STABLE
 
 State: stable.
-Base: v0.17.6_STABLE.
+Base: v0.17.7_CANDIDATE.
 Phase: Install / Packaging / Public Repo Hygiene.
 
 - Added minimal Windows GitHub Actions evidence workflow.

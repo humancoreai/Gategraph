@@ -13,14 +13,14 @@
   "base_reference_not_stable_claim": true,
   "candidate_public_surface_rule": "Public candidate surfaces may reference the stable base token, but must not claim the stable token as current release.",
   "forbidden_for_candidate": [
-    "v0.17.6_STABLE as current release",
+    "stable token as current release",
     "stable status while metadata.status=candidate",
     "missing candidate release token on public surfaces"
   ],
-  "future_stable_token": "v0.17.6_STABLE",
+  "future_stable_token": "v0.17.7_STABLE",
   "mode": "descriptive_stable_promotion_surface_model_only",
   "policy_mutation": false,
-  "release": "v0.17.6_STABLE",
+  "release": "v0.17.7_CANDIDATE",
   "required_candidate_surfaces": [
     "README.md",
     "VERSION.md",
@@ -31,11 +31,11 @@
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.17.6_STABLE.md"
+    "docs/RELEASE_v0.17.7_CANDIDATE.md"
   ],
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "stable_token": "v0.17.6_STABLE",
-  "status": "stable",
+  "stable_token": "v0.17.7_STABLE",
+  "status": "candidate",
   "status_sensitive_evidence": true
 }

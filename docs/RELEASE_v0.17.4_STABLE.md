@@ -1,8 +1,8 @@
-# Release v0.17.6_STABLE
+# Release v0.17.7_CANDIDATE
 
-Release: v0.17.6_STABLE
+Release: v0.17.7_CANDIDATE
 Base: v0.17.3_STABLE
-Status: stable
+Status: candidate
 Version: 0.17.4
 Phase: Surface Version Scanner Formalization
 

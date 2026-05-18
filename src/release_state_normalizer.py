@@ -9,10 +9,10 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
-    "release": "v0.17.6_STABLE",
-    "status": "stable",
+    "release": "v0.17.7_CANDIDATE",
+    "status": "candidate",
     "base": "v0.17.5_STABLE",
-    "future_stable": "v0.17.6_STABLE",
+    "future_stable": "v0.17.7_STABLE",
     "version": "0.17.6",
 }
 ALLOWED_STATUS = {"candidate", "stable"}

@@ -1,6 +1,6 @@
-Release: v0.17.6_STABLE
+Release: v0.17.7_CANDIDATE
 Base: v0.17.5_STABLE
-Status: stable
+Status: candidate
 Version: 0.17.6
 
 Phase: Evidence Lifecycle Cleanup Formalization

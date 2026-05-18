@@ -1,12 +1,12 @@
-Release: v0.17.6_STABLE
+Release: v0.17.7_CANDIDATE
 Base: v0.17.5_STABLE
-Status: stable
+Status: candidate
 Version: 0.17.6
 Phase: Evidence Lifecycle Cleanup Formalization
 
-# Release Notes – v0.17.6_STABLE
+# Release Notes – v0.17.7_CANDIDATE
 
-v0.17.6_STABLE formalizes evidence lifecycle cleanup and timeout normalization surfaces without changing governance, runtime authority, enforcement logic, policy behavior, or capability scope.
+v0.17.7_CANDIDATE formalizes evidence lifecycle cleanup and timeout normalization surfaces without changing governance, runtime authority, enforcement logic, policy behavior, or capability scope.
 
 ## Scope
 
@@ -15,4 +15,4 @@ v0.17.6_STABLE formalizes evidence lifecycle cleanup and timeout normalization s
 - Registry lock rebaseline remains mandatory during promotion surfaces.
 - No runtime authority, policy mutation, automatic repair, or auto-promotion is introduced.
 
-Stable promotion note: promoted after Windows Evidence CI `Passed: True` for v0.17.6_CANDIDATE.
+Candidate note: stable promotion remains blocked until Windows Evidence CI `Passed: True`.
