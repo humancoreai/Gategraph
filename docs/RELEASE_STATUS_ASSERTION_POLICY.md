@@ -8,6 +8,6 @@ This surface is descriptive only. It does not add runtime authority, auto-repair
 
 Evidence tests may validate `candidate` or `stable`, but must not hardcode one status in a way that breaks the paired Candidate/Stable promotion path.
 
-Release: v0.17.3_CANDIDATE  
+Release: v0.17.3_STABLE  
 Base: v0.17.2_STABLE  
-Status: candidate
+Status: stable
