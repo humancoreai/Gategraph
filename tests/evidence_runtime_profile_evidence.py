@@ -39,7 +39,7 @@ def main() -> int:
     manifest = load_json("RELEASE_MANIFEST.json")
     ci = ci_names()
 
-    check("metadata_current_release", metadata.get("release") == "v0.17.1_STABLE" and metadata.get("status") in {"candidate", "stable"}, {"release": metadata.get("release"), "status": metadata.get("status")}, failures)
+    check("metadata_current_release", metadata.get("release") == "v0.17.2_CANDIDATE" and metadata.get("status") in {"candidate", "stable"}, {"release": metadata.get("release"), "status": metadata.get("status")}, failures)
     check("registry_current_release", registry.get("release") == metadata.get("release") and registry.get("base") == metadata.get("base") and registry.get("status") == metadata.get("status"), {"release": registry.get("release"), "base": registry.get("base"), "status": registry.get("status")}, failures)
     check("descriptive_only_no_authority", not any(registry.get(k) for k in ["runtime_authority", "auto_pruning", "auto_repair", "auto_promotion", "policy_mutation"]), {k: registry.get(k) for k in ["runtime_authority", "auto_pruning", "auto_repair", "auto_promotion", "policy_mutation"]}, failures)
     check("tests_not_removed", registry.get("tests_removed") is False and metadata.get("tests_removed") is False, {"registry": registry.get("tests_removed"), "metadata": metadata.get("tests_removed")}, failures)

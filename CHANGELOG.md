@@ -1,28 +1,28 @@
-Release: v0.17.1_STABLE
-Base: v0.17.0_STABLE
+Release: v0.17.2_CANDIDATE
+Base: v0.17.1_STABLE
 Status: candidate
-Version: 0.17.1
+Version: 0.17.2
 Phase: Promotion Status Drift Guard
 
 # Changelog
 
 All notable changes to GateGraph are documented here.
 
-## v0.17.1_STABLE
+## v0.17.2_CANDIDATE
 
-Base: v0.17.0_STABLE
+Base: v0.17.1_STABLE
 
 Status: candidate
 Phase: Promotion Status Drift Guard
 Release focus: Promotion Status Drift Guard
 
-- Cleaned README into a current public review surface.
-- Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
-- Added public-surface cleanup, scope-backlog and review-readiness evidence.
-- Preserved build-mutation hardening from v0.14.9.
+- Added registry schema validation evidence.
+- Added profile type validation evidence.
+- Added release-state normalization evidence.
+- Added `registry/registry_schema_registry.json` as descriptive release-state/schema registry.
 - No runtime/governance/enforcement authority expansion.
 
-## v0.17.0_STABLE
+## v0.17.1_STABLE
 
 Base: v0.16.3_STABLE
 Status: candidate

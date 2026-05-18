@@ -1,25 +1,26 @@
-Release: v0.17.1_STABLE
-Base: v0.17.0_STABLE
-Status: stable
-Version: 0.17.1
+Release: v0.17.2_CANDIDATE
+Base: v0.17.1_STABLE
+Status: candidate
+Status: candidate
+Version: 0.17.2
 Phase: Promotion Status Drift Guard
 
-# Release Notes – v0.17.1_STABLE
+# Release Notes – v0.17.2_CANDIDATE
 
-Status: stable  
-Base: v0.17.0_STABLE  
-Version: 0.17.1
+Status: candidate  
+Base: v0.17.1_STABLE  
+Version: 0.17.2
 Phase: Promotion Status Drift Guard
 
 ## Focus
 
-v0.17.1_STABLE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
+v0.17.2_CANDIDATE introduces registry schema validation, profile type validation, and release-state normalization. It does not remove tests, prune gates, or change runtime governance behavior.
 
 ## Changes
 
-- Adds an evidence overlap matrix as a descriptive review surface.
-- Adds a cleanup evidence gate that proves overlap visibility remains non-authoritative.
-- Keeps all existing Evidence CI gates intact for this stable release.
+- Adds registry schema validation as descriptive evidence.
+- Adds profile type validation and release-state normalization evidence gates.
+- Keeps all existing Evidence CI gates intact for this candidate release.
 
 ## Non-scope
 

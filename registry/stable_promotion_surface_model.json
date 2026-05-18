@@ -9,18 +9,18 @@
   ],
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.17.0_STABLE",
+  "base": "v0.17.1_STABLE",
   "base_reference_not_stable_claim": true,
   "candidate_public_surface_rule": "Public candidate surfaces may reference the stable base token, but must not claim the stable token as current release.",
   "forbidden_for_candidate": [
-    "v0.17.1_STABLE as current release",
+    "v0.17.2_CANDIDATE as current release",
     "stable status while metadata.status=stable",
     "missing stable release token on public surfaces"
   ],
-  "future_stable_token": "v0.17.1_STABLE",
+  "future_stable_token": "v0.17.2_STABLE",
   "mode": "descriptive_stable_promotion_surface_model_only",
   "policy_mutation": false,
-  "release": "v0.17.1_STABLE",
+  "release": "v0.17.2_CANDIDATE",
   "required_candidate_surfaces": [
     "README.md",
     "VERSION.md",
@@ -31,11 +31,11 @@
     "pyproject.toml",
     "tools/build_release.py",
     "tools/verify_release.py",
-    "docs/RELEASE_v0.17.1_STABLE.md"
+    "docs/RELEASE_v0.17.2_CANDIDATE.md"
   ],
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "stable_token": "v0.17.1_STABLE",
-  "status": "stable",
+  "stable_token": "v0.17.2_STABLE",
+  "status": "candidate",
   "status_sensitive_evidence": true
 }
