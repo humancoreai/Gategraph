@@ -1,7 +1,7 @@
 {
   "auto_mutation": false,
   "auto_repair": false,
-  "base": "v0.17.1_STABLE",
+  "base": "v0.17.2_STABLE",
   "dynamic_loading": false,
   "lineage": [
     {
@@ -76,18 +76,18 @@
         "release_ssot_consolidation"
       ],
       "governance_logic_changed": false,
-      "release": "v0.17.2_STABLE"
+      "release": "v0.17.3_CANDIDATE"
     }
   ],
-  "release": "v0.17.2_STABLE",
+  "release": "v0.17.3_CANDIDATE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.17.2_STABLE",
+    "governance_state_release": "v0.17.3_CANDIDATE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"
   },
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable"
+  "status": "candidate"
 }
