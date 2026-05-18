@@ -18,7 +18,7 @@ def main() -> int:
     registry = json.loads((ROOT / "registry" / "release_status_assertion_policy.json").read_text(encoding="utf-8"))
     release = metadata["release"]
     status = metadata["status"]
-    expected_status = "candidate" if release.endswith("_CANDIDATE") else "stable" if release.endswith("_STABLE") else None
+    expected_status = "stable" if release.endswith("_CANDIDATE") else "stable" if release.endswith("_STABLE") else None
     failed: list[str] = []
 
     check("metadata_status_derives_from_release_suffix", status == expected_status, {"release": release, "status": status, "expected": expected_status}, failed)

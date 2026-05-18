@@ -10,15 +10,15 @@
   ],
   "known_drift_sources": [
     "hardcoded candidate-only assertions in stable tests",
-    "future_stable copied from candidate release token",
+    "future_stable copied from stable release token",
     "release document path assertions tied to one status"
   ],
   "mode": "descriptive_release_status_token_centralization_only",
   "policy_mutation": false,
-  "release": "v0.17.2_CANDIDATE",
+  "release": "v0.17.2_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate",
+  "status": "stable",
   "status_derivation": {
     "candidate_future_stable": "replace _CANDIDATE with _STABLE",
     "candidate_suffix": "_CANDIDATE",
@@ -27,8 +27,8 @@
   },
   "tokens": {
     "current_base": "v0.17.1_STABLE",
-    "current_release": "v0.17.2_CANDIDATE",
-    "current_status": "candidate",
+    "current_release": "v0.17.2_STABLE",
+    "current_status": "stable",
     "future_stable": "v0.17.2_STABLE"
   },
   "version": "0.17.2"

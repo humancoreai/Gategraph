@@ -34,11 +34,11 @@
       "automatic_migration": false,
       "from": "v0.14.7_STABLE",
       "mode": "declarative_schema_governance_only",
-      "to": "v0.17.2_CANDIDATE"
+      "to": "v0.17.2_STABLE"
     }
   ],
   "registry_mode": "declarative_only",
-  "release": "v0.17.2_CANDIDATE",
+  "release": "v0.17.2_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
   "schemas": [
@@ -106,5 +106,5 @@
       "schema_id": "governance_integrity_graph"
     }
   ],
-  "status": "candidate"
+  "status": "stable"
 }
