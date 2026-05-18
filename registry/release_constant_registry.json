@@ -4,16 +4,16 @@
   "base": "v0.16.9_STABLE",
   "constants": {
     "CURRENT_BASE": "v0.16.9_STABLE",
-    "CURRENT_RELEASE": "v0.17.0_CANDIDATE",
-    "CURRENT_STATUS": "candidate",
+    "CURRENT_RELEASE": "v0.17.0_STABLE",
+    "CURRENT_STATUS": "stable",
     "FUTURE_STABLE": "v0.17.0_STABLE"
   },
   "future_stable": "v0.17.0_STABLE",
   "mode": "descriptive_release_constant_registry_only",
   "policy_mutation": false,
-  "release": "v0.17.0_CANDIDATE",
+  "release": "v0.17.0_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate",
+  "status": "stable",
   "version": "0.17.0"
 }
