@@ -1,14 +1,20 @@
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
+Status: candidate
+Version: 0.17.0
+Phase: Operational Readiness Baseline
+
 # Changelog
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.9_STABLE
+## v0.17.0_CANDIDATE
 
-Base: v0.16.8_STABLE
+Base: v0.16.9_STABLE
 
 Status: stable
-Phase: Release SSOT Consolidation
-Release focus: Release SSOT Consolidation
+Phase: Operational Readiness Baseline
+Release focus: Operational Readiness Baseline
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
@@ -16,7 +22,7 @@ Release focus: Release SSOT Consolidation
 - Preserved build-mutation hardening from v0.14.9.
 - No runtime/governance/enforcement authority expansion.
 
-## v0.16.8_STABLE
+## v0.16.9_STABLE
 
 Base: v0.16.3_STABLE
 Status: stable

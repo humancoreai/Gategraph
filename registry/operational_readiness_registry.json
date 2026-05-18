@@ -1,0 +1,25 @@
+{
+  "auto_promotion": false,
+  "auto_repair": false,
+  "base": "v0.16.9_STABLE",
+  "benchmark_claims": false,
+  "checks": [
+    "cli_entry_declared",
+    "server_entry_declared",
+    "profile_surface_declared",
+    "known_boundaries_documented",
+    "no_runtime_authority"
+  ],
+  "mode": "descriptive_operational_readiness_only",
+  "performance_claims": false,
+  "policy_mutation": false,
+  "release": "v0.17.0_CANDIDATE",
+  "required_surfaces": [
+    "docs/OPERATIONAL_READINESS.md",
+    "registry/operational_readiness_registry.json",
+    "tests/operational_readiness_evidence.py"
+  ],
+  "runtime_authority": false,
+  "schema_version": "0.17.0",
+  "status": "candidate"
+}

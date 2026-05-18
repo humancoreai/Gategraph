@@ -1,7 +1,7 @@
 # Evidence Runtime Profiles
 
-Release: v0.16.9_STABLE  
-Base: v0.16.8_STABLE  
+Release: v0.17.0_CANDIDATE  
+Base: v0.16.9_STABLE  
 Status: stable
 
 This document defines scoped evidence execution profiles for operator ergonomics.

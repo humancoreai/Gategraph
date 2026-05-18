@@ -124,6 +124,7 @@ MANIFEST: List[Tuple[str, str, int]] = [
     ("evidence_profile_cleanup_evidence", "tests/evidence_profile_cleanup_evidence.py", 20),
     ("evidence_runtime_profile_evidence", "tests/evidence_runtime_profile_evidence.py", 20),
     ("public_surface_cleanup_evidence", "tests/public_surface_cleanup_evidence.py", 20),
+    ("operational_readiness_evidence", "tests/operational_readiness_evidence.py", 20),
     ("scope_backlog_evidence", "tests/scope_backlog_evidence.py", 20),
     ("review_readiness_surface_evidence", "tests/review_readiness_surface_evidence.py", 20),
     ("promotion_status_ssot_evidence", "tests/promotion_status_ssot_evidence.py", 20),
