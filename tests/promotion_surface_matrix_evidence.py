@@ -2,12 +2,12 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.17.4_STABLE"
-EXPECTED_BASE = "v0.17.3_STABLE"
+EXPECTED_RELEASE = "v0.17.5_CANDIDATE"
+EXPECTED_BASE = "v0.17.4_STABLE"
 EXPECTED_STATUS = "candidate" if EXPECTED_RELEASE.endswith("_CANDIDATE") else "stable"
-EXPECTED_VERSION = "0.17.4"
-EXPECTED_PHASE = "Surface Version Scanner Formalization"
-EXPECTED_FOCUS = "Surface Version Scanner Formalization"
+EXPECTED_VERSION = "0.17.5"
+EXPECTED_PHASE = "Promotion Registry Lock Rebaseline Formalization"
+EXPECTED_FOCUS = "Promotion Registry Lock Rebaseline Formalization"
 
 SURFACES = [
     "README.md",
@@ -21,7 +21,7 @@ SURFACES = [
     "tools/verify_release.py",
     "registry/promotion_pipeline_registry.json",
     "registry/semantic_registry_lock.json",
-    "docs/RELEASE_v0.17.4_STABLE.md",
+    "docs/RELEASE_v0.17.5_CANDIDATE.md",
     "tests/promotion_surface_matrix_evidence.py",
     "tests/promotion_status_ssot_evidence.py",
 ]
@@ -61,7 +61,7 @@ def main():
         "VERSION.md",
         "RELEASE_STATUS.md",
         "RELEASE_NOTES.md",
-        "docs/RELEASE_v0.17.4_STABLE.md",
+        "docs/RELEASE_v0.17.5_CANDIDATE.md",
         "registry/promotion_pipeline_registry.json",
     ]
     missing_status = [rel for rel in required_status_surfaces if EXPECTED_STATUS not in read(rel)]

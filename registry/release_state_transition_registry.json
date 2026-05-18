@@ -10,7 +10,7 @@
   "authority": "descriptive_only",
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.17.3_STABLE",
+  "base": "v0.17.4_STABLE",
   "forbidden_transitions": [
     {
       "from": "stable",
@@ -25,10 +25,10 @@
       "to": "candidate"
     }
   ],
-  "release": "v0.17.4_STABLE",
+  "release": "v0.17.5_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
+  "status": "candidate",
   "surface_parity": {
     "allowed_differences": [
       "release",
@@ -38,6 +38,6 @@
       "manifest_kind"
     ],
     "candidate_token": "CANDIDATE",
-    "stable_token": "v0.17.4_STABLE"
+    "stable_token": "v0.17.5_CANDIDATE"
   }
 }

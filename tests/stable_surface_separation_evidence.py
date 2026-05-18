@@ -40,7 +40,7 @@ def main() -> int:
         text = read(surface)
         if release not in text:
             missing_release.append(surface)
-        if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md", "CHANGELOG.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.17.4_STABLE.md"} and base not in text:
+        if surface in {"README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_NOTES.md", "CHANGELOG.md", "RELEASE_METADATA.json", "docs/RELEASE_v0.17.5_CANDIDATE.md"} and base not in text:
             missing_base.append(surface)
         # EDGE: Only Candidate surfaces are forbidden from claiming their future Stable as current.
         # In Stable status, the stable token is expected on public release surfaces.
