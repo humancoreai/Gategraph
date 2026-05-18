@@ -2,12 +2,12 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.17.1_STABLE"
-BASE = "v0.17.0_STABLE"
-STATUS = "stable"
+RELEASE = "v0.17.2_CANDIDATE"
+BASE = "v0.17.1_STABLE"
+STATUS = "candidate"
 REQUIRED_SURFACES = [
     "README.md", "VERSION.md", "RELEASE_STATUS.md", "RELEASE_METADATA.json", "RELEASE_MANIFEST.json", "RELEASE_NOTES.md",
-    "docs/SCOPE_BACKLOG.md", "docs/RELEASE_v0.17.1_STABLE.md", "SECURITY.md", "PRODUCTION.md", "TRUST_MODEL.md",
+    "docs/SCOPE_BACKLOG.md", "docs/RELEASE_v0.17.2_CANDIDATE.md", "SECURITY.md", "PRODUCTION.md", "TRUST_MODEL.md",
 ]
 
 def main():
@@ -23,7 +23,7 @@ def main():
     assert not missing_files, missing_files
     missing_manifest = [path for path in REQUIRED_SURFACES if path not in paths and path != "RELEASE_MANIFEST.json"]
     assert not missing_manifest, missing_manifest
-    for path in ["README.md", "VERSION.md", "RELEASE_STATUS.md", "docs/RELEASE_v0.17.1_STABLE.md"]:
+    for path in ["README.md", "VERSION.md", "RELEASE_STATUS.md", "docs/RELEASE_v0.17.2_CANDIDATE.md"]:
         text = (ROOT / path).read_text(encoding="utf-8")
         assert RELEASE in text, path
         assert BASE in text, path
