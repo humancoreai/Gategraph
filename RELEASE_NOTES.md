@@ -1,31 +1,29 @@
-Release: v0.17.7_STABLE
-Base: v0.17.6_STABLE
-Status: stable
-Version: 0.17.7
-Phase: Evidence Lifecycle Cleanup Formalization
+Release: v0.17.8_CANDIDATE
+Base: v0.17.7_STABLE
+Status: candidate
+Version: 0.17.8
+Phase: Concurrency Scope Evidence Formalization
 
-# Release Notes – v0.17.7_STABLE
+# Release Notes – v0.17.8_CANDIDATE
 
-v0.17.7_STABLE is a stable release promoted from v0.17.6_CANDIDATE after Windows Evidence CI `Passed: True`.
+Scope: concurrency scope evidence formalization and release-surface hygiene.
 
-Included scope:
+## Changes
 
-- formalize registry-lock rebaseline as a mandatory promotion hygiene step
-- keep release/status token registries candidate-aware
-- keep semantic registry lock validation deterministic after surface changes
-- keep README/Integrator surface from v0.17.4 intact
-- no runtime authority, governance logic, policy mutation, or enforcement behavior changes
+- Added explicit concurrency scope statement for the single-node SQLite baseline.
+- Added evidence that SQLite thread ownership remains documented and non-authoritative.
+- Preserved fail-closed, token, boundary, audit and runtime authority invariants.
 
-Explicit non-scope:
+## Non-goals
 
-- no runtime authority change
-- no governance logic change
-- no policy mutation
-- no new autonomous behavior
+- No PostgreSQL migration.
+- No async rewrite.
+- No multi-node runtime authority.
+- No new capability scopes.
 
-Semantic boundary assertions:
+## Authority Boundary
 
-- No governance logic change
-- No runtime/enforcement behavior change
-- No autonomous policy update
-- No semantic scoring or memory system
+- No governance logic change.
+- No runtime/enforcement behavior change.
+- No autonomous policy update.
+- No semantic scoring or memory system.

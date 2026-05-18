@@ -1,11 +1,12 @@
-Release: v0.17.7_STABLE
+Release: v0.17.8_CANDIDATE
 
 # GateGraph
 
-Current release: **v0.17.7_STABLE**  
-Base: **v0.17.6_STABLE**  
-Base stable: **v0.17.6_STABLE**  
+Current release: **v0.17.8_CANDIDATE**  
+Base: **v0.17.7_STABLE**  
+Base stable: **v0.17.7_STABLE**  
 Status: **candidate**  
+Phase: **Concurrency Scope Evidence Formalization**  
 Version: **0.17.6**  
 Phase: **Evidence Lifecycle Cleanup Formalization**  
 Release focus: **Evidence Lifecycle Cleanup Formalization**
@@ -95,7 +96,7 @@ Core public review files:
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
 - `docs/CURRENT_RELEASE.md`
-- `docs/RELEASE_v0.17.7_STABLE.md`
+- `docs/RELEASE_v0.17.8_CANDIDATE.md`
 
 ## Key documents
 
@@ -130,3 +131,9 @@ Canonical runtime namespace: `gategraph`.
 ## Security mapping
 
 `OWASP_AGENTIC_AI_MAPPING.md` is a descriptive mapping from GateGraph evidence surfaces to agentic-AI risk categories. It is a review aid, not a compliance certification or normative policy source.
+
+## v0.17.8 Candidate Scope
+
+This candidate formalizes concurrency scope evidence for the single-node SQLite baseline. It does not introduce multi-node execution, shared cross-thread SQLite handles, async orchestration, new runtime authority, or new capability scopes.
+
+Release document: `docs/RELEASE_v0.17.8_CANDIDATE.md`

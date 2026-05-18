@@ -1,7 +1,7 @@
-# Evidence Maintainability – v0.17.7_STABLE
+# Evidence Maintainability – v0.17.8_CANDIDATE
 
-Release: v0.17.7_STABLE  
-Base: v0.17.6_STABLE  
+Release: v0.17.8_CANDIDATE  
+Base: v0.17.7_STABLE  
 Status: stable  
 Phase: Evidence Lifecycle Cleanup Formalization
 
