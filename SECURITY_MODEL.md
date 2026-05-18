@@ -1,6 +1,6 @@
-# GateGraph Security Model – v0.17.1_STABLE
+# GateGraph Security Model – v0.17.2_CANDIDATE
 
-GateGraph is a deterministic governance and enforcement boundary for agentic task execution. It is not an agent, not a sandbox, and not a distributed security platform. This document was formally bumped during v0.17.1_STABLE release hygiene without expanding runtime authority.
+GateGraph is a deterministic governance and enforcement boundary for agentic task execution. It is not an agent, not a sandbox, and not a distributed security platform. This document was formally bumped during v0.17.2_CANDIDATE release hygiene without expanding runtime authority.
 
 ## Layer model
 

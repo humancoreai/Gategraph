@@ -1,12 +1,12 @@
-Release: v0.17.1_STABLE
+Release: v0.17.2_CANDIDATE
 
 # GateGraph
 
-Current release: **v0.17.1_STABLE**  
-Base: **v0.17.0_STABLE**  
-Base stable: **v0.17.0_STABLE**  
+Current release: **v0.17.2_CANDIDATE**  
+Base: **v0.17.1_STABLE**  
+Base stable: **v0.17.1_STABLE**  
 Status: **candidate**  
-Version: **0.17.1**  
+Version: **0.17.2**  
 Phase: **Promotion Status Drift Guard**  
 Release focus: **Promotion Status Drift Guard**
 
@@ -80,7 +80,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.17.1_STABLE.md`
+- `docs/RELEASE_v0.17.2_CANDIDATE.md`
 
 ## Security posture
 
