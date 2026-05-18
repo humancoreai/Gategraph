@@ -5,7 +5,7 @@
   ],
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.17.0_STABLE",
+  "base": "v0.17.1_STABLE",
   "forbidden_patterns": [
     "assert status == \"candidate\"",
     "assert status == \"stable\"",
@@ -14,7 +14,7 @@
   ],
   "mode": "descriptive_release_status_assertion_policy_only",
   "policy_mutation": false,
-  "release": "v0.17.1_STABLE",
+  "release": "v0.17.2_CANDIDATE",
   "rule": "release/status evidence must derive expected release status from RELEASE_METADATA.json and release suffix, not hardcoded candidate/stable literals",
   "runtime_authority": false,
   "schema_version": "0.16.8",
@@ -24,5 +24,5 @@
     "tests/*version*_evidence.py",
     "tests/*maintainability*_evidence.py"
   ],
-  "status": "stable"
+  "status": "candidate"
 }
