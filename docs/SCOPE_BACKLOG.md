@@ -1,9 +1,9 @@
 # GateGraph Scope Backlog
 
-Release: v0.17.3_STABLE
-Base: v0.17.2_STABLE
+Release: v0.17.4_CANDIDATE
+Base: v0.17.3_STABLE
 Status: stable
-Version: 0.17.3
+Version: 0.17.4
 Phase: Release SSOT Consolidation
 Release focus: Release SSOT Consolidation
 
