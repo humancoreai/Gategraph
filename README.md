@@ -1,10 +1,10 @@
-Release: v0.17.7_CANDIDATE
+Release: v0.17.7_STABLE
 
 # GateGraph
 
-Current release: **v0.17.7_CANDIDATE**  
-Base: **v0.17.5_STABLE**  
-Base stable: **v0.17.5_STABLE**  
+Current release: **v0.17.7_STABLE**  
+Base: **v0.17.6_STABLE**  
+Base stable: **v0.17.6_STABLE**  
 Status: **candidate**  
 Version: **0.17.6**  
 Phase: **Evidence Lifecycle Cleanup Formalization**  
@@ -95,7 +95,7 @@ Core public review files:
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
 - `docs/CURRENT_RELEASE.md`
-- `docs/RELEASE_v0.17.7_CANDIDATE.md`
+- `docs/RELEASE_v0.17.7_STABLE.md`
 
 ## Key documents
 

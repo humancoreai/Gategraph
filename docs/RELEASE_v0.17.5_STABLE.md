@@ -1,12 +1,12 @@
-Release: v0.17.7_CANDIDATE
-Base: v0.17.7_CANDIDATE
-Status: candidate
-Version: 0.17.6
+Release: v0.17.7_STABLE
+Base: v0.17.7_STABLE
+Status: stable
+Version: 0.17.7
 Phase: Evidence Lifecycle Cleanup Formalization
 
-# Release Notes – v0.17.7_CANDIDATE
+# Release Notes – v0.17.7_STABLE
 
-v0.17.7_CANDIDATE promotes v0.17.7_CANDIDATE after Windows Evidence CI Passed: True.
+v0.17.7_STABLE promotes v0.17.7_STABLE after Windows Evidence CI Passed: True.
 
 Included scope:
 

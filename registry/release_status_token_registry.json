@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.17.5_STABLE",
+  "base": "v0.17.6_STABLE",
   "guards": [
     "metadata_matches_tokens",
     "constants_match_tokens",
@@ -16,11 +16,11 @@
   ],
   "mode": "descriptive_release_status_token_centralization_only",
   "policy_mutation": false,
-  "release": "v0.17.7_CANDIDATE",
+  "release": "v0.17.7_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
   "stable_promotion_registry_lock_rebaseline_required": true,
-  "status": "candidate",
+  "status": "stable",
   "status_derivation": {
     "candidate_future_stable": "replace _CANDIDATE with _STABLE",
     "candidate_suffix": "_CANDIDATE",
@@ -28,10 +28,10 @@
     "stable_suffix": "_STABLE"
   },
   "tokens": {
-    "current_base": "v0.17.5_STABLE",
-    "current_release": "v0.17.7_CANDIDATE",
-    "current_status": "candidate",
+    "current_base": "v0.17.6_STABLE",
+    "current_release": "v0.17.7_STABLE",
+    "current_status": "stable",
     "future_stable": "v0.17.7_STABLE"
   },
-  "version": "0.17.6"
+  "version": "0.17.7"
 }
