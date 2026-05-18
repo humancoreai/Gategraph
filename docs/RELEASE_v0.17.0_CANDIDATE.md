@@ -1,14 +1,14 @@
-# GateGraph v0.17.0_STABLE
+# GateGraph v0.17.0_CANDIDATE
 
-Release: v0.17.0_STABLE
+Release: v0.17.0_CANDIDATE
 Base: v0.16.9_STABLE
-Status: stable
+Status: candidate
 Version: 0.17.0
 Phase: Operational Readiness Baseline
 
 ## Scope
 
-This stable release preserves the descriptive Operational Readiness baseline from the validated candidate.
+This candidate adds a descriptive Operational Readiness baseline.
 
 It documents and verifies operational surfaces without changing runtime governance, enforcement logic, policy authority, budget behavior, or semantic governance.
 
@@ -19,7 +19,7 @@ It documents and verifies operational surfaces without changing runtime governan
 - no auto-repair is added
 - no auto-promotion is added
 - no benchmark/performance claim is made
-- Windows CI remains mandatory for stable confirmation
+- Windows CI remains mandatory before stable promotion
 
 ## Evidence
 

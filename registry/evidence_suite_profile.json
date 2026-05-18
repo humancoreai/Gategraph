@@ -46,8 +46,8 @@
       "release_gate_robustness_evidence"
     ]
   },
-  "release": "v0.17.0_STABLE",
+  "release": "v0.17.0_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable"
+  "status": "candidate"
 }

@@ -1,11 +1,11 @@
-Release: v0.17.0_STABLE
+Release: v0.17.0_CANDIDATE
 
 # GateGraph
 
-Current release: **v0.17.0_STABLE**  
+Current release: **v0.17.0_CANDIDATE**  
 Base: **v0.16.9_STABLE**  
 Base stable: **v0.16.9_STABLE**  
-Status: **stable**  
+Status: **candidate**  
 Version: **0.17.0**  
 Phase: **Operational Readiness Baseline**  
 Release focus: **Operational Readiness Baseline**
@@ -80,7 +80,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.17.0_STABLE.md`
+- `docs/RELEASE_v0.17.0_CANDIDATE.md`
 
 ## Security posture
 

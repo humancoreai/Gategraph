@@ -15,7 +15,7 @@
   "promotion_status_ssot_scope": true,
   "promotion_surface_matrix_scope": true,
   "registry_lock_rebuild_required": true,
-  "release": "v0.17.0_STABLE",
+  "release": "v0.17.0_CANDIDATE",
   "required_steps": [
     "candidate_surfaces_current",
     "candidate_release_doc_present",
@@ -27,5 +27,5 @@
   "runtime_authority": false,
   "schema_version": "0.16.8",
   "source_candidate": "v0.14.9_CANDIDATE",
-  "status": "stable"
+  "status": "candidate"
 }

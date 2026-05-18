@@ -22,7 +22,7 @@ EXPECTED_CONTRACTS = {
 
 def main() -> int:
     metadata = json.loads((ROOT / "RELEASE_METADATA.json").read_text(encoding="utf-8"))
-    assert metadata["release"] == "v0.17.0_STABLE"
+    assert metadata["release"] == "v0.17.0_CANDIDATE"
     assert metadata["status"] in {"candidate", "stable"}
     assert metadata["base"] == "v0.16.9_STABLE"
     assert metadata["surface_contract_registry_scope"] is True
