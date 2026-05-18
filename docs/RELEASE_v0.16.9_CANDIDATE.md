@@ -1,16 +1,16 @@
 # GateGraph v0.16.9_CANDIDATE
 
-Base: v0.16.8_STABLE  
+Base: v0.16.9_CANDIDATE  
 Status: candidate  
 Phase: Release SSOT Consolidation
 
-This candidate focuses on reducing recurring Candidate/Stable release-token drift. It adds a descriptive release-status token registry and evidence gate so status, current release, base, and future stable semantics are checked from one explicit surface.
+This candidate focuses on reducing recurring Candidate/Stable release-token drift. It adds a descriptive release-status token registry and evidence gate so status, current release, base, and future candidate semantics are checked from one explicit surface.
 
 No runtime, enforcement, governance, adapter, server, or policy logic is changed. No evidence tests are removed.
 
 ## Scope
 
-- Centralize release/status/future-stable token expectations.
+- Centralize release/status/future-candidate token expectations.
 - Keep checks descriptive and fail-closed.
 - Preserve manual Candidate → Stable promotion gates.
 - Reduce future hardcoded Candidate/Stable assertion drift.
@@ -22,3 +22,5 @@ No runtime, enforcement, governance, adapter, server, or policy logic is changed
 - Automatic repair.
 - Evidence pruning.
 - Runtime behavior changes.
+
+Base: v0.16.8_STABLE

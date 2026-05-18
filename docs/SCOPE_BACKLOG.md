@@ -1,11 +1,11 @@
 # GateGraph Scope Backlog
 
-Release: v0.16.8_STABLE
-Base: v0.16.7_STABLE
-Status: stable
-Version: 0.16.8
-Phase: Release Status Assertion Policy
-Release focus: Release Status Assertion Policy
+Release: v0.16.9_CANDIDATE
+Base: v0.16.8_STABLE
+Status: candidate
+Version: 0.16.9
+Phase: Release SSOT Consolidation
+Release focus: Release SSOT Consolidation
 
 ## Purpose
 

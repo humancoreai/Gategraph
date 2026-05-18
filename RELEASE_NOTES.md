@@ -1,13 +1,13 @@
-# Release Notes – v0.16.8_STABLE
+# Release Notes – v0.16.9_CANDIDATE
 
-Status: stable  
-Base: v0.16.7_STABLE  
-Version: 0.16.8
-Phase: Release Status Assertion Policy
+Status: candidate  
+Base: v0.16.8_STABLE  
+Version: 0.16.9
+Phase: Release SSOT Consolidation
 
 ## Focus
 
-v0.16.8_STABLE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
+v0.16.9_CANDIDATE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
 
 ## Changes
 

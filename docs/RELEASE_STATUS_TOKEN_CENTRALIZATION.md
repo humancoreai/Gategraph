@@ -1,8 +1,8 @@
-# Release Status Assertion Policy
+# Release SSOT Consolidation
 
-Release: v0.16.8_STABLE  
-Base: v0.16.7_STABLE  
-Status: stable
+Release: v0.16.9_CANDIDATE  
+Base: v0.16.8_STABLE  
+Status: candidate
 
 This surface documents a descriptive-only cleanup for release/status tokens. It does not add runtime authority, auto-promotion, policy mutation, or governance repair behavior.
 

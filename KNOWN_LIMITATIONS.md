@@ -1,6 +1,6 @@
-# Known Limitations – v0.16.8_STABLE
+# Known Limitations – v0.16.9_CANDIDATE
 
-Current release context: v0.16.8_STABLE.
+Current release context: v0.16.9_CANDIDATE.
 
 GateGraph intentionally states its limits. This file is part of the security model, not a marketing document.
 

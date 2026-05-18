@@ -2,13 +2,13 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.8_STABLE
+## v0.16.9_CANDIDATE
 
-Base: v0.16.7_STABLE
+Base: v0.16.8_STABLE
 
-Status: stable
-Phase: Release Status Assertion Policy
-Release focus: Release Status Assertion Policy
+Status: candidate
+Phase: Release SSOT Consolidation
+Release focus: Release SSOT Consolidation
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
@@ -16,10 +16,10 @@ Release focus: Release Status Assertion Policy
 - Preserved build-mutation hardening from v0.14.9.
 - No runtime/governance/enforcement authority expansion.
 
-## v0.16.7_STABLE
+## v0.16.8_STABLE
 
 Base: v0.16.3_STABLE
-Status: stable
+Status: candidate
 Phase: Evidence Maintainability Hardening
 
 - Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
@@ -27,7 +27,7 @@ Phase: Evidence Maintainability Hardening
 
 ## v0.16.3_STABLE
 
-Status: stable
+Status: candidate
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.

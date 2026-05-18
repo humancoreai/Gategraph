@@ -1,8 +1,8 @@
-# GateGraph v0.16.8_STABLE
+# GateGraph v0.16.9_CANDIDATE
 
-Base: v0.16.7_STABLE  
-Status: stable  
-Phase: Release Status Assertion Policy
+Base: v0.16.8_STABLE  
+Status: candidate  
+Phase: Release SSOT Consolidation
 
 This candidate focuses on reducing recurring Candidate/Stable release-token drift. It adds a descriptive release-status token registry and evidence gate so status, current release, base, and future candidate semantics are checked from one explicit surface.
 

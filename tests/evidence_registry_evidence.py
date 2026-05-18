@@ -26,8 +26,8 @@ def main() -> None:
     tests = [entry.get("test") for entry in entries]
     paths = [entry.get("path") for entry in entries]
 
-    check("registry_release_current", data.get("release") == "v0.16.8_STABLE", {"release": data.get("release")})
-    check("registry_base_previous_stable", data.get("base") == "v0.16.7_STABLE", {"base": data.get("base")})
+    check("registry_release_current", data.get("release") == "v0.16.9_CANDIDATE", {"release": data.get("release")})
+    check("registry_base_previous_stable", data.get("base") == "v0.16.8_STABLE", {"base": data.get("base")})
     check("registry_descriptive_only", data.get("registry_mode") == "descriptive_classification_only", {"mode": data.get("registry_mode")})
     check("no_runtime_authority", data.get("runtime_authority") is False and data.get("auto_pruning") is False and data.get("auto_repair") is False, data)
     check("classes_present", REQUIRED_CLASSES.issubset(classes), {"classes": sorted(classes)})
