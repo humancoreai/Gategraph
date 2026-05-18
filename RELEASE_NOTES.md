@@ -1,12 +1,12 @@
-Release: v0.17.4_CANDIDATE
+Release: v0.17.4_STABLE
 Base: v0.17.3_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.4
 Phase: Surface Version Scanner Formalization
 
-# Release Notes – v0.17.4_CANDIDATE
+# Release Notes – v0.17.4_STABLE
 
-v0.17.4_CANDIDATE starts from v0.17.3_STABLE after Windows Evidence CI Passed: True.
+v0.17.4_STABLE starts from v0.17.3_STABLE after Windows Evidence CI Passed: True.
 
 Included scope:
 

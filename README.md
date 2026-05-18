@@ -1,11 +1,11 @@
-Release: v0.17.4_CANDIDATE
+Release: v0.17.4_STABLE
 
 # GateGraph
 
-Current release: **v0.17.4_CANDIDATE**  
+Current release: **v0.17.4_STABLE**  
 Base: **v0.17.3_STABLE**  
 Base stable: **v0.17.3_STABLE**  
-Status: **candidate**  
+Status: **stable**  
 Version: **0.17.4**  
 Phase: **Surface Version Scanner Formalization**  
 Release focus: **Surface Version Scanner Formalization**
@@ -95,7 +95,7 @@ Core public review files:
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
 - `docs/CURRENT_RELEASE.md`
-- `docs/RELEASE_v0.17.4_CANDIDATE.md`
+- `docs/RELEASE_v0.17.4_STABLE.md`
 
 ## Key documents
 

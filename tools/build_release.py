@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.17.4_CANDIDATE"
+VERSION = "v0.17.4_STABLE"
 BASE = "v0.17.3_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
@@ -124,7 +124,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.17.4_CANDIDATE.md",
+    "docs/RELEASE_v0.17.4_STABLE.md",
     "tests/release_claim_consistency_evidence.py",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
@@ -136,7 +136,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_provenance_evidence.py",
     "gategraph/context/context_lifecycle.py",
     "docs/CONTEXT_LIFECYCLE_MODEL.md",
-    "docs/RELEASE_v0.17.4_CANDIDATE.md",
+    "docs/RELEASE_v0.17.4_STABLE.md",
     "tests/context_lifecycle_evidence.py",
     "tests/context_replay_explain_boundary_evidence.py",
     "tests/context_freeze_coupling_evidence.py",
@@ -154,8 +154,8 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.17.4_CANDIDATE.md",
-    "docs/RELEASE_v0.17.4_CANDIDATE.md",
+    "docs/RELEASE_v0.17.4_STABLE.md",
+    "docs/RELEASE_v0.17.4_STABLE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -181,11 +181,11 @@ REQUIRED_RELEASE_FILES = {
     "registry/invariant_surface_registry.json",
     "tests/semantic_registry_lock_evidence.py",
     "tests/release_manifest_coverage_evidence.py",
-    "docs/RELEASE_v0.17.4_CANDIDATE.md",
-    "docs/RELEASE_v0.17.4_CANDIDATE.md",
+    "docs/RELEASE_v0.17.4_STABLE.md",
+    "docs/RELEASE_v0.17.4_STABLE.md",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.17.4_CANDIDATE.md",
+    "docs/RELEASE_v0.17.4_STABLE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",
@@ -321,7 +321,7 @@ def build_manifest(files: Iterable[Path]) -> dict:
         raise RuntimeError("release manifest would be empty")
     return {
         "release": VERSION,
-        "status": "candidate" if VERSION.endswith("_CANDIDATE") else "stable",
+        "status": "stable" if VERSION.endswith("_CANDIDATE") else "stable",
         "base": BASE,
         "version": "0.17.4",
         "kind": "candidate_release",
@@ -364,7 +364,7 @@ def main() -> int:
     DIST.mkdir(exist_ok=True)
     metadata = {
         "release": VERSION,
-        "status": "candidate" if VERSION.endswith("_CANDIDATE") else "stable",
+        "status": "stable" if VERSION.endswith("_CANDIDATE") else "stable",
         "base": BASE,
         "phase": "Surface Version Scanner Formalization",
         "evidence_failure_classification_scope": True,
@@ -514,7 +514,7 @@ def main() -> int:
     metadata["public_surface_cleanup_scope"] = True
     metadata.update({
         "release": VERSION,
-        "status": "candidate" if VERSION.endswith("_CANDIDATE") else "stable",
+        "status": "stable" if VERSION.endswith("_CANDIDATE") else "stable",
         "base": BASE,
         "version": "0.17.4",
         "phase": "Surface Version Scanner Formalization",
