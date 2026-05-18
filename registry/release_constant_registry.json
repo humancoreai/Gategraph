@@ -1,19 +1,19 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.16.9_STABLE",
+  "base": "v0.17.0_STABLE",
   "constants": {
-    "CURRENT_BASE": "v0.16.9_STABLE",
-    "CURRENT_RELEASE": "v0.17.0_STABLE",
-    "CURRENT_STATUS": "stable",
-    "FUTURE_STABLE": "v0.17.0_STABLE"
+    "CURRENT_BASE": "v0.17.0_STABLE",
+    "CURRENT_RELEASE": "v0.17.1_CANDIDATE",
+    "CURRENT_STATUS": "candidate",
+    "FUTURE_STABLE": "v0.17.1_STABLE"
   },
-  "future_stable": "v0.17.0_STABLE",
+  "future_stable": "v0.17.1_STABLE",
   "mode": "descriptive_release_constant_registry_only",
   "policy_mutation": false,
-  "release": "v0.17.0_STABLE",
+  "release": "v0.17.1_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
-  "version": "0.17.0"
+  "status": "candidate",
+  "version": "0.17.1"
 }

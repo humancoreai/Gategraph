@@ -1,6 +1,6 @@
 {
   "auto_repair": false,
-  "base": "v0.16.9_STABLE",
+  "base": "v0.17.0_STABLE",
   "groups": {
     "artifact_hygiene": [
       "packaging_integrity_evidence",
@@ -26,8 +26,8 @@
   },
   "mode": "descriptive_root_cause_grouping_only",
   "policy_mutation": false,
-  "release": "v0.17.0_STABLE",
+  "release": "v0.17.1_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable"
+  "status": "candidate"
 }

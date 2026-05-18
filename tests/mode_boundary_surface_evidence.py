@@ -10,8 +10,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.17.0_STABLE"
-EXPECTED_BASE = "v0.16.9_STABLE"
+EXPECTED_RELEASE = "v0.17.1_CANDIDATE"
+EXPECTED_BASE = "v0.17.0_STABLE"
 ALLOWED_MODE_LABELS = {"observer", "worker", "reviewer", "blocked"}
 FORBIDDEN_CLAIMS = [
     "autonomous policy changes",
