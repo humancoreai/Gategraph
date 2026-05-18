@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_STATUS = "stable"
+EXPECTED_STATUS = None
 
 
 def _load(path: str) -> dict:
@@ -56,7 +56,8 @@ def main() -> int:
     future = meta.get("future_stable", _derive_future_stable(release, status))
 
     checks: list[tuple[str, bool, dict]] = []
-    checks.append(("metadata_current_release", release == "v0.17.2_STABLE" and base == "v0.17.1_STABLE" and status == EXPECTED_STATUS, {"release": release, "base": base, "status": status}))
+    expected_status = "candidate" if release.endswith("_CANDIDATE") else "stable" if release.endswith("_STABLE") else "unknown"
+    checks.append(("metadata_current_release", release == "v0.17.3_CANDIDATE" and base == "v0.17.2_STABLE" and status == expected_status, {"release": release, "base": base, "status": status}))
     checks.append(("guard_registry_current_release", registry.get("release") == release and registry.get("base") == base and registry.get("status") == status, {"registry": {"release": registry.get("release"), "base": registry.get("base"), "status": registry.get("status")}}))
     checks.append(("descriptive_only_no_authority", not registry.get("runtime_authority") and not registry.get("auto_repair") and not registry.get("auto_promotion") and not registry.get("policy_mutation"), {"mode": registry.get("mode")}))
 
