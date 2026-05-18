@@ -3,8 +3,8 @@ from __future__ import annotations
 import json, tomllib
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.17.0_STABLE"
-EXPECTED_BASE = "v0.16.9_STABLE"
+EXPECTED_RELEASE = "v0.17.1_CANDIDATE"
+EXPECTED_BASE = "v0.17.0_STABLE"
 def main():
     cfg = ROOT/"config.example.yaml"
     assert cfg.exists()
@@ -13,7 +13,7 @@ def main():
     missing = [x for x in required if x not in text]
     assert not missing, missing
     pyproject = tomllib.loads((ROOT/"pyproject.toml").read_text(encoding="utf-8"))
-    assert pyproject["project"]["version"] == "0.17.0"
+    assert pyproject["project"]["version"] == "0.17.1"
     metadata = json.loads((ROOT/"RELEASE_METADATA.json").read_text(encoding="utf-8"))
     assert metadata["release"] == EXPECTED_RELEASE
     assert metadata["base"] == EXPECTED_BASE
@@ -31,4 +31,4 @@ def main():
 if __name__ == "__main__":
     raise SystemExit(main())
 
-# Current release surface: v0.17.0_STABLE
+# Current release surface: v0.17.1_CANDIDATE
