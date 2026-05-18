@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.16.9_STABLE",
+  "base": "v0.17.0_STABLE",
   "checks": [
     "stable_status_surface",
     "manual_ci_gate_declared",
@@ -9,8 +9,8 @@
     "stable_without_candidate_ci_forbidden"
   ],
   "mode": "descriptive_release_gate_hardening_only",
-  "release": "v0.17.0_STABLE",
+  "release": "v0.17.1_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable"
+  "status": "candidate"
 }
