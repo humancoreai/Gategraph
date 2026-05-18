@@ -76,18 +76,18 @@
         "release_ssot_consolidation"
       ],
       "governance_logic_changed": false,
-      "release": "v0.17.1_CANDIDATE"
+      "release": "v0.17.1_STABLE"
     }
   ],
-  "release": "v0.17.1_CANDIDATE",
+  "release": "v0.17.1_STABLE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.17.1_CANDIDATE",
+    "governance_state_release": "v0.17.1_STABLE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"
   },
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate"
+  "status": "stable"
 }
