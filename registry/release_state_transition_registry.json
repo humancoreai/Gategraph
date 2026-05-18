@@ -25,10 +25,10 @@
       "to": "candidate"
     }
   ],
-  "release": "v0.17.2_CANDIDATE",
+  "release": "v0.17.2_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate",
+  "status": "stable",
   "surface_parity": {
     "allowed_differences": [
       "release",

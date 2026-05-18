@@ -1,11 +1,11 @@
-Release: v0.17.2_CANDIDATE
+Release: v0.17.2_STABLE
 Base: v0.17.1_STABLE
-Status: candidate
+Status: stable
 
-# GateGraph v0.17.2_CANDIDATE
+# GateGraph v0.17.2_STABLE
 
 Base: v0.17.1_STABLE  
-Status: candidate  
+Status: stable  
 Version: 0.17.2
 
 ## Focus
