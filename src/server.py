@@ -30,7 +30,7 @@ class RequestValidationError(ValueError):
 
 
 class GateGraphHandler(BaseHTTPRequestHandler):
-    server_version = "v0.17.6_STABLE"
+    server_version = "v0.17.0_CANDIDATE"
 
     def setup(self) -> None:
         super().setup()
@@ -191,6 +191,6 @@ def main(argv: list[str] | None = None) -> int:
 if __name__ == "__main__":
     raise SystemExit(main())
 
-# Release surface: GateGraphHTTP/v0.17.6_STABLE
+# Release surface: GateGraphHTTP/v0.17.0_CANDIDATE
 
 # HTTP compatibility surface: GateGraphHTTP/0.14.9

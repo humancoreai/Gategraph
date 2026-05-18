@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.17.5_STABLE",
+  "base": "v0.16.9_STABLE",
   "classes": {
     "P0": "Core invariants; fail closed, authority boundaries, runtime/enforcement, replay determinism, security boundaries.",
     "P1": "Structural integrity; release, registry, manifest, promotion, provenance and practical readiness surfaces.",
@@ -630,15 +630,6 @@
       "test": "operational_hardening_evidence"
     },
     {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/operational_readiness_evidence.py",
-      "test": "operational_readiness_evidence"
-    },
-    {
       "category": "core_invariant",
       "class": "P0",
       "criticality": "critical",
@@ -871,15 +862,6 @@
       "mutable_surface": false,
       "path": "tests/release_process_guard_evidence.py",
       "test": "release_process_guard_evidence"
-    },
-    {
-      "category": "release_surface",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_promotion_status_guard_evidence.py",
-      "test": "release_promotion_status_guard_evidence"
     },
     {
       "category": "release_surface",
@@ -1328,23 +1310,14 @@
       "criticality": "medium",
       "exact_string_assertions": false,
       "mutable_surface": false,
-      "path": "tests/cleanup_lifecycle_evidence.py",
-      "test": "cleanup_lifecycle_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/timeout_normalization_evidence.py",
-      "test": "timeout_normalization_evidence"
+      "path": "tests/operational_readiness_evidence.py",
+      "test": "operational_readiness_evidence"
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.17.6_STABLE",
+  "release": "v0.17.0_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
-  "version": "0.17.6"
+  "status": "candidate",
+  "version": "0.17.0"
 }
