@@ -1,6 +1,6 @@
-Release: v0.17.5_STABLE
-Base: v0.17.4_STABLE
-Status: stable
-Version: 0.17.5
+Release: v0.17.6_CANDIDATE
+Base: v0.17.5_STABLE
+Status: candidate
+Version: 0.17.6
 
-Phase: Promotion Registry Lock Rebaseline Formalization
+Phase: Evidence Lifecycle Cleanup Formalization

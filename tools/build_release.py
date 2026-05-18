@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.17.5_STABLE"
-BASE = "v0.17.4_STABLE"
+VERSION = "v0.17.6_CANDIDATE"
+BASE = "v0.17.5_STABLE"
 DIST = ROOT / "dist"
 ZIP_NAME = f"GateGraph_{VERSION}.zip"
 ZIP_PATH = DIST / ZIP_NAME
@@ -58,6 +58,10 @@ REQUIRED_RELEASE_FILES = {
     "RELEASE_MANIFEST.json",
     "tests/evidence_registry.json",
     "tests/evidence_registry_evidence.py",
+    "tests/cleanup_lifecycle_evidence.py",
+    "tests/timeout_normalization_evidence.py",
+    "docs/EVIDENCE_LIFECYCLE_CLEANUP.md",
+    "docs/TIMEOUT_NORMALIZATION.md",
     "docs/EVIDENCE_REGISTRY.md",
     "TRUST_MODEL.md",
     "SECURITY.md",
@@ -124,7 +128,7 @@ REQUIRED_RELEASE_FILES = {
     "SECURITY_MODEL.md",
     "OWASP_AGENTIC_AI_MAPPING.md",
     "KNOWN_LIMITATIONS.md",
-    "docs/RELEASE_v0.17.5_STABLE.md",
+    "docs/RELEASE_v0.17.6_CANDIDATE.md",
     "tests/release_claim_consistency_evidence.py",
     "CONTEXT_GOVERNANCE_MODEL.md",
     "gategraph/__init__.py",
@@ -136,7 +140,7 @@ REQUIRED_RELEASE_FILES = {
     "tests/context_provenance_evidence.py",
     "gategraph/context/context_lifecycle.py",
     "docs/CONTEXT_LIFECYCLE_MODEL.md",
-    "docs/RELEASE_v0.17.5_STABLE.md",
+    "docs/RELEASE_v0.17.6_CANDIDATE.md",
     "tests/context_lifecycle_evidence.py",
     "tests/context_replay_explain_boundary_evidence.py",
     "tests/context_freeze_coupling_evidence.py",
@@ -154,8 +158,8 @@ REQUIRED_RELEASE_FILES = {
     "src/multi_agent_delegation.py",
     "tests/multi_agent_delegation_boundary_evidence.py",
     "docs/MULTI_AGENT_DELEGATION_BOUNDARY.md",
-    "docs/RELEASE_v0.17.5_STABLE.md",
-    "docs/RELEASE_v0.17.5_STABLE.md",
+    "docs/RELEASE_v0.17.6_CANDIDATE.md",
+    "docs/RELEASE_v0.17.6_CANDIDATE.md",
     "docs/GOVERNANCE_SURFACE_FREEZE.md",
     "contracts/governance_decision.schema.json",
     "contracts/normalized_reason.schema.json",
@@ -181,11 +185,11 @@ REQUIRED_RELEASE_FILES = {
     "registry/invariant_surface_registry.json",
     "tests/semantic_registry_lock_evidence.py",
     "tests/release_manifest_coverage_evidence.py",
-    "docs/RELEASE_v0.17.5_STABLE.md",
-    "docs/RELEASE_v0.17.5_STABLE.md",
+    "docs/RELEASE_v0.17.6_CANDIDATE.md",
+    "docs/RELEASE_v0.17.6_CANDIDATE.md",
     "registry/schema_governance_registry.json",
     "docs/SCHEMA_GOVERNANCE.md",
-    "docs/RELEASE_v0.17.5_STABLE.md",
+    "docs/RELEASE_v0.17.6_CANDIDATE.md",
     "tests/schema_governance_evidence.py",
     "tests/cross_registry_integrity_evidence.py",
     "tests/deterministic_export_contract_evidence.py",
@@ -323,7 +327,7 @@ def build_manifest(files: Iterable[Path]) -> dict:
         "release": VERSION,
         "status": "candidate" if VERSION.endswith("_CANDIDATE") else "stable",
         "base": BASE,
-        "version": "0.17.5",
+        "version": "0.17.6",
         "kind": "candidate_release",
         "scope": "evidence_profile_runtime_profiles",
         "deterministic_packaging": True,
@@ -366,7 +370,7 @@ def main() -> int:
         "release": VERSION,
         "status": "candidate" if VERSION.endswith("_CANDIDATE") else "stable",
         "base": BASE,
-        "phase": "Promotion Registry Lock Rebaseline Formalization",
+        "phase": "Evidence Lifecycle Cleanup Formalization",
         "evidence_failure_classification_scope": True,
         "practical_single_node_scenario_scope": True,
         "github_actions_runtime_authority": False,
@@ -486,11 +490,11 @@ def main() -> int:
         existing_metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
         existing_metadata.update(metadata)
         metadata = existing_metadata
-    metadata["version"] = "0.17.5"
+    metadata["version"] = "0.17.6"
     metadata["candidate_ci_passed"] = False
     metadata["stable_promotion_completed"] = False
     metadata["stable_promotion_surface_model_status_sensitive"] = True
-    metadata["release_focus"] = "Promotion Registry Lock Rebaseline Formalization"
+    metadata["release_focus"] = "Evidence Lifecycle Cleanup Formalization"
     metadata["promotion_status_ssot_scope"] = True
     metadata["promotion_surface_matrix_scope"] = True
     metadata["registry_lock_rebuild_scope"] = True
@@ -516,9 +520,9 @@ def main() -> int:
         "release": VERSION,
         "status": "candidate" if VERSION.endswith("_CANDIDATE") else "stable",
         "base": BASE,
-        "version": "0.17.5",
-        "phase": "Promotion Registry Lock Rebaseline Formalization",
-        "release_focus": "Promotion Registry Lock Rebaseline Formalization",
+        "version": "0.17.6",
+        "phase": "Evidence Lifecycle Cleanup Formalization",
+        "release_focus": "Evidence Lifecycle Cleanup Formalization",
         "public_surface_cleanup_scope": True,
         "review_readiness_scope": True,
         "external_review_surface_scope": True,
@@ -567,6 +571,6 @@ if __name__ == "__main__":
         print(json.dumps({"ok": False, "error": str(exc)}, indent=2), file=sys.stderr)
         raise SystemExit(1)
 
-# RELEASE_BASE = "v0.17.4_STABLE"
+# RELEASE_BASE = "v0.17.5_STABLE"
 
-# Base: v0.17.4_STABLE
+# Base: v0.17.5_STABLE
