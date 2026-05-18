@@ -1,12 +1,12 @@
-Release: v0.17.3_CANDIDATE
+Release: v0.17.3_STABLE
 Base: v0.17.2_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.3
 Phase: Promotion Status Drift Guard
 
-# Release Notes – v0.17.3_CANDIDATE
+# Release Notes – v0.17.3_STABLE
 
-v0.17.3_CANDIDATE focuses on post-stable release-surface finalization. It carries forward the v0.17.2_STABLE Windows-CI-passed baseline and hardens the surfaces that previously drifted during candidate-to-stable promotion.
+v0.17.3_STABLE promotes the v0.17.3_CANDIDATE after Windows Evidence CI Passed: True.
 
 Included scope:
 
@@ -14,6 +14,8 @@ Included scope:
 - stable/candidate status separation in active surfaces
 - registry-lock rebaseline after release-state changes
 - manifest/package hygiene
+- governance lineage deduplication from the candidate fix
+- operational/review readiness status handling for candidate/stable surfaces
 
 Explicit non-scope:
 
@@ -21,11 +23,8 @@ Explicit non-scope:
 - no governance logic change
 - no policy mutation
 - no new autonomous behavior
-- no Stable promotion in this artifact
 
-Windows Evidence CI remains the promotion gate.
-
-Boundary confirmations:
+Semantic boundary assertions:
 
 - No governance logic change
 - No runtime/enforcement behavior change
