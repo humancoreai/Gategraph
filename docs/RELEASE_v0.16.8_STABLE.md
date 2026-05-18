@@ -1,6 +1,6 @@
-# GateGraph v0.17.1_STABLE
+# GateGraph v0.17.2_CANDIDATE
 
-Base: v0.17.0_STABLE  
+Base: v0.17.2_STABLE  
 Status: candidate  
 Phase: Release SSOT Consolidation
 

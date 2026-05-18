@@ -1,7 +1,7 @@
-# Evidence Maintainability – v0.17.1_STABLE
+# Evidence Maintainability – v0.17.2_CANDIDATE
 
-Release: v0.17.1_STABLE  
-Base: v0.17.0_STABLE  
+Release: v0.17.2_CANDIDATE  
+Base: v0.17.1_STABLE  
 Status: candidate  
 Phase: Release SSOT Consolidation
 
