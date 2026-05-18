@@ -1,9 +1,9 @@
-# Evidence Maintainability – v0.17.4_STABLE
+# Evidence Maintainability – v0.17.5_CANDIDATE
 
-Release: v0.17.4_STABLE  
-Base: v0.17.3_STABLE  
-Status: stable  
-Phase: Release SSOT Consolidation
+Release: v0.17.5_CANDIDATE  
+Base: v0.17.4_STABLE  
+Status: candidate  
+Phase: Promotion Registry Lock Rebaseline Formalization
 
 This surface is descriptive only. It has no runtime authority, no auto-repair, no auto-pruning and no policy mutation.
 
