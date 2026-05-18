@@ -1,6 +1,6 @@
-Release: v0.17.5_CANDIDATE
+Release: v0.17.5_STABLE
 Base: v0.17.4_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.5
 Phase: Promotion Registry Lock Rebaseline Formalization
 
@@ -9,7 +9,7 @@ Phase: Promotion Registry Lock Rebaseline Formalization
 All notable changes to GateGraph are documented here.
 
 
-## v0.17.5_CANDIDATE
+## v0.17.5_STABLE
 
 - Formalized registry-lock rebaseline as a required promotion hygiene step.
 - Kept release/status token registry checks candidate-aware.
@@ -19,7 +19,7 @@ All notable changes to GateGraph are documented here.
 
 Base: v0.17.4_STABLE
 
-Status: candidate
+Status: stable
 Phase: Surface Version Scanner Formalization
 Release focus: Surface Version Scanner Formalization
 
@@ -31,7 +31,7 @@ Release focus: Surface Version Scanner Formalization
 
 ## v0.16.3_STABLE
 
-Status: candidate
+Status: stable
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.
