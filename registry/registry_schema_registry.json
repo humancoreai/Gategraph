@@ -1,0 +1,43 @@
+{
+  "allowed_status_values": [
+    "candidate",
+    "stable"
+  ],
+  "auto_repair": false,
+  "base": "v0.17.1_STABLE",
+  "dynamic_loading": false,
+  "future_stable": "v0.17.2_STABLE",
+  "invariant": "registry schema checks are descriptive evidence only and do not grant runtime authority",
+  "mutation_visibility": {
+    "active_release_state": "v0.17.2_CANDIDATE",
+    "active_status": "candidate",
+    "changed_registry": "registry/registry_schema_registry.json",
+    "created_by": "v0.17.2_CANDIDATE rebuild",
+    "promotion_target": "v0.17.2_STABLE"
+  },
+  "phase": "Registry Schema Release-State Hardening",
+  "policy_mutation": false,
+  "release": "v0.17.2_CANDIDATE",
+  "release_truth": {
+    "base": "v0.17.1_STABLE",
+    "future_stable": "v0.17.2_STABLE",
+    "release": "v0.17.2_CANDIDATE",
+    "status": "candidate",
+    "version": "0.17.2"
+  },
+  "required_registry_fields": [
+    "schema_version",
+    "release",
+    "status",
+    "base"
+  ],
+  "runtime_authority": false,
+  "schema_version": "0.17.2",
+  "status": "candidate",
+  "tracked_registries": [
+    "registry/release_constant_registry.json",
+    "registry/evidence_suite_profile.json",
+    "registry/evidence_runtime_profiles.json",
+    "registry/semantic_registry_lock.json"
+  ]
+}
