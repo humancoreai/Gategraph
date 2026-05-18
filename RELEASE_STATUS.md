@@ -1,15 +1,15 @@
 # Release Status
 
-Release: v0.17.4_STABLE
-Base: v0.17.3_STABLE
-Status: stable
-Version: 0.17.4
-Phase: Surface Version Scanner Formalization
+Release: v0.17.5_CANDIDATE
+Base: v0.17.4_STABLE
+Status: candidate
+Version: 0.17.5
+Phase: Promotion Registry Lock Rebaseline Formalization
 
-Candidate built from v0.17.3_STABLE after Windows Evidence CI Passed: True.
+Candidate built from v0.17.4_STABLE after Windows Evidence CI Passed: True.
 
-Scope: active surface version scanner formalization, release-claim consistency hardening, manifest/package hygiene.
+Scope: registry-lock rebaseline promotion guard, release/status token consistency, semantic registry lock determinism after promotion status changes.
 
 No runtime authority, governance logic, policy mutation, or enforcement behavior changes.
 
-Integrator surface: minimal CLI/HTTP examples, Key Documents table, playbooks visibility, and docs/CURRENT_RELEASE.md alias.
+Integrator surface from v0.17.4 is preserved.

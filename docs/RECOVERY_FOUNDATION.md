@@ -33,3 +33,9 @@ Release surface: v0.14.7_STABLE.
 Release surface: v0.17.4_STABLE.
 Base stable: v0.14.7_STABLE.
 Phase: Recovery Replay Finality Hardening.
+
+
+Release: v0.17.5_CANDIDATE
+Base: v0.17.4_STABLE
+Status: candidate
+Phase: Promotion Registry Lock Rebaseline Formalization

@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.17.3_STABLE",
+  "base": "v0.17.4_STABLE",
   "checked_surfaces": [
     "registry/release_constant_registry.json",
     "registry/release_status_token_registry.json",
@@ -15,8 +15,9 @@
   ],
   "mode": "descriptive_promotion_status_drift_guard_only",
   "policy_mutation": false,
-  "release": "v0.17.4_STABLE",
+  "registry_lock_rebaseline_required_after_status_change": true,
+  "release": "v0.17.5_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable"
+  "status": "candidate"
 }

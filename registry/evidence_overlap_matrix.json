@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.17.3_STABLE",
+  "base": "v0.17.4_STABLE",
   "cleanup_rule": "No evidence gate is removed or demoted unless its invariant, surface, and exclusive coverage are mapped first.",
   "mode": "descriptive_overlap_visibility_only",
   "overlap_candidates": [
@@ -68,9 +68,9 @@
       "replay_reference_integrity_evidence"
     ]
   },
-  "release": "v0.17.4_STABLE",
+  "release": "v0.17.5_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
+  "status": "candidate",
   "tests_removed": false
 }
