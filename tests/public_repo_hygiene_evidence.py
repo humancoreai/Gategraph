@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.17.3_CANDIDATE"
+RELEASE = "v0.17.3_STABLE"
 BASE = "v0.17.2_STABLE"
 VERSION = "0.14.8"
 
@@ -36,7 +36,7 @@ REQUIRED_PUBLIC_SURFACES = [
     "docs/QUICKSTART.md",
     "docs/PUBLIC_REPO_HYGIENE.md",
     "docs/GITHUB_ACTIONS_CI.md",
-    "docs/RELEASE_v0.17.3_CANDIDATE.md",
+    "docs/RELEASE_v0.17.3_STABLE.md",
 ]
 
 
