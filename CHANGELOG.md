@@ -2,11 +2,11 @@
 
 All notable changes to GateGraph are documented here.
 
-## v0.16.9_CANDIDATE
+## v0.16.9_STABLE
 
 Base: v0.16.8_STABLE
 
-Status: candidate
+Status: stable
 Phase: Release SSOT Consolidation
 Release focus: Release SSOT Consolidation
 
@@ -19,7 +19,7 @@ Release focus: Release SSOT Consolidation
 ## v0.16.8_STABLE
 
 Base: v0.16.3_STABLE
-Status: candidate
+Status: stable
 Phase: Evidence Maintainability Hardening
 
 - Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
@@ -27,7 +27,7 @@ Phase: Evidence Maintainability Hardening
 
 ## v0.16.3_STABLE
 
-Status: candidate
+Status: stable
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.

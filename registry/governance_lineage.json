@@ -72,23 +72,22 @@
     {
       "adds": [
         "release_surface_gate_robustness",
-        "randdoc_hygiene_surface_check"
+        "randdoc_hygiene_surface_check",
+        "release_ssot_consolidation"
       ],
-      "base": "v0.16.8_STABLE",
       "governance_logic_changed": false,
-      "release": "v0.16.9_CANDIDATE",
-      "status": "candidate"
+      "release": "v0.16.9_STABLE"
     }
   ],
-  "release": "v0.16.9_CANDIDATE",
+  "release": "v0.16.9_STABLE",
   "replay_provenance": {
     "freeze_state": "registry/governance_lineage.json",
-    "governance_state_release": "v0.16.9_CANDIDATE",
+    "governance_state_release": "v0.16.9_STABLE",
     "registry_state": "registry/evidence_provenance_registry.json",
     "replay_mode": "descriptive_reconstruction_only",
     "schema_state": "registry/schema_governance_registry.json"
   },
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate"
+  "status": "stable"
 }
