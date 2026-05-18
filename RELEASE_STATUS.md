@@ -1,12 +1,12 @@
 # Release Status
 
-Release: v0.17.3_CANDIDATE
+Release: v0.17.3_STABLE
 Base: v0.17.2_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.3
 Phase: Promotion Status Drift Guard
 
-Candidate build. Windows Evidence CI is required before any Stable promotion.
+Stable promotion from v0.17.3_CANDIDATE after Windows Evidence CI Passed: True.
 
 Scope: post-stable surface finalization guard, release-state token consistency, registry-lock rebaseline after promotion hygiene.
 

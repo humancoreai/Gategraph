@@ -1,6 +1,6 @@
-Release: v0.17.3_CANDIDATE
+Release: v0.17.3_STABLE
 Base: v0.17.2_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.3
 Phase: Promotion Status Drift Guard
 
@@ -8,11 +8,11 @@ Phase: Promotion Status Drift Guard
 
 All notable changes to GateGraph are documented here.
 
-## v0.17.3_CANDIDATE
+## v0.17.3_STABLE
 
 Base: v0.17.2_STABLE
 
-Status: candidate
+Status: stable
 Phase: Promotion Status Drift Guard
 Release focus: Promotion Status Drift Guard
 
@@ -22,18 +22,9 @@ Release focus: Promotion Status Drift Guard
 - Added `registry/registry_schema_registry.json` as descriptive release-state/schema registry.
 - No runtime/governance/enforcement authority expansion.
 
-## v0.17.3_STABLE
-
-Base: v0.16.3_STABLE
-Status: candidate
-Phase: Evidence Maintainability Hardening
-
-- Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
-- Preserved governance/runtime/enforcement behavior.
-
 ## v0.16.3_STABLE
 
-Status: candidate
+Status: stable
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.
