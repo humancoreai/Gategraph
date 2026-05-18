@@ -11,7 +11,7 @@
   ],
   "mode": "descriptive_evidence_maintainability_only",
   "policy_mutation": false,
-  "release": "v0.17.5_CANDIDATE",
+  "release": "v0.17.5_STABLE",
   "required_surfaces": [
     "docs/EVIDENCE_MAINTAINABILITY.md",
     "tests/evidence_maintainability_evidence.py",
@@ -19,5 +19,5 @@
   ],
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate"
+  "status": "stable"
 }

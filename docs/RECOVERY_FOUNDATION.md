@@ -35,7 +35,7 @@ Base stable: v0.14.7_STABLE.
 Phase: Recovery Replay Finality Hardening.
 
 
-Release: v0.17.5_CANDIDATE
+Release: v0.17.5_STABLE
 Base: v0.17.4_STABLE
-Status: candidate
+Status: stable
 Phase: Promotion Registry Lock Rebaseline Formalization
