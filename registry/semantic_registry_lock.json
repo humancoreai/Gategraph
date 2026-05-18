@@ -1,6 +1,6 @@
 {
   "schema_version": "0.16.8",
-  "release": "v0.17.4_STABLE",
+  "release": "v0.17.5_CANDIDATE",
   "invariant": "semantic registry locks are release evidence only and never grant authority",
   "authoritative": false,
   "executable": false,
@@ -13,11 +13,11 @@
   "registries": [
     {
       "path": "registry/semantic_object_types.json",
-      "sha256": "580f85caf075cc4a8185a83fba746d150de241c6ac8c33c0d61f7c45d6063604"
+      "sha256": "29ff87246c58b985721b2f2a85f8e639d0d4ee5af2e2a333134426b41eec2f10"
     },
     {
       "path": "registry/invariant_surface_registry.json",
-      "sha256": "11b1a230b7569ecea9f3cea91582ce10f350b780d7ab6b07a9fa34fe0c437d03"
+      "sha256": "727f1d3e8038189ee11560758d9c547828e95882631856f84ca55781614d697d"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "auto_promotion": false,
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.17.3_STABLE",
+  "base": "v0.17.4_STABLE",
   "mode": "descriptive_profile_execution_only",
   "policy_mutation": false,
   "profile_contract": "Profiles are scoped execution bundles for evidence ergonomics. They do not demote, delete, or bypass mandatory Stable gates.",
@@ -38,9 +38,9 @@
       "security_finesse_evidence"
     ]
   },
-  "release": "v0.17.4_STABLE",
+  "release": "v0.17.5_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
+  "status": "candidate",
   "tests_removed": false
 }
