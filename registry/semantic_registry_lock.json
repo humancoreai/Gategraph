@@ -9,27 +9,27 @@
   "locked_paths": [
     {
       "path": "registry/semantic_object_types.json",
-      "sha256": "a441ce9168b723d010cff99acd9ec03bd3a22b555c20b866b69cc0178c2c5d9c"
+      "sha256": "ff69448536c0d27a31b3505284341937a29f7d674fa0ab66dadc79d809e66047"
     },
     {
       "path": "registry/invariant_surface_registry.json",
-      "sha256": "7d9edf191fc424d697a7e703c5c5942f848f0b6eb6790a5fed9ccf4d72ced143"
+      "sha256": "0540e636797d3612539f124d8e88dfde46f250352719155b33201932fe20385f"
     }
   ],
   "policy_mutation": false,
   "registries": [
     {
       "path": "registry/semantic_object_types.json",
-      "sha256": "a441ce9168b723d010cff99acd9ec03bd3a22b555c20b866b69cc0178c2c5d9c"
+      "sha256": "ff69448536c0d27a31b3505284341937a29f7d674fa0ab66dadc79d809e66047"
     },
     {
       "path": "registry/invariant_surface_registry.json",
-      "sha256": "7d9edf191fc424d697a7e703c5c5942f848f0b6eb6790a5fed9ccf4d72ced143"
+      "sha256": "0540e636797d3612539f124d8e88dfde46f250352719155b33201932fe20385f"
     }
   ],
-  "release": "v0.17.9_CANDIDATE",
+  "release": "v0.17.9_STABLE",
   "runtime_access": false,
   "schema_version": "0.16.8",
   "semantic_promotion_allowed": false,
-  "status": "candidate"
+  "status": "stable"
 }

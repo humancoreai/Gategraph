@@ -1,8 +1,8 @@
 # Server DB Boundary
 
-Release: `v0.17.9_CANDIDATE`
+Release: `v0.17.9_STABLE`
 Base: `v0.17.8_STABLE`
-Status: candidate
+Status: stable
 
 The minimal local HTTP adapter remains a single-node adapter.
 

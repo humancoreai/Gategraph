@@ -1,8 +1,8 @@
 # Concurrency Scope Statement
 
-Release: v0.17.9_CANDIDATE
+Release: v0.17.9_STABLE
 Base: v0.17.8_STABLE
-Status: candidate
+Status: stable
 Phase: Concurrency Scope Evidence Formalization
 
 GateGraph currently defines a single-node deterministic governance baseline. SQLite persistence is treated as thread-owned.

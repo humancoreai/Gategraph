@@ -1,11 +1,11 @@
-# v0.17.9_CANDIDATE
+# v0.17.9_STABLE
 
-Release: v0.17.9_CANDIDATE
-Base: v0.17.8_STABLE
-Status: candidate
+Base: `v0.17.8_STABLE`
+Status: stable
 Phase: Concurrency Scope Evidence Formalization
+Promoted from: `v0.17.9_CANDIDATE`
 
-## Candidate Scope
+## Stable Scope
 
 1. Explicit development keyring opt-in.
 2. Shared server-side DB boundary lock across local adapter endpoints.
@@ -13,12 +13,15 @@ Phase: Concurrency Scope Evidence Formalization
 4. Evidence profile organization without automatic pruning.
 5. Release-surface drift repair without blind global replacement.
 
-## Authority
+## Semantic Boundary
 
 No governance logic change.
 No runtime/enforcement behavior change.
 No autonomous policy update.
 No semantic scoring or memory system.
+
+## Authority
+
 No new runtime authority.
 No governance-engine change.
 No capability-scope expansion.

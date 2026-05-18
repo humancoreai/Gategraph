@@ -1,9 +1,9 @@
-# Release Notes — v0.17.9_CANDIDATE
+# Release Notes — v0.17.9_STABLE
 
-Release: v0.17.9_CANDIDATE
-Base: v0.17.8_STABLE
-Status: candidate
+Base: `v0.17.8_STABLE`
+Status: stable
 Phase: Concurrency Scope Evidence Formalization
+Promoted from: `v0.17.9_CANDIDATE`
 
 ## Scope
 
@@ -12,7 +12,18 @@ Phase: Concurrency Scope Evidence Formalization
 - Server `/evaluate`, `/status`, and `/monitoring` share the single-node DB boundary lock.
 - Enforcement token validation uses a local SQLite `BEGIN IMMEDIATE` section when it owns the transaction.
 - Evidence profile organization is documented without pruning tests.
-- Release surfaces are repaired without global token replacement.
+- Release surfaces repaired without global token replacement.
+
+## Semantic Boundary
+
+No governance logic change.
+No runtime/enforcement behavior change.
+No autonomous policy update.
+No semantic scoring or memory system.
+
+## Promotion Gate
+
+Windows CI for `v0.17.9_CANDIDATE` reported `Passed: True`.
 
 ## Non-Scope
 
@@ -20,8 +31,3 @@ Phase: Concurrency Scope Evidence Formalization
 - No multi-node runtime.
 - No new runtime authority.
 - No capability-scope expansion.
-
-No governance logic change.
-No runtime/enforcement behavior change.
-No autonomous policy update.
-No semantic scoring or memory system.

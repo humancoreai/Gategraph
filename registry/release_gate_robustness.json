@@ -9,13 +9,13 @@
     "stable_without_candidate_ci_forbidden"
   ],
   "current_base": "v0.17.8_STABLE",
-  "current_release": "v0.17.9_CANDIDATE",
-  "current_status": "candidate",
+  "current_release": "v0.17.9_STABLE",
+  "current_status": "stable",
   "future_stable": "v0.17.9_STABLE",
   "mode": "descriptive_release_gate_hardening_only",
-  "release": "v0.17.9_CANDIDATE",
+  "release": "v0.17.9_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate",
+  "status": "stable",
   "version": "0.17.9"
 }

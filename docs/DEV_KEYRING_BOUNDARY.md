@@ -1,8 +1,8 @@
 # Development Keyring Boundary
 
-Release: `v0.17.9_CANDIDATE`
+Release: `v0.17.9_STABLE`
 Base: `v0.17.8_STABLE`
-Status: candidate
+Status: stable
 
 GateGraph does not silently fall back to the deterministic development signing keyring.
 

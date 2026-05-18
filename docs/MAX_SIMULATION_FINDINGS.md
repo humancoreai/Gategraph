@@ -1,6 +1,6 @@
-# Maximum Simulation Findings – v0.17.9_CANDIDATE
+# Maximum Simulation Findings – v0.17.9_STABLE
 
-Current release context: v0.17.9_CANDIDATE.
+Current release context: v0.17.9_STABLE.
 Base stable: v0.17.9_STABLE.
 
 This document records findings from an external adversarial stress simulation.

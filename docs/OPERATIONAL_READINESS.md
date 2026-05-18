@@ -1,8 +1,8 @@
 # Surface Version Scanner Formalization
 
-Release: v0.17.9_CANDIDATE
+Release: v0.17.9_STABLE
 Base: v0.17.3_STABLE
-Status: candidate
+Status: stable
 
 This document defines a descriptive readiness surface for local single-node operation.
 It does not introduce runtime authority, automatic repair, policy mutation, semantic scoring, deployment automation, or performance claims.

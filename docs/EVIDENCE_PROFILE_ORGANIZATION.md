@@ -1,8 +1,8 @@
 # Evidence Profile Organization
 
-Release: `v0.17.9_CANDIDATE`
+Release: `v0.17.9_STABLE`
 Base: `v0.17.8_STABLE`
-Status: candidate
+Status: stable
 
 Evidence profiles are descriptive groupings only. They do not remove tests, auto-prune evidence, or change promotion authority.
 

@@ -1,11 +1,12 @@
 # Release Status
 
-Release: v0.17.9_CANDIDATE
+Release: v0.17.9_STABLE
 Base: v0.17.8_STABLE
-Status: candidate
+Status: stable
 Phase: Concurrency Scope Evidence Formalization
 
-Windows CI: pending
+Promoted from: v0.17.9_CANDIDATE
+Windows CI: Passed: True
 
 Scope:
 - explicit dev-keyring gate

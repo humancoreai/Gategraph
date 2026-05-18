@@ -1,8 +1,9 @@
 # GateGraph
 
-Current release: **v0.17.9_CANDIDATE**
+Current release: **v0.17.9_STABLE**
 Base stable: **v0.17.8_STABLE**
-Status: candidate
+Current base: `v0.17.8_STABLE`
+Status: stable
 Phase: Concurrency Scope Evidence Formalization
 
 GateGraph is a deterministic single-node governance baseline for controlled AI/agent execution.

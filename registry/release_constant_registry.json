@@ -4,21 +4,21 @@
   "base": "v0.17.8_STABLE",
   "constants": {
     "CURRENT_BASE": "v0.17.8_STABLE",
-    "CURRENT_RELEASE": "v0.17.9_CANDIDATE",
-    "CURRENT_STATUS": "candidate",
+    "CURRENT_RELEASE": "v0.17.9_STABLE",
+    "CURRENT_STATUS": "stable",
     "FUTURE_STABLE": "v0.17.9_STABLE"
   },
   "current_base": "v0.17.8_STABLE",
-  "current_release": "v0.17.9_CANDIDATE",
-  "current_status": "candidate",
+  "current_release": "v0.17.9_STABLE",
+  "current_status": "stable",
   "future_stable": "v0.17.9_STABLE",
   "mode": "descriptive_release_constant_registry_only",
   "phase": "Registry Lock Rebaseline Promotion Guard",
   "policy_mutation": false,
-  "release": "v0.17.9_CANDIDATE",
+  "release": "v0.17.9_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
   "stable_promotion_registry_lock_rebaseline_required": true,
-  "status": "candidate",
+  "status": "stable",
   "version": "0.17.9"
 }

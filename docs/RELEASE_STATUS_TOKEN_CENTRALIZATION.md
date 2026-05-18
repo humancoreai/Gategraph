@@ -1,8 +1,8 @@
 # Release SSOT Consolidation
 
-Release: v0.17.9_CANDIDATE  
-Base: v0.17.9_CANDIDATE  
-Status: candidate
+Release: v0.17.9_STABLE  
+Base: v0.17.9_STABLE  
+Status: stable
 
 This surface documents a descriptive-only cleanup for release/status tokens. It does not add runtime authority, auto-promotion, policy mutation, or governance repair behavior.
 

@@ -16,8 +16,8 @@
   "mode": "descriptive_promotion_status_drift_guard_only",
   "policy_mutation": false,
   "registry_lock_rebaseline_required_after_status_change": true,
-  "release": "v0.17.9_CANDIDATE",
+  "release": "v0.17.9_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate"
+  "status": "stable"
 }

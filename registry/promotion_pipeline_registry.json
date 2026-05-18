@@ -4,8 +4,8 @@
   "base": "v0.17.8_STABLE",
   "candidate_windows_ci_passed": true,
   "current_base": "v0.17.8_STABLE",
-  "current_release": "v0.17.9_CANDIDATE",
-  "current_status": "candidate",
+  "current_release": "v0.17.9_STABLE",
+  "current_status": "stable",
   "forbidden": [
     "stable_without_candidate_ci",
     "manifest_stale_after_surface_change",
@@ -18,7 +18,7 @@
   "promotion_status_ssot_scope": true,
   "promotion_surface_matrix_scope": true,
   "registry_lock_rebuild_required": true,
-  "release": "v0.17.9_CANDIDATE",
+  "release": "v0.17.9_STABLE",
   "required_steps": [
     "candidate_surfaces_current",
     "candidate_release_doc_present",
@@ -30,5 +30,5 @@
   "runtime_authority": false,
   "schema_version": "0.16.8",
   "source_candidate": "v0.14.9_CANDIDATE",
-  "status": "candidate"
+  "status": "stable"
 }

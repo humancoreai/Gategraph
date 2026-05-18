@@ -4,8 +4,8 @@
   "base": "v0.17.8_STABLE",
   "cleanup_rule": "No evidence gate is removed or demoted unless its invariant, surface, and exclusive coverage are mapped first.",
   "current_base": "v0.17.8_STABLE",
-  "current_release": "v0.17.9_CANDIDATE",
-  "current_status": "candidate",
+  "current_release": "v0.17.9_STABLE",
+  "current_status": "stable",
   "future_stable": "v0.17.9_STABLE",
   "mode": "descriptive_overlap_visibility_only",
   "overlap_candidates": [
@@ -72,10 +72,10 @@
       "replay_reference_integrity_evidence"
     ]
   },
-  "release": "v0.17.9_CANDIDATE",
+  "release": "v0.17.9_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate",
+  "status": "stable",
   "tests_removed": false,
   "version": "0.17.9"
 }
