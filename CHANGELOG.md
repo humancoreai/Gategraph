@@ -1,20 +1,20 @@
-Release: v0.17.3_STABLE
-Base: v0.17.2_STABLE
+Release: v0.17.4_CANDIDATE
+Base: v0.17.3_STABLE
 Status: stable
-Version: 0.17.3
-Phase: Promotion Status Drift Guard
+Version: 0.17.4
+Phase: Surface Version Scanner Formalization
 
 # Changelog
 
 All notable changes to GateGraph are documented here.
 
-## v0.17.3_STABLE
+## v0.17.4_CANDIDATE
 
-Base: v0.17.2_STABLE
+Base: v0.17.3_STABLE
 
 Status: stable
-Phase: Promotion Status Drift Guard
-Release focus: Promotion Status Drift Guard
+Phase: Surface Version Scanner Formalization
+Release focus: Surface Version Scanner Formalization
 
 - Added registry schema validation evidence.
 - Added profile type validation evidence.

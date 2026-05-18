@@ -39,7 +39,7 @@ def registry_hash(path: Path) -> str:
     return hashlib.sha256(canonical_json_bytes(load_json(path))).hexdigest()
 
 
-def build_lock_payload(*, root: Path | None = None, release: str = "v0.17.3_STABLE") -> dict[str, Any]:
+def build_lock_payload(*, root: Path | None = None, release: str = "v0.17.4_CANDIDATE") -> dict[str, Any]:
     project_root = root or PROJECT_ROOT
     registries = []
     for rel_path in LOCKED_REGISTRY_PATHS:

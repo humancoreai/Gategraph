@@ -1,7 +1,7 @@
-# Promotion Status Drift Guard
+# Surface Version Scanner Formalization
 
-Release: v0.17.3_STABLE
-Base: v0.17.2_STABLE
+Release: v0.17.4_CANDIDATE
+Base: v0.17.3_STABLE
 Status: stable
 
 This document defines a descriptive readiness surface for local single-node operation.
