@@ -4,17 +4,17 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_RELEASE = "v0.16.7_STABLE"
-EXPECTED_BASE = "v0.16.6_STABLE"
-EXPECTED_STATUS = "stable"
-EXPECTED_PHASE = "Release Status Token Centralization"
+EXPECTED_RELEASE = "v0.16.8_CANDIDATE"
+EXPECTED_BASE = "v0.16.7_STABLE"
+EXPECTED_STATUS = "candidate" if EXPECTED_RELEASE.endswith("_CANDIDATE") else "stable"
+EXPECTED_PHASE = "Release Status Assertion Policy"
 SURFACES = [
     "README.md",
     "VERSION.md",
     "RELEASE_NOTES.md",
     "RELEASE_STATUS.md",
     "CHANGELOG.md",
-    "docs/RELEASE_v0.16.7_STABLE.md",
+    "docs/RELEASE_v0.16.8_CANDIDATE.md",
 ]
 
 
@@ -31,9 +31,9 @@ def main() -> int:
     meta = json.loads(read("RELEASE_METADATA.json"))
     manifest = json.loads(read("RELEASE_MANIFEST.json"))
     checks = []
-    checks.append(check("metadata_claims_current_stable", meta.get("release") == EXPECTED_RELEASE and meta.get("base") == EXPECTED_BASE and meta.get("status") == EXPECTED_STATUS, {"release": meta.get("release"), "base": meta.get("base"), "status": meta.get("status")}))
+    checks.append(check("metadata_claims_current_release", meta.get("release") == EXPECTED_RELEASE and meta.get("base") == EXPECTED_BASE and meta.get("status") == EXPECTED_STATUS, {"release": meta.get("release"), "base": meta.get("base"), "status": meta.get("status")}))
     checks.append(check("metadata_declares_claim_consistency_scope", meta.get("release_claim_consistency_scope") is True, {"scope": meta.get("release_claim_consistency_scope")}))
-    checks.append(check("manifest_claims_current_stable", manifest.get("release") == EXPECTED_RELEASE and manifest.get("base") == EXPECTED_BASE and manifest.get("status") == EXPECTED_STATUS, {"release": manifest.get("release"), "base": manifest.get("base"), "status": manifest.get("status")}))
+    checks.append(check("manifest_claims_current_release", manifest.get("release") == EXPECTED_RELEASE and manifest.get("base") == EXPECTED_BASE and manifest.get("status") == EXPECTED_STATUS, {"release": manifest.get("release"), "base": manifest.get("base"), "status": manifest.get("status")}))
 
     missing = []
     for surface in SURFACES:
@@ -51,7 +51,7 @@ def main() -> int:
     checks.append(check("no_authority_expansion_claims", not forbidden_runtime_claims, {"violations": forbidden_runtime_claims}))
 
     manifest_paths = {entry["path"] for entry in manifest.get("files", [])}
-    checks.append(check("release_doc_manifested", "docs/RELEASE_v0.16.7_STABLE.md" in manifest_paths, {"present": "docs/RELEASE_v0.16.7_STABLE.md" in manifest_paths}))
+    checks.append(check("release_doc_manifested", "docs/RELEASE_v0.16.8_CANDIDATE.md" in manifest_paths, {"present": "docs/RELEASE_v0.16.8_CANDIDATE.md" in manifest_paths}))
     checks.append(check("evidence_manifested", "tests/release_claim_consistency_evidence.py" in manifest_paths, {"present": "tests/release_claim_consistency_evidence.py" in manifest_paths}))
 
     failed = [name for name, ok, _ in checks if not ok]

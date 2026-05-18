@@ -1,6 +1,6 @@
 # Stable CI Gate
 
-Release: v0.16.7_STABLE  
+Release: v0.16.8_CANDIDATE  
 Status: stable  
 Base: v0.14.7_STABLE
 

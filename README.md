@@ -1,12 +1,12 @@
 # GateGraph
 
-Current release: **v0.16.7_STABLE**  
-Base: **v0.16.6_STABLE**  
-Base stable: **v0.16.6_STABLE**  
+Current release: **v0.16.8_CANDIDATE**  
+Base: **v0.16.7_STABLE**  
+Base stable: **v0.16.7_STABLE**  
 Status: **stable**  
-Version: **0.16.7**  
-Phase: **Release Status Token Centralization**  
-Release focus: **Release Status Token Centralization**
+Version: **0.16.8**  
+Phase: **Release Status Assertion Policy**  
+Release focus: **Release Status Assertion Policy**
 
 GateGraph is a deterministic governance layer for AI-agent actions. It evaluates requested actions before execution, produces bounded governance decisions, and keeps execution authority outside the model.
 
@@ -78,7 +78,7 @@ Core public review files:
 - `SECURITY.md`
 - `TRUST_MODEL.md`
 - `docs/SCOPE_BACKLOG.md`
-- `docs/RELEASE_v0.16.7_STABLE.md`
+- `docs/RELEASE_v0.16.8_CANDIDATE.md`
 
 ## Security posture
 

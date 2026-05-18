@@ -1,7 +1,7 @@
 {
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.16.6_STABLE",
+  "base": "v0.16.7_STABLE",
   "classes": {
     "P0": "Core invariants; fail closed, authority boundaries, runtime/enforcement, replay determinism, security boundaries.",
     "P1": "Structural integrity; release, registry, manifest, promotion, provenance and practical readiness surfaces.",
@@ -313,6 +313,15 @@
       "mutable_surface": false,
       "path": "tests/evidence_runner_selftest.py",
       "test": "evidence_runner_selftest"
+    },
+    {
+      "category": "structural_integrity",
+      "class": "P1",
+      "criticality": "medium",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/evidence_runtime_profile_evidence.py",
+      "test": "evidence_runtime_profile_evidence"
     },
     {
       "category": "structural_integrity",
@@ -873,6 +882,24 @@
       "test": "release_state_transition_evidence"
     },
     {
+      "category": "release_surface",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/release_status_assertion_policy_evidence.py",
+      "test": "release_status_assertion_policy_evidence"
+    },
+    {
+      "category": "release_surface",
+      "class": "P1",
+      "criticality": "high",
+      "exact_string_assertions": false,
+      "mutable_surface": false,
+      "path": "tests/release_status_token_centralization_evidence.py",
+      "test": "release_status_token_centralization_evidence"
+    },
+    {
       "category": "structural_integrity",
       "class": "P1",
       "criticality": "high",
@@ -1276,30 +1303,12 @@
       "mutable_surface": false,
       "path": "tests/version_consistency_evidence.py",
       "test": "version_consistency_evidence"
-    },
-    {
-      "category": "structural_integrity",
-      "class": "P1",
-      "criticality": "medium",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/evidence_runtime_profile_evidence.py",
-      "test": "evidence_runtime_profile_evidence"
-    },
-    {
-      "category": "release_surface",
-      "class": "P1",
-      "criticality": "high",
-      "exact_string_assertions": false,
-      "mutable_surface": false,
-      "path": "tests/release_status_token_centralization_evidence.py",
-      "test": "release_status_token_centralization_evidence"
     }
   ],
   "registry_mode": "descriptive_classification_only",
-  "release": "v0.16.7_STABLE",
+  "release": "v0.16.8_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.7",
-  "status": "stable",
-  "version": "0.16.7"
+  "schema_version": "0.16.8",
+  "status": "candidate",
+  "version": "0.16.8"
 }

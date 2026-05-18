@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.16.6_STABLE",
+  "base": "v0.16.7_STABLE",
   "guards": [
     "metadata_matches_tokens",
     "constants_match_tokens",
@@ -15,10 +15,10 @@
   ],
   "mode": "descriptive_release_status_token_centralization_only",
   "policy_mutation": false,
-  "release": "v0.16.7_STABLE",
+  "release": "v0.16.8_CANDIDATE",
   "runtime_authority": false,
-  "schema_version": "0.16.7",
-  "status": "stable",
+  "schema_version": "0.16.8",
+  "status": "candidate",
   "status_derivation": {
     "candidate_future_stable": "replace _CANDIDATE with _STABLE",
     "candidate_suffix": "_CANDIDATE",
@@ -26,9 +26,9 @@
     "stable_suffix": "_STABLE"
   },
   "tokens": {
-    "current_base": "v0.16.6_STABLE",
-    "current_release": "v0.16.7_STABLE",
-    "current_status": "stable",
-    "future_stable": "v0.16.7_STABLE"
+    "current_base": "v0.16.7_STABLE",
+    "current_release": "v0.16.8_CANDIDATE",
+    "current_status": "candidate",
+    "future_stable": "v0.16.8_STABLE"
   }
 }

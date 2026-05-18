@@ -1,0 +1,28 @@
+{
+  "allowed_statuses": [
+    "candidate",
+    "stable"
+  ],
+  "auto_pruning": false,
+  "auto_repair": false,
+  "base": "v0.16.7_STABLE",
+  "forbidden_patterns": [
+    "assert status == \"candidate\"",
+    "assert status == \"stable\"",
+    "expected_status = \"candidate\"",
+    "expected_status = \"stable\""
+  ],
+  "mode": "descriptive_release_status_assertion_policy_only",
+  "policy_mutation": false,
+  "release": "v0.16.8_CANDIDATE",
+  "rule": "release/status evidence must derive expected release status from RELEASE_METADATA.json and release suffix, not hardcoded candidate/stable literals",
+  "runtime_authority": false,
+  "schema_version": "0.16.8",
+  "scope": [
+    "tests/*promotion*_evidence.py",
+    "tests/*release*_evidence.py",
+    "tests/*version*_evidence.py",
+    "tests/*maintainability*_evidence.py"
+  ],
+  "status": "candidate"
+}

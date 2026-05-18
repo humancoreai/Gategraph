@@ -1,6 +1,6 @@
 # Artifact Determinism
 
-Release: v0.16.7_STABLE  
+Release: v0.16.8_CANDIDATE  
 Base: v0.14.7_STABLE
 
 This surface documents deterministic artifact hygiene for release packages. ZIP order, manifest order and generated artifact exclusions remain evidence-only constraints.

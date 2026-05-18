@@ -9,9 +9,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = "v0.16.7_STABLE"
-BASE = "v0.16.6_STABLE"
-VERSION = "0.16.7"
+RELEASE = "v0.16.8_CANDIDATE"
+BASE = "v0.16.7_STABLE"
+VERSION = "0.16.8"
 
 REQUIRED = [
     "README.md",

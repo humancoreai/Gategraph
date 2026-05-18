@@ -1,11 +1,11 @@
 # GateGraph Scope Backlog
 
-Release: v0.16.7_STABLE
-Base: v0.16.6_STABLE
+Release: v0.16.8_CANDIDATE
+Base: v0.16.7_STABLE
 Status: stable
-Version: 0.16.7
-Phase: Release Status Token Centralization
-Release focus: Release Status Token Centralization
+Version: 0.16.8
+Phase: Release Status Assertion Policy
+Release focus: Release Status Assertion Policy
 
 ## Purpose
 

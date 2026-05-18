@@ -1,11 +1,11 @@
 # Release Status
 
-Release: v0.16.7_STABLE
-Status: stable
-Base: v0.16.6_STABLE
-Version: 0.16.7
+Release: v0.16.8_CANDIDATE
+Status: candidate
+Base: v0.16.7_STABLE
+Version: 0.16.8
 
-Candidate focus: Release Status Token Centralization.
-Phase: Release Status Token Centralization
+Candidate focus: Release Status Assertion Policy.
+Phase: Release Status Assertion Policy
 
-Stable validated after Candidate Windows Evidence CI pass.
+Stable promotion remains blocked until Candidate Windows Evidence CI passes.

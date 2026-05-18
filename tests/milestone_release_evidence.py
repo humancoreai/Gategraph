@@ -11,8 +11,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "v0.16.7_STABLE"
-BASE = "v0.16.6_STABLE"
+VERSION = "v0.16.8_CANDIDATE"
+BASE = "v0.16.7_STABLE"
 
 REQUIRED_ROOT_FILES = [
     "README.md",
@@ -190,4 +190,4 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# Current release surface: v0.16.7_STABLE
+# Current release surface: v0.16.8_CANDIDATE
