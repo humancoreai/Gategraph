@@ -9,8 +9,8 @@
     "stable_without_candidate_ci_forbidden"
   ],
   "mode": "descriptive_release_gate_hardening_only",
-  "release": "v0.17.5_CANDIDATE",
+  "release": "v0.17.5_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "candidate"
+  "status": "stable"
 }

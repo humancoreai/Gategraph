@@ -1,12 +1,12 @@
-Release: v0.17.5_CANDIDATE
+Release: v0.17.5_STABLE
 Base: v0.17.4_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.5
 Phase: Promotion Registry Lock Rebaseline Formalization
 
-# Release Notes – v0.17.5_CANDIDATE
+# Release Notes – v0.17.5_STABLE
 
-v0.17.5_CANDIDATE starts from v0.17.4_STABLE after Windows Evidence CI Passed: True for v0.17.4_STABLE.
+v0.17.5_STABLE promotes v0.17.5_CANDIDATE after Windows Evidence CI Passed: True.
 
 Included scope:
 
