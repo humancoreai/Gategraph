@@ -1,4 +1,4 @@
-Release: v0.17.4_CANDIDATE
+Release: v0.17.4_STABLE
 Base: v0.17.3_STABLE
 Status: stable
 Version: 0.17.4
@@ -8,7 +8,7 @@ Phase: Surface Version Scanner Formalization
 
 All notable changes to GateGraph are documented here.
 
-## v0.17.4_CANDIDATE
+## v0.17.4_STABLE
 
 Base: v0.17.3_STABLE
 

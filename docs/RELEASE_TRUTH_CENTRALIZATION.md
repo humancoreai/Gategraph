@@ -1,6 +1,6 @@
 # Release Truth Centralization
 
-Release: v0.17.4_CANDIDATE  
+Release: v0.17.4_STABLE  
 Base: v0.17.3_STABLE  
 Status: stable  
 
@@ -25,6 +25,6 @@ It does not add:
 
 ## Candidate rule
 
-Candidate surfaces must name `v0.17.4_CANDIDATE` as the current release and `v0.17.4_CANDIDATE` as the base.
+Candidate surfaces must name `v0.17.4_STABLE` as the current release and `v0.17.4_STABLE` as the base.
 
-`v0.17.4_CANDIDATE` is only a future promotion target and must not appear as the current public release while metadata status is `candidate`.
+`v0.17.4_STABLE` is only a future promotion target and must not appear as the current public release while metadata status is `candidate`.
