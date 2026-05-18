@@ -1,6 +1,6 @@
 # Fresh Clone Surface Validation
 
-Release: v0.17.0_STABLE  
+Release: v0.17.1_CANDIDATE  
 Base: v0.14.7_STABLE
 
 Fresh-clone validation checks that release docs, registry files, manifest entries and CI-facing surfaces remain available after a clean checkout. This is a release reproducibility check only.
