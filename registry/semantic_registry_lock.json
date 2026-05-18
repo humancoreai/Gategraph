@@ -1,23 +1,23 @@
 {
-  "schema_version": "0.16.8",
-  "release": "v0.17.5_CANDIDATE",
-  "invariant": "semantic registry locks are release evidence only and never grant authority",
   "authoritative": false,
-  "executable": false,
-  "runtime_access": false,
-  "policy_mutation": false,
-  "governance_influence": false,
-  "semantic_promotion_allowed": false,
-  "dynamic_loading": false,
   "auto_repair": false,
+  "dynamic_loading": false,
+  "executable": false,
+  "governance_influence": false,
+  "invariant": "semantic registry locks are release evidence only and never grant authority",
+  "policy_mutation": false,
   "registries": [
     {
       "path": "registry/semantic_object_types.json",
-      "sha256": "29ff87246c58b985721b2f2a85f8e639d0d4ee5af2e2a333134426b41eec2f10"
+      "sha256": "c3a85fa37bcb49de32e4e84ccd9c80845a1f217a28eb02035337c47bb2ccf724"
     },
     {
       "path": "registry/invariant_surface_registry.json",
-      "sha256": "727f1d3e8038189ee11560758d9c547828e95882631856f84ca55781614d697d"
+      "sha256": "443420790e1c33e1b051115dfa6ea60c8bf4ae73f859aece94450e266f1ec59e"
     }
-  ]
+  ],
+  "release": "v0.17.5_STABLE",
+  "runtime_access": false,
+  "schema_version": "0.16.8",
+  "semantic_promotion_allowed": false
 }
