@@ -1,8 +1,8 @@
 # GateGraph Scope Backlog
 
-Release: v0.17.6_CANDIDATE
+Release: v0.17.6_STABLE
 Base: v0.17.5_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.6
 Phase: Evidence Lifecycle Cleanup Formalization
 Release focus: Evidence Lifecycle Cleanup Formalization
