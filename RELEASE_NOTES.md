@@ -1,10 +1,10 @@
-Release: v0.17.8_CANDIDATE
+Release: v0.17.8_STABLE
 Base: v0.17.7_STABLE
-Status: candidate
+Status: stable
 Version: 0.17.8
 Phase: Concurrency Scope Evidence Formalization
 
-# Release Notes – v0.17.8_CANDIDATE
+# Release Notes – v0.17.8_STABLE
 
 Scope: concurrency scope evidence formalization and release-surface hygiene.
 

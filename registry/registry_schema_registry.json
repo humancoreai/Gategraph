@@ -9,20 +9,20 @@
   "future_stable": "v0.17.8_STABLE",
   "invariant": "registry schema checks are descriptive evidence only and do not grant runtime authority",
   "mutation_visibility": {
-    "active_release_state": "v0.17.8_CANDIDATE",
+    "active_release_state": "v0.17.8_STABLE",
     "active_status": "candidate",
     "changed_registry": "registry/registry_schema_registry.json",
-    "created_by": "v0.17.8_CANDIDATE rebuild",
-    "promotion_target": "v0.17.8_CANDIDATE"
+    "created_by": "v0.17.8_STABLE rebuild",
+    "promotion_target": "v0.17.8_STABLE"
   },
   "phase": "Registry Schema Release-State Hardening",
   "policy_mutation": false,
-  "release": "v0.17.8_CANDIDATE",
+  "release": "v0.17.8_STABLE",
   "release_truth": {
     "base": "v0.17.7_STABLE",
     "future_stable": "v0.17.8_STABLE",
-    "release": "v0.17.8_CANDIDATE",
-    "status": "candidate",
+    "release": "v0.17.8_STABLE",
+    "status": "stable",
     "version": "0.17.8"
   },
   "required_registry_fields": [
@@ -33,7 +33,7 @@
   ],
   "runtime_authority": false,
   "schema_version": "0.17.8",
-  "status": "candidate",
+  "status": "stable",
   "tracked_registries": [
     "registry/release_constant_registry.json",
     "registry/evidence_suite_profile.json",

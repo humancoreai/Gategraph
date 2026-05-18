@@ -1,6 +1,6 @@
 # Concurrency Scope Statement
 
-Release: v0.17.8_CANDIDATE
+Release: v0.17.8_STABLE
 Base: v0.17.7_STABLE
 Status: candidate
 
@@ -25,3 +25,22 @@ GateGraph currently defines a single-node deterministic governance baseline. SQL
 ## Authority Boundary
 
 This document is descriptive only. It does not add runtime authority, policy mutation, capability scopes, or enforcement behavior.
+
+
+## Stable Single-Node Concurrency Scope
+
+Release: `v0.17.8_STABLE`
+Base: `v0.17.7_STABLE`
+Status: stable
+
+This stable release declares a single-node deterministic governance baseline.
+
+The supported concurrency model is intentionally bounded:
+
+- single-node execution
+- stable release surface
+- SQLite thread-owned connection handling
+- no shared cross-thread SQLite handles
+- no multi-node cluster claim
+- no distributed worker orchestration
+- no new runtime authority

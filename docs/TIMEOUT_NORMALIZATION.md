@@ -1,6 +1,6 @@
-# Timeout Normalization – v0.17.8_CANDIDATE
+# Timeout Normalization – v0.17.8_STABLE
 
-Release: v0.17.8_CANDIDATE  
+Release: v0.17.8_STABLE  
 Base: v0.17.7_STABLE  
 Status: stable  
 Phase: Evidence Lifecycle Cleanup Formalization

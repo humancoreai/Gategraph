@@ -16,11 +16,11 @@
   ],
   "mode": "descriptive_release_status_token_centralization_only",
   "policy_mutation": false,
-  "release": "v0.17.8_CANDIDATE",
+  "release": "v0.17.8_STABLE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
   "stable_promotion_registry_lock_rebaseline_required": true,
-  "status": "candidate",
+  "status": "stable",
   "status_derivation": {
     "candidate_future_stable": "replace _CANDIDATE with _STABLE",
     "candidate_suffix": "_CANDIDATE",
@@ -29,8 +29,8 @@
   },
   "tokens": {
     "current_base": "v0.17.7_STABLE",
-    "current_release": "v0.17.8_CANDIDATE",
-    "current_status": "candidate",
+    "current_release": "v0.17.8_STABLE",
+    "current_status": "stable",
     "future_stable": "v0.17.8_STABLE"
   },
   "version": "0.17.8"

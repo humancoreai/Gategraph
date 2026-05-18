@@ -8,7 +8,7 @@ EDGE_TYPES={'depends_on','validated_by','affects','lineage_of'}
 
 def main():
     g=json.loads(GRAPH.read_text())
-    assert g['release']=='v0.17.8_CANDIDATE'
+    assert g['release']=='v0.17.8_STABLE'
     assert g['base']=='v0.17.7_STABLE'
     assert g['schema_version']=='0.16.8'
     for k in ['runtime_authority','policy_mutation','auto_repair','dynamic_loading','self_healing']:
