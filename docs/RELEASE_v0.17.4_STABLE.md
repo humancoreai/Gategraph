@@ -1,6 +1,6 @@
-# Release v0.17.6_CANDIDATE
+# Release v0.17.6_STABLE
 
-Release: v0.17.6_CANDIDATE
+Release: v0.17.6_STABLE
 Base: v0.17.3_STABLE
 Status: stable
 Version: 0.17.4
