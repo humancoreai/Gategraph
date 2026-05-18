@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_repair": false,
-  "base": "v0.17.7_STABLE",
+  "base": "v0.17.8_STABLE",
   "benchmark_claims": false,
   "checks": [
     "cli_entry_declared",
@@ -10,16 +10,21 @@
     "known_boundaries_documented",
     "no_runtime_authority"
   ],
+  "current_base": "v0.17.8_STABLE",
+  "current_release": "v0.17.9_CANDIDATE",
+  "current_status": "candidate",
+  "future_stable": "v0.17.9_STABLE",
   "mode": "descriptive_operational_readiness_only",
   "performance_claims": false,
   "policy_mutation": false,
-  "release": "v0.17.8_STABLE",
+  "release": "v0.17.9_CANDIDATE",
   "required_surfaces": [
     "docs/OPERATIONAL_READINESS.md",
     "registry/operational_readiness_registry.json",
     "tests/operational_readiness_evidence.py"
   ],
   "runtime_authority": false,
-  "schema_version": "0.17.8",
-  "status": "stable"
+  "schema_version": "0.17.9",
+  "status": "candidate",
+  "version": "0.17.9"
 }

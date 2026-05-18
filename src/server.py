@@ -30,7 +30,7 @@ class RequestValidationError(ValueError):
 
 
 class GateGraphHandler(BaseHTTPRequestHandler):
-    server_version = "v0.17.8_STABLE"
+    server_version = "v0.17.9_CANDIDATE"
 
     def setup(self) -> None:
         super().setup()
@@ -40,10 +40,14 @@ class GateGraphHandler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:
         if self.path == "/status":
-            self._send_json(HTTPStatus.OK, response_normalizer.wrap_data(service_adapter.status(self._config()), stage="server"))
+            with self.server.db_boundary_lock:  # type: ignore[attr-defined]
+                payload = response_normalizer.wrap_data(service_adapter.status(self._config()), stage="server")
+            self._send_json(HTTPStatus.OK, payload)
             return
         if self.path == "/monitoring":
-            self._send_json(HTTPStatus.OK, response_normalizer.wrap_data({"monitoring": service_adapter.monitoring(self._config())}, stage="server"))
+            with self.server.db_boundary_lock:  # type: ignore[attr-defined]
+                payload = response_normalizer.wrap_data({"monitoring": service_adapter.monitoring(self._config())}, stage="server")
+            self._send_json(HTTPStatus.OK, payload)
             return
         self._send_error(HTTPStatus.NOT_FOUND, "UNKNOWN_ENDPOINT", "routing")
 
@@ -118,7 +122,7 @@ class GateGraphHandler(BaseHTTPRequestHandler):
 
     def _evaluate_serialized(self, body: dict[str, Any]) -> dict[str, Any]:
         # INV: Adapter-level serialization protects the single SQLite node without changing governance.
-        with self.server.evaluate_lock:  # type: ignore[attr-defined]
+        with self.server.db_boundary_lock:  # type: ignore[attr-defined]
             return service_adapter.evaluate_request(self._config(), body)
 
     def _validate_evaluate_body(self, body: dict[str, Any]) -> None:
@@ -157,14 +161,17 @@ class GateGraphHandler(BaseHTTPRequestHandler):
 
 class GateGraphHTTPServer(ThreadingHTTPServer):
     # SEC: Local adapter hardening only; this is not an internet-facing connection limiter.
-    daemon_threads = True
-    request_queue_size = 16
+    # INV: non-daemon workers allow bounded shutdown instead of silently cutting DB work.
+    daemon_threads = False
+    block_on_close = True
+    request_queue_size = 32
 
 
 def build_server(host: str, port: int, config: AppConfig) -> ThreadingHTTPServer:
     server = GateGraphHTTPServer((host, port), GateGraphHandler)
     server.gategraph_config = config  # type: ignore[attr-defined]
-    server.evaluate_lock = threading.Lock()  # type: ignore[attr-defined]
+    server.db_boundary_lock = threading.RLock()  # type: ignore[attr-defined]
+    server.evaluate_lock = server.db_boundary_lock  # type: ignore[attr-defined]
     return server
 
 
@@ -191,6 +198,6 @@ def main(argv: list[str] | None = None) -> int:
 if __name__ == "__main__":
     raise SystemExit(main())
 
-# Release surface: GateGraphHTTP/v0.17.8_STABLE
+# Release surface: GateGraphHTTP/v0.17.9_CANDIDATE
 
 # HTTP compatibility surface: GateGraphHTTP/0.14.9

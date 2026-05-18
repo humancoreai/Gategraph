@@ -4,8 +4,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-EXPECTED_RELEASE = "v0.17.8_STABLE"
-EXPECTED_BASE = "v0.17.7_STABLE"
+EXPECTED_RELEASE = "v0.17.9_CANDIDATE"
+EXPECTED_BASE = "v0.17.8_STABLE"
 EXPECTED_STATUS = "candidate" if EXPECTED_RELEASE.endswith("_CANDIDATE") else "stable"
 
 def main():

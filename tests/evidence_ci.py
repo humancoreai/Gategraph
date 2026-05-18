@@ -31,6 +31,9 @@ LOG_DIR = PROJECT_ROOT / "tests" / "logs"
 
 MANIFEST: List[Tuple[str, str, int]] = [
     ("evidence_runner_selftest", "tests/evidence_runner_selftest.py", 10),
+    ("dev_keyring_gate_evidence", "tests/dev_keyring_gate_evidence.py", 20),
+    ("server_db_boundary_evidence", "tests/server_db_boundary_evidence.py", 20),
+    ("revocation_atomicity_evidence", "tests/revocation_atomicity_evidence.py", 20),
     ("evidence_registry_evidence", "tests/evidence_registry_evidence.py", 20),
     ("promotion_status_ssot_evidence", "tests/promotion_status_ssot_evidence.py", 30),
     ("promotion_surface_matrix_evidence", "tests/promotion_surface_matrix_evidence.py", 30),
@@ -394,6 +397,8 @@ def run_one(name: str, script: str, timeout_seconds: int, extra_env: dict[str, s
     env["PYTHONUTF8"] = "1"
     # INV: Legacy direct-governance evidence uses an explicit test-only trusted-entry compatibility path.
     env["GATEGRAPH_ALLOW_TEST_DIRECT_GOVERNANCE"] = "1"
+    # SEC: evidence runs opt into deterministic local dev keys explicitly.
+    env["GATEGRAPH_ALLOW_DEV_KEYRING"] = "1"
     if extra_env:
         env.update(extra_env)
 

@@ -1,7 +1,7 @@
 {
   "auto_promotion": false,
   "auto_pruning": false,
-  "base": "v0.17.7_STABLE",
+  "base": "v0.17.8_STABLE",
   "mandatory_for_stable": [
     "evidence_runner_selftest",
     "release_integrity_evidence",
@@ -44,10 +44,27 @@
       "candidate_ci_gate_evidence",
       "server_hardening_evidence",
       "release_gate_robustness_evidence"
+    ],
+    "runtime_core": [
+      "guard_orchestration_evidence",
+      "runtime_chain_order_evidence",
+      "runtime_stress_evidence",
+      "session_budget_evidence"
+    ],
+    "security_boundary": [
+      "capability_token_hardening_evidence",
+      "dev_keyring_gate_evidence",
+      "revocation_atomicity_evidence",
+      "token_exposure_evidence"
+    ],
+    "server_boundary": [
+      "server_db_boundary_evidence",
+      "server_hardening_evidence",
+      "server_mode_evidence"
     ]
   },
-  "release": "v0.17.8_STABLE",
+  "release": "v0.17.9_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable"
+  "status": "candidate"
 }

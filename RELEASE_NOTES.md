@@ -1,29 +1,27 @@
-Release: v0.17.8_STABLE
-Base: v0.17.7_STABLE
-Status: stable
-Version: 0.17.8
+# Release Notes — v0.17.9_CANDIDATE
+
+Release: v0.17.9_CANDIDATE
+Base: v0.17.8_STABLE
+Status: candidate
 Phase: Concurrency Scope Evidence Formalization
 
-# Release Notes – v0.17.8_STABLE
+## Scope
 
-Scope: concurrency scope evidence formalization and release-surface hygiene.
+- Development keyring no longer loads silently.
+- Local evidence explicitly opts into `GATEGRAPH_ALLOW_DEV_KEYRING=1`.
+- Server `/evaluate`, `/status`, and `/monitoring` share the single-node DB boundary lock.
+- Enforcement token validation uses a local SQLite `BEGIN IMMEDIATE` section when it owns the transaction.
+- Evidence profile organization is documented without pruning tests.
+- Release surfaces are repaired without global token replacement.
 
-## Changes
-
-- Added explicit concurrency scope statement for the single-node SQLite baseline.
-- Added evidence that SQLite thread ownership remains documented and non-authoritative.
-- Preserved fail-closed, token, boundary, audit and runtime authority invariants.
-
-## Non-goals
+## Non-Scope
 
 - No PostgreSQL migration.
-- No async rewrite.
-- No multi-node runtime authority.
-- No new capability scopes.
+- No multi-node runtime.
+- No new runtime authority.
+- No capability-scope expansion.
 
-## Authority Boundary
-
-- No governance logic change.
-- No runtime/enforcement behavior change.
-- No autonomous policy update.
-- No semantic scoring or memory system.
+No governance logic change.
+No runtime/enforcement behavior change.
+No autonomous policy update.
+No semantic scoring or memory system.

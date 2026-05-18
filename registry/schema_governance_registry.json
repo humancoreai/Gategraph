@@ -1,7 +1,10 @@
 {
   "auto_migration": false,
   "auto_repair": false,
-  "base": "v0.17.7_STABLE",
+  "base": "v0.17.8_STABLE",
+  "current_base": "v0.17.8_STABLE",
+  "current_release": "v0.17.9_CANDIDATE",
+  "current_status": "candidate",
   "dynamic_loading": false,
   "exports": [
     {
@@ -29,16 +32,17 @@
       "runtime_authority": false
     }
   ],
+  "future_stable": "v0.17.9_STABLE",
   "lineage": [
     {
       "automatic_migration": false,
       "from": "v0.14.7_STABLE",
       "mode": "declarative_schema_governance_only",
-      "to": "v0.17.8_STABLE"
+      "to": "v0.17.9_CANDIDATE"
     }
   ],
   "registry_mode": "declarative_only",
-  "release": "v0.17.8_STABLE",
+  "release": "v0.17.9_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
   "schemas": [
@@ -106,5 +110,6 @@
       "schema_id": "governance_integrity_graph"
     }
   ],
-  "status": "stable"
+  "status": "candidate",
+  "version": "0.17.9"
 }

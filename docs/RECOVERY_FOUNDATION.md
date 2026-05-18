@@ -30,12 +30,12 @@ Current release surface: v0.12.8_STABLE
 
 Release surface: v0.14.7_STABLE.
 
-Release surface: v0.17.8_STABLE.
+Release surface: v0.17.9_CANDIDATE.
 Base stable: v0.14.7_STABLE.
 Phase: Recovery Replay Finality Hardening.
 
 
-Release: v0.17.8_STABLE
-Base: v0.17.8_STABLE
-Status: stable
+Release: v0.17.9_CANDIDATE
+Base: v0.17.9_CANDIDATE
+Status: candidate
 Phase: Evidence Lifecycle Cleanup Formalization

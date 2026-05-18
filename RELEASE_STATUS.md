@@ -1,11 +1,20 @@
 # Release Status
 
-Release: v0.17.8_STABLE
-Base: v0.17.7_STABLE
-Status: stable
-Version: 0.17.8
+Release: v0.17.9_CANDIDATE
+Base: v0.17.8_STABLE
+Status: candidate
 Phase: Concurrency Scope Evidence Formalization
 
-Stable build for Windows Evidence CI. No stable promotion is implied.
+Windows CI: pending
 
-Promotion rule: no stable release without Stable CI `Passed: True`.
+Scope:
+- explicit dev-keyring gate
+- server/SQLite boundary hardening
+- transactional revocation check narrowing
+- evidence profile organization
+- release surface drift repair
+
+No governance logic change.
+No runtime/enforcement behavior change.
+No autonomous policy update.
+No semantic scoring or memory system.

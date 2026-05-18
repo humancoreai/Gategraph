@@ -1,8 +1,8 @@
-# Timeout Normalization – v0.17.8_STABLE
+# Timeout Normalization – v0.17.9_CANDIDATE
 
-Release: v0.17.8_STABLE  
-Base: v0.17.7_STABLE  
-Status: stable  
+Release: v0.17.9_CANDIDATE  
+Base: v0.17.9_STABLE  
+Status: candidate  
 Phase: Evidence Lifecycle Cleanup Formalization
 
 Timeout handling is normalized as CI/evidence metadata only.

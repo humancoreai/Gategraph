@@ -21,6 +21,7 @@ DEFAULT_SIGNING_KEY_ID = "local-dev-v2"
 _ENV_SECRET = "GATEGRAPH_TOKEN_SIGNING_SECRET"
 _ENV_ACTIVE_KEY_ID = "GATEGRAPH_TOKEN_ACTIVE_KEY_ID"
 _ENV_KEYRING_JSON = "GATEGRAPH_TOKEN_KEYRING_JSON"
+_ENV_ALLOW_DEV_KEYRING = "GATEGRAPH_ALLOW_DEV_KEYRING"
 _DEV_KEYRING = {
     # SEC: development-only deterministic secrets for local evidence tests.
     # Never use these defaults with real data, CI secrets, or production workloads.
@@ -101,10 +102,15 @@ def _ensure_token_schema(conn: sqlite3.Connection) -> None:
         conn.execute("ALTER TABLE capability_tokens ADD COLUMN escalation_state TEXT")
 
 
+def _dev_keyring_allowed() -> bool:
+    return os.environ.get(_ENV_ALLOW_DEV_KEYRING) == "1"
+
+
 def load_trusted_keyring() -> Dict[str, bytes]:
     """
     SEC: public keyring loader; callers that need deterministic per-decision behavior load once and pass it through.
     Format: GATEGRAPH_TOKEN_KEYRING_JSON='{"kid-a":"secret-a","kid-b":"secret-b"}'
+    INV: development signing keys are fail-closed unless explicitly enabled.
     """
     raw = os.environ.get(_ENV_KEYRING_JSON)
     if raw:
@@ -120,7 +126,15 @@ def load_trusted_keyring() -> Dict[str, bytes]:
         active = os.environ.get(_ENV_ACTIVE_KEY_ID, DEFAULT_SIGNING_KEY_ID)
         return {active: os.environ[_ENV_SECRET].encode("utf-8")}
 
-    return {kid: secret.encode("utf-8") for kid, secret in _DEV_KEYRING.items()}
+    if _dev_keyring_allowed():
+        return {kid: secret.encode("utf-8") for kid, secret in _DEV_KEYRING.items()}
+
+    # SEC: no silent signing fallback. Local evidence must opt in explicitly.
+    raise RuntimeError(
+        "No token signing secret configured. Set GATEGRAPH_TOKEN_KEYRING_JSON "
+        "or GATEGRAPH_TOKEN_SIGNING_SECRET. Development mode requires "
+        "GATEGRAPH_ALLOW_DEV_KEYRING=1."
+    )
 
 
 def active_signing_key_id() -> str:

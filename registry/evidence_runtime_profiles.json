@@ -2,7 +2,11 @@
   "auto_promotion": false,
   "auto_pruning": false,
   "auto_repair": false,
-  "base": "v0.17.7_STABLE",
+  "base": "v0.17.8_STABLE",
+  "current_base": "v0.17.8_STABLE",
+  "current_release": "v0.17.9_CANDIDATE",
+  "current_status": "candidate",
+  "future_stable": "v0.17.9_STABLE",
   "mode": "descriptive_profile_execution_only",
   "policy_mutation": false,
   "profile_contract": "Profiles are scoped execution bundles for evidence ergonomics. They do not demote, delete, or bypass mandatory Stable gates.",
@@ -38,9 +42,10 @@
       "security_finesse_evidence"
     ]
   },
-  "release": "v0.17.8_STABLE",
+  "release": "v0.17.9_CANDIDATE",
   "runtime_authority": false,
   "schema_version": "0.16.8",
-  "status": "stable",
-  "tests_removed": false
+  "status": "candidate",
+  "tests_removed": false,
+  "version": "0.17.9"
 }

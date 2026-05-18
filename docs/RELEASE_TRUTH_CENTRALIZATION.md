@@ -1,8 +1,8 @@
 # Release Truth Centralization
 
-Release: v0.17.8_STABLE  
+Release: v0.17.9_CANDIDATE  
 Base: v0.17.3_STABLE  
-Status: stable  
+Status: candidate  
 
 v0.16.0 introduces a small read-only release truth resolver.
 
@@ -25,6 +25,6 @@ It does not add:
 
 ## Candidate rule
 
-Candidate surfaces must name `v0.17.8_STABLE` as the current release and `v0.17.8_STABLE` as the base.
+Candidate surfaces must name `v0.17.9_CANDIDATE` as the current release and `v0.17.9_CANDIDATE` as the base.
 
-`v0.17.8_STABLE` is only a future promotion target and must not appear as the current public release while metadata status is `candidate`.
+`v0.17.9_CANDIDATE` is only a future promotion target and must not appear as the current public release while metadata status is `candidate`.

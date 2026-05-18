@@ -1,7 +1,12 @@
-Release: v0.17.8_STABLE
-Base: v0.17.7_STABLE
-Status: stable
-Version: 0.17.8
+# GateGraph Version
+
+Release: v0.17.9_CANDIDATE
+Base: v0.17.8_STABLE
+Status: candidate
+Version: 0.17.9
 Phase: Concurrency Scope Evidence Formalization
 
-Stable only. Stable promotion requires Windows Evidence CI Passed: True.
+No governance logic change.
+No runtime/enforcement behavior change.
+No autonomous policy update.
+No semantic scoring or memory system.

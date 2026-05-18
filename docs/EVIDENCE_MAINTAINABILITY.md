@@ -1,10 +1,10 @@
-# Evidence Maintainability – v0.17.8_STABLE
+# Evidence Maintainability
 
-Release: v0.17.8_STABLE  
-Base: v0.17.7_STABLE  
-Status: stable  
-Phase: Evidence Lifecycle Cleanup Formalization
+Release: v0.17.9_CANDIDATE
+Base: v0.17.8_STABLE
+Status: candidate
+Phase: Concurrency Scope Evidence Formalization
 
-This surface is descriptive only. It has no runtime authority, no auto-repair, no auto-pruning and no policy mutation.
+This document is descriptive only. It adds no runtime authority, no policy mutation, no auto-pruning, and no automatic repair.
 
-It tracks known maintainability concerns in the evidence suite: duplicate release-surface assertions, fragile text-token assertions, registry/manifest drift, candidate/stable semantic coupling and evidence overlap visibility.
+The purpose is to make evidence overlap and release-surface drift visible without changing governance behavior.
