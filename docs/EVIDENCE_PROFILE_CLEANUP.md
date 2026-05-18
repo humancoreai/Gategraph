@@ -1,8 +1,8 @@
 # Release SSOT Consolidation
 
-Release: v0.17.2_CANDIDATE  
+Release: v0.17.2_STABLE  
 Base: v0.17.1_STABLE  
-Status: candidate
+Status: stable
 
 ## Purpose
 
