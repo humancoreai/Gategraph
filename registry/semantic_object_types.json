@@ -1,5 +1,5 @@
 {
-  "base": "v0.17.0_STABLE",
+  "base": "v0.16.9_STABLE",
   "invariant": "semantic objects are descriptive registry entries only; registry membership and registry locks never grant runtime authority",
   "object_types": {
     "archive_object": {
@@ -90,7 +90,7 @@
       ]
     }
   },
-  "release": "v0.17.1_STABLE",
+  "release": "v0.17.0_CANDIDATE",
   "schema_version": "0.16.8",
-  "status": "stable"
+  "status": "candidate"
 }

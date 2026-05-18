@@ -1,20 +1,20 @@
-Release: v0.17.1_STABLE
-Base: v0.17.0_STABLE
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
 Status: candidate
-Version: 0.17.1
-Phase: Promotion Status Drift Guard
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
 # Changelog
 
 All notable changes to GateGraph are documented here.
 
-## v0.17.1_STABLE
+## v0.17.0_CANDIDATE
 
-Base: v0.17.0_STABLE
+Base: v0.16.9_STABLE
 
-Status: candidate
-Phase: Promotion Status Drift Guard
-Release focus: Promotion Status Drift Guard
+Status: stable
+Phase: Operational Readiness Baseline
+Release focus: Operational Readiness Baseline
 
 - Cleaned README into a current public review surface.
 - Added `docs/SCOPE_BACKLOG.md` to separate current scope from deferred future work.
@@ -22,10 +22,10 @@ Release focus: Promotion Status Drift Guard
 - Preserved build-mutation hardening from v0.14.9.
 - No runtime/governance/enforcement authority expansion.
 
-## v0.17.0_STABLE
+## v0.16.9_STABLE
 
 Base: v0.16.3_STABLE
-Status: candidate
+Status: stable
 Phase: Evidence Maintainability Hardening
 
 - Stabilized evidence maintainability and release-surface consistency after Windows Evidence CI PASS.
@@ -33,7 +33,7 @@ Phase: Evidence Maintainability Hardening
 
 ## v0.16.3_STABLE
 
-Status: candidate
+Status: stable
 
 - Continued release hygiene, review-surface cleanup and evidence maintainability hardening.
 - No governance/runtime/enforcement authority expansion.

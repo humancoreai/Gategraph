@@ -1,25 +1,25 @@
-Release: v0.17.1_STABLE
-Base: v0.17.0_STABLE
-Status: stable
-Version: 0.17.1
-Phase: Promotion Status Drift Guard
+Release: v0.17.0_CANDIDATE
+Base: v0.16.9_STABLE
+Status: candidate
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
-# Release Notes – v0.17.1_STABLE
+# Release Notes – v0.17.0_CANDIDATE
 
 Status: stable  
-Base: v0.17.0_STABLE  
-Version: 0.17.1
-Phase: Promotion Status Drift Guard
+Base: v0.16.9_STABLE  
+Version: 0.17.0
+Phase: Operational Readiness Baseline
 
 ## Focus
 
-v0.17.1_STABLE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
+v0.17.0_CANDIDATE introduces evidence profile cleanup and overlap visibility. It does not remove tests, prune gates, or change runtime governance behavior.
 
 ## Changes
 
 - Adds an evidence overlap matrix as a descriptive review surface.
 - Adds a cleanup evidence gate that proves overlap visibility remains non-authoritative.
-- Keeps all existing Evidence CI gates intact for this stable release.
+- Keeps all existing Evidence CI gates intact for this candidate.
 
 ## Non-scope
 

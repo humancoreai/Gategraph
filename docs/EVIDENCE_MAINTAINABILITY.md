@@ -1,8 +1,8 @@
-# Evidence Maintainability – v0.17.1_STABLE
+# Evidence Maintainability – v0.17.0_CANDIDATE
 
-Release: v0.17.1_STABLE  
-Base: v0.17.0_STABLE  
-Status: candidate  
+Release: v0.17.0_CANDIDATE  
+Base: v0.16.9_STABLE  
+Status: stable  
 Phase: Release SSOT Consolidation
 
 This surface is descriptive only. It has no runtime authority, no auto-repair, no auto-pruning and no policy mutation.
